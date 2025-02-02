@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Échecs ♟️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+    <h1>Bienvenue dans la section Mathématiques</h1>
+    <div class="content">
+        <p>Réponds à ces questions pour découvrir les bases des échecs !</p>
+        
+        <div id="quiz-section">
+            <h3 id="question">Question 1 : Comment se déplace le cavalier ?</h3>
+            <button onclick="checkAnswer(1, 'correct')">En L 🐴</button>
+            <button onclick="checkAnswer(1, 'incorrect')">En ligne droite 📏</button>
+            <button onclick="checkAnswer(1, 'incorrect')">En diagonale 📐</button>
+            <button onclick="checkAnswer(1, 'incorrect')">En cercle 🔄</button>
+        </div>
+
+        <p id="feedback" style="font-size: 18px; margin-top: 15px;"></p>
+        <p class="score">Score : <span id="score">0</span>/3</p>
+
+        <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+
+        // Liste des questions
+        const questions = [
+            {
+                question: "Comment se déplace le cavalier ?",
+                options: ["En L 🐴", "En ligne droite 📏", "En diagonale 📐", "En cercle 🔄"],
+                correctIndex: 0
+            },
+            {
+                question: "Quelle pièce peut se déplacer en diagonale sur toute la longueur de l’échiquier ?",
+                options: ["La tour 🏰", "Le cavalier 🐴", "Le fou 🧐", "Le pion ⚫"],
+                correctIndex: 2
+            },
+            {
+                question: "Quelle pièce est la plus importante aux échecs ?",
+                options: ["Le roi 👑", "La dame ♕", "Le cavalier 🐴", "Le pion ⚫"],
+                correctIndex: 1
+            }
+        ];
+
+        function checkAnswer(questionNumber, answerType) {
+            const feedback = document.getElementById('feedback');
+
+            if (answerType === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+                score++;
+                document.getElementById('score').innerText = score;
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+
+            // Affiche le bouton suivant seulement si la réponse est correcte
+            if (answerType === 'correct') {
+                document.getElementById('next-button').style.display = 'inline-block';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+
+            if (currentQuestion <= questions.length) {
+                // Met à jour la question
+                const current = questions[currentQuestion - 1];
+                document.getElementById('question').innerText = `Question ${currentQuestion} : ${current.question}`;
+                
+                // Met à jour les options de réponse
+                const buttons = document.querySelectorAll('#quiz-section button');
+                buttons.forEach((button, index) => {
+                    button.innerText = current.options[index];
+
+                    if (index === current.correctIndex) {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'correct')");
+                    } else {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'incorrect')");
+                    }
+                });
+
+                // Réinitialise les feedbacks
+                document.getElementById('feedback').innerText = "";
+                document.getElementById('next-button').style.display = 'none';
+            } else {
+                document.getElementById('feedback').innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as terminé le quiz avec un score de ${score}/${questions.length}.</span>`;
+                document.getElementById('next-button').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

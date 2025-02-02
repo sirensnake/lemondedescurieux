@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrons l’IA - Le Monde des Curieux</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+
+    <h1>Bienvenue dans la section IA 🤖</h1>
+    <div class="content">
+        <p>Salut ! Ici, tu vas découvrir ce qu’est l’intelligence artificielle et comment elle fonctionne.</p>
+        
+        <h3>Activité : Clique sur le bouton pour voir une IA prendre une décision simple !</h3>
+        
+        <button onclick="decision()">Clique ici</button>
+        <p id="decision-output" style="margin-top: 20px; font-size: 20px;"></p>
+    </div>
+
+    <script>
+        function decision() {
+            const decisions = [
+                "L’IA a décidé que tu devrais jouer à un jeu d’échecs ! ♟️",
+                "L’IA pense que tu devrais explorer le monde des sciences ! 🔬",
+                "L’IA te conseille de coder quelque chose de fun aujourd’hui ! 💻"
+            ];
+
+            // Choisit une décision au hasard
+            const randomDecision = decisions[Math.floor(Math.random() * decisions.length)];
+            document.getElementById('decision-output').innerText = randomDecision;
+        }
+    </script>
+
+</body>
+</html>

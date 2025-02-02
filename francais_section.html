@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Français 📖</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5e1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2a9d8f;
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #f4a261;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e76f51;
+        }
+
+        .correct {
+            color: #2a9d8f;
+        }
+
+        .incorrect {
+            color: #e63946;
+        }
+
+        .score {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+    <h1>Bienvenue dans la section Français 📖</h1>
+    <p>Découvre le français de façon ludique avec nos activités interactives !</p>
+
+    <!-- Activité 1 : Quiz de conjugaison -->
+    <div class="content">
+        <h2>Activité 1 : Quiz sur les conjugaisons</h2>
+        <div id="quiz-section">
+            <h3 id="question">Question 1 : Quelle est la bonne conjugaison du verbe "manger" à la 1ère personne du pluriel au présent ?</h3>
+            <button onclick="checkAnswer(1, 'incorrect')">Nous mangeont</button>
+            <button onclick="checkAnswer(1, 'correct')">Nous mangeons</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Nous manger</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Nous mangions</button>
+        </div>
+
+        <p id="feedback" style="font-size: 18px; margin-top: 15px;"></p>
+        <p class="score">Score : <span id="score">0</span>/3</p>
+
+        <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
+    </div>
+
+    <!-- Activité 2 : Synonymes et Antonymes -->
+    <div class="content">
+        <h2>Activité 2 : Trouve le synonyme</h2>
+        <p>Quel est le synonyme du mot "rapide" ?</p>
+        <button onclick="checkSynonym('vif')">Vif</button>
+        <button onclick="checkSynonym('lent')">Lent</button>
+        <button onclick="checkSynonym('fatigué')">Fatigué</button>
+        <p id="synonym-feedback" style="font-size: 18px; margin-top: 10px;"></p>
+    </div>
+
+    <!-- Activité 3 : Dictée interactive -->
+    <div class="content">
+        <h2>Activité 3 : Dictée interactive</h2>
+        <p>Écoute cette phrase et écris-la correctement :</p>
+        <p><em>"Le petit renard traverse la forêt."</em></p>
+        <input type="text" id="dictation-input" placeholder="Tape la phrase ici..." style="padding: 10px; font-size: 16px; width: 80%;">
+        <button onclick="checkDictation()">Vérifier</button>
+        <p id="dictation-feedback" style="font-size: 18px; margin-top: 10px;"></p>
+    </div>
+    <!-- Activité 4 : Jeu du mot mystère -->
+<div class="content">
+    <h2>Activité 4 : Le mot mystère</h2>
+    <p class="hint" id="hint">Indice : C'est un animal qui aime le fromage.</p>
+    <input type="text" id="mystery-word-input" placeholder="Devine le mot..." style="padding: 10px; font-size: 16px; width: 80%;">
+    <button onclick="checkMysteryWord()">Vérifier</button>
+    <p id="mystery-feedback" style="font-size: 18px; margin-top: 10px;"></p>
+</div>
+
+<script>
+const correctWord = "souris";  // Définissez le mot correct ici
+
+function checkMysteryWord() {
+    const userWord = document.getElementById('mystery-word-input').value.trim().toLowerCase();
+    const feedback = document.getElementById('mystery-feedback');
+
+    if (userWord === correctWord) {
+        feedback.innerHTML = "<span class='correct'>Bravo ! 🎉 Le mot mystère est bien '" + correctWord + "'.</span>";
+    } else {
+        feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Essaye encore !</span>";
+    }
+}
+</script>
+
+    <script>
+        // Activité 1 : Quiz de conjugaison
+        let currentQuestion = 1;
+        let score = 0;
+
+        const questions = [
+            {
+                question: "Quelle est la bonne conjugaison du verbe 'manger' à la 1ère personne du pluriel au présent ?",
+                options: ["Nous mangeont", "Nous mangeons", "Nous manger", "Nous mangions"],
+                correctIndex: 1
+            },
+            {
+                question: "Quel est le féminin de l'adjectif 'heureux' ?",
+                options: ["Heureuse", "Heureuxe", "Heuresse", "Heureus"],
+                correctIndex: 0
+            },
+            {
+                question: "Quel mot est un synonyme de 'rapide' ?",
+                options: ["Lent", "Vif", "Fatigué", "Calme"],
+                correctIndex: 1
+            }
+        ];
+
+        function checkAnswer(questionNumber, answerType) {
+            const feedback = document.getElementById('feedback');
+
+            if (answerType === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+                score++;
+                document.getElementById('score').innerText = score;
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+
+            if (answerType === 'correct') {
+                document.getElementById('next-button').style.display = 'inline-block';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+
+            if (currentQuestion <= questions.length) {
+                const current = questions[currentQuestion - 1];
+                document.getElementById('question').innerText = `Question ${currentQuestion} : ${current.question}`;
+                const buttons = document.querySelectorAll('#quiz-section button');
+                buttons.forEach((button, index) => {
+                    button.innerText = current.options[index];
+                    if (index === current.correctIndex) {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'correct')");
+                    } else {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'incorrect')");
+                    }
+                });
+                document.getElementById('feedback').innerText = "";
+                document.getElementById('next-button').style.display = 'none';
+            } else {
+                document.getElementById('feedback').innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as terminé le quiz avec un score de ${score}/${questions.length}.</span>`;
+                document.getElementById('next-button').style.display = 'none';
+            }
+        }
+
+        // Activité 2 : Vérification des synonymes
+        function checkSynonym(answer) {
+            const feedback = document.getElementById('synonym-feedback');
+            if (answer === 'vif') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉 'Vif' est bien un synonyme de 'rapide'.</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+        }
+
+        // Activité 3 : Dictée interactive
+        function checkDictation() {
+            const userInput = document.getElementById('dictation-input').value.trim();
+            const correctText = "Le petit renard traverse la forêt.";
+            const feedback = document.getElementById('dictation-feedback');
+
+            if (userInput === correctText) {
+                feedback.innerHTML = "<span class='correct'>Bravo ! 🎉 La phrase est correcte.</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Relis la phrase et réessaie.</span>";
+            }
+        }
+    </script>
+
+</body>
+</html>

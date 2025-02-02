@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde des Curieux - Menu Mindmap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bienvenue dans Le Monde des Curieux 🦊</h1>
+    <p>Clique sur une matière pour explorer son contenu !</p>
+
+    <div class="mindmap-container">
+        <!-- Boutons des matières -->
+        <div id="sciences" class="node branch" onclick="navigateTo('sciences_section.html')">
+            <span>🔬 Sciences</span>
+        </div>
+        <div id="echecs" class="node branch" onclick="navigateTo('echecs_section.html')">
+            <span>♟️ Échecs</span>
+        </div>
+        <div id="philosophie" class="node branch" onclick="navigateTo('philosophie_section.html')">
+            <span>💡 Philosophie</span>
+        </div>
+        <div id="francais" class="node branch" onclick="navigateTo('francais_section.html')">
+            <span>📖 Français</span>
+        </div>
+        <div id="programmation" class="node branch" onclick="navigateTo('programmation_section.html')">
+            <span>💻 Programmation</span>
+        </div>
+        <div id="histoire" class="node branch" onclick="navigateTo('histoire_section.html')">
+            <span>🌍 Histoire-Géo</span>
+        </div>
+        <div id="mathematiques" class="node branch" onclick="navigateTo('mathematiques_section.html')">
+            <img src="math_icon.webp" alt="Icône Mathématiques" class="icon-image">
+            <span>Mathématiques</span>
+        </div>
+        
+        <div id="ressources" class="node branch" onclick="navigateTo('ressources.html')">
+            <span>🌐 Ressources</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-svg">
+                <circle cx="12" cy="12" r="10" stroke="none" fill="none"/>
+                <path d="M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10H2z" fill="none"/>
+            </svg>
+            
+        </div>
+        
+        
+        
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        // Animation de pulsation au clic sur les nœuds
+        document.querySelectorAll('.node').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.add('pulse-animation');
+                setTimeout(() => {
+                    button.classList.remove('pulse-animation');
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

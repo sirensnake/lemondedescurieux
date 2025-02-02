@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot IA - Le Monde des Curieux</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Renard Curio 🤖</h1>
+    <p>Pose-moi une question sur l'IA, les échecs ou autre chose, et je te répondrai !</p>
+
+    <div id="chatbox">
+        <div id="messages"></div>
+    </div>
+
+    <div id="input-section">
+        <input type="text" id="input" placeholder="Exemple : Qu’est-ce que l’IA ?" autofocus>
+        <button onclick="chat()">Envoyer</button>
+    </div>
+
+    <!-- Déplacement du script à la fin -->
+    <script>
+        // Écouteur pour détecter la touche "Entrée"
+        document.getElementById('input').addEventListener('keydown', function(event) {
+            if (event.key === "Enter") {
+                chat();  // Appelle la fonction chat()
+            }
+        });
+    
+        function chat() {
+            const userMessage = document.getElementById('input').value.toLowerCase();
+            const messagesDiv = document.getElementById('messages');
+    
+            if (!userMessage) return;
+    
+            // Affichage du message utilisateur
+            addMessage(userMessage, 'user');
+    
+            // Détection des mots-clés et réponses associées
+            let reply = "Je ne connais pas encore la réponse à cette question, mais je vais apprendre ! 🧐";
+    
+            if (userMessage.includes("ia") || userMessage.includes("intelligence artificielle")) {
+                reply = "L'IA est fascinante ! 🤖 Apprends-en plus et amuse-toi dans la <a href='ia_section.html' target='_blank'>section IA</a>.";
+            }
+            else if (userMessage.includes("sciences")) {
+                reply = "Les sciences, çà nous fait progresser ! ♟️ Tu peux apprendre les sciences dans notre <a href='sciences_section.html'>section sciences</a>.";
+            }
+            else if (userMessage.includes("philosophie")) {
+                reply = "La philosophie, c'est pour apprendre à penser ! ♟️ Tu peux apprendre à philosopher dans notre <a href='philosophie_section.html'>section philosophie</a>.";
+            }
+            
+            else if (userMessage.includes("échecs")) {
+                reply = "Les échecs sont un excellent moyen de développer ta logique ! ♟️ Tu peux apprendre à jouer dans notre <a href='echecs_section.html'>section Échecs</a>.";
+            }
+            else if (userMessage.includes("salut") || userMessage.includes("bonjour")) {
+                reply = "Salut ! 😊 Je suis Curio, ton renard curieux. Que veux-tu découvrir aujourd’hui ?";
+            } 
+            else if (userMessage.includes("qui es-tu")) {
+                reply = "Je suis Curio 🦊, ton compagnon d’apprentissage ! Pose-moi toutes les questions que tu veux.";
+            } 
+            else if (userMessage.includes("à quoi sert l’ia")) {
+                reply = "L'IA sert à plein de choses : recommander des vidéos 🎥, jouer aux échecs ♟️ ou même t’aider à programmer. 💻";
+            }
+    
+            // Affichage de la réponse avec délai simulé
+            setTimeout(() => {
+                addMessage(reply, 'bot');
+            }, 500);
+    
+            // Nettoyage du champ de saisie
+            document.getElementById('input').value = "";
+        }
+    
+        function addMessage(text, sender) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble', sender);
+            bubble.innerHTML = text;  // Utilisation de innerHTML pour accepter les liens HTML
+    
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.appendChild(bubble);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+    
+    
+
+</body>
+</html>

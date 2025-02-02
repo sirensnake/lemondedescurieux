@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrons l'IA - Le Monde des Curieux</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+
+    <h1>Bienvenue dans le monde de l’IA !</h1>
+    
+    <div id="fox-container">
+        <img src="renard.png" alt="Renard mascotte">
+
+        <div id="speech-bubble">
+            Salut ! Je suis Curio 🦊.<br>
+            Sais-tu ce qu’est l’IA ? Découvrons-le ensemble !
+        </div>
+    </div>
+
+    <button onclick="changeSpeech()">Clique ici pour continuer</button>
+
+    <script>
+        let messages = [
+            "L'IA est un cerveau électronique 🤖 qui apprend des choses.",
+            "C'est comme si les machines pouvaient réfléchir !",
+            "Elles nous aident dans les jeux, les voitures et même à faire des recherches !",
+            "Es-tu prêt à explorer ce monde fascinant ? 🚀"
+        ];
+        
+        let currentMessageIndex = 0;
+
+        function changeSpeech() {
+            currentMessageIndex++;
+            if (currentMessageIndex < messages.length) {
+                document.getElementById('speech-bubble').innerText = messages[currentMessageIndex];
+            } else {
+                document.getElementById('speech-bubble').innerText = "Allons-y ! Clique sur la prochaine section pour en apprendre davantage.";
+            }
+        }
+    </script>
+
+</body>
+</html>

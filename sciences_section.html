@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Sciences 🔬</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+    <h1>Bienvenue dans la section Sciences 🌍</h1>
+    <div class="content">
+        <p>Découvre les mystères du système solaire et teste tes connaissances avec ce quiz interactif !</p>
+
+        <!-- Image interactive des planètes -->
+        <img id="planet-image" src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Solar_sys.jpg" alt="Système solaire">
+
+        <div id="quiz-section">
+            <h3 id="question">Question 1 : Quelle est la planète la plus proche du Soleil ? 🌞</h3>
+            <button onclick="checkAnswer(1, 'correct')">Mercure 🪐</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Vénus</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Terre</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Mars</button>
+        </div>
+
+        <p id="feedback" style="font-size: 18px; margin-top: 15px;"></p>
+        <p class="score">Score : <span id="score">0</span>/3</p>
+
+        <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+
+        // Images des planètes à afficher
+        const planetImages = {
+            "Mercure": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Mercury_in_true_color.jpg",
+            "Mars": "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
+            "Jupiter": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg"
+        };
+
+        // Liste des questions
+        const questions = [
+            {
+                question: "Quelle est la planète la plus proche du Soleil ? 🌞",
+                options: ["Mercure 🪐", "Vénus", "Terre", "Mars"],
+                correctIndex: 0,
+                correctPlanet: "Mercure"
+            },
+            {
+                question: "Quelle planète est surnommée la planète rouge ? 🔴",
+                options: ["Mars", "Jupiter", "Vénus", "Uranus"],
+                correctIndex: 0,
+                correctPlanet: "Mars"
+            },
+            {
+                question: "Quelle est la plus grande planète du système solaire ? 🌌",
+                options: ["Jupiter", "Saturne", "Neptune", "Mars"],
+                correctIndex: 0,
+                correctPlanet: "Jupiter"
+            }
+        ];
+
+        function checkAnswer(questionNumber, answerType) {
+            const feedback = document.getElementById('feedback');
+
+            if (answerType === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+                score++;
+                document.getElementById('score').innerText = score;
+
+                // Affiche l’image de la planète correspondante
+                const planetName = questions[questionNumber - 1].correctPlanet;
+                document.getElementById('planet-image').src = planetImages[planetName];
+                document.getElementById('planet-image').style.transform = "scale(1.2)";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+
+            // Affiche le bouton suivant seulement si la réponse est correcte
+            if (answerType === 'correct') {
+                document.getElementById('next-button').style.display = 'inline-block';
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+
+            if (currentQuestion <= questions.length) {
+                // Met à jour la question
+                const current = questions[currentQuestion - 1];
+                document.getElementById('question').innerText = `Question ${currentQuestion} : ${current.question}`;
+                
+                // Met à jour les options de réponse
+                const buttons = document.querySelectorAll('#quiz-section button');
+                buttons.forEach((button, index) => {
+                    button.innerText = current.options[index];
+
+                    if (index === current.correctIndex) {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'correct')");
+                    } else {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'incorrect')");
+                    }
+                });
+
+                // Réinitialise les feedbacks et l’image de la planète
+                document.getElementById('feedback').innerText = "";
+                document.getElementById('next-button').style.display = 'none';
+                document.getElementById('planet-image').style.transform = "scale(1)";
+            } else {
+                document.getElementById('feedback').innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as terminé le quiz avec un score de ${score}/${questions.length}.</span>`;
+                document.getElementById('next-button').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

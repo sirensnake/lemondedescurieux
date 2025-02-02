@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-jeu de Programmation - Version Finale</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+
+    <h1>Mini-jeu : Guide Curio vers la sortie ! 🦊</h1>
+    <p>Écris les instructions pour guider Curio vers la case verte, en collectant les bonus et en évitant les obstacles !</p>
+
+    <!-- Grille du jeu -->
+    <div id="grid"></div>
+
+    <!-- Zone de saisie des instructions -->
+    <textarea id="instructions" placeholder="Exemple : avance(); avance(); tourneDroite(); avance();"></textarea>
+    <br>
+    <button onclick="startGame()">Exécuter les instructions</button>
+
+    <p id="message" style="font-size: 18px; color: green; font-weight: bold;"></p>
+    <p><strong>Score : </strong><span id="score">0</span> points</p>
+
+    <script>
+        const grid = document.getElementById('grid');
+        let curioPosition = 0;
+        const exitPosition = 35;
+        const gridSize = 6;
+        let direction = 'droite';  // Direction initiale
+        let score = 0;
+        let animationIndex = 0;
+        let instructionsList = [];
+
+        const obstacles = [7, 14, 19];  // Exemple d'obstacles
+        const rewards = [8, 22];  // Exemple de bonus
+
+        function initializeGrid() {
+            grid.innerHTML = '';
+            for (let i = 0; i < gridSize * gridSize; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.setAttribute('data-position', i);
+
+                if (i === curioPosition) {
+                    cell.classList.add('curio');
+                    cell.innerHTML = getDirectionArrow();  // Affiche la flèche de direction
+                }
+                if (i === exitPosition) {
+                    cell.classList.add('exit');
+                    cell.innerText = "🚪";
+                }
+                if (obstacles.includes(i)) {
+                    cell.classList.add('obstacle');
+                    cell.innerText = "🚧";
+                }
+                if (rewards.includes(i)) {
+                    cell.classList.add('bonus');
+                    cell.innerText = "🌟";
+                }
+                grid.appendChild(cell);
+            }
+        }
+
+        initializeGrid();  // Affiche la grille au démarrage
+
+        function startGame() {
+            instructionsList = document.getElementById('instructions').value.split(';').map(inst => inst.trim().toLowerCase());
+            animationIndex = 0;
+            document.getElementById('message').innerText = '';
+            executeNextInstruction();
+        }
+
+        function executeNextInstruction() {
+            if (animationIndex >= instructionsList.length) {
+                return;
+            }
+
+            const instruction = instructionsList[animationIndex];
+
+            let newPosition = curioPosition;
+
+            if (instruction === 'avance()') {
+                newPosition = moveForward(curioPosition);
+
+                if (obstacles.includes(newPosition)) {
+                    document.getElementById('message').innerText = "Oh non ! Curio a rencontré un obstacle. 😞";
+                    return;
+                }
+
+                // Vérifie si Curio passe sur un bonus
+                if (rewards.includes(newPosition)) {
+                    score += 20;
+                    document.getElementById('message').innerText = "Bonus collecté ! +20 points 🌟";
+                    rewards.splice(rewards.indexOf(newPosition), 1);  // Retirer le bonus
+                }
+
+                score += 10;  // Ajoute 10 points pour chaque déplacement
+            } else if (instruction === 'tournerdroite()' || instruction === 'tournedroite()') {
+                tournerDroite();
+            } else if (instruction === 'tournergauche()' || instruction === 'tournegauche()') {
+                tournerGauche();
+            } else {
+                document.getElementById('message').innerText = `Instruction inconnue : ${instruction}`;
+                return;
+            }
+
+            curioPosition = newPosition;
+            updateGrid();  // Met à jour la grille visuellement
+            document.getElementById('score').innerText = score;
+
+            animationIndex++;
+            setTimeout(executeNextInstruction, 500);  // Déplacement toutes les 500ms
+        }
+
+        function moveForward(position) {
+            switch (direction) {
+                case 'droite':
+                    return (position % gridSize) < gridSize - 1 ? position + 1 : position;
+                case 'gauche':
+                    return (position % gridSize) > 0 ? position - 1 : position;
+                case 'haut':
+                    return position >= gridSize ? position - gridSize : position;
+                case 'bas':
+                    return position < gridSize * (gridSize - 1) ? position + gridSize : position;
+            }
+            return position;
+        }
+
+        function tournerDroite() {
+            if (direction === 'droite') direction = 'bas';
+            else if (direction === 'bas') direction = 'gauche';
+            else if (direction === 'gauche') direction = 'haut';
+            else if (direction === 'haut') direction = 'droite';
+        }
+
+        function tournerGauche() {
+            if (direction === 'droite') direction = 'haut';
+            else if (direction === 'haut') direction = 'gauche';
+            else if (direction === 'gauche') direction = 'bas';
+            else if (direction === 'bas') direction = 'droite';
+        }
+
+        function getDirectionArrow() {
+            switch (direction) {
+                case 'droite':
+                    return '🡆';
+                case 'gauche':
+                    return '🡄';
+                case 'haut':
+                    return '🡅';
+                case 'bas':
+                    return '🡇';
+            }
+            return '';
+        }
+
+        function updateGrid() {
+            initializeGrid();
+        }
+    </script>
+
+</body>
+</html>
