@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Échecs ♟️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="menu_mindmap.html" class="btn-retour">⬅️ Retour à l'accueil</a>
+
+    <h1>Bienvenue dans la section philosophie</h1>
+    <div class="content">
+        <p>Découvre les bases de la philosophie en lisant des textes.</p>
+        
+        <h3>Question : Qu'est-ce que la liberté ?</h3>
+        <button onclick="checkAnswer()">Clique ici pour voir la réponse</button>
+        <p id="activity-output" style="margin-top: 20px; font-size: 20px;"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const correctAnswer = "çà veut pas dire faire ce que je veux";
+            document.getElementById('activity-output').innerText = correctAnswer;
+        }
+    </script>
+
+</body>
+</html>
