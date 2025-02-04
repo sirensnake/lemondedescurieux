@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 4 : Vocabulaire et orthographe 📚</title>
+    <link rel="stylesheet" href="section_style.css">
+</head>
+<body>
+    <h1>Chapitre 4 : Vocabulaire et orthographe 📚</h1>
+    <p>Clique sur les mots pour entendre leur prononciation.</p>
+    <!-- Liste de mots avec boutons audio -->
+    <div class="audio-section">
+        <p>Heureux : <button onclick="playAudio('heureux')">🔊 Écouter</button></p>
+        <p>Triste : <button onclick="playAudio('triste')">🔊 Écouter</button></p>
+        <p>Fatigué : <button onclick="playAudio('fatigue')">🔊 Écouter</button></p>
+    </div>
+    <a href="francais_section.html" class="back-button">Retour au sommaire du français 📚</a>
+    <!-- Les fichiers audio -->
+    <audio id="heureux-audio" src="heureux.mp3"></audio>
+    <audio id="triste-audio" src="triste.mp3"></audio>
+    <audio id="fatigue-audio" src="fatigue.mp3"></audio>
+    <script> function playAudio(word) {
+            const audioElement = document.getElementById(`${word}-audio`);
+            if (audioElement) {
+                audioElement.play();
+            } else {
+                alert("Le fichier audio est introuvable.");
+            }
+        } </script>
+</body>
+</html>
