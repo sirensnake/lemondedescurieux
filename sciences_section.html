@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Sciences</title>
+    <link rel="stylesheet" href="section_style.css">
+</head>
+<body>
+    <h1>Bienvenue dans la section Sciences 🌍</h1>
+    <p class="intro-text">Explore les mystères de l’univers et teste tes connaissances avec un quiz interactif !</p>
+
+    <div class="content">
+        <p class="description">Voici un aperçu de ce que nous allons découvrir :</p>
+        <ul>
+            <li>Le système solaire</li>
+            <li>Les planètes et leurs caractéristiques</li>
+        </ul>
+
+        <h3>Question rapide :</h3>
+        <p>Quelle est la planète la plus proche du Soleil ? 🌞</p>
+        <button onclick="showAnswer('correct')">Mercure 🪐</button>
+        <button onclick="showAnswer('incorrect')">Vénus</button>
+        <p id="feedback" class="feedback"></p>
+
+        <a href="menu_mindmap.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    </div>
+
+    <script>
+        function showAnswer(type) {
+            const feedback = document.getElementById('feedback');
+            if (type === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse. Réessaie ! 😢</span>";
+            }
+        }
+    </script>
+</body>
+</html>

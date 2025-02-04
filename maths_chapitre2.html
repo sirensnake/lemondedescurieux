@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 2 : La géométrie de base 📐</title>
+    <link rel="stylesheet" href="section_style.css">
+</head>
+<body>
+    <h1>Chapitre 2 : La géométrie de base 📐</h1>
+    <p>Dans ce chapitre, nous allons explorer les figures géométriques simples et comprendre les notions d’angles, de droites parallèles et perpendiculaires.</p>
+    <h3>Sous-chapitres :</h3>
+    <ul>
+        <li>Reconnaître et tracer un carré, rectangle, triangle</li>
+        <li>Les angles droits et les angles obtus</li>
+        <li>La symétrie axiale</li>
+    </ul>
+    <h3>Exercice rapide :</h3>
+    <p>Quelle figure a 4 côtés égaux et 4 angles droits ?</p>
+    <button onclick="showAnswer('correct')">Carré</button>
+    <button onclick="showAnswer('incorrect')">Triangle</button>
+    <button onclick="showAnswer('incorrect')">Rectangle</button>
+    <p id="feedback"></p>
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    <script> function showAnswer(type) {
+            const feedback = document.getElementById('feedback');
+            if (type === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉 Le carré a 4 côtés égaux et 4 angles droits.</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse. Réfléchis bien à la forme de la figure !</span>";
+            }
+        } </script>
+</body>
+</html>
