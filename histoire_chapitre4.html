@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Chapitre 4 : La naissance de l'écriture</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Histoire - Chapitre 4 : La naissance de l'écriture ✍️</h1>
+    <section>
+        <h2>Les premières écritures</h2>
+        <p>L’écriture est l’une des plus grandes inventions de l’humanité. Elle apparaît vers 3300 avant J.-C. en Mésopotamie, sous la forme de l’écriture cunéiforme, et en Égypte avec les hiéroglyphes.</p>
+
+        <h3>L’écriture en Mésopotamie</h3>
+        <p>Les Sumériens utilisent l’écriture cunéiforme pour noter les échanges commerciaux, les lois et les récits mythologiques. Les tablettes d’argile servaient de supports.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Tablet_Sumerian_26th_c_Adab.jpg" alt="Tablette cunéiforme" class="map-image">
+
+        <h3>Les hiéroglyphes égyptiens</h3>
+        <p>En Égypte, les hiéroglyphes sont utilisés pour raconter l’histoire des pharaons et pour les textes religieux. Les murs des temples et les papyrus étaient les principaux supports.</p>
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Où l’écriture cunéiforme est-elle apparue ?</p>
+        <button onclick="checkAnswer('mesopotamie', true)">En Mésopotamie</button>
+        <button onclick="checkAnswer('egypte', false)">En Égypte</button>
+        <button onclick="checkAnswer('grece', false)">En Grèce</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="geographie_chapitre1.html">Suivant : Géographie - Chapitre 1 : Les continents et océans</a>
+
+    <script>
+        function checkAnswer(answer, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

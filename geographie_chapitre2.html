@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géographie - Chapitre 2 : Les Paysages français</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Géographie - Chapitre 2 : Les Paysages français 🌄</h1>
+    <section>
+        <h2>Les différents types de paysages en France</h2>
+        <p>La France est composée de paysages variés qui comprennent des montagnes, des plaines, des plateaux, des vallées et des littoraux. Ces différents milieux naturels offrent une grande richesse écologique et culturelle.</p>
+
+        <h3>Les montagnes</h3>
+        <p>Les principales chaînes de montagnes en France sont les Alpes, les Pyrénées, le Massif central, les Vosges et le Jura. Les Alpes, par exemple, abritent le Mont Blanc, le plus haut sommet d’Europe occidentale.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Mont_Blanc_vue_a%C3%A9rienne.jpg" alt="Mont Blanc" class="map-image">
+
+        <h3>Les fleuves et vallées</h3>
+        <p>Les grands fleuves de France, comme la Seine, la Loire, le Rhin, la Garonne et le Rhône, traversent de vastes vallées fertiles. Ces zones sont importantes pour l’agriculture et les activités humaines.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Loire_River_France.jpg" alt="La Loire" class="map-image">
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quel est le plus haut sommet de la France ?</p>
+        <button onclick="checkAnswer('montblanc', true)">Le Mont Blanc</button>
+        <button onclick="checkAnswer('vosges', false)">Les Vosges</button>
+        <button onclick="checkAnswer('massifcentral', false)">Le Massif central</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="geographie_chapitre3.html">Suivant : Chapitre 3 - Les Grandes villes en France et en Europe</a>
+
+    <script>
+        function checkAnswer(answer, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géographie - Chapitre 4 : La Répartition de la population mondiale</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Géographie - Chapitre 4 : La Répartition de la population mondiale 👥</h1>
+    <section>
+        <h2>Où vivent les habitants de la Terre ?</h2>
+        <p>La population mondiale est répartie de manière inégale sur la surface du globe. Certains endroits, comme les grandes plaines et les vallées fluviales, sont très peuplés, tandis que d’autres, comme les déserts et les montagnes, ont une faible densité de population.</p>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Population_density_world_map.PNG" alt="Carte de la densité de population" class="map-image">
+
+        <h3>Pourquoi la population est-elle inégalement répartie ?</h3>
+        <p>Les facteurs naturels et humains influencent la répartition de la population :</p>
+        <ul>
+            <li><strong>Les ressources naturelles :</strong> Les régions avec de l’eau douce, des sols fertiles et un climat favorable attirent les populations. Exemple : les vallées du Gange en Inde.</li>
+            <li><strong>Les activités économiques :</strong> Les zones industrielles et les grandes villes offrent des opportunités d’emploi, comme dans la mégapole de Tokyo.</li>
+            <li><strong>Les infrastructures :</strong> Les zones bien desservies par les routes, écoles et hôpitaux sont plus attractives, comme les grandes agglomérations européennes.</li>
+        </ul>
+
+        <h3>Les zones fortement peuplées</h3>
+        <ul>
+            <li><strong>L’Asie de l’Est</strong> (Chine, Japon, Corée) : L’une des régions les plus peuplées du monde avec des mégapoles comme Tokyo et Shanghai.</li>
+            <li><strong>L’Europe</strong> : De nombreuses grandes villes comme Londres, Paris et Berlin concentrent la population.</li>
+            <li><strong>L’Asie du Sud</strong> (Inde, Pakistan, Bangladesh) : Une forte concentration autour des grandes plaines et des rivières.</li>
+        </ul>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Shanghai_skyline.jpg" alt="Vue de Shanghai" class="map-image">
+
+        <h3>Les zones faiblement peuplées</h3>
+        <ul>
+            <li><strong>Les déserts :</strong> Le désert du Sahara est très peu propice à l’agriculture en raison de l’absence d’eau. </li>
+            <li><strong>Les zones polaires :</strong> L’Antarctique est pratiquement inhabitable à cause du froid extrême. </li>
+            <li><strong>Les montagnes :</strong> L’Himalaya et les Andes sont faiblement peuplés en raison de leurs terrains escarpés et du climat difficile.</li>
+        </ul>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="Mont Everest" class="map-image">
+
+        <h3>Zoom sur les mégapoles mondiales</h3>
+        <p>Les mégapoles sont des villes de plus de 10 millions d’habitants. Voici quelques-unes des plus grandes : </p>
+        <ul>
+            <li><strong>Tokyo :</strong> La plus grande ville du monde avec environ 37 millions d’habitants. </li>
+            <li><strong>Delhi :</strong> Une mégapole en pleine expansion avec des infrastructures modernes et des zones rurales environnantes.</li>
+            <li><strong>Shanghai :</strong> Centre économique majeur de la Chine, situé au bord de la rivière Yangtsé.</li>
+        </ul>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Tokyo_skyline.jpg" alt="Tokyo, une mégapole" class="map-image">
+
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quelle région est l’une des plus peuplées du monde ?</p>
+        <button onclick="checkAnswer('asieest', true)">L’Asie de l’Est</button>
+        <button onclick="checkAnswer('sahara', false)">Le désert du Sahara</button>
+        <button onclick="checkAnswer('antarctique', false)">L’Antarctique</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="histoire_section.html">Retour à la section Histoire-Géographie</a>
+
+    <script>
+        function checkAnswer(answer, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

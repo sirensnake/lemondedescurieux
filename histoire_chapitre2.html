@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Chapitre 2 : Le Moyen Âge</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Histoire - Chapitre 2 : Le Moyen Âge ⛩️</h1>
+    <section>
+        <h2>La vie au Moyen Âge</h2>
+        <p>Le Moyen Âge s’étend du Ve au XVe siècle. Cette époque est marquée par les châteaux forts, les seigneurs, les paysans et les chevaliers. La vie quotidienne était organisée autour de la féodalité, un système de relations entre suzerains et vassaux.</p>
+
+        <h3>Les châteaux forts</h3>
+        <p>Les châteaux forts protégeaient les seigneurs et leurs sujets en cas d’attaque. Ils étaient construits sur des hauteurs pour surveiller les alentours.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Castle_in_France.jpg" alt="Château fort" class="map-image">
+
+        <h3>Les chevaliers</h3>
+        <p>Les chevaliers étaient des guerriers à cheval. Ils suivaient un code d’honneur appelé la chevalerie. Leur mission était de protéger leur seigneur et de participer aux batailles.</p>
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quel élément était essentiel pour la protection des seigneurs au Moyen Âge ?</p>
+        <button onclick="checkAnswer('chateau', true)">Les châteaux forts</button>
+        <button onclick="checkAnswer('eglise', false)">Les églises</button>
+        <button onclick="checkAnswer('fermes', false)">Les fermes</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="histoire_chapitre3.html">Suivant : Chapitre 3 - La Révolution française</a>
+
+    <script>
+        function checkAnswer(answer, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

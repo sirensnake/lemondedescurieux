@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géographie - Chapitre 1 : Les Continents et Océans</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Géographie - Chapitre 1 : Les Continents et Océans 🌊</h1>
+    <section>
+        <h2>Les 7 continents</h2>
+        <p>La Terre est composée de 7 continents : l’Afrique, l’Amérique du Nord, l’Amérique du Sud, l’Asie, l’Europe, l’Océanie et l’Antarctique. Chaque continent possède des caractéristiques géographiques, culturelles et climatiques uniques.</p>
+
+        <h3>Carte des continents</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/World_map_blank_without_borders.png" alt="Carte des continents" class="map-image">
+    </section>
+
+    <section>
+        <h2>Les 5 grands océans</h2>
+        <p>Les océans couvrent environ 71 % de la surface de la Terre. Les 5 grands océans sont :</p>
+        <ul>
+            <li>L’océan Pacifique</li>
+            <li>L’océan Atlantique</li>
+            <li>L’océan Indien</li>
+            <li>L’océan Austral</li>
+            <li>L’océan Arctique</li>
+        </ul>
+
+        <h3>Carte des océans</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Oceans_800px.png" alt="Carte des océans" class="map-image">
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quel est le plus grand océan de la Terre ?</p>
+        <button onclick="checkAnswer('pacifique', true)">L’océan Pacifique</button>
+        <button onclick="checkAnswer('atlantique', false)">L’océan Atlantique</button>
+        <button onclick="checkAnswer('indien', false)">L’océan Indien</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="geographie_chapitre2.html">Suivant : Chapitre 2 - Les Paysages français</a>
+
+    <script>
+        function checkAnswer(answer, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

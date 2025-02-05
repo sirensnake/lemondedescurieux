@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géographie - Chapitre 3 : Les Grandes villes en France et en Europe</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Géographie - Chapitre 3 : Les Grandes villes en France et en Europe 🏙️</h1>
+    <section>
+        <h2>Les grandes villes de France</h2>
+        <p>La France compte plusieurs grandes villes importantes sur le plan économique, culturel et historique. Voici quelques-unes des principales villes :</p>
+        <ul>
+            <li><strong>Paris</strong> : Capitale de la France, c’est une ville mondiale connue pour la tour Eiffel, le Louvre et ses activités culturelles.</li>
+            <li><strong>Lyon</strong> : Connue pour sa gastronomie et son patrimoine historique, elle est située au confluent du Rhône et de la Saône.</li>
+            <li><strong>Marseille</strong> : Plus grand port de France, situé sur la mer Méditerranée.</li>
+        </ul>
+
+        <h3>Carte des grandes villes de France</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/France_map_with_cities.png" alt="Carte des grandes villes de France" class="map-image">
+    </section>
+
+    <section>
+        <h2>Les grandes villes d’Europe</h2>
+        <p>L’Europe compte de nombreuses grandes villes historiques et modernes :</p>
+        <ul>
+            <li><strong>Londres</strong> : Capitale du Royaume-Uni, c’est une ville cosmopolite et un centre financier mondial.</li>
+            <li><strong>Berlin</strong> : Capitale de l’Allemagne, connue pour son histoire riche et ses monuments emblématiques.</li>
+            <li><strong>Rome</strong> : Capitale de l’Italie, c’est une ville antique qui abrite des vestiges tels que le Colisée et le Vatican.</li>
+        </ul>
+
+        <h3>Carte des grandes villes d’Europe</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Europe_cities_map.png" alt="Carte des grandes villes d'Europe" class="map-image">
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quelle est la capitale de l’Allemagne ?</p>
+        <button onclick="checkAnswer('berlin', true)">Berlin</button>
+        <button onclick="checkAnswer('rome', false)">Rome</button>
+        <button onclick="checkAnswer('paris', false)">Paris</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="geographie_chapitre4.html">Suivant : Chapitre 4 - La Répartition de la population mondiale</a>
+
+    <script>
+        function checkAnswer(answer, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Chapitre 3 : La Révolution française</title>
+    <link rel="stylesheet" href="histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Histoire - Chapitre 3 : La Révolution française 🇫🇷</h1>
+    <section>
+        <h2>Les causes de la Révolution française</h2>
+        <p>La Révolution française éclate en 1789 en raison des inégalités sociales, de la crise financière et de la montée des idées de liberté. Le peuple veut mettre fin aux privilèges de la noblesse et du clergé.</p>
+
+        <h3>Les événements clés</h3>
+        <ul>
+            <li><strong>5 mai 1789 :</strong> Ouverture des États généraux.</li>
+            <li><strong>14 juillet 1789 :</strong> Prise de la Bastille, symbole de la fin de l’absolutisme.</li>
+            <li><strong>26 août 1789 :</strong> Déclaration des droits de l’homme et du citoyen.</li>
+        </ul>
+
+        <h3>Les conséquences de la Révolution</h3>
+        <p>La monarchie absolue disparaît pour laisser place à de nouvelles institutions. Le peuple obtient davantage de droits et de libertés.</p>
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quel événement est considéré comme le début de la Révolution française ?</p>
+        <button onclick="checkAnswer('bastille', true)">La prise de la Bastille</button>
+        <button onclick="checkAnswer('droits', false)">La Déclaration des droits</button>
+        <button onclick="checkAnswer('etats', false)">L’ouverture des États généraux</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="histoire_chapitre4.html">Suivant : Chapitre 4 - La naissance de l'écriture</a>
+
+    <script>
+        function checkAnswer(event, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+    </script>
+
+</body>
+</html>
