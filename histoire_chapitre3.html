@@ -4,47 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histoire - Chapitre 3 : La Révolution française</title>
-    <link rel="stylesheet" href="histoire_geographie_styles.css">
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
 </head>
 <body>
+    <button onclick="window.location.href='index.html'" style="position: fixed; top: 20px; left: 20px; padding: 10px 15px; background-color: #2a9d8f; color: white; border: none; border-radius: 5px; cursor: pointer;">🏠 Retour à l'accueil</button>
 
     <h1>Histoire - Chapitre 3 : La Révolution française 🇫🇷</h1>
     <section>
         <h2>Les causes de la Révolution française</h2>
         <p>La Révolution française éclate en 1789 en raison des inégalités sociales, de la crise financière et de la montée des idées de liberté. Le peuple veut mettre fin aux privilèges de la noblesse et du clergé.</p>
 
+        <h3>Les récits marquants</h3>
+        <p><strong>Le serment du Jeu de Paume (20 juin 1789) :</strong> La salle était petite, l’air chargé de tension. Les députés du Tiers État, exclus de la salle des États généraux par le roi, avaient trouvé refuge dans un ancien terrain de jeu de paume. Là, bras levés, ils jurèrent de ne jamais se séparer tant qu’une Constitution ne serait pas rédigée pour la France. Ce serment scella l’unité d’un peuple décidé à réclamer ses droits.</p>
+
+        <p><strong>La prise de la Bastille (14 juillet 1789) :</strong> Le matin du 14 juillet, la rumeur enfle dans les rues de Paris. Une foule en colère, munie de piques et de fusils improvisés, se dirige vers la forteresse de la Bastille, symbole de l’oppression monarchique. Après plusieurs heures de combat, les portes sont ouvertes et la prison tombe. Les Parisiens ont frappé un grand coup : la Révolution est en marche.</p>
+
+        <p><strong>La fuite à Varennes (20 juin 1791) :</strong> La nuit est sombre, seuls les bruits des sabots rompent le silence. Louis XVI et sa famille, déguisés, fuient en direction de l’est pour rejoindre les forces royalistes. Mais leur fuite prend fin à Varennes où ils sont arrêtés. Cet échec scelle le destin de la monarchie : la confiance entre le peuple et le roi est rompue.</p>
+
+        <p><strong>L’exécution de Louis XVI (21 janvier 1793) :</strong> Ce matin d’hiver, la place de la Révolution est remplie de spectateurs silencieux. Le roi déchu monte dignement les marches de l’échafaud. Un cri s’élève : « Vive la République ! » La lame tombe et marque un tournant définitif de la Révolution.</p>
+
         <h3>Les événements clés</h3>
-        <ul>
+        <ul style="list-style-type: none; padding: 0;">
             <li><strong>5 mai 1789 :</strong> Ouverture des États généraux.</li>
             <li><strong>14 juillet 1789 :</strong> Prise de la Bastille, symbole de la fin de l’absolutisme.</li>
             <li><strong>26 août 1789 :</strong> Déclaration des droits de l’homme et du citoyen.</li>
         </ul>
-
-        <h3>Les conséquences de la Révolution</h3>
-        <p>La monarchie absolue disparaît pour laisser place à de nouvelles institutions. Le peuple obtient davantage de droits et de libertés.</p>
     </section>
 
-    <section class="quiz-section">
-        <h3>Quiz : Teste tes connaissances</h3>
-        <p>Quel événement est considéré comme le début de la Révolution française ?</p>
-        <button onclick="checkAnswer('bastille', true)">La prise de la Bastille</button>
-        <button onclick="checkAnswer('droits', false)">La Déclaration des droits</button>
-        <button onclick="checkAnswer('etats', false)">L’ouverture des États généraux</button>
+    <section class="game-section">
+        <h3>Jeu interactif : Quiz sur la Révolution française 🏰</h3>
+        <p>Réponds aux questions suivantes pour tester tes connaissances !</p>
+        <div id="quiz-container">
+            <p id="question"></p>
+            <button onclick="checkAnswer(0)" id="option0"></button>
+            <button onclick="checkAnswer(1)" id="option1"></button>
+            <button onclick="checkAnswer(2)" id="option2"></button>
+            <button onclick="checkAnswer(3)" id="option3"></button>
+        </div>
         <p id="feedback"></p>
+        <p id="score-display">Score : 0</p>
+        <button onclick="nextQuestion()" id="next-button" style="display:none;">Question suivante</button>
     </section>
-
-    <a href="histoire_chapitre4.html">Suivant : Chapitre 4 - La naissance de l'écriture</a>
 
     <script>
-        function checkAnswer(event, isCorrect) {
-            const feedback = document.getElementById('feedback');
-            if (isCorrect) {
-                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+        const questions = [
+            {
+                question: "Quand a eu lieu la prise de la Bastille ?",
+                options: ["5 mai 1789", "14 juillet 1789", "26 août 1789", "21 janvier 1793"],
+                correct: 1
+            },
+            {
+                question: "Que marque la Déclaration des droits de l’homme ?",
+                options: [
+                    "La fin de la monarchie absolue",
+                    "La reconnaissance des droits et libertés",
+                    "L'exécution de Louis XVI",
+                    "Le début de l’Empire de Napoléon"
+                ],
+                correct: 1
+            },
+            {
+                question: "Qui a dirigé la période de la Terreur ?",
+                options: ["Louis XVI", "Robespierre", "Napoléon", "Danton"],
+                correct: 1
+            },
+            {
+                question: "Quand Napoléon devient-il empereur ?",
+                options: ["1793", "1799", "1804", "1815"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            document.getElementById('question').innerText = currentQuestion.question;
+            currentQuestion.options.forEach((option, index) => {
+                document.getElementById('option' + index).innerText = option;
+                document.getElementById('option' + index).style.display = 'inline-block';
+            });
+            document.getElementById('feedback').innerText = '';
+            document.getElementById('next-button').style.display = 'none';
+        }
+
+        function checkAnswer(selectedOption) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selectedOption === currentQuestion.correct) {
+                document.getElementById('feedback').innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+                score++;
             } else {
-                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+                document.getElementById('feedback').innerHTML = `<span class='incorrect'>Mauvaise réponse. La bonne réponse était : ${currentQuestion.options[currentQuestion.correct]}.</span>`;
+            }
+            document.getElementById('score-display').innerText = `Score : ${score}`;
+            document.getElementById('next-button').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById('quiz-container').innerHTML = `<p><strong>Félicitations ! 🎉</strong> Tu as terminé le quiz avec un score de ${score}/${questions.length}.</p>`;
+                document.getElementById('feedback').innerText = '';
+                document.getElementById('next-button').style.display = 'none';
             }
         }
-    </script>
 
+        // Charger la première question au démarrage
+        loadQuestion();
+    </script>
+<a href="histoire_chapitre4.html">Suivant : Chapitre 4 - La naissance de l'écriture ✍️</a>
 </body>
 </html>

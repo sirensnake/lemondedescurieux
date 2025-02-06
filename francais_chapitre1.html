@@ -3,32 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapitre 1 : Grammaire et conjugaison 📚</title>
-    <link rel="stylesheet" href="section_style.css">
+    <title>Chapitre 1 : Grammaire et Conjugaison - Le Monde des Curieux</title>
+    <link rel="stylesheet" href="styles/section_style.css">
 </head>
 <body>
-    <h1>Chapitre 1 : Grammaire et conjugaison 📚</h1>
-    <p>Dans ce chapitre, nous allons apprendre à bien accorder les verbes avec les sujets et revoir les temps de conjugaison essentiels.</p>
-    <h3>Sous-chapitres :</h3>
-    <ul>
-        <li>Les noms et les déterminants</li>
-        <li>Les adjectifs qualificatifs</li>
-        <li>Les temps de conjugaison (présent, futur, passé composé)</li>
-    </ul>
-    <h3>Exercice rapide :</h3>
-    <p>Choisis la bonne conjugaison : "Ils (manger) une pizza." 🍕</p>
-    <button onclick="showAnswer('correct')">mangent</button>
-    <button onclick="showAnswer('incorrect')">manges</button>
-    <button onclick="showAnswer('incorrect')">mangeons</button>
-    <p id="feedback"></p>
-    <a href="francais_section.html" class="back-button">Retour au sommaire du français 📚</a>
-    <script> function showAnswer(type) {
-            const feedback = document.getElementById('feedback');
-            if (type === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
-            } else {
-                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse. Essaie encore !</span>";
+    <h1>Chapitre 1 : Grammaire et Conjugaison</h1>
+
+    <!-- Section : Les noms et les déterminants -->
+    <section class="content">
+        <h2>🔖 Les noms et les déterminants</h2>
+        <p>Un <strong>nom</strong> est un mot qui sert à nommer une personne, un animal, un objet ou une idée. Les noms sont accompagnés de <strong>déterminants</strong>, qui les précèdent et donnent des informations comme le genre (masculin ou féminin) et le nombre (singulier ou pluriel).</p>
+        <p><strong>Exemples :</strong></p>
+        <ul class="chapter-list">
+            <li><em>Le chat</em> : "le" est un déterminant masculin singulier.</li>
+            <li><em>Des pommes</em> : "des" est un déterminant pluriel.</li>
+        </ul>
+    </section>
+
+    <!-- Section : Les adjectifs qualificatifs -->
+    <section>
+        <h2>🌱 Les adjectifs qualificatifs</h2>
+        <p>Un <strong>adjectif qualificatif</strong> est un mot qui apporte une précision ou une description à un nom. L’adjectif doit s’accorder avec le nom en genre et en nombre.</p>
+        <p><strong>Exemple :</strong> Dans la phrase <em>"Un chien noir"</em>, l’adjectif "noir" décrit le chien et s’accorde au masculin singulier.</p>
+    </section>
+
+    <!-- Section : Les temps de conjugaison -->
+    <section>
+        <h2>⏳ Les temps de conjugaison</h2>
+        <p>Les verbes peuvent se conjuguer à différents temps pour indiquer quand l’action a lieu. Voici les trois principaux temps de base :</p>
+        <ul>
+            <li><strong>Présent :</strong> L’action se passe maintenant. <em>Exemple :</em> "Je mange une pomme."</li>
+            <li><strong>Futur :</strong> L’action se passera plus tard. <em>Exemple :</em> "Je mangerai une pomme."</li>
+            <li><strong>Passé composé :</strong> L’action est déjà terminée. <em>Exemple :</em> "J’ai mangé une pomme."</li>
+        </ul>
+    </section>
+
+    <!-- Section : Exercices interactifs -->
+    <section>
+        <h2>📖 Exercices : Teste tes connaissances !</h2>
+        <p>Complète les phrases suivantes avec le bon mot :</p>
+        <ul>
+            <li><input type="text" id="q1" placeholder="le, la ou les"> chien court dans le jardin.</li>
+            <li>Elle porte une robe <input type="text" id="q2" placeholder="noir ou noire">.</li>
+            <li>Nous <input type="text" id="q3" placeholder="manger ou avons mangé"> des gâteaux hier.</li>
+        </ul>
+        <button class="back-button" onclick="checkAnswers()">Vérifier les réponses</button>
+        <p id="feedback" style="margin-top:10px;"></p>
+    </section>
+
+    <script>
+        function checkAnswers() {
+            // Les bonnes réponses
+            const correctAnswers = {
+                q1: "le",
+                q2: "noire",
+                q3: "avons mangé"
+            };
+
+            // Récupérer les réponses utilisateur
+            const userAnswers = {
+                q1: document.getElementById('q1').value.trim().toLowerCase(),
+                q2: document.getElementById('q2').value.trim().toLowerCase(),
+                q3: document.getElementById('q3').value.trim().toLowerCase()
+            };
+
+            // Feedback dynamique
+            let feedbackMessage = "<strong>Résultats :</strong><br>";
+            let correctCount = 0;
+
+            for (let key in correctAnswers) {
+                if (userAnswers[key] === correctAnswers[key]) {
+                    feedbackMessage += `👍 Bonne réponse pour la question ${key.slice(1)} !<br>`;
+                    correctCount++;
+                } else {
+                    feedbackMessage += `❌ Mauvaise réponse pour la question ${key.slice(1)}. La bonne réponse est : <strong>${correctAnswers[key]}</strong>.<br>`;
+                }
             }
-        } </script>
+
+            // Afficher le feedback
+            if (correctCount === Object.keys(correctAnswers).length) {
+                feedbackMessage += "🎉 Bravo ! Toutes les réponses sont correctes !";
+            } else {
+                feedbackMessage += "😊 Tu peux réessayer pour améliorer ton score.";
+            }
+
+            document.getElementById('feedback').innerHTML = feedbackMessage;
+        }
+    </script>
+
+<a href="francais_exercice1.html" class="back-button">Passer à l'exercice suivant ➡️</a>    
+<a href="index.html" class="back-button">Retour au menu principal</a>
 </body>
 </html>

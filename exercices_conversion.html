@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices avancés : Mesures et conversions 📏</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Exercices avancés : Mesures et conversions 📏</h1>
+    <p>Voici des exercices avancés pour t’entraîner à convertir des longueurs, des masses et des capacités. Bonne chance ! 🚀</p>
+
+    <div class="exercise-section">
+        <h2>🔢 Exercices de conversion des longueurs</h2>
+        
+        <h3>1. Convertis 12,5 kilomètres (km) en mètres (m) :</h3>
+        <input type="text" id="long1" placeholder="Ta réponse en mètres">
+        <button onclick="checkAnswer('long1', 12500)">Vérifier</button>
+        <p id="feedbackLong1"></p>
+
+        <h3>2. Convertis 780 centimètres (cm) en mètres (m) :</h3>
+        <input type="text" id="long2" placeholder="Ta réponse en mètres">
+        <button onclick="checkAnswer('long2', 7.8)">Vérifier</button>
+        <p id="feedbackLong2"></p>
+    </div>
+
+    <div class="exercise-section">
+        <h2>⚖️ Exercices de conversion des masses</h2>
+
+        <h3>3. Convertis 4500 grammes (g) en kilogrammes (kg) :</h3>
+        <input type="text" id="mass1" placeholder="Ta réponse en kg">
+        <button onclick="checkAnswer('mass1', 4.5)">Vérifier</button>
+        <p id="feedbackMass1"></p>
+
+        <h3>4. Convertis 3 tonnes (t) en kilogrammes (kg) :</h3>
+        <input type="text" id="mass2" placeholder="Ta réponse en kg">
+        <button onclick="checkAnswer('mass2', 3000)">Vérifier</button>
+        <p id="feedbackMass2"></p>
+    </div>
+
+    <div class="exercise-section">
+        <h2>💧 Exercices de conversion des capacités</h2>
+
+        <h3>5. Convertis 2,75 litres (L) en millilitres (mL) :</h3>
+        <input type="text" id="cap1" placeholder="Ta réponse en mL">
+        <button onclick="checkAnswer('cap1', 2750)">Vérifier</button>
+        <p id="feedbackCap1"></p>
+
+        <h3>6. Convertis 1500 millilitres (mL) en litres (L) :</h3>
+        <input type="text" id="cap2" placeholder="Ta réponse en L">
+        <button onclick="checkAnswer('cap2', 1.5)">Vérifier</button>
+        <p id="feedbackCap2"></p>
+    </div>
+
+    <a href="maths_chapitre3.html" class="back-button">Retour à la leçon 📚</a>
+
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            const userAnswer = parseFloat(document.getElementById(inputId).value);
+            const feedbackId = 'feedback' + inputId.charAt(0).toUpperCase() + inputId.slice(1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+        }
+    </script>
+</body>
+</html>

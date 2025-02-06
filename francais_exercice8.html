@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 8 : Les pronoms personnels sujets</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Exercice 8 : Les pronoms personnels sujets</h1>
+
+    <section>
+        <h2>📚 Complète les phrases avec le bon pronom personnel sujet</h2>
+        <p>Choisis le pronom personnel sujet qui convient : <strong>je, tu, il, elle, nous, vous, ils, elles</strong>.</p>
+
+        <ul>
+            <li><input type="text" id="q1" placeholder="pronom"> suis content de te voir.</li>
+            <li><input type="text" id="q2" placeholder="pronom"> jouons au tennis cet après-midi.</li>
+            <li><input type="text" id="q3" placeholder="pronom"> regarde la télé tous les soirs.</li>
+            <li><input type="text" id="q4" placeholder="pronom"> avez préparé un excellent repas !</li>
+        </ul>
+
+        <button class="back-button" onclick="checkAnswers()">Vérifier les réponses</button>
+        <p id="feedback" style="margin-top:10px;"></p>
+    </section>
+
+    <script>
+        function checkAnswers() {
+            // Les bonnes réponses
+            const correctAnswers = {
+                q1: "je",
+                q2: "nous",
+                q3: "il",
+                q4: "vous"
+            };
+
+            // Récupérer les réponses utilisateur
+            const userAnswers = {
+                q1: document.getElementById('q1').value.trim().toLowerCase(),
+                q2: document.getElementById('q2').value.trim().toLowerCase(),
+                q3: document.getElementById('q3').value.trim().toLowerCase(),
+                q4: document.getElementById('q4').value.trim().toLowerCase()
+            };
+
+            // Feedback dynamique
+            let feedbackMessage = "<strong>Résultats :</strong><br>";
+            let correctCount = 0;
+
+            for (let key in correctAnswers) {
+                if (userAnswers[key] === correctAnswers[key]) {
+                    feedbackMessage += `👍 Bonne réponse pour la question ${key.slice(1)} !<br>`;
+                    correctCount++;
+                } else {
+                    feedbackMessage += `❌ Mauvaise réponse pour la question ${key.slice(1)}. La bonne réponse est : <strong>${correctAnswers[key]}</strong>.<br>`;
+                }
+            }
+
+            // Afficher le feedback
+            if (correctCount === Object.keys(correctAnswers).length) {
+                feedbackMessage += "🎉 Bravo ! Toutes les réponses sont correctes !";
+            } else {
+                feedbackMessage += "😊 Tu peux réessayer pour améliorer ton score.";
+            }
+
+            document.getElementById('feedback').innerHTML = feedbackMessage;
+        }
+    </script>
+
+    <a href="francais_exercice9.html" class="back-button">Passer à l'exercice suivant ➡️</a>
+    <a href="index.html" class="back-button">Retour au menu principal</a>
+</body>
+</html>

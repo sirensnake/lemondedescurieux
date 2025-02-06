@@ -3,72 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressources pédagogiques 📚</title>
-    <link rel="stylesheet" href="section_style.css">
+    <title>Chapitre 3 : Mesures et conversions 📏</title>
+    <link rel="stylesheet" href="styles/section_style.css">
 </head>
 <body>
-    <h1>Ressources pédagogiques 📚</h1>
-    <p>Trouve ici des ressources utiles pour approfondir ce que tu as appris.</p>
-    <div class="resource-section">
-        <h2>📐 Mathématiques</h2>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/watch?v=ssmnnIQvUtM" target="_blank">
-                    Vidéo : Convertir des longueurs avec le tableau de conversion - CM1/CM2
-                </a>
-            </li>
-            <li>
-                <a href="https://www.khanacademy.org/" target="_blank">
-                    Site interactif : Khan Academy - Exercices en ligne
-                </a>
-            </li>
-            <li>
-                <a href="ressources/maths_guide_cm1.pdf" target="_blank">
-                    Document PDF : Guide des notions de mathématiques CM1
-                </a>
-            </li>
-        </ul>
+    <h1>Chapitre 3 : Mesures et conversions 📏</h1>
+    <p>Bienvenue dans le chapitre dédié aux mesures et aux conversions. Dans cette leçon, nous allons apprendre à convertir des longueurs, des masses et des capacités. Ensuite, tu pourras tester tes connaissances avec des exercices interactifs ! 🚀</p>
+
+    <div class="lesson-section">
+        <h2>📚 Leçon : Comprendre les conversions</h2>
+        
+        <h3>1. Conversion des longueurs 📏</h3>
+        <p>Les longueurs sont souvent exprimées en millimètres (mm), centimètres (cm), mètres (m) et kilomètres (km). Pour convertir correctement, il est utile de connaître le tableau de conversion ci-dessous :</p>
+
+        <table border="1" style="margin: 10px auto; border-collapse: collapse;">
+            <tr>
+                <th>Unité</th>
+                <th>Millimètre (mm)</th>
+                <th>Centimètre (cm)</th>
+                <th>Mètre (m)</th>
+                <th>Kilomètre (km)</th>
+            </tr>
+            <tr>
+                <td>1 mm</td>
+                <td>1</td>
+                <td>0,1</td>
+                <td>0,001</td>
+                <td>0,000001</td>
+            </tr>
+            <tr>
+                <td>1 cm</td>
+                <td>10</td>
+                <td>1</td>
+                <td>0,01</td>
+                <td>0,00001</td>
+            </tr>
+            <tr>
+                <td>1 m</td>
+                <td>1000</td>
+                <td>100</td>
+                <td>1</td>
+                <td>0,001</td>
+            </tr>
+        </table>
+        <p><strong>Exemple :</strong> Pour convertir 2500 mm en m, on divise par 1000, ce qui donne 2,5 m.</p>
+
+        <h3>2. Conversion des masses ⚖️</h3>
+        <p>Les masses sont souvent exprimées en grammes (g) et kilogrammes (kg). Voici un tableau de conversion simple :</p>
+
+        <table border="1" style="margin: 10px auto; border-collapse: collapse;">
+            <tr>
+                <th>Unité</th>
+                <th>Gramme (g)</th>
+                <th>Kilogramme (kg)</th>
+                <th>Tonne (t)</th>
+            </tr>
+            <tr>
+                <td>1 g</td>
+                <td>1</td>
+                <td>0,001</td>
+                <td>0,000001</td>
+            </tr>
+            <tr>
+                <td>1 kg</td>
+                <td>1000</td>
+                <td>1</td>
+                <td>0,001</td>
+            </tr>
+        </table>
+        <p><strong>Exemple :</strong> Convertir 3,5 kg en g signifie multiplier par 1000, ce qui donne 3500 g.</p>
+
+        <h3>3. Conversion des capacités 💧</h3>
+        <p>Les capacités sont exprimées en millilitres (mL) et en litres (L). 1 litre équivaut à 1000 millilitres.</p>
+        <p><strong>Exemple :</strong> Convertir 7,25 L en mL : multiplier par 1000, ce qui donne 7250 mL.</p>
     </div>
-    <div class="resource-section">
-        <h2>📖 Français</h2>
-        <ul>
-            <li>
-                <a href="https://www.lumni.fr/ecole/elementaire/francais" target="_blank">
-                    Plateforme éducative : Lumni - Ressources en français
-                </a>
-            </li>
-            <li>
-                <a href="ressources/francais_conjugaison_cm1.pdf" target="_blank">
-                    Document PDF : Fiches de révision - Conjugaison CM1
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=Jq2PbygnMUo" target="_blank">
-                    Vidéo : Les règles de base en grammaire
-                </a>
-            </li>
-        </ul>
+
+    <div class="exercise-section">
+        <h2>📝 Exercices interactifs</h2>
+
+        <h3>1. Conversion des longueurs 📏</h3>
+        <p>Convertis 2500 millimètres (mm) en mètres (m) :</p>
+        <input type="text" id="ex1" placeholder="Ta réponse en mètres">
+        <button onclick="checkAnswer('ex1', 2.5)">Vérifier</button>
+        <p id="feedback1"></p>
+
+        <h3>2. Conversion des masses ⚖️</h3>
+        <p>Convertis 3,5 kilogrammes (kg) en grammes (g) :</p>
+        <input type="text" id="ex2" placeholder="Ta réponse en grammes">
+        <button onclick="checkAnswer('ex2', 3500)">Vérifier</button>
+        <p id="feedback2"></p>
+
+        <h3>3. Conversion des capacités 💧</h3>
+        <p>Convertis 7,25 litres (L) en millilitres (mL) :</p>
+        <input type="text" id="ex3" placeholder="Ta réponse en millilitres">
+        <button onclick="checkAnswer('ex3', 7250)">Vérifier</button>
+        <p id="feedback3"></p>
+
+        <p>Pour aller plus loin, découvre d’autres exercices dans la <a href="exercices_conversion.html">page des exercices avancés</a>.</p>
     </div>
-    <div class="resource-section">
-        <h2>🔬 Sciences</h2>
-        <ul>
-            <li>
-                <a href="https://www.cnes.fr/fr" target="_blank">
-                    Site : CNES - Découverte de l’espace pour les enfants
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=SVk6E2LlSOM" target="_blank">
-                    Vidéo : Le système solaire expliqué
-                </a>
-            </li>
-            <li>
-                <a href="ressources/sciences_experiences_cm1.pdf" target="_blank">
-                    Document PDF : Expériences scientifiques faciles à réaliser
-                </a>
-            </li>
-        </ul>
-    </div>
-    <a href="menu_mindmap.html" class="back-button">Retour à la page d'accueil 🏠</a>
+
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            const userAnswer = parseFloat(document.getElementById(inputId).value);
+            const feedbackId = 'feedback' + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+        }
+    </script>
 </body>
 </html>

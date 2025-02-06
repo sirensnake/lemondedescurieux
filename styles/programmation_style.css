@@ -1,0 +1,85 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #cce7ff; /* Fond bleu clair cohérent avec le site */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Minecraftia', sans-serif;
+    font-size: 48px;
+    color: #3ba635; /* Vert prairie */
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 4px 4px 0px #4d4d4d, 8px 8px 0px #1a1a1a; /* Effet de profondeur Minecraft */
+}
+
+h2 {
+    font-size: 32px;
+    color: #333;
+    text-shadow: 2px 2px #d0d0d0;
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #444;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+ul, ol {
+    padding-left: 40px;
+    font-size: 18px;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+}
+
+.example-code {
+    background-color: #e0ffe0;
+    padding: 10px;
+    border-left: 5px solid #3ba635;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 15px 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    background-color: #3ba635;
+    color: white;
+    font-size: 20px;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-shadow: 2px 2px #4d4d4d;
+}
+
+button:hover {
+    background-color: #2e7d32;
+}
+
+#game-feedback {
+    font-size: 20px;
+    color: #2e7d32;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+a {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: #3b5998;
+    text-decoration: none;
+    margin-top: 30px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

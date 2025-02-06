@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Échecs ♟️</title>
-    <link rel="stylesheet" href="section_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
 </head>
 <body>
     <h1>Bienvenue dans la section Échecs ♟️</h1>
@@ -12,7 +12,7 @@
         <p>Apprends les bases des échecs et résous des situations tactiques pour progresser comme un pro !</p>
         <div id="quiz-section">
             <h3 id="question">Question 1 : Comment se déplace le cavalier ? 🐴</h3>
-            <img id="question-image" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Chess_piece_-_Knight.JPG" alt="Cavalier" width="200">
+            <img id="question-image" src="images/chevalier_echecs.png" alt="Cavalier" width="200">
             <button onclick="checkAnswer(1, 'correct')">En forme de L</button>
             <button onclick="checkAnswer(1, 'incorrect')">En ligne droite</button>
             <button onclick="checkAnswer(1, 'incorrect')">Diagonale</button>
@@ -20,7 +20,7 @@
         <p id="feedback" style="margin-top: 20px;"></p>
         <p class="score">Score : <span id="score">0</span>/5</p>
         <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
-        <a href="menu_mindmap.html" class="back-button">Retour à la page d'accueil 🏠</a>
+        <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     </div>
     <script> let currentQuestion = 1;
         let score = 0;
@@ -30,14 +30,14 @@
                 options: ["En forme de L", "En ligne droite", "Diagonale"],
                 correctIndex: 0,
                 explanation: "Le cavalier se déplace toujours en L : deux cases dans une direction, puis une case perpendiculaire.",
-                image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Chess_piece_-_Knight.JPG"
+                image: "images/chevalier_echecs.png"
             },
             {
                 question: "Comment se déplace la tour ? ♜",
                 options: ["En ligne droite", "En diagonale", "En L"],
                 correctIndex: 0,
                 explanation: "La tour peut se déplacer horizontalement ou verticalement sur toutes les cases disponibles.",
-                image: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Chess_rlt45.svg"
+                image: "images/our_echecs.png"
             },
             {
                 question: "Comment se déplace le fou ? ♝",
@@ -51,14 +51,14 @@
                 options: ["Il est promu", "Il est éliminé", "Il reste en place"],
                 correctIndex: 0,
                 explanation: "Le pion peut être promu en dame, tour, fou ou cavalier lorsqu’il atteint la dernière rangée.",
-                image: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Chess_pawn.svg"
+                image: "pion_echecs.png"
             },
             {
                 question: "Quelle pièce est la plus puissante ?",
                 options: ["La dame", "Le cavalier", "Le roi"],
                 correctIndex: 0,
                 explanation: "La dame est la pièce la plus puissante car elle combine les déplacements de la tour et du fou.",
-                image: "https://upload.wikimedia.org/wikipedia/commons/a/af/Chess_qdt45.svg"
+                image: "reine_echecs.png"
             }
         ];
         function checkAnswer(questionNumber, answerType) {
