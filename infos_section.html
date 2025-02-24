@@ -3,14 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section infos</title>
+    <title>Section Infos - Le Monde des Curieux</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5e1;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            color: #2a9d8f;
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        .fact-box {
+            background-color: #f4a261;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .fact-box:hover {
+            background-color: #e76f51;
+            cursor: pointer;
+        }
+
+        .article {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .article h3 {
+            color: #2a9d8f;
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue dans la section Infos</h1>
-    
+    <h1>Bienvenue dans la section Infos 🌟</h1>
+    <p>Découvre des nouvelles passionnantes sur les sciences, la nature, la technologie et plus encore, adaptées aux jeunes curieux comme toi !</p>
 
-        <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
-   
+    <div class="content">
+        <div class="article">
+            <h3>La France en pleine Coupe du Monde de Rugby !</h3>
+            <p>C’est l’événement sportif de l’année : la Coupe du Monde de Rugby ! Des équipes du monde entier s’affrontent en France. Les stades sont remplis de fans qui soutiennent les Bleus, l’équipe de France. Les joueurs français, comme Antoine Dupont, sont très admirés. Si la France gagne, ce serait historique ! C’est l’occasion de découvrir un sport de contact basé sur l’esprit d’équipe et le respect. Peut-être qu’après l’avoir suivi, tu auras envie d’essayer ce sport à l’école ou dans un club local !</p>
+        </div>
+
+        <div class="article">
+            <h3>Une nouvelle mission pour sauver les océans</h3>
+            <p>Des scientifiques se sont embarqués dans une expédition incroyable : nettoyer les océans des déchets plastiques. Ils utilisent des bateaux spéciaux et des filets géants pour ramasser les déchets flottants. Des millions de tonnes de plastique polluent les mers et mettent en danger les animaux marins. Cette mission veut protéger les dauphins, les tortues et les poissons. Les enfants peuvent aussi participer ! Tu peux aider en ramassant les déchets ou en évitant d’utiliser des sacs plastiques jetables. Ensemble, on peut sauver les océans !</p>
+        </div>
+
+        <div class="article">
+            <h3>Un château gonflable géant pour les enfants à Paris !</h3>
+            <p>C’est la fête à Paris ! Un immense château gonflable a été installé au parc de la Villette. Ce n’est pas un château ordinaire : il mesure plus de 20 mètres de haut et ressemble à un monde imaginaire rempli de couleurs. Les enfants peuvent y sauter, grimper et même glisser sur d’énormes toboggans. Cet événement est temporaire, donc si tu as l’occasion d’aller à Paris, n’hésite pas à y faire un tour. C’est l’endroit rêvé pour s’amuser tout en faisant un peu de sport !</p>
+        </div>
+
+        <div class="article">
+            <h3>Une invention géniale pour protéger les abeilles !</h3>
+            <p>Un jeune inventeur français de 14 ans a créé une ruche spéciale pour protéger les abeilles des pesticides et des maladies. Les abeilles sont très importantes pour la nature : elles pollinisent les fleurs et permettent aux fruits de pousser. Mais depuis des années, leur population diminue à cause des produits chimiques et du changement climatique. Grâce à cette invention, les abeilles seront mieux protégées. Peut-être qu’un jour, toi aussi, tu inventeras quelque chose d’utile pour la planète ?</p>
+        </div>
+
+        <div class="article">
+            <h3>Un enfant découvre un trésor dans un champ en Allemagne</h3>
+            <p>Un garçon de 10 ans a fait une découverte incroyable en jouant dans un champ : un trésor vieux de plus de 1 000 ans ! Il a trouvé des pièces d’or et des bijoux appartenant à des anciens rois. Les archéologues pensent que ce trésor raconte une partie de l’histoire des Vikings. Grâce à lui, les chercheurs peuvent mieux comprendre cette époque mystérieuse. Qui sait ? Peut-être qu’un jour, en explorant ton jardin ou une forêt, tu pourrais toi aussi faire une trouvaille surprenante !</p>
+        </div>
+    </div>
+
+    <div class="fact-box" id="fact-box" onclick="showRandomFact()">
+        Savez-vous que... ? Cliquez pour une curiosité !
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+
+    <script>
+        const facts = [
+            "Les poulpes ont trois cœurs !",
+            "Les arbres peuvent communiquer entre eux grâce à leurs racines.",
+            "La lumière du soleil met environ 8 minutes pour atteindre la Terre.",
+            "Un crocodile peut vivre jusqu'à 100 ans.",
+            "Les fourmis n'ont pas de poumons, elles respirent à travers leur peau."
+        ];
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('fact-box').innerText = facts[randomIndex];
+        }
+    </script>
 </body>
 </html>

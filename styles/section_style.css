@@ -23,6 +23,13 @@ h1 {
     width: 60%;
     margin: 0 auto;
 }
+.illustration {
+    max-width: 600px; /* Ajuste cette valeur selon tes besoins */
+    height: auto; /* Garde les proportions */
+    display: block;
+    margin: 20px auto; /* Centre l’image */
+    border-radius: 10px; /* Arrondit légèrement les bords */
+}
 
 ul {
     list-style-type: none;

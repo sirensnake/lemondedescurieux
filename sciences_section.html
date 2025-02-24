@@ -11,30 +11,29 @@
     <p class="intro-text">Explore les mystères de l’univers et teste tes connaissances avec un quiz interactif !</p>
 
     <div class="content">
-        <p class="description">Voici un aperçu de ce que nous allons découvrir :</p>
-        <ul>
-            <li>Le système solaire</li>
-            <li>Les planètes et leurs caractéristiques</li>
-        </ul>
-
-        <h3>Question rapide :</h3>
-        <p>Quelle est la planète la plus proche du Soleil ? 🌞</p>
-        <button onclick="showAnswer('correct')">Mercure 🪐</button>
-        <button onclick="showAnswer('incorrect')">Vénus</button>
-        <p id="feedback" class="feedback"></p>
-
-        <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+        <h2>🌞 Le Système Solaire</h2>
+        <p class="description">Apprends à connaître les planètes et leur place dans le système solaire.</p>
+        <a href="systeme_solaire.html" class="learn-more">🔗 Découvrir le système solaire</a>
     </div>
 
-    <script>
-        function showAnswer(type) {
-            const feedback = document.getElementById('feedback');
-            if (type === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
-            } else {
-                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse. Réessaie ! 😢</span>";
-            }
-        }
-    </script>
+    <div class="content">
+        <h2>🐾 Découverte des animaux</h2>
+        <p class="description">Apprends à reconnaître les animaux et leurs caractéristiques !</p>
+        <a href="animaux.html" class="learn-more">🔗 Explorer le monde animal</a>
+    </div>
+
+    <div class="content">
+        <h2>🧪 Expériences scientifiques</h2>
+        <p class="description">Réalise des expériences simples pour mieux comprendre la science !</p>
+        <a href="experiences.html" class="learn-more">🔗 Faire des expériences</a>
+    </div>
+
+    <div class="content">
+        <h2>🤓 Le coin des curieux</h2>
+        <p class="description">Découvre des faits surprenants sur la nature et la science !</p>
+        <a href="curiosites.html" class="learn-more">🔗 Découvrir des anecdotes</a>
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
 </body>
 </html>
