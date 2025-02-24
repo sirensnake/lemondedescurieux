@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Romains 🏛️</title>
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Les Romains 🏛️</h1>
+    <div class="content">
+        <h2>Qui étaient les Romains ?</h2>
+        <p>Les Romains ont construit un immense empire qui s'étendait sur plusieurs continents. Ils sont connus pour leur architecture, leur armée et leur organisation politique.</p>
+        <iframe src="https://www.youtube.com/embed/i143lqjMr6Y" allowfullscreen></iframe>
+    </div>
+
+    <div class="content">
+        <h2>Quiz sur les Romains</h2>
+        <p>Testez vos connaissances !</p>
+        <button onclick="startQuiz()">Commencer le quiz</button>
+        <div id="quiz" style="display:none;">
+            <p>1. Quel célèbre monument a été construit pour les combats de gladiateurs ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Le Colisée 🏟️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Parthénon 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Panthéon 🏛️</button>
+            
+            <p>2. Qui était le premier empereur de Rome ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Auguste 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Colisée 🏟️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Trajan ⚔️</button>
+            
+            <p>3. Quelle était la langue officielle de l'Empire romain ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Le latin 📜</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le grec ancien 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le perse 🏺</button>
+            
+            <p id="feedback"></p>
+            <button id="finish-quiz" onclick="endQuiz()" style="display:none;">Terminer le quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let answeredQuestions = 0;
+        const totalQuestions = 3;
+
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function checkAnswer(button, correct) {
+            if (button.disabled) return; 
+            button.disabled = true;
+            answeredQuestions++;
+            
+            const feedback = document.getElementById('feedback');
+            if (correct) {
+                feedback.innerHTML = "Bravo ! 🎉 Bonne réponse !";
+                button.style.backgroundColor = "#4CAF50";
+            } else {
+                feedback.innerHTML = "Oups ! Réessaie !";
+                button.style.backgroundColor = "#FF5733";
+            }
+            
+            if (answeredQuestions === totalQuestions) {
+                document.getElementById('finish-quiz').style.display = 'block';
+            }
+        }
+
+        function endQuiz() {
+            document.getElementById('finish-quiz').disabled = true;
+            document.getElementById('finish-quiz').style.backgroundColor = '#ccc';
+            document.querySelectorAll('.quiz-btn').forEach(btn => btn.disabled = true);
+            document.getElementById('feedback').innerHTML += "<br> Quiz terminé ! 🎉";
+        }
+    </script>
+
+    <p><a href="histoire_antique.html">← Retour à l'Histoire Antique</a></p>
+</body>
+</html>
+

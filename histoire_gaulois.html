@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Gaulois 🏹</title>
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
+</head>
+<body>
+
+    <h1>Les Gaulois 🏹</h1>
+    <div class="content">
+        <h2>Qui étaient les Gaulois ?</h2>
+        <p>Les Gaulois étaient un peuple celte vivant sur le territoire de la France actuelle. Ils étaient connus pour leur bravoure et leur organisation en tribus.</p>
+        <iframe src="https://www.youtube.com/embed/iJwnr4pSZ3g" allowfullscreen></iframe>
+    </div>
+
+    <div class="content">
+        <h2>Quiz sur les Gaulois</h2>
+        <p>Testez vos connaissances !</p>
+        <button onclick="startQuiz()">Commencer le quiz</button>
+        <div id="quiz" style="display:none;">
+            <p>Que buvaient principalement les Gaulois ?</p>
+            <button onclick="checkAnswer(true)">De la cervoise 🍺</button>
+            <button onclick="checkAnswer(false)">Du vin 🍷</button>
+            <button onclick="checkAnswer(false)">De l'eau 💧</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+    <script>
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function checkAnswer(correct) {
+            const feedback = document.getElementById('feedback');
+            if (correct) {
+                feedback.innerHTML = "Bravo ! 🎉 C'était bien de la cervoise !";
+            } else {
+                feedback.innerHTML = "Oups ! Réessaie !";
+            }
+        }
+    </script>
+
+    <p><a href="histoire_antique.html">← Retour à l'Histoire Antique</a></p>
+</body>
+</html>
