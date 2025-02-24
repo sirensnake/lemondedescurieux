@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence Artificielle</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<style>body { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }</style><body>
+    <h1>Découvrir l'Intelligence Artificielle 🤖</h1>
+    <p>L'intelligence artificielle (IA) est une technologie fascinante qui nous permet de créer des machines capables de penser et de résoudre des problèmes comme un humain. Mais contrairement à nous, les machines n'ont pas de sentiments et n'agissent pas de manière indépendante. Elles utilisent des informations, appelées "données", pour apprendre et améliorer leurs décisions.</p>
+
+    <p>L'IA est utilisée dans de nombreux domaines, comme les assistants vocaux (comme Siri ou Alexa) qui nous aident à répondre à des questions, ou encore les voitures autonomes qui peuvent conduire toutes seules. Mais attention, l'IA n'est pas infaillible ! Elle peut faire des erreurs, souvent parce qu'elle apprend à partir de données fournies par les humains. Cela signifie que si les données sont biaisées, l'IA pourrait aussi l'être.</p>
+
+    <p>Les enfants peuvent apprendre les bases de l'IA en s'amusant. Il est important qu'ils comprennent comment l'IA fonctionne, qu'elle peut être influencée par des préjugés humains et qu'il est possible de résoudre ces problèmes en créant des technologies plus justes et équilibrées.</p>
+
+    <p>Les vidéos que tu peux regarder expliquent comment l'IA fonctionne et son impact sur notre quotidien. Grâce à ces ressources, tu pourras mieux comprendre le rôle de l'IA dans notre vie de tous les jours et comment elle peut façonner notre futur.</p>
+    <p>Bienvenue dans cette section où tu vas découvrir l'Intelligence Artificielle (IA), une technologie fascinante qui nous permet de créer des machines capables de penser, résoudre des problèmes et même apprendre comme des humains.</p>
+
+    <h2>Qu'est-ce que l'IA ?</h2>
+    <p>L'IA est une technologie qui permet aux machines de simuler des comportements intelligents. Contrairement à nous, les machines n'ont pas de sentiments. Elles apprennent à partir de données pour prendre des décisions.</p>
+
+    <h3>Applications de l'IA</h3>
+    <ul>
+        <li>Jeux vidéo : L'IA permet de créer des personnages qui réagissent à tes actions.</li>
+        <li>Véhicules autonomes : Des voitures qui se conduisent toutes seules grâce à l'IA.</li>
+        <li>Reconnaissance vocale : Siri, Alexa et autres assistants utilisent l'IA pour répondre à tes questions.</li>
+    </ul>
+
+    <h3>Les vidéos qui expliquent l'IA</h3>
+    <p>Regarde ces vidéos pour en apprendre davantage sur l'Intelligence Artificielle :</p>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2oegxbYUFAs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/hDgX2je_ll4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TfL-H8goDF0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <h2>Quiz : Teste tes connaissances sur l'IA !</h2>
+    <div id="quiz-section">
+        <h3 id="question">Question 1 : Qu'est-ce que l'IA ?</h3>
+        <button onclick="checkAnswer(1, 'correct')">Un cerveau électronique 🧠</button>
+        <button onclick="checkAnswer(1, 'incorrect')">Un robot physique 🤖</button>
+        <button onclick="checkAnswer(1, 'incorrect')">Une application mobile 📱</button>
+        <button onclick="checkAnswer(1, 'incorrect')">Un animal 🐶</button>
+    </div>
+
+    <p id="feedback" style="font-size: 18px; margin-top: 15px;"></p>
+    <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+
+        const questions = [
+            {
+                question: "Qu'est-ce que l'IA ?",
+                options: ["Un cerveau électronique 🧠", "Un robot physique 🤖", "Une application mobile 📱", "Un animal 🐶"],
+                correctIndex: 0
+            }
+        ];
+
+        function checkAnswer(questionNumber, answerType) {
+            const feedback = document.getElementById('feedback');
+            if (answerType === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+                score++;
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+            document.getElementById('next-button').style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion <= questions.length) {
+                const current = questions[currentQuestion - 1];
+                document.getElementById('question').innerText = `Question ${currentQuestion} : ${current.question}`;
+                const buttons = document.querySelectorAll('#quiz-section button');
+                buttons.forEach((button, index) => {
+                    button.innerText = current.options[index];
+                    if (index === current.correctIndex) {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'correct')");
+                    } else {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'incorrect')");
+                    }
+                });
+                document.getElementById('feedback').innerText = "";
+                document.getElementById('next-button').style.display = 'none';
+            } else {
+                document.getElementById('feedback').innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as terminé le quiz avec un score de ${score}/${questions.length}.</span>`;
+                document.getElementById('next-button').style.display = 'none';
+            }
+        }
+    </script>
+
+    <a href="sciences_section.html" class="back-button">Retour à la section Sciences 🔬</a>
+</body>
+</html>

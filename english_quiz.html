@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anglais - Quiz</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Quiz interactif en anglais 🇬🇧</h1>
+    <div class="content">
+        <p>Testez vos connaissances en anglais avec ce quiz !</p>
+
+        <div id="quiz-section">
+            <h3 id="question">Question 1 : Comment dit-on "bonjour" en anglais ?</h3>
+            <button onclick="checkAnswer(1, 'correct')">Hello</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Goodbye</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Thanks</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Yes</button>
+        </div>
+
+        <p id="feedback" style="font-size: 18px; margin-top: 15px;"></p>
+        <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let score = 0;
+
+        const questions = [
+            {
+                question: "Comment dit-on 'bonjour' en anglais ?",
+                options: ["Hello", "Goodbye", "Thanks", "Yes"],
+                correctIndex: 0
+            },
+            {
+                question: "Que signifie 'thank you' ?",
+                options: ["Merci", "Bonjour", "Oui", "Non"],
+                correctIndex: 0
+            },
+            {
+                question: "Comment dit-on 'au revoir' en anglais ?",
+                options: ["Goodbye", "Hello", "Sorry", "Thanks"],
+                correctIndex: 0
+            },
+            {
+                question: "Que signifie 'apple' ?",
+                options: ["Pomme", "Banane", "Orange", "Poire"],
+                correctIndex: 0
+            },
+            {
+                question: "Comment dit-on 'merci' en anglais ?",
+                options: ["Thank you", "Sorry", "Please", "Hello"],
+                correctIndex: 0
+            },
+            {
+                question: "Que signifie 'good morning' ?",
+                options: ["Bonjour", "Bonne nuit", "Merci", "Salut"],
+                correctIndex: 0
+            },
+            {
+                question: "Comment dit-on 'oui' en anglais ?",
+                options: ["Yes", "No", "Maybe", "Hello"],
+                correctIndex: 0
+            }
+        ];
+
+        function checkAnswer(questionNumber, answerType) {
+            const feedback = document.getElementById('feedback');
+            if (answerType === 'correct') {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+                score++;
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réessaie !</span>";
+            }
+            document.getElementById('next-button').style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion <= questions.length) {
+                const current = questions[currentQuestion - 1];
+                document.getElementById('question').innerText = `Question ${currentQuestion} : ${current.question}`;
+                const buttons = document.querySelectorAll('#quiz-section button');
+                buttons.forEach((button, index) => {
+                    button.innerText = current.options[index];
+                    if (index === current.correctIndex) {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'correct')");
+                    } else {
+                        button.setAttribute('onclick', "checkAnswer(currentQuestion, 'incorrect')");
+                    }
+                });
+                document.getElementById('feedback').innerText = "";
+                document.getElementById('next-button').style.display = 'none';
+            } else {
+                document.getElementById('feedback').innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as terminé le quiz avec un score de ${score}/${questions.length}.</span>`;
+                document.getElementById('next-button').style.display = 'none';
+            }
+        }
+    </script>
+    <a href="english_section.html">Retour à la section principale</a>
+</body>
+</html>

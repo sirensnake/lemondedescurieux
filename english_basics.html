@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anglais - Vocabulaire de base</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9f5e1;  /* Fond vert clair comme les autres pages */
+            padding: 20px;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #2a9d8f;
+        }
+        h2 {
+            color: #f4a261;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #f4a261;
+        }
+        span {
+            font-weight: bold;
+            margin-left: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vocabulaire de base en anglais 🇬🇧</h1>
+    <div class="content">
+        <p>Apprends les mots et expressions les plus courants en anglais !</p>
+
+        <section>
+            <h2>Salutations</h2>
+            <ul>
+                <li><button onclick="showTranslation('hello')">Bonjour</button> <span id="hello"></span></li>
+                <li><button onclick="showTranslation('good_evening')">Bonsoir</button> <span id="good_evening"></span></li>
+                <li><button onclick="showTranslation('goodbye')">Au revoir</button> <span id="goodbye"></span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Les Nombres</h2>
+            <ul>
+                <li><button onclick="showTranslation('one')">Un</button> <span id="one"></span></li>
+                <li><button onclick="showTranslation('two')">Deux</button> <span id="two"></span></li>
+                <li><button onclick="showTranslation('three')">Trois</button> <span id="three"></span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Les Jours de la Semaine</h2>
+            <ul>
+                <li><button onclick="showTranslation('monday')">Lundi</button> <span id="monday"></span></li>
+                <li><button onclick="showTranslation('tuesday')">Mardi</button> <span id="tuesday"></span></li>
+                <li><button onclick="showTranslation('wednesday')">Mercredi</button> <span id="wednesday"></span></li>
+                <li><button onclick="showTranslation('thursday')">Jeudi</button> <span id="thursday"></span></li>
+                <li><button onclick="showTranslation('friday')">Vendredi</button> <span id="friday"></span></li>
+                <li><button onclick="showTranslation('saturday')">Samedi</button> <span id="saturday"></span></li>
+                <li><button onclick="showTranslation('sunday')">Dimanche</button> <span id="sunday"></span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Les Mois de l'Année</h2>
+            <ul>
+                <li><button onclick="showTranslation('january')">Janvier</button> <span id="january"></span></li>
+                <li><button onclick="showTranslation('february')">Février</button> <span id="february"></span></li>
+                <li><button onclick="showTranslation('march')">Mars</button> <span id="march"></span></li>
+                <li><button onclick="showTranslation('april')">Avril</button> <span id="april"></span></li>
+                <li><button onclick="showTranslation('may')">Mai</button> <span id="may"></span></li>
+                <li><button onclick="showTranslation('june')">Juin</button> <span id="june"></span></li>
+                <li><button onclick="showTranslation('july')">Juillet</button> <span id="july"></span></li>
+                <li><button onclick="showTranslation('august')">Août</button> <span id="august"></span></li>
+                <li><button onclick="showTranslation('september')">Septembre</button> <span id="september"></span></li>
+                <li><button onclick="showTranslation('october')">Octobre</button> <span id="october"></span></li>
+                <li><button onclick="showTranslation('november')">Novembre</button> <span id="november"></span></li>
+                <li><button onclick="showTranslation('december')">Décembre</button> <span id="december"></span></li>
+            </ul>
+        </section>
+
+    </div>
+
+    <a href="english_section.html">Retour à la section principale</a>
+
+    <script>
+        function showTranslation(word) {
+            const translations = {
+                'hello': 'Hello',
+                'good_evening': 'Good evening',
+                'goodbye': 'Goodbye',
+                'one': 'One',
+                'two': 'Two',
+                'three': 'Three',
+                'monday': 'Monday',
+                'tuesday': 'Tuesday',
+                'wednesday': 'Wednesday',
+                'thursday': 'Thursday',
+                'friday': 'Friday',
+                'saturday': 'Saturday',
+                'sunday': 'Sunday',
+                'january': 'January',
+                'february': 'February',
+                'march': 'March',
+                'april': 'April',
+                'may': 'May',
+                'june': 'June',
+                'july': 'July',
+                'august': 'August',
+                'september': 'September',
+                'october': 'October',
+                'november': 'November',
+                'december': 'December'
+            };
+
+            const element = document.getElementById(word);
+            if (translations[word]) {
+                element.innerText = translations[word];  // Afficher la traduction
+            }
+        }
+    </script>
+
+</body>
+</html>
+
