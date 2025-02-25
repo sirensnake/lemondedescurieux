@@ -3,58 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Philosophie 🤔</title>
+    <title>Découvre la Philosophie ! 🤔</title>
     <link rel="stylesheet" href="styles/section_style.css">
 </head>
 <body>
-
-    <h1>Bienvenue dans la section Philosophie 🤔</h1>
+    <h1>Découvre la Philosophie : Une aventure dans le monde des idées ! 🤔</h1>
     <div class="content">
-        <p>Explore des concepts importants à travers des questions et des réflexions guidées.</p>
-
-        <!-- Question ouverte sur la justice -->
-        <h3>Qu’est-ce que la justice pour toi ?</h3>
+        <p>La philosophie, c'est comme un super pouvoir pour comprendre le monde autour de toi !</p>
+        
+        <h2>Les grandes questions</h2>
+        <ul>
+            <li>Pourquoi suis-je moi ?</li>
+            <li>D'où vient le temps ?</li>
+            <li>Qu'est-ce que la vérité ?</li>
+        </ul>
+        
+        <h2>Les philosophes célèbres</h2>
+        <p>Découvre des penseurs incroyables comme Socrate, Platon et Confucius !</p>
+        
+        <h2>L'esprit critique</h2>
+        <p>Apprends à réfléchir par toi-même et à ne pas croire tout ce que tu entends.</p>
+        
+        <hr>
+        
+        <h3>Pose-toi la question : Si tu pouvais tout changer dans le monde, que changerais-tu ?</h3>
         <textarea id="user-answer" placeholder="Donne ta réponse ici..." rows="5" style="width: 100%; padding: 10px;"></textarea>
         <button onclick="showModelAnswer()">Voir une réponse possible</button>
-
-        <p id="model-answer" style="margin-top: 20px; display: none;">
-            La justice, c’est traiter les autres de manière équitable et respecter les lois communes. Cependant, chaque société peut avoir une définition différente de la justice.
-        </p>
-
+        <p id="model-answer" style="margin-top: 20px; display: none;">Le changement commence par une idée. Réfléchir, c'est déjà agir !</p>
+        
         <hr>
-
-        <!-- Quiz rapide sur la liberté -->
-        <h3>Quiz rapide : Liberté ou responsabilité ?</h3>
+        
+        <h3>Quiz rapide : Qu'est-ce que la liberté ?</h3>
         <p>Choisis la bonne réponse :</p>
-        <p>Peut-on être libre sans respecter les lois ?</p>
-        <button onclick="checkQuizAnswer('incorrect')">Oui, bien sûr</button>
-        <button onclick="checkQuizAnswer('correct')">Non, la liberté implique des responsabilités</button>
-
+        <button onclick="checkQuizAnswer('incorrect')">Faire tout ce que je veux, sans limites</button>
+        <button onclick="checkQuizAnswer('correct')">Agir librement tout en respectant les autres</button>
         <p id="quiz-feedback" style="margin-top: 20px;"></p>
-
-        <!-- Citation finale -->
+        
         <blockquote>
-            « La liberté consiste à faire tout ce que permet la loi. » — Montesquieu
+            « Celui qui lutte peut perdre, mais celui qui ne lutte pas a déjà perdu. » — Bertolt Brecht
         </blockquote>
-
+        
         <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     </div>
-
+    
     <script>
         function showModelAnswer() {
             document.getElementById('model-answer').style.display = "block";
         }
-
+        
         function checkQuizAnswer(answerType) {
             const feedback = document.getElementById('quiz-feedback');
             if (answerType === 'correct') {
                 feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
             } else {
-                feedback.innerHTML = "<span class='incorrect'>Pas tout à fait. La vraie liberté vient avec des responsabilités.</span>";
+                feedback.innerHTML = "<span class='incorrect'>Réfléchis encore ! La vraie liberté implique des responsabilités. 🤔</span>";
             }
         }
     </script>
-
 </body>
 </html>
-
