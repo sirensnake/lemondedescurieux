@@ -3,61 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Découvre la Philosophie ! 🤔</title>
-    <link rel="stylesheet" href="styles/section_style.css">
+    <title>Section Philosophie 🤔</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5e1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2a9d8f;
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #f4a261;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e76f51;
+        }
+
+        .example {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Découvre la Philosophie : Une aventure dans le monde des idées ! 🤔</h1>
+    <h1>Bienvenue dans la section Philosophie 🤔</h1>
     <div class="content">
-        <p>La philosophie, c'est comme un super pouvoir pour comprendre le monde autour de toi !</p>
+        <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
         
-        <h2>Les grandes questions</h2>
+        <h3>Les grandes questions philosophiques</h3>
+        <p>Qu'est-ce que le bonheur ? La liberté ? L'amitié ? Voici quelques-unes des grandes questions que l'on se pose depuis des siècles.</p>
+        <p class="example">Exemple : "Est-ce que la liberté, c'est faire tout ce que l'on veut ?"</p>
+        
+        <h3>Les philosophes célèbres</h3>
+        <p>Socrate, Platon, Descartes... Ces penseurs ont laissé des idées qui influencent encore notre manière de voir le monde.</p>
+        <p class="example">Exemple : "Je pense, donc je suis." - Descartes</p>
+
+        <h3>Activité interactive</h3>
+        <p>Réponds à cette question : <strong>Qu'est-ce que la liberté ?</strong></p>
+        <button onclick="showAnswer()">Voir une réponse possible</button>
+        <p id="activity-output" style="margin-top: 20px; font-size: 20px;"></p>
+        
+        <h3>Vidéo explicative</h3>
+        <p>Regarde cette courte vidéo pour découvrir ce qu'est la philosophie.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XXXXXXXX" frameborder="0" allowfullscreen></iframe>
+        
+        <h3>En savoir plus</h3>
+        <p>Découvre d'autres sujets fascinants :</p>
         <ul>
-            <li>Pourquoi suis-je moi ?</li>
-            <li>D'où vient le temps ?</li>
-            <li>Qu'est-ce que la vérité ?</li>
+            <li><a href="sciences_section.html">Les sciences 🔬</a></li>
+            <li><a href="ia_section.html">L'intelligence artificielle 🤖</a></li>
+            <li><a href="echecs_section.html">Les échecs ♟️</a></li>
         </ul>
-        
-        <h2>Les philosophes célèbres</h2>
-        <p>Découvre des penseurs incroyables comme Socrate, Platon et Confucius !</p>
-        
-        <h2>L'esprit critique</h2>
-        <p>Apprends à réfléchir par toi-même et à ne pas croire tout ce que tu entends.</p>
-        
-        <hr>
-        
-        <h3>Pose-toi la question : Si tu pouvais tout changer dans le monde, que changerais-tu ?</h3>
-        <textarea id="user-answer" placeholder="Donne ta réponse ici..." rows="5" style="width: 100%; padding: 10px;"></textarea>
-        <button onclick="showModelAnswer()">Voir une réponse possible</button>
-        <p id="model-answer" style="margin-top: 20px; display: none;">Le changement commence par une idée. Réfléchir, c'est déjà agir !</p>
-        
-        <hr>
-        
-        <h3>Quiz rapide : Qu'est-ce que la liberté ?</h3>
-        <p>Choisis la bonne réponse :</p>
-        <button onclick="checkQuizAnswer('incorrect')">Faire tout ce que je veux, sans limites</button>
-        <button onclick="checkQuizAnswer('correct')">Agir librement tout en respectant les autres</button>
-        <p id="quiz-feedback" style="margin-top: 20px;"></p>
-        
-        <blockquote>
-            « Celui qui lutte peut perdre, mais celui qui ne lutte pas a déjà perdu. » — Bertolt Brecht
-        </blockquote>
-        
-        <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     </div>
-    
+
     <script>
-        function showModelAnswer() {
-            document.getElementById('model-answer').style.display = "block";
-        }
-        
-        function checkQuizAnswer(answerType) {
-            const feedback = document.getElementById('quiz-feedback');
-            if (answerType === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
-            } else {
-                feedback.innerHTML = "<span class='incorrect'>Réfléchis encore ! La vraie liberté implique des responsabilités. 🤔</span>";
-            }
+        function showAnswer() {
+            document.getElementById('activity-output').innerText = "La liberté, ce n'est pas faire tout ce que l'on veut, mais pouvoir choisir en respectant les autres.";
         }
     </script>
 </body>

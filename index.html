@@ -6,7 +6,6 @@
     <title>Le Monde des Curieux - Menu Mindmap</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <h1>Bienvenue dans le Monde des Curieux 🦊</h1>
@@ -15,45 +14,65 @@
         <div class="mindmap-container">
             <img src="images/MinecraftMindmap.png" alt="Mindmap des Curieux" class="mindmap">
             <!-- Boutons des matières -->
-            <div id="sciences" class="node branch" onclick="navigateTo('sciences_section.html')">
-                <img src="images/sciences_icon.png" alt="Icône Sciences" class="icon-image">
-                <span>Sciences</span>
+            <div class="node branch" id="sciences">
+                <a href="sciences_section.html">
+                    <img src="images/sciences_icon.png" alt="Icône Sciences" class="icon-image">
+                    <span>Sciences</span>
+                </a>
             </div>
-            <div id="echecs" class="node branch" onclick="navigateTo('echecs_section.html')">
-                <img src="images/echecs_icon.png" alt="Icône Échecs" class="icon-image">
-                <span>Échecs</span>
+            <div class="node branch" id="echecs">
+                <a href="echecs_section.html">
+                    <img src="images/echecs_icon.png" alt="Icône Échecs" class="icon-image">
+                    <span>Échecs</span>
+                </a>
             </div>
-            <div id="philosophie" class="node branch" onclick="navigateTo('philosophie_section.html')">
-                <img src="images/philo_icon.png" alt="Icône Philosophie" class="icon-image">
-                <span>Philosophie</span>
+            <div class="node branch" id="philosophie">
+                <a href="philosophie_section.html">
+                    <img src="images/philo_icon.png" alt="Icône Philosophie" class="icon-image">
+                    <span>Philosophie</span>
+                </a>
             </div>
-            <div id="francais" class="node branch" onclick="navigateTo('francais_section.html')">
-                <img src="images/francais_icon.png" alt="Icône Français" class="icon-image">
-                <span>Français</span>
+            <div class="node branch" id="francais">
+                <a href="francais_section.html">
+                    <img src="images/francais_icon.png" alt="Icône Français" class="icon-image">
+                    <span>Français</span>
+                </a>
             </div>
-            <div id="programmation" class="node branch" onclick="navigateTo('programmation_section.html')">
-                <img src="images/prog_icon.png" alt="Icône Programmation" class="icon-image">
-                <span>Programmation</span>
+            <div class="node branch" id="programmation">
+                <a href="programmation_section.html">
+                    <img src="images/prog_icon.png" alt="Icône Programmation" class="icon-image">
+                    <span>Programmation</span>
+                </a>
             </div>
-            <div id="histoire" class="node branch" onclick="navigateTo('histoire_section.html')">
-                <img src="images/histoire_icon.png" alt="Icône Histoire" class="icon-image">
-                <span>Histoire-Géo</span>
+            <div class="node branch" id="histoire">
+                <a href="histoire_section.html">
+                    <img src="images/histoire_icon.png" alt="Icône Histoire" class="icon-image">
+                    <span>Histoire-Géo</span>
+                </a>
             </div>
-            <div id="mathematiques" class="node branch" onclick="navigateTo('maths_section.html')">
-                <img src="images/maths_icon.png" alt="Icône Mathématiques" class="icon-image">
-                <span>Mathématiques</span>
+            <div class="node branch" id="mathematiques">
+                <a href="maths_section.html">
+                    <img src="images/maths_icon.png" alt="Icône Mathématiques" class="icon-image">
+                    <span>Mathématiques</span>
+                </a>
             </div>
-            <div id="ressources" class="node branch" onclick="navigateTo('ressources_section.html')">
-                <img src="images/ressources_icon.png" alt="Icône Ressources" class="icon-image">
-                <span>Ressources</span>
+            <div class="node branch" id="ressources">
+                <a href="ressources_section.html">
+                    <img src="images/ressources_icon.png" alt="Icône Ressources" class="icon-image">
+                    <span>Ressources</span>
+                </a>
             </div>
-            <div id="infos" class="node branch" onclick="navigateTo('infos_section.html')">
-                <img src="images/infos_icon.png" alt="Icône Ressources" class="icon-image">
-                <span>Infos</span>
+            <div class="node branch" id="infos">
+                <a href="infos_section.html">
+                    <img src="images/infos_icon.png" alt="Icône Infos" class="icon-image">
+                    <span>Infos</span>
+                </a>
             </div>
-            <div id="english" class="node branch" onclick="navigateTo('english_section.html')">
-                <img src="images/english.png" alt="Icône English" class="icon-image">
-                <span>English</span>
+            <div class="node branch" id="english">
+                <a href="english_section.html">
+                    <img src="images/english.png" alt="Icône English" class="icon-image">
+                    <span>English</span>
+                </a>
             </div>
         </div>
         <!-- Section Curio placé sous la mindmap -->
@@ -65,8 +84,5 @@
             </div>
         </div>
     </div>
-    <script> function navigateTo(page) {
-            window.location.href = page;
-        } </script>
 </body>
 </html>

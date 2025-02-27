@@ -1,55 +1,105 @@
 body {
+    margin-bottom: 250px;
+    margin-bottom: 200px;
+    margin-bottom: 150px;
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #c7e9b0;
-    background-image: url('minecraft_bg.png'); /* Restaure le fond Minecraft */
-    background-size: cover;
-    background-position: center;
+    background-color: #e9f5e1;
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 h1 {
     font-family: 'Press Start 2P', cursive;
-    font-size: 50px;
-    color: #3ba635; /* Vert prairie */
-    text-shadow: 4px 4px 0px #4d4d4d, 8px 8px 0px #1a1a1a; /* Effet de profondeur façon Minecraft */
+    font-size: 32px;
+    font-weight: bold;
+    color: #2a9d8f;
     margin-top: 20px;
+    text-shadow: 4px 4px 0px #4d4d4d, 8px 8px 0px #1a1a1a;
 }
 
-
-#instruction-text {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 20px;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Mindmap */
 .mindmap-container {
     position: relative;
     width: 900px;
-    height: 900px;
-    margin: 0 auto;
+    height: 700px;
+    background-image: url('images/MinecraftMindmap.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.mindmap {
-    width: 100%;
-    height: auto;
-}
-
-/* Section Curio */
-#curio-section {
-    position: relative;
+.node {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    background-color: rgba(244, 162, 97, 0.9);
+    border-radius: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.node a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+}
+
+.node img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+}
+
+.node:hover {
+    background-color: rgba(231, 111, 81, 1);
+    transform: scale(1.1);
+}
+
+/* Positions exactes des boutons */
+#sciences { top: 33.2%; left: 90%; }
+#echecs { top: 119%; left: 13.5%; }
+#philosophie { top: 93%; left: 90.2%; }
+#francais { top: 119%; left: 81%; }
+#programmation { top: 93%; left: 4.8%; }
+#ressources { top: 2.5%; left: 47.3%; }
+#mathematiques { top: 7.5%; left: 80.8%; }
+#histoire { top: 33%; left: 4.5%; }
+#infos { top: 120%; left: 47.4%; }
+#english { top: 7.4%; left: 13.8%; }
+
+#curio-section {
+    position: absolute;
+    bottom: -60%;
+    left: 58%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 150px;
 }
 
 #curio-image {
-    width: 150px;
+    width: 160px;
+    height: auto;
     animation: float 3s infinite ease-in-out;
-    margin-right: 15px;
+    display: block;
+    margin-bottom: 50px;
 }
 
 #speech-bubble {
@@ -61,9 +111,9 @@ h1 {
     color: #333;
     max-width: 300px;
     text-align: center;
+    margin-left: 15px;
 }
 
-/* Animation de flottement pour Curio */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -73,88 +123,21 @@ h1 {
     }
 }
 
-/* Boutons des matières */
-.node {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background-color: rgba(244, 162, 97, 0.7);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.node:hover {
-    background-color: rgba(231, 111, 81, 1);
-    box-shadow: 0 0 25px rgba(231, 111, 81, 0.8);
-    transform: scale(1.2) rotate(5deg);
-}
-
-/* Icônes dans les boutons */
-.icon-image {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 5px;
-    transition: transform 0.3s ease;
-}
-
-.node:hover .icon-image {
-    transform: scale(1.2);
-}
-
-/* Emplacements des boutons (inchangés, ajuster si besoin) */
-#sciences {
-    top: 22.5%;
-    left: 79.3%;
-}
-
-#echecs {
-    top: 81%;
-    left: 12%;
-}
-
-#philosophie {
-    top: 63.5%;
-    left: 79.2%;
-}
-
-#francais {
-    top: 81%;
-    left: 71%;
-}
-
-#programmation {
-    top: 63.5%;
-    left: 4%;
-}
-
-#ressources {
-    top: 1.6%;
-    left: 41.7%;
-}
-
-#mathematiques {
-    top: 5%;
-    left: 71%;
-}
-
-#histoire {
-    top: 22.2%;
-    left: 4.1%;
-}
-
-#infos {
-    top: 82%;
-    left: 41.5%;
-
-}
-
-#english {
-    top: 5%;
-    left: 12%;
-
+@media screen and (max-width: 768px) {
+    .mindmap-container {
+        width: 100%;
+        height: auto;
+    }
+    .node {
+        width: 130px;
+        height: 130px;
+        font-size: 14px;
+    }
+    .node img {
+        width: 60px;
+        height: 60px;
+    }
+    #curio-image {
+        width: 120px;
+    }
 }
