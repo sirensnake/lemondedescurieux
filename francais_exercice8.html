@@ -1,72 +1,50 @@
+<!-- Exercice 8 : Les pronoms personnels sujets -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="stylesheet" href="styles/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercice 8 : Les pronoms personnels sujets</title>
-    <link rel="stylesheet" href="styles/section_style.css">
+    <title>Exercice 8 - Les pronoms personnels</title>
 </head>
 <body>
-    <h1>Exercice 8 : Les pronoms personnels sujets</h1>
-
     <section>
-        <h2>📚 Complète les phrases avec le bon pronom personnel sujet</h2>
-        <p>Choisis le pronom personnel sujet qui convient : <strong>je, tu, il, elle, nous, vous, ils, elles</strong>.</p>
-
-        <ul>
-            <li><input type="text" id="q1" placeholder="pronom"> suis content de te voir.</li>
-            <li><input type="text" id="q2" placeholder="pronom"> jouons au tennis cet après-midi.</li>
-            <li><input type="text" id="q3" placeholder="pronom"> regarde la télé tous les soirs.</li>
-            <li><input type="text" id="q4" placeholder="pronom"> avez préparé un excellent repas !</li>
-        </ul>
-
-        <button class="back-button" onclick="checkAnswers()">Vérifier les réponses</button>
-        <p id="feedback" style="margin-top:10px;"></p>
+    <h1 class="exercise-title">Exercice 8 - Les pronoms personnels sujets</h1>
+    <h2>📚 Complète les phrases avec le bon pronom personnel sujet</h2>
+    <ul>
+        <li><input type="text" id="q8_1" placeholder="pronom"> suis content de te voir.</li>
+        <li><input type="text" id="q8_2" placeholder="pronom"> allons à la plage cet après-midi.</li>
+        <li><input type="text" id="q8_3" placeholder="pronom"> regarde la télévision tous les soirs.</li>
+        <li><input type="text" id="q8_4" placeholder="pronom"> avez réussi votre examen avec brio !</li>
+    </ul>
+    <button style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px;" onclick="checkAnswers8()">Vérifier les réponses</button>
+    <p id="feedback8"></p>
     </section>
 
     <script>
-        function checkAnswers() {
-            // Les bonnes réponses
+        function checkAnswers8() {
             const correctAnswers = {
-                q1: "je",
-                q2: "nous",
-                q3: "il",
-                q4: "vous"
+                q8_1: "je",
+                q8_2: "nous",
+                q8_3: ["il", "je"],
+                q8_4: "vous"
             };
-
-            // Récupérer les réponses utilisateur
-            const userAnswers = {
-                q1: document.getElementById('q1').value.trim().toLowerCase(),
-                q2: document.getElementById('q2').value.trim().toLowerCase(),
-                q3: document.getElementById('q3').value.trim().toLowerCase(),
-                q4: document.getElementById('q4').value.trim().toLowerCase()
-            };
-
-            // Feedback dynamique
-            let feedbackMessage = "<strong>Résultats :</strong><br>";
-            let correctCount = 0;
-
+            let feedback = "";
             for (let key in correctAnswers) {
-                if (userAnswers[key] === correctAnswers[key]) {
-                    feedbackMessage += `👍 Bonne réponse pour la question ${key.slice(1)} !<br>`;
-                    correctCount++;
+                let userAnswer = document.getElementById(key).value.trim().toLowerCase();
+                if (Array.isArray(correctAnswers[key]) ? correctAnswers[key].includes(userAnswer) : userAnswer === correctAnswers[key]) {
+                    feedback += `✅ Bonne réponse pour la question ${key.slice(3)} !<br>`;
                 } else {
-                    feedbackMessage += `❌ Mauvaise réponse pour la question ${key.slice(1)}. La bonne réponse est : <strong>${correctAnswers[key]}</strong>.<br>`;
+                    feedback += `❌ Mauvaise réponse pour la question ${key.slice(3)}.<br>`;
                 }
             }
-
-            // Afficher le feedback
-            if (correctCount === Object.keys(correctAnswers).length) {
-                feedbackMessage += "🎉 Bravo ! Toutes les réponses sont correctes !";
-            } else {
-                feedbackMessage += "😊 Tu peux réessayer pour améliorer ton score.";
-            }
-
-            document.getElementById('feedback').innerHTML = feedbackMessage;
+            document.getElementById("feedback8").innerHTML = feedback;
         }
     </script>
-
-    <a href="francais_exercice9.html" class="back-button">Passer à l'exercice suivant ➡️</a>
-    <a href="index.html" class="back-button">Retour au menu principal</a>
+    <nav style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+        <button style="background-color: #2a9d8f; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="location.href='francais_exercice9.html'">Passer à l'exercice suivant ➡️</button>
+        <button style="background-color: #264653; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="location.href='index.html'">Retour au menu principal</button>
+    </nav>
+    </section>
 </body>
 </html>

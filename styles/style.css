@@ -9,14 +9,17 @@ body {
     margin: 0;
 }
 
-h1 {
-    font-family: 'Press Start 2P', cursive;
+h1.exercise-title {
+    
+    color: #2a9d8f;
     font-size: 32px;
     font-weight: bold;
-    color: #2a9d8f;
-    margin-top: 20px;
-    text-shadow: 4px 4px 0px #4d4d4d, 8px 8px 0px #1a1a1a;
+    text-align: center;
+    text-shadow: none;
+    margin: 20px 0;
 }
+
+
 
 .container {
     display: flex;
@@ -78,7 +81,7 @@ h1 {
 #philosophie { top: 93%; left: 90.2%; }
 #francais { top: 119%; left: 81%; }
 #programmation { top: 93%; left: 4.8%; }
-#ressources { top: 2.5%; left: 47.3%; }
+#ressources { top: 2.5%; left: 47.2%; }
 #mathematiques { top: 7.5%; left: 80.8%; }
 #histoire { top: 33%; left: 4.5%; }
 #infos { top: 120%; left: 47.4%; }
