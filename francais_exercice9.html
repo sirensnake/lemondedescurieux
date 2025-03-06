@@ -1,48 +1,160 @@
-<!-- Exercice 8 : Les pronoms personnels sujets -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="styles/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les pronoms personnels : Complète les phrases</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercice 9 - Les négations</title>
+  <link rel="stylesheet" href="styles/section_style.css">
+  <style>
+    .option-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-    <section>
-    <h1 class="exercise-title"></h1class>Exercice 9 - Les pronoms personnels : Complète les phrases</h1>
-    <ul>
-        <li><input type="text" id="q8_1" placeholder="pronom"> suis content de te voir.</li>
-        <li><input type="text" id="q8_2" placeholder="pronom"> allons à la plage cet après-midi.</li>
-        <li><input type="text" id="q8_3" placeholder="pronom"> regarde la télévision tous les soirs.</li>
-        <li><input type="text" id="q8_4" placeholder="pronom"> avez réussi votre examen avec brio !</li>
-    </ul>
-    <button style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px;" onclick="checkAnswers()">Vérifier les réponses</button>
-    <p id="feedback8"></p>
+  <h1>Exercice 9 - Les négations</h1>
+  <section>
+    <h2>📚 Choisis la bonne négation pour compléter chaque phrase</h2>
+    <form id="exercise9-form">
+      <div class="question" id="q9_1">
+        <p>1. Il ______ veut venir à la fête.</p>
+        <label class="option-label">
+          <input type="radio" name="q9_1" value="ne... pas"> ne... pas
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q9_1" value="ne... plus"> ne... plus
+        </label>
+      </div>
+      <div class="question" id="q9_2">
+        <p>2. Elle ______ mange de légumes.</p>
+        <label class="option-label">
+          <input type="radio" name="q9_2" value="ne... pas"> ne... pas
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q9_2" value="ne... plus"> ne... plus
+        </label>
+      </div>
+      <div class="question" id="q9_3">
+        <p>3. Nous ______ sommes allés au cinéma.</p>
+        <label class="option-label">
+          <input type="radio" name="q9_3" value="ne... pas"> ne... pas
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q9_3" value="ne... plus"> ne... plus
+        </label>
+      </div>
+      <div class="question" id="q9_4">
+        <p>4. Ils ______ font du sport régulièrement.</p>
+        <label class="option-label">
+          <input type="radio" name="q9_4" value="ne... pas"> ne... pas
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q9_4" value="ne... plus"> ne... plus
+        </label>
+      </div>
+    </form>
+    <p id="feedback9" style="margin-top:10px;"></p>
 
-    <script>
-        function checkAnswers8() {
-            const correctAnswers = {
-                q8_1: "je",
-                q8_2: "nous",
-                q8_3: ["il", "je"],
-                q8_4: "vous"
-            };
-            let feedback = "";
-            for (let key in correctAnswers) {
-                let userAnswer = document.getElementById(key).value.trim().toLowerCase();
-                if (Array.isArray(correctAnswers[key]) ? correctAnswers[key].includes(userAnswer) : userAnswer === correctAnswers[key]) {
-                    feedback += `✅ Bonne réponse pour la question ${key.slice(3)} !<br>`;
-                } else {
-                    feedback += `❌ Mauvaise réponse pour la question ${key.slice(3)}.<br>`;
-                }
-            }
-            document.getElementById("feedback8").innerHTML = feedback;
-        }
-    </script>
+    <!-- Barre de navigation avec les boutons -->
     <nav style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-        <button style="background-color: #2a9d8f; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="location.href='francais_exercice10.html'">Passer à l'exercice suivant ➡️</button>
-        <button style="background-color: #264653; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="location.href='index.html'">Retour au menu principal</button>
+      <!-- Bouton "Vérifier les réponses" en teal (#2a9d8f), texte blanc -->
+      <button 
+        id="check-answers" 
+        style="
+          background-color: #2a9d8f; 
+          color: white; 
+          border: none; 
+          padding: 10px 20px; 
+          border-radius: 5px; 
+          cursor: pointer; 
+          font-size: 16px;"
+      >
+        Vérifier les réponses
+      </button>
+      <br>
+
+      <!-- Bouton "Exercice précédent" en orange (#f4a261), texte noir -->
+      <button 
+        onclick="location.href='francais_exercice8.html'"
+        style="
+          background-color: #f4a261; 
+          color: white; 
+          border: none; 
+          padding: 10px 20px; 
+          border-radius: 5px; 
+          cursor: pointer; 
+          font-size: 16px;"
+      >
+        Exercice précédent
+      </button>
+
+      <!-- Bouton "Exercice suivant" en orange (#f4a261), texte noir -->
+      <button 
+        onclick="location.href='francais_exercice10.html'"
+        style="
+          background-color: #f4a261; 
+          color: white; 
+          border: none; 
+          padding: 10px 20px; 
+          border-radius: 5px; 
+          cursor: pointer; 
+          font-size: 16px;"
+      >
+        Exercice suivant
+      </button>
+
+      <!-- Bouton "Retour au menu principal" en orange (#f4a261), texte noir -->
+      <button 
+        onclick="location.href='index.html'"
+        style="
+          background-color: #f4a261; 
+          color: white; 
+          border: none; 
+          padding: 10px 20px; 
+          border-radius: 5px; 
+          cursor: pointer; 
+          font-size: 16px;"
+      >
+        Retour au menu principal
+      </button>
     </nav>
-    </section>
-</body>
-</html>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const checkButton = document.getElementById("check-answers");
+      if (!checkButton) return;
+
+      checkButton.addEventListener("click", function() {
+        // Réponses correctes
+        const correctAnswers = {
+          q9_1: "ne... pas",
+          q9_2: "ne... pas",
+          q9_3: "ne... pas",
+          q9_4: "ne... pas"
+        };
+
+        let correctCount = 0;
+        let feedbackMessage = "<strong>Résultats :</strong><br>";
+
+        // Vérifier pour chaque question
+        for (let q in correctAnswers) {
+          const options = document.getElementsByName(q);
+          let selected = null;
+
+          for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+              selected = options[i].value;
+              break;
+            }
+          }
+
+          if (selected === correctAnswers[q]) {
+            feedbackMessage += `✔️ Question ${q.slice(3)} : Correct<br>`;
+            correctCount++;
+          } else {
+            feedback

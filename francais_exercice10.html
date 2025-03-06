@@ -1,48 +1,130 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="styles/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercice 10 - L'accord des verbes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercice 10 - Choisis la bonne phrase</title>
+  <link rel="stylesheet" href="styles/section_style.css">
+  <style>
+    .option-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-    <section>
-    <h1 class="exercise-title">Exercice 10 - L'accord des verbes au passé composé</h1>
-    <h2>📚 Complète les phrases en choisissant la bonne forme du verbe au passé composé</h2>
-    <ul>
-        <li>Hier, nous <input type="text" id="q10_1" placeholder="verbe"> au restaurant.</li>
-        <li>Elle <input type="text" id="q10_2" placeholder="verbe"> en vacances la semaine dernière.</li>
-        <li>Ils <input type="text" id="q10_3" placeholder="verbe"> un film passionnant hier soir.</li>
-        <li>Vous <input type="text" id="q10_4" placeholder="verbe"> à l'heure pour la réunion ?</li>
-    </ul>
-    <button style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px;" onclick="checkAnswers10()">Vérifier les réponses</button>
-    <p id="feedback10"></p>
-
-    <script>
-        function checkAnswers10() {
-            const correctAnswers = {
-                q10_1: "avons mangé",
-                q10_2: "est partie",
-                q10_3: "ont regardé",
-                q10_4: "êtes arrivés"
-            };
-            let feedback = "";
-            for (let key in correctAnswers) {
-                let userAnswer = document.getElementById(key).value.trim().toLowerCase();
-                if (userAnswer === correctAnswers[key]) {
-                    feedback += `✅ Bonne réponse pour la question ${key.slice(3)} !<br>`;
-                } else {
-                    feedback += `❌ Mauvaise réponse pour la question ${key.slice(3)}.<br>`;
-                }
-            }
-            document.getElementById("feedback10").innerHTML = feedback;
-        }
-    </script>
+  <h1>Exercice 10 - Choisis la bonne phrase</h1>
+  <section>
+    <h2>📚 Choisis la bonne formulation pour chaque phrase</h2>
+    <form id="exercise10-form">
+      <div class="question" id="q10_1">
+        <p>1. Hier, nous ______ au restaurant.</p>
+        <label class="option-label">
+          <input type="radio" name="q10_1" value="avons mangé"> avons mangé
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_1" value="a mangé"> a mangé
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_1" value="avons mangés"> avons mangés
+        </label>
+      </div>
+      <div class="question" id="q10_2">
+        <p>2. Elle ______ en vacances la semaine dernière.</p>
+        <label class="option-label">
+          <input type="radio" name="q10_2" value="est partie"> est partie
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_2" value="a partie"> a partie
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_2" value="est parties"> est parties
+        </label>
+      </div>
+      <div class="question" id="q10_3">
+        <p>3. Ils ______ un film passionnant hier soir.</p>
+        <label class="option-label">
+          <input type="radio" name="q10_3" value="ont regardé"> ont regardé
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_3" value="ont regardés"> ont regardés
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_3" value="ont regardé"> ont regarder (incorrecte)
+        </label>
+      </div>
+      <div class="question" id="q10_4">
+        <p>4. Vous ______ à l'heure pour la réunion ?</p>
+        <label class="option-label">
+          <input type="radio" name="q10_4" value="êtes arrivés"> êtes arrivés
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_4" value="avez arrivé"> avez arrivé
+        </label>
+        <label class="option-label">
+          <input type="radio" name="q10_4" value="êtes arrivé"> êtes arrivé
+        </label>
+      </div>
+    </form>
+    <p id="feedback10" style="margin-top:10px;"></p>
     <nav style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-        
-        <button style="background-color: #264653; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="location.href='index.html'">Retour au menu principal</button>
+      <!-- Bouton de validation : style identique aux autres exercices -->
+      <button id="check-answers" class="back-button" 
+              style="background-color: #21867a; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        Vérifier les réponses
+      </button>
+      <!-- Boutons de navigation -->
+      <button onclick="location.href='francais_exercice9.html'" 
+              style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        Exercice précédent
+      </button>
+      <button onclick="location.href='index.html'" 
+              style="background-color: #e76f51; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        Retour au menu principal
+      </button>
     </nav>
-    </section>
+  </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const checkButton = document.getElementById("check-answers");
+      if (!checkButton) return;
+      checkButton.addEventListener("click", function() {
+        const correctAnswers = {
+          q10_1: "avons mangé",
+          q10_2: "est partie",
+          q10_3: "ont regardé",
+          q10_4: "êtes arrivés"
+        };
+        let correctCount = 0;
+        let feedbackMessage = "<strong>Résultats :</strong><br>";
+        for (let q in correctAnswers) {
+          const options = document.getElementsByName(q);
+          let selected = null;
+          for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+              selected = options[i].value;
+              break;
+            }
+          }
+          if (selected === correctAnswers[q]) {
+            feedbackMessage += `✔️ Question ${q.slice(3)} : Correct<br>`;
+            correctCount++;
+          } else {
+            feedbackMessage += `❌ Question ${q.slice(3)} : Faux (Bonne réponse : ${correctAnswers[q]})<br>`;
+          }
+        }
+        if (correctCount === Object.keys(correctAnswers).length) {
+          feedbackMessage += "<br>🎉 Bravo ! Toutes les réponses sont correctes !";
+        } else {
+          feedbackMessage += "<br>😊 Tu peux réessayer en rafraîchissant la page.";
+        }
+        document.getElementById("feedback10").innerHTML = feedbackMessage;
+        checkButton.disabled = true;
+      });
+    });
+  </script>
 </body>
 </html>
