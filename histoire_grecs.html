@@ -12,9 +12,51 @@
     <div class="content">
         <h2>Qui étaient les Grecs ?</h2>
         <p>Les Grecs ont laissé un héritage culturel et intellectuel immense, marquant de leur empreinte la philosophie, l’art, la politique et les sciences. Leur civilisation a contribué à la naissance de la démocratie et à l’épanouissement des arts classiques.</p>
-        <iframe src="https://www.youtube.com/embed/cVsQB4wpRBc" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cVsQB4wpRBc" frameborder="0" allowfullscreen></iframe>
     </div>
-
+    
+    <div class="content">
+        <h2>🏛️ L'organisation politique de la Grèce antique</h2>
+        <p>La Grèce antique était composée de cités-États indépendantes, appelées <strong>polis</strong>. Les plus célèbres étaient :</p>
+        <ul>
+            <li><strong>Athènes</strong> : Berceau de la démocratie, où les citoyens votaient directement les lois.</li>
+            <li><strong>Sparte</strong> : Une société militaire où l’éducation était centrée sur la discipline et la guerre.</li>
+            <li><strong>Corinthe</strong> : Connue pour son commerce florissant et son architecture avancée.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>⚡ La mythologie grecque</h2>
+        <p>Les Grecs croyaient en une multitude de dieux et déesses, chacun ayant son propre domaine :</p>
+        <ul>
+            <li><strong>Zeus</strong> : Roi des dieux, maître du ciel et des éclairs.</li>
+            <li><strong>Poséidon</strong> : Dieu des mers et des tempêtes.</li>
+            <li><strong>Athéna</strong> : Déesse de la sagesse et de la guerre stratégique.</li>
+            <li><strong>Hadès</strong> : Souverain du monde souterrain.</li>
+        </ul>
+        <p>Ces dieux étaient vénérés à travers des temples majestueux, comme le Parthénon dédié à Athéna à Athènes.</p>
+    </div>
+    
+    <div class="content">
+        <h2>🎭 Les arts et la culture</h2>
+        <p>Les Grecs ont posé les bases de la culture occidentale dans de nombreux domaines :</p>
+        <ul>
+            <li><strong>Le théâtre</strong> : Inventé par les Grecs, il se divisait en tragédies et comédies jouées dans des amphithéâtres.</li>
+            <li><strong>La sculpture</strong> : Les statues grecques représentaient la perfection du corps humain.</li>
+            <li><strong>Les Jeux Olympiques</strong> : Créés en l’honneur de Zeus, ils avaient lieu tous les quatre ans à Olympie.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>🧠 Les grandes inventions et sciences</h2>
+        <p>Les Grecs ont fait de nombreuses avancées scientifiques et philosophiques :</p>
+        <ul>
+            <li><strong>Pythagore</strong> : Fondateur des mathématiques modernes avec son célèbre théorème.</li>
+            <li><strong>Hippocrate</strong> : Père de la médecine et créateur du serment des médecins.</li>
+            <li><strong>Archimède</strong> : Génie des sciences, il a découvert le principe de la poussée dans l’eau.</li>
+        </ul>
+    </div>
+    
     <div class="content">
         <h2>Quiz sur les Grecs</h2>
         <p>Testez vos connaissances !</p>
@@ -49,7 +91,7 @@
         }
 
         function checkAnswer(button, correct) {
-            if (button.disabled) return; 
+            if (button.disabled) return;
             button.disabled = true;
             answeredQuestions++;
             
@@ -65,13 +107,6 @@
             if (answeredQuestions === totalQuestions) {
                 document.getElementById('finish-quiz').style.display = 'block';
             }
-        }
-
-        function endQuiz() {
-            document.getElementById('finish-quiz').disabled = true;
-            document.getElementById('finish-quiz').style.backgroundColor = '#ccc';
-            document.querySelectorAll('.quiz-btn').forEach(btn => btn.disabled = true);
-            document.getElementById('feedback').innerHTML += "<br> Quiz terminé ! 🎉";
         }
     </script>
 
