@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices sur la multiplication ✖️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Exercices sur la multiplication ✖️</h1>
+    <p>Apprends à multiplier des nombres et entraîne-toi avec des exercices interactifs. 💡</p>
+    
+    <h2>📚 Multiplication simple</h2>
+    <p>Calcule les résultats :</p>
+    <p>7 × 8 = <input type="text" id="mult1" placeholder="Réponse"> <button onclick="verifyResult('mult1', 56)">Vérifier</button></p>
+    <p id="feedback1"></p>
+    
+    <p>9 × 6 = <input type="text" id="mult2" placeholder="Réponse"> <button onclick="verifyResult('mult2', 54)">Vérifier</button></p>
+    <p id="feedback2"></p>
+    
+    <h2>✖️ Multiplication avec plusieurs chiffres</h2>
+    <p>Résous ces opérations :</p>
+    <p>23 × 4 = <input type="text" id="mult3" placeholder="Réponse"> <button onclick="verifyResult('mult3', 92)">Vérifier</button></p>
+    <p id="feedback3"></p>
+    
+    <p>125 × 8 = <input type="text" id="mult4" placeholder="Réponse"> <button onclick="verifyResult('mult4', 1000)">Vérifier</button></p>
+    <p id="feedback4"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Explore d'autres exercices :</p>
+    <ul>
+        <li><a href="maths_chapitre1.html">Retour au Chapitre 1</a></li>
+        <li><a href="maths_addition.html">Exercices sur l'addition ➕</a></li>
+        <li><a href="maths_soustraction.html">Exercices sur la soustraction ➖</a></li>
+        <li><a href="maths_division.html">Exercices sur la division ➗</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function verifyResult(inputId, correctAnswer) {
+            let userAnswer = parseInt(document.getElementById(inputId).value);
+            let feedbackId = "feedback" + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -3,32 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapitre 4 : Résolution de problèmes 🤔</title>
+    <title>Chapitre 1 : Les nombres et les calculs 🔢</title>
     <link rel="stylesheet" href="styles/section_style.css">
 </head>
 <body>
-    <h1>Chapitre 4 : Résolution de problèmes 🤔</h1>
-    <p>Dans ce chapitre, nous apprendrons à résoudre des problèmes en plusieurs étapes, en utilisant des calculs, des tableaux et des graphiques.</p>
-    <h3>Sous-chapitres :</h3>
+    <h1>Chapitre 1 : Les nombres et les calculs 🔢</h1>
+    <p>Dans ce chapitre, nous allons explorer les nombres entiers, les additions, les soustractions, les multiplications et les divisions. 📖</p>
+    
+    <h2>📚 Les bases des nombres</h2>
+    <p>Un nombre est composé de chiffres (0 à 9). Par exemple, 254 est composé des chiffres 2, 5 et 4.</p>
+    <p>Place chaque chiffre de 254 dans le bon ordre :</p>
     <ul>
-        <li>Problèmes de la vie quotidienne</li>
-        <li>Utiliser les graphiques et les tableaux</li>
-        <li>Problèmes à plusieurs étapes</li>
+        <li><button onclick="checkAnswer('centaines', '2')">Centaines</button></li>
+        <li><button onclick="checkAnswer('dizaines', '5')">Dizaines</button></li>
+        <li><button onclick="checkAnswer('unités', '4')">Unités</button></li>
     </ul>
-    <h3>Exercice rapide :</h3>
-    <p>Lucie a 3 boîtes avec 12 crayons chacune. Combien de crayons a-t-elle au total ?</p>
-    <button onclick="showAnswer('correct')">36 crayons</button>
-    <button onclick="showAnswer('incorrect')">30 crayons</button>
-    <button onclick="showAnswer('incorrect')">25 crayons</button>
-    <p id="feedback"></p>
+    <p id="feedback1"></p>
+    
+    <h2>➕➖ Multiplication et division</h2>
+    <p>Résous ces opérations :</p>
+    <p>6 × 7 = <input type="text" id="mult1" placeholder="Réponse"> <button onclick="verifyResult('mult1', 42)">Vérifier</button></p>
+    <p id="feedback2"></p>
+    
+    <p>81 ÷ 9 = <input type="text" id="div1" placeholder="Réponse"> <button onclick="verifyResult('div1', 9)">Vérifier</button></p>
+    <p id="feedback3"></p>
+    
+    <h2>🧮 Exercice avancé : Comparer les nombres</h2>
+    <p>Place les nombres dans l'ordre croissant :</p>
+    <p><strong>45, 12, 89, 32</strong></p>
+    <input type="text" id="orderNumbers" placeholder="Ex : 12, 32, ...">
+    <button onclick="checkOrder()">Vérifier</button>
+    <p id="feedback4"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Découvre plus d'exercices sur les nombres :</p>
+    <ul>
+        <li><a href="maths_addition.html">Exercices sur l'addition ➕</a></li>
+        <li><a href="maths_soustraction.html">Exercices sur la soustraction ➖</a></li>
+        <li><a href="maths_multiplication.html">Exercices sur la multiplication ✖️</a></li>
+        <li><a href="maths_division.html">Exercices sur la division ➗</a></li>
+    </ul>
+    <a href="maths_chapitre2.html">Chapitre suivant ➡️</a>
     <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
-    <script> function showAnswer(type) {
-            const feedback = document.getElementById('feedback');
-            if (type === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉 3 × 12 = 36 crayons.</span>";
+    
+    <script>
+        function checkAnswer(type, correctValue) {
+            let userAnswer = prompt(`Quelle est la valeur des ${type} ?`);
+            let feedback = document.getElementById("feedback1");
+            if (userAnswer === correctValue) {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
             } else {
-                feedback.innerHTML = "<span class='incorrect'>Ce n’est pas la bonne réponse. Réessaie !</span>";
+                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse, essaie encore ! ❌</span>";
             }
-        } </script>
+        }
+        
+        function verifyResult(inputId, correctAnswer) {
+            let userAnswer = parseInt(document.getElementById(inputId).value);
+            let feedbackId = "feedback" + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+        
+        function checkOrder() {
+            let userAnswer = document.getElementById("orderNumbers").value.replace(/\s/g, "");
+            let correctOrder = "12,32,45,89";
+            let feedback = document.getElementById("feedback4");
+            if (userAnswer === correctOrder) {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Essaie encore ! ❌</span>";
+            }
+        }
+    </script>
 </body>
 </html>

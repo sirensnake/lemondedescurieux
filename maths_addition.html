@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices sur l'addition ➕</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Exercices sur l'addition ➕</h1>
+    <p>Dans cette section, tu vas apprendre à additionner des nombres et tester tes compétences avec des exercices interactifs. 🧠</p>
+    
+    <h2>📚 Addition simple</h2>
+    <p>Calcule les résultats :</p>
+    <p>23 + 15 = <input type="text" id="add1" placeholder="Réponse"> <button onclick="verifyResult('add1', 38)">Vérifier</button></p>
+    <p id="feedback1"></p>
+    
+    <p>56 + 27 = <input type="text" id="add2" placeholder="Réponse"> <button onclick="verifyResult('add2', 83)">Vérifier</button></p>
+    <p id="feedback2"></p>
+    
+    <h2>➕ Addition avec retenues</h2>
+    <p>Résous ces opérations :</p>
+    <p>187 + 249 = <input type="text" id="add3" placeholder="Réponse"> <button onclick="verifyResult('add3', 436)">Vérifier</button></p>
+    <p id="feedback3"></p>
+    
+    <p>432 + 589 = <input type="text" id="add4" placeholder="Réponse"> <button onclick="verifyResult('add4', 1021)">Vérifier</button></p>
+    <p id="feedback4"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Explore d'autres exercices :</p>
+    <ul>
+        <li><a href="maths_chapitre1.html">Retour au Chapitre 1</a></li>
+        <li><a href="maths_soustraction.html">Exercices sur la soustraction ➖</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function verifyResult(inputId, correctAnswer) {
+            let userAnswer = parseInt(document.getElementById(inputId).value);
+            let feedbackId = "feedback" + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+</body>
+</html>

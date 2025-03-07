@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La symétrie axiale 🔄</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>La symétrie axiale 🔄</h1>
+    <p>Découvrons la symétrie axiale et comment la repérer dans notre environnement ! ✨</p>
+    
+    <h2>📏 Qu'est-ce que la symétrie axiale ?</h2>
+    <p>Une figure possède une <strong>symétrie axiale</strong> si on peut la couper en deux parties identiques qui se superposent parfaitement.</p>
+    <p>Exemples :
+        <ul>
+            <li>Un papillon 🦋</li>
+            <li>Un cœur ❤️</li>
+            <li>Une feuille d'arbre 🍃</li>
+        </ul>
+    </p>
+    
+    <h2>📝 Exercices interactifs</h2>
+    <p>Laquelle de ces figures a une symétrie axiale ?</p>
+    <button onclick="checkAnswer('sym1', 'correct')">Un papillon</button>
+    <button onclick="checkAnswer('sym1', 'incorrect')">Un cercle</button>
+    <button onclick="checkAnswer('sym1', 'incorrect')">Un triangle quelconque</button>
+    <p id="feedback1"></p>
+    
+    <p>Quelle lettre de l'alphabet est symétrique par rapport à un axe vertical ?</p>
+    <button onclick="checkAnswer('sym2', 'correct')">A</button>
+    <button onclick="checkAnswer('sym2', 'incorrect')">G</button>
+    <button onclick="checkAnswer('sym2', 'incorrect')">R</button>
+    <p id="feedback2"></p>
+    
+    <h2>📌 Application</h2>
+    <p>Prends un miroir et place-le au centre d'une image pour vérifier si elle est symétrique !</p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Découvre d'autres notions de géométrie :</p>
+    <ul>
+        <li><a href="maths_chapitre2.html">Retour au Chapitre 2</a></li>
+        <li><a href="maths_droites.html">Les droites et segments ➖</a></li>
+        <li><a href="maths_angles.html">Les types d'angles 🔺</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function checkAnswer(question, type) {
+            let feedbackId = "feedback" + (question === 'sym1' ? '1' : '2');
+            if (type === 'correct') {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -9,26 +9,73 @@
 <body>
     <h1>Chapitre 2 : La géométrie de base 📐</h1>
     <p>Dans ce chapitre, nous allons explorer les figures géométriques simples et comprendre les notions d’angles, de droites parallèles et perpendiculaires.</p>
-    <h3>Sous-chapitres :</h3>
+    
+    <h2>📏 Les figures géométriques</h2>
+    <p>Apprenons à reconnaître les figures géométriques :</p>
     <ul>
-        <li>Reconnaître et tracer un carré, rectangle, triangle</li>
-        <li>Les angles droits et les angles obtus</li>
-        <li>La symétrie axiale</li>
+        <li>Un <strong>carré</strong> a 4 côtés égaux et 4 angles droits.</li>
+        <li>Un <strong>rectangle</strong> a 4 angles droits mais des côtés opposés de longueurs différentes.</li>
+        <li>Un <strong>triangle</strong> a 3 côtés et peut avoir différents types d’angles.</li>
+        <li>Un <strong>cercle</strong> est une figure fermée dont tous les points sont à égale distance du centre.</li>
     </ul>
-    <h3>Exercice rapide :</h3>
+    
+    <h3>📝 Exercices interactifs</h3>
     <p>Quelle figure a 4 côtés égaux et 4 angles droits ?</p>
-    <button onclick="showAnswer('correct')">Carré</button>
-    <button onclick="showAnswer('incorrect')">Triangle</button>
-    <button onclick="showAnswer('incorrect')">Rectangle</button>
-    <p id="feedback"></p>
+    <button onclick="checkAnswer('square', 'correct')">Carré</button>
+    <button onclick="checkAnswer('square', 'incorrect')">Triangle</button>
+    <button onclick="checkAnswer('square', 'incorrect')">Rectangle</button>
+    <p id="feedback1"></p>
+    
+    <h2>📐 Les types d’angles</h2>
+    <p>Un angle peut être :</p>
+    <ul>
+        <li><strong>Droit</strong> (90°)</li>
+        <li><strong>Aigu</strong> (moins de 90°)</li>
+        <li><strong>Obtus</strong> (plus de 90° mais moins de 180°)</li>
+        <li><strong>Plat</strong> (exactement 180°)</li>
+    </ul>
+    <p>Quel est l'angle d’un coin de feuille de papier standard ?</p>
+    <button onclick="checkAnswer('angle', 'correct')">90° (angle droit)</button>
+    <button onclick="checkAnswer('angle', 'incorrect')">45° (angle aigu)</button>
+    <button onclick="checkAnswer('angle', 'incorrect')">120° (angle obtus)</button>
+    <p id="feedback2"></p>
+    
+    <h2>🔲 Symétrie axiale</h2>
+    <p>La symétrie axiale est lorsqu'une figure peut être coupée en deux parties identiques.</p>
+    <p>Lequel de ces objets a une symétrie axiale ?</p>
+    <button onclick="checkAnswer('symmetry', 'correct')">Un cœur</button>
+    <button onclick="checkAnswer('symmetry', 'incorrect')">Une étoile à 5 branches</button>
+    <button onclick="checkAnswer('symmetry', 'correct')">Un papillon</button>
+    <p id="feedback3"></p>
+    
+    <h2>📏 Droites parallèles et perpendiculaires</h2>
+    <p>Les <strong>droites parallèles</strong> ne se croisent jamais, peu importe leur longueur.</p>
+    <p>Les <strong>droites perpendiculaires</strong> se croisent en formant un angle droit (90°).</p>
+    <p>Quelle paire de droites est parallèle ?</p>
+    <button onclick="checkAnswer('parallel', 'correct')">Les rails d’un train</button>
+    <button onclick="checkAnswer('parallel', 'incorrect')">Les bords d’un triangle</button>
+    <p id="feedback4"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Explore d'autres notions de géométrie :</p>
+    <ul>
+        <li><a href="maths_chapitre1.html">Retour au Chapitre 1</a></li>
+        <li><a href="maths_angles.html">Les types d'angles 🔺</a></li>
+        <li><a href="maths_symetrie.html">La symétrie axiale 🔄</a></li>
+        <li><a href="maths_droites.html">Les droites et segments ➖</a></li>
+    </ul>
+    <a href="maths_chapitre3.html">Chapitre suivant ➡️</a>
     <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
-    <script> function showAnswer(type) {
-            const feedback = document.getElementById('feedback');
+    
+    <script>
+        function checkAnswer(question, type) {
+            let feedbackId = "feedback" + (question === 'square' ? '1' : question === 'angle' ? '2' : question === 'symmetry' ? '3' : '4');
             if (type === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉 Le carré a 4 côtés égaux et 4 angles droits.</span>";
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
             } else {
-                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse. Réfléchis bien à la forme de la figure !</span>";
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
             }
-        } </script>
+        }
+    </script>
 </body>
 </html>

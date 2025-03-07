@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les types d'angles 🔺</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Les types d'angles 🔺</h1>
+    <p>Apprenons à identifier et à mesurer les différents types d’angles. 📏</p>
+    
+    <h2>📐 Les différents types d'angles</h2>
+    <ul>
+        <li><strong>Angle droit</strong> : mesure exactement 90°.</li>
+        <li><strong>Angle aigu</strong> : mesure moins de 90°.</li>
+        <li><strong>Angle obtus</strong> : mesure plus de 90° mais moins de 180°.</li>
+        <li><strong>Angle plat</strong> : mesure exactement 180°.</li>
+    </ul>
+    
+    <h2>📝 Exercices interactifs</h2>
+    <p>Quel est l’angle d’un coin de livre ?</p>
+    <button onclick="checkAnswer('angle1', 'correct')">90° (angle droit)</button>
+    <button onclick="checkAnswer('angle1', 'incorrect')">45° (angle aigu)</button>
+    <button onclick="checkAnswer('angle1', 'incorrect')">120° (angle obtus)</button>
+    <p id="feedback1"></p>
+    
+    <p>Un angle qui mesure 130° est :</p>
+    <button onclick="checkAnswer('angle2', 'correct')">Un angle obtus</button>
+    <button onclick="checkAnswer('angle2', 'incorrect')">Un angle aigu</button>
+    <button onclick="checkAnswer('angle2', 'incorrect')">Un angle droit</button>
+    <p id="feedback2"></p>
+    
+    <h2>📌 Application</h2>
+    <p>Utilise un rapporteur pour mesurer les angles dans ton environnement : une table, une porte, un livre... Identifie si ce sont des angles droits, aigus ou obtus.</p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Découvre d'autres notions de géométrie :</p>
+    <ul>
+        <li><a href="maths_chapitre2.html">Retour au Chapitre 2</a></li>
+        <li><a href="maths_droites.html">Les droites et segments ➖</a></li>
+        <li><a href="maths_symetrie.html">La symétrie axiale 🔄</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function checkAnswer(question, type) {
+            let feedbackId = "feedback" + (question === 'angle1' ? '1' : '2');
+            if (type === 'correct') {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+</body>
+</html>

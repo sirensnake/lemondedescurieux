@@ -5,30 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapitre 4 : Résolution de problèmes 🤔</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <h1>Chapitre 4 : Résolution de problèmes 🤔</h1>
     <p>Dans ce chapitre, nous apprendrons à résoudre des problèmes en plusieurs étapes, en utilisant des calculs, des tableaux et des graphiques.</p>
-    <h3>Sous-chapitres :</h3>
+    
+    <h2>🧩 Stratégies de résolution</h2>
+    <p>Pour résoudre un problème, il est important de :</p>
     <ul>
-        <li>Problèmes de la vie quotidienne</li>
-        <li>Utiliser les graphiques et les tableaux</li>
-        <li>Problèmes à plusieurs étapes</li>
+        <li>Lire attentivement l’énoncé et identifier les informations données.</li>
+        <li>Déterminer l’opération mathématique à utiliser (addition, soustraction, multiplication, division).</li>
+        <li>Effectuer les calculs avec précision.</li>
+        <li>Vérifier sa réponse en relisant le problème.</li>
     </ul>
-    <h3>Exercice rapide :</h3>
+    
+    <h2>📊 Utiliser des tableaux et des graphiques</h2>
+    <p>Les tableaux et graphiques permettent d’organiser les données pour mieux comprendre un problème.</p>
+    <p><strong>Exemple :</strong> Un tableau pour suivre les ventes de pommes sur trois jours :</p>
+    <table>
+        <tr>
+            <th>Jour</th>
+            <th>Nombre de pommes vendues</th>
+        </tr>
+        <tr>
+            <td>Lundi</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Mardi</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>Mercredi</td>
+            <td>35</td>
+        </tr>
+    </table>
+    <p>Combien de pommes ont été vendues en tout ?</p>
+    <input type="text" id="ex1" placeholder="Réponse">
+    <button onclick="checkAnswer('ex1', 100)">Vérifier</button>
+    <p id="feedback1"></p>
+    
+    <h2>📝 Exercices interactifs</h2>
     <p>Lucie a 3 boîtes avec 12 crayons chacune. Combien de crayons a-t-elle au total ?</p>
-    <button onclick="showAnswer('correct')">36 crayons</button>
-    <button onclick="showAnswer('incorrect')">30 crayons</button>
-    <button onclick="showAnswer('incorrect')">25 crayons</button>
-    <p id="feedback"></p>
+    <button onclick="checkAnswer('ex2', 36)">36 crayons</button>
+    <button onclick="checkAnswer('ex2', 30)">30 crayons</button>
+    <button onclick="checkAnswer('ex2', 25)">25 crayons</button>
+    <p id="feedback2"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <ul>
+        <li><a href="maths_chapitre3.html">Retour au Chapitre 3</a></li>
+        <li><a href="maths_problemes_avances.html">Problèmes avancés 🔢</a></li>
+    </ul>
+    
     <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
-    <script> function showAnswer(type) {
-            const feedback = document.getElementById('feedback');
-            if (type === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉 3 × 12 = 36 crayons.</span>";
+    
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            let userAnswer = parseFloat(document.getElementById(inputId).value);
+            let feedbackId = "feedback" + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
             } else {
-                feedback.innerHTML = "<span class='incorrect'>Ce n’est pas la bonne réponse. Réessaie !</span>";
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
             }
-        } </script>
+        }
+    </script>
 </body>
 </html>

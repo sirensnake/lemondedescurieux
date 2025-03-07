@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices sur la division ➗</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Exercices sur la division ➗</h1>
+    <p>Apprends à diviser des nombres et entraîne-toi avec des exercices interactifs. 🎯</p>
+    
+    <h2>📚 Division simple</h2>
+    <p>Calcule les résultats :</p>
+    <p>48 ÷ 6 = <input type="text" id="div1" placeholder="Réponse"> <button onclick="verifyResult('div1', 8)">Vérifier</button></p>
+    <p id="feedback1"></p>
+    
+    <p>72 ÷ 9 = <input type="text" id="div2" placeholder="Réponse"> <button onclick="verifyResult('div2', 8)">Vérifier</button></p>
+    <p id="feedback2"></p>
+    
+    <h2>➗ Division avec reste</h2>
+    <p>Résous ces opérations :</p>
+    <p>50 ÷ 4 = <input type="text" id="div3" placeholder="Quotient"> reste <input type="text" id="rem3" placeholder="Reste"> <button onclick="verifyDivision('div3', 'rem3', 12, 2)">Vérifier</button></p>
+    <p id="feedback3"></p>
+    
+    <p>95 ÷ 7 = <input type="text" id="div4" placeholder="Quotient"> reste <input type="text" id="rem4" placeholder="Reste"> <button onclick="verifyDivision('div4', 'rem4', 13, 4)">Vérifier</button></p>
+    <p id="feedback4"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Explore d'autres exercices :</p>
+    <ul>
+        <li><a href="maths_chapitre1.html">Retour au Chapitre 1</a></li>
+        <li><a href="maths_addition.html">Exercices sur l'addition ➕</a></li>
+        <li><a href="maths_soustraction.html">Exercices sur la soustraction ➖</a></li>
+        <li><a href="maths_multiplication.html">Exercices sur la multiplication ✖️</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function verifyResult(inputId, correctAnswer) {
+            let userAnswer = parseInt(document.getElementById(inputId).value);
+            let feedbackId = "feedback" + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+        
+        function verifyDivision(quotientId, remainderId, correctQuotient, correctRemainder) {
+            let userQuotient = parseInt(document.getElementById(quotientId).value);
+            let userRemainder = parseInt(document.getElementById(remainderId).value);
+            let feedbackId = "feedback" + quotientId.slice(-1);
+            if (userQuotient === correctQuotient && userRemainder === correctRemainder) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+</body>
+</html>

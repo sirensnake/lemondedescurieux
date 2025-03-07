@@ -22,7 +22,15 @@
         <p><strong>La fuite à Varennes (20 juin 1791) :</strong> La nuit est sombre, seuls les bruits des sabots rompent le silence. Louis XVI et sa famille, déguisés, fuient en direction de l’est pour rejoindre les forces royalistes. Mais leur fuite prend fin à Varennes où ils sont arrêtés. Cet échec scelle le destin de la monarchie : la confiance entre le peuple et le roi est rompue.</p>
 
         <p><strong>L’exécution de Louis XVI (21 janvier 1793) :</strong> Ce matin d’hiver, la place de la Révolution est remplie de spectateurs silencieux. Le roi déchu monte dignement les marches de l’échafaud. Un cri s’élève : « Vive la République ! » La lame tombe et marque un tournant définitif de la Révolution.</p>
-
+    </section>
+    
+    <section>
+        <h2>🎥 Vidéo explicative</h2>
+        <p>Regarde cette vidéo pour mieux comprendre les événements de la Révolution française :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/D8fel30lK78" frameborder="0" allowfullscreen></iframe>
+    </section>
+    
+    <section>
         <h3>Les événements clés</h3>
         <ul style="list-style-type: none; padding: 0;">
             <li><strong>5 mai 1789 :</strong> Ouverture des États généraux.</li>
@@ -31,90 +39,6 @@
         </ul>
     </section>
 
-    <section class="game-section">
-        <h3>Jeu interactif : Quiz sur la Révolution française 🏰</h3>
-        <p>Réponds aux questions suivantes pour tester tes connaissances !</p>
-        <div id="quiz-container">
-            <p id="question"></p>
-            <button onclick="checkAnswer(0)" id="option0"></button>
-            <button onclick="checkAnswer(1)" id="option1"></button>
-            <button onclick="checkAnswer(2)" id="option2"></button>
-            <button onclick="checkAnswer(3)" id="option3"></button>
-        </div>
-        <p id="feedback"></p>
-        <p id="score-display">Score : 0</p>
-        <button onclick="nextQuestion()" id="next-button" style="display:none;">Question suivante</button>
-    </section>
-
-    <script>
-        const questions = [
-            {
-                question: "Quand a eu lieu la prise de la Bastille ?",
-                options: ["5 mai 1789", "14 juillet 1789", "26 août 1789", "21 janvier 1793"],
-                correct: 1
-            },
-            {
-                question: "Que marque la Déclaration des droits de l’homme ?",
-                options: [
-                    "La fin de la monarchie absolue",
-                    "La reconnaissance des droits et libertés",
-                    "L'exécution de Louis XVI",
-                    "Le début de l’Empire de Napoléon"
-                ],
-                correct: 1
-            },
-            {
-                question: "Qui a dirigé la période de la Terreur ?",
-                options: ["Louis XVI", "Robespierre", "Napoléon", "Danton"],
-                correct: 1
-            },
-            {
-                question: "Quand Napoléon devient-il empereur ?",
-                options: ["1793", "1799", "1804", "1815"],
-                correct: 2
-            }
-        ];
-
-        let currentQuestionIndex = 0;
-        let score = 0;
-
-        function loadQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            document.getElementById('question').innerText = currentQuestion.question;
-            currentQuestion.options.forEach((option, index) => {
-                document.getElementById('option' + index).innerText = option;
-                document.getElementById('option' + index).style.display = 'inline-block';
-            });
-            document.getElementById('feedback').innerText = '';
-            document.getElementById('next-button').style.display = 'none';
-        }
-
-        function checkAnswer(selectedOption) {
-            const currentQuestion = questions[currentQuestionIndex];
-            if (selectedOption === currentQuestion.correct) {
-                document.getElementById('feedback').innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
-                score++;
-            } else {
-                document.getElementById('feedback').innerHTML = `<span class='incorrect'>Mauvaise réponse. La bonne réponse était : ${currentQuestion.options[currentQuestion.correct]}.</span>`;
-            }
-            document.getElementById('score-display').innerText = `Score : ${score}`;
-            document.getElementById('next-button').style.display = 'block';
-        }
-
-        function nextQuestion() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-                document.getElementById('quiz-container').innerHTML = `<p><strong>Félicitations ! 🎉</strong> Tu as terminé le quiz avec un score de ${score}/${questions.length}.</p>`;
-                document.getElementById('feedback').innerText = '';
-                document.getElementById('next-button').style.display = 'none';
-            }
-        }
-
-        // Charger la première question au démarrage
-        loadQuestion();
-    </script>
-<a href="histoire_ecriture.html">Suivant : Chapitre 4 - La naissance de l'écriture ✍️</a>
+    <a href="histoire_ecriture.html">Suivant : Chapitre 4 - La naissance de l'écriture ✍️</a>
 </body>
 </html>
