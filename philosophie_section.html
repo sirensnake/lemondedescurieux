@@ -47,6 +47,13 @@
     </style>
 </head>
 <body>
+    <div id="menu-container"></div>
+    <script>
+        fetch('menu_lateral.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('menu-container').innerHTML = data);
+    </script>
+
     <h1>Bienvenue dans la section Philosophie 🤔</h1>
     <div class="content">
         <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
@@ -81,6 +88,42 @@
         function showAnswer() {
             document.getElementById('activity-output').innerText = "La liberté, ce n'est pas faire tout ce que l'on veut, mais pouvoir choisir en respectant les autres.";
         }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("✔️ Script chargé dans maths_section.html");
+    
+            // Charger dynamiquement le menu latéral
+            fetch("menu_lateral.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("menu-container").innerHTML = data;
+                console.log("✔️ Menu latéral chargé avec succès !");
+    
+                let sidebar = document.getElementById("sidebar");
+                let toggleButton = document.getElementById("sidebar-toggle");
+    
+                console.log("Sidebar détectée :", sidebar);
+                console.log("Bouton détecté :", toggleButton);
+    
+                if (!sidebar) {
+                    console.error("❌ Erreur : Élément #sidebar introuvable !");
+                    return;
+                }
+    
+                if (!toggleButton) {
+                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
+                    return;
+                }
+    
+                toggleButton.addEventListener("click", function() {
+                    console.log("✔️ Bouton cliqué !");
+                    sidebar.classList.toggle("open");
+                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
+                });
+            })
+            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+/* Style de la barre latérale */
+.sidebar {
+    position: fixed;
+    left: -250px; /* Caché par défaut */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #264653;
+    padding-top: 60px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-250px); /* Caché à gauche */
+    z-index: 1100;
+}
+
+.sidebar.open {
+    transform: translateX(250px); /* Fait apparaître le menu */
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.sidebar ul li a:hover {
+    color: #f4a261;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 1200;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.sidebar.open {
+    left: 0;
+    border: 2px solid green; /* Debug: voir si la classe .open est appliquée */
+}
