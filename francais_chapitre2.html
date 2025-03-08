@@ -5,27 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapitre 2 : Compréhension de textes 📖</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <style>
+        .sortable-list li {
+            background-color: #87CEEB; /* Bleu clair pour différencier des boutons */
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: grab;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+    </style>
 </head>
 <body>
     <h1>Chapitre 2 : Compréhension de textes 📖</h1>
     <p>Dans ce chapitre, nous allons lire des textes variés et répondre à des questions de compréhension pour développer nos capacités d’analyse.</p>
-    <h3>Exercice : Lis ce court texte et réponds à la question.</h3>
-    <blockquote>
-        "Un matin d’hiver, le petit renard sortit de son terrier. La neige recouvrait le sol comme un grand tapis blanc. Il chercha quelque chose à manger, mais tout semblait gelé."
-    </blockquote>
-    <p>Que cherche le renard en sortant de son terrier ?</p>
-    <button onclick="showAnswer('correct')">De la nourriture</button>
-    <button onclick="showAnswer('incorrect')">De la chaleur</button>
-    <button onclick="showAnswer('incorrect')">Un autre terrier</button>
-    <p id="feedback"></p>
+    
+    <h2>Textes complémentaires</h2>
+    <p>Tu peux aussi explorer ces textes pour aller plus loin :</p>
+    <ul>
+        <li><a href="francais_chapitre2_texte_conte.html">📖 Un conte : "Le Voyage d'Élias'"</a></li>
+        <li><a href="francais_chapitre2_texte_animaux.html">🌿 Texte informatif : "Les animaux en hiver"</a></li>
+    </ul>
+    
+    <h3>Exercice : Remets les phrases dans l’ordre.</h3>
+    <p>Fais glisser les phrases pour les mettre dans le bon ordre :</p>
+    <ul id="sortable" class="sortable-list">
+        <li id="phrase1">Le renard chercha quelque chose à manger.</li>
+        <li id="phrase2">Un matin d’hiver, le renard sortit de son terrier.</li>
+        <li id="phrase3">La neige recouvrait le sol comme un grand tapis blanc.</li>
+        <li id="phrase4">Mais tout semblait gelé.</li>
+    </ul>
+    <button id="verifyButton" onclick="checkOrder()">Vérifier</button>
+    <p id="orderFeedback"></p>
+    
+    <h3>Exercice : Trouve la bonne phrase.</h3>
+    <p>Complète la phrase suivante avec la bonne option :</p>
+    <p><strong>"Le renard marche sur la neige qui ressemble à ..."</strong></p>
+    <select id="completion" onchange="checkCompletion()">
+        <option value="incorrect">du sable chaud</option>
+        <option value="correct">un grand tapis blanc</option>
+        <option value="incorrect">une route glacée</option>
+    </select>
+    <p id="completionFeedback"></p>
+    
+    <h3>Exercice : Vrai ou Faux ?</h3>
+    <p>Le renard a trouvé de la nourriture immédiatement.</p>
+    <button id="q2-true" onclick="lockQuestion('q2', false)">Vrai</button>
+    <button id="q2-false" onclick="lockQuestion('q2', true)">Faux</button>
+    <p id="feedback2"></p>
+    
+    <h3>Exercice : Associe l’image au texte.</h3>
+    <p>Regarde l’image et sélectionne la phrase qui correspond.</p>
+    <img src="images/renard_neige.jpg" alt="Renard dans la neige" width="200">
+    <button id="q3-true" onclick="lockQuestion('q3', true)">Un renard marche dans la neige.</button>
+    <button id="q3-false" onclick="lockQuestion('q3', false)">Un renard nage dans un lac.</button>
+    <p id="feedback3"></p>
+    
     <a href="francais_section.html" class="back-button">Retour au sommaire du français 📚</a>
-    <script> function showAnswer(type) {
-            const feedback = document.getElementById('feedback');
-            if (type === 'correct') {
-                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉 Le renard cherche à manger.</span>";
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            new Sortable(document.getElementById("sortable"), {
+                animation: 150
+            });
+        });
+        
+        function checkOrder() {
+            const correctOrder = ["phrase2", "phrase3", "phrase1", "phrase4"];
+            let userOrder = Array.from(document.querySelectorAll('#sortable li')).map(li => li.id);
+            let feedback = document.getElementById("orderFeedback");
+            let verifyButton = document.getElementById("verifyButton");
+            let sortableList = document.getElementById("sortable");
+            
+            if (JSON.stringify(userOrder) === JSON.stringify(correctOrder)) {
+                feedback.innerHTML = "<span class='correct'>Bravo ! Tu as bien reconstitué l'histoire. 🎉</span>";
+                verifyButton.disabled = true;
+                verifyButton.classList.add("disabled");
+                sortableList.classList.add("disabled");
             } else {
-                feedback.innerHTML = "<span class='incorrect'>Ce n’est pas la bonne réponse. Relis le texte attentivement.</span>";
+                feedback.innerHTML = "<span class='incorrect'>Ce n'est pas encore ça, essaye encore ! ❌</span>";
             }
-        } </script>
+        }
+        
+        function checkCompletion() {
+            const selection = document.getElementById("completion").value;
+            const feedback = document.getElementById("completionFeedback");
+            if (selection === "correct") {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! ✅</span>";
+                document.getElementById("completion").disabled = true;
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Ce n'est pas la bonne réponse. ❌</span>";
+            }
+        }
+        
+        function lockQuestion(questionId, isCorrect) {
+            const feedback = document.getElementById('feedback' + questionId.charAt(1));
+            const trueBtn = document.getElementById(questionId + '-true');
+            const falseBtn = document.getElementById(questionId + '-false');
+            
+            if (isCorrect) {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Ce n'est pas la bonne réponse. ❌</span>";
+            }
+            
+            trueBtn.disabled = true;
+            falseBtn.disabled = true;
+            trueBtn.classList.add('disabled');
+            falseBtn.classList.add('disabled');
+        }
+    </script>
 </body>
 </html>

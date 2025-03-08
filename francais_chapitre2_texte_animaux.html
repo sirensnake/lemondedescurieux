@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les animaux en hiver 🌿</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <style>
+        .disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Les animaux en hiver 🌿</h1>
+    <p><em>Comment les animaux s’adaptent-ils aux conditions hivernales ?</em></p>
+    
+    <blockquote>
+        "L’hiver est une saison rude pour les animaux. Pour survivre, ils adoptent différentes stratégies. Certains, comme l’ours brun, entrent en hibernation. Ils trouvent une tanière où ils dorment durant plusieurs mois, utilisant leurs réserves de graisse pour subsister.
+        <br><br>
+        D’autres, comme l’écureuil roux, font des provisions à l’automne. Ils cachent des noisettes et des glands un peu partout, et les retrouvent grâce à leur mémoire impressionnante. Pendant l’hiver, ils sortent de leur nid uniquement pour se nourrir.
+        <br><br>
+        Les oiseaux migrateurs, tels que les hirondelles, choisissent une autre stratégie : ils quittent les régions froides et parcourent des milliers de kilomètres pour rejoindre des climats plus chauds.
+        <br><br>
+        Enfin, certains animaux, comme le lièvre variable, changent même de couleur ! Leur pelage devient blanc en hiver pour se camoufler dans la neige et échapper aux prédateurs."
+    </blockquote>
+    
+    <h2>Questions de compréhension</h2>
+    <p>Que fait l’ours brun pour survivre en hiver ?</p>
+    <button id="q1-true" onclick="lockQuestion('q1', true)">Il hiberne</button>
+    <button id="q1-false" onclick="lockQuestion('q1', false)">Il migre vers le sud</button>
+    <p id="feedback"></p>
+    
+    <p>Pourquoi le lièvre variable change-t-il de couleur en hiver ?</p>
+    <button id="q2-true" onclick="lockQuestion('q2', true)">Pour se camoufler dans la neige</button>
+    <button id="q2-false" onclick="lockQuestion('q2', false)">Pour mieux voir la nuit</button>
+    <p id="feedback2"></p>
+    
+    <a href="francais_chapitre2.html" class="back-button">Retour au chapitre 2 📚</a>
+    
+    <script>
+        function lockQuestion(questionId, isCorrect) {
+            const feedback = document.getElementById('feedback' + (questionId === 'q1' ? '' : '2'));
+            const trueBtn = document.getElementById(questionId + '-true');
+            const falseBtn = document.getElementById(questionId + '-false');
+            
+            if (isCorrect) {
+                feedback.innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                feedback.innerHTML = "<span class='incorrect'>Ce n'est pas la bonne réponse. ❌</span>";
+            }
+            
+            trueBtn.classList.add('disabled');
+            falseBtn.classList.add('disabled');
+        }
+    </script>
+</body>
+</html>
