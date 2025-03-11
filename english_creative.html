@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateliers Créatifs en Anglais 🎨</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>Crée et apprends l’anglais ✍️</h1>
+    <div class="content">
+        <p>Exprime-toi en anglais à travers ces activités amusantes !</p>
+        
+        <h2>🖼️ Crée une affiche en anglais</h2>
+        <p>Choisis un sujet et écris des phrases simples en anglais. Dessine ou ajoute des images pour illustrer ton affiche.</p>
+        <textarea rows="5" cols="50" placeholder="Écris ton texte ici..."></textarea>
+        <button onclick="saveText()">Sauvegarder</button>
+        
+        <h2>🎭 Jeu de rôle : Présente-toi</h2>
+        <p>Utilise ce modèle pour te présenter :</p>
+        <p>"Hello! My name is ______. I am ____ years old. I like _______."</p>
+        <input type="text" id="name" placeholder="Ton prénom">
+        <input type="text" id="age" placeholder="Ton âge">
+        <input type="text" id="like" placeholder="Ce que tu aimes">
+        <button onclick="showIntroduction()">Afficher ma présentation</button>
+        <p id="output"></p>
+    </div>
+    <a href="english_section.html">Retour à la section principale</a>
+
+    <script>
+        function saveText() {
+            alert("Ton texte a été sauvegardé !")
+        }
+        function showIntroduction() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let like = document.getElementById("like").value;
+            document.getElementById("output").innerText = `Hello! My name is ${name}. I am ${age} years old. I like ${like}.`;
+        }
+    </script>
+</body>
+</html>

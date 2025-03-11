@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chansons en Anglais 🎶</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/english_songs.css">
+    <script>
+        function loadVideos() {
+            document.getElementById("beatles-video").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/rblYSKz_VnI" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+            document.getElementById("coldplay-video").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/VPRjCeoBqrI" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        }
+        window.onload = loadVideos;
+    </script>
+</head>
+<body>
+    <h1>🎵 Chante et apprends l’anglais 🎤</h1>
+    <div class="content">
+        <p>Apprends l’anglais en chantant ces chansons célèbres !</p>
+        
+        <h2>The Beatles - "Hello, Goodbye" 👋</h2>
+        <div id="beatles-video"></div>
+        <p class="lyrics"><strong>Paroles :</strong><br>
+           You say yes, I say no<br>
+           You say stop and I say go, go, go...</p>
+        
+        <h2>Coldplay - "A Sky Full of Stars" 🌟</h2>
+        <div id="coldplay-video"></div>
+        <p class="lyrics"><strong>Paroles :</strong><br>
+           'Cause you're a sky, 'cause you're a sky full of stars,<br>
+           I'm gonna give you my heart...</p>
+    </div>
+    <a href="english_section.html" class="back-button">Retour à la section principale</a>
+</body>
+</html>
