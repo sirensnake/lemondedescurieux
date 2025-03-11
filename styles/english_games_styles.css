@@ -1,0 +1,80 @@
+body {
+    background-color: #e9f5e1; /* Harmonisation avec le site */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    gap: 5px;
+    justify-content: center;
+    margin: auto;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cell:hover {
+    background-color: #e0e0e0;
+}
+
+.selected {
+    background-color: #ffcc80;
+    color: white;
+}
+
+.found {
+    background-color: #4caf50 !important;
+    color: white;
+}
+
+.word-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.word-list li {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.back-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 15px;
+    background-color: #2a9d8f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 200px; /* Réduction de la largeur du bouton */
+    text-align: center;
+}
+
+.back-button:hover {
+    background-color: #21867a;
+}

@@ -40,6 +40,76 @@
             <li>Est-ce loin ? - Is it far?</li>
         </ul>
     </div>
-    <a href="english_section.html">Retour à la section principale</a>
+
+    <h2>🎯 Quiz interactif</h2>
+    <p><strong>5️⃣ Comment dire "Merci beaucoup" en anglais ?</strong></p>
+    <button onclick="checkAnswer(5, 'A')">A) Thank you very much</button>
+    <button onclick="checkAnswer(5, 'B')">B) You’re welcome</button>
+    <p id="feedback5"></p>
+    
+    <p><strong>6️⃣ Quelle est la traduction de "Excuse me" ?</strong></p>
+    <button onclick="checkAnswer(6, 'A')">A) Excuse-moi</button>
+    <button onclick="checkAnswer(6, 'B')">B) Bonjour</button>
+    <p id="feedback6"></p>
+    
+    </div>
+
+    <p><strong>7️⃣ Comment demander l'heure en anglais ?</strong></p>
+    <button onclick="checkAnswer(7, 'A')">A) What time is it?</button>
+    <button onclick="checkAnswer(7, 'B')">B) Where is the station?</button>
+    <p id="feedback7"></p>
+
+    <p><strong>8️⃣ Quelle est la bonne traduction de "J'ai faim" ?</strong></p>
+    <button onclick="checkAnswer(8, 'A')">A) I'm hungry</button>
+    <button onclick="checkAnswer(8, 'B')">B) I'm tired</button>
+    <p id="feedback8"></p>
+
+    <p><strong>9️⃣ Comment dire "Pouvez-vous m'aider ?" en anglais ?</strong></p>
+    <button onclick="checkAnswer(9, 'A')">A) Can you help me?</button>
+    <button onclick="checkAnswer(9, 'B')">B) Can you see me?</button>
+    <p id="feedback9"></p>
+
+    <p><strong>🔟 Que signifie "I would like a coffee" ?</strong></p>
+    <button onclick="checkAnswer(10, 'A')">A) Je voudrais un café</button>
+    <button onclick="checkAnswer(10, 'B')">B) Je voudrais un thé</button>
+    <p id="feedback10"></p>
+
+    <script>
+        function checkAnswer(question, choice) {
+            let correctAnswers = { 1: 'A', 2: 'A', 3: 'B', 4: 'A', 5: 'A', 6: 'A' };
+            let feedback = document.getElementById(`feedback${question}`);
+            if (choice === correctAnswers[question]) {
+                feedback.textContent = "✅ Bonne réponse !";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "❌ Mauvaise réponse, essaye encore !";
+                feedback.style.color = "red";
+            }
+        }
+        <p><strong>7️⃣ Comment demander l'heure en anglais ?</strong></p>
+    <button onclick="checkAnswer(7, 'A')">A) What time is it?</button>
+    <button onclick="checkAnswer(7, 'B')">B) Where is the station?</button>
+    <p id="feedback7"></p>
+
+    <p><strong>8️⃣ Quelle est la bonne traduction de "J'ai faim" ?</strong></p>
+    <button onclick="checkAnswer(8, 'A')">A) I'm hungry</button>
+    <button onclick="checkAnswer(8, 'B')">B) I'm tired</button>
+    <p id="feedback8"></p>
+
+    <p><strong>9️⃣ Comment dire "Pouvez-vous m'aider ?" en anglais ?</strong></p>
+    <button onclick="checkAnswer(9, 'A')">A) Can you help me?</button>
+    <button onclick="checkAnswer(9, 'B')">B) Can you see me?</button>
+    <p id="feedback9"></p>
+
+    <p><strong>🔟 Que signifie "I would like a coffee" ?</strong></p>
+    <button onclick="checkAnswer(10, 'A')">A) Je voudrais un café</button>
+    <button onclick="checkAnswer(10, 'B')">B) Je voudrais un thé</button>
+    <p id="feedback10"></p>
+</script>
+
+    <a href="english_section.html" class="back-button">Retour à la section principale</a>
+
 </body>
 </html>
+
+
