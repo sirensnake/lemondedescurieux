@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparer et Ranger les Nombres - CM1 ⚖️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    
+    
+    <h1>⚖️ Comparer et Ranger les Nombres - CM1</h1>
+    <p>Apprends à comparer et classer les nombres du plus petit au plus grand.</p>
+    
+    <div class="content">
+        <h2>🔍 Comment comparer les nombres ?</h2>
+        <p>Un nombre est plus grand qu'un autre si son chiffre le plus à gauche est plus grand.</p>
+        <p>Exemple : <strong>8 452</strong> > <strong>7 999</strong> car 8 est plus grand que 7.</p>
+    </div>
+    
+    <div class="content">
+        <h2>📊 Exercices interactifs</h2>
+        <p>Complète avec <strong>&lt;</strong>, <strong>&gt;</strong> ou <strong>=</strong> :</p>
+        <ul>
+            <li>4 238 <input type="text" id="q1" placeholder="?"> 4 298 <button onclick="checkAnswer('q1', '<')">Vérifier</button></li>
+            <li>56 901 <input type="text" id="q2" placeholder="?"> 56 091 <button onclick="checkAnswer('q2', '>')">Vérifier</button></li>
+            <li>120 045 <input type="text" id="q3" placeholder="?"> 120 045 <button onclick="checkAnswer('q3', '=')">Vérifier</button></li>
+        </ul>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <a href="maths_numeration.html" class="back-button">Retour à la Numération 🔢</a>
+    
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            let userAnswer = document.getElementById(inputId).value.trim();
+            let feedback = document.getElementById("feedback");
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = "✅ Bonne réponse !";
+                feedback.classList.add("correct");
+                feedback.classList.remove("incorrect");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.classList.add("incorrect");
+                feedback.classList.remove("correct");
+            }
+        }
+    </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+</body>
+</html>

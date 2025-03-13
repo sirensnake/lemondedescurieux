@@ -27,12 +27,15 @@
     <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
 
     <!-- Script pour gérer l'ouverture et la fermeture -->
-    
-    
-    
-    
-    
-    
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const toggleButton = document.getElementById("sidebar-toggle");
+            
+            toggleButton.addEventListener("click", function () {
+                sidebar.classList.toggle("open");
+            });
+        });
+    </script>
 </body>
 </html>

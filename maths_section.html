@@ -5,60 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathématiques - Sommaire CM1 📐</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
 </head>
 <body>
     <div id="menu-container"></div>
     
-    <h1>Sommaire des mathématiques - Niveau CM1 📐</h1>
-    <p>Voici les chapitres de mathématiques à explorer cette année :</p>
-    <ul class="chapter-list">
-        <li><a href="maths_chapitre1.html">Chapitre 1 : Les nombres et les calculs</a></li>
-        <li><a href="maths_chapitre2.html">Chapitre 2 : La géométrie de base</a></li>
-        <li><a href="maths_chapitre3.html">Chapitre 3 : Mesures et conversions</a></li>
-        <li><a href="maths_chapitre4.html">Chapitre 4 : Résolution de problèmes</a></li>
-    </ul>
+    <h1>Bienvenue dans la section Mathématiques 📐</h1>
+    <p>Explore les différentes notions de mathématiques à travers des activités interactives et ludiques !</p>
+    
+    <div class="content">
+        <h2>📊 Nombres et Calculs</h2>
+        <ul>
+            <li><a href="maths_numeration.html">🔢 Numération</a></li>
+            <li><a href="maths_operations.html">➕➖✖️➗ Opérations et Calculs</a></li>
+            <li><a href="maths_fractions.html">🍕 Fractions et Décimaux</a></li>
+            <li><a href="maths_calcul_mental.html">🧠 Calcul Mental</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>📏 Grandeurs et Mesures</h2>
+        <ul>
+            <li><a href="maths_mesures.html">📐 Longueurs, Masses et Volumes</a></li>
+            <li><a href="maths_temps.html">⏳ Temps et Durées</a></li>
+            <li><a href="maths_monnaie.html">💰 Monnaie</a></li>
+            <li><a href="maths_perimetre_aire.html">📏 Périmètre et Aire</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>📐 Espace et Géométrie</h2>
+        <ul>
+            <li><a href="maths_geometrie.html">🔷 Figures et Solides</a></li>
+            <li><a href="maths_symetrie.html">🎭 Symétrie</a></li>
+            <li><a href="maths_patron_solides.html">🏗 Patrons et Construction</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>🕵️‍♂️ Résolution de Problèmes</h2>
+        <ul>
+            <li><a href="maths_problemes.html">📊 Stratégies et Logique</a></li>
+            <li><a href="maths_problemes_etapes.html">🚀 Problèmes en Plusieurs Étapes</a></li>
+            <li><a href="maths_problemes_reels.html">🌍 Problèmes du Quotidien</a></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>🎯 Défis et Jeux</h2>
+        <p>Teste tes connaissances avec des défis et des énigmes mathématiques amusantes !</p>
+        <a href="maths_defis.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>📚 Ressources Complémentaires</h2>
+        <p>Retrouve des vidéos, exercices et fiches pour approfondir tes connaissances.</p>
+        <a href="maths_ressources.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
-    
-            // Charger dynamiquement le menu latéral
             fetch("menu_lateral.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-        
-                let sidebar = document.getElementById("sidebar");
-                let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("🔍 Vérification après chargement :");
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-        
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable après chargement !");
-                    return;
-                }
-        
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable après chargement !");
-                    return;
-                }
-    
-                toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
-                    sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                });
-    
-                console.log("✅ Gestionnaire d'événements ajouté avec succès !");
-            })
-            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    
+                    // Correction : Réattacher les événements du menu après chargement
+                    setTimeout(() => {
+                        const sidebar = document.getElementById("sidebar");
+                        const toggleButton = document.getElementById("sidebar-toggle");
+                        if (toggleButton && sidebar) {
+                            toggleButton.addEventListener("click", function () {
+                                sidebar.classList.toggle("open");
+                            });
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
-    
-    
-    
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placer les Nombres sur une Droite Graduée - CM1 📍</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/maths_numeration_droite.css">
+</head>
+<body>
+    
+    
+    <h1>📍 Placer les Nombres sur une Droite Graduée - CM1</h1>
+    <p>Clique sur la droite graduée pour placer le bon nombre.</p>
+    
+    <div class="content number-line-container">
+        <h2>📏 Exercice interactif</h2>
+        <p>Place le nombre <strong id="target-number">50</strong> sur la droite graduée :</p>
+        <div class="number-line" onclick="placeMarker(event)">
+            <div id="marker" class="marker"></div>
+            <div class="tick" style="left: 0%;"></div>
+            <div class="tick-label" style="left: 0%;">0</div>
+            <div class="tick" style="left: 25%;"></div>
+            <div class="tick-label" style="left: 25%;">25</div>
+            <div class="tick" style="left: 50%;"></div>
+            <div class="tick-label" style="left: 50%;">50</div>
+            <div class="tick" style="left: 75%;"></div>
+            <div class="tick-label" style="left: 75%;">75</div>
+            <div class="tick" style="left: 100%;"></div>
+            <div class="tick-label" style="left: 100%;">100</div>
+        </div>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <a href="maths_numeration.html" class="back-button">Retour à la Numération 🔢</a>
+    
+    <script>
+        let targetNumber = 50;
+        function placeMarker(event) {
+            let line = document.querySelector(".number-line");
+            let marker = document.getElementById("marker");
+            let rect = line.getBoundingClientRect();
+            let clickPosition = event.clientX - rect.left;
+            let percentage = clickPosition / rect.width;
+            let guessedNumber = Math.round(percentage * 100);
+            
+            marker.style.left = `${percentage * 100}%`;
+            marker.style.display = "block";
+            
+            let feedback = document.getElementById("feedback");
+            if (Math.abs(guessedNumber - targetNumber) <= 5) {
+                feedback.innerHTML = "✅ Bien placé !";
+                feedback.style.color = "green";
+            } else {
+                feedback.innerHTML = guessedNumber > targetNumber ? "❌ Trop à droite !" : "❌ Trop à gauche !";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+</body>
+</html>

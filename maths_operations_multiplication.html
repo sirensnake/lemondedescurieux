@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication - CM1 ✖️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/maths_operations_multiplication.css">
+</head>
+<body>
+    <h1>✖️ Multiplication - CM1</h1>
+    <p>Apprends à poser et effectuer des multiplications avec des nombres à un ou deux chiffres.</p>
+    
+    <div class="content">
+        <h2>📖 Rappel des Règles</h2>
+        <p>La multiplication est une addition répétée. Exemple : 3 × 4 = 4 + 4 + 4 = 12.</p>
+    </div>
+    
+    <div class="content">
+        <h2>📝 Exercices de Multiplication</h2>
+        <p>Résous ces multiplications :</p>
+        <ul>
+            <li>7 × 8 = <input type="text" id="q1" placeholder="?"> <button onclick="checkAnswer('q1', '56')">Vérifier</button></li>
+            <li>12 × 5 = <input type="text" id="q2" placeholder="?"> <button onclick="checkAnswer('q2', '60')">Vérifier</button></li>
+            <li>23 × 3 = <input type="text" id="q3" placeholder="?"> <button onclick="checkAnswer('q3', '69')">Vérifier</button></li>
+        </ul>
+    </div>
+    
+    <a href="maths_operations.html" class="back-button">Retour aux Opérations ➕➖✖️➗</a>
+    
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            let userAnswer = document.getElementById(inputId).value.trim();
+            let feedback = document.createElement("p");
+            feedback.classList.add("feedback");
+            
+            let parentElement = document.getElementById(inputId).parentElement;
+            let existingFeedback = parentElement.querySelector(".feedback");
+            if (existingFeedback) {
+                parentElement.removeChild(existingFeedback);
+            }
+            parentElement.appendChild(feedback);
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = "✅ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+</body>
+</html>

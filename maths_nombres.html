@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombres et Calculs - CM1 🔢</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    
+    
+    <h1>📊 Nombres et Calculs - CM1</h1>
+    <p>Apprends à lire, écrire et manipuler les nombres jusqu'à 1 000 000, découvre les fractions et entraîne-toi aux opérations !</p>
+    
+    
+        <h2>🔢 Numération</h2>
+        <p>Lis, écris et compare les nombres jusqu'à 1 000 000.</p>
+        <a href="maths_numeration.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>➕➖ Multiplication et Division</h2>
+        <p>Maîtrise les additions, soustractions, multiplications et divisions.</p>
+        <a href="maths_operations.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>🍕 Fractions et Décimaux</h2>
+        <p>Apprends à reconnaître et manipuler les fractions et les premiers nombres décimaux.</p>
+        <a href="maths_fractions.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>🧠 Calcul Mental</h2>
+        <p>Entraîne-toi avec des jeux et des défis pour améliorer ta rapidité de calcul.</p>
+        <a href="maths_calcul_mental.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <a href="maths_section.html" class="back-button">Retour à la section Maths 📐</a>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition et Soustraction - CM1 ➕➖</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/maths_operations_add_sous.css">
+</head>
+<body>
+    <h1>➕➖ Addition et Soustraction - CM1</h1>
+    <p>Apprends à poser et effectuer des additions et soustractions avec des nombres jusqu'à 1 000 000.</p>
+    
+    <div class="content">
+        <h2>📖 Rappel des Règles</h2>
+        <p>Une addition permet d’assembler plusieurs nombres pour en obtenir un total.</p>
+        <p>Une soustraction sert à calculer la différence entre deux nombres.</p>
+    </div>
+    
+    <div class="content">
+        <h2>📝 Exercices d'Addition</h2>
+        <p>Résous ces additions :</p>
+        <ul>
+            <li>245 + 678 = <input type="text" id="q1" placeholder="?"> <button onclick="checkAnswer('q1', '923')">Vérifier</button></li>
+            <li>4 502 + 2 198 = <input type="text" id="q2" placeholder="?"> <button onclick="checkAnswer('q2', '6700')">Vérifier</button></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>➖ Exercices de Soustraction</h2>
+        <p>Résous ces soustractions :</p>
+        <ul>
+            <li>954 - 328 = <input type="text" id="q3" placeholder="?"> <button onclick="checkAnswer('q3', '626')">Vérifier</button></li>
+            <li>7 800 - 3 425 = <input type="text" id="q4" placeholder="?"> <button onclick="checkAnswer('q4', '4375')">Vérifier</button></li>
+        </ul>
+    </div>
+    
+    <a href="maths_operations.html" class="back-button">Retour aux Opérations ➕➖✖️➗</a>
+    
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            let userAnswer = document.getElementById(inputId).value.trim();
+            let feedback = document.createElement("p");
+            feedback.classList.add("feedback");
+            
+            let parentElement = document.getElementById(inputId).parentElement;
+            let existingFeedback = parentElement.querySelector(".feedback");
+            if (existingFeedback) {
+                parentElement.removeChild(existingFeedback);
+            }
+            parentElement.appendChild(feedback);
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = "✅ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+</body>
+</html>

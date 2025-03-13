@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opérations et Calculs - CM1 ➕➖✖️➗</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/maths_operations.css">
+</head>
+<body>
+    <h1>➕➖✖️➗ Opérations et Calculs - CM1</h1>
+    <p>Apprends à poser et effectuer des additions, soustractions, multiplications et divisions.</p>
+    
+    <div class="content">
+        <h2>➕ Addition et ➖ Soustraction</h2>
+        <p>Maîtrise l’addition et la soustraction posées et mentales.</p>
+        <a href="maths_operations_add_sous.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>✖️ Multiplication</h2>
+        <p>Apprends à poser et résoudre des multiplications avec des nombres à 1 ou 2 chiffres.</p>
+        <a href="maths_operations_multiplication.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>➗ Division</h2>
+        <p>Découvre la division posée et la notion de partage.</p>
+        <a href="maths_operations_division.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <a href="maths_nombres.html" class="back-button">Retour aux Nombres et Calculs 🔢</a>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+</body>
+</html>

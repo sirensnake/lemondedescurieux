@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture et écriture des nombres - CM1 📖</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    
+    
+    <h1>📖 Lecture et Écriture des Nombres - CM1</h1>
+    <p>Apprends à lire et écrire correctement les nombres jusqu'à 1 000 000.</p>
+    
+    <div class="content">
+        <h2>✍️ Comment écrire les grands nombres ?</h2>
+        <p>Les nombres sont composés de chiffres allant de 0 à 9. Il est important de bien distinguer les unités, dizaines, centaines, milliers...</p>
+    </div>
+    
+    <div class="content">
+        <h2>🔢 Exercices interactifs</h2>
+        <p>Teste tes connaissances en écrivant les nombres suivants en toutes lettres :</p>
+        <ul>
+            <li><strong>458</strong> → <input type="text" placeholder="Écris ici..." id="q1"> <button onclick="checkAnswer('q1', 'quatre cent cinquante-huit')">Vérifier</button></li>
+            <li><strong>1 203</strong> → <input type="text" placeholder="Écris ici..." id="q2"> <button onclick="checkAnswer('q2', 'mille deux cent trois')">Vérifier</button></li>
+            <li><strong>25 674</strong> → <input type="text" placeholder="Écris ici..." id="q3"> <button onclick="checkAnswer('q3', 'vingt-cinq mille six cent soixante-quatorze')">Vérifier</button></li>
+        </ul>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <a href="maths_numeration.html" class="back-button">Retour à la Numération 🔢</a>
+    
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            let userAnswer = document.getElementById(inputId).value.trim().toLowerCase();
+            let feedback = document.getElementById("feedback");
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = "✅ Bonne réponse !";
+                feedback.classList.add("correct");
+                feedback.classList.remove("incorrect");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.classList.add("incorrect");
+                feedback.classList.remove("correct");
+            }
+        }
+    </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+</body>
+</html>

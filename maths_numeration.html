@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numération - CM1 🔢</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+</head>
+<body>
+    <h1>🔢 Numération - CM1</h1>
+    <p>Apprends à lire, écrire et comparer les nombres jusqu'à 1 000 000.</p>
+    
+    <div class="content">
+        <h2>📖 Lire et Écrire les Nombres</h2>
+        <p>Découvre comment écrire correctement les grands nombres.</p>
+        <a href="maths_numeration_lecture.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>⚖️ Comparer et Ranger les Nombres</h2>
+        <p>Apprends à comparer des nombres et à les classer dans l'ordre croissant ou décroissant.</p>
+        <a href="maths_numeration_comparaison.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>📊 Décomposition des Nombres</h2>
+        <p>Comprends la valeur de chaque chiffre dans un grand nombre.</p>
+        <a href="maths_numeration_decomposition.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <div class="content">
+        <h2>📍 Placer les Nombres sur une Droite Graduée</h2>
+        <p>Entraîne-toi à positionner des nombres sur une droite numérique.</p>
+        <a href="maths_numeration_droite.html" class="learn-more">🔗 Explorer</a>
+    </div>
+    
+    <a href="maths_nombres.html" class="back-button">Retour aux Nombres et Calculs 🔢</a>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+</body>
+</html>
