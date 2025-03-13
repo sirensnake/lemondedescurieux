@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étapes de Résolution de Problèmes</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <h1>Les Étapes pour Résoudre un Problème 📖</h1>
+    <div class="content">
+        <h2>1. Lire et comprendre</h2>
+        <p>Prends le temps de bien lire l’énoncé et repère les informations importantes.</p>
+    </div>
+    
+    <div class="content">
+        <h2>2. Identifier les données</h2>
+        <p>Quelles sont les informations données ? Quels sont les éléments inconnus à trouver ?</p>
+    </div>
+    
+    <div class="content">
+        <h2>3. Choisir une stratégie</h2>
+        <p>Dois-tu additionner, soustraire, multiplier ou diviser ?</p>
+    </div>
+    
+    <div class="content">
+        <h2>4. Effectuer les calculs</h2>
+        <p>Effectue les calculs nécessaires en posant les opérations si besoin.</p>
+    </div>
+    
+    <div class="content">
+        <h2>5. Vérifier la réponse</h2>
+        <p>Est-ce que la réponse trouvée est logique par rapport à l’énoncé du problème ?</p>
+    </div>
+    
+    <div class="content interactive-section">
+        <h2>🎯 Exercice : Quelle est la première étape ?</h2>
+        <p>Quelle est la première chose à faire lorsque tu rencontres un problème mathématique ?</p>
+        <button onclick="checkAnswer('Lire')">Lire et comprendre</button>
+        <button onclick="checkAnswer('Calculer')">Faire les calculs directement</button>
+        <button onclick="checkAnswer('Deviner')">Deviner la réponse</button>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <script>
+        function checkAnswer(answer) {
+            const correctAnswer = 'Lire';
+            const feedback = document.getElementById('feedback');
+            if (answer === correctAnswer) {
+                feedback.innerHTML = "✔️ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse, essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+    
+    <a href="maths_section.html" class="back-button">Retour à la section Maths 📚</a>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problèmes Réels</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <h1>Les Problèmes de la Vie Courante 🏡</h1>
+    <div class="content">
+        <h2>Pourquoi résoudre des problèmes réels ?</h2>
+        <p>Les mathématiques sont utiles au quotidien ! Voici quelques exemples :</p>
+        <ul>
+            <li><strong>Faire les courses :</strong> Calculer le total d’un panier.</li>
+            <li><strong>Voyager :</strong> Convertir les horaires et distances.</li>
+            <li><strong>Partager un gâteau :</strong> Répartir des parts égales.</li>
+        </ul>
+    </div>
+    
+    <div class="content interactive-section">
+        <h2>🎯 Exercice : Résous ce problème</h2>
+        <p>Paul achète 3 pommes à 0,50 € chacune et une banane à 0,80 €. Combien doit-il payer en tout ?</p>
+        <button onclick="checkAnswer('1.80')">1,80 €</button>
+        <button onclick="checkAnswer('2.30')">2,30 €</button>
+        <button onclick="checkAnswer('2.80')">2,80 €</button>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <script>
+        function checkAnswer(answer) {
+            const correctAnswer = '2.30';
+            const feedback = document.getElementById('feedback');
+            if (answer === correctAnswer) {
+                feedback.innerHTML = "✔️ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse, essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+    
+    <a href="maths_section.html" class="back-button">Retour à la section Maths 📚</a>
+</body>
+</html>

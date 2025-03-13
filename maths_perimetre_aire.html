@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symétrie</title>
+    <title>Périmètre et Aire</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
@@ -17,32 +17,41 @@
             .then(data => document.getElementById('menu-container').innerHTML = data);
     </script>
     
-    <h1>La Symétrie 🔍</h1>
+    <h1>Périmètre et Aire 📏</h1>
     <div class="content">
-        <h2>Qu'est-ce que la symétrie ?</h2>
-        <p>La symétrie est une propriété qui permet de reproduire une figure par réflexion.</p>
+        <h2>Qu'est-ce que le périmètre ?</h2>
+        <p>Le périmètre est la longueur du contour d’une figure.</p>
+        <p><strong>Formules :</strong></p>
+        <ul>
+            <li>Périmètre d’un carré : \( P = 4 \times c \)</li>
+            <li>Périmètre d’un rectangle : \( P = 2 \times (L + l) \)</li>
+            <li>Périmètre d’un cercle : \( P = 2 \times \pi \times r \)</li>
+        </ul>
     </div>
     
     <div class="content">
-        <h2>Les types de symétrie</h2>
+        <h2>Qu'est-ce que l’aire ?</h2>
+        <p>L’aire est la surface occupée par une figure.</p>
+        <p><strong>Formules :</strong></p>
         <ul>
-            <li><strong>Symétrie axiale :</strong> Une figure a une symétrie axiale si elle peut être coupée en deux parties identiques par une droite.</li>
-            <li><strong>Symétrie centrale :</strong> Une figure possède une symétrie centrale si chaque point a un symétrique par rapport à un centre.</li>
+            <li>Aire d’un carré : \( A = c \times c \)</li>
+            <li>Aire d’un rectangle : \( A = L \times l \)</li>
+            <li>Aire d’un cercle : \( A = \pi \times r^2 \)</li>
         </ul>
     </div>
     
     <div class="content interactive-section">
-        <h2>🎯 Exercice : Trouve la bonne réponse</h2>
-        <p>Quelle figure possède une symétrie axiale ?</p>
-        <button onclick="checkAnswer('Triangle')">Triangle</button>
-        <button onclick="checkAnswer('Carré')">Carré</button>
-        <button onclick="checkAnswer('Trapèze')">Trapèze</button>
+        <h2>🎯 Exercice : Trouve le périmètre</h2>
+        <p>Un carré a un côté de 5 cm. Quel est son périmètre ?</p>
+        <button onclick="checkAnswer('10')">10 cm</button>
+        <button onclick="checkAnswer('20')">20 cm</button>
+        <button onclick="checkAnswer('25')">25 cm</button>
         <p id="feedback" class="feedback"></p>
     </div>
     
     <script>
         function checkAnswer(answer) {
-            const correctAnswer = 'Carré';
+            const correctAnswer = '20';
             const feedback = document.getElementById('feedback');
             if (answer === correctAnswer) {
                 feedback.innerHTML = "✔️ Bonne réponse !";

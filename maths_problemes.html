@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symétrie</title>
+    <title>Résolution de Problèmes</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
@@ -17,32 +17,31 @@
             .then(data => document.getElementById('menu-container').innerHTML = data);
     </script>
     
-    <h1>La Symétrie 🔍</h1>
+    <h1>Résolution de Problèmes 🤔</h1>
     <div class="content">
-        <h2>Qu'est-ce que la symétrie ?</h2>
-        <p>La symétrie est une propriété qui permet de reproduire une figure par réflexion.</p>
-    </div>
-    
-    <div class="content">
-        <h2>Les types de symétrie</h2>
+        <h2>Comment résoudre un problème mathématique ?</h2>
+        <p>Résoudre un problème, c'est suivre plusieurs étapes :</p>
         <ul>
-            <li><strong>Symétrie axiale :</strong> Une figure a une symétrie axiale si elle peut être coupée en deux parties identiques par une droite.</li>
-            <li><strong>Symétrie centrale :</strong> Une figure possède une symétrie centrale si chaque point a un symétrique par rapport à un centre.</li>
+            <li><strong>1. Lire attentivement :</strong> Comprendre ce qui est demandé.</li>
+            <li><strong>2. Identifier les données :</strong> Noter les informations importantes.</li>
+            <li><strong>3. Choisir une stratégie :</strong> Addition, soustraction, multiplication, division...</li>
+            <li><strong>4. Effectuer les calculs :</strong> Vérifier les étapes.</li>
+            <li><strong>5. Vérifier la réponse :</strong> Voir si la réponse est logique.</li>
         </ul>
     </div>
     
     <div class="content interactive-section">
-        <h2>🎯 Exercice : Trouve la bonne réponse</h2>
-        <p>Quelle figure possède une symétrie axiale ?</p>
-        <button onclick="checkAnswer('Triangle')">Triangle</button>
-        <button onclick="checkAnswer('Carré')">Carré</button>
-        <button onclick="checkAnswer('Trapèze')">Trapèze</button>
+        <h2>🎯 Exercice : Résous ce problème</h2>
+        <p>Marie a 12 pommes. Elle en donne 5 à son ami et en achète 3 de plus. Combien de pommes a-t-elle maintenant ?</p>
+        <button onclick="checkAnswer('10')">10</button>
+        <button onclick="checkAnswer('8')">8</button>
+        <button onclick="checkAnswer('15')">15</button>
         <p id="feedback" class="feedback"></p>
     </div>
     
     <script>
         function checkAnswer(answer) {
-            const correctAnswer = 'Carré';
+            const correctAnswer = '10';
             const feedback = document.getElementById('feedback');
             if (answer === correctAnswer) {
                 feedback.innerHTML = "✔️ Bonne réponse !";

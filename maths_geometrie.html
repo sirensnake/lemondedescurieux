@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symétrie</title>
+    <title>Géométrie</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
@@ -17,32 +17,39 @@
             .then(data => document.getElementById('menu-container').innerHTML = data);
     </script>
     
-    <h1>La Symétrie 🔍</h1>
+    <h1>La Géométrie 📐</h1>
     <div class="content">
-        <h2>Qu'est-ce que la symétrie ?</h2>
-        <p>La symétrie est une propriété qui permet de reproduire une figure par réflexion.</p>
+        <h2>Les formes géométriques</h2>
+        <p>En géométrie, il existe différentes formes :</p>
+        <ul>
+            <li><strong>Le carré :</strong> 4 côtés égaux, 4 angles droits.</li>
+            <li><strong>Le rectangle :</strong> côtés opposés égaux, 4 angles droits.</li>
+            <li><strong>Le triangle :</strong> 3 côtés et 3 angles.</li>
+            <li><strong>Le cercle :</strong> une courbe fermée dont tous les points sont à égale distance du centre.</li>
+        </ul>
     </div>
     
     <div class="content">
-        <h2>Les types de symétrie</h2>
+        <h2>Les notions importantes</h2>
         <ul>
-            <li><strong>Symétrie axiale :</strong> Une figure a une symétrie axiale si elle peut être coupée en deux parties identiques par une droite.</li>
-            <li><strong>Symétrie centrale :</strong> Une figure possède une symétrie centrale si chaque point a un symétrique par rapport à un centre.</li>
+            <li>Un segment est une portion de droite délimitée par deux points.</li>
+            <li>Un angle droit mesure 90°.</li>
+            <li>Un polygone est une figure fermée avec plusieurs côtés.</li>
         </ul>
     </div>
     
     <div class="content interactive-section">
         <h2>🎯 Exercice : Trouve la bonne réponse</h2>
-        <p>Quelle figure possède une symétrie axiale ?</p>
-        <button onclick="checkAnswer('Triangle')">Triangle</button>
-        <button onclick="checkAnswer('Carré')">Carré</button>
-        <button onclick="checkAnswer('Trapèze')">Trapèze</button>
+        <p>Combien d'angles droits a un rectangle ?</p>
+        <button onclick="checkAnswer('2')">2</button>
+        <button onclick="checkAnswer('3')">3</button>
+        <button onclick="checkAnswer('4')">4</button>
         <p id="feedback" class="feedback"></p>
     </div>
     
     <script>
         function checkAnswer(answer) {
-            const correctAnswer = 'Carré';
+            const correctAnswer = '4';
             const feedback = document.getElementById('feedback');
             if (answer === correctAnswer) {
                 feedback.innerHTML = "✔️ Bonne réponse !";
