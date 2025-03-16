@@ -99,6 +99,13 @@ h1.exercise-title {
     margin-bottom: 20px;
 }
 
+.curio-container {
+    position: absolute;
+    bottom: 0px; /* Augmente cette valeur pour descendre Curio */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #speech-bubble {
     position: absolute;
     top: -130px; /* Pancarte encore plus haute */

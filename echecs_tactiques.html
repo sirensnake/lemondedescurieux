@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tactiques et Stratégies ♟️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/echecs_styles.css">
+</head>
+<body>
+    <div id="menu-container"></div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+
+                    // Exécuter le script seulement après l'injection du menu
+                    let sidebar = document.getElementById("sidebar");
+                    let toggleButton = document.getElementById("sidebar-toggle");
+
+                    if (!sidebar || !toggleButton) {
+                        console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+                        return;
+                    }
+
+                    toggleButton.addEventListener("click", function() {
+                        sidebar.classList.toggle("open");
+                    });
+
+                    console.log("✔️ Menu latéral et bouton chargés avec succès !");
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+
+    <h1 class="animated-title">⚔️ Tactiques et Stratégies aux Échecs</h1>
+    <p class="intro-text">Découvre des tactiques de maître pour dominer tes parties !</p>
+    
+    <div class="content">
+        <h2>1. Les Tactiques de Base</h2>
+        <p>Les tactiques permettent de gagner du matériel ou de prendre l’avantage. Voici les plus importantes :</p>
+        <ul>
+            <li><strong>La Fourchette :</strong> Une pièce attaque deux adversaires en même temps.</li>
+            <li><strong>Le Clouage :</strong> Une pièce ennemie ne peut pas bouger sans exposer une pièce plus importante.</li>
+            <li><strong>L’Enfilade :</strong> Une attaque sur deux pièces alignées, forçant l’adversaire à en perdre une.</li>
+            <li><strong>Le Rayon-X :</strong> Une pièce menace une autre à travers une pièce intermédiaire.</li>
+        </ul>
+        </div>
+
+<div class="image-container">
+    <div class="image-item">
+        <img src="images/fourchette.png" alt="Tactique de la fourchette" class="illustration">
+        <p>🔹 La Fourchette : Le cavalier attaque deux pièces simultanément.</p>
+    </div>
+    <div class="image-item">
+        <img src="images/clouage.png" alt="Tactique du clouage" class="illustration">
+        <p>🔹 Le Clouage : Une pièce est immobilisée sous peine d’exposer une pièce plus forte.</p>
+    </div>
+    <div class="image-item">
+        <img src="images/enfilade.png" alt="Tactique de l'enfilade" class="illustration">
+        <p>🔹 L’Enfilade : Une attaque qui force l’adversaire à perdre une pièce.</p>
+    </div>
+</div>
+    </div>
+
+    <div class="content">
+        <h2>2. Stratégies Avancées</h2>
+        <p>Une bonne stratégie te permet de préparer tes coups et de contrôler la partie :</p>
+        <ul>
+            <li><strong>Contrôle du centre :</strong> Déplace tes pions et pièces vers les cases centrales.</li>
+            <li><strong>Développement rapide :</strong> Fais sortir tes cavaliers et fous avant de bouger ta dame.</li>
+            <li><strong>Roquer rapidement :</strong> Protège ton roi et relie tes tours.</li>
+            <li><strong>Créer des menaces :</strong> Attaque les points faibles de ton adversaire.</li>
+        </ul>
+        <img src="images/strategie_avancee.png" alt="Exemple de stratégie" class="illustration">
+    </div>
+
+    <div class="content">
+        <h2>3. Exercices et Défis 🎯</h2>
+        <p>Regarde cette position et trouve la meilleure tactique :</p>
+        <img src="images/defi_tactique.png" alt="Exercice tactique" class="illustration">
+        <div id="quiz">
+            <p id="question">Quelle tactique permet de gagner du matériel ?</p>
+            <button class="quiz-button" onclick="checkAnswer('fourchette')">Une Fourchette</button>
+            <button class="quiz-button" onclick="checkAnswer('clouage')">Un Clouage</button>
+            <button class="quiz-button" onclick="checkAnswer('enfilade')">Une Enfilade</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+    <a href="echecs_section.html" class="back-button">🔙 Retour à la section Échecs</a>
+
+    <script>
+        function checkAnswer(answer) {
+            const feedback = document.getElementById("feedback");
+            if (answer === "fourchette") {
+                feedback.innerHTML = "✔️ Bonne réponse ! Une fourchette attaque deux pièces à la fois.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+</body>
+</html>

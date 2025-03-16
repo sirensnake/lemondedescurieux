@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices et Défis ♟️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/echecs_styles.css">
+</head>
+<body>
+    <div id="menu-container"></div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    
+                    let sidebar = document.getElementById("sidebar");
+                    let toggleButton = document.getElementById("sidebar-toggle");
+                    
+                    if (!sidebar || !toggleButton) {
+                        console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+                        return;
+                    }
+                    
+                    toggleButton.addEventListener("click", function() {
+                        sidebar.classList.toggle("open");
+                    });
+                    
+                    console.log("✔️ Menu latéral et bouton chargés avec succès !");
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+
+    <h1 class="animated-title">🎯 Exercices et Défis aux Échecs</h1>
+    <p class="intro-text">Mets tes connaissances à l’épreuve avec ces exercices interactifs !</p>
+    
+    <div class="content">
+        <h2>1. Quiz sur les Tactiques</h2>
+        <p>Teste tes connaissances sur les tactiques d’échecs.</p>
+        <div id="quiz">
+            <p id="question">Quelle tactique permet d’attaquer deux pièces en même temps ?</p>
+            <button class="quiz-button" onclick="checkAnswer('clouage')">Un Clouage</button>
+            <button class="quiz-button" onclick="checkAnswer('fourchette')">Une Fourchette</button>
+            <button class="quiz-button" onclick="checkAnswer('enfilade')">Une Enfilade</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>2. Trouve le Mat en 1 Coup</h2>
+        <p>Observe la position et trouve le coup gagnant !</p>
+        <img src="images/mat_en_1.png" alt="Exercice Mat en 1" class="illustration">
+        <div id="mat-quiz">
+            <p>Quel coup blanc donne échec et mat ?</p>
+            <button class="quiz-button" onclick="checkMat('Tf1')">Tour en f1</button>
+            <button class="quiz-button" onclick="checkMat('Dg5')">Dame en g5</button>
+            <button class="quiz-button" onclick="checkMat('Cf6')">Cavalier en f6</button>
+            <button class="quiz-button" onclick="checkMat('Tf1')">Tour en f1</button>
+            <p id="mat-feedback"></p>
+        </div>
+    </div>
+
+    <a href="echecs_section.html" class="back-button">🔙 Retour à la section Échecs</a>
+
+    <script>
+        function checkAnswer(answer) {
+            const feedback = document.getElementById("feedback");
+            if (answer === "fourchette") {
+                feedback.innerHTML = "✔️ Bonne réponse ! Une fourchette attaque deux pièces à la fois.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        function checkMat(answer) {
+            const matFeedback = document.getElementById("mat-feedback");
+            if (answer === "Dg5") {
+                matFeedback.innerHTML = "✔️ Bravo ! Dg5 est le coup gagnant.";
+                matFeedback.className = "feedback correct";
+            } else {
+                matFeedback.innerHTML = "❌ Ce n'est pas le bon coup. Réessaie !";
+                matFeedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+</body>
+</html>

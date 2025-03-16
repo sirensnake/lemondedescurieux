@@ -1,0 +1,72 @@
+body {
+    background-color: #f5f5dc;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #d2691e;
+    font-size: 2.5rem;
+    animation: bounce 1.5s infinite;
+}
+
+.content {
+    background-color: #fff8dc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.content:hover {
+    transform: scale(1.05);
+}
+
+.learn-more {
+    display: inline-block;
+    background-color: #d2691e;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.learn-more:hover {
+    background-color: #a0522d;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #2a9d8f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #21867a;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center; /* Centre les images */
+    gap: 20px; /* Espacement entre les images */
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne si nécessaire */
+}
+
+.image-container img {
+    width: 30%; /* Ajuste la taille des images */
+    max-width: 200px; /* Taille max pour éviter les images trop grandes */
+    height: auto;
+    border-radius: 10px; /* Coins arrondis pour un effet plus propre */
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
