@@ -42,11 +42,11 @@
 }
 
 .sidebar ul li a img {
-    max-width: 10px; /* Limite la largeur des icônes */
-    max-height: 10px; /* Limite la hauteur des icônes */
-    width: auto;
-    height: auto;
+    width: 24px;  /* Ajuste la taille des icônes */
+    height: 24px;
+    object-fit: contain; /* Assure une bonne proportion */
 }
+
 
 .sidebar ul li a:hover, .sidebar ul li a:focus {
     background-color: #f4a261;
