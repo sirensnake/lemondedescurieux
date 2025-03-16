@@ -82,3 +82,9 @@ button:hover {
     padding: 10px;
     cursor: pointer;
 }
+
+/* Exemple : Réduire la taille des icônes spécifiquement pour cette section */
+#echecs-section .sidebar ul li a img {
+    width: 24px;
+    height: 24px;
+}
