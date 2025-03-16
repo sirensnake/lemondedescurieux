@@ -42,8 +42,10 @@
 }
 
 .sidebar ul li a img {
-    width: 24px;
-    height: 24px;
+    max-width: 10px; /* Limite la largeur des icônes */
+    max-height: 10px; /* Limite la hauteur des icônes */
+    width: auto;
+    height: auto;
 }
 
 .sidebar ul li a:hover, .sidebar ul li a:focus {
