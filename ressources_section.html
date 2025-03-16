@@ -8,229 +8,59 @@
 </head>
 <body>
     <div id="menu-container"></div>
-<script>
-    fetch('menu_lateral.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('menu-container').innerHTML = data);
-</script>
-
-
-    <h1>Ressources pédagogiques 📚</h1>
-    <p>Trouve ici des ressources utiles pour approfondir ce que tu as appris.</p>
-
-    <div class="resource-section">
-        <h2>📐 Mathématiques</h2>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/watch?v=ssmnnIQvUtM" target="_blank">
-                    Vidéo : Convertir des longueurs avec le tableau de conversion - CM1/CM2
-                </a>
-            </li>
-            <li>
-                <a href="https://www.khanacademy.org/" target="_blank">
-                    Site interactif : Khan Academy - Exercices en ligne
-                </a>
-            </li>
-            <li>
-                <a href="" target="_blank">
-                    ....
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="resource-section">
-        <h2>📖 Français</h2>
-        <ul>
-            <li>
-                <a href="https://www.ortholud.com/index.html" target="_blank">
-                    Jeux et exercices en ligne, apprendre le français en s'amusant
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=dZEw41vC7bo&list=PLazb2cgf0jh1r56haXDyr4pbR8uHhM2Hl" target="_blank">
-                    Grammaire française
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=1Er8c6xikcA" target="_blank">
-                    Vidéo : Les règles de base en grammaire
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="resource-section">
-        <h2>🔬 Sciences</h2>
-        <ul>
-            <li>
-                <a href="https://www.cnes.fr/fr" target="_blank">
-                    Site : CNES - Découverte de l’espace pour les enfants
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=jdInvnIkwIk" target="_blank">
-                    Vidéo : Le système solaire expliqué
-                </a>
-            </li>
-            <li>
-                <a href="ressources/sciences_experiences_cm1.pdf" target="_blank">
-                    Document PDF : Expériences scientifiques faciles à réaliser
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="resource-section">
-        <h2> Intelligence artificielle</h2>
-        <ul>
-            <li>
-                <a href="https://www.kidscodejeunesse.org/fr/poste-de-blogue/enseigner-intelligence-artificielle-aux-enfants?utm_source=chatgpt.com" target="_blank">
-                    Enseigner l’intelligence artificielle aux enfants
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=hDgX2je_ll4&t=5s" target="_blank">
-                    L'intelligence artificielle (IA) expliquée aux enfants CM1 - CM2 - 6e 
-                </a>
-            </li>
-            <li>
-                <a href="https://www.alloprof.qc.ca/fr/parents/articles/saines-habitudes-vie-activites-pedagogiques/comment-parler-ia-enfant-k1677" target="_blank">
-                    Comment parler d’IA à son enfant
-                </a>
-            </li>
-            <li>
-                <a href="https://fr.vikidia.org/wiki/Intelligence_artificielle" target="_blank">
-                    Intelligence artificielle - Vikidia, l’encyclopédie des 8-13 ans
-                    </a>
-                </li>
-        </ul>
-    </div>
-
-    <div class="resource-section">
-        <h2>🔬 Echecs</h2>
-        <ul>
-            <li>
-                <a href="https://www.chesskid.com/" target="_blank">
-                    Chess Online For Kids - 100% Safe and Free - ChessKid.com
-                </a>
-            </li>
-            <li>
-                <a href="https://lichess.org/" target="_blank">
-                    The best free, adless Chess server
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=zA0aW09fxGw" target="_blank">
-                    Vidéo : Comment jouer aux échecs
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/watch?v=xgAj9QOmKds" target="_blank">
-                    Vidéo : Comment enseigner les échecs aux enfants
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="resource-section">
-        <h2>Programmation</h2>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/watch?v=pop-Rixh6u8" target="_blank">
-                    Apprendre la programmation pour les enfants ( et plus âgés ! ) [ Tuto Scratch en français ]
-                </a>
-            </li>
-            
-            <li>
-                <a href="https://www.youtube.com/watch?v=0OhOpwT4bZI" target="_blank">
-                    ....
-                </a>
-            </li>
-            <li>
-                <a href="" target="_blank">
-                    ....
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="resource-section">
-        <h2> Acualités, infos</h2>
-        <ul>
-            <li>
-                <a href="https://monquotidien.playbacpresse.fr/" target="_blank">
-                    Mon Quotidien : Journal quotidien pour les enfants, avec des articles sur des sujets variés : sciences, histoire, monde actuel.
-                </a>
-            </li>
-            <li>
-                <a href="https://www.1jour1actu.com/" target="_blank">
-                    1jour1actu : Un site très populaire auprès des enfants, qui propose des actualités adaptées et expliquées simplement.
-                </a>
-            </li>
-            <li>
-                <a href="https://lespetitscitoyens.com/" target="_blank">
-                    Les petits citoyens : Ce site propose des débats, des infos et des explications sur les droits, les questions sociales et plus.
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="resource-section">
-        <h2> Histoire-géographie</h2>
-        <ul>
-            <li>
-                <a href="https://www.youtube.com/channel/UCoejzfiaEjCusdpdX9W8jBQ" target="_blank">
-                    Quelle Histoire
-                </a>
-            </li>
-            <li>
-                <a href="https://www.1jour1actu.com/" target="_blank">
-                    1jour1actu : Un site très populaire auprès des enfants, qui propose des actualités adaptées et expliquées simplement.
-                </a>
-            </li>
-            <li>
-                <a href="https://lespetitscitoyens.com/" target="_blank">
-                    Les petits citoyens : Ce site propose des débats, des infos et des explications sur les droits, les questions sociales et plus.
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
-    
-            // Charger dynamiquement le menu latéral
             fetch("menu_lateral.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-    
                 let sidebar = document.getElementById("sidebar");
                 let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-    
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable !");
+                
+                if (!sidebar || !toggleButton) {
+                    console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
                     return;
                 }
-    
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                    return;
-                }
-    
+                
                 toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
                     sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
                 });
             })
             .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
 
+    <h1>Ressources pédagogiques 📚</h1>
+    <p>Trouve ici des ressources utiles pour approfondir ce que tu as appris.</p>
+
+    <div id="main-content" class="content-container"> <!-- Ajout du cadre blanc -->
+        <div class="content">
+            <section class="resource-section">
+                <h2>📐 Mathématiques</h2>
+                <ul>
+                    <li><a href="https://www.khanacademy.org/" target="_blank">Khan Academy - Exercices en ligne</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=ssmnnIQvUtM" target="_blank">Convertir des longueurs</a></li>
+                </ul>
+            </section>
+
+            <section class="resource-section">
+                <h2>📖 Français</h2>
+                <ul>
+                    <li><a href="https://www.ortholud.com/" target="_blank">Jeux et exercices en français</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=1Er8c6xikcA" target="_blank">Grammaire de base</a></li>
+                </ul>
+            </section>
+
+            <section class="resource-section">
+                <h2>🔬 Sciences</h2>
+                <ul>
+                    <li><a href="https://www.cnes.fr/fr" target="_blank">CNES - Découverte de l’espace</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=jdInvnIkwIk" target="_blank">Le système solaire</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">🏠 Retour à la page d'accueil</a>
 </body>
 </html>

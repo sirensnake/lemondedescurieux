@@ -5,59 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Français - Sommaire CM1 📖</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
 </head>
 <body>
     <div id="menu-container"></div>
-<script>
-    fetch('menu_lateral.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('menu-container').innerHTML = data);
-</script>
-
-    <h1>Sommaire du français - Niveau CM1 📖</h1>
-    <p>Voici les chapitres de français à explorer cette année :</p>
-    <ul class="chapter-list">
-        <li><a href="francais_chapitre1.html">Chapitre 1 : Grammaire et conjugaison</a></li>
-        <li><a href="francais_chapitre2.html">Chapitre 2 : Compréhension de textes</a></li>
-        <li><a href="francais_chapitre3.html">Chapitre 3 : Rédaction et expression écrite</a></li>
-        <li><a href="francais_chapitre4.html">Chapitre 4 : Vocabulaire et orthographe</a></li>
-    </ul>
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
-    
-            // Charger dynamiquement le menu latéral
-            fetch("menu_lateral.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-    
-                let sidebar = document.getElementById("sidebar");
-                let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-    
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable !");
-                    return;
-                }
-    
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                    return;
-                }
-    
-                toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
-                    sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                });
-            })
-            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+    fetch("menu_lateral.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+
+        // Exécuter le script seulement après l'injection du menu
+        let sidebar = document.getElementById("sidebar");
+        let toggleButton = document.getElementById("sidebar-toggle");
+
+        if (!sidebar || !toggleButton) {
+            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+            return;
+        }
+
+        toggleButton.addEventListener("click", function() {
+            sidebar.classList.toggle("open");
         });
+
+        console.log("✔️ Menu latéral et bouton chargés avec succès !");
+    })
+    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+});
+
+
     </script>
+
+    <h1>Sommaire du français - Niveau CM1 📖</h1>
+    <p class="intro-text">Voici les chapitres de français à explorer cette année :</p>
+
+    <div id="main-content" class="content-container"> <!-- Ajout du cadre blanc -->
+        <div class="content">
+            <h2>📖 Grammaire et Conjugaison</h2>
+            <p class="description">Apprends les règles de grammaire et améliore ta conjugaison.</p>
+            <a href="francais_chapitre1.html" class="learn-more">🔗 Explorer la grammaire</a>
+        </div>
+
+        <div class="content">
+            <h2>📚 Compréhension de textes</h2>
+            <p class="description">Développe ta compréhension en lisant des textes variés.</p>
+            <a href="francais_chapitre2.html" class="learn-more">🔗 Lire et comprendre</a>
+        </div>
+
+        <div class="content">
+            <h2>📝 Rédaction et Expression écrite</h2>
+            <p class="description">Améliore ton écriture et ta capacité à rédiger des textes.</p>
+            <a href="francais_chapitre3.html" class="learn-more">🔗 Pratiquer la rédaction</a>
+        </div>
+
+        <div class="content">
+            <h2>🔡 Vocabulaire et Orthographe</h2>
+            <p class="description">Apprends de nouveaux mots et améliore ton orthographe.</p>
+            <a href="francais_chapitre4.html" class="learn-more">🔗 Travailler le vocabulaire</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
 </body>
 </html>

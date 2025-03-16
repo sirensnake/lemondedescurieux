@@ -1,77 +1,64 @@
-<!-- Ajout du lien d'évitement -->
-<a href="#main-content" class="skip-link">Aller au contenu principal</a>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histoire - Découverte du Passé ⏳</title>
+    <title>Section Histoire-Géographie 🌍</title>
     <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
-    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/section_style.css">
 </head>
 <body>
     <div id="menu-container"></div>
-    
-    <h1>Bienvenue dans la section Histoire ⏳</h1>
-    <p>Pars à la découverte des grandes civilisations et événements marquants !</p>
-    
-    <div id="main-content" class="content">
-        <h2>🏺 Antiquité</h2>
-        <ul>
-            <li><a href="histoire_egypte.html">🇪🇬 Égypte ancienne</a></li>
-            <li><a href="histoire_grece.html">🏛 Grèce antique</a></li>
-            <li><a href="histoire_rome.html">🦅 Rome antique</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <h2>🛡 Moyen Âge</h2>
-        <ul>
-            <li><a href="histoire_chevaliers.html">⚔️ Les chevaliers</a></li>
-            <li><a href="histoire_chateaux.html">🏰 Châteaux forts</a></li>
-            <li><a href="histoire_vikings.html">⛵ Les Vikings</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <h2>⚜️ Temps Modernes</h2>
-        <ul>
-            <li><a href="histoire_renaissance.html">🎨 La Renaissance</a></li>
-            <li><a href="histoire_revolution.html">🇫🇷 Révolution Française</a></li>
-            <li><a href="histoire_rois.html">👑 Les Rois de France</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <h2>🌍 Époque Contemporaine</h2>
-        <ul>
-            <li><a href="histoire_guerres.html">⚔️ Les deux Guerres Mondiales</a></li>
-            <li><a href="histoire_inventions.html">💡 Les grandes inventions</a></li>
-            <li><a href="histoire_aujourdhui.html">📅 Histoire d'aujourd'hui</a></li>
-        </ul>
-    </div>
-    
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
-    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             fetch("menu_lateral.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("menu-container").innerHTML = data;
-                    setTimeout(() => {
-                        const sidebar = document.getElementById("sidebar");
-                        const toggleButton = document.getElementById("sidebar-toggle");
-                        if (toggleButton && sidebar) {
-                            toggleButton.addEventListener("click", function () {
-                                sidebar.classList.toggle("open");
-                            });
-                        }
-                    }, 500);
-                })
-                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("menu-container").innerHTML = data;
+                let sidebar = document.getElementById("sidebar");
+                let toggleButton = document.getElementById("sidebar-toggle");
+                
+                if (!sidebar || !toggleButton) {
+                    console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+                    return;
+                }
+                
+                toggleButton.addEventListener("click", function() {
+                    sidebar.classList.toggle("open");
+                });
+            })
+            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
+
+    <h1>Bienvenue dans la section Histoire-Géographie 🌍</h1>
+    <p>Explore l'histoire et la géographie à travers les grandes périodes et les paysages du monde.</p>
+
+    <div id="main-content" class="content-container"> <!-- Ajout du cadre blanc -->
+        <div class="content">
+            <section>
+                <h2>📜 Histoire</h2>
+                <ul>
+                    <li><a href="histoire_antique.html">🏛️ Histoire Antique</a></li>
+                    <li><a href="histoire_decouvertes.html">⚓️ Grandes Découvertes</a></li>
+                    <li><a href="histoire_moyenage.html">🏰 Moyen Âge</a></li>
+                    <li><a href="histoire_revolution.html">🇫🇷 Révolution Française</a></li>
+                    <li><a href="histoire_ecriture.html">✍️ Naissance de l’écriture</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🌍 Géographie</h2>
+                <ul>
+                    <li><a href="geographie_continents.html">🌊 Continents et Océans</a></li>
+                    <li><a href="geographie_paysages.html">🌄 Paysages Français</a></li>
+                    <li><a href="geographie_villes.html">🏙️ Grandes Villes en France et en Europe</a></li>
+                    <li><a href="geographie_population.html">👥 Répartition de la Population</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">🏠 Retour à la page d'accueil</a>
 </body>
 </html>

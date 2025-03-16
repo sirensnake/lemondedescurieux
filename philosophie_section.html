@@ -4,126 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Philosophie 🤔</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #e9f5e1;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #2a9d8f;
-        }
-
-        .content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 60%;
-            margin: auto;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #f4a261;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #e76f51;
-        }
-
-        .example {
-            font-style: italic;
-            color: #555;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
 </head>
 <body>
     <div id="menu-container"></div>
     <script>
-        fetch('menu_lateral.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('menu-container').innerHTML = data);
+        document.addEventListener("DOMContentLoaded", function() {
+    fetch("menu_lateral.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+
+        // Exécuter le script seulement après l'injection du menu
+        let sidebar = document.getElementById("sidebar");
+        let toggleButton = document.getElementById("sidebar-toggle");
+
+        if (!sidebar || !toggleButton) {
+            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+            return;
+        }
+
+        toggleButton.addEventListener("click", function() {
+            sidebar.classList.toggle("open");
+        });
+
+        console.log("✔️ Menu latéral et bouton chargés avec succès !");
+    })
+    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+});
+
     </script>
 
     <h1>Bienvenue dans la section Philosophie 🤔</h1>
-    <div class="content">
-        <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
+    <div class="content-container">
+        <div class="content">
+            <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
+        </div>
         
-        <h3>Les grandes questions philosophiques</h3>
-        <p>Qu'est-ce que le bonheur ? La liberté ? L'amitié ? Voici quelques-unes des grandes questions que l'on se pose depuis des siècles.</p>
-        <p class="example">Exemple : "Est-ce que la liberté, c'est faire tout ce que l'on veut ?"</p>
+        <div class="content">
+            <h2>Les grandes questions philosophiques</h2>
+            <p>Qu'est-ce que le bonheur ? La liberté ? L'amitié ? Voici quelques-unes des grandes questions que l'on se pose depuis des siècles.</p>
+            <p class="example">Exemple : "Est-ce que la liberté, c'est faire tout ce que l'on veut ?"</p>
+        </div>
         
-        <h3>Les philosophes célèbres</h3>
-        <p>Socrate, Platon, Descartes... Ces penseurs ont laissé des idées qui influencent encore notre manière de voir le monde.</p>
-        <p class="example">Exemple : "Je pense, donc je suis." - Descartes</p>
-
-        <h3>Activité interactive</h3>
-        <p>Réponds à cette question : <strong>Qu'est-ce que la liberté ?</strong></p>
-        <button onclick="showAnswer()">Voir une réponse possible</button>
-        <p id="activity-output" style="margin-top: 20px; font-size: 20px;"></p>
+        <div class="content">
+            <h2>Les philosophes célèbres</h2>
+            <p>Socrate, Platon, Descartes... Ces penseurs ont laissé des idées qui influencent encore notre manière de voir le monde.</p>
+            <p class="example">Exemple : "Je pense, donc je suis." - Descartes</p>
+        </div>
         
-        <h3>Vidéo explicative</h3>
-        <p>Regarde cette courte vidéo pour découvrir ce qu'est la philosophie.</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/MXOCt0hHT2w" frameborder="0" allowfullscreen></iframe>
+        <div class="content">
+            <h2>Activité interactive</h2>
+            <p>Réponds à cette question : <strong>Qu'est-ce que la liberté ?</strong></p>
+            <button onclick="showAnswer()">Voir une réponse possible</button>
+            <p id="activity-output" class="example"></p>
+        </div>
         
-        <h3>En savoir plus</h3>
-        <p>Découvre d'autres sujets fascinants :</p>
-        <ul>
-            <li><a href="sciences_section.html">Les sciences 🔬</a></li>
-            <li><a href="ia_section.html">L'intelligence artificielle 🤖</a></li>
-            <li><a href="echecs_section.html">Les échecs ♟️</a></li>
-        </ul>
+        <div class="content">
+            <h2>Vidéo explicative</h2>
+            <p>Regarde cette courte vidéo pour découvrir ce qu'est la philosophie.</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/MXOCt0hHT2w" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <div class="content">
+            <h2>En savoir plus</h2>
+            <p>Découvre d'autres sujets fascinants :</p>
+            <ul>
+                <li><a href="sciences_section.html">Les sciences 🔬</a></li>
+                <li><a href="ia_section.html">L'intelligence artificielle 🤖</a></li>
+                <li><a href="echecs_section.html">Les échecs ♟️</a></li>
+            </ul>
+        </div>
     </div>
-
+    
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
     <script>
         function showAnswer() {
             document.getElementById('activity-output').innerText = "La liberté, ce n'est pas faire tout ce que l'on veut, mais pouvoir choisir en respectant les autres.";
         }
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
-    
-            // Charger dynamiquement le menu latéral
-            fetch("menu_lateral.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-    
-                let sidebar = document.getElementById("sidebar");
-                let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-    
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable !");
-                    return;
-                }
-    
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                    return;
-                }
-    
-                toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
-                    sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                });
-            })
-            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-        });
     </script>
 </body>
 </html>

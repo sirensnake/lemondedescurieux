@@ -15,22 +15,29 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetch("menu_lateral.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("menu-container").innerHTML = data;
-                    setTimeout(() => {
-                        const sidebar = document.getElementById("sidebar");
-                        const toggleButton = document.getElementById("sidebar-toggle");
-                        if (toggleButton && sidebar) {
-                            toggleButton.addEventListener("click", function () {
-                                sidebar.classList.toggle("open");
-                            });
-                        }
-                    }, 500);
-                })
-                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+    fetch("menu_lateral.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+
+        // Exécuter le script seulement après l'injection du menu
+        let sidebar = document.getElementById("sidebar");
+        let toggleButton = document.getElementById("sidebar-toggle");
+
+        if (!sidebar || !toggleButton) {
+            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+            return;
+        }
+
+        toggleButton.addEventListener("click", function() {
+            sidebar.classList.toggle("open");
         });
+
+        console.log("✔️ Menu latéral et bouton chargés avec succès !");
+    })
+    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+});
+
     </script>
 
     <h1>Bienvenue dans la section Sciences 🌍</h1>
