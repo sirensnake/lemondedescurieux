@@ -1,7 +1,4 @@
 body {
-    margin-bottom: 250px;
-    margin-bottom: 200px;
-    margin-bottom: 150px;
     font-family: 'Poppins', sans-serif;
     background-color: #e9f5e1;
     text-align: center;
@@ -10,7 +7,6 @@ body {
 }
 
 h1.exercise-title {
-    
     color: #2a9d8f;
     font-size: 32px;
     font-weight: bold;
@@ -19,12 +15,11 @@ h1.exercise-title {
     margin: 20px 0;
 }
 
-
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 100px; /* Ajout d'un espace en bas */
 }
 
 .mindmap-container {
@@ -87,28 +82,28 @@ h1.exercise-title {
 #infos { top: 120%; left: 47.4%; }
 #english { top: 7.4%; left: 13.8%; }
 
+/* Correction de la position de Curio et de sa pancarte */
 #curio-section {
     position: absolute;
-    bottom: -45%; /* Descend Curio */
-    left: 52%; /* Ajuste l’alignement */
-    z-index: 10; /* S'assure que Curio ne bloque pas les boutons */
+    bottom: -20%; /* Descendu encore plus bas */
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 10;
 }
-
-
 
 #curio-image {
     width: 160px;
     height: auto;
     animation: float 3s infinite ease-in-out;
     display: block;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 #speech-bubble {
     position: absolute;
-    top: -100px; /* Remonte la pancarte */
-    left: 100%; /* Centre horizontalement */
-    transform: translateX(-30%); /* Ajuste l'alignement */
+    top: -130px; /* Pancarte encore plus haute */
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #ffffff;
     padding: 10px;
     border-radius: 8px;
@@ -117,10 +112,8 @@ h1.exercise-title {
     color: #333;
     max-width: 250px;
     text-align: center;
-    z-index: 12; /* Assure que la pancarte reste au-dessus mais ne couvre pas Curio */
+    z-index: 12;
 }
-
-
 
 @keyframes float {
     0%, 100% {

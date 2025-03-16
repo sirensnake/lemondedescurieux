@@ -1,3 +1,6 @@
+<!-- Ajout du lien d'évitement -->
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,7 +16,7 @@
     <h1>Bienvenue dans la section Mathématiques 📐</h1>
     <p>Explore les différentes notions de mathématiques à travers des activités interactives et ludiques !</p>
     
-    <div class="content">
+    <div id="main-content" class="content">
         <h2>📊 Nombres et Calculs</h2>
         <ul>
             <li><a href="maths_numeration.html">🔢 Numération</a></li>
@@ -51,18 +54,6 @@
         </ul>
     </div>
     
-    <div class="content">
-        <h2>🎯 Défis et Jeux</h2>
-        <p>Teste tes connaissances avec des défis et des énigmes mathématiques amusantes !</p>
-        <a href="maths_defis.html" class="learn-more">🔗 Explorer</a>
-    </div>
-    
-    <div class="content">
-        <h2>📚 Ressources Complémentaires</h2>
-        <p>Retrouve des vidéos, exercices et fiches pour approfondir tes connaissances.</p>
-        <a href="maths_ressources.html" class="learn-more">🔗 Explorer</a>
-    </div>
-    
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     
     <script>
@@ -71,8 +62,6 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("menu-container").innerHTML = data;
-                    
-                    // Correction : Réattacher les événements du menu après chargement
                     setTimeout(() => {
                         const sidebar = document.getElementById("sidebar");
                         const toggleButton = document.getElementById("sidebar-toggle");

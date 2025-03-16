@@ -1,3 +1,6 @@
+<!-- Ajout du lien d'évitement -->
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,10 +13,11 @@
 <body>
     <h1 style="font-family: 'Minecraftia', sans-serif; color: green;">Bienvenue dans le Monde des Curieux 🦊</h1>
     <p id="instruction-text">Clique sur une matière pour explorer son contenu !</p>
-    <div class="container">
+    
+    <div id="main-content" class="container">
         <div class="mindmap-container">
-            <img src="images/MinecraftMindmap.png" alt="Mindmap des Curieux" class="mindmap">
-            <!-- Boutons des matières -->
+            <img src="images/MinecraftMindmap.png" alt="Carte interactive des matières du Monde des Curieux" class="mindmap">
+            <!-- Boutons des matières restaurés -->
             <div class="node branch" id="sciences">
                 <a href="sciences_section.html">
                     <img src="images/sciences_icon.png" alt="Icône Sciences" class="icon-image">
@@ -24,6 +28,36 @@
                 <a href="echecs_section.html">
                     <img src="images/echecs_icon.png" alt="Icône Échecs" class="icon-image">
                     <span>Échecs</span>
+                </a>
+            </div>
+            <div class="node branch" id="histoire">
+                <a href="histoire_section.html">
+                    <img src="images/histoire_icon.png" alt="Icône Histoire-Géographie" class="icon-image">
+                    <span>Histoire-Géo</span>
+                </a>
+            </div>
+            <div class="node branch" id="mathematiques">
+                <a href="maths_section.html">
+                    <img src="images/maths_icon.png" alt="Icône Mathématiques" class="icon-image">
+                    <span>Mathématiques</span>
+                </a>
+            </div>
+            <div class="node branch" id="infos">
+                <a href="infos_section.html">
+                    <img src="images/infos_icon.png" alt="Icône Infos" class="icon-image">
+                    <span>Infos</span>
+                </a>
+            </div>
+            <div class="node branch" id="english">
+                <a href="english_section.html">
+                    <img src="images/english.png" alt="Icône English" class="icon-image">
+                    <span>English</span>
+                </a>
+            </div>
+            <div class="node branch" id="ressources">
+                <a href="ressources_section.html">
+                    <img src="images/ressources_icon.png" alt="Icône Ressources" class="icon-image">
+                    <span>Ressources</span>
                 </a>
             </div>
             <div class="node branch" id="philosophie">
@@ -44,40 +78,11 @@
                     <span>Programmation</span>
                 </a>
             </div>
-            <div class="node branch" id="histoire">
-                <a href="histoire_section.html">
-                    <img src="images/histoire_icon.png" alt="Icône Histoire" class="icon-image">
-                    <span>Histoire-Géo</span>
-                </a>
-            </div>
-            <div class="node branch" id="mathematiques">
-                <a href="maths_section.html">
-                    <img src="images/maths_icon.png" alt="Icône Mathématiques" class="icon-image">
-                    <span>Mathématiques</span>
-                </a>
-            </div>
-            <div class="node branch" id="ressources">
-                <a href="ressources_section.html">
-                    <img src="images/ressources_icon.png" alt="Icône Ressources" class="icon-image">
-                    <span>Ressources</span>
-                </a>
-            </div>
-            <div class="node branch" id="infos">
-                <a href="infos_section.html">
-                    <img src="images/infos_icon.png" alt="Icône Infos" class="icon-image">
-                    <span>Infos</span>
-                </a>
-            </div>
-            <div class="node branch" id="english">
-                <a href="english_section.html">
-                    <img src="images/english.png" alt="Icône English" class="icon-image">
-                    <span>English</span>
-                </a>
-            </div>
         </div>
-        <!-- Section Curio placé sous la mindmap -->
+        
+        <!-- Section Curio avec texte alternatif -->
         <div id="curio-section">
-            <img id="curio-image" src="images/renard.png" alt="Curio le renard">
+            <img id="curio-image" src="images/renard.png" alt="Curio le renard, mascotte du site">
             <div id="speech-bubble">
                 Salut, explorateur ! 🦊<br>
                 Clique sur les sujets pour partir à l’aventure.

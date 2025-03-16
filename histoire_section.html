@@ -1,102 +1,76 @@
+<!-- Ajout du lien d'évitement -->
+<a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Histoire-Géographie 🌍</title>
+    <title>Histoire - Découverte du Passé ⏳</title>
     <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
-    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
 </head>
 <body>
     <div id="menu-container"></div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
     
-            let sidebar = document.getElementById("sidebar");
-            let toggleButton = document.getElementById("sidebar-toggle");
+    <h1>Bienvenue dans la section Histoire ⏳</h1>
+    <p>Pars à la découverte des grandes civilisations et événements marquants !</p>
     
-            console.log("Sidebar détectée :", sidebar);
-            console.log("Bouton détecté :", toggleButton);
-    
-            if (!sidebar) {
-                console.error("❌ Erreur : Élément #sidebar introuvable !");
-                return;
-            }
-    
-            if (!toggleButton) {
-                console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                return;
-            }
-    
-            toggleButton.addEventListener("click", function() {
-                console.log("✔️ Bouton cliqué !");
-                sidebar.classList.toggle("open");
-                console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-            });
-        });
-    </script>
-    
-
-
-    <h1>Bienvenue dans la section Histoire-Géographie 🌍</h1>
-    <p>Choisis un chapitre pour explorer l’histoire ou la géographie à travers les grandes périodes, les découvertes et les paysages du monde.</p>
-
-    <section>
-        <h2>Partie : Histoire 🏰</h2>
+    <div id="main-content" class="content">
+        <h2>🏺 Antiquité</h2>
         <ul>
-            <li><a href="histoire_antique.html"> Histoire Antique 🏛️</a></li>
-            <li><a href="histoire_decouvertes.html"> Les Grandes Découvertes ⚓️</a></li>
-            <li><a href="histoire_moyenage.html"> Le Moyen Âge ⛩️</a></li>
-            <li><a href="histoire_revolution.html"> La Révolution française 🇫🇷</a></li>
-            <li><a href="histoire_ecriture.html"> La naissance de l’écriture ✍️</a></li>
+            <li><a href="histoire_egypte.html">🇪🇬 Égypte ancienne</a></li>
+            <li><a href="histoire_grece.html">🏛 Grèce antique</a></li>
+            <li><a href="histoire_rome.html">🦅 Rome antique</a></li>
         </ul>
-    </section>
+    </div>
 
-    <section>
-        <h2>Partie : Géographie 🌍</h2>
+    <div class="content">
+        <h2>🛡 Moyen Âge</h2>
         <ul>
-            <li><a href="geographie_continents.html"> Les Continents et Océans 🌊</a></li>
-            <li><a href="geographie_paysages.html"> Les Paysages français 🌄</a></li>
-            <li><a href="geographie_villes.html"> Les Grandes villes en France et en Europe 🏙️</a></li>
-            <li><a href="geographie_population.html"> La Répartition de la population mondiale 👥</a></li>
+            <li><a href="histoire_chevaliers.html">⚔️ Les chevaliers</a></li>
+            <li><a href="histoire_chateaux.html">🏰 Châteaux forts</a></li>
+            <li><a href="histoire_vikings.html">⛵ Les Vikings</a></li>
         </ul>
-    </section>
+    </div>
+
+    <div class="content">
+        <h2>⚜️ Temps Modernes</h2>
+        <ul>
+            <li><a href="histoire_renaissance.html">🎨 La Renaissance</a></li>
+            <li><a href="histoire_revolution.html">🇫🇷 Révolution Française</a></li>
+            <li><a href="histoire_rois.html">👑 Les Rois de France</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>🌍 Époque Contemporaine</h2>
+        <ul>
+            <li><a href="histoire_guerres.html">⚔️ Les deux Guerres Mondiales</a></li>
+            <li><a href="histoire_inventions.html">💡 Les grandes inventions</a></li>
+            <li><a href="histoire_aujourdhui.html">📅 Histoire d'aujourd'hui</a></li>
+        </ul>
+    </div>
+    
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
-    
-            // Charger dynamiquement le menu latéral
             fetch("menu_lateral.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-    
-                let sidebar = document.getElementById("sidebar");
-                let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-    
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable !");
-                    return;
-                }
-    
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                    return;
-                }
-    
-                toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
-                    sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                });
-            })
-            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    setTimeout(() => {
+                        const sidebar = document.getElementById("sidebar");
+                        const toggleButton = document.getElementById("sidebar-toggle");
+                        if (toggleButton && sidebar) {
+                            toggleButton.addEventListener("click", function () {
+                                sidebar.classList.toggle("open");
+                            });
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
 </body>

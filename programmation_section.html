@@ -1,123 +1,64 @@
+<!-- Ajout du lien d'évitement -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Programmation - Le Monde des Curieux</title>
+    <title>Section Programmation</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
 </head>
 <body>
     <div id="menu-container"></div>
-    <script>
-        fetch('menu_lateral.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('menu-container').innerHTML = data);
-    </script>
-    <h1>Programmation avec Curio le Renard 🦊</h1>
-
-    <section>
-        <h2>🔗 Introduction à la Programmation</h2>
-        <p>La programmation, c’est donner des instructions à un ordinateur ou à un personnage (comme Curio) pour qu’il fasse exactement ce que tu veux. Avec Curio, tu vas apprendre les bases de la programmation tout en t’amusant !</p>
-    </section>
-
-    <section>
-        <h2>🧠 Les Blocs de Code</h2>
-        <p>La programmation, c’est comme construire avec des blocs dans Minecraft. Tu empiles des blocs d’instructions pour faire avancer Curio.</p>
-        <ul>
-            <li><strong>Avance :</strong> Curio avance d’un bloc.</li>
-            <li><strong>Tourne à droite :</strong> Curio change de direction.</li>
-            <li><strong>Saute :</strong> Curio saute par-dessus un obstacle.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>🕵️‍♂️ Les Algorithmes Simples</h2>
-        <p>Un algorithme est une suite d’instructions qui permet de résoudre un problème. Par exemple, comment aider Curio à traverser un labyrinthe ?</p>
-        <p><strong>Exemple d’algorithme :</strong></p>
-        <ol>
-            <li>Avance de 3 blocs.</li>
-            <li>Tourne à gauche.</li>
-            <li>Avance de 2 blocs.</li>
-            <li>Tourne à droite et saute.</li>
-        </ol>
-    </section>
-
-    <section>
-        <h2>🔄 Les Boucles</h2>
-        <p>Une boucle permet de répéter plusieurs fois la même action sans avoir à réécrire toutes les instructions. Par exemple :</p>
-        <div class="example-code">
-            <strong>Exemple :</strong><br>
-            RÉPÈTE 5 FOIS :<br>
-            → Avance d’un bloc
-        </div>
-    </section>
-
-    <section>
-        <h2>💡 Les Conditions</h2>
-        <p>Les conditions permettent à Curio de prendre des décisions. Par exemple, si Curio rencontre un obstacle, il doit sauter ; sinon, il continue d’avancer.</p>
-        <div class="example-code">
-            <strong>Exemple :</strong><br>
-            SI obstacle devant :<br>
-            → Saute<br>
-            SINON :<br>
-            → Avance d’un bloc
-        </div>
-    </section>
-
-    <section class="interactive-section">
-        <h2>🚀 Activité : Aide Curio à traverser le parcours !</h2>
-        <p>Utilise les instructions ci-dessous pour créer un programme simple :</p>
-        <ul>
-            <li><strong>Avance( ) :</strong> Fait avancer Curio.</li>
-            <li><strong>TourneDroite( ) :</strong> Fait tourner Curio.</li>
-            <li><strong>Saute( ) :</strong> Permet à Curio de sauter.</li>
-        </ul>
-        <button onclick="startGame()">Démarrer l’activité</button>
-        <p id="game-feedback"></p>
-    </section>
-
-    <script>
-        function startGame() {
-            document.getElementById('game-feedback').innerHTML = "🚀 Bravo ! Tu as aidé Curio à franchir son premier obstacle.";
-        }
-    </script>
-
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans maths_section.html");
-    
-            // Charger dynamiquement le menu latéral
             fetch("menu_lateral.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-    
-                let sidebar = document.getElementById("sidebar");
-                let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-    
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable !");
-                    return;
-                }
-    
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                    return;
-                }
-    
-                toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
-                    sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                });
-            })
-            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    setTimeout(() => {
+                        const sidebar = document.getElementById("sidebar");
+                        const toggleButton = document.getElementById("sidebar-toggle");
+                        if (toggleButton && sidebar) {
+                            toggleButton.addEventListener("click", function () {
+                                sidebar.classList.toggle("open");
+                            });
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
+
+    <h1>Bienvenue dans la section Programmation 💻</h1>
+    <p class="intro-text">Apprends à coder en t'amusant avec des exercices interactifs et des projets créatifs !</p>
+
+    <div id="main-content" class="content">
+        <h2>📝 Bases de la Programmation</h2>
+        <p class="description">Découvre les fondamentaux du code et apprends à écrire tes premières lignes.</p>
+        <a href="programmation_bases.html" class="learn-more">🔗 Apprendre les bases</a>
+    </div>
+
+    <div class="content">
+        <h2>🎮 Jeux et Algorithmes</h2>
+        <p class="description">Crée tes propres jeux et apprends les bases des algorithmes !</p>
+        <a href="programmation_jeux.html" class="learn-more">🔗 Découvrir la programmation de jeux</a>
+    </div>
+
+    <div class="content">
+        <h2>🔍 Débogage et Logique</h2>
+        <p class="description">Apprends à corriger des erreurs et à développer une logique de programmeur.</p>
+        <a href="programmation_debug.html" class="learn-more">🔗 Comprendre le débogage</a>
+    </div>
+
+    <div class="content">
+        <h2>🚀 Projets Créatifs</h2>
+        <p class="description">Mets en pratique tes compétences avec des projets amusants et éducatifs.</p>
+        <a href="programmation_projets.html" class="learn-more">🔗 Explorer les projets</a>
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
 </body>
 </html>

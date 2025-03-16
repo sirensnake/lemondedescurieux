@@ -5,65 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Anglais 🇬🇧</title>
     <link rel="stylesheet" href="styles/english_section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/section_style.css"> <!-- Ajout pour le cadre blanc -->
 </head>
 <body>
     <div id="menu-container"></div>
-<script>
-    fetch('menu_lateral.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('menu-container').innerHTML = data);
-</script>
-
-    <h1>Bienvenue dans la section Anglais 🇬🇧</h1>
-    <div class="content">
-        <p>Explore différentes parties pour apprendre l'anglais à ton rythme !</p>
-        <h2>Les différentes parties :</h2>
-        <ul>
-            <li><a href="english_vocabulary_list.html">Vocabulaire 🇬🇧 </a></li>
-            <li><a href="english_verbs.html">Les verbes essentiels 📝</a></li>
-            <li><a href="english_conversation.html">Les phrases pour converser 🗣️</a></li>
-            <li><a href="english_quiz.html">Testez vos connaissances avec un quiz 🎯</a></li>
-            <li><a href="english_songs.html">Apprends en musique 🎵</a></li>
-            <li><a href="english_word_search.html">Jeu de mots mêlés 🔍</a></li>
-        </ul>
-        <p>Choisis une partie pour commencer à apprendre !</p>
-    </div>
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("✔️ Script chargé dans english_section.html");
-    
-            // Charger dynamiquement le menu latéral
             fetch("menu_lateral.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("menu-container").innerHTML = data;
-                console.log("✔️ Menu latéral chargé avec succès !");
-    
-                let sidebar = document.getElementById("sidebar");
-                let toggleButton = document.getElementById("sidebar-toggle");
-    
-                console.log("Sidebar détectée :", sidebar);
-                console.log("Bouton détecté :", toggleButton);
-    
-                if (!sidebar) {
-                    console.error("❌ Erreur : Élément #sidebar introuvable !");
-                    return;
-                }
-    
-                if (!toggleButton) {
-                    console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                    return;
-                }
-    
-                toggleButton.addEventListener("click", function() {
-                    console.log("✔️ Bouton cliqué !");
-                    sidebar.classList.toggle("open");
-                    console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                });
-            })
-            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    setTimeout(() => {
+                        const sidebar = document.getElementById("sidebar");
+                        const toggleButton = document.getElementById("sidebar-toggle");
+                        if (toggleButton && sidebar) {
+                            toggleButton.addEventListener("click", function () {
+                                sidebar.classList.toggle("open");
+                            });
+                        }
+                    }, 500);
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
+
+    <h1>Bienvenue dans la section Anglais 🇬🇧</h1>
+    <p class="intro-text">Explore différentes parties pour apprendre l'anglais à ton rythme !</p>
+
+    <div id="main-content" class="content-container"> <!-- Ajout du cadre blanc -->
+        <div class="content">
+            <h2>📚 Vocabulaire</h2>
+            <p class="description">Apprends de nouveaux mots et enrichis ton vocabulaire.</p>
+            <a href="english_vocabulary_list.html" class="learn-more">🔗 Explorer le vocabulaire</a>
+        </div>
+
+        <div class="content">
+            <h2>📝 Grammaire et Verbes</h2>
+            <p class="description">Maîtrise les bases de la grammaire et les verbes essentiels.</p>
+            <a href="english_verbs.html" class="learn-more">🔗 Apprendre la grammaire</a>
+        </div>
+
+        <div class="content">
+            <h2>🗣️ Conversation</h2>
+            <p class="description">Apprends les phrases clés pour converser en anglais.</p>
+            <a href="english_conversation.html" class="learn-more">🔗 Pratiquer la conversation</a>
+        </div>
+
+        <div class="content">
+            <h2>🎵 Chansons et Écoute</h2>
+            <p class="description">Améliore ta compréhension en écoutant des chansons.</p>
+            <a href="english_songs.html" class="learn-more">🔗 Écouter des chansons</a>
+        </div>
+
+        <div class="content">
+            <h2>🎯 Quiz et Jeux</h2>
+            <p class="description">Teste tes connaissances avec des quiz et des jeux amusants.</p>
+            <a href="english_quiz.html" class="learn-more">🔗 Faire un quiz</a>
+            <a href="english_word_search.html" class="learn-more">🔗 Jouer aux mots mêlés</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
 </body>
 </html>

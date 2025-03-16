@@ -1,141 +1,65 @@
+<!-- Ajout du lien d'évitement -->
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Échecs ♟️</title>
+    <title>Section Échecs</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
 </head>
 <body>
     <div id="menu-container"></div>
-<script>
-    fetch('menu_lateral.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('menu-container').innerHTML = data);
-</script>
-
-    <h1>Bienvenue dans la section Échecs ♟️</h1>
-    <div class="content">
-        <p>Apprends les bases des échecs et résous des situations tactiques pour progresser comme un pro !</p>
-        <div id="quiz-section">
-            <h3 id="question">Question 1 : Comment se déplace le cavalier ? 🐴</h3>
-            <img id="question-image" src="images/chevalier_echecs.png" alt="Cavalier" width="200">
-            <button onclick="checkAnswer(1, 'correct')">En forme de L</button>
-            <button onclick="checkAnswer(1, 'incorrect')">En ligne droite</button>
-            <button onclick="checkAnswer(1, 'incorrect')">Diagonale</button>
-        </div>
-        <p id="feedback" style="margin-top: 20px;"></p>
-        <p class="score">Score : <span id="score">0</span>/5</p>
-        <button id="next-button" style="display:none;" onclick="nextQuestion()">Question suivante</button>
-        <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
-    </div>
-    <script> let currentQuestion = 1;
-        let score = 0;
-        const questions = [
-            {
-                question: "Comment se déplace le cavalier ? 🐴",
-                options: ["En forme de L", "En ligne droite", "Diagonale"],
-                correctIndex: 0,
-                explanation: "Le cavalier se déplace toujours en L : deux cases dans une direction, puis une case perpendiculaire.",
-                image: "images/chevalier_echecs.png"
-            },
-            {
-                question: "Comment se déplace la tour ? ♜",
-                options: ["En ligne droite", "En diagonale", "En L"],
-                correctIndex: 0,
-                explanation: "La tour peut se déplacer horizontalement ou verticalement sur toutes les cases disponibles.",
-                image: "images/our_echecs.png"
-            },
-            {
-                question: "Comment se déplace le fou ? ♝",
-                options: ["En diagonale", "En ligne droite", "En L"],
-                correctIndex: 0,
-                explanation: "Le fou se déplace en diagonale et reste toujours sur des cases de la même couleur.",
-                image: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Chess_blt45.svg"
-            },
-            {
-                question: "Que se passe-t-il quand un pion atteint la dernière rangée ?",
-                options: ["Il est promu", "Il est éliminé", "Il reste en place"],
-                correctIndex: 0,
-                explanation: "Le pion peut être promu en dame, tour, fou ou cavalier lorsqu’il atteint la dernière rangée.",
-                image: "pion_echecs.png"
-            },
-            {
-                question: "Quelle pièce est la plus puissante ?",
-                options: ["La dame", "Le cavalier", "Le roi"],
-                correctIndex: 0,
-                explanation: "La dame est la pièce la plus puissante car elle combine les déplacements de la tour et du fou.",
-                image: "reine_echecs.png"
-            }
-        ];
-        function checkAnswer(questionNumber, answerType) {
-            const feedback = document.getElementById('feedback');
-            if (answerType === 'correct') {
-                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉 ${questions[questionNumber - 1].explanation}</span>`;
-                score++;
-                document.getElementById('score').innerText = score;
-            } else {
-                feedback.innerHTML = "<span class='incorrect'>Mauvaise réponse 😞. Réfléchis bien !</span>";
-            }
-            if (answerType === 'correct') {
-                document.getElementById('next-button').style.display = 'inline-block';
-            }
-        }
-        function nextQuestion() {
-            currentQuestion++;
-            if (currentQuestion <= questions.length) {
-                const current = questions[currentQuestion - 1];
-                document.getElementById('question').innerText = current.question;
-                document.getElementById('question-image').src = current.image;
-                const buttons = document.querySelectorAll('#quiz-section button');
-                buttons.forEach((button, index) => {
-                    button.innerText = current.options[index];
-                    button.setAttribute('onclick', index === current.correctIndex ? 
-                        "checkAnswer(currentQuestion, 'correct')" : 
-                        "checkAnswer(currentQuestion, 'incorrect')");
-                });
-                document.getElementById('feedback').innerText = "";
-                document.getElementById('next-button').style.display = 'none';
-            } else {
-                document.getElementById('feedback').innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as terminé avec un score de ${score}/${questions.length}.</span>`;
-                document.getElementById('next-button').style.display = 'none';
-            }
-        } </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                console.log("✔️ Script chargé dans maths_section.html");
-        
-                // Charger dynamiquement le menu latéral
-                fetch("menu_lateral.html")
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("menu-container").innerHTML = data;
-                    console.log("✔️ Menu latéral chargé avec succès !");
-        
-                    let sidebar = document.getElementById("sidebar");
-                    let toggleButton = document.getElementById("sidebar-toggle");
-        
-                    console.log("Sidebar détectée :", sidebar);
-                    console.log("Bouton détecté :", toggleButton);
-        
-                    if (!sidebar) {
-                        console.error("❌ Erreur : Élément #sidebar introuvable !");
-                        return;
-                    }
-        
-                    if (!toggleButton) {
-                        console.error("❌ Erreur : Bouton #sidebar-toggle introuvable !");
-                        return;
-                    }
-        
-                    toggleButton.addEventListener("click", function() {
-                        console.log("✔️ Bouton cliqué !");
-                        sidebar.classList.toggle("open");
-                        console.log("🔄 Classe 'open' appliquée :", sidebar.classList.contains("open"));
-                    });
+                    setTimeout(() => {
+                        const sidebar = document.getElementById("sidebar");
+                        const toggleButton = document.getElementById("sidebar-toggle");
+                        if (toggleButton && sidebar) {
+                            toggleButton.addEventListener("click", function () {
+                                sidebar.classList.toggle("open");
+                            });
+                        }
+                    }, 500);
                 })
                 .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-            });
-        </script>
+        });
+    </script>
+
+    <h1>Bienvenue dans la section Échecs ♟️</h1>
+    <p class="intro-text">Apprends les stratégies du jeu d'échecs et entraîne-toi avec des exercices interactifs !</p>
+
+    <div id="main-content" class="content">
+        <h2>📜 Règles du Jeu</h2>
+        <p class="description">Découvre les bases du jeu d'échecs et apprends comment chaque pièce se déplace.</p>
+        <a href="echecs_regles.html" class="learn-more">🔗 Apprendre les règles</a>
+    </div>
+
+    <div class="content">
+        <h2>⚔️ Tactiques et Stratégies</h2>
+        <p class="description">Améliore ton jeu avec des tactiques avancées et des stratégies gagnantes.</p>
+        <a href="echecs_tactiques.html" class="learn-more">🔗 Explorer les tactiques</a>
+    </div>
+
+    <div class="content">
+        <h2>🧩 Exercices et Puzzles</h2>
+        <p class="description">Entraîne-toi avec des exercices interactifs pour améliorer ta vision du jeu.</p>
+        <a href="echecs_exercices.html" class="learn-more">🔗 Faire des exercices</a>
+    </div>
+
+    <div class="content">
+        <h2>🏆 Parties Célèbres</h2>
+        <p class="description">Analyse des parties célèbres et apprends des meilleurs joueurs.</p>
+        <a href="echecs_parties.html" class="learn-more">🔗 Étudier des parties</a>
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
 </body>
 </html>
