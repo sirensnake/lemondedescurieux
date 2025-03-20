@@ -24,11 +24,11 @@ h1 {
     margin: 0 auto;
 }
 .illustration {
-    max-width: 600px; /* Ajuste cette valeur selon tes besoins */
-    height: auto; /* Garde les proportions */
+    max-width: 600px;
+    height: auto;
     display: block;
-    margin: 20px auto; /* Centre l’image */
-    border-radius: 10px; /* Arrondit légèrement les bords */
+    margin: 20px auto;
+    border-radius: 10px;
 }
 
 ul {
@@ -54,6 +54,15 @@ button {
 
 button:hover {
     background-color: #e76f51;
+}
+
+/* Boutons spécifiques pour francais_chapitre3.html */
+.styled-back-button, .verify-button {
+    background-color: #2a9d8f !important;
+}
+
+.styled-back-button:hover, .verify-button:hover {
+    background-color: #21867a !important;
 }
 
 .feedback {
@@ -127,5 +136,3 @@ button:hover {
 .hotspot:hover {
     transform: scale(1.2);
 }
-
-
