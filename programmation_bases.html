@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Bases de la Programmation</title>
+    <link rel="stylesheet" href="styles/programmation_style.css">
+</head>
+<body>
+    <h1>🖥️ Les Bases de la Programmation</h1>
+    <p>Bienvenue dans cette introduction à la programmation ! Apprends à donner des instructions à un ordinateur, comme si tu programmais un jeu vidéo.</p>
+    
+    <section class="content">
+        <h2>🔢 Qu'est-ce qu'une instruction ?</h2>
+        <p>Une instruction est un ordre donné à l'ordinateur. Par exemple :</p>
+        <div class="example-code">
+            <code>avance(); // Curio avance d'un pas</code>
+        </div>
+        <p>Dans un jeu comme Minecraft, une instruction pourrait être "Avancer de 2 blocs".</p>
+    </section>
+
+    <section class="content">
+        <h2>📝 Les Variables</h2>
+        <p>Une variable sert à stocker une valeur, comme une boîte contenant un objet.</p>
+        <div class="example-code">
+            <code>nombreDeBlocs = 5;</code>
+        </div>
+        <p>Ici, <strong>nombreDeBlocs</strong> contient la valeur 5.</p>
+    </section>
+
+    <section class="content">
+        <h2>🔄 Les Boucles</h2>
+        <p>Une boucle permet de répéter une action plusieurs fois sans la réécrire.</p>
+        <div class="example-code">
+            <code>pour (i = 0; i < 5; i++) {
+    avance(); // Curio avance 5 fois
+}</code>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>❓ Les Conditions</h2>
+        <p>Les conditions permettent à un programme de prendre des décisions.</p>
+        <div class="example-code">
+            <code>si (devantEstLibre()) {
+    avance();
+} sinon {
+    tourneGauche();
+}</code>
+        </div>
+        <p>Si Curio peut avancer, il avance ; sinon, il tourne à gauche.</p>
+    </section>
+
+    <section class="content">
+        <h2>🎮 Petit Exercice</h2>
+        <p>Essaye de deviner ce que fera Curio :</p>
+        <div class="example-code">
+            <code>pour (i = 0; i < 3; i++) {
+    avance();
+}
+tourneDroite();</code>
+        </div>
+        <button onclick="showAnswer()">Voir la réponse</button>
+        <p id="answer" style="display: none;">Curio avance 3 fois puis tourne à droite.</p>
+    </section>
+    
+    <script>
+        function showAnswer() {
+            document.getElementById('answer').style.display = 'block';
+        }
+    </script>
+
+    <a href="programmation_section.html" class="back-button">⬅️ Retour à la section Programmation</a>
+</body>
+</html>

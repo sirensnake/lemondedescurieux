@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer des Jeux avec la Programmation</title>
+  <link rel="stylesheet" href="styles/programmation_style.css">
+</head>
+<body>
+  <h1>🎮 Créer des Jeux avec la Programmation</h1>
+  <p>Tu veux apprendre à créer des jeux vidéo ? C'est parti !</p>
+  
+  <section class="content">
+    <h2>🕹️ Les Éléments d'un Jeu</h2>
+    <p>Un jeu est composé de plusieurs éléments :</p>
+    <ul>
+      <li><strong>Les Sprites :</strong> Ce sont les personnages ou objets du jeu.</li>
+      <li><strong>Les Mouvements :</strong> Comment le joueur contrôle le personnage.</li>
+      <li><strong>Les Collisions :</strong> Quand deux objets se touchent, que se passe-t-il ?</li>
+      <li><strong>Le Score :</strong> Gagne des points en accomplissant des actions.</li>
+    </ul>
+  </section>
+
+  <section class="content">
+    <h2>💻 Un Exemple de Code</h2>
+    <p>Voici un exemple de script simple en JavaScript qui fait bouger Curio :</p>
+    <textarea id="code-editor" rows="8" cols="50">
+var position = 0;
+function avancer() {
+    position += 10;
+    document.getElementById('curio').style.left = position + 'px';
+}
+    </textarea>
+    <br>
+    <button onclick="runCode()">Exécuter le code 🚀</button>
+    <button onclick="avancer()">Tester avancer() ▶️</button>
+    <p>Dans cet exemple, chaque fois que tu cliques sur "Tester avancer()", Curio avance.</p>
+    <!-- Utilisation d'une balise <img> pour afficher l'image -->
+    <img id="curio" src="images/curio_pixel.png" alt="Curio" style="position: absolute; left: 0; top: 100px; width: 50px; height: 50px; transition: left 0.3s, top 0.3s;">
+  </section>
+
+  <section class="content">
+    <h2>🚀 Défi</h2>
+    <p>Modifie le code ci-dessus pour que Curio puisse aussi sauter ! Essaie d'ajouter une fonction <strong>sauter()</strong>.</p>
+  </section>
+  
+  <script>
+    function runCode() {
+      var userCode = document.getElementById('code-editor').value;
+      try {
+        // Exécute le code dans le contexte global
+        (0, eval)(userCode);
+        alert("Code exécuté ! Utilise les boutons pour tester.");
+      } catch (error) {
+        alert("Erreur dans le code : " + error.message);
+      }
+    }
+  </script>
+
+  <a href="programmation_section.html" class="back-button">⬅️ Retour à la section Programmation</a>
+</body>
+</html>
