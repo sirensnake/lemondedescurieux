@@ -1,0 +1,104 @@
+[
+  {
+    "nom": "Paris",
+    "top": "28.6826%",
+    "left": "59.875%",
+    "description": "Capitale de la France"
+  },
+  {
+    "nom": "Lyon",
+    "top": "59.3518%",
+    "left": "77.75%",
+    "description": "Ville de gastronomie"
+  },
+  {
+    "nom": "Bordeaux",
+    "top": "72.6377%",
+    "left": "33.75%",
+    "description": "Réputée pour son vin"
+  },
+  {
+    "nom": "Nantes",
+    "top": "46.9351%",
+    "left": "28.75%",
+    "description": "Ville de l’ouest sur la Loire"
+  },
+  {
+    "nom": "Toulouse",
+    "top": "84.1853%",
+    "left": "54.5%",
+    "description": "Capitale de l’aéronautique"
+  },
+  {
+    "nom": "Marseille",
+    "top": "88.4069%",
+    "left": "76%",
+    "description": "Grand port sur la Méditerranée"
+  },
+  {
+    "nom": "Nice",
+    "top": "84.0611%",
+    "left": "95.75%",
+    "description": "Ville touristique de la Côte d’Azur"
+  },
+  {
+    "nom": "Lille",
+    "top": "8.81586%",
+    "left": "64.625%",
+    "description": "Ville du nord, proche de la Belgique"
+  },
+  {
+    "nom": "Strasbourg",
+    "top": "28.3101%",
+    "left": "96.125%",
+    "description": "Siège du Parlement européen"
+  },
+  {
+    "nom": "Clermont-Ferrand",
+    "top": "61.2144%",
+    "left": "67.5%",
+    "description": "Ville auvergnate célèbre pour la chaîne des Puys"
+  },
+  {
+    "nom": "Dijon",
+    "top": "42.7135%",
+    "left": "77.375%",
+    "description": "Capitale de la Bourgogne"
+  },
+  {
+    "nom": "Rennes",
+    "top": "34.5184%",
+    "left": "28.125%",
+    "description": "Capitale de la Bretagne"
+  },
+  {
+    "nom": "Reims",
+    "top": "23.2192%",
+    "left": "71.875%",
+    "description": "Ville du sacre des rois de France"
+  },
+  {
+    "nom": "Saint-Étienne",
+    "top": "65.9327%",
+    "left": "66.625%",
+    "description": "Ville industrielle au sud de Lyon"
+  },
+  {
+    "nom": "Grenoble",
+    "top": "66.3052%",
+    "left": "77.125%",
+    "description": "Ville alpine réputée pour ses universités"
+  },
+  {
+    "nom": "Angers",
+    "top": "42.9618%",
+    "left": "39.75%",
+    "description": "Ville de la région Pays de la Loire"
+  },
+  {
+    "nom": "Nîmes",
+    "top": "79.9636%",
+    "left": "71.5%",
+    "description": "Ville du sud connue pour ses arènes"
+  }
+]

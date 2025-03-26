@@ -136,3 +136,32 @@ button:hover {
 .hotspot:hover {
     transform: scale(1.2);
 }
+
+.vignette-carte {
+    display: block;
+    max-width: 500px !important;
+    max-height: 320px !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+  }
+  
+  .bouton-interactive {
+    background-color: #f4a261;
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 15px auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bouton-interactive:hover {
+    background-color: #e76f51;
+  }
+  
