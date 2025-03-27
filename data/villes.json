@@ -1,104 +1,316 @@
 [
   {
+    "nom": "Nantes",
+    "top": "46.9351%",
+    "left": "28.75%",
+    "description": "Ville de l’ouest sur la Loire",
+    "image": "images/nantes.png",
+    "contenu": [
+      "🐘 Les Machines de l’île avec leur éléphant géant",
+      "🎭 Une vie culturelle très riche",
+      "🚢 Ancien grand port et chantier naval"
+    ],
+    "sites": [
+      "Château des ducs de Bretagne",
+      "Les Machines de l’île",
+      "Le passage Pommeraye"
+    ],
+    "funfact": "Jules Verne, célèbre auteur de science-fiction, est né à Nantes !"
+  },
+  
+  {
+    
+    
     "nom": "Paris",
     "top": "28.6826%",
     "left": "59.875%",
-    "description": "Capitale de la France"
+    "description": "Capitale de la France",
+    "image": "images/paris.png",
+    "contenu": [
+      "🗼 La Tour Eiffel, emblème de la ville",
+      "🎨 Des musées célèbres comme le Louvre ou Orsay",
+      "🚌 Un vaste réseau de métro et de monuments historiques"
+    ],
+    "sites": [
+      "Tour Eiffel",
+      "Musée du Louvre",
+      "Cathédrale Notre-Dame"
+    ],
+    "funfact": "Paris accueille plus de 30 millions de touristes chaque année !"
   },
   {
     "nom": "Lyon",
     "top": "59.3518%",
     "left": "77.75%",
-    "description": "Ville de gastronomie"
-  },
-  {
-    "nom": "Bordeaux",
-    "top": "72.6377%",
-    "left": "33.75%",
-    "description": "Réputée pour son vin"
-  },
-  {
-    "nom": "Nantes",
-    "top": "46.9351%",
-    "left": "28.75%",
-    "description": "Ville de l’ouest sur la Loire"
-  },
-  {
-    "nom": "Toulouse",
-    "top": "84.1853%",
-    "left": "54.5%",
-    "description": "Capitale de l’aéronautique"
+    "description": "Ville de gastronomie",
+    "image": "images/lyon.png",
+    "contenu": [
+      "🍽️ Sa gastronomie célèbre dans le monde entier",
+      "🏛️ Son Vieux-Lyon classé au patrimoine mondial",
+      "🦁 Le parc de la Tête d'Or, l’un des plus grands d’Europe"
+    ],
+    "sites": [
+      "Basilique de Fourvière",
+      "Les traboules du Vieux-Lyon",
+      "Musée des Confluences"
+    ],
+    "funfact": "On appelle parfois Lyon la capitale des Gaules !"
   },
   {
     "nom": "Marseille",
     "top": "88.4069%",
     "left": "76%",
-    "description": "Grand port sur la Méditerranée"
-  },
-  {
-    "nom": "Nice",
-    "top": "84.0611%",
-    "left": "95.75%",
-    "description": "Ville touristique de la Côte d’Azur"
-  },
-  {
-    "nom": "Lille",
-    "top": "8.81586%",
-    "left": "64.625%",
-    "description": "Ville du nord, proche de la Belgique"
-  },
-  {
-    "nom": "Strasbourg",
-    "top": "28.3101%",
-    "left": "96.125%",
-    "description": "Siège du Parlement européen"
-  },
-  {
-    "nom": "Clermont-Ferrand",
-    "top": "61.2144%",
-    "left": "67.5%",
-    "description": "Ville auvergnate célèbre pour la chaîne des Puys"
-  },
-  {
-    "nom": "Dijon",
-    "top": "42.7135%",
-    "left": "77.375%",
-    "description": "Capitale de la Bourgogne"
-  },
-  {
-    "nom": "Rennes",
-    "top": "34.5184%",
-    "left": "28.125%",
-    "description": "Capitale de la Bretagne"
+    "description": "Grand port sur la Méditerranée",
+    "image": "images/marseille.png",
+    "contenu": [
+      "⚓ Le plus grand port de France",
+      "🏞️ Les calanques et paysages naturels splendides",
+      "🕌 La basilique Notre-Dame-de-la-Garde qui veille sur la ville"
+    ],
+    "sites": [
+      "Vieux-Port",
+      "Notre-Dame-de-la-Garde",
+      "Parc national des Calanques"
+    ],
+    "funfact": "Marseille est la plus ancienne ville de France, fondée vers -600 !"
   },
   {
     "nom": "Reims",
     "top": "23.2192%",
     "left": "71.875%",
-    "description": "Ville du sacre des rois de France"
+    "description": "Ville du sacre des rois de France",
+    "image": "images/reims.png",
+    "contenu": [
+      "👑 Sa cathédrale où les rois de France étaient sacrés",
+      "🍾 Le champagne, produit dans toute la région",
+      "🏛️ Un patrimoine historique romain et médiéval"
+    ],
+    "sites": [
+      "Cathédrale Notre-Dame de Reims",
+      "Palais du Tau",
+      "Les caves de champagne"
+    ],
+    "funfact": "Reims a été partiellement détruite pendant la Première Guerre mondiale, mais sa cathédrale a été restaurée."
   },
   {
-    "nom": "Saint-Étienne",
-    "top": "65.9327%",
-    "left": "66.625%",
-    "description": "Ville industrielle au sud de Lyon"
+    "nom": "Nice",
+    "top": "84.0611%",
+    "left": "95.75%",
+    "description": "Ville touristique de la Côte d’Azur",
+    "image": "images/nice.png",
+    "contenu": [
+      "🌞 Climat doux et plages magnifiques",
+      "🎨 Musée Matisse et vieille ville colorée",
+      "🏖️ La Promenade des Anglais au bord de la mer"
+    ],
+    "sites": [
+      "Promenade des Anglais",
+      "Colline du Château",
+      "Musée Marc Chagall"
+    ],
+    "funfact": "Nice a été italienne avant de devenir française en 1860."
   },
   {
-    "nom": "Grenoble",
-    "top": "66.3052%",
-    "left": "77.125%",
-    "description": "Ville alpine réputée pour ses universités"
+    "nom": "Strasbourg",
+    "top": "28.3101%",
+    "left": "96.125%",
+    "description": "Siège du Parlement européen",
+    "image": "images/strasbourg.png",
+    "contenu": [
+      "🏛️ Architecture à colombages typique d'Alsace",
+      "🇪🇺 Capitale européenne avec Bruxelles",
+      "🎄 Marché de Noël réputé dans toute l’Europe"
+    ],
+    "sites": [
+      "Cathédrale Notre-Dame de Strasbourg",
+      "Quartier de la Petite France",
+      "Parlement européen"
+    ],
+    "funfact": "Le centre historique de Strasbourg est classé au patrimoine mondial de l’UNESCO."
   },
   {
-    "nom": "Angers",
-    "top": "42.9618%",
-    "left": "39.75%",
-    "description": "Ville de la région Pays de la Loire"
+    "nom": "Bordeaux",
+    "top": "72.6377%",
+    "left": "33.75%",
+    "description": "Réputée pour son vin",
+    "image": "images/bordeaux.png",
+    "contenu": [
+      "🍷 Capitale mondiale du vin",
+      "🏛️ Architecture élégante du XVIIIe siècle",
+      "🌉 Le miroir d’eau sur la Garonne"
+    ],
+    "sites": [
+      "Cité du Vin",
+      "Place de la Bourse",
+      "Pont de pierre"
+    ],
+    "funfact": "Bordeaux compte plus de 350 monuments historiques protégés."
+  },
+
+
+  
+   
+  {
+      "nom": "Toulouse",
+      "top": "84.1853%",
+      "left": "54.5%",
+      "description": "Capitale de l’aéronautique",
+      "image": "images/toulouse.png",
+      "contenu": [
+        "🏗️ Surnommée la Ville Rose à cause de ses briques",
+        "🚀 Centre spatial européen avec Airbus et la Cité de l’espace",
+        "🎓 Une vie étudiante très active"
+      ],
+      "sites": [
+        "Capitole de Toulouse",
+        "Canal du Midi",
+        "Cité de l'espace"
+      ],
+      "funfact": "Le cassoulet est l’un des plats emblématiques de la région !"
   },
   {
-    "nom": "Nîmes",
-    "top": "79.9636%",
-    "left": "71.5%",
-    "description": "Ville du sud connue pour ses arènes"
+      "nom": "Lille",
+      "top": "8.81586%",
+      "left": "64.625%",
+      "description": "Ville du nord, proche de la Belgique",
+      "image": "images/lille.png",
+      "contenu": [
+        "🧭 Ville frontalière dynamique",
+        "🏛️ Belle architecture flamande",
+        "🎓 Ville étudiante avec de grandes universités"
+      ],
+      "sites": [
+        "La Grand-Place",
+        "Palais des Beaux-Arts",
+        "La vieille bourse"
+      ],
+      "funfact": "Lille accueille chaque année une immense braderie, l’une des plus grandes d’Europe !"
+  },
+  {
+      "nom": "Clermont-Ferrand",
+      "top": "61.2144%",
+      "left": "67.5%",
+      "description": "Ville auvergnate célèbre pour la chaîne des Puys",
+      "image": "images/clermont-ferrand.png",
+      "contenu": [
+        "🌋 Proche de volcans endormis",
+        "🏛️ Ville noire à cause de la pierre volcanique",
+        "🏀 Ville sportive avec un grand club de rugby"
+      ],
+      "sites": [
+        "Cathédrale Notre-Dame-de-l'Assomption",
+        "Puy de Dôme",
+        "Vulcania (parc scientifique)"
+      ],
+      "funfact": "C’est la ville d’origine de l’entreprise Michelin !"
+  },
+  {
+      "nom": "Dijon",
+      "top": "42.7135%",
+      "left": "77.375%",
+      "description": "Capitale de la Bourgogne",
+      "image": "images/dijon.png",
+      "contenu": [
+        "🥫 Ville de la moutarde",
+        "🏛️ Centre historique bien conservé",
+        "🍇 Route des grands crus de Bourgogne"
+      ],
+      "sites": [
+        "Palais des ducs de Bourgogne",
+        "Musée des Beaux-Arts",
+        "Église Notre-Dame de Dijon"
+      ],
+      "funfact": "La chouette de Dijon porte chance si on la touche de la main gauche !"
+  },
+  {
+      "nom": "Rennes",
+      "top": "34.5184%",
+      "left": "28.125%",
+      "description": "Capitale de la Bretagne",
+      "image": "images/rennes.png",
+      "contenu": [
+        "🎉 Ville étudiante dynamique",
+        "🏰 Patrimoine médiéval et colombages",
+        "🎭 Festival culturel de renom (Trans Musicales)"
+      ],
+      "sites": [
+        "Parlement de Bretagne",
+        "Parc du Thabor",
+        "Centre historique et maisons à pans de bois"
+      ],
+      "funfact": "On y mange de délicieuses galettes et crêpes bretonnes !"
+  },
+  {
+      "nom": "Nîmes",
+      "top": "79.9636%",
+      "left": "71.5%",
+      "description": "Ville du sud connue pour ses arènes",
+      "image": "images/nimes.png",
+      "contenu": [
+        "🏟️ Arènes romaines très bien conservées",
+        "🪷 Jardins de la Fontaine avec vestiges antiques",
+        "🕌 Influences espagnoles dans la culture"
+      ],
+      "sites": [
+        "Les Arènes de Nîmes",
+        "Maison Carrée",
+        "Tour Magne"
+      ],
+      "funfact": "Le mot 'denim' (jean) vient de 'de Nîmes'. 🧵👖"
+  },
+  {
+      "nom": "Saint-Étienne",
+      "top": "65.9327%",
+      "left": "66.625%",
+      "description": "Ville industrielle au sud de Lyon",
+      "image": "images/SaintEtienne.png",
+      "contenu": [
+        "🏭 Ancienne capitale du charbon et des armes",
+        "🎨 Ville créative design de l’UNESCO",
+        "⚽ Passion du football avec l’ASSE"
+      ],
+      "sites": [
+        "Musée de la Mine",
+        "Cité du design",
+        "Stade Geoffroy-Guichard"
+      ],
+      "funfact": "On appelle affectueusement les habitants les 'Stephanois'."
+  },
+  {
+      "nom": "Grenoble",
+      "top": "66.3052%",
+      "left": "77.125%",
+      "description": "Ville alpine réputée pour ses universités",
+      "image": "images/grenoble.png",
+      "contenu": [
+        "🏔️ Ville entourée de montagnes",
+        "🎓 Pôle universitaire et scientifique reconnu",
+        "🚠 Téléphérique des bulles vers la Bastille"
+      ],
+      "sites": [
+        "Musée de Grenoble",
+        "Fort de la Bastille",
+        "Parc Paul Mistral"
+      ],
+      "funfact": "Grenoble a accueilli les Jeux Olympiques d’hiver en 1968."
+  },
+  {
+      "nom": "Angers",
+      "top": "42.9618%",
+      "left": "39.75%",
+      "description": "Ville de la région Pays de la Loire",
+      "image": "images/angers.png",
+      "contenu": [
+        "🏰 Château d’Angers et tapisserie de l’Apocalypse",
+        "🌿 Nombreux parcs et jardins",
+        "📚 Ville étudiante animée"
+      ],
+      "sites": [
+        "Château d'Angers",
+        "Cathédrale Saint-Maurice",
+        "Parc Terra Botanica"
+      ],
+      "funfact": "Angers est l'une des villes les plus vertes de France !"
   }
+  
 ]
