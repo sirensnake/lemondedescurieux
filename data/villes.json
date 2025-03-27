@@ -15,12 +15,19 @@
       "Les Machines de l’île",
       "Le passage Pommeraye"
     ],
-    "funfact": "Jules Verne, célèbre auteur de science-fiction, est né à Nantes !"
+    "funfact": "Jules Verne, célèbre auteur de science-fiction, est né à Nantes !",
+    "quiz": {
+    "question": "Quel animal géant peut-on voir sur l’île de Nantes ?",
+    "reponses": [
+      "Un gorille",
+      "Un éléphant mécanique",
+      "Un dinosaure"
+  ],
+  "bonneReponse": 1
+}
+
   },
-  
   {
-    
-    
     "nom": "Paris",
     "top": "28.6826%",
     "left": "59.875%",
@@ -36,7 +43,17 @@
       "Musée du Louvre",
       "Cathédrale Notre-Dame"
     ],
-    "funfact": "Paris accueille plus de 30 millions de touristes chaque année !"
+    "funfact": "Paris accueille plus de 30 millions de touristes chaque année !",
+    "quiz": {
+    "question": "Quel monument célèbre est un symbole de Paris ?",
+    "reponses": [
+      "La Statue de la Liberté",
+      "Le Colisée",
+      "La Tour Eiffel"
+  ],
+  "bonneReponse": 2
+}
+
   },
   {
     "nom": "Lyon",
@@ -54,7 +71,17 @@
       "Les traboules du Vieux-Lyon",
       "Musée des Confluences"
     ],
-    "funfact": "On appelle parfois Lyon la capitale des Gaules !"
+    "funfact": "On appelle parfois Lyon la capitale des Gaules !",
+    "quiz": {
+    "question": "Quelle spécialité culinaire est typiquement associée à Lyon ?",
+    "reponses": [
+    "La choucroute",
+    "Les quenelles",
+    "Le cassoulet"
+  ],
+  "bonneReponse": 1
+}
+
   },
   {
     "nom": "Marseille",
@@ -72,7 +99,17 @@
       "Notre-Dame-de-la-Garde",
       "Parc national des Calanques"
     ],
-    "funfact": "Marseille est la plus ancienne ville de France, fondée vers -600 !"
+    "funfact": "Marseille est la plus ancienne ville de France, fondée vers -600 !",
+    "quiz": {
+    "question": "Quel célèbre monument domine la ville de Marseille ?",
+    "reponses": [
+      "La basilique Notre-Dame-de-la-Garde",
+      "La cathédrale de Chartres",
+      "La Tour Eiffel"
+  ],
+  "bonneReponse": 0
+}
+
   },
   {
     "nom": "Reims",
@@ -90,7 +127,17 @@
       "Palais du Tau",
       "Les caves de champagne"
     ],
-    "funfact": "Reims a été partiellement détruite pendant la Première Guerre mondiale, mais sa cathédrale a été restaurée."
+    "funfact": "Reims a été partiellement détruite pendant la Première Guerre mondiale, mais sa cathédrale a été restaurée.",
+    "quiz": {
+    "question": "Quel événement historique se déroulait dans la cathédrale de Reims ?",
+    "reponses": [
+      "Les sacres des rois de France",
+      "Les défilés militaires de Napoléon",
+      "Les concerts de Mozart"
+  ],
+  "bonneReponse": 0
+}
+
   },
   {
     "nom": "Nice",
@@ -108,7 +155,17 @@
       "Colline du Château",
       "Musée Marc Chagall"
     ],
-    "funfact": "Nice a été italienne avant de devenir française en 1860."
+    "funfact": "Nice a été italienne avant de devenir française en 1860.",
+    "quiz": {
+    "question": "Comment s’appelle la célèbre avenue qui longe la mer à Nice ?",
+    "reponses": [
+      "La Promenade des Anglais",
+      "Les Champs-Élysées",
+      "Le Boulevard Haussmann"
+  ],
+  "bonneReponse": 0
+}
+
   },
   {
     "nom": "Strasbourg",
@@ -126,7 +183,17 @@
       "Quartier de la Petite France",
       "Parlement européen"
     ],
-    "funfact": "Le centre historique de Strasbourg est classé au patrimoine mondial de l’UNESCO."
+    "funfact": "Le centre historique de Strasbourg est classé au patrimoine mondial de l’UNESCO.",
+    "quiz": {
+    "question": "Quel événement célèbre attire chaque année des visiteurs à Strasbourg ?",
+    "reponses": [
+      "Le carnaval de Strasbourg",
+      "Le marché de Noël",
+      "La fête des lumières"
+  ],
+  "bonneReponse": 1
+}
+
   },
   {
     "nom": "Bordeaux",
@@ -144,176 +211,161 @@
       "Place de la Bourse",
       "Pont de pierre"
     ],
-    "funfact": "Bordeaux compte plus de 350 monuments historiques protégés."
-  },
+    "funfact": "Bordeaux compte plus de 350 monuments historiques protégés.",
+    "quiz": {
+    "question": "Quel monument de Bordeaux se reflète dans un miroir d’eau ?",
+    "reponses": [
+      "La Tour Saint-Jacques",
+      "La Place de la Bourse",
+      "La Cité du Vin"
+  ],
+  "bonneReponse": 1
+}
 
+  },
+  {
+    "nom": "Toulouse",
+    "top": "84.1853%",
+    "left": "54.5%",
+    "description": "Capitale de l’aéronautique",
+    "image": "images/toulouse.png",
+    "contenu": [
+      "🏗️ Surnommée la Ville Rose à cause de ses briques",
+      "🚀 Centre spatial européen avec Airbus et la Cité de l’espace",
+      "🎓 Une vie étudiante très active"
+    ],
+    "sites": [
+      "Capitole de Toulouse",
+      "Canal du Midi",
+      "Cité de l'espace"
+    ],
+    "funfact": "Le cassoulet est l’un des plats emblématiques de la région !",
+    "quiz": {
+  "question": "Pourquoi appelle-t-on Toulouse la « Ville rose » ?",
+  "reponses": [
+    "À cause des fleurs roses qu'on y cultive",
+    "À cause de la couleur des briques utilisées dans l’architecture",
+    "Parce que c'était le surnom d'un ancien roi"
+  ],
+  "bonneReponse": 1
+}
 
-  
-   
-  {
-      "nom": "Toulouse",
-      "top": "84.1853%",
-      "left": "54.5%",
-      "description": "Capitale de l’aéronautique",
-      "image": "images/toulouse.png",
-      "contenu": [
-        "🏗️ Surnommée la Ville Rose à cause de ses briques",
-        "🚀 Centre spatial européen avec Airbus et la Cité de l’espace",
-        "🎓 Une vie étudiante très active"
-      ],
-      "sites": [
-        "Capitole de Toulouse",
-        "Canal du Midi",
-        "Cité de l'espace"
-      ],
-      "funfact": "Le cassoulet est l’un des plats emblématiques de la région !"
   },
   {
-      "nom": "Lille",
-      "top": "8.81586%",
-      "left": "64.625%",
-      "description": "Ville du nord, proche de la Belgique",
-      "image": "images/lille.png",
-      "contenu": [
-        "🧭 Ville frontalière dynamique",
-        "🏛️ Belle architecture flamande",
-        "🎓 Ville étudiante avec de grandes universités"
-      ],
-      "sites": [
-        "La Grand-Place",
-        "Palais des Beaux-Arts",
-        "La vieille bourse"
-      ],
-      "funfact": "Lille accueille chaque année une immense braderie, l’une des plus grandes d’Europe !"
+    "nom": "Lille",
+    "top": "8.81586%",
+    "left": "64.625%",
+    "description": "Ville du nord, proche de la Belgique",
+    "image": "images/lille.png",
+    "contenu": [
+      "🧭 Ville frontalière dynamique",
+      "🏛️ Belle architecture flamande",
+      "🎓 Ville étudiante avec de grandes universités"
+    ],
+    "sites": [
+      "La Grand-Place",
+      "Palais des Beaux-Arts",
+      "La vieille bourse"
+    ],
+    "funfact": "Lille accueille chaque année une immense braderie, l’une des plus grandes d’Europe !",
+    "quiz": {
+    "question": "Quel grand événement attire des milliers de visiteurs chaque année à Lille ?",
+    "reponses": [
+      "La Fête de la musique",
+      "La Braderie de Lille",
+      "La Nuit des musées"
+  ],
+  "bonneReponse": 1
+}
+
   },
   {
-      "nom": "Clermont-Ferrand",
-      "top": "61.2144%",
-      "left": "67.5%",
-      "description": "Ville auvergnate célèbre pour la chaîne des Puys",
-      "image": "images/clermont-ferrand.png",
-      "contenu": [
-        "🌋 Proche de volcans endormis",
-        "🏛️ Ville noire à cause de la pierre volcanique",
-        "🏀 Ville sportive avec un grand club de rugby"
-      ],
-      "sites": [
-        "Cathédrale Notre-Dame-de-l'Assomption",
-        "Puy de Dôme",
-        "Vulcania (parc scientifique)"
-      ],
-      "funfact": "C’est la ville d’origine de l’entreprise Michelin !"
+    "nom": "Clermont-Ferrand",
+    "top": "61.2144%",
+    "left": "67.5%",
+    "description": "Ville auvergnate célèbre pour la chaîne des Puys",
+    "image": "images/clermont-ferrand.png",
+    "contenu": [
+      "🌋 Proche de volcans endormis",
+      "🏛️ Ville noire à cause de la pierre volcanique",
+      "🏀 Ville sportive avec un grand club de rugby"
+    ],
+    "sites": [
+      "Cathédrale Notre-Dame-de-l'Assomption",
+      "Puy de Dôme",
+      "Vulcania (parc scientifique)"
+    ],
+    "funfact": "C’est la ville d’origine de l’entreprise Michelin !",
+    "quiz": {
+    "question": "Quel volcan célèbre se trouve près de Clermont-Ferrand ?",
+    "reponses": [
+      "Le Puy de Dôme",
+      "Le Mont Saint-Michel",
+      "Le Piton de la Fournaise"
+  ],
+  "bonneReponse": 0
+}
+
   },
   {
-      "nom": "Dijon",
-      "top": "42.7135%",
-      "left": "77.375%",
-      "description": "Capitale de la Bourgogne",
-      "image": "images/dijon.png",
-      "contenu": [
-        "🥫 Ville de la moutarde",
-        "🏛️ Centre historique bien conservé",
-        "🍇 Route des grands crus de Bourgogne"
-      ],
-      "sites": [
-        "Palais des ducs de Bourgogne",
-        "Musée des Beaux-Arts",
-        "Église Notre-Dame de Dijon"
-      ],
-      "funfact": "La chouette de Dijon porte chance si on la touche de la main gauche !"
+    "nom": "Dijon",
+    "top": "42.7135%",
+    "left": "77.375%",
+    "description": "Capitale de la Bourgogne",
+    "image": "images/dijon.png",
+    "contenu": [
+      "🥫 Ville de la moutarde",
+      "🏛️ Centre historique bien conservé",
+      "🍇 Route des grands crus de Bourgogne"
+    ],
+    "sites": [
+      "Palais des ducs de Bourgogne",
+      "Musée des Beaux-Arts",
+      "Église Notre-Dame de Dijon"
+    ],
+    "funfact": "La chouette de Dijon porte chance si on la touche de la main gauche !",
+    "quiz": {
+    "question": "Quelle spécialité est traditionnellement associée à la ville de Dijon ?",
+    "reponses": [
+      "La moutarde",
+      "Le fromage roquefort",
+      "Le camembert"
+  ],
+  "bonneReponse": 0
+}
+
   },
   {
-      "nom": "Rennes",
-      "top": "34.5184%",
-      "left": "28.125%",
-      "description": "Capitale de la Bretagne",
-      "image": "images/rennes.png",
-      "contenu": [
-        "🎉 Ville étudiante dynamique",
-        "🏰 Patrimoine médiéval et colombages",
-        "🎭 Festival culturel de renom (Trans Musicales)"
-      ],
-      "sites": [
-        "Parlement de Bretagne",
-        "Parc du Thabor",
-        "Centre historique et maisons à pans de bois"
-      ],
-      "funfact": "On y mange de délicieuses galettes et crêpes bretonnes !"
+    "nom": "Rennes",
+    "top": "34.5184%",
+    "left": "28.125%",
+    "description": "Capitale de la Bretagne",
+    "image": "images/rennes.png",
+    "contenu": [
+      "🎉 Ville étudiante dynamique",
+      "🏰 Patrimoine médiéval et colombages",
+      "🎭 Festival culturel de renom (Trans Musicales)"
+    ],
+    "sites": [
+      "Parlement de Bretagne",
+      "Parc du Thabor",
+      "Centre historique et maisons à pans de bois"
+    ],
+    "funfact": "On y mange de délicieuses galettes et crêpes bretonnes !",
+    "quiz": {
+    "question": "Quel festival célèbre de musique a lieu chaque année à Rennes ?",
+    "reponses": [
+      "Les Vieilles Charrues",
+      "Les Trans Musicales",
+      "Le Printemps de Bourges"
+  ],
+  "bonneReponse": 1
+}
+
   },
   {
-      "nom": "Nîmes",
-      "top": "79.9636%",
-      "left": "71.5%",
-      "description": "Ville du sud connue pour ses arènes",
-      "image": "images/nimes.png",
-      "contenu": [
-        "🏟️ Arènes romaines très bien conservées",
-        "🪷 Jardins de la Fontaine avec vestiges antiques",
-        "🕌 Influences espagnoles dans la culture"
-      ],
-      "sites": [
-        "Les Arènes de Nîmes",
-        "Maison Carrée",
-        "Tour Magne"
-      ],
-      "funfact": "Le mot 'denim' (jean) vient de 'de Nîmes'. 🧵👖"
-  },
-  {
-      "nom": "Saint-Étienne",
-      "top": "65.9327%",
-      "left": "66.625%",
-      "description": "Ville industrielle au sud de Lyon",
-      "image": "images/SaintEtienne.png",
-      "contenu": [
-        "🏭 Ancienne capitale du charbon et des armes",
-        "🎨 Ville créative design de l’UNESCO",
-        "⚽ Passion du football avec l’ASSE"
-      ],
-      "sites": [
-        "Musée de la Mine",
-        "Cité du design",
-        "Stade Geoffroy-Guichard"
-      ],
-      "funfact": "On appelle affectueusement les habitants les 'Stephanois'."
-  },
-  {
-      "nom": "Grenoble",
-      "top": "66.3052%",
-      "left": "77.125%",
-      "description": "Ville alpine réputée pour ses universités",
-      "image": "images/grenoble.png",
-      "contenu": [
-        "🏔️ Ville entourée de montagnes",
-        "🎓 Pôle universitaire et scientifique reconnu",
-        "🚠 Téléphérique des bulles vers la Bastille"
-      ],
-      "sites": [
-        "Musée de Grenoble",
-        "Fort de la Bastille",
-        "Parc Paul Mistral"
-      ],
-      "funfact": "Grenoble a accueilli les Jeux Olympiques d’hiver en 1968."
-  },
-  {
-      "nom": "Angers",
-      "top": "42.9618%",
-      "left": "39.75%",
-      "description": "Ville de la région Pays de la Loire",
-      "image": "images/angers.png",
-      "contenu": [
-        "🏰 Château d’Angers et tapisserie de l’Apocalypse",
-        "🌿 Nombreux parcs et jardins",
-        "📚 Ville étudiante animée"
-      ],
-      "sites": [
-        "Château d'Angers",
-        "Cathédrale Saint-Maurice",
-        "Parc Terra Botanica"
-      ],
-      "funfact": "Angers est l'une des villes les plus vertes de France !"
-  },
-  {
-    "nom": "Nîmes",
+    "nom": "Nimes",
+    "fichier": "nîmes",
     "top": "79.9636%",
     "left": "71.5%",
     "description": "Ville du sud connue pour ses arènes",
@@ -328,6 +380,99 @@
       "Maison Carrée",
       "Tour Magne"
     ],
-    "funfact": "Le mot 'denim' (jean) vient de 'de Nîmes'. 🧵👖"
+    "funfact": "Le mot 'denim' (jean) vient de 'de Nîmes'. 🧵👖",
+    "quiz": {
+      "question": "Quel monument célèbre peut-on visiter à Nîmes ?",
+      "reponses": [
+        "La Tour Eiffel",
+        "Le Panthéon",
+        "Les Arènes de Nîmes"
+      ],
+      "bonneReponse": 2
+    }
+  },
+  {
+    "nom": "Saint-Étienne",
+    "top": "65.9327%",
+    "left": "66.625%",
+    "description": "Ville industrielle au sud de Lyon",
+    "image": "images/SaintEtienne.png",
+    "contenu": [
+      "🏭 Ancienne capitale du charbon et des armes",
+      "🎨 Ville créative design de l’UNESCO",
+      "⚽ Passion du football avec l’ASSE"
+    ],
+    "sites": [
+      "Musée de la Mine",
+      "Cité du design",
+      "Stade Geoffroy-Guichard"
+    ],
+    "funfact": "On appelle affectueusement les habitants les 'Stephanois'.",
+    "quiz": {
+    "question": "Quel sport est particulièrement populaire à Saint-Étienne ?",
+    "reponses": [
+      "Le basketball",
+      "Le football",
+      "Le tennis"
+  ],
+  "bonneReponse": 1
+}
+
+  },
+  {
+    "nom": "Grenoble",
+    "top": "66.3052%",
+    "left": "77.125%",
+    "description": "Ville alpine réputée pour ses universités",
+    "image": "images/grenoble.png",
+    "contenu": [
+      "🏔️ Ville entourée de montagnes",
+      "🎓 Pôle universitaire et scientifique reconnu",
+      "🚠 Téléphérique des bulles vers la Bastille"
+    ],
+    "sites": [
+      "Musée de Grenoble",
+      "Fort de la Bastille",
+      "Parc Paul Mistral"
+    ],
+    "funfact": "Grenoble a accueilli les Jeux Olympiques d’hiver en 1968.",
+    "quiz": {
+    "question": "Comment s’appelle le téléphérique emblématique de Grenoble ?",
+    "reponses": [
+      "Le funiculaire du Mont-Blanc",
+      "Les bulles de Grenoble",
+      "Le téléphérique des Alpes"
+  ],
+  "bonneReponse": 1
+}
+
+  },
+  {
+    "nom": "Angers",
+    "top": "42.9618%",
+    "left": "39.75%",
+    "description": "Ville de la région Pays de la Loire",
+    "image": "images/angers.png",
+    "contenu": [
+      "🏰 Château d’Angers et tapisserie de l’Apocalypse",
+      "🌿 Nombreux parcs et jardins",
+      "📚 Ville étudiante animée"
+    ],
+    "sites": [
+      "Château d'Angers",
+      "Cathédrale Saint-Maurice",
+      "Parc Terra Botanica"
+    ],
+    "funfact": "Angers est l'une des villes les plus vertes de France !",
+    "quiz": {
+    "question": "Quelle œuvre célèbre peut-on admirer au château d’Angers ?",
+    "reponses": [
+      "La Joconde",
+      "La tapisserie de l’Apocalypse",
+      "La tapisserie de Bayeux"
+  ],
+  "bonneReponse": 1
+}
+
   }
 ]
