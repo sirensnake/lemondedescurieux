@@ -311,6 +311,23 @@
         "Parc Terra Botanica"
       ],
       "funfact": "Angers est l'une des villes les plus vertes de France !"
+  },
+  {
+    "nom": "Nîmes",
+    "top": "79.9636%",
+    "left": "71.5%",
+    "description": "Ville du sud connue pour ses arènes",
+    "image": "images/nimes.png",
+    "contenu": [
+      "🏟️ Arènes romaines très bien conservées",
+      "🪷 Jardins de la Fontaine avec vestiges antiques",
+      "🕌 Influences espagnoles dans la culture"
+    ],
+    "sites": [
+      "Les Arènes de Nîmes",
+      "Maison Carrée",
+      "Tour Magne"
+    ],
+    "funfact": "Le mot 'denim' (jean) vient de 'de Nîmes'. 🧵👖"
   }
-  
 ]
