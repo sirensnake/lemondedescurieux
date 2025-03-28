@@ -4,6 +4,7 @@ body {
     color: #333;
     text-align: center;
     padding: 20px;
+    padding-top: 50px; /* Espace supplémentaire en haut pour afficher le bouton */
 }
 
 h1 {
@@ -78,18 +79,32 @@ button:hover {
     color: #e63946;
 }
 
+/* Positionner le bouton "Retour à la page principale" en haut de la page */
+.back-button-container {
+    position: fixed; /* Fixe le bouton à une position spécifique */
+    top: 20px; /* Positionne le bouton à 20px du haut */
+    left: 50%; /* Centré horizontalement */
+    transform: translateX(-50%); /* Centrage parfait */
+    z-index: 9999; /* Met le bouton au-dessus de la carte */
+    background-color: rgba(0, 0, 0, 0.5); /* Optionnel : fond semi-transparent */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre légère pour donner du relief */
+}
+
 .back-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 15px;
-    background-color: #2a9d8f;
     color: white;
     text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
     border-radius: 5px;
+    background-color: #2a9d8f; /* Couleur du bouton */
+    transition: background-color 0.3s ease;
 }
 
 .back-button:hover {
-    background-color: #21867a;
+    background-color: #21867a; /* Changement de couleur au survol */
 }
 
 .chapter-list {
@@ -218,3 +233,45 @@ button:hover {
     font-size: 1.1em;
   }
   
+  .next-chapter-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #2a9d8f;
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.next-chapter-button:hover {
+    background-color: #21867a;
+    transform: translateX(5px); /* Légère animation au survol */
+}
+
+.next-chapter-button .arrow {
+    margin-right: 10px;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.next-chapter-button:hover .arrow {
+    transform: translateX(5px); /* L'icône se déplace aussi avec le bouton */
+}
+
+.button-container {
+    margin-top: 20px; /* Espace au-dessus du bouton */
+    margin-bottom: 20px; /* Espace en dessous du bouton */
+}
+
+.link-container {
+    margin-bottom: 20px; /* Espace sous le lien de la carte d'Europe */
+}
+section {
+    padding-bottom: 20px; /* Espace entre la fin d'une section et la section suivante */
+}
+

@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athènes - Ville Européenne</title>
+    <link rel="stylesheet" href="../styles/section_style.css">
+</head>
+<body>
+
+    <h1>Athènes - Ville Européenne</h1>
+    <p>Athènes est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
+    
+    <h2>Quelques faits intéressants sur Athènes :</h2>
+    <ul>
+        <li>Insère ici un fait intéressant sur Athènes.</li>
+        <li>Insère ici un autre fait sur Athènes.</li>
+    </ul>
+
+    <h2>Carte interactive de Athènes</h2>
+    <div id="Athènes_map" style="width: 100%; height: 400px;"></div>
+
+    <section>
+        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
+            <button class="back-button">Retour à la carte d'Europe 🗺️</button>
+        </a>
+    </section>
+
+    <script>
+        var map = L.map('Athènes_map').setView([37.9838, 23.7275], 13); // Latitude et longitude de Athènes
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19,
+        }).addTo(map);
+
+        var marker = L.marker([37.9838, 23.7275]).addTo(map);
+        marker.bindPopup("<b>Athènes</b><br>Capitale de la région").openPopup();
+    </script>
+
+</body>
+</html>

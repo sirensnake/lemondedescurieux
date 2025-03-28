@@ -6,7 +6,6 @@
     <title>Géographie - Chapitre 3 : Les Grandes villes en France et en Europe</title>
     <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
     <link rel="stylesheet" href="styles/section_style.css">
-
 </head>
 <body>
 
@@ -14,54 +13,41 @@
     
     <section>
         <h2>Les grandes villes de France</h2>
-<p>La France compte plusieurs grandes villes importantes sur le plan économique, culturel et historique. Voici quelques-unes des principales villes :</p>
-<ul>
-  <li><strong>Paris</strong> : Capitale de la France, c’est une ville mondiale connue pour la tour Eiffel, le Louvre et ses activités culturelles.</li>
-  <li><strong>Lyon</strong> : Connue pour sa gastronomie et son patrimoine historique, elle est située au confluent du Rhône et de la Saône.</li>
-  <li><strong>Marseille</strong> : Plus grand port de France, situé sur la mer Méditerranée.</li>
-</ul>
+        <p>La France compte plusieurs grandes villes importantes sur le plan économique, culturel et historique. Voici quelques-unes des principales villes :</p>
+        <ul>
+          <li><strong>Paris</strong> : Capitale de la France, c’est une ville mondiale connue pour la tour Eiffel, le Louvre et ses activités culturelles.</li>
+          <li><strong>Lyon</strong> : Connue pour sa gastronomie et son patrimoine historique, elle est située au confluent du Rhône et de la Saône.</li>
+          <li><strong>Marseille</strong> : Plus grand port de France, situé sur la mer Méditerranée.</li>
+        </ul>
 
-<h3>Carte interactive des grandes villes de France</h3>
-<p>Tu peux maintenant découvrir les villes en cliquant sur la carte !</p>
-
-<a href="carte_france.html">
-  <img src="carte_france.png" 
-       alt="Carte interactive de la France" 
-       class="vignette-carte"
-       title="Clique pour accéder à la carte interactive">
-</a>
-
-<p>
-  <a href="carte_france.html" class="bouton-interactive">🗺️ Explorer la carte interactive</a>
-</p>
-
-
-
+        <h2>Carte interactive des villes de France</h2>
+        <p>Explorez les grandes villes de France sur la carte interactive !</p>
+        <a href="carte_france.html" target="_blank">
+            <button style="background-color: #f4a261; color: white; padding: 10px 20px; border-radius: 5px; font-size: 18px;">
+                <img src="images/france_thumbnail.png" alt="Vignette Carte France" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                Voir la carte interactive de la France
+            </button>
+        </a>
     </section>
 
     <section>
-        <h2>Les grandes villes d’Europe</h2>
-        <p>L’Europe compte de nombreuses grandes villes historiques et modernes :</p>
-        <ul>
-            <li><strong>Londres</strong> : Capitale du Royaume-Uni, c’est une ville cosmopolite et un centre financier mondial.</li>
-            <li><strong>Berlin</strong> : Capitale de l’Allemagne, connue pour son histoire riche et ses monuments emblématiques.</li>
-            <li><strong>Rome</strong> : Capitale de l’Italie, c’est une ville antique qui abrite des vestiges tels que le Colisée et le Vatican.</li>
-        </ul>
-
-        <h3>Carte des grandes villes d’Europe</h3>
-        <img src="images/carte_europe.jpg" alt="Carte des grandes villes d'Europe" class="map-image">
+        <h2>Carte interactive des villes d'Europe</h2>
+        <p>Explorez les grandes villes d'Europe sur la carte interactive !</p>
+        <div class="link-container">
+            <a href="carte_europe/carte_villes_europe_avec_liens.html" target="_blank">
+                <button style="background-color: #f4a261; color: white; padding: 10px 20px; border-radius: 5px; font-size: 18px;">
+                    <img src="images/carte_europe_thumbnail.png" alt="Vignette Carte Europe" style="width: 50px; height: auto; margin-right: 10px; vertical-align: middle;">
+                    Voir la carte interactive de l'Europe
+                </button>
+            </a>
+        </div>
     </section>
 
-    <section class="quiz-section">
-        <h3>Quiz : Teste tes connaissances</h3>
-        <p>Quelle est la capitale de l’Allemagne ?</p>
-        <button onclick="checkAnswer('berlin', true)">Berlin</button>
-        <button onclick="checkAnswer('rome', false)">Rome</button>
-        <button onclick="checkAnswer('paris', false)">Paris</button>
-        <p id="feedback"></p>
-    </section>
-
-    <a href="geographie_population.html">Suivant : Chapitre 4 - La Répartition de la population mondiale</a>
+    <div class="button-container">
+        <a href="geographie_population.html" class="next-chapter-button">
+            <span class="arrow">➡️</span> Chapitre suivant
+        </a>
+    </div>
 
     <script>
         function checkAnswer(answer, isCorrect) {

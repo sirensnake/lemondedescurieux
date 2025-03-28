@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrid - Ville Européenne</title>
+    <link rel="stylesheet" href="../styles/section_style.css">
+</head>
+<body>
+
+    <h1>Madrid - Ville Européenne</h1>
+    <p>Madrid est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
+    
+    <h2>Quelques faits intéressants sur Madrid :</h2>
+    <ul>
+        <li>Insère ici un fait intéressant sur Madrid.</li>
+        <li>Insère ici un autre fait sur Madrid.</li>
+    </ul>
+
+    <h2>Carte interactive de Madrid</h2>
+    <div id="Madrid_map" style="width: 100%; height: 400px;"></div>
+
+    <section>
+        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
+            <button class="back-button">Retour à la carte d'Europe 🗺️</button>
+        </a>
+    </section>
+
+    <script>
+        var map = L.map('Madrid_map').setView([40.4168, -3.7038], 13); // Latitude et longitude de Madrid
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19,
+        }).addTo(map);
+
+        var marker = L.marker([40.4168, -3.7038]).addTo(map);
+        marker.bindPopup("<b>Madrid</b><br>Capitale de la région").openPopup();
+    </script>
+
+</body>
+</html>

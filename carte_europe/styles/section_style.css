@@ -1,0 +1,27 @@
+/* Styles globaux pour le projet */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #2a9d8f; /* Couleur verte */
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+button {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #21867a;
+}
