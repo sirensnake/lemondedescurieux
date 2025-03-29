@@ -2,30 +2,30 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Prague - Ville Européenne</title>
+  <title>Athènes - Ville Européenne</title>
   <link rel="stylesheet" href="../styles/section_style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
   <div class="page-contenu">
-    <h1>Prague</h1>
+    <h1>Athènes</h1>
     <section class="ville-description">
-      <p>Prague est surnommée "la ville aux cent clochers", célèbre pour son château, son horloge astronomique et le Pont Charles.</p>
-      <img src="../images/prague.png" alt="Image de Prague" style="max-width: 300px; border-radius: 10px;" />
+      <p>Athènes est le berceau de la démocratie et de la philosophie occidentale, célèbre pour l’Acropole.</p>
+      <img src="../images/athenes.png" alt="Image d’Athènes" style="max-width: 300px; border-radius: 10px;" />
     </section>
 
     <h2>Le savais-tu ? 🦊</h2>
     <div class="anecdote">
-      <p>Le Pont Charles est orné de 30 statues et relie la vieille ville au quartier de Malá Strana ! 🌉</p>
+      <p>L’Acropole d’Athènes est visible de presque partout en ville ! 🏛️</p>
     </div>
 
     <h2>Petit Quiz 🧠</h2>
     <div class="quiz">
-      <p>Quel fleuve traverse Prague ?</p>
-      <button onclick="checkAnswer(this, 'bonne')">La Vltava</button>
-      <button onclick="checkAnswer(this, 'mauvaise')">La Seine</button>
-      <button onclick="checkAnswer(this, 'mauvaise')">Le Danube</button>
+      <p>Quel philosophe est né à Athènes ?</p>
+      <button onclick="checkAnswer(this, 'bonne')">Socrate</button>
+      <button onclick="checkAnswer(this, 'mauvaise')">Pythagore</button>
+      <button onclick="checkAnswer(this, 'mauvaise')">Euclide</button>
       <p id="quiz-feedback" style="margin-top: 10px; font-weight: bold;"></p>
     </div>
 
@@ -49,14 +49,14 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var map = L.map('map').setView([50.0755, 14.4378], 13);
+      var map = L.map('map').setView([37.9838, 23.7275], 13);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
         maxZoom: 19,
       }).addTo(map);
 
-      L.marker([50.0755, 14.4378]).addTo(map)
-        .bindPopup("<b>Prague</b>").openPopup();
+      L.marker([37.9838, 23.7275]).addTo(map)
+        .bindPopup("<b>Athènes</b>").openPopup();
 
       setTimeout(() => {
         map.invalidateSize();

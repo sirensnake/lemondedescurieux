@@ -1,43 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vienne - Ville Européenne</title>
-    <link rel="stylesheet" href="../styles/section_style.css">
+  <meta charset="UTF-8">
+  <title>Vienne - Ville Européenne</title>
+  <link rel="stylesheet" href="../styles/section_style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
-
-    <h1>Vienne - Ville Européenne</h1>
-    <p>Vienne est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
-    
-    <h2>Quelques faits intéressants sur Vienne :</h2>
-    <ul>
-        <li>Insère ici un fait intéressant sur Vienne.</li>
-        <li>Insère ici un autre fait sur Vienne.</li>
-    </ul>
-
-    <h2>Carte interactive de Vienne</h2>
-    <div id="Vienne_map" style="width: 100%; height: 400px;"></div>
-
-    <section>
-        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
-            <button class="back-button">Retour à la carte d'Europe 🗺️</button>
-        </a>
+  <div class="page-contenu">
+    <h1>Vienne</h1>
+    <section class="ville-description">
+      <p>Vienne est connue pour ses palais impériaux, sa musique classique et ses cafés élégants.</p>
+      <img src="../images/vienne.png" alt="Image de Vienne" style="max-width: 300px; border-radius: 10px;" />
     </section>
 
-    <script>
-        var map = L.map('Vienne_map').setView([48.2082, 16.3738], 13); // Latitude et longitude de Vienne
+    <h2>Le savais-tu ? 🦊</h2>
+    <div class="anecdote">
+      <p>Vienne a été classée plusieurs fois ville la plus agréable à vivre au monde ! 🌍</p>
+    </div>
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 19,
-        }).addTo(map);
+    <h2>Petit Quiz 🧠</h2>
+    <div class="quiz">
+      <p>Quel fleuve traverse Vienne ?</p>
+      <button onclick="checkAnswer(this, 'bonne')">Le Danube</button>
+      <button onclick="checkAnswer(this, 'mauvaise')">La Seine</button>
+      <button onclick="checkAnswer(this, 'mauvaise')">La Spree</button>
+      <p id="quiz-feedback" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
 
-        var marker = L.marker([48.2082, 16.3738]).addTo(map);
-        marker.bindPopup("<b>Vienne</b><br>Capitale de la région").openPopup();
-    </script>
+    <h2>Carte interactive</h2>
+    <div id="map" style="width: 100%; height: 400px;"></div>
 
+    <section>
+      <a href="../carte_villes_europe_avec_liens.html">
+        <button class="back-button">Retour à la carte d'Europe 🗺️</button>
+      </a>
+    </section>
+  </div>
+
+  <script>
+    function checkAnswer(button, status) {
+      const feedback = document.getElementById("quiz-feedback");
+      feedback.textContent = status === 'bonne' ? "Bravo ! 🎉 Bonne réponse." : "Oups... essaie encore !";
+      feedback.style.color = status === 'bonne' ? "green" : "red";
+    }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var map = L.map('map').setView([48.2082, 16.3738], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      L.marker([48.2082, 16.3738]).addTo(map)
+        .bindPopup("<b>Vienne</b>").openPopup();
+
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 200);
+    });
+  </script>
 </body>
 </html>

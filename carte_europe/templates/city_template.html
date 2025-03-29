@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moscou - Ville Européenne</title>
+    <title>{{ ville }} - Ville Européenne</title>
 
     <!-- Style général -->
     <link rel="stylesheet" href="../styles/section_style.css" />
@@ -13,13 +13,12 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
-    <div class="page-contenu">
 
-    <h1>Moscou</h1>
+    <h1>{{ ville }}</h1>
 
     <section class="ville-description">
-        <p>Capitale de la Russie</p>
-        <img src="avec le Kremlin" alt="Image de Moscou" style="max-width: 300px; border-radius: 10px;" />
+        <p>{{ description }}</p>
+        <img src="{{ image_url }}" alt="Image de {{ ville }}" style="max-width: 300px; border-radius: 10px;" />
     </section>
 
     <h2>Carte interactive</h2>
@@ -33,7 +32,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var map = L.map('map').setView([55.7558, 37.6173], 13);
+            var map = L.map('map').setView([{{ latitude }}, {{ longitude }}], 13);
     
             // Chaîne brute, sans Jinja, directement dans le HTML final
             var tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
@@ -43,8 +42,8 @@
                 maxZoom: 19,
             }).addTo(map);
     
-            L.marker([55.7558, 37.6173]).addTo(map)
-                .bindPopup("<b>Moscou</b>").openPopup();
+            L.marker([{{ latitude }}, {{ longitude }}]).addTo(map)
+                .bindPopup("<b>{{ ville }}</b>").openPopup();
     
             setTimeout(() => {
                 map.invalidateSize();
@@ -52,6 +51,7 @@
         });
     </script>
     
-</div>
+
 </body>
 </html>
+

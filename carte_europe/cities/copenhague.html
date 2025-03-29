@@ -1,43 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Copenhague - Ville Européenne</title>
-    <link rel="stylesheet" href="../styles/section_style.css">
+
+    <!-- Style général -->
+    <link rel="stylesheet" href="../styles/section_style.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
+    <div class="page-contenu">
 
-    <h1>Copenhague - Ville Européenne</h1>
-    <p>Copenhague est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
-    
-    <h2>Quelques faits intéressants sur Copenhague :</h2>
-    <ul>
-        <li>Insère ici un fait intéressant sur Copenhague.</li>
-        <li>Insère ici un autre fait sur Copenhague.</li>
-    </ul>
+    <h1>Copenhague</h1>
 
-    <h2>Carte interactive de Copenhague</h2>
-    <div id="Copenhague_map" style="width: 100%; height: 400px;"></div>
+    <section class="ville-description">
+        <p>Capitale du Danemark</p>
+        <img src="innovante et verte" alt="Image de Copenhague" style="max-width: 300px; border-radius: 10px;" />
+    </section>
+
+    <h2>Carte interactive</h2>
+    <div id="map" style="width: 100%; height: 400px;"></div>
 
     <section>
-        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
+        <a href="../carte_villes_europe_avec_liens.html">
             <button class="back-button">Retour à la carte d'Europe 🗺️</button>
         </a>
     </section>
 
     <script>
-        var map = L.map('Copenhague_map').setView([55.6761, 12.5683], 13); // Latitude et longitude de Copenhague
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 19,
-        }).addTo(map);
-
-        var marker = L.marker([55.6761, 12.5683]).addTo(map);
-        marker.bindPopup("<b>Copenhague</b><br>Capitale de la région").openPopup();
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map').setView([55.6761, 12.5683], 13);
+    
+            // Chaîne brute, sans Jinja, directement dans le HTML final
+            var tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    
+            L.tileLayer(tileUrl, {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19,
+            }).addTo(map);
+    
+            L.marker([55.6761, 12.5683]).addTo(map)
+                .bindPopup("<b>Copenhague</b>").openPopup();
+    
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 200);
+        });
     </script>
-
+    
+</div>
 </body>
 </html>

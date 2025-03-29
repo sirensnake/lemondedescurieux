@@ -1,43 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amsterdam - Ville Européenne</title>
-    <link rel="stylesheet" href="../styles/section_style.css">
+
+    <!-- Style général -->
+    <link rel="stylesheet" href="../styles/section_style.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
+    <div class="page-contenu">
 
-    <h1>Amsterdam - Ville Européenne</h1>
-    <p>Amsterdam est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
-    
-    <h2>Quelques faits intéressants sur Amsterdam :</h2>
-    <ul>
-        <li>Insère ici un fait intéressant sur Amsterdam.</li>
-        <li>Insère ici un autre fait sur Amsterdam.</li>
-    </ul>
 
-    <h2>Carte interactive de Amsterdam</h2>
-    <div id="Amsterdam_map" style="width: 100%; height: 400px;"></div>
+    <h1>Amsterdam</h1>
 
+    <section class="ville-description">
+        <p>Capitale des Pays-Bas</p>
+        <img src="réputée pour ses canaux" alt="Image de Amsterdam" style="max-width: 300px; border-radius: 10px;" />
+    </section>
+    <h2>Le savais-tu ? 🦊</h2>
+<div class="anecdote">
+  <p>Amsterdam compte plus de 100 km de canaux, ce qui lui vaut le surnom de "Venise du Nord" ! 🚲🌊</p>
+</div>
+
+<h2>Petit Quiz 🧠</h2>
+<div class="quiz">
+  <p>Quel fleuve se jette dans les canaux d’Amsterdam ?</p>
+  <button onclick="checkAnswer(this, 'bonne')">L’Amstel</button>
+  <button onclick="checkAnswer(this, 'mauvaise')">La Seine</button>
+  <button onclick="checkAnswer(this, 'mauvaise')">Le Rhin</button>
+  <p id="quiz-feedback" style="margin-top: 10px; font-weight: bold;"></p>
+</div>
+
+    <h2>Carte interactive</h2>
+    <div id="map" style="width: 100%; height: 400px;"></div>
+    <script>
+        function checkAnswer(button, status) {
+          const feedback = document.getElementById("quiz-feedback");
+          if (status === 'bonne') {
+            feedback.textContent = "Bravo ! 🎉 Bonne réponse.";
+            feedback.style.color = "green";
+          } else {
+            feedback.textContent = "Oups... essaie encore !";
+            feedback.style.color = "red";
+          }
+        }
+      </script>
+      
     <section>
-        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
+        <a href="../carte_villes_europe_avec_liens.html">
             <button class="back-button">Retour à la carte d'Europe 🗺️</button>
         </a>
     </section>
-
+    
     <script>
-        var map = L.map('Amsterdam_map').setView([52.3676, 4.9041], 13); // Latitude et longitude de Amsterdam
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 19,
-        }).addTo(map);
-
-        var marker = L.marker([52.3676, 4.9041]).addTo(map);
-        marker.bindPopup("<b>Amsterdam</b><br>Capitale de la région").openPopup();
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map').setView([52.3676, 4.9041], 13);
+    
+            // Chaîne brute, sans Jinja, directement dans le HTML final
+            var tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    
+            L.tileLayer(tileUrl, {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19,
+            }).addTo(map);
+    
+            L.marker([52.3676, 4.9041]).addTo(map)
+                .bindPopup("<b>Amsterdam</b>").openPopup();
+    
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 200);
+        });
     </script>
-
+    
+</div>
 </body>
 </html>

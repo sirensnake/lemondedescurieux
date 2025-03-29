@@ -1,43 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Istanbul - Ville Européenne</title>
-    <link rel="stylesheet" href="../styles/section_style.css">
+
+    <!-- Style général -->
+    <link rel="stylesheet" href="../styles/section_style.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
+    <div class="page-contenu">
 
-    <h1>Istanbul - Ville Européenne</h1>
-    <p>Istanbul est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
-    
-    <h2>Quelques faits intéressants sur Istanbul :</h2>
-    <ul>
-        <li>Insère ici un fait intéressant sur Istanbul.</li>
-        <li>Insère ici un autre fait sur Istanbul.</li>
-    </ul>
+    <h1>Istanbul</h1>
 
-    <h2>Carte interactive de Istanbul</h2>
-    <div id="Istanbul_map" style="width: 100%; height: 400px;"></div>
+    <section class="ville-description">
+        <p>Ville à cheval entre deux continents</p>
+        <img src="riche d’un passé byzantin et ottoman." alt="Image de Istanbul" style="max-width: 300px; border-radius: 10px;" />
+    </section>
+
+    <h2>Carte interactive</h2>
+    <div id="map" style="width: 100%; height: 400px;"></div>
 
     <section>
-        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
+        <a href="../carte_villes_europe_avec_liens.html">
             <button class="back-button">Retour à la carte d'Europe 🗺️</button>
         </a>
     </section>
 
     <script>
-        var map = L.map('Istanbul_map').setView([41.0082, 28.9784], 13); // Latitude et longitude de Istanbul
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 19,
-        }).addTo(map);
-
-        var marker = L.marker([41.0082, 28.9784]).addTo(map);
-        marker.bindPopup("<b>Istanbul</b><br>Capitale de la région").openPopup();
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map').setView([41.0082, 28.9784], 13);
+    
+            // Chaîne brute, sans Jinja, directement dans le HTML final
+            var tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    
+            L.tileLayer(tileUrl, {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19,
+            }).addTo(map);
+    
+            L.marker([41.0082, 28.9784]).addTo(map)
+                .bindPopup("<b>Istanbul</b>").openPopup();
+    
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 200);
+        });
     </script>
-
+    
+</div>
 </body>
 </html>

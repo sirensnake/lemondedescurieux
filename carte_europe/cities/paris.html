@@ -1,43 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paris - Ville Européenne</title>
-    <link rel="stylesheet" href="../styles/section_style.css">
+
+    <!-- Style général -->
+    <link rel="stylesheet" href="../styles/section_style.css" />
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
+    <div class="page-contenu">
 
-    <h1>Paris - Ville Européenne</h1>
-    <p>Paris est une ville mondialement connue, célèbre pour ses monuments, son histoire et sa culture. Elle attire des millions de touristes chaque année.</p>
-    
-    <h2>Quelques faits intéressants sur Paris :</h2>
-    <ul>
-        <li>Insère ici un fait intéressant sur Paris.</li>
-        <li>Insère ici un autre fait sur Paris.</li>
-    </ul>
 
-    <h2>Carte interactive de Paris</h2>
-    <div id="Paris_map" style="width: 100%; height: 400px;"></div>
+    <h1>Paris</h1>
+
+    <section class="ville-description">
+        <p>Capitale de la France</p>
+        <img src="célèbre pour la Tour Eiffel" alt="Image de Paris" style="max-width: 300px; border-radius: 10px;" />
+    </section>
+
+    <h2>Carte interactive</h2>
+    <div id="map" style="width: 100%; height: 400px;"></div>
 
     <section>
-        <a href="../carte_villes_europe_avec_liens.html" class="back-button-container">
+        <a href="../carte_villes_europe_avec_liens.html">
             <button class="back-button">Retour à la carte d'Europe 🗺️</button>
         </a>
     </section>
 
     <script>
-        var map = L.map('Paris_map').setView([48.8566, 2.3522], 13); // Latitude et longitude de Paris
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 19,
-        }).addTo(map);
-
-        var marker = L.marker([48.8566, 2.3522]).addTo(map);
-        marker.bindPopup("<b>Paris</b><br>Capitale de la région").openPopup();
+        document.addEventListener("DOMContentLoaded", function () {
+            var map = L.map('map').setView([48.8566, 2.3522], 13);
+    
+            // Chaîne brute, sans Jinja, directement dans le HTML final
+            var tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    
+            L.tileLayer(tileUrl, {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19,
+            }).addTo(map);
+    
+            L.marker([48.8566, 2.3522]).addTo(map)
+                .bindPopup("<b>Paris</b>").openPopup();
+    
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 200);
+        });
     </script>
-
+    <section class="ville-navigation">
+        <a href="londres.html">
+          <button class="next-city">Ville suivante ➡️</button>
+        </a>
+      </section>
+      
+</div>
 </body>
 </html>

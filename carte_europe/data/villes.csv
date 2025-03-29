@@ -1,0 +1,21 @@
+ville,description,image_url,,
+Paris,Capitale de la France,célèbre pour la Tour Eiffel,le Louvre et sa riche histoire.,images/paris.jpg
+Londres,Ville cosmopolite et historique,connue pour Big Ben,la Tamise et Buckingham Palace.,images/londres.jpg
+Berlin,Capitale de l'Allemagne,symbole de l’unification et centre culturel moderne.,images/berlin.jpg,
+Madrid,Capitale de l'Espagne,réputée pour le Prado,ses places animées et son ambiance chaleureuse.,images/madrid.jpg
+Rome,Capitale italienne,connue pour le Colisée,le Vatican et son héritage antique.,images/rome.jpg
+Vienne,Ville impériale d’Autriche,célèbre pour la musique classique et ses palais somptueux.,images/vienne.jpg,
+Varsovie,Capitale de la Pologne,mêlant histoire,résilience et modernité.,images/varsovie.jpg
+Budapest,Ville hongroise traversée par le Danube,connue pour ses bains thermaux et son architecture.,images/budapest.jpg,
+Prague,Capitale de la République tchèque,ville féérique avec son château et son horloge astronomique.,images/prague.jpg,
+Amsterdam,Capitale des Pays-Bas,réputée pour ses canaux,ses musées et son esprit libre.,images/amsterdam.jpg
+Bruxelles,Capitale de la Belgique et de l’Europe,célèbre pour la Grand-Place et ses gaufres.,images/bruxelles.jpg,
+Lisbonne,Ville ensoleillée du Portugal,perchée sur des collines avec tramways et azulejos.,images/lisbonne.jpg,
+Copenhague,Capitale du Danemark,innovante et verte,avec son port et la Petite Sirène.,images/copenhague.jpg
+Oslo,Ville paisible de Norvège,entre fjords et nature,connue pour ses musées et son architecture moderne.,images/oslo.jpg
+Stockholm,Capitale de la Suède,construite sur des îles,avec de nombreux ponts et musées.,images/stockholm.jpg
+Helsinki,Capitale de la Finlande,au style nordique épuré,entre mer et design.,images/helsinki.jpg
+Athènes,Berceau de la civilisation occidentale,célèbre pour l’Acropole et la philosophie.,images/athenes.jpg,
+Istanbul,Ville à cheval entre deux continents,riche d’un passé byzantin et ottoman.,images/istanbul.jpg,
+Moscou,Capitale de la Russie,avec le Kremlin,la Place Rouge et sa culture monumentale.,images/moscou.jpg
+Kiev,Capitale de l’Ukraine,ville historique traversée par le Dniepr,à l’architecture orthodoxe colorée.,images/kiev.jpg
