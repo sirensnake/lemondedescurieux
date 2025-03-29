@@ -1,57 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kiev - Ville Européenne</title>
-
-    <!-- Style général -->
-    <link rel="stylesheet" href="../styles/section_style.css" />
-
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <meta charset="UTF-8">
+  <title>Kiev - Ville Européenne</title>
+  <link rel="stylesheet" href="../styles/section_style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
-    <div class="page-contenu">
-
+  <div class="page-contenu">
     <h1>Kiev</h1>
-
     <section class="ville-description">
-        <p>Capitale de l’Ukraine</p>
-        <img src="ville historique traversée par le Dniepr" alt="Image de Kiev" style="max-width: 300px; border-radius: 10px;" />
+      <p>Kiev est une ville historique de l’Ukraine, célèbre pour ses églises aux dômes dorés, ses monastères anciens et sa culture vibrante.</p>
+      <img src="../images/kiev.png" alt="Image de Kiev" style="max-width: 300px; border-radius: 10px;" />
     </section>
+
+    <h2>Le savais-tu ? 🦊</h2>
+    <div class="anecdote">
+      <p>La cathédrale Sainte-Sophie de Kiev est inscrite au patrimoine mondial de l’UNESCO ! 🏛️</p>
+    </div>
+
+    <h2>Petit Quiz 🧠</h2>
+    <div class="quiz">
+      <p>Quelle cathédrale célèbre se trouve à Kiev ?</p>
+      <button onclick="checkAnswer(this, 'bonne')">Sainte-Sophie</button>
+      <button onclick="checkAnswer(this, 'mauvaise')">Saint-Paul</button>
+      <button onclick="checkAnswer(this, 'mauvaise')">Notre-Dame</button>
+      <p id="quiz-feedback" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
 
     <h2>Carte interactive</h2>
     <div id="map" style="width: 100%; height: 400px;"></div>
 
     <section>
-        <a href="../carte_villes_europe_avec_liens.html">
-            <button class="back-button">Retour à la carte d'Europe 🗺️</button>
-        </a>
+      <a href="../carte_villes_europe_avec_liens.html">
+        <button class="back-button">Retour à la carte d'Europe 🗺️</button>
+      </a>
     </section>
+  </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var map = L.map('map').setView([50.4501, 30.5234], 13);
-    
-            // Chaîne brute, sans Jinja, directement dans le HTML final
-            var tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
-    
-            L.tileLayer(tileUrl, {
-                attribution: '© OpenStreetMap contributors',
-                maxZoom: 19,
-            }).addTo(map);
-    
-            L.marker([50.4501, 30.5234]).addTo(map)
-                .bindPopup("<b>Kiev</b>").openPopup();
-    
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 200);
-        });
-    </script>
-    
-</div>
+  <script>
+    function checkAnswer(button, status) {
+      const feedback = document.getElementById("quiz-feedback");
+      if (status === 'bonne') {
+        feedback.textContent = "Bravo ! 🎉 Bonne réponse.";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Oups... essaie encore !";
+        feedback.style.color = "red";
+      }
+    }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var map = L.map('map').setView([50.4501, 30.5234], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      L.marker([50.4501, 30.5234]).addTo(map)
+        .bindPopup("<b>Kiev</b>").openPopup();
+
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 200);
+    });
+  </script>
 </body>
 </html>
