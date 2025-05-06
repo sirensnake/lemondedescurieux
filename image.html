@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Zones Cliquables</title>
+  <style>
+    .mindmap {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .mindmap-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="mindmap-container">
+    <img src="images/MineCraftMindmap_1000px.png" usemap="#matieresmap" class="mindmap">
+    <map name="matieresmap">
+      <area shape="circle" coords="380,590,70" href="https://example.com/maths" alt="Maths" title="Maths">
+      <area shape="circle" coords="680,590,70" href="https://example.com/sciences" alt="Sciences" title="Sciences">
+    </map>
+  </div>
+
+  <script src="scripts/imageMapResizer.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      imageMapResize();
+    });
+  </script>
+</body>
+</html>

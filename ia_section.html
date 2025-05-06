@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence Artificielle - Le Monde des Curieux</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/ia_section_style.css">
+</head>
+<body>
+    <div id="menu-container"></div>
+    
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb">🏠 <a href="index.html">Accueil</a> > 🤖 Intelligence Artificielle</div>
+    
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    </div>
+    
+    <h1>L'Intelligence Artificielle 🤖</h1>
+    <p class="intro-text">Découvre ce qu'est l'intelligence artificielle, comment elle fonctionne et son impact sur notre vie quotidienne !</p>
+
+    <div id="main-content" class="content-container">
+        <div class="ia-container">
+            <div class="ia-card">
+                <h3>🧠 Qu'est-ce que l'IA ?</h3>
+                <p>L'intelligence artificielle (IA) est une technologie qui permet aux ordinateurs d'apprendre et de résoudre des problèmes comme le ferait un humain, mais souvent beaucoup plus rapidement !</p>
+                <p>L'IA peut reconnaître des images, comprendre des textes, jouer à des jeux ou même aider les médecins à diagnostiquer des maladies.</p>
+                <div class="ia-example">
+                    <strong>Exemple:</strong> Quand tu demandes à un assistant virtuel comme Siri ou Alexa de te raconter une blague, c'est l'IA qui comprend ta question et qui choisit la blague à te raconter.
+                </div>
+            </div>
+            
+            <div class="ia-card">
+                <h3>🔍 Comment ça marche ?</h3>
+                <p>L'IA fonctionne grâce à l'apprentissage automatique. Cela signifie qu'elle apprend à partir d'exemples, un peu comme toi quand tu apprends à reconnaître les chats après en avoir vu plusieurs.</p>
+                <p>Plus l'IA voit d'exemples, plus elle devient intelligente et précise dans ses réponses.</p>
+                <div class="ia-example">
+                    <strong>Exemple:</strong> Pour apprendre à reconnaître un chat, l'IA regarde des milliers d'images de chats et apprend leurs caractéristiques comme les oreilles pointues ou la queue.
+                </div>
+            </div>
+            
+            <div class="ia-card">
+                <h3>📱 L'IA dans ta vie</h3>
+                <p>L'IA est déjà présente partout autour de toi ! Elle recommande des vidéos sur YouTube, corrige l'orthographe dans tes messages, ou aide à traduire des langues étrangères.</p>
+                <p>Elle peut même créer de la musique, des dessins ou rédiger des histoires !</p>
+                <div class="ia-example">
+                    <strong>Exemple:</strong> Quand ton téléphone reconnaît ton visage pour le déverrouiller ou quand il suggère automatiquement le prochain mot quand tu écris un message, c'est l'IA qui travaille.
+                </div>
+            </div>
+            
+            <div class="ia-card">
+                <h3>⚖️ Le bien et le moins bien</h3>
+                <p>L'IA peut nous aider de nombreuses façons : en facilitant l'apprentissage, en aidant les personnes handicapées, ou en résolvant des problèmes complexes comme le changement climatique.</p>
+                <p>Mais il faut aussi faire attention : l'IA peut parfois se tromper, répéter des idées fausses, ou être utilisée pour créer de fausses informations.</p>
+                <div class="ia-example">
+                    <strong>Point positif:</strong> L'IA peut aider à trouver de nouveaux médicaments plus rapidement.<br>
+                    <strong>Point à surveiller:</strong> Il faut vérifier les informations données par l'IA et ne pas tout croire sans réfléchir.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Jeu interactif : IA ou Humain -->
+        <div class="game-container">
+            <h2>Jeu : IA ou Humain ? 🎮</h2>
+            <p>Essaie de deviner si c'est une IA ou un humain qui a créé ces contenus !</p>
+            
+            <div id="game-display">
+                <p id="content-display">Clique sur "Commencer" pour jouer !</p>
+                <div id="result-display"></div>
+            </div>
+            
+            <div class="game-options">
+                <button id="start-game" class="game-option">Commencer</button>
+                <button id="human-guess" class="game-option" style="display: none;">Créé par un Humain</button>
+                <button id="ai-guess" class="game-option" style="display: none;">Créé par une IA</button>
+            </div>
+        </div>
+        
+        <!-- Section réflexion -->
+        <div class="content">
+            <h2>🤔 À toi de réfléchir !</h2>
+            <p>Voici quelques questions pour réfléchir à l'IA :</p>
+            <ul>
+                <li>Comment l'IA pourrait-elle t'aider à l'école ?</li>
+                <li>Quelles sont les choses qu'un humain fait mieux qu'une IA ?</li>
+                <li>Comment l'IA pourrait-elle évoluer dans le futur ?</li>
+                <li>Quelles règles devraient respecter les créateurs d'IA ?</li>
+            </ul>
+            <p>Discute de ces questions avec tes amis ou ta famille !</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
+    <script>
+        // Script pour le menu latéral
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("menu-container").innerHTML = data;
+                let sidebar = document.getElementById("sidebar");
+                let toggleButton = document.getElementById("sidebar-toggle");
+                
+                if (sidebar && toggleButton) {
+                    toggleButton.addEventListener("click", function() {
+                        sidebar.classList.toggle("open");
+                    });
+                }
+            })
+            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+            
+            // Script pour le jeu IA ou Humain
+            setupGame();
+            
+            // Script pour les outils d'accessibilité
+            setupAccessibilityTools();
+            
+            // Marquer cette page comme visitée dans le système de progression
+            markProgress("IA", "ia_introduction");
+        });
+        
+        // Contenu du jeu IA ou Humain
+        function setupGame() {
+            const contents = [
+                {
+                    text: "Les étoiles scintillent comme des diamants sur le manteau noir de la nuit, témoins silencieux de nos rêves éphémères.",
+                    creator: "IA"
+                },
+                {
+                    text: "J'ai fait un super dessin de licorne hier, elle était rose avec des ailes bleues et une corne arc-en-ciel qui brillait dans le noir !",
+                    creator: "Humain"
+                },
+                {
+                    text: "Le chat a sauté par-dessus la barrière puis s'est assis au soleil pour se lécher les pattes.",
+                    creator: "Humain"
+                },
+                {
+                    text: "Les arbres centenaires murmurent les secrets des âges passés tandis que leurs racines s'enfoncent profondément dans le sol nourricier de notre histoire collective.",
+                    creator: "IA"
+                },
+                {
+                    text: "Mon jeu préféré c'est Minecraft parce qu'on peut construire tout ce qu'on veut et après les montrer à mes copains.",
+                    creator: "Humain"
+                }
+            ];
+            
+            let currentContent = null;
+            const contentDisplay = document.getElementById('content-display');
+            const resultDisplay = document.getElementById('result-display');
+            const startButton = document.getElementById('start-game');
+            const humanButton = document.getElementById('human-guess');
+            const aiButton = document.getElementById('ai-guess');
+            
+            startButton.addEventListener('click', function() {
+                // Sélectionner un contenu aléatoire
+                currentContent = contents[Math.floor(Math.random() * contents.length)];
+                contentDisplay.textContent = currentContent.text;
+                
+                // Afficher les boutons de jeu
+                startButton.style.display = 'none';
+                humanButton.style.display = 'inline-block';
+                aiButton.style.display = 'inline-block';
+                resultDisplay.textContent = '';
+            });
+            
+            humanButton.addEventListener('click', function() {
+                checkGuess('Humain');
+            });
+            
+            aiButton.addEventListener('click', function() {
+                checkGuess('IA');
+            });
+            
+            function checkGuess(guess) {
+                if (guess === currentContent.creator) {
+                    resultDisplay.textContent = "✅ Correct ! C'était bien créé par un " + currentContent.creator + ".";
+                    // Enregistrer la progression si la réponse est correcte
+                    markProgress("IA", "jeu_ia_humain");
+                } else {
+                    resultDisplay.textContent = "❌ Pas tout à fait. C'était créé par un " + currentContent.creator + ".";
+                }
+                
+                // Réinitialiser pour la prochaine partie
+                startButton.style.display = 'inline-block';
+                startButton.textContent = 'Jouer encore';
+                humanButton.style.display = 'none';
+                aiButton.style.display = 'none';
+            }
+        }
+        
+        // Configuration des outils d'accessibilité
+        function setupAccessibilityTools() {
+            // Charger les préférences sauvegardées
+            if (localStorage.getItem('large-text') === 'true') {
+                document.body.classList.add('large-text');
+            }
+            
+            if (localStorage.getItem('high-contrast') === 'true') {
+                document.body.classList.add('high-contrast');
+            }
+            
+            // Ajouter les écouteurs d'événements
+            document.getElementById('text-size-toggle').addEventListener('click', function() {
+                document.body.classList.toggle('large-text');
+                localStorage.setItem('large-text', document.body.classList.contains('large-text'));
+            });
+            
+            document.getElementById('contrast-toggle').addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                localStorage.setItem('high-contrast', document.body.classList.contains('high-contrast'));
+            });
+        }
+        
+        // Système de suivi de progression
+        function markProgress(section, activity) {
+            // Récupérer les données existantes ou créer un nouvel objet
+            let progress = JSON.parse(localStorage.getItem('learningProgress')) || {};
+            
+            // Initialiser la section si elle n'existe pas
+            if (!progress[section]) {
+                progress[section] = {
+                    completed: 0,
+                    total: getActivityCount(section),
+                    activities: {}
+                };
+            }
+            
+            // Marquer l'activité comme complétée si elle ne l'est pas déjà
+            if (!progress[section].activities[activity]) {
+                progress[section].activities[activity] = {
+                    completed: true,
+                    timestamp: new Date().toISOString()
+                };
+                progress[section].completed += 1;
+                
+                // Afficher un message de félicitation
+                showCompletionMessage(section, activity);
+            }
+            
+            // Sauvegarder les progrès mis à jour
+            localStorage.setItem('learningProgress', JSON.stringify(progress));
+        }
+        
+        function getActivityCount(section) {
+            // Nombre total d'activités par section
+            const activityCounts = {
+                'IA': 5,
+                'Mathématiques': 15,
+                'Français': 12,
+                'Sciences': 10,
+                'Histoire-Géo': 10
+            };
+            
+            return activityCounts[section] || 5;
+        }
+        
+        function showCompletionMessage(section, activity) {
+            // Créer un message de félicitation éphémère
+            const messageElement = document.createElement('div');
+            messageElement.style.position = 'fixed';
+            messageElement.style.bottom = '20px';
+            messageElement.style.left = '50%';
+            messageElement.style.transform = 'translateX(-50%)';
+            messageElement.style.backgroundColor = '#4CAF50';
+            messageElement.style.color = 'white';
+            messageElement.style.padding = '10px 20px';
+            messageElement.style.borderRadius = '5px';
+            messageElement.style.zIndex = '1000';
+            messageElement.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+            messageElement.textContent = '✨ Bravo ! Tu as progressé dans la section ' + section;
+            
+            // Ajouter le message au document
+            document.body.appendChild(messageElement);
+            
+            // Supprimer le message après 3 secondes
+            setTimeout(() => {
+                document.body.removeChild(messageElement);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

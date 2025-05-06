@@ -149,3 +149,20 @@ h1.exercise-title {
         width: 120px;
     }
 }
+
+/* === Loader === */
+#loader{
+    position:fixed; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    background:#ffffff;        /* fond blanc */
+    z-index:2000;
+  }
+  .spinner{
+    width:64px; height:64px;
+    border:6px solid #ccc;
+    border-top-color:#2a9d8f;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  

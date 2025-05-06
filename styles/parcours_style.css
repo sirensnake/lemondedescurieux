@@ -1,0 +1,127 @@
+/* Styles pour les parcours interdisciplinaires */
+/* Modifier le parcours-container pour le rendre plus adapté à une disposition verticale */
+.parcours-container {
+    display: flex;
+    flex-direction: column; /* Changer de row à column */
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.parcours-card {
+    width: 100%; /* Utiliser toute la largeur disponible */
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.parcours-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.parcours-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.parcours-title {
+    font-family: 'Minecraftia', sans-serif;
+    color: #2e7d32;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.parcours-description {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.parcours-subjects {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.subject-tag {
+    background-color: #E8F5E9;
+    border: 1px solid #4CAF50;
+    border-radius: 15px;
+    padding: 3px 8px;
+    font-size: 12px;
+    color: #2E7D32;
+}
+
+.parcours-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.parcours-button:hover {
+    background-color: #388E3C;
+}
+
+/* Styles pour le bandeau de progression */
+.progress-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.progress-title {
+    font-family: 'Minecraftia', sans-serif;
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.progress-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.progress-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #757575;
+}
