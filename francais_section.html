@@ -2,71 +2,125 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
     <title>Français - Sommaire CM1 📖</title>
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="styles/menu_lateral.css" as="style">
+    <link rel="preload" href="scripts/menu-loader.js" as="script">
+    <link rel="preload" href="scripts/progression.js" as="script">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles/section_style.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/responsive_enhancements.css">
+    <link rel="stylesheet" href="styles/interdisciplinarite.css">
+    <script src="scripts/interdisciplinarite.js" defer></script>
 </head>
 <body>
+    <script src="scripts/device_detector.js"></script>
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Conteneur pour le menu latéral -->
     <div id="menu-container"></div>
     
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
-
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
-
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
-
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
-        });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
-
-    </script>
-
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb" aria-label="Fil d'Ariane">
+        🏠 <a href="index.html">Accueil</a> > 📝 Français
+    </div>
+    
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    </div>
+    
     <h1>Sommaire du français - Niveau CM1 📖</h1>
     <p class="intro-text">Voici les chapitres de français à explorer cette année :</p>
 
-    <div id="main-content" class="content-container"> <!-- Ajout du cadre blanc -->
-        <div class="content">
-            <h2>📖 Grammaire et Conjugaison</h2>
-            <p class="description">Apprends les règles de grammaire et améliore ta conjugaison.</p>
-            <a href="francais_chapitre1.html" class="learn-more">🔗 Explorer la grammaire</a>
-        </div>
-
-        <div class="content">
-            <h2>📚 Compréhension de textes</h2>
-            <p class="description">Développe ta compréhension en lisant des textes variés.</p>
-            <a href="francais_chapitre2.html" class="learn-more">🔗 Lire et comprendre</a>
-        </div>
-
-        <div class="content">
-            <h2>📝 Rédaction et Expression écrite</h2>
-            <p class="description">Améliore ton écriture et ta capacité à rédiger des textes.</p>
-            <a href="francais_chapitre3.html" class="learn-more">🔗 Pratiquer la rédaction</a>
-        </div>
-
-        <div class="content">
-            <h2>🔡 Vocabulaire et Orthographe</h2>
-            <p class="description">Apprends de nouveaux mots et améliore ton orthographe.</p>
-            <a href="francais_chapitre4.html" class="learn-more">🔗 Travailler le vocabulaire</a>
-        </div>
+    <div id="main-content" class="content">
+        <h2>📖 Grammaire et Conjugaison</h2>
+        <p class="description">Apprends les règles de grammaire et améliore ta conjugaison.</p>
+        <a href="francais_chapitre1.html" class="learn-more">🔗 Explorer la grammaire</a>
     </div>
 
+    <div class="content">
+        <h2>📚 Compréhension de textes</h2>
+        <p class="description">Développe ta compréhension en lisant des textes variés.</p>
+        <a href="francais_chapitre2.html" class="learn-more">🔗 Lire et comprendre</a>
+    </div>
+
+    <div class="content">
+        <h2>📝 Rédaction et Expression écrite</h2>
+        <p class="description">Améliore ton écriture et ta capacité à rédiger des textes.</p>
+        <a href="francais_chapitre3.html" class="learn-more">🔗 Pratiquer la rédaction</a>
+    </div>
+
+    <div class="content">
+        <h2>🔡 Vocabulaire et Orthographe</h2>
+        <p class="description">Apprends de nouveaux mots et améliore ton orthographe.</p>
+        <a href="francais_chapitre4.html" class="learn-more">🔗 Travailler le vocabulaire</a>
+    </div>
+    
+    <!-- Quiz section -->
+    <div class="content">
+        <h2>🎮 Teste tes connaissances</h2>
+        <p>Es-tu prêt à relever un défi ? Teste tes connaissances en français avec ce quiz !</p>
+        <div id="francais-quiz-container" class="quiz-section"></div>
+    </div>
+    
+    <!-- Activités à télécharger -->
+    <div class="content download-resources">
+        <h3>📝 Activités pratiques à télécharger</h3>
+        <div class="download-grid">
+            <a href="pdf/francais_dictee.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 1: Dictées préparées</div>
+                <div class="download-info">PDF, 2 pages</div>
+            </a>
+            
+            <a href="pdf/francais_lecture.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 2: Fiches de lecture</div>
+                <div class="download-info">PDF, 3 pages</div>
+            </a>
+            
+            <a href="pdf/francais_jeux.pdf" class="download-card" download>
+                <div class="download-icon">🎮</div>
+                <div class="download-title">Jeux de mots et expressions</div>
+                <div class="download-info">PDF, 4 pages</div>
+            </a>
+        </div>
+    </div>
+    
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
+    <!-- Scripts -->
+    <script src="scripts/menu-loader.js" defer></script>
+    <script src="scripts/accessibilite.js" defer></script>
+    <script src="scripts/progression.js" defer></script>
+    <script src="scripts/quiz_module.js" defer></script>
+    <script src="scripts/francais_quiz.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Marquer cette page comme visitée
+            if (typeof markProgress === 'function') {
+                markProgress("Français", "francais_introduction");
+            }
+            
+            // Initialiser le quiz
+            if (typeof QuizManager === 'function' && typeof francaisQuizData !== 'undefined') {
+                const francaisQuiz = new QuizManager('francais-quiz-container', francaisQuizData);
+            } else {
+                document.getElementById('francais-quiz-container').innerHTML = 
+                    '<p>Le quiz n\'a pas pu être chargé. Vérifie que les fichiers de quiz sont bien présents.</p>';
+            }
+        });
+    </script>
 </body>
 </html>

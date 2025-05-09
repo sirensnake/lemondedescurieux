@@ -1,0 +1,347 @@
+.quiz-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin: 30px auto;
+    max-width: 700px;
+}
+
+.quiz-option {
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quiz-option:hover {
+    background-color: #e9e9e9;
+}
+
+.quiz-option.selected {
+    background-color: #e0f7fa;
+    border: 2px solid #4FC3F7;
+}
+
+.quiz-button {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.quiz-button:hover {
+    background-color: #218880;
+}
+
+.feedback {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.feedback.correct {
+    background-color: #e8f5e9;
+    border-left: 5px solid #4CAF50;
+}
+
+.feedback.incorrect {
+    background-color: #ffebee;
+    border-left: 5px solid #f44336;
+}
+
+.feedback.warning {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffc107;
+}
+
+.hidden {
+    display: none;
+}
+
+#progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s;
+}
+
+#score-display {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Accessibilité */
+body.high-contrast .quiz-container {
+    background-color: #222;
+    color: white;
+    border: 2px solid #ffff00;
+}
+
+body.high-contrast .quiz-option {
+    background-color: #333;
+    color: white;
+    border: 1px solid #ffff00;
+}
+
+body.high-contrast .quiz-option.selected {
+    background-color: #444;
+    border: 2px solid #4FC3F7;
+}
+
+body.high-contrast .feedback.correct {
+    background-color: #004d40;
+    color: white;
+}
+
+body.high-contrast .feedback.incorrect {
+    background-color: #b71c1c;
+    color: white;
+}
+
+body.high-contrast .feedback.warning {
+    background-color: #f57f17;
+    color: black;
+}
+/* Amélioration des options pour écrans tactiles */
+@media screen and (max-width: 768px) {
+    .quiz-container {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    
+    .quiz-option {
+        padding: 15px;
+        margin: 12px 0;
+    }
+    
+    /* Boutons plus grands et plus accessibles */
+    .quiz-button {
+        padding: 12px 20px;
+        min-height: 48px;
+        margin: 10px 5px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    /* Gérer les petits écrans */
+    #quiz-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Texte plus grand pour meilleure lisibilité */
+    #question-text {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+    
+    /* Améliorer l'affichage des feedbacks */
+    .feedback {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Style spécifique pour très petits écrans */
+@media screen and (max-width: 480px) {
+    .quiz-container {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    
+    #score-display {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+/* Animations et transitions */
+#question-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Transition pour le passage entre les questions */
+.quiz-option {
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.quiz-option:active {
+    transform: scale(0.98);
+}
+
+/* Animation pour le feedback */
+.feedback {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de la barre de progression */
+#progress-bar {
+    transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Styles complémentaires pour le quiz */
+
+/* Container des questions */
+.question-container {
+    margin-bottom: 20px;
+}
+
+/* Texte de la question */
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+/* Container des options */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Styles pour les options (complément) */
+.quiz-option {
+    display: flex;
+    align-items: center;
+}
+
+.quiz-option.correct {
+    background-color: #e8f5e9;
+    border: 2px solid #4CAF50;
+}
+
+.quiz-option.incorrect {
+    background-color: #ffebee;
+    border: 2px solid #f44336;
+}
+
+.quiz-option.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Label des options */
+.option-label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.option-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #2a9d8f;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.option-text {
+    flex: 1;
+}
+
+/* Container des contrôles du quiz */
+.quiz-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Container de la progression */
+.progress-container {
+    margin-top: 20px;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #2a9d8f;
+    border-radius: 4px;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9em;
+    color: #666;
+    text-align: right;
+}
+
+/* Feedback (ajustement) */
+.feedback {
+    background-color: #f8f9fa;
+    border-left: 4px solid #2a9d8f;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+/* Règles pour l'accessibilité */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

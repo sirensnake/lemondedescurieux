@@ -1,0 +1,99 @@
+/* styles/responsive.css */
+/* Styles de base pour tous les appareils */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.content-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Styles pour tablettes */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .content-container {
+        width: 90%;
+        padding: 10px;
+    }
+    
+    /* Ajuster la disposition des cartes */
+    .ia-container, .download-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Styles pour mobiles */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    .content-container {
+        width: 95%;
+        padding: 8px;
+    }
+    
+    /* Mise en page en une seule colonne */
+    .ia-container, .download-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Menu latéral adapté */
+    #sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Augmenter la taille des zones cliquables pour le tactile */
+    button, .quiz-option, .back-button, .download-card {
+        min-height: 44px; /* Recommandation Apple pour cibles tactiles */
+    }
+    
+    /* Styles spécifiques pour les appareils tactiles */
+    .is-touch .quiz-option, 
+    .is-touch .download-card,
+    .is-touch button {
+        padding: 12px; /* Plus d'espace pour le tactile */
+    }
+}
+
+/* Très petits écrans */
+@media screen and (max-width: 480px) {
+    .breadcrumb, .download-info {
+        font-size: 0.9em;
+    }
+    
+    .game-options button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Mode paysage sur mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .ia-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Adapter les vidéos pour qu'elles soient responsives */
+.content iframe {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+}

@@ -2,42 +2,47 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
     <title>Section Philosophie 🤔</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/responsive_enhancements.css">
+    <link rel="stylesheet" href="styles/interdisciplinarite.css">
+    <script src="scripts/interdisciplinarite.js" defer></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <div id="menu-container"></div>
+    <script src="scripts/menu-loader.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
+            fetch("menu_lateral.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("menu-container").innerHTML = data;
 
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
+                // Exécuter le script seulement après l'injection du menu
+                let sidebar = document.getElementById("sidebar");
+                let toggleButton = document.getElementById("sidebar-toggle");
 
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
+                if (!sidebar || !toggleButton) {
+                    console.error("❌ Erreur : Menu latéral ou bouton introuvable après l'injection !");
+                    return;
+                }
 
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
+                toggleButton.addEventListener("click", function() {
+                    sidebar.classList.toggle("open");
+                });
+
+                console.log("✔️ Menu latéral et bouton chargés avec succès !");
+            })
+            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
     </script>
 
     <h1>Bienvenue dans la section Philosophie 🤔</h1>
-    <div class="content-container">
+    <div id="main-content" class="content-container">
         <div class="content">
             <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
         </div>
@@ -85,5 +90,54 @@
             document.getElementById('activity-output').innerText = "La liberté, ce n'est pas faire tout ce que l'on veut, mais pouvoir choisir en respectant les autres.";
         }
     </script>
+    <!-- Section téléchargements corrigée -->
+<div class="download-resources">
+    <h3>📝 Activités pratiques à télécharger</h3>
+    <div class="download-grid">
+        <a href="pdf/philosophie_questions.pdf" class="download-card" download>
+            <div class="download-icon">📄</div>
+            <div class="download-title">Activité 1: Les grandes questions</div>
+            <div class="download-info">PDF, 2 pages</div>
+        </a>
+        
+        <a href="pdf/philosophie_debats.pdf" class="download-card" download>
+            <div class="download-icon">📄</div>
+            <div class="download-title">Activité 2: Débats philosophiques</div>
+            <div class="download-info">PDF, 3 pages</div>
+        </a>
+        
+        <a href="pdf/philosophie_jeux.pdf" class="download-card" download>
+            <div class="download-icon">🎮</div>
+            <div class="download-title">Jeux et défis de réflexion</div>
+            <div class="download-info">PDF, 4 pages</div>
+        </a>
+    </div>
+</div>
+
+<div class="content">
+    <h2>🎮 Teste tes connaissances</h2>
+    <p>Es-tu prêt à relever un défi ? Teste tes connaissances en philosophie avec ce quiz !</p>
+    <div id="philosophie-quiz-container" class="quiz-section"></div>
+</div>
+
+<!-- Ajouter avant la fermeture de la balise body -->
+<script src="scripts/quiz_module.js" defer></script>
+<script src="scripts/philosophie_quiz.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialiser le quiz
+        if (typeof QuizManager === 'function' && typeof philosophieQuizData !== 'undefined') {
+            const philosophieQuiz = new QuizManager('philosophie-quiz-container', philosophieQuizData);
+        } else {
+            document.getElementById('philosophie-quiz-container').innerHTML = 
+                '<p>Le quiz n\'a pas pu être chargé. Vérifie que les fichiers quiz_module.js et philosophie_quiz.js sont bien présents.</p>';
+        }
+        
+        // Marquer la visite
+        if (typeof markProgress === 'function') {
+            markProgress("Philosophie", "page_quiz");
+        }
+    });
+</script>
 </body>
 </html>

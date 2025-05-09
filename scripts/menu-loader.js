@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Latéral</title>
-    <link rel="stylesheet" href="styles/menu_lateral.css">
-</head>
-<body>
-    <!-- Barre latérale rétractable -->
+/**
+ * Menu latéral intégré - Version sans AJAX pour utilisation file://
+ */
+document.addEventListener("DOMContentLoaded", function() {
+    const menuContainer = document.getElementById('menu-container');
+    
+    if (!menuContainer) {
+        console.error("Conteneur de menu introuvable. Abandon du chargement.");
+        return;
+    }
+    
+    // Menu directement intégré dans le script (sans requête AJAX)
+    const menuHTML = `
     <div id="sidebar" class="sidebar" role="navigation" aria-label="Menu principal">
         <ul>
             <li><a href="francais_section.html" aria-label="Section Français"><img src="images/francais_icon.png" alt="Icône Français"> Français</a></li>
@@ -24,29 +27,34 @@
         </ul>
     </div>
 
-    <!-- Bouton pour ouvrir la barre latérale -->
     <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Ouvrir le menu">☰</button>
-
-    <!-- Script pour gérer l'ouverture et la fermeture -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sidebar = document.getElementById("sidebar");
-            const toggleButton = document.getElementById("sidebar-toggle");
-            const links = sidebar.querySelectorAll("a");
-
-            // Gestion de l'ouverture/fermeture du menu
-            toggleButton.addEventListener("click", function () {
-                sidebar.classList.toggle("open");
-                toggleButton.setAttribute("aria-expanded", sidebar.classList.contains("open"));
-            });
-
-            // Gestion de la navigation clavier
-            links.forEach(link => {
-                link.addEventListener("focus", () => {
-                    sidebar.classList.add("open");
-                });
+    `;
+    
+    // Insérer le menu directement
+    menuContainer.innerHTML = menuHTML;
+    
+    // Configurer le bouton toggle
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("sidebar-toggle");
+    
+    if (sidebar && toggleButton) {
+        toggleButton.setAttribute('aria-expanded', 'false');
+        toggleButton.setAttribute('aria-controls', 'sidebar');
+        
+        toggleButton.addEventListener("click", function() {
+            const isOpen = sidebar.classList.toggle("open");
+            toggleButton.setAttribute('aria-expanded', isOpen);
+        });
+        
+        // Gestion de la navigation clavier
+        const links = sidebar.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('focus', () => {
+                sidebar.classList.add('open');
+                toggleButton.setAttribute('aria-expanded', 'true');
             });
         });
-    </script>
-</body>
-</html>
+        
+        console.log("Menu latéral configuré avec succès");
+    }
+});

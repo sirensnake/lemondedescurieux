@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Quiz</title>
+</head>
+<body>
+    <div id="quiz-container"></div>
+    
+    <script src="scripts/quiz_module.js"></script>
+    <script src="scripts/infos_quiz.js"></script>
+    <script>
+        window.onload = function() {
+            console.log("QuizManager disponible:", typeof QuizManager);
+            console.log("infosQuizData disponible:", typeof infosQuizData);
+            if (typeof QuizManager === 'function' && typeof infosQuizData !== 'undefined') {
+                new QuizManager('quiz-container', infosQuizData);
+            } else {
+                document.getElementById('quiz-container').innerHTML = 
+                    '<p>Le quiz n\'a pas pu être chargé.</p>';
+            }
+        };
+    </script>
+</body>
+</html>

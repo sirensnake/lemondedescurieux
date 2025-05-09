@@ -156,3 +156,23 @@ body.high-contrast .progress-fill {
 body.high-contrast .progress-text {
     color: #FFF;
 }
+
+/* Style pour le lien d'évitement */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2a9d8f;
+    color: white;
+    padding: 8px;
+    z-index: 2000;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    transition: top 0.3s;
+}
+
+/* Le lien devient visible lorsqu'il reçoit le focus (navigation clavier) */
+.skip-link:focus {
+    top: 0;
+    outline: none;
+}

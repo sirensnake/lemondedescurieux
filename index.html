@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#2a9d8f">
   <title>Accueil | Le Monde des Curieux</title>
   <!-- Police pixelisée Minecraftia -->
   <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
@@ -30,6 +32,9 @@
   <script defer src="scripts/hover_indicator.js"></script>
 </head>
 <body>
+    <!-- Bouton hamburger -->
+    <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+
     <style>
         #loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#ffffff;z-index:9999;}
         .spinner{width:64px;height:64px;border:6px solid #ccc;border-top-color:#2a9d8f;border-radius:50%;animation:spin 1s linear infinite;}
@@ -44,8 +49,7 @@
         setTimeout(()=>{const l=document.getElementById('loader');if(l)l.style.display='none';},5000);
     </script>
       
-  <!-- Bouton hamburger global (ouvre la sidebar) -->
-  <button class="sidebar-toggle" aria-label="Ouvrir le menu">☰</button>
+  
 
   <!-- Sidebar coulissante -->
   <div class="sidebar">
@@ -127,11 +131,15 @@
   <footer style="text-align:center;padding:20px 0;">© 2025 Le Monde des Curieux</footer>
 
   <!-- Script sidebar -->
+  
+  
   <script>
-    const toggle=document.querySelector('.sidebar-toggle');
-    const bar=document.querySelector('.sidebar');
-    toggle.addEventListener('click',()=>bar.classList.toggle('open'));
+    const toggle  = document.querySelector('.sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    if (toggle && sidebar){
+      toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+    }
   </script>
-  <script src="styles/hover_indicator.js" defer></script>
+  
 </body>
 </html>

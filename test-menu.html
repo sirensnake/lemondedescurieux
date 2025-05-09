@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Menu Latéral</title>
+    <link rel="stylesheet" href="styles/menu_lateral.css">
+</head>
+<body>
+    <div id="menu-container"></div>
+    
+    <h1>Page de test du menu latéral</h1>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Chargement du menu...");
+            fetch("menu_lateral.html")
+            .then(response => {
+                console.log("Réponse reçue:", response);
+                return response.text();
+            })
+            .then(data => {
+                console.log("Données reçues, longueur:", data.length);
+                console.log("Premiers caractères:", data.substring(0, 100));
+                document.getElementById("menu-container").innerHTML = data;
+                console.log("Menu inséré dans le DOM");
+                
+                // Tester si les éléments sont bien présents
+                const sidebar = document.getElementById("sidebar");
+                const toggleButton = document.getElementById("sidebar-toggle");
+                
+                console.log("Sidebar trouvé:", sidebar ? "Oui" : "Non");
+                console.log("Bouton trouvé:", toggleButton ? "Oui" : "Non");
+                
+                if (sidebar && toggleButton) {
+                    console.log("Ajout de l'écouteur d'événement au bouton");
+                    toggleButton.addEventListener("click", function() {
+                        console.log("Clic sur le bouton, ajout/suppression de la classe 'open'");
+                        sidebar.classList.toggle("open");
+                    });
+                }
+            })
+            .catch(error => console.error("❌ Erreur lors du chargement du menu latéral:", error));
+        });
+    </script>
+</body>
+</html>

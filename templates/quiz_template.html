@@ -1,0 +1,22 @@
+<!-- quiz_template.html - à adapter pour chaque matière -->
+<div class="quiz-container">
+    <h2>Quiz: Teste tes connaissances</h2>
+    <div id="quiz-content">
+        <div id="question-container">
+            <h3 id="question-text">Question 1: </h3>
+            <div id="options-container">
+                <!-- Les options seront générées par JavaScript -->
+            </div>
+        </div>
+        <div id="result-feedback" class="hidden"></div>
+        <div id="quiz-controls">
+            <button id="submit-answer" class="quiz-button">Valider</button>
+            <button id="next-question" class="quiz-button hidden">Question suivante</button>
+            <button id="restart-quiz" class="quiz-button hidden">Recommencer</button>
+        </div>
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="score-display">Score: <span id="current-score">0</span>/<span id="total-questions">0</span></div>
+    </div>
+</div>

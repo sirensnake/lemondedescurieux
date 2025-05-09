@@ -1,0 +1,172 @@
+/* Améliorations responsive pour Le Monde des Curieux */
+
+/* Variables pour les points de rupture */
+:root {
+    --breakpoint-tablet: 1024px;
+    --breakpoint-mobile: 768px;
+    --breakpoint-small-mobile: 480px;
+}
+
+/* Améliorations pour les appareils tactiles */
+@media (hover: none) {
+    /* Augmenter la taille des cibles tactiles */
+    button,
+    a.button,
+    .quiz-option,
+    .download-card,
+    .navigation-link {
+        min-height: 44px; /* Taille minimale recommandée par les directives d'accessibilité */
+        padding: 12px;    /* Plus d'espace pour le tactile */
+    }
+    
+    /* Augmenter l'espacement vertical entre les éléments */
+    p, h1, h2, h3, .content {
+        margin-bottom: 16px;
+    }
+    
+    /* Améliorer la visibilité des éléments actifs/hover */
+    a:active, button:active, .quiz-option:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Tablettes */
+@media screen and (max-width: var(--breakpoint-tablet)) {
+    body {
+        font-size: 15px;
+    }
+    
+    .content-container {
+        width: 90%;
+        max-width: 90%;
+    }
+    
+    /* Ajuster la taille des titres */
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    /* Optimiser les grilles pour tablettes */
+    .download-grid,
+    .ia-container,
+    #subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobiles */
+@media screen and (max-width: var(--breakpoint-mobile)) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+    }
+    
+    /* Ajustements pour le menu latéral */
+    #sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Simplifier les grilles pour écrans mobiles */
+    .download-grid,
+    .ia-container,
+    #subjects-grid,
+    .badges-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ajuster les marges et paddings */
+    .content, .article, .ia-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    /* Optimiser les boutons et contrôles */
+    .quiz-controls, .action-button, .game-options {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .quiz-button, .action-button, .game-option {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    /* Ajuster les cartes et tableaux */
+    .stats-summary {
+        flex-direction: column;
+    }
+    
+    .stat-card, .badges-collection {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    /* Optimiser les jeux */
+    .vrai-faux-card {
+        padding: 15px;
+    }
+}
+
+/* Très petits écrans */
+@media screen and (max-width: var(--breakpoint-small-mobile)) {
+    body {
+        font-size: 13px;
+    }
+    
+    /* Simplifier davantage l'interface */
+    .breadcrumb {
+        display: none;
+    }
+    
+    /* Rendre les vidéos responsives */
+    iframe {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Mode paysage sur mobile */
+@media screen and (max-width: var(--breakpoint-mobile)) and (orientation: landscape) {
+    /* Réduire les marges pour utiliser l'espace horizontal */
+    body {
+        padding: 10px;
+    }
+    
+    /* Réorganiser en deux colonnes pour mieux utiliser l'espace */
+    .ia-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .content {
+        padding: 10px;
+    }
+}
+
+/* Optimisations des performances pour tous les appareils */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Optimisations d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

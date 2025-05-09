@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Progression</title>
+</head>
+<body>
+    <h1>Test du système de progression</h1>
+    <button onclick="testProgress()">Tester progression</button>
+    <div id="result"></div>
+    
+    <script src="scripts/progression.js"></script>
+    <script>
+        function testProgress() {
+            console.log("Test de la fonction markProgress");
+            try {
+                markProgress("Test", "test_activity");
+                document.getElementById("result").innerHTML = "Test réussi! Vérifiez le message de félicitation.";
+                
+                // Afficher le contenu du localStorage
+                const progress = JSON.parse(localStorage.getItem('learningProgress')) || {};
+                console.log("Contenu du localStorage:", progress);
+            } catch(e) {
+                console.error("Erreur lors du test:", e);
+                document.getElementById("result").innerHTML = "Erreur: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>

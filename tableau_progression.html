@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
+    <title>Mes Progrès - Le Monde des Curieux</title>
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="styles/menu_lateral.css" as="style">
+    <link rel="preload" href="scripts/menu-loader.js" as="script">
+    <link rel="preload" href="scripts/progression.js" as="script">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/progression_tableau.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    
+    <!-- Ajouter jsPDF directement -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Avant la fermeture de la balise head -->
+    <script src="scripts/progression_actions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Conteneur pour le menu latéral -->
+    <div id="menu-container" aria-label="Menu de navigation"></div>
+    
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools" role="toolbar" aria-label="Options d'accessibilité">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    </div>
+    
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb" aria-label="Fil d'Ariane">
+        🏠 <a href="index.html">Accueil</a> > 📊 Mes Progrès
+    </div>
+    
+    <main id="main-content" class="progression-container">
+        <h1>📊 Tableau de bord de mes progrès</h1>
+        
+        <!-- Résumé statistique -->
+        <section class="stats-summary">
+            <div class="stat-card">
+                <h2>Progression globale</h2>
+                <div class="progress-circle-container">
+                    <div class="progress-circle">
+                        <span class="percentage" id="global-percentage">0%</span>
+                    </div>
+                </div>
+                <p><span id="global-completed">0</span> activités sur <span id="global-total">0</span> complétées</p>
+            </div>
+            
+            <div class="badges-collection">
+                <h2>Mes badges</h2>
+                <div id="badges-grid">
+                    <!-- Les badges seront générés par JavaScript -->
+                    <p id="no-badges-message">Tu n'as pas encore de badges. Continue à explorer pour en gagner !</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Progression par matière -->
+        <section class="subjects-progress">
+            <h2>Progression par matière</h2>
+            <div id="subjects-grid">
+                <!-- Les cartes de matières seront générées par JavaScript -->
+                <p id="no-progress-message">Tu n'as pas encore commencé d'activités. Explore les différentes sections pour commencer ton parcours !</p>
+            </div>
+        </section>
+        
+        <!-- Actions -->
+        <section class="actions-section">
+            <h2>Actions</h2>
+            <div class="actions-buttons">
+                <button id="export-pdf" class="action-button" onclick="exportProgressToPDF()">
+                    <span class="icon">📄</span> Exporter en PDF
+                </button>
+                <button id="reset-progress" class="action-button danger" onclick="showResetModal()">
+                    <span class="icon">🗑️</span> Réinitialiser mes progrès
+                </button>
+                <button id="init-test-data" class="action-button" onclick="createTestData()">
+                    <span class="icon">🧪</span> Créer des données de test
+                </button>
+            </div>
+        </section>
+        
+        <!-- Suggestions personnalisées -->
+        <section class="suggestions-section">
+            <h2>Suggestions pour continuer</h2>
+            <div id="suggestions-container">
+                <!-- Les suggestions seront générées par JavaScript -->
+            </div>
+        </section>
+    </main>
+    
+    <a href="index.html" class="back-button" aria-label="Retour à la page d'accueil">Retour à la page d'accueil 🏠</a>
+    
+    <!-- Modal de confirmation pour la réinitialisation -->
+    <div id="reset-modal" class="modal">
+        <div class="modal-content">
+            <h2>⚠️ Attention</h2>
+            <p>Es-tu sûr de vouloir réinitialiser tous tes progrès ? Cette action ne peut pas être annulée.</p>
+            <div class="modal-buttons">
+                <button id="cancel-reset" class="modal-button" onclick="hideResetModal()">Annuler</button>
+                <button id="confirm-reset" class="modal-button danger" onclick="resetProgress()">Oui, réinitialiser</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="scripts/menu-loader.js" defer></script>
+    <script src="scripts/accessibilite.js" defer></script>
+    <script src="scripts/progression.js" defer></script>
+    <script src="scripts/tableau_progression.js" defer></script>
+</body>
+</html>

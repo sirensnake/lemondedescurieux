@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
     <title>Ressources pédagogiques 📚</title>
     <link rel="stylesheet" href="styles/menu_lateral.css">
     <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/interdisciplinarite.css">
+    <script src="scripts/interdisciplinarite.js" defer></script>
 </head>
 <body>
+    <script src="scripts/device_detector.js"></script>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <div id="menu-container"></div>
+    <script src="scripts/menu-loader.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             fetch("menu_lateral.html")
@@ -61,6 +69,55 @@
             </section>
         </div>
     </div>
+    <div class="download-resources">
+        <h3>📝 Activités pratiques à télécharger</h3>
+        <div class="download-grid">
+            <a href="pdf/ressources_recherche.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 1: Techniques de recherche</div>
+                <div class="download-info">PDF, 2 pages</div>
+            </a>
+            
+            <a href="pdf/ressources_fiabilite.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 2: Vérifier la fiabilité</div>
+                <div class="download-info">PDF, 3 pages</div>
+            </a>
+            
+            <a href="pdf/ressources_jeux.pdf" class="download-card" download>
+                <div class="download-icon">🎮</div>
+                <div class="download-title">Chasse aux informations</div>
+                <div class="download-info">PDF, 4 pages</div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- À ajouter à la fin de chaque page de section avant le lien de retour -->
+<div class="content">
+    <h2>🎮 Teste tes connaissances</h2>
+    <p>Es-tu prêt à relever un défi ? Teste tes connaissances sur la recherche d'information avec ce quiz !</p>
+    <div id="ressources-quiz-container" class="quiz-section"></div>
+</div>
+
+<!-- Ajouter avant la fermeture de la balise body -->
+<script src="scripts/quiz_module.js" defer></script>
+<script src="scripts/ressources_quiz.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialiser le quiz
+        if (typeof QuizManager === 'function' && typeof ressourcesQuizData !== 'undefined') {
+            const ressourcesQuiz = new QuizManager('ressources-quiz-container', ressourcesQuizData);
+        } else {
+            document.getElementById('ressources-quiz-container').innerHTML = 
+                '<p>Le quiz n\'a pas pu être chargé. Vérifie que les fichiers quiz_module.js et ressources_quiz.js sont bien présents.</p>';
+        }
+        
+        // Marquer la visite
+        if (typeof markProgress === 'function') {
+            markProgress("Ressources", "page_quiz");
+        }
+    });
+</script>
 
     <a href="index.html" class="back-button">🏠 Retour à la page d'accueil</a>
 </body>

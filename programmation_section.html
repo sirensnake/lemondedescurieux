@@ -1,36 +1,23 @@
-<!-- Ajout du lien d'évitement -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
     <title>Section Programmation</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/responsive_enhancements.css">
+    <link rel="stylesheet" href="styles/interdisciplinarite.css">
+    <script src="scripts/interdisciplinarite.js" defer></script>
 </head>
 <body>
+    <script src="scripts/device_detector.js"></script>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <div id="menu-container"></div>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch("menu_lateral.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("menu-container").innerHTML = data;
-                    setTimeout(() => {
-                        const sidebar = document.getElementById("sidebar");
-                        const toggleButton = document.getElementById("sidebar-toggle");
-                        if (toggleButton && sidebar) {
-                            toggleButton.addEventListener("click", function () {
-                                sidebar.classList.toggle("open");
-                            });
-                        }
-                    }, 500);
-                })
-                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-        });
-    </script>
+    <script src="scripts/menu-loader.js"></script>
 
     <h1>Bienvenue dans la section Programmation 💻</h1>
     <p class="intro-text">Apprends à coder en t'amusant avec des exercices interactifs et des projets créatifs !</p>
@@ -58,7 +45,53 @@
         <p class="description">Mets en pratique tes compétences avec des projets amusants et éducatifs.</p>
         <a href="programmation_projets.html" class="learn-more">🔗 Explorer les projets</a>
     </div>
-
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    <div class="download-resources">
+        <h3>📝 Activités pratiques à télécharger</h3>
+        <div class="download-grid">
+            <a href="pdf/programmation_algorithmes.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 1: Algorithmique débranchée</div>
+                <div class="download-info">PDF, 2 pages</div>
+            </a>
+            
+            <a href="pdf/programmation_scratch.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 2: Projets Scratch</div>
+                <div class="download-info">PDF, 3 pages</div>
+            </a>
+            
+            <a href="pdf/programmation_jeux.pdf" class="download-card" download>
+                <div class="download-icon">🎮</div>
+                <div class="download-title">Défis de codage</div>
+                <div class="download-info">PDF, 4 pages</div>
+            </a>
+        </div>
+    </div>
+    <!-- À ajouter à la fin de chaque page de section avant le lien de retour -->
+<div class="content">
+    <h2>🎮 Teste tes connaissances</h2>
+    <p>Es-tu prêt à relever un défi ? Teste tes connaissances en programmation avec ce quiz !</p>
+    <div id="programmation-quiz-container" class="quiz-section"></div>
+</div>
+<a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+<!-- Ajouter avant la fermeture de la balise body -->
+<script src="scripts/quiz_module.js" defer></script>
+<script src="scripts/programmation_quiz.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialiser le quiz
+        if (typeof QuizManager === 'function' && typeof programmationQuizData !== 'undefined') {
+            const programmationQuiz = new QuizManager('programmation-quiz-container', programmationQuizData);
+        } else {
+            document.getElementById('programmation-quiz-container').innerHTML = 
+                '<p>Le quiz n\'a pas pu être chargé. Vérifie que les fichiers quiz_module.js et programmation_quiz.js sont bien présents.</p>';
+        }
+        
+        // Marquer la visite
+        if (typeof markProgress === 'function') {
+            markProgress("Programmation", "page_quiz");
+        }
+    });
+</script>
 </body>
 </html>

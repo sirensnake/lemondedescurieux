@@ -1,0 +1,360 @@
+/* Styles pour les jeux interactifs */
+.vrai-faux-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.vrai-faux-question {
+    font-size: 1.2em;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.vrai-faux-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.vrai-btn, .faux-btn {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vrai-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.faux-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.vrai-btn:hover, .faux-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.vrai-btn:disabled, .faux-btn:disabled {
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.vrai-btn.correct, .faux-btn.correct {
+    background-color: #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.vrai-btn.incorrect, .faux-btn.incorrect {
+    background-color: #f44336;
+    box-shadow: 0 0 15px rgba(244, 67, 54, 0.5);
+}
+
+.vrai-faux-feedback {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.correct-feedback {
+    border-left: 4px solid #4CAF50;
+}
+
+.incorrect-feedback {
+    border-left: 4px solid #f44336;
+}
+
+.btn-suivant, .btn-rejouer {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.btn-suivant:hover, .btn-rejouer:hover {
+    background-color: #238b7e;
+}
+
+.hidden {
+    display: none;
+}
+
+.vrai-faux-score {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #666;
+}
+
+.resultat-final {
+    padding: 30px;
+}
+
+.message-final {
+    font-size: 1.1em;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+}
+
+/* Styles pour les suggestions */
+.suggestion-card {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.suggestion-icon {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+.suggestion-content {
+    flex: 1;
+}
+
+.suggestion-content p {
+    margin: 0 0 5px 0;
+}
+
+.suggestion-action {
+    background-color: #2a9d8f;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.suggestion-action:hover {
+    background-color: #238b7e;
+}
+
+.mini-progress-bar {
+    height: 5px;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 2px;
+}
+
+/* Adaptations mobiles */
+@media (max-width: 768px) {
+    .vrai-faux-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .vrai-btn, .faux-btn {
+        width: 100%;
+    }
+    
+    .suggestion-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .suggestion-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .suggestion-action {
+        margin-top: 10px;
+        display: block;
+    }
+}
+
+/* Styles pour le jeu de Memory */
+.memory-game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.memory-game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.memory-score, .memory-timer, .memory-moves {
+    background-color: #f5f5f5;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-weight: bold;
+}
+
+.memory-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.memory-card {
+    height: 140px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.memory-card-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.memory-card.flipped .memory-card-inner {
+    transform: rotateY(180deg);
+}
+
+.memory-card-front, .memory-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.memory-card-back {
+    background-color: #2a9d8f;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.memory-card-front {
+    background-color: white;
+    color: #333;
+    transform: rotateY(180deg);
+}
+
+.memory-card.matched .memory-card-front {
+    background-color: #e8f5e9;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.memory-card-icon {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.memory-card-title {
+    font-size: 0.9em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.memory-game-footer {
+    text-align: center;
+}
+
+.memory-btn {
+    background-color: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.memory-btn:hover {
+    background-color: #238b7e;
+}
+
+.memory-game-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.memory-game-message.hidden {
+    display: none;
+}
+
+.memory-card-tooltip {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, transform 0.3s;
+    width: 180px;
+    text-align: center;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.memory-card-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.8) transparent transparent;
+}
+
+.memory-card-tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}

@@ -164,5 +164,87 @@ h1.exercise-title {
     border-radius:50%;
     animation:spin 1s linear infinite;
   }
-  @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
   
+  /* Ajout au style.css pour améliorer l'expérience mobile */
+
+/* Adaptation générale pour les petits écrans */
+@media screen and (max-width: 768px) {
+    /* Entête plus compact */
+    h1 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+    
+    /* Meilleur espacement pour les conteneurs */
+    .container {
+        padding: 10px;
+    }
+    
+    /* Adaptation de la mindmap */
+    .mindmap-container {
+        transform: scale(0.8);
+        transform-origin: center top;
+    }
+    
+    /* Navigation plus simple */
+    .breadcrumb {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+    
+    /* Menus plus accessibles au toucher */
+    .sidebar ul li {
+        padding: 15px 20px;
+    }
+    
+    .sidebar ul li a {
+        font-size: 16px;
+    }
+    
+    /* Boutons plus grands pour faciliter le toucher */
+    button, .button, .back-button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+}
+
+/* Adaptation pour les très petits écrans */
+@media screen and (max-width: 480px) {
+    /* Gestion de la mindmap sur très petit écran */
+    .mindmap-container {
+        transform: scale(0.6);
+    }
+    
+    /* Ajuster la flexbox pour un affichage vertical */
+    .ia-container, .game-options {
+        flex-direction: column;
+    }
+    
+    .ia-card {
+        width: 100%;
+    }
+    
+    /* Masquer certains éléments décoratifs non essentiels */
+    .curio-container {
+        display: none;
+    }
+    
+    /* Menu hamburger plus visible */
+    .sidebar-toggle {
+        padding: 15px;
+        font-size: 24px;
+    }
+}
+
+/* Amélioration du toucher pour mobile */
+@media (hover: none) {
+    .node:hover, .sidebar ul li a:hover {
+        transform: none;
+    }
+    
+    .quiz-option, .game-option, .back-button {
+        padding: 15px;
+    }
+}

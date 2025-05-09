@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
     <title>Intelligence Artificielle - Le Monde des Curieux</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
     <link rel="stylesheet" href="styles/ia_section_style.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/jeux.css">
+    <link rel="stylesheet" href="styles/responsive_enhancements.css">
 </head>
 <body>
+    <script src="scripts/device_detector.js"></script>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <div id="menu-container"></div>
-    
+    <script src="scripts/menu-loader.js"></script>
     <!-- Fil d'Ariane -->
     <div class="breadcrumb">🏠 <a href="index.html">Accueil</a> > 🤖 Intelligence Artificielle</div>
     
@@ -93,10 +101,55 @@
             </ul>
             <p>Discute de ces questions avec tes amis ou ta famille !</p>
         </div>
+        
+        <!-- Jeu Vrai ou Faux -->
+        <div class="content">
+            <h2>🎮 Vrai ou Faux ?</h2>
+            <p>Teste tes connaissances sur l'IA avec ce petit jeu. Est-ce vrai ou faux ?</p>
+            <div id="vrai-faux-container"></div>
+        </div>
+        
+        <!-- Jeu de Memory IA -->
+        <div class="content">
+            <h2>🎮 Jeu de Memory IA</h2>
+            <p>Entraîne ta mémoire et découvre des concepts de l'IA en retrouvant les paires de cartes !</p>
+            <div id="memory-game-container"></div>
+        </div>
+        
+        <div class="download-resources">
+            <h3>📝 Activités pratiques à télécharger</h3>
+            <div class="download-grid">
+                <a href="pdf/ia_decouverte.pdf" class="download-card" download>
+                    <div class="download-icon">📄</div>
+                    <div class="download-title">Activité 1: Découverte de l'IA</div>
+                    <div class="download-info">PDF, 2 pages</div>
+                </a>
+                
+                <a href="pdf/ia_applications.pdf" class="download-card" download>
+                    <div class="download-icon">📄</div>
+                    <div class="download-title">Activité 2: Applications de l'IA</div>
+                    <div class="download-info">PDF, 3 pages</div>
+                </a>
+                
+                <a href="pdf/ia_jeux.pdf" class="download-card" download>
+                    <div class="download-icon">🎮</div>
+                    <div class="download-title">Jeux et défis</div>
+                    <div class="download-info">PDF, 4 pages</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Quiz section -->
+        <div class="content">
+            <h2>🎮 Teste tes connaissances</h2>
+            <p>Es-tu prêt à relever un défi ? Teste tes connaissances sur l'intelligence artificielle avec ce quiz !</p>
+            <div id="ia-quiz-container" class="quiz-section"></div>
+        </div>
     </div>
 
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     
+    <!-- Scripts -->
     <script>
         // Script pour le menu latéral
         document.addEventListener("DOMContentLoaded", function() {
@@ -283,6 +336,52 @@
                 document.body.removeChild(messageElement);
             }, 3000);
         }
+    </script>
+    
+    <!-- Scripts pour les jeux et quiz -->
+    <script src="scripts/progression.js"></script>
+    <script src="scripts/jeux/vrai_faux_ia.js"></script>
+    <script src="scripts/jeux/memory_ia.js"></script>
+    <script src="scripts/quiz_module.js" defer></script>
+    <script src="scripts/ia_quiz.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser le quiz
+            if (typeof QuizManager === 'function' && typeof iaQuizData !== 'undefined') {
+                const iaQuiz = new QuizManager('ia-quiz-container', iaQuizData);
+            } else {
+                document.getElementById('ia-quiz-container').innerHTML = 
+                    '<p>Le quiz n\'a pas pu être chargé. Vérifie que les fichiers quiz_module.js et ia_quiz.js sont bien présents.</p>';
+            }
+            
+            // Marquer la visite
+            if (typeof markProgress === 'function') {
+                markProgress("IA", "page_quiz");
+            }
+        });
+    </script>
+    <script>
+        // Forcer l'initialisation du jeu Memory
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Tentative d'initialisation du jeu Memory...");
+            setTimeout(function() {
+                if (document.getElementById('memory-game-container')) {
+                    console.log("Conteneur de jeu Memory trouvé");
+                    if (typeof MemoryGame === 'function') {
+                        console.log("Classe MemoryGame trouvée, initialisation...");
+                        new MemoryGame('memory-game-container', {
+                            pairsCount: 6,
+                            timeLimit: 60,
+                            showTimer: true
+                        });
+                    } else {
+                        console.error("La classe MemoryGame n'est pas définie");
+                    }
+                } else {
+                    console.error("Conteneur memory-game-container non trouvé");
+                }
+            }, 1000); // Attendre 1 seconde après le chargement du DOM
+        });
     </script>
 </body>
 </html>

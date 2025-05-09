@@ -1,47 +1,47 @@
-<!-- Ajout du lien d'évitement -->
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Sciences</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
+    <title>Sciences - Le Monde des Curieux 🔬</title>
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="styles/menu_lateral.css" as="style">
+    <link rel="preload" href="scripts/menu-loader.js" as="script">
+    <link rel="preload" href="scripts/progression.js" as="script">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles/section_style.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/responsive_enhancements.css">
+    <link rel="stylesheet" href="styles/interdisciplinarite.css">
+    <script src="scripts/interdisciplinarite.js" defer></script>
 </head>
 <body>
+    <script src="scripts/device_detector.js"></script>
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Conteneur pour le menu latéral -->
     <div id="menu-container"></div>
     
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
-
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
-
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
-
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
-        });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
-    </script>
-
-    <h1>Bienvenue dans la section Sciences 🌍</h1>
-    <p class="intro-text">Explore les mystères de l’univers et teste tes connaissances avec un quiz interactif !</p>
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb" aria-label="Fil d'Ariane">
+        🏠 <a href="index.html">Accueil</a> > 🔬 Sciences
+    </div>
+    
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    </div>
+    
+    <h1>Bienvenue dans la section Sciences 🔬</h1>
+    <p class="intro-text">Explore les mystères de l'univers et découvre les phénomènes fascinants de la nature !</p>
 
     <div id="main-content" class="content">
         <h2>🌞 Le Système Solaire</h2>
@@ -63,16 +63,70 @@
 
     <div class="content">
         <h2>🤓 Le coin des curieux</h2>
-        <p class="description">Apprends les bases de l'Intelligence Artificielle et explore ses applications passionnantes !</p>
+        <p class="description">Découvre des faits surprenants sur la nature et la science !</p>
         <a href="curiosites.html" class="learn-more">🔗 Découvrir des anecdotes</a>
     </div>
 
     <div class="content">
-        <h2>🤖 Intelligence artificielle </h2>
-        <p class="description">Découvre des faits surprenants sur la nature et la science !</p>
-        <a href="intelligence_artificielle.html" class="learn-more">🔗 Découvrir l'Intelligence Artificielle et son impact sur notre quotidien</a>
+        <h2>🤖 Intelligence artificielle</h2>
+        <p class="description">Apprends les bases de l'Intelligence Artificielle et explore ses applications passionnantes !</p>
+        <a href="intelligence_artificielle.html" class="learn-more">🔗 Découvrir l'IA</a>
     </div>
-
+    
+    <!-- Quiz section -->
+    <div class="content">
+        <h2>🎮 Teste tes connaissances</h2>
+        <p>Es-tu prêt à relever un défi ? Teste tes connaissances en sciences avec ce quiz !</p>
+        <div id="sciences-quiz-container" class="quiz-section"></div>
+    </div>
+    
+    <!-- Activités à télécharger -->
+    <div class="content download-resources">
+        <h3>📝 Activités pratiques à télécharger</h3>
+        <div class="download-grid">
+            <a href="pdf/sciences_experiences.pdf" class="download-card" download>
+                <div class="download-icon">🧪</div>
+                <div class="download-title">Activité 1: Expériences à faire à la maison</div>
+                <div class="download-info">PDF, 3 pages</div>
+            </a>
+            
+            <a href="pdf/sciences_planetes.pdf" class="download-card" download>
+                <div class="download-icon">🪐</div>
+                <div class="download-title">Activité 2: Carte du système solaire</div>
+                <div class="download-info">PDF, 2 pages</div>
+            </a>
+            
+            <a href="pdf/sciences_nature.pdf" class="download-card" download>
+                <div class="download-icon">🌿</div>
+                <div class="download-title">Carnet d'observation de la nature</div>
+                <div class="download-info">PDF, 5 pages</div>
+            </a>
+        </div>
+    </div>
+    
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+    
+    <!-- Scripts -->
+    <script src="scripts/menu-loader.js" defer></script>
+    <script src="scripts/accessibilite.js" defer></script>
+    <script src="scripts/progression.js" defer></script>
+    <script src="scripts/quiz_module.js" defer></script>
+    <script src="scripts/sciences_quiz.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Marquer cette page comme visitée
+            if (typeof markProgress === 'function') {
+                markProgress("Sciences", "sciences_introduction");
+            }
+            
+            // Initialiser le quiz
+            if (typeof QuizManager === 'function' && typeof sciencesQuizData !== 'undefined') {
+                const sciencesQuiz = new QuizManager('sciences-quiz-container', sciencesQuizData);
+            } else {
+                document.getElementById('sciences-quiz-container').innerHTML = 
+                    '<p>Le quiz n\'a pas pu être chargé. Vérifie que les fichiers de quiz sont bien présents.</p>';
+            }
+        });
+    </script>
 </body>
 </html>
