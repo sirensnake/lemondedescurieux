@@ -1,0 +1,113 @@
+/* Styles pour le tableau de progression */
+.progression-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .progression-summary {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #progression-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .stat-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2e7d32;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  .progression-details {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #progression-by-subject {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .subject-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subject-header {
+    background: #4caf50;
+    color: white;
+    padding: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .activity-list li {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .activity-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .activity-name {
+    font-weight: 500;
+  }
+  
+  .activity-date {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    #progression-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-card {
+      width: 100%;
+      max-width: 250px;
+    }
+    
+    #progression-by-subject {
+      grid-template-columns: 1fr;
+    }
+  }

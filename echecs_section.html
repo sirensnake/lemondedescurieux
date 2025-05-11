@@ -4,38 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Échecs ♟️</title>
-    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
     <link rel="stylesheet" href="styles/echecs_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-    <div id="menu-container"></div>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > ♟️ Échecs</div>
 
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
+    <!--<div id="menu-container"></div> -->
+    <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<div class="sidebar">
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
+    </ul>
+</div>
 
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
-
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
-        });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
-    </script>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
 
     <h1 class="animated-title">Bienvenue dans la section Échecs ♟️</h1>
     <p class="intro-text">Plonge dans l'univers des échecs et découvre des stratégies fascinantes !</p>
@@ -49,23 +54,30 @@
 
         <div class="content">
             <h2>⚔️ Tactiques et Stratégies</h2>
-            <p>Découvre des tactiques avancées et des stratégies pour progresser.</p>
-            <a href="echecs_tactiques.html" class="learn-more">🧠 Explorer les tactiques</a>
-        </div>
-
-        <div class="content">
-            <h2>🧩 Exercices Interactifs</h2>
-            <p>Teste tes connaissances avec des quiz et des puzzles.</p>
-            <a href="echecs_exercices.html" class="learn-more">🎯 Faire des exercices</a>
-        </div>
-
-        <div class="content">
-            <h2>🏆 Parties Célèbres</h2>
-            <p>Analyse les plus grandes parties d’échecs et apprends des maîtres.</p>
-            <a href="echecs_parties.html" class="learn-more">🔍 Étudier des parties</a>
+            <p>Découvre les meilleures tactiques pour capturer ton adversaire !</p>
+            <a href="echecs_tactiques.html" class="learn-more">🧠 Étudier les tactiques</a>
         </div>
     </div>
-    
-    <a href="index.html" class="back-button">🏠 Retour à la page d'accueil</a>
+
+    <!-- Injection du menu et reconfiguration des scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+
+                    // Menu : script déjà prévu dans menu.js
+                    if (typeof initAccessibilityFeatures === 'function') {
+                        initAccessibilityFeatures();
+                    }
+                })
+                .catch(error => console.error("❌ Erreur de chargement du menu :", error));
+        });
+    </script>
+
+    <!-- Ajout des scripts nécessaires -->
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
 </body>
 </html>

@@ -5,14 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les animaux en hiver 🌿</title>
     <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
     <style>
         .disabled {
             pointer-events: none;
             opacity: 0.6;
         }
     </style>
-</head>
+    <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📝 <a href="francais_section.html">Français</a> > Les animaux en hiver 🌿</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
     <h1>Les animaux en hiver 🌿</h1>
     <p><em>Comment les animaux s’adaptent-ils aux conditions hivernales ?</em></p>
     
@@ -55,5 +67,7 @@
             falseBtn.classList.add('disabled');
         }
     </script>
-</body>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

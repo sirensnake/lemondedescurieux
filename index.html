@@ -2,120 +2,163 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#2a9d8f">
   <title>Accueil | Le Monde des Curieux</title>
-  <!-- Police pixelisée Minecraftia -->
+  
+  <!-- Polices -->
   <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
-  <!-- Feuilles de style globales -->
+  
+  <!-- Feuilles de style -->
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/layout_style.css">
-  <link rel="stylesheet" href="styles/menu_lateral.css">
-  <style>
-    header h1{font-family:'Minecraftia',sans-serif;color:#2e7d32;margin:15px 0;text-align:center;}
-    ul{list-style:none;margin:0;padding:0;}
-    /* Bouton hamburger stylisé */
-    .sidebar-toggle{position:fixed;left:10px;top:10px;padding:12px 16px;font-size:22px;color:#fff;background:linear-gradient(135deg,#ffb347 0%,#ff7746 100%);border:none;border-radius:10px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,.3);transition:transform .25s ease,box-shadow .25s ease;z-index:1200;}
-    .sidebar-toggle:hover{transform:scale(1.1);box-shadow:0 6px 12px rgba(0,0,0,.4);}  
-    .sidebar-toggle:active{transform:scale(.95);}  
-    /* Mise en page à deux colonnes */
-    .main-wrapper{display:flex;gap:30px;max-width:1400px;margin:20px auto;align-items:flex-start;}
-    .mindmap-section{flex:1 1 60%;min-width:300px;}
-    .parcours-section{flex:0 0 320px;background:rgba(255,255,255,.8);padding:20px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,.1);position:relative;}
-    @media(max-width:1024px){.main-wrapper{flex-direction:column;}.parcours-section{flex:1 1 auto;margin-top:20px;}}
-    .parcours-card{background:#fff;border-radius:10px;padding:15px;margin-bottom:15px;box-shadow:0 2px 5px rgba(0,0,0,.1);transition:transform .2s;}
-    .parcours-card:hover{transform:translateY(-4px);} 
-    .parcours-title{font-family:'Minecraftia',sans-serif;color:#2e7d32;font-size:18px;margin-bottom:8px;text-align:center;} 
-    .parcours-button{display:inline-block;margin-top:10px;background:#4caf50;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:700;}{display:inline-block;margin-top:10px;background:#4caf50;color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:700;}
-  </style>
-  <script defer src="scripts/hover_indicator.js"></script>
+  <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  <link rel="stylesheet" href="styles/index_style.css">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
 </head>
-<body>
-    <style>
-        #loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#ffffff;z-index:9999;}
-        .spinner{width:64px;height:64px;border:6px solid #ccc;border-top-color:#2a9d8f;border-radius:50%;animation:spin 1s linear infinite;}
-        @keyframes spin{to{transform:rotate(360deg)}}
-    </style>
-        
-        <div id="loader"><div class="spinner"></div></div>
-        
-    
-    <script>
-        // cache le loader au bout de 5 s même si le JS principal ne se charge pas
-        setTimeout(()=>{const l=document.getElementById('loader');if(l)l.style.display='none';},5000);
-    </script>
-      
-  <!-- Bouton hamburger global (ouvre la sidebar) -->
-  <button class="sidebar-toggle" aria-label="Ouvrir le menu">☰</button>
-
-  <!-- Sidebar coulissante -->
-  <div class="sidebar">
+<body class="home-page">
+  <!-- Menu latéral -->
+  <!-- Menu latéral simple -->
+<!-- Menu latéral simple avec gestion directe -->
+<!-- Menu latéral -->
+<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<div class="sidebar">
     <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="mindmap.html">Carte des matières</a></li>
-      <li><a href="maths_section.html">Mathématiques</a></li>
-      <li><a href="sciences_section.html">Sciences</a></li>
-      <li><a href="histoire_section.html">Histoire‑Géo</a></li>
-      <li><a href="francais_section.html">Français</a></li>
-      <li><a href="english_section.html">English</a></li>
-      <li><a href="programmation_section.html">Programmation</a></li>
-      <li><a href="echecs_section.html">Échecs</a></li>
-      <li><a href="philosophie_section.html">Philosophie</a></li>
-      <li><a href="ressources_section.html">Ressources</a></li>
-      <li><a href="infos_section.html">Infos</a></li>
-      <li><a href="ia_section.html">IA</a></li>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
     </ul>
+</div>
+<script>
+  // Script simple pour le menu
+  function toggleMenu() {
+    var sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      if (sidebar.style.left === '0px') {
+        // Fermer le menu
+        sidebar.style.left = '-250px';
+      } else {
+        // Ouvrir le menu
+        sidebar.style.left = '0px';
+      }
+    }
+  }
+  
+  // Fermer le menu en cliquant ailleurs
+  document.addEventListener('click', function(event) {
+    var sidebar = document.querySelector('.sidebar');
+    var toggleButton = document.querySelector('.sidebar-toggle');
+    
+    if (sidebar && toggleButton) {
+      if (sidebar.style.left === '0px' && 
+          event.target !== sidebar && 
+          !sidebar.contains(event.target) && 
+          event.target !== toggleButton) {
+        sidebar.style.left = '-250px';
+      }
+    }
+  });
+  
+  // Activer le lien correspondant à la page actuelle
+  document.addEventListener('DOMContentLoaded', function() {
+    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    var links = document.querySelectorAll('.sidebar a');
+    
+    links.forEach(function(link) {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+    
+    // Cacher d'abord le menu
+    var sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      sidebar.style.left = '-250px';
+    }
+  });
+</script>
+  
+  <!-- Outils d'accessibilité -->
+  <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
   </div>
+  
+  <!-- Loader (animation de chargement) -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+  
+  <!-- En-tête principal -->
+  <header>
+    <h1>Le Monde des Curieux</h1>
+  </header>
 
-  <header><h1>Le Monde des Curieux</h1></header>
-
+  <!-- Contenu principal - structure à deux colonnes -->
   <div class="main-wrapper">
-    <!-- Mindmap à gauche -->
-    <!-- MINDMAP – début -->
-<section class="mindmap-section">
-    <!-- conteneur interne SANS padding -->
-    <div class="mindmap-inner" style="position:relative;">
-      <img src="images/MineCraftMindmap_1000px.png"
-           class="mindmap" usemap="#matieresmap" alt="Carte interactive">
-      <!-- halo -->
-      <div id="hover-indicator" class="hover-indicator"></div>
-    </div>
-  
-    <!-- zones cliquables -->
-    <map name="matieresmap">
-      <!-- 11 balises <area> -->
-      <area shape="circle" coords="212,439,75" href="maths_section.html"  alt="Mathématiques" title="Mathématiques">
-      <area shape="circle" coords="503,440,75" href="sciences_section.html" alt="Sciences"      title="Sciences">
-      <area shape="circle" coords="793,444,75" href="histoire_section.html" alt="Histoire‑Géo" title="Histoire‑Géo">
-      <area shape="circle" coords="207,719,75" href="francais_section.html" alt="Français"     title="Français">
-      <area shape="circle" coords="502,713,75" href="english_section.html"  alt="English"      title="English">
-      <area shape="circle" coords="788,719,75" href="programmation_section.html" alt="Programmation" title="Programmation">
-      <area shape="circle" coords="207,1000,75" href="echecs_section.html" alt="Échecs"        title="Échecs">
-      <area shape="circle" coords="497,991,75" href="philosophie_section.html" alt="Philosophie" title="Philosophie">
-      <area shape="circle" coords="790,995,75" href="ressources_section.html" alt="Ressources" title="Ressources">
-      <area shape="circle" coords="214,1274,75" href="infos_section.html"  alt="Infos"         title="Infos">
-      <area shape="circle" coords="493,1272,75" href="ia_section.html"     alt="IA"            title="Intelligence Artificielle">
-    </map>
-  </section>
-  <!-- MINDMAP – fin -->
-  
+    <!-- Mindmap interactive à gauche -->
+    <section class="mindmap-section">
+      <div class="mindmap-inner" style="position:relative;">
+        <img src="images/MineCraftMindmap_1000px.png" 
+             loading="lazy" 
+             class="mindmap" usemap="#matieresmap" alt="Carte interactive">
+        <!-- Indicateur de survol -->
+        <div id="hover-indicator" class="hover-indicator"></div>
+      </div>
+      
+      <!-- Zones cliquables de la carte -->
+      <map name="matieresmap">
+        <area shape="circle" coords="212,439,75" href="maths_section.html" alt="Mathématiques" title="Mathématiques">
+        <area shape="circle" coords="503,440,75" href="sciences_section.html" alt="Sciences" title="Sciences">
+        <area shape="circle" coords="793,444,75" href="histoire_section.html" alt="Histoire‑Géo" title="Histoire‑Géo">
+        <area shape="circle" coords="207,719,75" href="francais_section.html" alt="Français" title="Français">
+        <area shape="circle" coords="502,713,75" href="english_section.html" alt="English" title="English">
+        <area shape="circle" coords="788,719,75" href="programmation_section.html" alt="Programmation" title="Programmation">
+        <area shape="circle" coords="207,1000,75" href="echecs_section.html" alt="Échecs" title="Échecs">
+        <area shape="circle" coords="497,991,75" href="philosophie_section.html" alt="Philosophie" title="Philosophie">
+        <area shape="circle" coords="790,995,75" href="ressources_section.html" alt="Ressources" title="Ressources">
+        <area shape="circle" coords="214,1274,75" href="infos_section.html" alt="Infos" title="Infos">
+        <area shape="circle" coords="493,1272,75" href="ia_section.html" alt="IA" title="Intelligence Artificielle">
+      </map>
+    </section>
 
-    <!-- Menu de droite (parcours thématiques) -->
+    <!-- Parcours thématiques à droite -->
     <aside class="parcours-section">
-      <h2 style="font-family:'Minecraftia',sans-serif;color:#2e7d32;text-align:center;">Parcours thématiques 🚀</h2>
-      <p style="text-align:center;">Découvre des aventures qui combinent plusieurs matières !</p>
+      <h2>Parcours thématiques 🚀</h2>
+      <p>Découvre des aventures qui combinent plusieurs matières !</p>
 
+      <!-- Carte parcours 1 -->
       <div class="parcours-card">
         <div class="parcours-title">🚀 Aventure spatiale</div>
         <p>Sciences · Maths · Histoire</p>
         <a class="parcours-button" href="parcours/espace.html">Commencer</a>
       </div>
 
+      <!-- Carte parcours 2 -->
       <div class="parcours-card">
         <div class="parcours-title">🌊 Mystères des océans</div>
         <p>Sciences · Géographie · Maths</p>
         <a class="parcours-button" href="parcours/ocean.html">Plonger</a>
       </div>
 
+      <!-- Carte parcours 3 -->
       <div class="parcours-card">
         <div class="parcours-title">🤖 Univers des robots</div>
         <p>Programmation · Sciences · IA</p>
@@ -124,14 +167,33 @@
     </aside>
   </div>
 
-  <footer style="text-align:center;padding:20px 0;">© 2025 Le Monde des Curieux</footer>
+  <!-- Pied de page -->
+  <footer>
+    © 2025 Le Monde des Curieux
+  </footer>
 
-  <!-- Script sidebar -->
+  <!-- Scripts -->
+  <script src="scripts/hover_indicator.js"></script>
+  <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu_simple.js"></script>
+  
+  <!-- Service Worker pour PWA -->
   <script>
-    const toggle=document.querySelector('.sidebar-toggle');
-    const bar=document.querySelector('.sidebar');
-    toggle.addEventListener('click',()=>bar.classList.toggle('open'));
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('Service Worker enregistré avec succès');
+          })
+          .catch(error => {
+            console.error('Erreur lors de l\'enregistrement du Service Worker', error);
+          });
+      });
+    }
   </script>
-  <script src="styles/hover_indicator.js" defer></script>
+  <!-- Scripts -->
+<script src="scripts/accessibilite.js"></script>
+<!-- Autres scripts spécifiques à la page si nécessaire -->
+<script src="scripts/menu_enhanced.js"></script>
 </body>
 </html>

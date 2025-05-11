@@ -1,17 +1,58 @@
-<!-- Ajout du lien d'évitement -->
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
     <title>Mathématiques - Sommaire CM1 📐</title>
+    
+    <!-- Styles essentiels -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
     <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body>
-    <div id="menu-container"></div>
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Menu latéral simple et fonctionnel -->
+    <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<div class="sidebar">
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
+    </ul>
+</div>
+    
+    <!-- Fil d'Ariane -->
+    <div class="breadcrumb" aria-label="Fil d'Ariane">
+        🏠 <a href="index.html">Accueil</a> > 🔢 Mathématiques
+    </div>
+    
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
     
     <h1>Bienvenue dans la section Mathématiques 📐</h1>
     <p>Explore les différentes notions de mathématiques à travers des activités interactives et ludiques !</p>
@@ -54,33 +95,89 @@
         </ul>
     </div>
     
+    <!-- Quiz section -->
+    <div class="content">
+        <h2>🎮 Teste tes connaissances</h2>
+        <p>Es-tu prêt à relever un défi ? Teste tes connaissances en mathématiques avec ce quiz !</p>
+        <div id="maths-quiz-container" class="quiz-section"></div>
+    </div>
+    
+    <!-- Activités à télécharger -->
+    <div class="content download-resources">
+        <h3>📝 Activités pratiques à télécharger</h3>
+        <div class="download-grid">
+            <a href="pdf/maths_calcul.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 1: Jeux de calcul</div>
+                <div class="download-info">PDF, 2 pages</div>
+            </a>
+            
+            <a href="pdf/maths_geometrie.pdf" class="download-card" download>
+                <div class="download-icon">📄</div>
+                <div class="download-title">Activité 2: Formes géométriques</div>
+                <div class="download-info">PDF, 3 pages</div>
+            </a>
+            
+            <a href="pdf/maths_problemes.pdf" class="download-card" download>
+                <div class="download-icon">🎮</div>
+                <div class="download-title">Jeux et défis mathématiques</div>
+                <div class="download-info">PDF, 4 pages</div>
+            </a>
+        </div>
+    </div>
+    
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
     
+    <!-- Scripts essentiels -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
-
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
-
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
-
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
+        // Script minimal et autonome pour le menu latéral
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu latéral
+            var sidebar = document.querySelector('.sidebar');
+            var toggleButton = document.querySelector('.sidebar-toggle');
+            
+            // Cacher initialement le menu
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+            }
+            
+            // Gestion du clic sur le bouton du menu
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                    } else {
+                        sidebar.style.left = '0px';
+                    }
+                });
+                
+                // Fermer le menu en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && 
+                        e.target !== toggleButton && 
+                        !sidebar.contains(e.target)) {
+                        sidebar.style.left = '-250px';
+                    }
+                });
+            }
+            
+            // Marquer cette page comme visitée dans le système de progression
+            if (typeof markProgress === 'function') {
+                markProgress("Mathématiques", "maths_introduction");
+            }
+            
+            // Initialiser le quiz si nécessaire
+            if (typeof QuizManager === 'function' && typeof mathsQuizData !== 'undefined') {
+                const mathsQuiz = new QuizManager('maths-quiz-container', mathsQuizData);
+            }
         });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
     </script>
+    
+    <!-- Autres scripts nécessaires -->
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/quiz_module.js"></script>
+    <script src="scripts/maths_quiz.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
 </body>
 </html>

@@ -5,8 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligence Artificielle</title>
     <link rel="stylesheet" href="styles/section_style.css">
-</head>
-<style>body { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }</style><body>
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
+<style>body { max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }</style>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🤖 Intelligence Artificielle</div>
+    <!-- Outils d'accessibilité -->
+   <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
     <h1>Découvrir l'Intelligence Artificielle 🤖</h1>
     <p>L'intelligence artificielle (IA) est une technologie fascinante qui nous permet de créer des machines capables de penser et de résoudre des problèmes comme un humain. Mais contrairement à nous, les machines n'ont pas de sentiments et n'agissent pas de manière indépendante. Elles utilisent des informations, appelées "données", pour apprendre et améliorer leurs décisions.</p>
 
@@ -98,5 +111,7 @@
     </script>
 
     <a href="sciences_section.html" class="back-button">Retour à la section Sciences 🔬</a>
-</body>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

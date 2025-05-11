@@ -6,6 +6,8 @@
     <title>Chansons en Anglais 🎶</title>
     <link rel="stylesheet" href="styles/section_style.css">
     <link rel="stylesheet" href="styles/english_songs.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
     <script>
         function loadVideos() {
             document.getElementById("beatles-video").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/rblYSKz_VnI" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
@@ -13,8 +15,18 @@
         }
         window.onload = loadVideos;
     </script>
-</head>
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🇬🇧 <a href="english_section.html">English</a> > 🎵 Chante et apprends l’anglais 🎤</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
     <h1>🎵 Chante et apprends l’anglais 🎤</h1>
     <div class="content">
         <p>Apprends l’anglais en chantant ces chansons célèbres !</p>
@@ -32,5 +44,7 @@
            I'm gonna give you my heart...</p>
     </div>
     <a href="english_section.html" class="back-button">Retour à la section principale</a>
-</body>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

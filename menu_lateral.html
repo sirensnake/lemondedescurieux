@@ -1,51 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Latéral</title>
-    <link rel="stylesheet" href="menu_lateral.css">
-</head>
-<body>
-    <!-- Barre latérale rétractable -->
-    <div id="sidebar" class="sidebar" role="navigation" aria-label="Menu principal">
-        <ul>
-            <li><a href="francais_section.html" aria-label="Section Français"><img src="images/francais_icon.png" alt="Icône Français"> Français</a></li>
-            <li><a href="maths_section.html" aria-label="Section Mathématiques"><img src="images/maths_icon.png" alt="Icône Maths"> Mathématiques</a></li>
-            <li><a href="sciences_section.html" aria-label="Section Sciences"><img src="images/sciences_icon.png" alt="Icône Sciences"> Sciences</a></li>
-            <li><a href="histoire_section.html" aria-label="Section Histoire-Géographie"><img src="images/histoire_icon.png" alt="Icône Histoire"> Histoire-Géographie</a></li>
-            <li><a href="programmation_section.html" aria-label="Section Programmation"><img src="images/prog_icon.png" alt="Icône Programmation"> Programmation</a></li>
-            <li><a href="echecs_section.html" aria-label="Section Échecs"><img src="images/echecs_icon.png" alt="Icône Échecs"> Échecs</a></li>
-            <li><a href="philosophie_section.html" aria-label="Section Philosophie"><img src="images/philo_icon.png" alt="Icône Philosophie"> Philosophie</a></li>
-            <li><a href="english_section.html" aria-label="Section Anglais"><img src="images/english.png" alt="Icône English"> English</a></li>
-            <li><a href="ressources_section.html" aria-label="Section Ressources"><img src="images/ressources_icon.png" alt="Icône Ressources"> Ressources</a></li>
-            <li><a href="infos_section.html" aria-label="Section Infos"><img src="images/infos_icon.png" alt="Icône Infos"> Infos</a></li>
-        </ul>
-    </div>
+<!-- Bouton pour ouvrir la barre latérale -->
+<button id="sidebar-toggle" class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
 
-    <!-- Bouton pour ouvrir la barre latérale -->
-    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Ouvrir le menu">☰</button>
-
-    <!-- Script pour gérer l'ouverture et la fermeture -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sidebar = document.getElementById("sidebar");
-            const toggleButton = document.getElementById("sidebar-toggle");
-            const links = sidebar.querySelectorAll("a");
-
-            // Gestion de l'ouverture/fermeture du menu
-            toggleButton.addEventListener("click", function () {
-                sidebar.classList.toggle("open");
-                toggleButton.setAttribute("aria-expanded", sidebar.classList.contains("open"));
-            });
-
-            // Gestion de la navigation clavier
-            links.forEach(link => {
-                link.addEventListener("focus", () => {
-                    sidebar.classList.add("open");
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+<!-- Barre latérale rétractable -->
+<div id="sidebar" class="sidebar">
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
+    </ul>
+</div>

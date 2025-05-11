@@ -14,8 +14,14 @@
       margin: auto;
     }
   </style>
-</head>
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > Test Zones Cliquables</div>
   <div class="mindmap-container">
     <img src="images/MineCraftMindmap_1000px.png" usemap="#matieresmap" class="mindmap">
     <map name="matieresmap">
@@ -30,5 +36,6 @@
       imageMapResize();
     });
   </script>
-</body>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

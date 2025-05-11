@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="styles/layout_style.css">
   <link rel="stylesheet" href="styles/menu_lateral.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  
   <style>
     /* Correctifs locaux */
     header h1 {
@@ -33,8 +35,13 @@
     .sidebar-toggle {position: fixed; left: 10px; top: 10px; background:#2a9d8f; color:#fff; padding:10px 14px; border:none; cursor:pointer; z-index:1200; border-radius:5px; font-size:20px;}
   </style>
   <script defer src="scripts/hover_indicator.js"></script>
-</head>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > Le Monde des Curieux</div>
   <!-- Bouton hamburger -->
   <button class="sidebar-toggle" aria-label="Ouvrir le menu">☰</button>
 
@@ -90,5 +97,6 @@
     const sidebar   = document.querySelector('.sidebar');
     toggleBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
   </script>
-</body>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

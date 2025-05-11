@@ -26,4 +26,47 @@ document.addEventListener('DOMContentLoaded',()=>{
     const l=document.getElementById('loader');
     if(l)l.style.display='none';
   });
-  
+
+      // Fonction existante à modifier
+    function markProgress(section, activity) {
+      // Appeler la fonction existante si disponible
+      if (typeof window.ProgressionSystem !== 'undefined') {
+          window.ProgressionSystem.markComplete(section, activity);
+      }
+      
+      // Ajouter l'appel à la nouvelle fonction
+      saveLocalProgress(section, activity);
+    }
+      /**
+     * Sauvegarde la progression de l'utilisateur localement
+     * @param {string} section - La section (matière) complétée
+     * @param {string} activity - L'activité spécifique complétée
+     */
+    function saveLocalProgress(section, activity) {
+      // Récupérer les données existantes ou créer un objet vide
+      let userProgress = JSON.parse(localStorage.getItem('userProgress')) || {};
+      
+      // S'assurer que la section existe
+      if (!userProgress[section]) {
+          userProgress[section] = {};
+      }
+      
+      // Enregistrer l'activité comme complétée avec un timestamp
+      userProgress[section][activity] = {
+          completed: true,
+          timestamp: new Date().toISOString()
+      };
+      
+      // Sauvegarder dans le localStorage
+      localStorage.setItem('userProgress', JSON.stringify(userProgress));
+      
+      console.log(`Progression sauvegardée: ${section} - ${activity}`);
+    }
+
+    /**
+    * Récupère la progression de l'utilisateur depuis le stockage local
+    * @return {Object} Les données de progression
+    */
+    function getLocalProgress() {
+      return JSON.parse(localStorage.getItem('userProgress')) || {};
+    }

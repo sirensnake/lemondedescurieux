@@ -5,23 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligence Artificielle - Le Monde des Curieux</title>
     <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
     <link rel="stylesheet" href="styles/ia_section_style.css">
-</head>
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
-    <div id="menu-container"></div>
-    
+     
     <!-- Fil d'Ariane -->
-    <div class="breadcrumb">🏠 <a href="index.html">Accueil</a> > 🤖 Intelligence Artificielle</div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🤖 Intelligence Artificielle</div>
     
+    <div id="menu-container"></div> 
+
+    <!-- Partie du menu - remplacez votre ancien menu par celui-ci -->
+<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<div class="sidebar">
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
+    </ul>
+</div>
     <!-- Outils d'accessibilité -->
     <div class="accessibility-tools">
         <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
         <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
     </div>
     
-    <h1>L'Intelligence Artificielle 🤖</h1>
+   <h1>L'Intelligence Artificielle 🤖</h1>
     <p class="intro-text">Découvre ce qu'est l'intelligence artificielle, comment elle fonctionne et son impact sur notre vie quotidienne !</p>
 
     <div id="main-content" class="content-container">
@@ -194,28 +219,7 @@
             }
         }
         
-        // Configuration des outils d'accessibilité
-        function setupAccessibilityTools() {
-            // Charger les préférences sauvegardées
-            if (localStorage.getItem('large-text') === 'true') {
-                document.body.classList.add('large-text');
-            }
-            
-            if (localStorage.getItem('high-contrast') === 'true') {
-                document.body.classList.add('high-contrast');
-            }
-            
-            // Ajouter les écouteurs d'événements
-            document.getElementById('text-size-toggle').addEventListener('click', function() {
-                document.body.classList.toggle('large-text');
-                localStorage.setItem('large-text', document.body.classList.contains('large-text'));
-            });
-            
-            document.getElementById('contrast-toggle').addEventListener('click', function() {
-                document.body.classList.toggle('high-contrast');
-                localStorage.setItem('high-contrast', document.body.classList.contains('high-contrast'));
-            });
-        }
+        
         
         // Système de suivi de progression
         function markProgress(section, activity) {
@@ -284,5 +288,189 @@
             }, 3000);
         }
     </script>
-</body>
+    <script src="scripts/accessibilite.js"></script>
+    <!-- REMPLACER tout le bloc de script en bas de la page par celui-ci -->
+
+<script>
+    // Script pour le menu latéral et le jeu
+    document.addEventListener("DOMContentLoaded", function() {
+        // Chargement du menu latéral
+        fetch("menu_lateral.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("menu-container").innerHTML = data;
+            let sidebar = document.querySelector(".sidebar");
+            let toggleButton = document.querySelector(".sidebar-toggle");
+            
+            if (sidebar && toggleButton) {
+                toggleButton.addEventListener("click", function() {
+                    sidebar.classList.toggle("open");
+                });
+            }
+        })
+        .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        
+        // Script pour le jeu IA ou Humain
+        setupGame();
+        
+        // Marquer cette page comme visitée dans le système de progression
+        markProgress("IA", "ia_introduction");
+    });
+    
+    // Contenu du jeu IA ou Humain
+    function setupGame() {
+        const contents = [
+            {
+                text: "Les étoiles scintillent comme des diamants sur le manteau noir de la nuit, témoins silencieux de nos rêves éphémères.",
+                creator: "IA"
+            },
+            {
+                text: "J'ai fait un super dessin de licorne hier, elle était rose avec des ailes bleues et une corne arc-en-ciel qui brillait dans le noir !",
+                creator: "Humain"
+            },
+            {
+                text: "Le chat a sauté par-dessus la barrière puis s'est assis au soleil pour se lécher les pattes.",
+                creator: "Humain"
+            },
+            {
+                text: "Les arbres centenaires murmurent les secrets des âges passés tandis que leurs racines s'enfoncent profondément dans le sol nourricier de notre histoire collective.",
+                creator: "IA"
+            },
+            {
+                text: "Mon jeu préféré c'est Minecraft parce qu'on peut construire tout ce qu'on veut et après les montrer à mes copains.",
+                creator: "Humain"
+            }
+        ];
+        
+        let currentContent = null;
+        const contentDisplay = document.getElementById('content-display');
+        const resultDisplay = document.getElementById('result-display');
+        const startButton = document.getElementById('start-game');
+        const humanButton = document.getElementById('human-guess');
+        const aiButton = document.getElementById('ai-guess');
+        
+        // Vérifier que les éléments existent
+        if (!contentDisplay || !resultDisplay || !startButton || !humanButton || !aiButton) {
+            console.error("Éléments du jeu introuvables");
+            return;
+        }
+        
+        startButton.addEventListener('click', function() {
+            // Sélectionner un contenu aléatoire
+            currentContent = contents[Math.floor(Math.random() * contents.length)];
+            contentDisplay.textContent = currentContent.text;
+            
+            // Afficher les boutons de jeu
+            startButton.style.display = 'none';
+            humanButton.style.display = 'inline-block';
+            aiButton.style.display = 'inline-block';
+            resultDisplay.textContent = '';
+        });
+        
+        humanButton.addEventListener('click', function() {
+            checkGuess('Humain');
+        });
+        
+        aiButton.addEventListener('click', function() {
+            checkGuess('IA');
+        });
+        
+        function checkGuess(guess) {
+            if (guess === currentContent.creator) {
+                resultDisplay.textContent = "✅ Correct ! C'était bien créé par un " + currentContent.creator + ".";
+                // Enregistrer la progression si la réponse est correcte
+                markProgress("IA", "jeu_ia_humain");
+            } else {
+                resultDisplay.textContent = "❌ Pas tout à fait. C'était créé par un " + currentContent.creator + ".";
+            }
+            
+            // Réinitialiser pour la prochaine partie
+            startButton.style.display = 'inline-block';
+            startButton.textContent = 'Jouer encore';
+            humanButton.style.display = 'none';
+            aiButton.style.display = 'none';
+        }
+    }
+    
+    // Système de suivi de progression
+    function markProgress(section, activity) {
+        // Récupérer les données existantes ou créer un nouvel objet
+        let progress = JSON.parse(localStorage.getItem('learningProgress')) || {};
+        
+        // Initialiser la section si elle n'existe pas
+        if (!progress[section]) {
+            progress[section] = {
+                completed: 0,
+                total: getActivityCount(section),
+                activities: {}
+            };
+        }
+        
+        // Marquer l'activité comme complétée si elle ne l'est pas déjà
+        if (!progress[section].activities[activity]) {
+            progress[section].activities[activity] = {
+                completed: true,
+                timestamp: new Date().toISOString()
+            };
+            progress[section].completed += 1;
+            
+            // Afficher un message de félicitation
+            showCompletionMessage(section, activity);
+        }
+        
+        // Sauvegarder les progrès mis à jour
+        localStorage.setItem('learningProgress', JSON.stringify(progress));
+        
+        // Sauvegarder également dans le nouveau système de progression
+        try {
+            // Utiliser aussi le système de progression global si disponible
+            if (typeof saveLocalProgress === 'function') {
+                saveLocalProgress(section, activity);
+            }
+        } catch (e) {
+            console.warn("Fonction de progression globale non disponible");
+        }
+    }
+    
+    function getActivityCount(section) {
+        // Nombre total d'activités par section
+        const activityCounts = {
+            'IA': 5,
+            'Mathématiques': 15,
+            'Français': 12,
+            'Sciences': 10,
+            'Histoire-Géo': 10
+        };
+        
+        return activityCounts[section] || 5;
+    }
+    
+    function showCompletionMessage(section, activity) {
+        // Créer un message de félicitation éphémère
+        const messageElement = document.createElement('div');
+        messageElement.style.position = 'fixed';
+        messageElement.style.bottom = '20px';
+        messageElement.style.left = '50%';
+        messageElement.style.transform = 'translateX(-50%)';
+        messageElement.style.backgroundColor = '#4CAF50';
+        messageElement.style.color = 'white';
+        messageElement.style.padding = '10px 20px';
+        messageElement.style.borderRadius = '5px';
+        messageElement.style.zIndex = '1000';
+        messageElement.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+        messageElement.textContent = '✨ Bravo ! Tu as progressé dans la section ' + section;
+        
+        // Ajouter le message au document
+        document.body.appendChild(messageElement);
+        
+        // Supprimer le message après 3 secondes
+        setTimeout(() => {
+            document.body.removeChild(messageElement);
+        }, 3000);
+    }
+</script>
+<!-- Charger le script d'accessibilité APRÈS le script principal -->
+<script src="scripts/accessibilite.js"></script>
+<script src="scripts/menu_enhanced.js"></script>
+  </body>
 </html>

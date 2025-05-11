@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histoire - Chapitre 3 : La Révolution française</title>
     <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
-</head>
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
-    <button onclick="window.location.href='index.html'" style="position: fixed; top: 20px; left: 20px; padding: 10px 15px; background-color: #2a9d8f; color: white; border: none; border-radius: 5px; cursor: pointer;">🏠 Retour à l'accueil</button>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📜 Histoire</div>
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
 
     <h1>Histoire - Chapitre 3 : La Révolution française 🇫🇷</h1>
     <section>
@@ -40,5 +50,9 @@
     </section>
 
     <a href="histoire_ecriture.html">Suivant : Chapitre 4 - La naissance de l'écriture ✍️</a>
-</body>
+    <script src="scripts/accessibilite.js"></script>
+
+    
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

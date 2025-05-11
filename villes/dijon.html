@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <title>Dijon - Découverte</title>
   <link rel="stylesheet" href="../styles/section_style.css">
-</head>
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > Bienvenue à Dijon</div>
   <h1>Bienvenue à Dijon</h1>
   <div class="content">
     <img src="../../images/dijon.png" alt="Dijon" class="illustration">
@@ -56,5 +60,6 @@
       
     <a href="../carte_france.html" class="back-button">← Retour à la carte</a>
   </div>
-</body>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
 </html>

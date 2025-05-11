@@ -1,0 +1,225 @@
+/* Menu latéral amélioré - Le Monde des Curieux */
+
+/* Bouton hamburger animé */
+.sidebar-toggle {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background 0.3s, 
+                box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    overflow: hidden;
+  }
+  
+  .sidebar-toggle:hover {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sidebar-toggle:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style de base du menu */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px; /* un peu plus large */
+    width: 280px;
+    height: 100%;
+    background: #f0f9f0; /* fond légèrement plus clair et verdâtre */
+    z-index: 1000;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-right: 4px solid #4caf50;
+    padding-top: 70px;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  /* En-tête du menu */
+  .sidebar-header {
+    text-align: center;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(46, 125, 50, 0.2);
+  }
+  
+  .sidebar-header h3 {
+    margin: 0;
+    color: #2e7d32;
+    font-size: 1.4em;
+    font-family: 'Minecraftia', sans-serif;
+  }
+  
+  /* Navigation */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin: 5px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background-color 0.2s;
+  }
+  
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    padding: 12px 15px;
+    transition: all 0.2s;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  
+  .sidebar a:before {
+    content: "•";
+    margin-right: 12px;
+    color: #4caf50;
+    font-size: 1.5em;
+    transition: transform 0.2s, color 0.2s;
+  }
+  
+  .sidebar a:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+    transform: translateX(5px);
+  }
+  
+  .sidebar a:hover:before {
+    transform: scale(1.3);
+    color: #2e7d32;
+  }
+  
+  /* Lien actif */
+  .sidebar a.active {
+    background-color: #2e7d32;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidebar a.active:before {
+    content: "★";
+    color: #ffeb3b;
+  }
+  
+  /* Séparateurs de catégories */
+  .sidebar .category-divider {
+    margin: 15px 10px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.5), transparent);
+  }
+  
+  /* Adaptations pour le responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 250px;
+      left: -250px;
+    }
+    
+    .sidebar a {
+      padding: 10px;
+    }
+    
+    .sidebar-toggle {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  }
+  
+  /* Animation du fond au survol */
+  .sidebar li:hover {
+    background-image: linear-gradient(90deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.1) 100%);
+  }
+  
+  /* Icônes pour chaque catégorie */
+  .sidebar a.maths:before { content: "🔢"; }
+  .sidebar a.sciences:before { content: "🧪"; }
+  .sidebar a.histoire:before { content: "🏛️"; }
+  .sidebar a.francais:before { content: "📝"; }
+  .sidebar a.english:before { content: "🇬🇧"; }
+  .sidebar a.programmation:before { content: "💻"; }
+  .sidebar a.echecs:before { content: "♟️"; }
+  .sidebar a.philosophie:before { content: "🤔"; }
+  .sidebar a.ressources:before { content: "📚"; }
+  .sidebar a.infos:before { content: "📰"; }
+  .sidebar a.ia:before { content: "🤖"; }
+  .sidebar a.parcours:before { content: "🚀"; }
+  .sidebar a.accueil:before { content: "🏠"; }
+  .sidebar a.mindmap:before { content: "🗺️"; }
+  
+  /* Overlay qui s'affiche quand le menu est ouvert */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+  
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Adaptations pour le mode sombre */
+  body.dark-mode .sidebar {
+    background-color: #1a1a1a;
+    border-right-color: #388e3c;
+  }
+  
+  body.dark-mode .sidebar-header {
+    border-bottom-color: rgba(76, 175, 80, 0.2);
+  }
+  
+  body.dark-mode .sidebar a {
+    color: #e0e0e0;
+  }
+  
+  body.dark-mode .sidebar a:hover {
+    background-color: rgba(76, 175, 80, 0.15);
+  }
+  
+  body.dark-mode .sidebar a.active {
+    background-color: #388e3c;
+  }
+  
+  /* Animation d'entrée du menu */
+  @keyframes slideIn {
+    from { left: -280px; }
+    to { left: 0; }
+  }
+  
+  .sidebar.open {
+    animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }

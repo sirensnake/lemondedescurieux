@@ -7,10 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Programmation</title>
     <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral.css">
-</head>
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+  </head>
 <body>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 💻 Programmation</div>
     <div id="menu-container"></div>
+    <!-- Partie du menu - remplacez votre ancien menu par celui-ci -->
+<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<div class="sidebar">
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
+    </ul>
+</div>
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -31,7 +56,12 @@
                 .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
         });
     </script>
-
+     <!-- Outils d'accessibilité -->
+     <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
     <h1>Bienvenue dans la section Programmation 💻</h1>
     <p class="intro-text">Apprends à coder en t'amusant avec des exercices interactifs et des projets créatifs !</p>
 
@@ -60,5 +90,7 @@
     </div>
 
     <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
-</body>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+  </body>
 </html>
