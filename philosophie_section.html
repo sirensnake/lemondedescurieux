@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Philosophie 🤔</title>
     <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
     <link rel="stylesheet" href="styles/dark-mode.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
     <link rel="manifest" href="/manifest.json">
@@ -14,6 +14,26 @@
 <body>
     <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🧠 Philosophie</div>
     <div id="menu-container"></div>
+    <!-- Partie du menu - remplacez votre ancien menu par celui-ci -->
+<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<div class="sidebar">
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="mindmap.html">Carte des matières</a></li>
+        <li><a href="maths_section.html">Mathématiques</a></li>
+        <li><a href="sciences_section.html">Sciences</a></li>
+        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+        <li><a href="francais_section.html">Français</a></li>
+        <li><a href="english_section.html">English</a></li>
+        <li><a href="programmation_section.html">Programmation</a></li>
+        <li><a href="echecs_section.html">Échecs</a></li>
+        <li><a href="philosophie_section.html">Philosophie</a></li>
+        <li><a href="ressources_section.html">Ressources</a></li>
+        <li><a href="infos_section.html">Infos</a></li>
+        <li><a href="ia_section.html">IA</a></li>
+        <li><a href="mon-parcours.html">Mon Parcours</a></li>
+    </ul>
+</div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
     fetch("menu_lateral.html")
@@ -96,6 +116,6 @@
         }
     </script>
     <script src="scripts/accessibilite.js"></script>
-  <script src="scripts/menu-lateral.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
   </body>
 </html>
