@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Le Monde des Curieux</title>
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#2a9d8f">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- Alpine.js - Version 3.x -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- CSS Moderne -->
+    <link rel="stylesheet" href="styles/alpine-dashboard.css">
+    
+    <style>
+        /* Variables CSS Phase 3 */
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #e9c46a;
+            --accent-color: #e76f51;
+            --success-color: #06d6a0;
+            --warning-color: #ffd166;
+            --danger-color: #f25c54;
+            --background-color: #f1faee;
+            --text-color: #264653;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--background-color) 0%, #e8f4f8 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .user-welcome h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        .user-stats {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Système de cœurs */
+        .heart-system {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hearts-container {
+            display: flex;
+            gap: 5px;
+        }
+
+        .heart-icon {
+            font-size: 24px;
+            transition: var(--transition);
+            cursor: pointer;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .heart-full {
+            transform: scale(1);
+            animation: heartbeat 2s infinite;
+        }
+
+        .heart-empty {
+            opacity: 0.3;
+            filter: grayscale(100%);
+        }
+
+        @keyframes heartbeat {
+            0%, 50%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+        }
+
+        .heart-info {
+            font-size: 12px;
+            text-align: center;
+            min-height: 40px;
+        }
+
+        /* Streak display */
+        .streak-display {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .streak-icon {
+            font-size: 28px;
+            animation: flame 1.5s infinite alternate;
+        }
+
+        @keyframes flame {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .streak-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .streak-count {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .streak-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Stats overview */
+        .stats-section {
+            padding: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e0e7ff;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            font-size: 28px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .stat-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            transition: width 0.8s ease;
+            border-radius: 4px;
+        }
+
+        /* Subjects progress */
+        .subjects-section {
+            padding: 0 30px 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+
+        .subject-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .subject-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 10px 0;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 15px auto;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: #e5e7eb;
+            stroke-width: 6;
+        }
+
+        .progress-ring-circle.active {
+            stroke: var(--primary-color);
+            stroke-dasharray: 251;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 0.8s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Actions rapides */
+        .actions-section {
+            background: #f8fafc;
+            padding: 30px;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .action-btn.primary { background: linear-gradient(135deg, var(--primary-color), #20b2aa); }
+        .action-btn.secondary { background: linear-gradient(135deg, var(--secondary-color), #daa520); }
+        .action-btn.accent { background: linear-gradient(135deg, var(--accent-color), #ff6347); }
+
+        .action-icon {
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .user-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations de chargement */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        /* Modal système */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Dashboard Alpine.js réactif -->
+    <div x-data="dashboardApp()" x-init="init()" class="dashboard-container animate-in">
+        
+        <!-- Header avec stats utilisateur -->
+        <header class="dashboard-header">
+            <div class="user-welcome">
+                <h1>Bonjour, Explorateur Curieux ! 👋</h1>
+                <p x-text="getCurrentDateMessage()"></p>
+            </div>
+            
+            <div class="user-stats">
+                <!-- Système de cœurs réactif -->
+                <div x-data="heartSystem()" x-init="init()" class="heart-system">
+                    <div class="hearts-container">
+                        <template x-for="i in maxHearts" :key="i">
+                            <span class="heart-icon" 
+                                  :class="{ 'heart-full': i <= hearts, 'heart-empty': i > hearts }"
+                                  @click="debugHeart(i)">
+                                ❤️
+                            </span>
+                        </template>
+                    </div>
+                    <div class="heart-info">
+                        <div x-text="`${hearts}/${maxHearts} cœurs`"></div>
+                        <div x-show="!canPlay" class="recovery-timer">
+                            <small x-text="nextRecoveryTime ? `Récupération: ${nextRecoveryTime}` : ''"></small>
+                        </div>
+                        <div x-show="bonusHearts > 0">
+                            <button @click="useBonusHeart()" 
+                                    class="btn-bonus" 
+                                    x-text="`✨ Bonus (${bonusHearts})`">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Streak quotidien -->
+                <div class="streak-display">
+                    <div class="streak-icon">🔥</div>
+                    <div class="streak-info">
+                        <div class="streak-count" x-text="progressData.currentStreak"></div>
+                        <div class="streak-label">jours consécutifs</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Section statistiques -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card animate-in" style="animation-delay: 0.1s">
+                    <div class="stat-header">
+                        <div class="stat-icon">📊</div>
+                        <h3 class="stat-title">Progression globale</h3>
+                    </div>
+                    <div class="stat-value" x-text="completionPercentage + '%'"></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" :style="`width: ${completionPercentage}%`"></div>
+                    </div>
+                    <small x-text="`${progressData.completedActivities}/${progressData.totalActivities} activités`"></small>
+                </div>
+                
+                <div class="stat-card animate-in" style="animation-delay: 0.2s">
+                    <div class="stat-header">
+                        <div class="stat-icon">⏱️</div>
+                        <h3 class="stat-title">Temps d'apprentissage</h3>
+                    </div>
+                    <div class="stat-value" x-text="formatTime(progressData.totalTime)"></div>
+                    <small x-text="`Moyenne: ${formatTime(progressData.avgSessionTime)} par session`"></small>
+                </div>
+                
+                <div class="stat-card animate-in" style="animation-delay: 0.3s">
+                    <div class="stat-header">
+                        <div class="stat-icon">🏆</div>
+                        <h3 class="stat-title">Badges obtenus</h3>
+                    </div>
+                    <div class="stat-value" x-text="progressData.badges.length"></div>
+                    <small x-text="`${progressData.badges.length}/12 collection complète`"></small>
+                </div>
+                
+                <div class="stat-card animate-in" style="animation-delay: 0.4s">
+                    <div class="stat-header">
+                        <div class="stat-icon">🎯</div>
+                        <h3 class="stat-title">Score moyen</h3>
+                    </div>
+                    <div class="stat-value" x-text="Math.round(progressData.averageScore) + '%'"></div>
+                    <small x-text="getPerformanceMessage()"></small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section matières -->
+        <section class="subjects-section">
+            <h2 class="section-title">📚 Progression par matière</h2>
+            <div class="subjects-grid">
+                <template x-for="(subject, name) in subjects" :key="name">
+                    <div class="subject-card animate-in" 
+                         @click="openSubjectModal(name)"
+                         :style="`animation-delay: ${0.1 * (Object.keys(subjects).indexOf(name) + 1)}s`">
+                        
+                        <span class="subject-icon" x-text="subject.icon"></span>
+                        <h3 class="subject-title" x-text="subject.name"></h3>
+                        
+                        <div class="circular-progress">
+                            <svg class="progress-ring" width="80" height="80">
+                                <circle class="progress-ring-circle" 
+                                        cx="40" cy="40" r="30"></circle>
+                                <circle class="progress-ring-circle active" 
+                                        cx="40" cy="40" r="30"
+                                        :stroke-dashoffset="188 - (188 * subject.progress / 100)"></circle>
+                            </svg>
+                            <div class="progress-text" x-text="Math.round(subject.progress) + '%'"></div>
+                        </div>
+                        
+                        <div x-text="`${subject.completed}/${subject.total} activités`"></div>
+                        <small x-text="subject.lastActivity ? `Dernière: ${formatDate(subject.lastActivity)}` : 'Pas encore commencé'"></small>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Actions rapides -->
+        <section class="actions-section">
+            <h2 class="section-title">⚡ Actions rapides</h2>
+            <div class="actions-grid">
+                <button @click="continueLastActivity()" class="action-btn primary" :disabled="!canPlay">
+                    <span class="action-icon">▶️</span>
+                    <span>Continuer</span>
+                </button>
+                
+                <button @click="startQuickQuiz()" class="action-btn secondary" :disabled="!canPlay">
+                    <span class="action-icon">🧠</span>
+                    <span>Quiz rapide</span>
+                </button>
+                
+                <button @click="showAchievements()" class="action-btn accent">
+                    <span class="action-icon">🏆</span>
+                    <span>Réalisations</span>
+                </button>
+                
+                <a href="#" @click="exportProgress()" class="action-btn primary">
+                    <span class="action-icon">📄</span>
+                    <span>Exporter</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal détails matière -->
+    <div x-data="{ showModal: false, currentSubject: null }" 
+         x-show="showModal" 
+         x-cloak
+         class="modal-overlay"
+         :class="{ 'show': showModal }"
+         @keydown.escape="showModal = false"
+         @click.self="showModal = false">
+        
+        <div class="modal-content">
+            <h3 x-text="currentSubject ? subjects[currentSubject]?.name : ''" class="section-title"></h3>
+            <div x-show="currentSubject">
+                <p>Détails de progression pour cette matière...</p>
+                <button @click="showModal = false" class="action-btn accent">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Alpine.js -->
+    <script>
+        // Composant principal Dashboard
+        function dashboardApp() {
+            return {
+                // État réactif
+                progressData: {
+                    totalActivities: 0,
+                    completedActivities: 0,
+                    currentStreak: 0,
+                    totalTime: 0,
+                    avgSessionTime: 0,
+                    averageScore: 0,
+                    badges: []
+                },
+                
+                subjects: {
+                    mathematiques: {
+                        name: 'Mathématiques',
+                        icon: '🔢',
+                        progress: 0,
+                        completed: 0,
+                        total: 0,
+                        lastActivity: null
+                    },
+                    francais: {
+                        name: 'Français',
+                        icon: '📝',
+                        progress: 0,
+                        completed: 0,
+                        total: 0,
+                        lastActivity: null
+                    },
+                    sciences: {
+                        name: 'Sciences',
+                        icon: '🔬',
+                        progress: 0,
+                        completed: 0,
+                        total: 0,
+                        lastActivity: null
+                    },
+                    anglais: {
+                        name: 'Anglais',
+                        icon: '🇬🇧',
+                        progress: 0,
+                        completed: 0,
+                        total: 0,
+                        lastActivity: null
+                    }
+                },
+                
+                // Initialisation
+                init() {
+                    this.loadProgressData();
+                    this.calculateStats();
+                    this.updateSubjectsProgress();
+                    this.setupAnalytics();
+                    
+                    // Animation d'entrée progressive
+                    setTimeout(() => {
+                        document.querySelectorAll('.animate-in').forEach((el, i) => {
+                            el.style.animationDelay = `${i * 0.1}s`;
+                        });
+                    }, 100);
+                },
+                
+                // Chargement des données
+                loadProgressData() {
+                    const stored = localStorage.getItem('userProgress');
+                    if (stored) {
+                        const data = JSON.parse(stored);
+                        Object.assign(this.progressData, data);
+                    }
+                    
+                    // Données de démonstration si vide
+                    if (this.progressData.totalActivities === 0) {
+                        this.loadDemoData();
+                    }
+                },
+                
+                loadDemoData() {
+                    this.progressData = {
+                        totalActivities: 48,
+                        completedActivities: 32,
+                        currentStreak: 7,
+                        totalTime: 180 * 60, // 3 heures en secondes
+                        avgSessionTime: 15 * 60, // 15 minutes en secondes
+                        averageScore: 87.5,
+                        badges: ['premier_pas', 'semaine_complete', 'mathematicien', 'explorateur']
+                    };
+                    
+                    // Mise à jour des matières
+                    this.subjects.mathematiques.progress = 85;
+                    this.subjects.mathematiques.completed = 12;
+                    this.subjects.mathematiques.total = 15;
+                    this.subjects.mathematiques.lastActivity = new Date().toISOString();
+                    
+                    this.subjects.francais.progress = 72;
+                    this.subjects.francais.completed = 8;
+                    this.subjects.francais.total = 12;
+                    
+                    this.subjects.sciences.progress = 45;
+                    this.subjects.sciences.completed = 5;
+                    this.subjects.sciences.total = 10;
+                    
+                    this.subjects.anglais.progress = 60;
+                    this.subjects.anglais.completed = 7;
+                    this.subjects.anglais.total = 11;
+                },
+                
+                // Calculs réactifs
+                calculateStats() {
+                    // Statistiques mises à jour automatiquement
+                },
+                
+                updateSubjectsProgress() {
+                    // Mise à jour progression des matières
+                    Object.keys(this.subjects).forEach(key => {
+                        const subject = this.subjects[key];
+                        if (subject.total > 0) {
+                            subject.progress = (subject.completed / subject.total) * 100;
+                        }
+                    });
+                },
+                
+                // Getters réactifs
+                get completionPercentage() {
+                    return this.progressData.totalActivities > 0 
+                        ? Math.round((this.progressData.completedActivities / this.progressData.totalActivities) * 100)
+                        : 0;
+                },
+                
+                // Méthodes utilitaires
+                formatTime(seconds) {
+                    const hours = Math.floor(seconds / 3600);
+                    const minutes = Math.floor((seconds % 3600) / 60);
+                    
+                    if (hours > 0) {
+                        return `${hours}h ${minutes}min`;
+                    }
+                    return `${minutes}min`;
+                },
+                
+                formatDate(dateString) {
+                    if (!dateString) return '';
+                    const date = new Date(dateString);
+                    return date.toLocaleDateString('fr-FR');
+                },
+                
+                getCurrentDateMessage() {
+                    const hour = new Date().getHours();
+                    if (hour < 12) return 'Bonne matinée d\'apprentissage !';
+                    if (hour < 18) return 'Bon après-midi d\'apprentissage !';
+                    return 'Bonne soirée d\'apprentissage !';
+                },
+                
+                getPerformanceMessage() {
+                    const score = this.progressData.averageScore;
+                    if (score >= 90) return 'Excellent travail ! 🌟';
+                    if (score >= 80) return 'Très bien ! 👍';
+                    if (score >= 70) return 'Bon travail ! 📈';
+                    return 'Continue tes efforts ! 💪';
+                },
+                
+                // Actions utilisateur
+                openSubjectModal(subjectName) {
+                    console.log('Ouverture détails:', subjectName);
+                    // TODO: Implémenter modal détaillée
+                },
+                
+                continueLastActivity() {
+                    console.log('Continuation dernière activité');
+                    // TODO: Rediriger vers dernière activité
+                },
+                
+                startQuickQuiz() {
+                    console.log('Démarrage quiz rapide');
+                    // TODO: Lancer quiz adaptatif
+                },
+                
+                showAchievements() {
+                    console.log('Affichage réalisations');
+                    // TODO: Modal réalisations
+                },
+                
+                exportProgress() {
+                    const data = {
+                        progress: this.progressData,
+                        subjects: this.subjects,
+                        exportDate: new Date().toISOString()
+                    };
+                    
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `progression-curieux-${new Date().toISOString().split('T')[0]}.json`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                },
+                
+                setupAnalytics() {
+                    // Analytics Phase 3
+                    this.trackEvent('dashboard_loaded', {
+                        completion_percentage: this.completionPercentage,
+                        current_streak: this.progressData.currentStreak
+                    });
+                },
+                
+                trackEvent(eventName, data) {
+                    const event = {
+                        name: eventName,
+                        data: data,
+                        timestamp: new Date().toISOString(),
+                        session: this.getSessionId()
+                    };
+                    
+                    // Stockage local des analytics
+                    const analytics = JSON.parse(localStorage.getItem('analytics') || '[]');
+                    analytics.push(event);
+                    
+                    // Garder seulement les 1000 derniers événements
+                    if (analytics.length > 1000) {
+                        analytics.splice(0, analytics.length - 1000);
+                    }
+                    
+                    localStorage.setItem('analytics', JSON.stringify(analytics));
+                    console.log('Analytics:', eventName, data);
+                },
+                
+                getSessionId() {
+                    let sessionId = sessionStorage.getItem('sessionId');
+                    if (!sessionId) {
+                        sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                        sessionStorage.setItem('sessionId', sessionId);
+                    }
+                    return sessionId;
+                }
+            }
+        }
+        
+        // Composant système de cœurs
+        function heartSystem() {
+            return {
+                hearts: 5,
+                maxHearts: 5,
+                bonusHearts: 0,
+                recoveryTime: 30, // minutes
+                lastRecovery: null,
+                
+                init() {
+                    this.loadHeartState();
+                    this.startRecoveryTimer();
+                },
+                
+                loadHeartState() {
+                    const saved = localStorage.getItem('heartSystem');
+                    if (saved) {
+                        const data = JSON.parse(saved);
+                        this.hearts = data.hearts || this.maxHearts;
+                        this.bonusHearts = data.bonusHearts || 0;
+                        this.lastRecovery = data.lastRecovery ? new Date(data.lastRecovery) : null;
+                        
+                        // Calculer récupération passive
+                        this.calculatePassiveRecovery();
+                    }
+                },
+                
+                calculatePassiveRecovery() {
+                    if (!this.lastRecovery || this.hearts >= this.maxHearts) return;
+                    
+                    const now = new Date();
+                    const timeDiff = now - this.lastRecovery;
+                    const minutesPassed = Math.floor(timeDiff / (1000 * 60));
+                    const heartsToRecover = Math.floor(minutesPassed / this.recoveryTime);
+                    
+                    if (heartsToRecover > 0) {
+                        const recovered = Math.min(heartsToRecover, this.maxHearts - this.hearts);
+                        this.hearts += recovered;
+                        this.lastRecovery = new Date(this.lastRecovery.getTime() + recovered * this.recoveryTime * 60000);
+                        this.saveHeartState();
+                    }
+                },
+                
+                loseHeart() {
+                    if (this.hearts > 0) {
+                        this.hearts--;
+                        this.lastRecovery = new Date();
+                        this.saveHeartState();
+                        
+                        // Animation perte de cœur
+                        this.animateHeartLoss();
+                        return true;
+                    }
+                    return false;
+                },
+                
+                useBonusHeart() {
+                    if (this.bonusHearts > 0 && this.hearts < this.maxHearts) {
+                        this.bonusHearts--;
+                        this.hearts++;
+                        this.saveHeartState();
+                        this.animateHeartGain();
+                    }
+                },
+                
+                debugHeart(heartNumber) {
+                    // Debug: simuler perte de cœur
+                    if (heartNumber <= this.hearts) {
+                        this.loseHeart();
+                    }
+                },
+                
+                animateHeartLoss() {
+                    // Animation CSS
+                    const heartElements = document.querySelectorAll('.heart-icon');
+                    if (heartElements[this.hearts]) {
+                        heartElements[this.hearts].style.animation = 'heartLoss 0.5s ease';
+                        setTimeout(() => {
+                            heartElements[this.hearts].style.animation = '';
+                        }, 500);
+                    }
+                },
+                
+                animateHeartGain() {
+                    // Animation CSS
+                    const heartElements = document.querySelectorAll('.heart-icon');
+                    if (heartElements[this.hearts - 1]) {
+                        heartElements[this.hearts - 1].style.animation = 'heartGain 0.5s ease';
+                        setTimeout(() => {
+                            heartElements[this.hearts - 1].style.animation = '';
+                        }, 500);
+                    }
+                },
+                
+                startRecoveryTimer() {
+                    setInterval(() => {
+                        if (this.hearts < this.maxHearts && this.lastRecovery) {
+                            const now = new Date();
+                            const timeDiff = now - this.lastRecovery;
+                            const minutesPassed = Math.floor(timeDiff / (1000 * 60));
+                            
+                            if (minutesPassed >= this.recoveryTime) {
+                                this.hearts++;
+                                this.lastRecovery = new Date();
+                                this.saveHeartState();
+                                this.animateHeartGain();
+                            }
+                        }
+                    }, 60000); // Vérification chaque minute
+                },
+                
+                saveHeartState() {
+                    const state = {
+                        hearts: this.hearts,
+                        bonusHearts: this.bonusHearts,
+                        lastRecovery: this.lastRecovery ? this.lastRecovery.toISOString() : null
+                    };
+                    localStorage.setItem('heartSystem', JSON.stringify(state));
+                },
+                
+                get canPlay() {
+                    return this.hearts > 0;
+                },
+                
+                get nextRecoveryTime() {
+                    if (!this.lastRecovery || this.hearts >= this.maxHearts) return null;
+                    
+                    const nextRecovery = new Date(this.lastRecovery.getTime() + this.recoveryTime * 60000);
+                    const now = new Date();
+                    const timeLeft = nextRecovery - now;
+                    
+                    if (timeLeft <= 0) return '0:00';
+                    
+                    const minutes = Math.floor(timeLeft / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
