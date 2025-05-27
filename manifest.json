@@ -1,21 +1,206 @@
 {
-    "name": "Le Monde des Curieux",
-    "short_name": "Curieux",
-    "description": "Une plateforme éducative interactive pour les enfants",
-    "start_url": "index.html",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#2a9d8f",
-    "icons": [
-      {
-        "src": "images/icon-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
+  "name": "Le Monde des Curieux",
+  "short_name": "Curieux",
+  "description": "Plateforme éducative interactive avec Alpine.js - Phase 3",
+  "start_url": "/dashboard-alpine.html",
+  "display": "standalone",
+  "background_color": "#f1faee",
+  "theme_color": "#2a9d8f",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  
+  "icons": [
+    {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "screenshots/dashboard-desktop.png",
+      "sizes": "1200x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Dashboard principal sur desktop"
+    },
+    {
+      "src": "screenshots/dashboard-mobile.png", 
+      "sizes": "400x800",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Dashboard principal sur mobile"
+    }
+  ],
+  
+  "categories": ["education", "kids", "learning", "games"],
+  
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Accéder au tableau de bord",
+      "url": "/dashboard-alpine.html",
+      "icons": [
+        {
+          "src": "icons/dashboard-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Mathématiques",
+      "short_name": "Maths",
+      "description": "Activités mathématiques",
+      "url": "/mathematiques.html",
+      "icons": [
+        {
+          "src": "icons/math-shortcut.png",
+          "sizes": "96x96", 
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Sciences",
+      "short_name": "Sciences",
+      "description": "Expériences scientifiques",
+      "url": "/sciences.html",
+      "icons": [
+        {
+          "src": "icons/science-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Quiz Rapide",
+      "short_name": "Quiz",
+      "description": "Quiz adaptatif rapide", 
+      "url": "/quiz-rapide.html",
+      "icons": [
+        {
+          "src": "icons/quiz-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  
+  "share_target": {
+    "action": "/share-progress",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "progression",
+          "accept": ["application/json", ".json"]
+        }
+      ]
+    }
+  },
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+curieux",
+      "url": "/handle-protocol?data=%s"
+    }
+  ],
+  
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.lemondedescurieux.app",
+      "id": "com.lemondedescurieux.app"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  
+  "handle_links": "preferred",
+  
+  "scope_extensions": [
+    {
+      "origin": "https://lemondedescurieux.github.io"
+    }
+  ],
+  
+  "file_handlers": [
+    {
+      "action": "/import-progress",
+      "accept": {
+        "application/json": [".json"],
+        "text/csv": [".csv"]
       },
-      {
-        "src": "images/icon-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-  }
+      "icons": [
+        {
+          "src": "icons/file-handler.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ],
+      "launch_type": "single-client"
+    }
+  ]
+}
