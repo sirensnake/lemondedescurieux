@@ -1,0 +1,10 @@
+env/
+# MCP Configuration Windows 11
+.mcp/config.local.json
+.mcp/logs/
+*.log
+npm-debug.log*
+
+# Windows specific
+Thumbs.db
+Desktop.ini

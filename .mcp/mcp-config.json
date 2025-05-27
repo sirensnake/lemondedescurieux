@@ -1,0 +1,47 @@
+{
+  "name": "lemondedescurieux-mcp",
+  "version": "3.0.0",
+  "description": "Configuration MCP pour Le Monde des Curieux Phase 3 - Windows 11",
+  
+  "repository": {
+    "owner": "sirensnake",
+    "repo": "lemondedescurieux",
+    "defaultBranch": "main",
+    "developmentBranch": "phase3-development"
+  },
+  
+  "server": {
+    "port": 3001,
+    "host": "localhost",
+    "platform": "windows11"
+  },
+  
+  "workflows": {
+    "feature_development": {
+      "trigger": "claude_request",
+      "steps": [
+        "create_branch",
+        "generate_code",
+        "run_tests",
+        "create_pr"
+      ],
+      "autoMerge": false,
+      "requiresReview": true
+    }
+  },
+  
+  "integrations": {
+    "claude": {
+      "enabled": true,
+      "autoCommit": false,
+      "commitMessageTemplate": "🤖 Claude Phase 3: {description}\n\n{details}"
+    }
+  },
+  
+  "security": {
+    "requireSignedCommits": false,
+    "allowedFileExtensions": [".js", ".html", ".css", ".json", ".md", ".py"],
+    "blockedPaths": [".env", "*.key", "config.local.json"],
+    "maxFileSize": "10MB"
+  }
+}

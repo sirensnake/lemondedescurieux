@@ -1,0 +1,23 @@
+{
+  "name": "lemondedescurieux",
+  "version": "1.0.0",
+  "description": "site éducatif pour les enfants de CM1 au collège",
+  "main": "add-accessibility-css.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirensnake/lemondedescurieux.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirensnake/lemondedescurieux/issues"
+  },
+  "homepage": "https://github.com/sirensnake/lemondedescurieux#readme"
+}

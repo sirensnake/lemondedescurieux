@@ -565,3 +565,28 @@ class MinecraftMathGame {
       operations: ['addition', 'subtraction', 'multiplication']
     });
   });
+  // Amélioration de scripts/maths_calcul_mental_game.js
+class CalculMentalGame {
+  constructor(difficulty = 'easy') {
+    this.difficulty = difficulty;
+    this.score = 0;
+    this.timeLeft = 60;
+    this.isRunning = false;
+  }
+  
+  generateQuestion() {
+    // Génération de questions adaptées au niveau
+  }
+  
+  startGame() {
+    // Démarrage du jeu
+  }
+  
+  checkAnswer(userAnswer) {
+    // Vérification de la réponse
+  }
+  
+  endGame() {
+    // Fin du jeu et affichage des résultats
+  }
+}

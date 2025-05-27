@@ -1,1 +1,26 @@
-env/
+@"
+# Le Monde des Curieux - Gitignore
+
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# MCP Configuration Windows 11
+.mcp/config.local.json
+.mcp/logs/
+*.log
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/settings.json
+"@ | Out-File .gitignore -Encoding UTF8
+
+Write-Host "✅ .gitignore recréé proprement" -ForegroundColor Green
