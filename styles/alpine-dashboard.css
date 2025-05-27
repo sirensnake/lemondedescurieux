@@ -1,0 +1,719 @@
+/* ===============================================
+   CSS ALPINE.JS MODERNE - PHASE 3
+   Le Monde des Curieux - Interface réactive
+   =============================================== */
+
+/* Variables CSS Phase 3 */
+:root {
+    --primary-color: #2a9d8f;
+    --secondary-color: #e9c46a;
+    --accent-color: #e76f51;
+    --success-color: #06d6a0;
+    --warning-color: #ffd166;
+    --danger-color: #f25c54;
+    --background-color: #f1faee;
+    --text-color: #264653;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Reset et base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--background-color) 0%, #e8f4f8 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Utilitaires Alpine.js */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Conteneur principal */
+.alpine-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cards et composants */
+.alpine-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    transition: var(--transition);
+}
+
+.alpine-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.alpine-card.interactive {
+    cursor: pointer;
+}
+
+.alpine-card.interactive:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+}
+
+/* Grilles réactives */
+.alpine-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.alpine-grid.cols-2 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.alpine-grid.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.alpine-grid.cols-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Boutons Alpine */
+.alpine-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+}
+
+.alpine-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.alpine-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.alpine-btn.primary {
+    background: linear-gradient(135deg, var(--primary-color), #20b2aa);
+    color: white;
+}
+
+.alpine-btn.secondary {
+    background: linear-gradient(135deg, var(--secondary-color), #daa520);
+    color: white;
+}
+
+.alpine-btn.accent {
+    background: linear-gradient(135deg, var(--accent-color), #ff6347);
+    color: white;
+}
+
+.alpine-btn.success {
+    background: linear-gradient(135deg, var(--success-color), #00c896);
+    color: white;
+}
+
+.alpine-btn.warning {
+    background: linear-gradient(135deg, var(--warning-color), #ffcd56);
+    color: var(--text-color);
+}
+
+/* Barres de progression */
+.alpine-progress {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.alpine-progress.thick {
+    height: 12px;
+}
+
+.alpine-progress.thin {
+    height: 4px;
+}
+
+.alpine-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    transition: width 0.8s ease;
+    border-radius: 4px;
+}
+
+.alpine-progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Progress circulaire */
+.alpine-circular-progress {
+    position: relative;
+    display: inline-block;
+}
+
+.alpine-progress-ring {
+    transform: rotate(-90deg);
+}
+
+.alpine-progress-ring-bg {
+    fill: none;
+    stroke: #e5e7eb;
+    stroke-width: 6;
+}
+
+.alpine-progress-ring-fill {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease;
+}
+
+.alpine-progress-ring-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Badges et indicateurs */
+.alpine-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.alpine-badge.primary { background: var(--primary-color); color: white; }
+.alpine-badge.secondary { background: var(--secondary-color); color: var(--text-color); }
+.alpine-badge.success { background: var(--success-color); color: white; }
+.alpine-badge.warning { background: var(--warning-color); color: var(--text-color); }
+.alpine-badge.danger { background: var(--danger-color); color: white; }
+
+/* Système de cœurs */
+.alpine-hearts {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.alpine-hearts-container {
+    display: flex;
+    gap: 4px;
+}
+
+.alpine-heart {
+    font-size: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.alpine-heart.full {
+    transform: scale(1);
+    animation: heartbeat 2s infinite;
+}
+
+.alpine-heart.empty {
+    opacity: 0.3;
+    filter: grayscale(100%);
+}
+
+.alpine-heart:hover {
+    transform: scale(1.1);
+}
+
+@keyframes heartbeat {
+    0%, 50%, 100% { transform: scale(1); }
+    25% { transform: scale(1.05); }
+}
+
+.alpine-heart-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    text-align: center;
+    min-width: 80px;
+}
+
+/* Animations cœurs */
+@keyframes heartLoss {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+    100% { transform: scale(0.8); opacity: 0.3; }
+}
+
+@keyframes heartGain {
+    0% { transform: scale(0.5); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Streak display */
+.alpine-streak {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.2);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.alpine-streak-icon {
+    font-size: 24px;
+    animation: flame 1.5s infinite alternate;
+}
+
+@keyframes flame {
+    0% { transform: scale(1) rotate(-1deg); }
+    100% { transform: scale(1.05) rotate(1deg); }
+}
+
+.alpine-streak-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.alpine-streak-count {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.alpine-streak-label {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Stats cards */
+.alpine-stat-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.alpine-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.alpine-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.alpine-stat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.alpine-stat-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 18px;
+}
+
+.alpine-stat-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.alpine-stat-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 8px 0;
+    line-height: 1;
+}
+
+.alpine-stat-subtitle {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* Subject cards */
+.alpine-subject-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.alpine-subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.alpine-subject-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.alpine-subject-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 8px 0;
+}
+
+.alpine-subject-meta {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* Modals */
+.alpine-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.alpine-modal-content {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.alpine-modal.show .alpine-modal-content {
+    transform: scale(1);
+}
+
+.alpine-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.alpine-modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.alpine-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6b7280;
+    transition: var(--transition);
+}
+
+.alpine-modal-close:hover {
+    color: var(--danger-color);
+}
+
+/* Animations d'entrée */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.alpine-animate-up {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.alpine-animate-down {
+    animation: slideInDown 0.6s ease forwards;
+}
+
+.alpine-animate-fade {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.alpine-animate-scale {
+    animation: scaleIn 0.6s ease forwards;
+}
+
+/* Stagger animations */
+.alpine-stagger > * {
+    opacity: 0;
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.alpine-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.alpine-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.alpine-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.alpine-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.alpine-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.alpine-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading states */
+.alpine-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.alpine-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Formulaires Alpine */
+.alpine-form-group {
+    margin-bottom: 20px;
+}
+
+.alpine-label {
+    display: block;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.alpine-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.alpine-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+}
+
+.alpine-input.error {
+    border-color: var(--danger-color);
+}
+
+.alpine-error-message {
+    color: var(--danger-color);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .alpine-container {
+        padding: 10px;
+    }
+    
+    .alpine-grid.cols-2,
+    .alpine-grid.cols-3,
+    .alpine-grid.cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .alpine-card {
+        padding: 15px;
+    }
+    
+    .alpine-modal-content {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .alpine-btn {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .alpine-stat-value {
+        font-size: 24px;
+    }
+    
+    .alpine-subject-icon {
+        font-size: 32px;
+    }
+    
+    .alpine-hearts {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .alpine-streak {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alpine-container {
+        padding: 5px;
+    }
+    
+    .alpine-stat-card,
+    .alpine-subject-card {
+        padding: 15px;
+    }
+    
+    .alpine-modal-content {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+/* Dark mode support (pour futures améliorations) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1f2937;
+        --text-color: #f9fafb;
+    }
+    
+    .alpine-card,
+    .alpine-stat-card,
+    .alpine-subject-card,
+    .alpine-modal-content {
+        background: #374151;
+        border-color: #4b5563;
+    }
+    
+    .alpine-input {
+        background: #374151;
+        border-color: #4b5563;
+        color: #f9fafb;
+    }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .alpine-heart.full {
+        animation: none;
+    }
+    
+    .alpine-streak-icon {
+        animation: none;
+    }
+}
