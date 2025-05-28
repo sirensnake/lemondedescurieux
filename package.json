@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/sirensnake/lemondedescurieux/issues"
   },
-  "homepage": "https://github.com/sirensnake/lemondedescurieux#readme"
+  "homepage": "https://github.com/sirensnake/lemondedescurieux#readme",
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^6.1.1",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "alpinejs": "^3.14.9",
+    "chart.js": "^4.4.9",
+    "jspdf": "^3.0.1"
+  }
 }
