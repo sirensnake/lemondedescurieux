@@ -1,32 +1,57 @@
 {
   "name": "lemondedescurieux",
-  "version": "1.0.0",
-  "description": "site éducatif pour les enfants de CM1 au collège",
-  "main": "add-accessibility-css.js",
-  "directories": {
-    "test": "test"
-  },
+  "version": "3.0.0",
+  "description": "Site éducatif interactif pour enfants CM1-collège avec gamification Duolingo-style",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --host",
+    "test": "echo \"Tests à venir avec Vitest\"",
+    "lint": "echo \"Linting à configurer\"",
+    "analyze": "vite build --mode analyze",
+    "lighthouse": "npx lighthouse http://localhost:5173 --view",
+    "start-python": "cd analytics && python -m venv venv && venv\\Scripts\\activate && pip install -r requirements.txt && python app.py"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sirensnake/lemondedescurieux.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "education",
+    "enfants",
+    "gamification",
+    "duolingo-style",
+    "alpine.js",
+    "pwa",
+    "interactive-learning"
+  ],
+  "author": "Guillaume (sirensnake)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sirensnake/lemondedescurieux/issues"
   },
-  "homepage": "https://github.com/sirensnake/lemondedescurieux#readme",
-  "devDependencies": {
-    "@vitejs/plugin-legacy": "^6.1.1",
-    "vite": "^6.3.5"
-  },
+  "homepage": "https://lemondedescurieux.fr",
   "dependencies": {
-    "alpinejs": "^3.14.9",
-    "chart.js": "^4.4.9",
-    "jspdf": "^3.0.1"
-  }
+    "alpinejs": "^3.14.0",
+    "chart.js": "^4.4.0",
+    "jspdf": "^2.5.1",
+    "xlsx": "^0.18.5",
+    "papaparse": "^5.4.1"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0",
+    "@vitejs/plugin-legacy": "^5.3.0",
+    "terser": "^5.30.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
 }
