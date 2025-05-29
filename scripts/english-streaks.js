@@ -55,3 +55,31 @@ class EnglishStreakSystem {
     }
   }
 }
+
+// Ajouter ces méthodes à la classe existante
+saveStreaks() {
+    localStorage.setItem('englishStreaks', JSON.stringify(this.streakData));
+}
+
+isStreakBroken(lastActivity) {
+    const lastDate = new Date(lastActivity);
+    const today = new Date();
+    const diffTime = Math.abs(today - lastDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    return diffDays > 1;
+}
+
+initializeUI() {
+    // Créer l'élément s'il n'existe pas
+    if (!document.getElementById('streak-counter')) {
+        const header = document.querySelector('.game-header');
+        if (header) {
+            const streakDiv = document.createElement('div');
+            streakDiv.id = 'streak-counter';
+            header.appendChild(streakDiv);
+        }
+    }
+    
+    this.updateStreakDisplay();
+}

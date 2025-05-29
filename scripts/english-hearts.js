@@ -48,3 +48,42 @@ class EnglishHeartsSystem {
     }
   }
 }
+
+// Ajouter ces méthodes à la classe existante
+saveHearts() {
+    localStorage.setItem('englishHearts', JSON.stringify(this.heartsData));
+}
+
+processHeartRegeneration(data) {
+    if (data.currentHearts < this.maxHearts && data.regenStartTime) {
+        const elapsed = Date.now() - data.regenStartTime;
+        const heartsToRegen = Math.floor(elapsed / this.heartRegenTime);
+        
+        if (heartsToRegen > 0) {
+            data.currentHearts = Math.min(
+                data.currentHearts + heartsToRegen,
+                this.maxHearts
+            );
+            
+            if (data.currentHearts === this.maxHearts) {
+                data.regenStartTime = null;
+            } else {
+                data.regenStartTime = Date.now();
+            }
+        }
+    }
+}
+
+initializeUI() {
+    // Créer l'élément s'il n'existe pas
+    if (!document.getElementById('hearts-display')) {
+        const header = document.querySelector('.game-header');
+        if (header) {
+            const heartsDiv = document.createElement('div');
+            heartsDiv.id = 'hearts-display';
+            header.appendChild(heartsDiv);
+        }
+    }
+    
+    this.updateHeartsDisplay();
+}

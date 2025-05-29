@@ -1,0 +1,213 @@
+/* Système de cœurs animés */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#hearts-display {
+    display: flex;
+    gap: 8px;
+}
+
+.heart {
+    font-size: 28px;
+    transition: all 0.3s ease;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heart.filled {
+    color: #e74c3c;
+    filter: drop-shadow(0 0 8px rgba(231, 76, 60, 0.5));
+}
+
+.heart.empty {
+    color: #bdc3c7;
+    opacity: 0.5;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Système de streak */
+#streak-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.streak-flame {
+    font-size: 32px;
+    animation: flicker 2s ease-in-out infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-5deg); }
+    75% { transform: scale(1.1) rotate(5deg); }
+}
+
+.streak-count {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Zone de leçon */
+.lesson-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+#question-area {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Options de réponse style Duolingo */
+.answer-option {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.answer-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.answer-option.selected {
+    background: #e3f2fd;
+    border-color: #2196f3;
+}
+
+.answer-option.correct {
+    background: #d4edda;
+    border-color: #28a745;
+    animation: correctPulse 0.6s ease;
+}
+
+.answer-option.incorrect {
+    background: #f8d7da;
+    border-color: #dc3545;
+    animation: shake 0.5s ease;
+}
+
+@keyframes correctPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Bouton de validation */
+.check-button {
+    background: #58cc02;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 #46a302;
+    margin-top: 20px;
+}
+
+.check-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #46a302;
+}
+
+.check-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #46a302;
+}
+
+.check-button:disabled {
+    background: #bdc3c7;
+    box-shadow: 0 4px 0 #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Barre de progression XP */
+#xp-bar {
+    background: rgba(255,255,255,0.2);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 200px;
+}
+
+.xp-progress {
+    background: #f39c12;
+    height: 100%;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+
+/* Feedback animé */
+#feedback-area {
+    text-align: center;
+    min-height: 60px;
+}
+
+.feedback-message {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    animation: slideInUp 0.5s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedback-message.success {
+    color: #27ae60;
+    background: rgba(39, 174, 96, 0.1);
+}
+
+.feedback-message.error {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+}
