@@ -1,3 +1,16 @@
+/* Système Duolingo Anglais - Le Monde des Curieux */
+
+/* Reset et base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Minecraftia', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f7f7f7;
+}
+
 /* Système de cœurs animés */
 .game-header {
     display: flex;
@@ -6,6 +19,9 @@
     padding: 20px;
     background: linear-gradient(135deg, #2ecc71, #27ae60);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 #hearts-display {
@@ -42,6 +58,7 @@
     background: rgba(255,255,255,0.2);
     padding: 10px 20px;
     border-radius: 25px;
+    backdrop-filter: blur(10px);
 }
 
 .streak-flame {
@@ -59,6 +76,30 @@
     font-size: 24px;
     font-weight: bold;
     color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.streak-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Barre XP */
+#xp-bar {
+    background: rgba(255,255,255,0.2);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 200px;
+    backdrop-filter: blur(10px);
+}
+
+.xp-progress {
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
 }
 
 /* Zone de leçon */
@@ -75,36 +116,94 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     text-align: center;
+    min-height: 200px;
 }
 
 .question-text {
     font-size: 24px;
     color: #2c3e50;
     margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+/* Boutons audio */
+.audio-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.audio-btn:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+.audio-btn:active {
+    transform: scale(0.95);
 }
 
 /* Options de réponse style Duolingo */
+#answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .answer-option {
     background: white;
     border: 2px solid #e0e0e0;
     padding: 20px;
-    margin: 10px 0;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 15px;
+    position: relative;
+    overflow: hidden;
 }
 
 .answer-option:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #bdc3c7;
 }
 
 .answer-option.selected {
     background: #e3f2fd;
     border-color: #2196f3;
+    transform: scale(1.02);
+}
+
+.answer-option.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #2196f3;
 }
 
 .answer-option.correct {
@@ -113,10 +212,18 @@
     animation: correctPulse 0.6s ease;
 }
 
+.answer-option.correct::before {
+    background: #28a745;
+}
+
 .answer-option.incorrect {
     background: #f8d7da;
     border-color: #dc3545;
     animation: shake 0.5s ease;
+}
+
+.answer-option.incorrect::before {
+    background: #dc3545;
 }
 
 @keyframes correctPulse {
@@ -127,8 +234,30 @@
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.option-number {
+    background: #f0f0f0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+}
+
+.answer-option.selected .option-number {
+    background: #2196f3;
+    color: white;
+}
+
+.option-text {
+    font-size: 18px;
+    flex: 1;
 }
 
 /* Bouton de validation */
@@ -143,14 +272,16 @@
     transition: all 0.3s ease;
     box-shadow: 0 4px 0 #46a302;
     margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.check-button:hover {
+.check-button:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 6px 0 #46a302;
 }
 
-.check-button:active {
+.check-button:active:not(:disabled) {
     transform: translateY(2px);
     box-shadow: 0 2px 0 #46a302;
 }
@@ -159,22 +290,7 @@
     background: #bdc3c7;
     box-shadow: 0 4px 0 #95a5a6;
     cursor: not-allowed;
-}
-
-/* Barre de progression XP */
-#xp-bar {
-    background: rgba(255,255,255,0.2);
-    height: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    width: 200px;
-}
-
-.xp-progress {
-    background: #f39c12;
-    height: 100%;
-    transition: width 0.5s ease;
-    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+    opacity: 0.7;
 }
 
 /* Feedback animé */
@@ -189,6 +305,7 @@
     padding: 15px;
     border-radius: 10px;
     animation: slideInUp 0.5s ease;
+    display: inline-block;
 }
 
 @keyframes slideInUp {
@@ -210,4 +327,225 @@
 .feedback-message.error {
     color: #e74c3c;
     background: rgba(231, 76, 60, 0.1);
+}
+
+/* Écran de fin de leçon */
+.lesson-complete {
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.lesson-complete h2 {
+    color: #27ae60;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.score-display {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.score-item {
+    background: #f8f9fa;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.score-label {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.score-value {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.next-lesson-btn, .retry-btn {
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.next-lesson-btn {
+    background: #27ae60;
+    color: white;
+    box-shadow: 0 4px 0 #229954;
+}
+
+.next-lesson-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #229954;
+}
+
+.retry-btn {
+    background: white;
+    color: #2c3e50;
+    border: 2px solid #e0e0e0;
+}
+
+.retry-btn:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+/* Game Over */
+.game-over {
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+.game-over h2 {
+    color: #e74c3c;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.game-over p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.game-over button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-over button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    #streak-counter {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .lesson-container {
+        padding: 10px;
+    }
+    
+    #question-area {
+        padding: 20px;
+    }
+    
+    .question-text {
+        font-size: 20px;
+    }
+    
+    .score-display {
+        gap: 20px;
+    }
+    
+    .score-item {
+        padding: 15px 20px;
+    }
+    
+    .answer-option {
+        padding: 15px;
+    }
+    
+    .option-text {
+        font-size: 16px;
+    }
+}
+
+/* Animations supplémentaires */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.celebration {
+    animation: bounce 0.5s ease 3;
+}
+
+/* Étoiles de réussite */
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.star {
+    font-size: 40px;
+    color: #f1c40f;
+    animation: starPop 0.3s ease;
+    animation-fill-mode: both;
+}
+
+.star:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.star:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes starPop {
+    0% { transform: scale(0) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+/* Mode sombre compatible */
+body.dark-mode .lesson-container {
+    background: #1a1a1a;
+}
+
+body.dark-mode #question-area {
+    background: #2c2c2c;
+    color: #f0f0f0;
+}
+
+body.dark-mode .answer-option {
+    background: #2c2c2c;
+    border-color: #444;
+    color: #f0f0f0;
+}
+
+body.dark-mode .answer-option:hover {
+    border-color: #666;
+}
+
+body.dark-mode .question-text {
+    color: #f0f0f0;
 }
