@@ -5,29 +5,32 @@ export class StorageManager {
   }
   
   get(key) {
-    return JSON.parse(localStorage.getItem(this.prefix + key));
+    try {
+      const data = localStorage.getItem(this.prefix + key);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      console.error('Error loading data:', e);
+      return null;
+    }
   }
   
   set(key, value) {
-    localStorage.setItem(this.prefix + key, JSON.stringify(value));
-  }
-}
-
-// scripts/modules/analytics.js
-export class AnalyticsTracker {
-  constructor(storage) {
-    this.storage = storage;
-    this.sessionId = this.generateSessionId();
+    try {
+      localStorage.setItem(this.prefix + key, JSON.stringify(value));
+      return true;
+    } catch (e) {
+      console.error('Error saving data:', e);
+      return false;
+    }
   }
   
-  track(event, data) {
-    const analytics = this.storage.get('analytics') || [];
-    analytics.push({
-      event,
-      data,
-      timestamp: new Date().toISOString(),
-      sessionId: this.sessionId
-    });
-    this.storage.set('analytics', analytics);
+  remove(key) {
+    localStorage.removeItem(this.prefix + key);
+  }
+  
+  clear() {
+    Object.keys(localStorage)
+      .filter(key => key.startsWith(this.prefix))
+      .forEach(key => localStorage.removeItem(key));
   }
 }

@@ -1,3 +1,10 @@
+// Mettre à jour sw.js avec les stratégies complètes
+const CACHE_VERSION = 'v3.0.0';
+const CACHE_NAME = `lemondedescurieux-${CACHE_VERSION}`;
+
+// Implémenter les stratégies de cache
+// ... (code du service worker avancé)
+
 // Amélioration sw.js
 const CACHE_STRATEGIES = {
   EDUCATIONAL_CONTENT: 'educational-cache-v1',
