@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde des Curieux - Apprendre en s'amusant</title>
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#2a9d8f">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/main.css">
+    
+    <!-- Module principal -->
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+    <!-- Notifications globales -->
+    <div x-data="notifications" class="notifications-container">
+        <template x-for="notification in notifications" :key="notification.id">
+            <div class="notification" 
+                 :class="`notification-${notification.type}`"
+                 x-transition:enter="slide-in"
+                 x-transition:leave="slide-out">
+                <span x-text="notification.message"></span>
+                <button @click="remove(notification.id)" class="close">&times;</button>
+            </div>
+        </template>
+    </div>
+
+    <!-- Header avec contrôles globaux -->
+    <header class="site-header">
+        <div class="container">
+            <h1>Le Monde des Curieux</h1>
+            
+            <div class="header-controls" x-data>
+                <!-- Bouton thème -->
+                <button @click="$store.app.toggleTheme()" 
+                        class="theme-toggle"
+                        :aria-label="$store.app.theme === 'light' ? 'Activer le mode sombre' : 'Activer le mode clair'">
+                    <span x-show="$store.app.theme === 'light'">🌙</span>
+                    <span x-show="$store.app.theme === 'dark'">☀️</span>
+                </button>
+                
+                <!-- Bouton son -->
+                <button @click="$store.app.toggleSound()" 
+                        class="sound-toggle"
+                        :aria-label="$store.app.soundEnabled ? 'Désactiver le son' : 'Activer le son'">
+                    <span x-show="$store.app.soundEnabled">🔊</span>
+                    <span x-show="!$store.app.soundEnabled">🔇</span>
+                </button>
+                
+                <!-- Indicateur hors ligne -->
+                <div x-show="!$store.app.online" class="offline-indicator">
+                    📵 Hors ligne
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard principal -->
+    <main x-data="dashboardApp" x-init="init" class="dashboard-container">
+        
+        <!-- Section utilisateur -->
+        <section class="user-section">
+            <div class="user-welcome">
+                <h2>Bonjour, <span x-text="userName || 'Explorateur'"></span> ! 👋</h2>
+                <p x-text="getCurrentDateMessage()"></p>
+            </div>
+            
+            <!-- Système de cœurs -->
+            <div x-data="heartSystem" class="heart-system">
+                <div class="hearts-display">
+                    <template x-for="i in maxHearts" :key="i">
+                        <span class="heart" 
+                              :class="{ 'heart-full': i <= hearts, 'heart-empty': i > hearts }"
+                              @click="debugHeart(i)">
+                            ❤️
+                        </span>
+                    </template>
+                </div>
+                <div class="heart-info">
+                    <span x-text="`${hearts}/${maxHearts} cœurs`"></span>
+                    <span x-show="hearts < maxHearts" x-text="nextRecoveryTime"></span>
+                </div>
+            </div>
+            
+            <!-- Streak -->
+            <div x-data="streakManager" class="streak-display">
+                <div class="streak-icon">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-count" x-text="currentStreak"></div>
+                    <div class="streak-label">jours d'affilée</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistiques -->
+        <section class="stats-section">
+            <h3>Tes progrès</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" x-text="completionPercentage + '%'"></div>
+                    <div class="stat-label">Progression globale</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" :style="`width: ${completionPercentage}%`"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-value" x-text="formatTime(totalTime)"></div>
+                    <div class="stat-label">Temps d'apprentissage</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-value" x-text="badges.length"></div>
+                    <div class="stat-label">Badges gagnés</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-value" x-text="level"></div>
+                    <div class="stat-label">Niveau actuel</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matières -->
+        <section class="subjects-section">
+            <h3>Choisis ta matière</h3>
+            
+            <div class="subjects-grid">
+                <template x-for="(subject, key) in subjects" :key="key">
+                    <div class="subject-card" 
+                         @click="openSubject(key)"
+                         :class="{ 'subject-locked': !subject.unlocked }">
+                        
+                        <div class="subject-icon" x-text="subject.icon"></div>
+                        <h4 x-text="subject.name"></h4>
+                        
+                        <!-- Progress circulaire -->
+                        <div class="circular-progress">
+                            <svg width="80" height="80">
+                                <circle cx="40" cy="40" r="35" 
+                                        stroke="#e0e0e0" 
+                                        stroke-width="5" 
+                                        fill="none"></circle>
+                                <circle cx="40" cy="40" r="35" 
+                                        :stroke="subject.color" 
+                                        stroke-width="5" 
+                                        fill="none"
+                                        :stroke-dasharray="`${subject.progress * 2.2} 220`"
+                                        stroke-dashoffset="0"
+                                        transform="rotate(-90 40 40)"></circle>
+                            </svg>
+                            <div class="progress-text" x-text="subject.progress + '%'"></div>
+                        </div>
+                        
+                        <div class="subject-meta">
+                            <span x-text="`${subject.completed}/${subject.total} activités`"></span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Actions rapides -->
+        <section class="quick-actions">
+            <button @click="continueLastActivity()" 
+                    class="action-btn primary"
+                    :disabled="!canContinue">
+                <span>▶️ Continuer</span>
+            </button>
+            
+            <button @click="startDailyChallenge()" 
+                    class="action-btn secondary">
+                <span>🎯 Défi du jour</span>
+            </button>
+            
+            <button @click="showLeaderboard()" 
+                    class="action-btn accent">
+                <span>🏅 Classement</span>
+            </button>
+        </section>
+
+        <!-- Graphique de progression -->
+        <section class="chart-section" x-show="hasProgress">
+            <h3>Ta progression cette semaine</h3>
+            <canvas x-ref="progressChart" 
+                    x-chart="{
+                        type: 'line',
+                        data: weeklyProgressData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false }
+                            }
+                        }
+                    }"></canvas>
+        </section>
+    </main>
+
+    <!-- Modal système -->
+    <div x-data="modal" 
+         x-show="open" 
+         x-cloak
+         class="modal-overlay"
+         @click.self="closeModal()">
+        
+        <div class="modal-content" @click.stop>
+            <div class="modal-header">
+                <h3 x-text="title"></h3>
+                <button @click="closeModal()" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" x-html="content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Le Monde des Curieux - Créé avec ❤️ pour l'apprentissage</p>
+            <p class="version">Version 3.0.0 - Phase 3</p>
+        </div>
+    </footer>
+
+    <style>
+        /* Styles de base pour la démo */
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #e9c46a;
+            --accent: #e76f51;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --danger: #f25c54;
+            --bg: #f1faee;
+            --text: #264653;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --text: #f1faee;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle, .sound-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover, .sound-toggle:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Dashboard */
+        .dashboard-container {
+            padding: 2rem 0;
+        }
+
+        /* User section */
+        .user-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        /* Hearts */
+        .heart-system {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hearts-display {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .heart {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .heart:hover {
+            transform: scale(1.1);
+        }
+
+        .heart-empty {
+            opacity: 0.3;
+            filter: grayscale(100%);
+        }
+
+        /* Streak */
+        .streak-display {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--warning);
+            padding: 1rem 1.5rem;
+            border-radius: 2rem;
+        }
+
+        .streak-icon {
+            font-size: 2rem;
+            animation: flame 1.5s infinite alternate;
+        }
+
+        @keyframes flame {
+            0% { transform: scale(1) rotate(-2deg); }
+            100% { transform: scale(1.1) rotate(2deg); }
+        }
+
+        .streak-count {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            transition: width 0.8s ease;
+        }
+
+        /* Subjects */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .subject-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .circular-progress {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 1rem auto;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+        }
+
+        /* Actions */
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: var(--secondary);
+            color: var(--text);
+        }
+
+        .action-btn.accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Notifications */
+        .notifications-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .notification {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 300px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification-success {
+            border-left: 4px solid var(--success);
+        }
+
+        .notification-error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .notification-warning {
+            border-left: 4px solid var(--warning);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Utility classes */
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .user-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
