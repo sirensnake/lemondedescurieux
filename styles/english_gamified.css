@@ -1,551 +1,511 @@
-/* Système Duolingo Anglais - Le Monde des Curieux */
+/* styles/english_gamified.css - Styles Duolingo pour section anglaise */
 
-/* Reset et base */
-* {
-    box-sizing: border-box;
+:root {
+  --duolingo-green: #58cc02;
+  --duolingo-light-green: #89e219;
+  --duolingo-red: #ff4b4b;
+  --duolingo-orange: #ff9600;
+  --duolingo-blue: #1cb0f6;
+  --duolingo-purple: #ce82ff;
+  --duolingo-gray: #777777;
+  --duolingo-light-gray: #e5e5e5;
+  --shadow-light: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+  --shadow-heavy: 0 8px 24px rgba(0,0,0,0.25);
 }
 
-body {
-    margin: 0;
-    font-family: 'Minecraftia', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f7f7f7;
-}
-
-/* Système de cœurs animés */
+/* === GAME HEADER === */
 .game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border-bottom: 2px solid var(--duolingo-light-gray);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-medium);
 }
 
-#hearts-display {
-    display: flex;
-    gap: 8px;
-}
-
-.heart {
-    font-size: 28px;
-    transition: all 0.3s ease;
-    animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-.heart.filled {
-    color: #e74c3c;
-    filter: drop-shadow(0 0 8px rgba(231, 76, 60, 0.5));
-}
-
-.heart.empty {
-    color: #bdc3c7;
-    opacity: 0.5;
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* Système de streak */
+/* === STREAK COUNTER === */
 #streak-counter {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255,255,255,0.2);
-    padding: 10px 20px;
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--duolingo-orange) 0%, #ff8500 100%);
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  color: white;
+  font-weight: bold;
+  min-width: 80px;
+  position: relative;
+  overflow: hidden;
 }
 
 .streak-flame {
-    font-size: 32px;
-    animation: flicker 2s ease-in-out infinite;
+  font-size: 1.5rem;
+  animation: flicker 2s ease-in-out infinite;
+  transition: all 0.3s ease;
 }
 
-@keyframes flicker {
-    0%, 100% { transform: scale(1) rotate(0deg); }
-    25% { transform: scale(1.1) rotate(-5deg); }
-    75% { transform: scale(1.1) rotate(5deg); }
+.streak-flame.streak-broken {
+  filter: grayscale(100%);
+  opacity: 0.5;
+  animation: none;
 }
 
 .streak-count {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .streak-label {
-    font-size: 14px;
-    color: rgba(255,255,255,0.9);
+  font-size: 0.7rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* Barre XP */
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  25% { transform: scale(1.1) rotate(2deg); }
+  50% { transform: scale(1.05) rotate(-1deg); }
+  75% { transform: scale(1.08) rotate(1deg); }
+}
+
+/* Animation célébration streak */
+#streak-counter.celebration {
+  animation: celebrate 3s ease-in-out;
+}
+
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2) rotate(5deg); background: var(--duolingo-green); }
+  50% { transform: scale(1.1) rotate(-3deg); }
+  75% { transform: scale(1.15) rotate(2deg); }
+  100% { transform: scale(1); }
+}
+
+/* === HEARTS SYSTEM === */
+.hearts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hearts-grid {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.heart {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  cursor: pointer;
+  position: relative;
+}
+
+.heart.filled {
+  color: var(--duolingo-red);
+  transform: scale(1);
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.heart.empty {
+  color: var(--duolingo-gray);
+  opacity: 0.4;
+  transform: scale(0.8);
+  filter: grayscale(100%);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Animations système cœurs */
+.hearts-container.heart-lost {
+  animation: heartLoss 0.5s ease-out;
+}
+
+.hearts-container.heart-gained {
+  animation: heartGain 0.5s ease-out;
+}
+
+.hearts-container.heart-regen {
+  animation: heartRegen 1s ease-out;
+}
+
+@keyframes heartLoss {
+  0% { transform: scale(1); }
+  25% { transform: scale(0.9); filter: brightness(0.7); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes heartGain {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); filter: brightness(1.3); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes heartRegen {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.15); filter: hue-rotate(60deg); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Timer régénération */
+.regen-timer {
+  font-size: 0.75rem;
+  color: var(--duolingo-gray);
+  background: rgba(255,255,255,0.9);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--duolingo-light-gray);
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* === XP BAR === */
 #xp-bar {
-    background: rgba(255,255,255,0.2);
-    height: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    width: 200px;
-    backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 120px;
 }
 
 .xp-progress {
-    background: linear-gradient(90deg, #f39c12, #e67e22);
-    height: 100%;
-    width: 0%;
-    transition: width 0.5s ease;
-    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+  width: 100%;
+  height: 8px;
+  background: var(--duolingo-light-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
 }
 
-/* Zone de leçon */
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--duolingo-green) 0%, var(--duolingo-light-green) 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease-out;
+  position: relative;
+}
+
+.xp-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.xp-text {
+  font-size: 0.8rem;
+  color: var(--duolingo-gray);
+  font-weight: 600;
+}
+
+/* === LESSON CONTAINER === */
 .lesson-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 #question-area {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    text-align: center;
-    min-height: 200px;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-medium);
+  border: 2px solid var(--duolingo-light-gray);
 }
 
 .question-text {
-    font-size: 24px;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    line-height: 1.4;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.progress-bar {
-    height: 6px;
-    background: #e0e0e0;
-    border-radius: 3px;
-    margin-bottom: 30px;
-    overflow: hidden;
+.question-prompt {
+  font-size: 1rem;
+  color: var(--duolingo-gray);
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.progress {
-    height: 100%;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
-    transition: width 0.3s ease;
-    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
-}
-
-/* Boutons audio */
-.audio-btn {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-left: 10px;
-}
-
-.audio-btn:hover {
-    background: #2980b9;
-    transform: scale(1.1);
-}
-
-.audio-btn:active {
-    transform: scale(0.95);
-}
-
-/* Options de réponse style Duolingo */
+/* === ANSWER OPTIONS === */
 #answer-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .answer-option {
-    background: white;
-    border: 2px solid #e0e0e0;
-    padding: 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    position: relative;
-    overflow: hidden;
+  background: white;
+  border: 2px solid var(--duolingo-light-gray);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .answer-option:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-color: #bdc3c7;
+  border-color: var(--duolingo-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 .answer-option.selected {
-    background: #e3f2fd;
-    border-color: #2196f3;
-    transform: scale(1.02);
-}
-
-.answer-option.selected::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: #2196f3;
+  border-color: var(--duolingo-blue);
+  background: rgba(28, 176, 246, 0.1);
 }
 
 .answer-option.correct {
-    background: #d4edda;
-    border-color: #28a745;
-    animation: correctPulse 0.6s ease;
-}
-
-.answer-option.correct::before {
-    background: #28a745;
+  border-color: var(--duolingo-green);
+  background: rgba(88, 204, 2, 0.1);
+  animation: correctAnswer 0.6s ease-out;
 }
 
 .answer-option.incorrect {
-    background: #f8d7da;
-    border-color: #dc3545;
-    animation: shake 0.5s ease;
+  border-color: var(--duolingo-red);
+  background: rgba(255, 75, 75, 0.1);
+  animation: incorrectAnswer 0.6s ease-out;
 }
 
-.answer-option.incorrect::before {
-    background: #dc3545;
+@keyframes correctAnswer {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.05); background: rgba(88, 204, 2, 0.3); }
+  100% { transform: scale(1); }
 }
 
-@keyframes correctPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+@keyframes incorrectAnswer {
+  0% { transform: scale(1); }
+  25% { transform: scale(0.95); background: rgba(255, 75, 75, 0.3); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: scale(1); }
 }
 
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
-}
-
-.option-number {
-    background: #f0f0f0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #666;
-}
-
-.answer-option.selected .option-number {
-    background: #2196f3;
-    color: white;
-}
-
-.option-text {
-    font-size: 18px;
-    flex: 1;
-}
-
-/* Bouton de validation */
-.check-button {
-    background: #58cc02;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 18px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 0 #46a302;
-    margin-top: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.check-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #46a302;
-}
-
-.check-button:active:not(:disabled) {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #46a302;
-}
-
-.check-button:disabled {
-    background: #bdc3c7;
-    box-shadow: 0 4px 0 #95a5a6;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Feedback animé */
+/* === FEEDBACK AREA === */
 #feedback-area {
-    text-align: center;
-    min-height: 60px;
+  min-height: 100px;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+  border: 2px solid var(--duolingo-light-gray);
 }
 
-.feedback-message {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 10px;
-    animation: slideInUp 0.5s ease;
-    display: inline-block;
+.feedback.correct {
+  border-color: var(--duolingo-green);
+  background: rgba(88, 204, 2, 0.05);
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.feedback.incorrect {
+  border-color: var(--duolingo-red);
+  background: rgba(255, 75, 75, 0.05);
 }
 
-.feedback-message.success {
-    color: #27ae60;
-    background: rgba(39, 174, 96, 0.1);
+.feedback-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
-.feedback-message.error {
-    color: #e74c3c;
-    background: rgba(231, 76, 60, 0.1);
+.feedback.correct .feedback-text {
+  color: var(--duolingo-green);
 }
 
-/* Écran de fin de leçon */
-.lesson-complete {
-    text-align: center;
-    padding: 40px;
-    animation: fadeIn 0.5s ease;
+.feedback.incorrect .feedback-text {
+  color: var(--duolingo-red);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+.feedback-explanation {
+  font-size: 0.95rem;
+  color: var(--duolingo-gray);
+  line-height: 1.4;
 }
 
-.lesson-complete h2 {
-    color: #27ae60;
-    font-size: 36px;
-    margin-bottom: 30px;
+/* === MILESTONE NOTIFICATIONS === */
+.streak-milestone-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: linear-gradient(135deg, var(--duolingo-green) 0%, var(--duolingo-light-green) 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-heavy);
+  z-index: 1000;
+  transition: all 0.3s ease-out;
 }
 
-.score-display {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 30px 0;
-    flex-wrap: wrap;
+.streak-milestone-notification.show {
+  transform: translate(-50%, -50%) scale(1);
 }
 
-.score-item {
-    background: #f8f9fa;
-    padding: 20px 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.milestone-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.score-label {
-    display: block;
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 5px;
+.milestone-icon {
+  font-size: 3rem;
+  animation: bounce 2s infinite;
 }
 
-.score-value {
-    display: block;
-    font-size: 32px;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.next-lesson-btn, .retry-btn {
-    padding: 15px 30px;
-    margin: 10px;
-    border: none;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-
-.next-lesson-btn {
-    background: #27ae60;
-    color: white;
-    box-shadow: 0 4px 0 #229954;
-}
-
-.next-lesson-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #229954;
-}
-
-.retry-btn {
-    background: white;
-    color: #2c3e50;
-    border: 2px solid #e0e0e0;
-}
-
-.retry-btn:hover {
-    background: #f8f9fa;
-    transform: translateY(-2px);
-}
-
-/* Game Over */
-.game-over {
-    text-align: center;
-    padding: 40px;
-    animation: fadeIn 0.5s ease;
-}
-
-.game-over h2 {
-    color: #e74c3c;
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.game-over p {
-    color: #666;
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.game-over button {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.game-over button:hover {
-    background: #2980b9;
-    transform: translateY(-2px);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .game-header {
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 15px;
-    }
-    
-    #streak-counter {
-        order: -1;
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .lesson-container {
-        padding: 10px;
-    }
-    
-    #question-area {
-        padding: 20px;
-    }
-    
-    .question-text {
-        font-size: 20px;
-    }
-    
-    .score-display {
-        gap: 20px;
-    }
-    
-    .score-item {
-        padding: 15px 20px;
-    }
-    
-    .answer-option {
-        padding: 15px;
-    }
-    
-    .option-text {
-        font-size: 16px;
-    }
-}
-
-/* Animations supplémentaires */
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.celebration {
-    animation: bounce 0.5s ease 3;
+.milestone-text h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
-/* Étoiles de réussite */
-.stars {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
+.milestone-text p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
-.star {
-    font-size: 40px;
-    color: #f1c40f;
-    animation: starPop 0.3s ease;
-    animation-fill-mode: both;
+/* === BUTTONS === */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
 }
 
-.star:nth-child(2) {
-    animation-delay: 0.1s;
+.btn-primary {
+  background: var(--duolingo-green);
+  color: white;
+  box-shadow: var(--shadow-medium);
 }
 
-.star:nth-child(3) {
-    animation-delay: 0.2s;
+.btn-primary:hover {
+  background: var(--duolingo-light-green);
+  transform: translateY(-2px);
 }
 
-@keyframes starPop {
-    0% { transform: scale(0) rotate(0deg); }
-    50% { transform: scale(1.2) rotate(180deg); }
-    100% { transform: scale(1) rotate(360deg); }
+.btn-secondary {
+  background: var(--duolingo-blue);
+  color: white;
+  box-shadow: var(--shadow-medium);
 }
 
-/* Mode sombre compatible */
-body.dark-mode .lesson-container {
-    background: #1a1a1a;
+.btn-secondary:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px);
 }
 
-body.dark-mode #question-area {
-    background: #2c2c2c;
-    color: #f0f0f0;
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .game-header {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  #streak-counter,
+  .hearts-container {
+    min-width: auto;
+    flex: 1;
+  }
+  
+  .streak-count {
+    font-size: 1rem;
+  }
+  
+  .heart {
+    font-size: 1.25rem;
+  }
+  
+  .lesson-container {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
+  }
+  
+  #question-area {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .question-text {
+    font-size: 1.25rem;
+  }
+  
+  .answer-option {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .milestone-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
-body.dark-mode .answer-option {
-    background: #2c2c2c;
-    border-color: #444;
-    color: #f0f0f0;
-}
-
-body.dark-mode .answer-option:hover {
-    border-color: #666;
-}
-
-body.dark-mode .question-text {
-    color: #f0f0f0;
+@media (max-width: 480px) {
+  .game-header {
+    padding: 0.5rem;
+  }
+  
+  .hearts-grid {
+    gap: 0.125rem;
+  }
+  
+  .heart {
+    font-size: 1rem;
+  }
+  
+  .streak-flame {
+    font-size: 1.25rem;
+  }
+  
+  .streak-count {
+    font-size: 0.9rem;
+  }
+  
+  .streak-label {
+    font-size: 0.6rem;
+  }
 }
