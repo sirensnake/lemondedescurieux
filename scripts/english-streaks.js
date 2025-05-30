@@ -166,3 +166,11 @@ class EnglishStreakSystem {
     this.saveStreaks();
   }
 }
+
+// Export pour utilisation en module ES6
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = EnglishStreakSystem;
+}
+
+// Instance globale pour compatibilité existante
+window.EnglishStreakSystem = EnglishStreakSystem;
