@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Infos - Le Monde des Curieux</title>
+    
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
     <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
-    <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/dark-mode.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    
+    <!-- Composants réutilisables -->
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -58,122 +76,154 @@
             line-height: 1.6;
         }
     </style>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" href="styles/accessibilite.css">
-    <link rel="stylesheet" href="styles/breadcrumb.css">
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  </head>
-<body>
-    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > ℹ️ Infos</div>
-    <div id="menu-container"></div>
-    <!-- Partie du menu - remplacez votre ancien menu par celui-ci -->
-<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
-<div class="sidebar">
-    <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="mindmap.html">Carte des matières</a></li>
-        <li><a href="maths_section.html">Mathématiques</a></li>
-        <li><a href="sciences_section.html">Sciences</a></li>
-        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
-        <li><a href="francais_section.html">Français</a></li>
-        <li><a href="english_section.html">English</a></li>
-        <li><a href="programmation_section.html">Programmation</a></li>
-        <li><a href="echecs_section.html">Échecs</a></li>
-        <li><a href="philosophie_section.html">Philosophie</a></li>
-        <li><a href="ressources_section.html">Ressources</a></li>
-        <li><a href="infos_section.html">Infos</a></li>
-        <li><a href="ia_section.html">IA</a></li>
-        <li><a href="mon-parcours.html">Mon Parcours</a></li>
-    </ul>
-</div>
-    <script>
-        fetch('menu_lateral.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('menu-container').innerHTML = data);
-    </script>
-     <!-- Outils d'accessibilité -->
-     <div class="accessibility-tools">
-        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
-        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
-        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
-    </div>
-    <h1>Bienvenue dans la section Infos 🌟</h1>
-    <p>Découvre des nouvelles passionnantes sur les sciences, la nature, la technologie et plus encore, adaptées aux jeunes curieux comme toi !</p>
+</head>
+<body class="infos-section">
+    <!-- Header stylisé avec composant -->
+    <header class="section-header-styled infos">
+        <button onclick="history.back()" class="back-btn-minecraft infos">
+            ← Retour à l'accueil
+        </button>
+    </header>
 
-    <div class="content">
-        <div class="article">
-            <h3>La France en pleine Coupe du Monde de Rugby !</h3>
-            <p>C’est l’événement sportif de l’année : la Coupe du Monde de Rugby ! Des équipes du monde entier s’affrontent en France. Les stades sont remplis de fans qui soutiennent les Bleus, l’équipe de France. Les joueurs français, comme Antoine Dupont, sont très admirés. Si la France gagne, ce serait historique ! C’est l’occasion de découvrir un sport de contact basé sur l’esprit d’équipe et le respect. Peut-être qu’après l’avoir suivi, tu auras envie d’essayer ce sport à l’école ou dans un club local !</p>
+    <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            🏠 <a href="index.html">Accueil</a> > ℹ️ Infos
+        </div>
+        
+        <!-- Menu latéral simple et fonctionnel -->
+        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+        <div class="sidebar">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="mindmap.html">Carte des matières</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
+            </ul>
         </div>
 
-        <div class="article">
-            <h3>Une nouvelle mission pour sauver les océans</h3>
-            <p>Des scientifiques se sont embarqués dans une expédition incroyable : nettoyer les océans des déchets plastiques. Ils utilisent des bateaux spéciaux et des filets géants pour ramasser les déchets flottants. Des millions de tonnes de plastique polluent les mers et mettent en danger les animaux marins. Cette mission veut protéger les dauphins, les tortues et les poissons. Les enfants peuvent aussi participer ! Tu peux aider en ramassant les déchets ou en évitant d’utiliser des sacs plastiques jetables. Ensemble, on peut sauver les océans !</p>
+        <!-- Zone XP automatique -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
+            <span id="xp-display">XP: 0</span> | 
+            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display">🔥 0 jours</span>
         </div>
 
-        <div class="article">
-            <h3>Un château gonflable géant pour les enfants à Paris !</h3>
-            <p>C’est la fête à Paris ! Un immense château gonflable a été installé au parc de la Villette. Ce n’est pas un château ordinaire : il mesure plus de 20 mètres de haut et ressemble à un monde imaginaire rempli de couleurs. Les enfants peuvent y sauter, grimper et même glisser sur d’énormes toboggans. Cet événement est temporaire, donc si tu as l’occasion d’aller à Paris, n’hésite pas à y faire un tour. C’est l’endroit rêvé pour s’amuser tout en faisant un peu de sport !</p>
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
         </div>
 
-        <div class="article">
-            <h3>Une invention géniale pour protéger les abeilles !</h3>
-            <p>Un jeune inventeur français de 14 ans a créé une ruche spéciale pour protéger les abeilles des pesticides et des maladies. Les abeilles sont très importantes pour la nature : elles pollinisent les fleurs et permettent aux fruits de pousser. Mais depuis des années, leur population diminue à cause des produits chimiques et du changement climatique. Grâce à cette invention, les abeilles seront mieux protégées. Peut-être qu’un jour, toi aussi, tu inventeras quelque chose d’utile pour la planète ?</p>
+        <div class="section-title">
+            <h1>ℹ️ Bienvenue dans la section Infos 🌟</h1>
+            <p>Découvre des nouvelles passionnantes sur les sciences, la nature, la technologie et plus encore, adaptées aux jeunes curieux comme toi !</p>
         </div>
 
-        <div class="article">
-            <h3>Un enfant découvre un trésor dans un champ en Allemagne</h3>
-            <p>Un garçon de 10 ans a fait une découverte incroyable en jouant dans un champ : un trésor vieux de plus de 1 000 ans ! Il a trouvé des pièces d’or et des bijoux appartenant à des anciens rois. Les archéologues pensent que ce trésor raconte une partie de l’histoire des Vikings. Grâce à lui, les chercheurs peuvent mieux comprendre cette époque mystérieuse. Qui sait ? Peut-être qu’un jour, en explorant ton jardin ou une forêt, tu pourrais toi aussi faire une trouvaille surprenante !</p>
-        </div>
-    </div>
+        <!-- Contenu spécifique à la section PRÉSERVÉ -->
+        <section>
+            <div class="content">
+                <div class="article">
+                    <h3>La France en pleine Coupe du Monde de Rugby !</h3>
+                    <p>C'est l'événement sportif de l'année : la Coupe du Monde de Rugby ! Des équipes du monde entier s'affrontent en France. Les stades sont remplis de fans qui soutiennent les Bleus, l'équipe de France. Les joueurs français, comme Antoine Dupont, sont très admirés. Si la France gagne, ce serait historique ! C'est l'occasion de découvrir un sport de contact basé sur l'esprit d'équipe et le respect. Peut-être qu'après l'avoir suivi, tu auras envie d'essayer ce sport à l'école ou dans un club local !</p>
+                </div>
 
-    <div class="fact-box" id="fact-box" onclick="showRandomFact()">
-        Savez-vous que... ? Cliquez pour une curiosité !
-    </div>
+                <div class="article">
+                    <h3>Une nouvelle mission pour sauver les océans</h3>
+                    <p>Des scientifiques se sont embarqués dans une expédition incroyable : nettoyer les océans des déchets plastiques. Ils utilisent des bateaux spéciaux et des filets géants pour ramasser les déchets flottants. Des millions de tonnes de plastique polluent les mers et mettent en danger les animaux marins. Cette mission veut protéger les dauphins, les tortues et les poissons. Les enfants peuvent aussi participer ! Tu peux aider en ramassant les déchets ou en évitant d'utiliser des sacs plastiques jetables. Ensemble, on peut sauver les océans !</p>
+                </div>
 
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+                <div class="article">
+                    <h3>Un château gonflable géant pour les enfants à Paris !</h3>
+                    <p>C'est la fête à Paris ! Un immense château gonflable a été installé au parc de la Villette. Ce n'est pas un château ordinaire : il mesure plus de 20 mètres de haut et ressemble à un monde imaginaire rempli de couleurs. Les enfants peuvent y sauter, grimper et même glisser sur d'énormes toboggans. Cet événement est temporaire, donc si tu as l'occasion d'aller à Paris, n'hésite pas à y faire un tour. C'est l'endroit rêvé pour s'amuser tout en faisant un peu de sport !</p>
+                </div>
 
-    <script>
-        const facts = [
-            "Les poulpes ont trois cœurs !",
-            "Les arbres peuvent communiquer entre eux grâce à leurs racines.",
-            "La lumière du soleil met environ 8 minutes pour atteindre la Terre.",
-            "Un crocodile peut vivre jusqu'à 100 ans.",
-            "Les fourmis n'ont pas de poumons, elles respirent à travers leur peau."
-        ];
+                <div class="article">
+                    <h3>Une invention géniale pour protéger les abeilles !</h3>
+                    <p>Un jeune inventeur français de 14 ans a créé une ruche spéciale pour protéger les abeilles des pesticides et des maladies. Les abeilles sont très importantes pour la nature : elles pollinisent les fleurs et permettent aux fruits de pousser. Mais depuis des années, leur population diminue à cause des produits chimiques et du changement climatique. Grâce à cette invention, les abeilles seront mieux protégées. Peut-être qu'un jour, toi aussi, tu inventeras quelque chose d'utile pour la planète ?</p>
+                </div>
 
-        function showRandomFact() {
-            const randomIndex = Math.floor(Math.random() * facts.length);
-            document.getElementById('fact-box').innerText = facts[randomIndex];
-        }
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
+                <div class="article">
+                    <h3>Un enfant découvre un trésor dans un champ en Allemagne</h3>
+                    <p>Un garçon de 10 ans a fait une découverte incroyable en jouant dans un champ : un trésor vieux de plus de 1 000 ans ! Il a trouvé des pièces d'or et des bijoux appartenant à des anciens rois. Les archéologues pensent que ce trésor raconte une partie de l'histoire des Vikings. Grâce à lui, les chercheurs peuvent mieux comprendre cette époque mystérieuse. Qui sait ? Peut-être qu'un jour, en explorant ton jardin ou une forêt, tu pourrais toi aussi faire une trouvaille surprenante !</p>
+                </div>
+            </div>
 
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
+            <div class="fact-box" id="fact-box" onclick="showRandomFact()">
+                Savez-vous que... ? Cliquez pour une curiosité !
+            </div>
+        </section>
+    </main>
 
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
-
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
-        });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
-    </script>
+    <!-- Scripts standards -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
     <script src="scripts/accessibilite.js"></script>
     <script src="scripts/menu_enhanced.js"></script>
-  </body>
+    
+    <script>
+        // Initialisation standard
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu latéral
+            var sidebar = document.querySelector('.sidebar');
+            var toggleButton = document.querySelector('.sidebar-toggle');
+            
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+            }
+            
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                    } else {
+                        sidebar.style.left = '0px';
+                    }
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && 
+                        e.target !== toggleButton && 
+                        !sidebar.contains(e.target)) {
+                        sidebar.style.left = '-250px';
+                    }
+                });
+            }
+
+            // XP system integration
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'infos';
+                    document.getElementById('xp-status').style.display = 'block';
+                }
+            }, 1000);
+
+            // CONTENU SPÉCIFIQUE PRÉSERVÉ - Facts interactifs
+            const facts = [
+                "Les poulpes ont trois cœurs !",
+                "Les arbres peuvent communiquer entre eux grâce à leurs racines.",
+                "La lumière du soleil met environ 8 minutes pour atteindre la Terre.",
+                "Un crocodile peut vivre jusqu'à 100 ans.",
+                "Les fourmis n'ont pas de poumons, elles respirent à travers leur peau."
+            ];
+
+            window.showRandomFact = function() {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                document.getElementById('fact-box').innerText = facts[randomIndex];
+            }
+        });
+    </script>
+</body>
 </html>

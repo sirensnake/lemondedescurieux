@@ -3,120 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Philosophie 🤔</title>
-    <link rel="stylesheet" href="styles/section_style.css">
+    <title>Section Philosophie - Le Monde des Curieux</title>
+    
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
     <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
-    <link rel="stylesheet" href="styles/dark-mode.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/dark-mode.css">
     <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    
+    <!-- Composants réutilisables -->
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="/manifest.json">
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  </head>
-<body>
-    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🧠 Philosophie</div>
-    <div id="menu-container"></div>
-    <!-- Partie du menu - remplacez votre ancien menu par celui-ci -->
-<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
-<div class="sidebar">
-    <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="mindmap.html">Carte des matières</a></li>
-        <li><a href="maths_section.html">Mathématiques</a></li>
-        <li><a href="sciences_section.html">Sciences</a></li>
-        <li><a href="histoire_section.html">Histoire‑Géo</a></li>
-        <li><a href="francais_section.html">Français</a></li>
-        <li><a href="english_section.html">English</a></li>
-        <li><a href="programmation_section.html">Programmation</a></li>
-        <li><a href="echecs_section.html">Échecs</a></li>
-        <li><a href="philosophie_section.html">Philosophie</a></li>
-        <li><a href="ressources_section.html">Ressources</a></li>
-        <li><a href="infos_section.html">Infos</a></li>
-        <li><a href="ia_section.html">IA</a></li>
-        <li><a href="mon-parcours.html">Mon Parcours</a></li>
-    </ul>
-</div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    fetch("menu_lateral.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
+</head>
+<body class="philosophie-section">
+    <!-- Header stylisé avec composant -->
+    <header class="section-header-styled philosophie">
+        <button onclick="history.back()" class="back-btn-minecraft philosophie">
+            ← Retour à l'accueil
+        </button>
+    </header>
 
-        // Exécuter le script seulement après l'injection du menu
-        let sidebar = document.getElementById("sidebar");
-        let toggleButton = document.getElementById("sidebar-toggle");
-
-        if (!sidebar || !toggleButton) {
-            console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
-            return;
-        }
-
-        toggleButton.addEventListener("click", function() {
-            sidebar.classList.toggle("open");
-        });
-
-        console.log("✔️ Menu latéral et bouton chargés avec succès !");
-    })
-    .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
-});
-
-    </script>
-     <div class="accessibility-tools">
-        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
-        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
-        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
-    </div>
-
-    <h1>Bienvenue dans la section Philosophie 🤔</h1>
-    <div class="content-container">
-        <div class="content">
-            <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
+    <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            🏠 <a href="index.html">Accueil</a> > 🧠 Philosophie
         </div>
         
-        <div class="content">
-            <h2>Les grandes questions philosophiques</h2>
-            <p>Qu'est-ce que le bonheur ? La liberté ? L'amitié ? Voici quelques-unes des grandes questions que l'on se pose depuis des siècles.</p>
-            <p class="example">Exemple : "Est-ce que la liberté, c'est faire tout ce que l'on veut ?"</p>
-        </div>
-        
-        <div class="content">
-            <h2>Les philosophes célèbres</h2>
-            <p>Socrate, Platon, Descartes... Ces penseurs ont laissé des idées qui influencent encore notre manière de voir le monde.</p>
-            <p class="example">Exemple : "Je pense, donc je suis." - Descartes</p>
-        </div>
-        
-        <div class="content">
-            <h2>Activité interactive</h2>
-            <p>Réponds à cette question : <strong>Qu'est-ce que la liberté ?</strong></p>
-            <button onclick="showAnswer()">Voir une réponse possible</button>
-            <p id="activity-output" class="example"></p>
-        </div>
-        
-        <div class="content">
-            <h2>Vidéo explicative</h2>
-            <p>Regarde cette courte vidéo pour découvrir ce qu'est la philosophie.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/MXOCt0hHT2w" frameborder="0" allowfullscreen></iframe>
-        </div>
-        
-        <div class="content">
-            <h2>En savoir plus</h2>
-            <p>Découvre d'autres sujets fascinants :</p>
+        <!-- Menu latéral simple et fonctionnel -->
+        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+        <div class="sidebar">
             <ul>
-                <li><a href="sciences_section.html">Les sciences 🔬</a></li>
-                <li><a href="ia_section.html">L'intelligence artificielle 🤖</a></li>
-                <li><a href="echecs_section.html">Les échecs ♟️</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="mindmap.html">Carte des matières</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
             </ul>
         </div>
-    </div>
-    
-    <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+
+        <!-- Zone XP automatique -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
+            <span id="xp-display">XP: 0</span> | 
+            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display">🔥 0 jours</span>
+        </div>
+
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        </div>
+
+        <div class="section-title">
+            <h1>🤔 Bienvenue dans la section Philosophie</h1>
+        </div>
+
+        <!-- Contenu spécifique à la section PRÉSERVÉ -->
+        <section>
+            <div class="content-container">
+                <div class="content">
+                    <p>La philosophie, c'est apprendre à se poser des questions et à réfléchir sur le monde. 📚💭</p>
+                </div>
+                
+                <div class="content">
+                    <h2>Les grandes questions philosophiques</h2>
+                    <p>Qu'est-ce que le bonheur ? La liberté ? L'amitié ? Voici quelques-unes des grandes questions que l'on se pose depuis des siècles.</p>
+                    <p class="example">Exemple : "Est-ce que la liberté, c'est faire tout ce que l'on veut ?"</p>
+                </div>
+                
+                <div class="content">
+                    <h2>Les philosophes célèbres</h2>
+                    <p>Socrate, Platon, Descartes... Ces penseurs ont laissé des idées qui influencent encore notre manière de voir le monde.</p>
+                    <p class="example">Exemple : "Je pense, donc je suis." - Descartes</p>
+                </div>
+                
+                <div class="content">
+                    <h2>Activité interactive</h2>
+                    <p>Réponds à cette question : <strong>Qu'est-ce que la liberté ?</strong></p>
+                    <button onclick="showAnswer()">Voir une réponse possible</button>
+                    <p id="activity-output" class="example"></p>
+                </div>
+                
+                <div class="content">
+                    <h2>Vidéo explicative</h2>
+                    <p>Regarde cette courte vidéo pour découvrir ce qu'est la philosophie.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/MXOCt0hHT2w" frameborder="0" allowfullscreen></iframe>
+                </div>
+                
+                <div class="content">
+                    <h2>En savoir plus</h2>
+                    <p>Découvre d'autres sujets fascinants :</p>
+                    <ul>
+                        <li><a href="sciences_section.html">Les sciences 🔬</a></li>
+                        <li><a href="ia_section.html">L'intelligence artificielle 🤖</a></li>
+                        <li><a href="echecs_section.html">Les échecs ♟️</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts standards -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
     
     <script>
+        // Initialisation standard
+        document.addEventListener("DOMContentLoaded", function() {
+            // Gestion du menu latéral
+            var sidebar = document.querySelector('.sidebar');
+            var toggleButton = document.querySelector('.sidebar-toggle');
+            
+            // Cacher initialement le menu
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+            }
+            
+            // Gestion du clic sur le bouton du menu
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                    } else {
+                        sidebar.style.left = '0px';
+                    }
+                });
+                
+                // Fermer le menu en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && 
+                        e.target !== toggleButton && 
+                        !sidebar.contains(e.target)) {
+                        sidebar.style.left = '-250px';
+                    }
+                });
+            }
+
+            // XP system integration
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'philosophie';
+                    document.getElementById('xp-status').style.display = 'block';
+                }
+            }, 1000);
+
+            console.log("✔️ Section Philosophie chargée avec succès !");
+        });
+
+        // FONCTION SPÉCIFIQUE PRÉSERVÉE - Activité philosophique
         function showAnswer() {
             document.getElementById('activity-output').innerText = "La liberté, ce n'est pas faire tout ce que l'on veut, mais pouvoir choisir en respectant les autres.";
         }
     </script>
-    <script src="scripts/accessibilite.js"></script>
-    <script src="scripts/menu_enhanced.js"></script>
-  </body>
+</body>
 </html>

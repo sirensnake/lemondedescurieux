@@ -11,12 +11,14 @@
   
   <!-- Feuilles de style -->
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/index_style.css">
   <link rel="stylesheet" href="styles/layout_style.css">
   <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
   <link rel="stylesheet" href="styles/accessibilite.css">
   <link rel="stylesheet" href="styles/dark-mode.css">
   <link rel="stylesheet" href="styles/breadcrumb.css">
-  <link rel="stylesheet" href="styles/index_style.css">
+  <link rel="stylesheet" href="styles/xp_integration.css">
+  
   <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -26,7 +28,7 @@
   <!-- Menu latéral simple -->
 <!-- Menu latéral simple avec gestion directe -->
 <!-- Menu latéral -->
-<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+<button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu" onclick="toggleMenu()">☰</button>
 <div class="sidebar">
     <ul>
         <li><a href="index.html">Accueil</a></li>
@@ -111,6 +113,11 @@
     <h1>Le Monde des Curieux</h1>
   </header>
 
+  <!-- 🎮 NOUVEAU: Zone d'affichage XP Principal -->
+  <div id="main-xp-display" class="main-xp-container">
+    <!-- Le XP Manager s'injectera automatiquement ici au chargement -->
+  </div>
+
   <!-- Contenu principal - structure à deux colonnes -->
   <div class="main-wrapper">
     <!-- Mindmap interactive à gauche -->
@@ -141,6 +148,31 @@
 
     <!-- Parcours thématiques à droite -->
     <aside class="parcours-section">
+      <h2>📈 Mon Parcours d'Apprentissage</h2>
+      
+      <!-- 🎮 NOUVEAU: Dashboard progression avec XP -->
+      <div id="dashboard-xp-integration" class="dashboard-container">
+        <div class="dashboard-header">
+          <h3>🎯 Progression Globale</h3>
+          <div class="quick-stats" id="quick-stats">
+            <!-- Statistiques rapides s'afficheront ici -->
+          </div>
+        </div>
+        
+        <div class="dashboard-content" id="dashboard-content">
+          <!-- Contenu dashboard détaillé s'affichera ici -->
+        </div>
+        
+        <div class="dashboard-actions">
+          <button class="dashboard-btn" onclick="openProgressDetails()">
+            📊 Voir Détails
+          </button>
+          <button class="dashboard-btn" onclick="exportProgress()">
+            📁 Exporter PDF
+          </button>
+        </div>
+      </div>
+
       <h2>Parcours thématiques 🚀</h2>
       <p>Découvre des aventures qui combinent plusieurs matières !</p>
 
@@ -148,6 +180,7 @@
       <div class="parcours-card">
         <div class="parcours-title">🚀 Aventure spatiale</div>
         <p>Sciences · Maths · Histoire</p>
+        <div class="parcours-xp">+50 XP</div>
         <a class="parcours-button" href="parcours/espace.html">Commencer</a>
       </div>
 
@@ -155,6 +188,7 @@
       <div class="parcours-card">
         <div class="parcours-title">🌊 Mystères des océans</div>
         <p>Sciences · Géographie · Maths</p>
+        <div class="parcours-xp">+40 XP</div>
         <a class="parcours-button" href="parcours/ocean.html">Plonger</a>
       </div>
 
@@ -162,7 +196,41 @@
       <div class="parcours-card">
         <div class="parcours-title">🤖 Univers des robots</div>
         <p>Programmation · Sciences · IA</p>
+        <div class="parcours-xp">+60 XP</div>
         <a class="parcours-button" href="parcours/robotique.html">Construire</a>
+      </div>
+
+      <!-- 🎮 NOUVEAU: Sections rapides gamifiées -->
+      <div class="quick-activities">
+        <h3>🎯 Activités Rapides</h3>
+        <div class="activity-grid">
+          <div class="quick-activity-card" data-activity="french_quick">
+            <span class="activity-icon">🇫🇷</span>
+            <span class="activity-name">Quiz Français</span>
+            <span class="activity-xp">+15 XP</span>
+            <button class="quick-btn" onclick="launchQuickActivity('french')">
+              Jouer
+            </button>
+          </div>
+          
+          <div class="quick-activity-card" data-activity="english_quick">
+            <span class="activity-icon">🇬🇧</span>
+            <span class="activity-name">English Words</span>
+            <span class="activity-xp">+15 XP</span>
+            <button class="quick-btn" onclick="launchQuickActivity('english')">
+              Play
+            </button>
+          </div>
+          
+          <div class="quick-activity-card" data-activity="math_quick">
+            <span class="activity-icon">🔢</span>
+            <span class="activity-name">Calcul Mental</span>
+            <span class="activity-xp">+20 XP</span>
+            <button class="quick-btn" onclick="launchQuickActivity('math')">
+              Calculer
+            </button>
+          </div>
+        </div>
       </div>
     </aside>
   </div>
@@ -172,10 +240,14 @@
     © 2025 Le Monde des Curieux
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts existants -->
   <script src="scripts/hover_indicator.js"></script>
   <script src="scripts/accessibilite.js"></script>
   <script src="scripts/menu_simple.js"></script>
+  <script src="scripts/menu_enhanced.js"></script>
+  
+  <!-- 🎮 NOUVEAU: Scripts XP et intégration -->
+  <script src="scripts/xp_system_complete.js"></script>
   
   <!-- Service Worker pour PWA -->
   <script>
@@ -191,9 +263,492 @@
       });
     }
   </script>
-  <!-- Scripts -->
-<script src="scripts/accessibilite.js"></script>
-<!-- Autres scripts spécifiques à la page si nécessaire -->
-<script src="scripts/menu_enhanced.js"></script>
+
+  <!-- 🎮 Script d'intégration XP pour page d'accueil -->
+  <script>
+    // Initialisation XP Manager pour page d'accueil
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🏠 Page d\'accueil chargée - Initialisation XP...');
+      
+      // Attendre que XP Manager soit disponible
+      setTimeout(() => {
+        if (window.xpManager) {
+          // Configuration spécifique page d'accueil
+          window.xpManager.currentSection = 'home';
+          
+          // Injection interface dans conteneur principal
+          injectHomeXPInterface();
+          
+          // Injection dashboard dans section parcours
+          injectDashboardInterface();
+          
+          console.log('✅ Interface XP injectée sur page d\'accueil');
+        } else {
+          console.warn('⚠️ XP Manager non disponible - Retry...');
+          // Retry si pas encore chargé
+          setTimeout(() => {
+            if (window.xpManager) {
+              injectHomeXPInterface();
+              injectDashboardInterface();
+            }
+          }, 1000);
+        }
+      }, 500);
+    });
+
+    function injectHomeXPInterface() {
+      const mainXPContainer = document.getElementById('main-xp-display');
+      if (!mainXPContainer || mainXPContainer.children.length > 0) return;
+
+      // Créer interface XP principale adaptée page d'accueil
+      mainXPContainer.innerHTML = `
+        <div class="home-xp-welcome">
+          <div class="welcome-message">
+            <h2>🎮 Bienvenue dans ton aventure d'apprentissage !</h2>
+            <p>Explore, apprends et gagne des XP en découvrant de nouvelles connaissances.</p>
+          </div>
+        </div>
+      `;
+
+      // Laisser XP Manager injecter son interface
+      const xpPoint = document.createElement('div');
+      xpPoint.id = 'xp-integration-point';
+      mainXPContainer.appendChild(xpPoint);
+    }
+
+    function injectDashboardInterface() {
+      const dashboardContainer = document.getElementById('dashboard-content');
+      if (!dashboardContainer) return;
+
+      // Interface dashboard simplifiée pour accueil
+      dashboardContainer.innerHTML = `
+        <div class="home-dashboard">
+          <div class="dashboard-stats">
+            <div class="stat-item">
+              <span class="stat-icon">🎯</span>
+              <span class="stat-label">Niveau</span>
+              <span class="stat-value" id="home-level">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">⭐</span>
+              <span class="stat-label">XP Total</span>
+              <span class="stat-value" id="home-xp">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-label">Streak</span>
+              <span class="stat-value" id="home-streak">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">💖</span>
+              <span class="stat-label">Cœurs</span>
+              <span class="stat-value" id="home-hearts">-</span>
+            </div>
+          </div>
+          
+          <div class="dashboard-progress">
+            <div class="progress-label">Progression vers niveau suivant</div>
+            <div class="progress-bar-home">
+              <div class="progress-fill-home" id="home-progress-bar"></div>
+            </div>
+            <div class="progress-text" id="home-progress-text">-</div>
+          </div>
+          
+          <div class="dashboard-encouragement" id="home-encouragement">
+            Commence une activité pour gagner tes premiers XP !
+          </div>
+        </div>
+      `;
+
+      // Mettre à jour les statistiques
+      updateHomeDashboard();
+      
+      // Mise à jour périodique
+      setInterval(updateHomeDashboard, 5000);
+    }
+
+    function updateHomeDashboard() {
+      if (!window.xpManager) return;
+
+      try {
+        const stats = window.xpManager.debug?.getStats() || {};
+        const streakData = window.streakManager?.streakData || {};
+        const heartData = window.heartSystem?.heartsData || {};
+
+        // Mise à jour valeurs
+        updateElementSafely('home-level', stats.currentLevel || 1);
+        updateElementSafely('home-xp', stats.currentXP || 0);
+        updateElementSafely('home-streak', streakData.currentStreak || 0);
+        updateElementSafely('home-hearts', `${heartData.currentHearts || 5}/5`);
+
+        // Mise à jour barre progression
+        if (stats.nextLevelProgress) {
+          updateElementSafely('home-progress-bar', '', (el) => {
+            el.style.width = `${stats.nextLevelProgress.progress || 0}%`;
+          });
+          updateElementSafely('home-progress-text', 
+            `${stats.currentXP || 0} / ${stats.currentXP + (stats.nextLevelProgress.remaining || 200)} XP`
+          );
+        }
+
+        // Message d'encouragement adaptatif
+        updateHomeEncouragement(stats, streakData);
+
+      } catch (error) {
+        console.warn('Erreur mise à jour dashboard:', error);
+      }
+    }
+
+    function updateElementSafely(id, value, callback) {
+      const element = document.getElementById(id);
+      if (element) {
+        if (callback) {
+          callback(element);
+        } else {
+          element.textContent = value;
+        }
+      }
+    }
+
+    function updateHomeEncouragement(stats, streakData) {
+      const encouragementEl = document.getElementById('home-encouragement');
+      if (!encouragementEl) return;
+
+      let message = '';
+      
+      if (stats.currentLevel >= 5) {
+        message = "🌟 Excellent ! Tu deviens un vrai expert !";
+      } else if (streakData.currentStreak >= 3) {
+        message = "🔥 Super ! Continue ton streak !";
+      } else if (stats.currentXP > 0) {
+        message = "💪 Bien joué ! Continue d'explorer !";
+      } else {
+        message = "🎯 Commence une activité pour gagner tes premiers XP !";
+      }
+
+      encouragementEl.textContent = message;
+    }
+
+    // Fonctions pour activités rapides
+    function launchQuickActivity(type) {
+      if (!window.heartSystem || window.heartSystem.heartsData.currentHearts < 1) {
+        alert('😔 Plus de cœurs ! Attends qu\'ils se régénèrent ou va dans une section pour jouer sans limite.');
+        return;
+      }
+
+      const urls = {
+        'french': 'francais_section.html',
+        'english': 'english_section.html', 
+        'math': 'maths_section.html'
+      };
+
+      if (urls[type]) {
+        // Marquer activité rapide dans sessionStorage
+        sessionStorage.setItem('quickActivity', type);
+        window.location.href = urls[type];
+      }
+    }
+
+    function openProgressDetails() {
+      window.location.href = 'mon-parcours.html';
+    }
+
+    function exportProgress() {
+      if (window.xpManager && typeof window.xpManager.exportProgressPDF === 'function') {
+        window.xpManager.exportProgressPDF();
+      } else {
+        alert('Fonctionnalité d\'export en cours de développement !');
+      }
+    }
+
+    // Événements personnalisés pour synchronisation
+    document.addEventListener('xpUpdated', (event) => {
+      updateHomeDashboard();
+    });
+
+    document.addEventListener('heartLost', () => {
+      updateHomeDashboard();
+    });
+
+    document.addEventListener('streakUpdated', () => {
+      updateHomeDashboard();
+    });
+  </script>
+
+  <!-- CSS spécifique intégration accueil -->
+  <style>
+    /* Styles spécifiques intégration XP page d'accueil */
+    .main-xp-container {
+      margin: 20px auto;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+
+    .home-xp-welcome {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 15px;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .home-xp-welcome h2 {
+      margin: 0 0 10px 0;
+      font-family: 'Minecraftia', monospace;
+      font-size: 1.2em;
+    }
+
+    .home-xp-welcome p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 1em;
+    }
+
+    .dashboard-container {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 2px solid #e9ecef;
+    }
+
+    .dashboard-header h3 {
+      margin: 0 0 15px 0;
+      color: #495057;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    .home-dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .stat-icon {
+      display: block;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.8em;
+      color: #6c757d;
+      margin-bottom: 3px;
+    }
+
+    .stat-value {
+      display: block;
+      font-weight: bold;
+      color: #495057;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    .dashboard-progress {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+    }
+
+    .progress-label {
+      font-size: 0.9em;
+      color: #6c757d;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar-home {
+      background: #e9ecef;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill-home {
+      background: linear-gradient(90deg, #28a745, #20c997);
+      height: 100%;
+      transition: width 0.8s ease-in-out;
+      border-radius: 10px;
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 0.8em;
+      color: #495057;
+      margin-top: 5px;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    .dashboard-encouragement {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-family: 'Minecraftia', monospace;
+      font-size: 0.9em;
+    }
+
+    .dashboard-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .dashboard-btn {
+      flex: 1;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Minecraftia', monospace;
+      font-size: 0.8em;
+      transition: background 0.3s ease;
+    }
+
+    .dashboard-btn:hover {
+      background: #0056b3;
+    }
+
+    .parcours-xp {
+      color: #28a745;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+
+    .quick-activities {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .quick-activities h3 {
+      margin: 0 0 15px 0;
+      color: #495057;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .quick-activity-card {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .quick-activity-card:hover {
+      transform: translateY(-2px);
+      border-color: #007bff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .activity-icon {
+      display: block;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .activity-name {
+      display: block;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #495057;
+      margin-bottom: 3px;
+    }
+
+    .activity-xp {
+      display: block;
+      font-size: 0.7em;
+      color: #28a745;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .quick-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8em;
+      font-family: 'Minecraftia', monospace;
+      transition: background 0.3s ease;
+    }
+
+    .quick-btn:hover {
+      background: #218838;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-xp-container {
+        padding: 0 10px;
+      }
+
+      .home-xp-welcome {
+        padding: 15px;
+      }
+
+      .home-xp-welcome h2 {
+        font-size: 1em;
+      }
+
+      .dashboard-container {
+        padding: 15px;
+      }
+
+      .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-actions {
+        flex-direction: column;
+      }
+
+      .activity-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .activity-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </body>
 </html>

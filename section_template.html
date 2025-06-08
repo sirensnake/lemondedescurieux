@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section Échecs - Le Monde des Curieux</title>
+    <title>[SECTION] - Le Monde des Curieux</title>
     
     <!-- CSS existants dans l'ordre standard -->
     <link rel="stylesheet" href="styles/style.css">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/breadcrumb.css">
     <link rel="stylesheet" href="styles/layout_style.css">
     <link rel="stylesheet" href="styles/general_style.css">
-    <link rel="stylesheet" href="styles/echecs_styles.css">
+    <link rel="stylesheet" href="styles/section_style.css">
     
     <!-- Composants réutilisables -->
     <link rel="stylesheet" href="styles/components.css">
@@ -25,10 +25,10 @@
     <link rel="manifest" href="/manifest.json">
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
-<body class="echecs-section">
+<body class="[section]-section">
     <!-- Header stylisé avec composant -->
-    <header class="section-header-styled echecs">
-        <button onclick="history.back()" class="back-btn-minecraft echecs">
+    <header class="section-header-styled [section]">
+        <button onclick="history.back()" class="back-btn-minecraft [section]">
             ← Retour à l'accueil
         </button>
     </header>
@@ -36,9 +36,9 @@
     <main>
         <!-- Fil d'Ariane -->
         <div class="breadcrumb" aria-label="Fil d'Ariane">
-            🏠 <a href="index.html">Accueil</a> > ♟️ Échecs
+            🏠 <a href="index.html">Accueil</a> > [SECTION_EMOJI] [SECTION_TITLE]
         </div>
-
+        
         <!-- Menu latéral simple et fonctionnel -->
         <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
         <div class="sidebar">
@@ -75,25 +75,26 @@
         </div>
 
         <div class="section-title">
-            <h1 class="animated-title">♟️ Bienvenue dans la section Échecs</h1>
-            <p class="intro-text">Plonge dans l'univers des échecs et découvre des stratégies fascinantes !</p>
+            <h1>[SECTION_EMOJI] [SECTION_TITLE]</h1>
+            <p>[DESCRIPTION_SECTION]</p>
         </div>
 
-        <!-- Contenu spécifique à la section PRÉSERVÉ -->
+        <!-- Contenu spécifique à la section -->
         <section>
-            <div class="content-container">
-                <div class="content">
-                    <h2>📜 Règles du jeu</h2>
-                    <p>Apprends les bases du jeu d'échecs et comment chaque pièce se déplace.</p>
-                    <a href="echecs_regles.html" class="learn-more">📖 Lire les règles</a>
-                </div>
-
-                <div class="content">
-                    <h2>⚔️ Tactiques et Stratégies</h2>
-                    <p>Découvre les meilleures tactiques pour capturer ton adversaire !</p>
-                    <a href="echecs_tactiques.html" class="learn-more">🧠 Étudier les tactiques</a>
-                </div>
+            <div id="main-content" class="content">
+                <!-- Activités de la section à personnaliser ici -->
+                <h2>[ACTIVITE_1_TITRE]</h2>
+                <p class="description">[ACTIVITE_1_DESCRIPTION]</p>
+                <a href="[ACTIVITE_1_LIEN]" class="learn-more">[ACTIVITE_1_CTA]</a>
             </div>
+
+            <div class="content">
+                <h2>[ACTIVITE_2_TITRE]</h2>
+                <p class="description">[ACTIVITE_2_DESCRIPTION]</p>
+                <a href="[ACTIVITE_2_LIEN]" class="learn-more">[ACTIVITE_2_CTA]</a>
+            </div>
+
+            <!-- Ajouter plus d'activités selon les besoins de la section -->
         </section>
     </main>
 
@@ -102,10 +103,11 @@
     <script src="scripts/xp_system_complete.js"></script>
     <script src="scripts/accessibilite.js"></script>
     <script src="scripts/menu_enhanced.js"></script>
-
+    <!-- Script spécifique à la section si nécessaire -->
+    
     <script>
         // Initialisation standard
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             // Gestion du menu latéral
             var sidebar = document.querySelector('.sidebar');
             var toggleButton = document.querySelector('.sidebar-toggle');
@@ -139,18 +141,58 @@
             // XP system integration
             setTimeout(() => {
                 if (window.xpManager) {
-                    window.xpManager.currentSection = 'echecs';
+                    window.xpManager.currentSection = '[section]';
                     document.getElementById('xp-status').style.display = 'block';
-                }
-
-                // Initialiser les fonctions d'accessibilité si disponibles
-                if (typeof initAccessibilityFeatures === 'function') {
-                    initAccessibilityFeatures();
                 }
             }, 1000);
 
-            console.log("✔️ Section Échecs chargée avec succès !");
+            console.log("✔️ Menu latéral et systèmes chargés avec succès !");
         });
     </script>
 </body>
 </html>
+
+<!-- 
+INSTRUCTIONS D'UTILISATION COMPLÈTES :
+
+PLACEHOLDERS OBLIGATOIRES :
+1. [SECTION] → nom section en minuscules : maths, sciences, histoire, etc.
+2. [section] → même chose pour JavaScript (identique au précédent)
+3. [SECTION_EMOJI] → emoji de la section : 🔬, 🧮, 🏛️, etc.
+4. [SECTION_TITLE] → titre complet : "Sciences", "Mathématiques", etc.
+5. [DESCRIPTION_SECTION] → description courte de la section
+
+PLACEHOLDERS ACTIVITÉS (répéter selon nombre d'activités) :
+6. [ACTIVITE_1_TITRE] → titre première activité avec emoji
+7. [ACTIVITE_1_DESCRIPTION] → description activité
+8. [ACTIVITE_1_LIEN] → lien vers activité
+9. [ACTIVITE_1_CTA] → texte du bouton avec emoji
+
+FONCTIONNALITÉS INTÉGRÉES :
+✅ Menu latéral avec 14 sections
+✅ Fil d'Ariane dynamique
+✅ Zone XP prête pour gamification
+✅ Outils d'accessibilité complets
+✅ Navigation clavier optimisée
+✅ Scripts menu enhancé automatiques
+✅ Alpine.js et PWA ready
+✅ Architecture harmonisée 9 sections
+
+SCRIPTS REQUIS (à vérifier présence) :
+- scripts/general_script.js
+- scripts/xp_system_complete.js  
+- scripts/accessibilite.js
+- scripts/menu_enhanced.js
+
+CSS REQUIS (à vérifier présence) :
+- styles/menu_lateral_enhanced.css
+- styles/section_style.css
+- styles/components.css (avec palettes 9 sections)
+
+EXEMPLE CONCRET D'UTILISATION :
+[SECTION] → "maths"
+[SECTION_EMOJI] → "🧮"
+[SECTION_TITLE] → "Mathématiques" 
+[DESCRIPTION_SECTION] → "Explore les nombres et teste tes compétences mathématiques !"
+[ACTIVITE_1_TITRE] → "🔢 Tables de multiplication"
+-->

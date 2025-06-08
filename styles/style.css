@@ -19,7 +19,7 @@ h1.exercise-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 100px; /* Ajout d'un espace en bas */
+    padding-bottom: 100px;
 }
 
 .mindmap-container {
@@ -85,7 +85,7 @@ h1.exercise-title {
 /* Correction de la position de Curio et de sa pancarte */
 #curio-section {
     position: absolute;
-    bottom: -20%; /* Descendu encore plus bas */
+    bottom: -20%;
     left: 60%;
     transform: translateX(-50%);
     z-index: 10;
@@ -101,14 +101,14 @@ h1.exercise-title {
 
 .curio-container {
     position: absolute;
-    bottom: 0px; /* Augmente cette valeur pour descendre Curio */
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 #speech-bubble {
     position: absolute;
-    top: -130px; /* Pancarte encore plus haute */
+    top: -130px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #ffffff;
@@ -121,6 +121,8 @@ h1.exercise-title {
     text-align: center;
     z-index: 12;
 }
+
+
 
 @keyframes float {
     0%, 100% {
@@ -149,20 +151,3 @@ h1.exercise-title {
         width: 120px;
     }
 }
-
-/* === Loader === */
-#loader{
-    position:fixed; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    background:#ffffff;        /* fond blanc */
-    z-index:2000;
-  }
-  .spinner{
-    width:64px; height:64px;
-    border:6px solid #ccc;
-    border-top-color:#2a9d8f;
-    border-radius:50%;
-    animation:spin 1s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
-  

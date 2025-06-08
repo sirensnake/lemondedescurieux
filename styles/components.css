@@ -1,0 +1,281 @@
+/* 
+ * Composants CSS Réutilisables - Le Monde des Curieux
+ * Styles harmonisés pour toutes les sections
+ */
+
+/* === HEADER SECTIONS STYLISÉ === */
+.section-header-styled {
+    background: linear-gradient(135deg, #2a9d8f, #1d7874);
+    padding: 1rem 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header-styled::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* === BOUTONS RETOUR MINECRAFT === */
+.back-btn-minecraft {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    border: 3px solid #2d5f2f;
+    color: white;
+    padding: 12px 24px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 
+        inset 2px 2px 0 #6bc96f,
+        inset -2px -2px 0 #2d5f2f,
+        4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.back-btn-minecraft:hover {
+    background: linear-gradient(145deg, #5cbf60, #4CAF50);
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 2px 2px 0 #7dd481,
+        inset -2px -2px 0 #2d5f2f,
+        6px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.back-btn-minecraft:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset 2px 2px 0 #2d5f2f,
+        inset -2px -2px 0 #6bc96f,
+        2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* === VARIATIONS PAR SECTION === */
+
+/* Section Mathématiques */
+.section-header-styled.maths {
+    background: linear-gradient(135deg, #e76f51, #f4a261);
+}
+
+.back-btn-minecraft.maths {
+    background: linear-gradient(145deg, #e76f51, #d62c0f);
+    border-color: #a52208;
+}
+
+.back-btn-minecraft.maths:hover {
+    background: linear-gradient(145deg, #f4a261, #e76f51);
+}
+
+/* Section Sciences */
+.section-header-styled.sciences {
+    background: linear-gradient(135deg, #264653, #2a9d8f);
+}
+
+.back-btn-minecraft.sciences {
+    background: linear-gradient(145deg, #264653, #1a3a3a);
+    border-color: #0f2027;
+}
+
+.back-btn-minecraft.sciences:hover {
+    background: linear-gradient(145deg, #2a9d8f, #264653);
+}
+
+/* Section Anglais */
+.section-header-styled.english {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.back-btn-minecraft.english {
+    background: linear-gradient(145deg, #1e3a8a, #1e40af);
+    border-color: #1e293b;
+}
+
+.back-btn-minecraft.english:hover {
+    background: linear-gradient(145deg, #3b82f6, #1e3a8a);
+}
+
+/* Section Français */
+.section-header-styled.francais {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+.back-btn-minecraft.francais {
+    background: linear-gradient(145deg, #7c3aed, #6b21a8);
+    border-color: #4c1d95;
+}
+
+.back-btn-minecraft.francais:hover {
+    background: linear-gradient(145deg, #a855f7, #7c3aed);
+}
+
+/* Section Infos */
+.section-header-styled.infos {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.back-btn-minecraft.infos {
+    background: linear-gradient(145deg, #f59e0b, #d97706);
+    border-color: #92400e;
+}
+
+.back-btn-minecraft.infos:hover {
+    background: linear-gradient(145deg, #fbbf24, #f59e0b);
+}
+
+/* === ZONE XP STANDARDISÉE === */
+#xp-status {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    background: linear-gradient(135deg, #f1faee, #e9f5e1) !important;
+    border: 2px solid #2a9d8f;
+    animation: pulse-xp 2s infinite;
+}
+
+@keyframes pulse-xp {
+    0%, 100% { box-shadow: 0 0 5px rgba(42, 157, 143, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(42, 157, 143, 0.6); }
+}
+
+#xp-status span {
+    color: #2a9d8f;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* === TITRES DE SECTIONS === */
+.section-title h1 {
+    font-family: 'Press Start 2P', monospace;
+    color: #2a9d8f;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: clamp(16px, 3vw, 24px);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
+}
+
+.section-title p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === ÉLÉMENTS SPÉCIAUX === */
+.new-feature {
+    position: relative;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+    transition: all 0.3s ease;
+}
+
+.new-feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+}
+
+.new-feature::before {
+    content: "🆕";
+    margin-right: 0.5rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .section-header-styled {
+        padding: 0.8rem 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .back-btn-minecraft {
+        padding: 10px 16px;
+        font-size: 10px;
+    }
+    
+    .section-title h1 {
+        font-size: 14px;
+        margin: 1rem 0;
+    }
+    
+    #xp-status {
+        padding: 0.8rem;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-btn-minecraft {
+        padding: 8px 12px;
+        font-size: 9px;
+    }
+    
+    .section-title h1 {
+        font-size: 12px;
+    }
+    
+    #xp-status {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    #xp-status span {
+        display: block;
+    }
+}
+
+/* === ANIMATIONS D'ENTRÉE === */
+.section-header-styled {
+    animation: slideInFromTop 0.6s ease-out;
+}
+
+.section-title {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.content {
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

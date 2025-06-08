@@ -1,0 +1,505 @@
+/* === ENGLISH INTERACTIVE - STYLES DUOLINGO === */
+
+/* En-tête de progression */
+.progress-header {
+    background: linear-gradient(135deg, #58CC02, #46A302);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.progress-indicators {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.streak-counter, .xp-indicator {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8em;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.hearts-display {
+    display: flex;
+    gap: 5px;
+}
+
+.heart {
+    font-size: 1.2em;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.2s ease;
+}
+
+.heart.empty {
+    opacity: 0.3;
+    filter: grayscale(100%);
+}
+
+/* Navigation fil d'Ariane */
+.breadcrumb {
+    background: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+
+.breadcrumb a {
+    color: #2196F3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #1976D2;
+    text-decoration: underline;
+}
+
+/* En-tête de section */
+.section-header {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.section-header h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 2.5em;
+    color: #2196F3;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.welcome-section {
+    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.welcome-message h2 {
+    color: #1976D2;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-family: 'Press Start 2P', monospace;
+}
+
+.welcome-message p {
+    color: #455A64;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Section des aventures d'apprentissage */
+.learning-adventures {
+    margin: 50px 0;
+}
+
+.learning-adventures h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5em;
+    color: #FF6B35;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.adventures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+/* Cartes d'aventure */
+.adventure-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.adventure-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #58CC02, #46A302);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.adventure-card:hover::before {
+    transform: scaleX(1);
+}
+
+.adventure-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.adventure-card.locked {
+    opacity: 0.6;
+    background: #f5f5f5;
+    position: relative;
+}
+
+.adventure-card.locked::after {
+    content: "🔒";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    background: rgba(255,255,255,0.9);
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.adventure-card.locked:hover {
+    transform: none;
+    cursor: not-allowed;
+}
+
+.adventure-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.adventure-card h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.2em;
+    color: #2196F3;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.adventure-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+/* Badges des aventures */
+.adventure-badges {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.interactive {
+    background: #E8F5E8;
+    color: #4CAF50;
+}
+
+.badge.word-lists {
+    background: #E3F2FD;
+    color: #2196F3;
+}
+
+.badge.lessons {
+    background: #FFF3E0;
+    color: #FF9800;
+}
+
+.badge.practice {
+    background: #FFEBEE;
+    color: #F44336;
+}
+
+.badge.dialogues {
+    background: #F3E5F5;
+    color: #9C27B0;
+}
+
+.badge.audio {
+    background: #E0F2F1;
+    color: #009688;
+}
+
+.badge.music {
+    background: #FFF8E1;
+    color: #FFC107;
+}
+
+.badge.listening {
+    background: #E1F5FE;
+    color: #00BCD4;
+}
+
+/* Boutons d'aventure */
+.adventure-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #58CC02, #46A302);
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(88, 204, 2, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.adventure-btn:hover {
+    background: linear-gradient(135deg, #46A302, #3E8B02);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(88, 204, 2, 0.4);
+}
+
+.adventure-card.locked .adventure-btn {
+    background: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* Section motivation */
+.motivation-section {
+    margin: 60px 0;
+    text-align: center;
+}
+
+.motivation-card {
+    background: linear-gradient(135deg, #FF6B35, #F7941D);
+    color: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.motivation-icon {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.motivation-card h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.motivation-card p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.progress-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.tip {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+}
+
+/* Mascotte Curio */
+.curio-mascot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 50;
+}
+
+.curio-mascot img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.2));
+}
+
+.curio-mascot img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.curio-speech-bubble {
+    position: absolute;
+    bottom: 90px;
+    right: -20px;
+    background: white;
+    border: 3px solid #2196F3;
+    border-radius: 15px;
+    padding: 15px;
+    width: 200px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeInUp 0.5s ease;
+}
+
+.curio-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2196F3;
+}
+
+.curio-speech-bubble p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .progress-indicators {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .streak-counter, .xp-indicator {
+        font-size: 0.7em;
+    }
+
+    .section-header h1 {
+        font-size: 1.8em;
+    }
+
+    .adventures-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .adventure-card {
+        padding: 20px;
+    }
+
+    .progress-tips {
+        grid-template-columns: 1fr;
+    }
+
+    .curio-mascot {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .curio-mascot img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .curio-speech-bubble {
+        width: 150px;
+        font-size: 0.8em;
+        bottom: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .section-header h1 {
+        font-size: 1.5em;
+    }
+
+    .welcome-section {
+        padding: 20px;
+    }
+
+    .motivation-card {
+        padding: 25px;
+    }
+
+    .adventure-card h3 {
+        font-size: 1em;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.adventure-card:hover .adventure-icon {
+    animation: pulse 1s infinite;
+}
+
+/* États de chargement */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #58CC02;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,89 +1,138 @@
-// Intégration dans scripts/english-hearts.js
-class EnglishHeartsSystem {
+/* ============================================================================
+   SYSTÈME DE CŒURS/VIES - FRANÇAIS
+   Fichier: scripts/francais-hearts.js
+   ============================================================================ */
+
+class FrancaisHearts {
   constructor() {
-    this.heartsData = this.loadHearts();
+    this.storageKey = 'francais_hearts_data';
     this.maxHearts = 5;
-    this.heartRegenTime = 30 * 60 * 1000; // 30 minutes
+    this.regenTime = 30 * 60 * 1000; // 30 minutes en millisecondes
+    this.data = this.loadHeartsData();
+    this.startRegeneration();
+    console.log('✅ FrancaisHearts initialisé');
   }
   
-  loadHearts() {
-    const data = JSON.parse(localStorage.getItem('englishHearts')) || {
-      currentHearts: 5,
-      lastHeartLoss: null,
-      regenStartTime: null
-    };
+  loadHeartsData() {
+    const stored = localStorage.getItem(this.storageKey);
+    if (stored) {
+      const data = JSON.parse(stored);
+      this.processRegeneration(data);
+      return data;
+    }
     
-    // Régénération automatique
-    this.processHeartRegeneration(data);
-    return data;
+    return {
+      currentHearts: this.maxHearts,
+      lastHeartLoss: null,
+      lastRegenCheck: Date.now()
+    };
+  }
+  
+  saveHeartsData() {
+    localStorage.setItem(this.storageKey, JSON.stringify(this.data));
+  }
+  
+  processRegeneration(data) {
+    if (data.currentHearts >= this.maxHearts) {
+      return; // Déjà au maximum
+    }
+    
+    const now = Date.now();
+    const timeSinceLastCheck = now - (data.lastRegenCheck || now);
+    const heartsToRegen = Math.floor(timeSinceLastCheck / this.regenTime);
+    
+    if (heartsToRegen > 0) {
+      data.currentHearts = Math.min(this.maxHearts, data.currentHearts + heartsToRegen);
+      data.lastRegenCheck = now;
+    }
+  }
+  
+  startRegeneration() {
+    setInterval(() => {
+      if (this.data.currentHearts < this.maxHearts) {
+        this.data.currentHearts = Math.min(this.maxHearts, this.data.currentHearts + 1);
+        this.data.lastRegenCheck = Date.now();
+        this.saveHeartsData();
+        this.updateDisplay();
+      }
+    }, this.regenTime);
   }
   
   loseHeart() {
-    if (this.heartsData.currentHearts > 0) {
-      this.heartsData.currentHearts--;
-      this.heartsData.lastHeartLoss = Date.now();
+    if (this.data.currentHearts > 0) {
+      this.data.currentHearts -= 1;
+      this.data.lastHeartLoss = Date.now();
+      this.data.lastRegenCheck = Date.now();
+      this.saveHeartsData();
+      this.updateDisplay();
       
-      if (this.heartsData.currentHearts === this.maxHearts - 1) {
-        this.heartsData.regenStartTime = Date.now();
-      }
+      // Animation de perte
+      this.animateHeartLoss();
       
-      this.saveHearts();
-      this.updateHeartsDisplay();
-      
-      return this.heartsData.currentHearts > 0;
+      return this.data.currentHearts > 0; // true si peut continuer
     }
     return false;
   }
   
-  // Interface cœurs animée
-  updateHeartsDisplay() {
-    const heartsContainer = document.getElementById('hearts-display');
-    if (heartsContainer) {
-      let heartsHTML = '';
-      for (let i = 0; i < this.maxHearts; i++) {
-        const isFilled = i < this.heartsData.currentHearts;
-        heartsHTML += `<div class="heart ${isFilled ? 'filled' : 'empty'}">❤️</div>`;
-      }
-      heartsContainer.innerHTML = heartsHTML;
+  gainHeart() {
+    if (this.data.currentHearts < this.maxHearts) {
+      this.data.currentHearts += 1;
+      this.saveHeartsData();
+      this.updateDisplay();
     }
+  }
+  
+  getCurrentHearts() {
+    return this.data.currentHearts;
+  }
+  
+  getMaxHearts() {
+    return this.maxHearts;
+  }
+  
+  updateDisplay() {
+    const heartsContainer = document.getElementById('hearts-container');
+    if (!heartsContainer) return;
+    
+    heartsContainer.innerHTML = '';
+    
+    for (let i = 0; i < this.maxHearts; i++) {
+      const heart = document.createElement('div');
+      heart.className = i < this.data.currentHearts ? 'heart filled' : 'heart empty';
+      heart.textContent = '❤️';
+      heartsContainer.appendChild(heart);
+    }
+  }
+  
+  animateHeartLoss() {
+    // Animation simple de perte de cœur
+    const hearts = document.querySelectorAll('.heart.filled');
+    if (hearts.length > 0) {
+      const lastHeart = hearts[hearts.length - 1];
+      lastHeart.classList.add('lost');
+      setTimeout(() => {
+        lastHeart.classList.remove('lost');
+      }, 600);
+    }
+  }
+  
+  resetHearts() {
+    this.data.currentHearts = this.maxHearts;
+    this.data.lastHeartLoss = null;
+    this.data.lastRegenCheck = Date.now();
+    this.saveHeartsData();
+    this.updateDisplay();
+  }
+  
+  getTimeToNextHeart() {
+    if (this.data.currentHearts >= this.maxHearts) {
+      return 0;
+    }
+    
+    const timeSinceLastCheck = Date.now() - this.data.lastRegenCheck;
+    return Math.max(0, this.regenTime - timeSinceLastCheck);
   }
 }
 
-// Ajouter ces méthodes à la classe existante
-saveHearts() {
-    localStorage.setItem('englishHearts', JSON.stringify(this.heartsData));
-}
-
-processHeartRegeneration(data) {
-    if (data.currentHearts < this.maxHearts && data.regenStartTime) {
-        const elapsed = Date.now() - data.regenStartTime;
-        const heartsToRegen = Math.floor(elapsed / this.heartRegenTime);
-        
-        if (heartsToRegen > 0) {
-            data.currentHearts = Math.min(
-                data.currentHearts + heartsToRegen,
-                this.maxHearts
-            );
-            
-            if (data.currentHearts === this.maxHearts) {
-                data.regenStartTime = null;
-            } else {
-                data.regenStartTime = Date.now();
-            }
-        }
-    }
-}
-
-initializeUI() {
-    // Créer l'élément s'il n'existe pas
-    if (!document.getElementById('hearts-display')) {
-        const header = document.querySelector('.game-header');
-        if (header) {
-            const heartsDiv = document.createElement('div');
-            heartsDiv.id = 'hearts-display';
-            header.appendChild(heartsDiv);
-        }
-    }
-    
-    this.updateHeartsDisplay();
-}
+// Export global
+window.FrancaisHearts = FrancaisHearts;
