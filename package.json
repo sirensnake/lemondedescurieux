@@ -37,8 +37,7 @@
     "alpinejs": "^3.14.0",
     "chart.js": "^4.4.0",
     "jspdf": "^3.0.1",
-    "papaparse": "^5.4.1",
-    "xlsx": "^0.18.5"
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
     "@vitejs/plugin-legacy": "^6.1.1",
