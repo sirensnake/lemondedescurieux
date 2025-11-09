@@ -1,684 +1,625 @@
 /**
- * Système XP Complet pour Le Monde des Curieux
- * Intégration avec StreakManager et HeartSystem existants
- * Compatible avec localStorage et architecture modulaire existante
+ * Système XP Dynamique Complet - Le Monde des Curieux
+ * Intégration avec Hearts + Streaks existants
+ * Compatible localStorage architecture actuelle
  */
 
 class XPManager {
     constructor() {
+        this.currentSection = null;
         this.xpData = this.loadXPData();
-        this.levelThresholds = this.initializeLevelThresholds();
-        this.activityPoints = this.initializeActivityPoints();
-        this.achievementMultipliers = this.initializeAchievementMultipliers();
+        this.levelThresholds = [0, 200, 600, 1200, 2000, 3200, 4800, 6800, 9200, 12000, 15200]; // Progression équilibrée
+        this.multipliers = {
+            perfect: 2.0,      // Score parfait
+            streak: 1.5,       // Bonus streak actif
+            firstTime: 1.3,    // Première fois activité
+            speed: 1.2,        // Completion rapide
+            chain: 1.1         // Activités enchaînées
+        };
         
-        // Intégration avec systèmes existants
-        this.streakManager = window.streakManager;
-        this.heartSystem = window.heartSystem;
-        
-        this.initializeXPDisplay();
-        this.bindEvents();
-        
-        console.log('💡 XP System initialisé avec succès:', this.xpData);
+        this.initializeXPSystem();
     }
 
     loadXPData() {
-        const defaultXPData = {
-            currentXP: 0,
+        const defaultData = {
+            totalXP: 0,
             currentLevel: 1,
-            totalXPEarned: 0,
-            sessionsCompleted: 0,
-            perfectSessions: 0,
-            lastActivityDate: null,
-            weeklyXP: 0,
-            weekStartDate: this.getWeekStart(),
+            xpThisLevel: 0,
+            sectionsXP: {},
             achievements: [],
-            xpHistory: []
+            lastActivity: null,
+            multiplierHistory: []
         };
         
-        const saved = JSON.parse(localStorage.getItem('lemondedescurieux_xp') || '{}');
-        return { ...defaultXPData, ...saved };
+        return JSON.parse(localStorage.getItem('lemondedescurieux_xp')) || defaultData;
     }
 
     saveXPData() {
         localStorage.setItem('lemondedescurieux_xp', JSON.stringify(this.xpData));
-        this.updateXPDisplay();
-        this.triggerXPEvents();
+        this.updateDisplays();
+        this.checkLevelUp();
+        this.checkAchievements();
     }
 
-    initializeLevelThresholds() {
-        return {
-            // Progression adaptée enfants 8-10 ans
-            1: 0,     2: 200,   3: 400,   4: 600,   5: 800,
-            6: 1200,  7: 1600,  8: 2000,  9: 2400,  10: 2800,
-            11: 3400, 12: 4000, 13: 4600, 14: 5200, 15: 5800,
-            16: 6600, 17: 7400, 18: 8200, 19: 9000, 20: 10000
-        };
+    initializeXPSystem() {
+        // Intégration avec systèmes existants
+        this.integrateWithHeartSystem();
+        this.integrateWithStreakSystem();
+        this.createXPInterface();
     }
 
-    initializeActivityPoints() {
-        return {
-            // Points de base par type d'activité
-            quiz_correct: 10,
-            quiz_perfect: 20,
-            lesson_completed: 15,
-            mini_game_win: 25,
-            streak_bonus: 5,
-            heart_saved: 2,
-            daily_challenge: 50,
-            first_try_perfect: 30,
-            
-            // Bonus multiplicateurs
-            difficulty_easy: 1.0,
-            difficulty_medium: 1.2,
-            difficulty_hard: 1.5,
-            
-            // Bonus séquences
-            consecutive_correct: 5,
-            session_no_errors: 25,
-            daily_goal_reached: 40
-        };
-    }
+    /**
+     * Calcul XP avec système de multiplicateurs avancé
+     */
+    calculateXP(baseXP, context = {}) {
+        let finalXP = baseXP;
+        let appliedMultipliers = [];
 
-    initializeAchievementMultipliers() {
+        // Bonus performance parfaite
+        if (context.perfect) {
+            finalXP *= this.multipliers.perfect;
+            appliedMultipliers.push('🎯 Parfait!');
+        }
+
+        // Bonus streak actif
+        if (this.hasActiveStreak()) {
+            finalXP *= this.multipliers.streak;
+            appliedMultipliers.push('🔥 Série!');
+        }
+
+        // Bonus première fois
+        if (context.firstTime) {
+            finalXP *= this.multipliers.firstTime;
+            appliedMultipliers.push('🆕 Découverte!');
+        }
+
+        // Bonus vitesse
+        if (context.completionTime && context.completionTime < context.expectedTime * 0.8) {
+            finalXP *= this.multipliers.speed;
+            appliedMultipliers.push('⚡ Rapide!');
+        }
+
+        // Bonus enchaînement d'activités
+        if (this.isChainedActivity()) {
+            finalXP *= this.multipliers.chain;
+            appliedMultipliers.push('🔗 Enchaînement!');
+        }
+
         return {
-            'first_day': 2.0,        // Premier jour = double XP
-            'week_streak': 1.5,      // Semaine consécutive = +50%
-            'perfect_week': 2.5,     // Semaine parfaite = +150%
-            'month_active': 3.0,     // Mois actif = triple XP
-            'quick_learner': 1.3,    // Réponses rapides = +30%
-            'night_owl': 1.2,       // Études tardives = +20%
-            'early_bird': 1.2       // Études matinales = +20%
+            finalXP: Math.round(finalXP),
+            baseXP,
+            appliedMultipliers
         };
     }
 
     /**
-     * FONCTION PRINCIPALE : Ajouter XP avec calculs automatiques
+     * Ajouter XP avec animation et feedback
      */
-    addXP(baseAmount, activityType, contextData = {}) {
-        let finalXP = baseAmount;
-        let bonusDetails = [];
-
-        // 1. Bonus streak (intégration StreakManager)
-        if (this.streakManager && this.streakManager.streakData.currentStreak > 0) {
-            const streakBonus = Math.min(this.streakManager.streakData.currentStreak * 2, 50);
-            finalXP += streakBonus;
-            bonusDetails.push(`🔥 Streak ${this.streakManager.streakData.currentStreak}: +${streakBonus}XP`);
-        }
-
-        // 2. Bonus cœurs conservés (intégration HeartSystem)
-        if (this.heartSystem && this.heartSystem.heartsData.currentHearts === 5) {
-            const heartBonus = 10;
-            finalXP += heartBonus;
-            bonusDetails.push(`💖 Cœurs pleins: +${heartBonus}XP`);
-        }
-
-        // 3. Bonus performance (contextuel)
-        if (contextData.perfect) {
-            finalXP *= 2;
-            bonusDetails.push(`⭐ Performance parfaite: x2`);
-        }
-
-        if (contextData.fastResponse && contextData.responseTime < 3000) {
-            const speedBonus = 5;
-            finalXP += speedBonus;
-            bonusDetails.push(`⚡ Réponse rapide: +${speedBonus}XP`);
-        }
-
-        // 4. Bonus niveau de difficulté
-        const difficultyMultiplier = this.activityPoints[`difficulty_${contextData.difficulty || 'medium'}`];
-        finalXP = Math.floor(finalXP * difficultyMultiplier);
-
-        // 5. Bonus achievements actifs
-        const achievementMultiplier = this.calculateActiveAchievementMultiplier();
-        if (achievementMultiplier > 1) {
-            finalXP = Math.floor(finalXP * achievementMultiplier);
-            bonusDetails.push(`🏆 Bonus achievements: x${achievementMultiplier.toFixed(1)}`);
-        }
+    addXP(baseXP, context = {}) {
+        const xpCalculation = this.calculateXP(baseXP, context);
+        const previousLevel = this.getCurrentLevel();
 
         // Mise à jour données
-        const oldLevel = this.getCurrentLevel();
-        this.xpData.currentXP += finalXP;
-        this.xpData.totalXPEarned += finalXP;
-        this.xpData.lastActivityDate = new Date().toISOString();
-        this.xpData.sessionsCompleted++;
+        this.xpData.totalXP += xpCalculation.finalXP;
         
-        // Gestion XP hebdomadaire
-        this.updateWeeklyXP(finalXP);
-        
-        // Enregistrement historique
-        this.recordXPGain(finalXP, activityType, bonusDetails);
-
-        // Vérification level up
-        const newLevel = this.getCurrentLevel();
-        let levelUpData = null;
-        if (newLevel > oldLevel) {
-            levelUpData = this.handleLevelUp(oldLevel, newLevel);
+        // XP par section
+        if (this.currentSection) {
+            if (!this.xpData.sectionsXP[this.currentSection]) {
+                this.xpData.sectionsXP[this.currentSection] = 0;
+            }
+            this.xpData.sectionsXP[this.currentSection] += xpCalculation.finalXP;
         }
 
-        this.saveXPData();
-
-        // Retour des résultats pour animations
-        return {
-            xpGained: finalXP,
-            totalXP: this.xpData.currentXP,
-            currentLevel: newLevel,
-            levelUp: levelUpData,
-            bonusDetails: bonusDetails,
-            nextLevelProgress: this.getNextLevelProgress()
+        this.xpData.lastActivity = {
+            timestamp: new Date().toISOString(),
+            xpGained: xpCalculation.finalXP,
+            section: this.currentSection,
+            multipliers: xpCalculation.appliedMultipliers
         };
+
+        this.saveXPData();
+        
+        // Animation gain XP
+        this.showXPGainAnimation(xpCalculation);
+        
+        // Vérification level up
+        const newLevel = this.getCurrentLevel();
+        if (newLevel > previousLevel) {
+            this.triggerLevelUpAnimation(previousLevel, newLevel);
+        }
+
+        return xpCalculation;
     }
 
     getCurrentLevel() {
-        const currentXP = this.xpData.currentXP;
-        let level = 1;
-        
-        for (let [lvl, threshold] of Object.entries(this.levelThresholds)) {
-            if (currentXP >= threshold) {
-                level = parseInt(lvl);
-            } else {
-                break;
+        for (let i = this.levelThresholds.length - 1; i >= 0; i--) {
+            if (this.xpData.totalXP >= this.levelThresholds[i]) {
+                return i + 1;
             }
         }
-        
-        return level;
+        return 1;
     }
 
-    getNextLevelProgress() {
+    getXPForNextLevel() {
         const currentLevel = this.getCurrentLevel();
-        const currentXP = this.xpData.currentXP;
-        const currentThreshold = this.levelThresholds[currentLevel];
-        const nextThreshold = this.levelThresholds[currentLevel + 1];
+        if (currentLevel >= this.levelThresholds.length) {
+            return null; // Niveau maximum atteint
+        }
         
-        if (!nextThreshold) {
-            return { 
-                progress: 100, 
-                remaining: 0, 
-                total: currentXP,
-                isMaxLevel: true 
+        const nextLevelThreshold = this.levelThresholds[currentLevel];
+        return nextLevelThreshold - this.xpData.totalXP;
+    }
+
+    getProgressPercentage() {
+        const currentLevel = this.getCurrentLevel();
+        if (currentLevel >= this.levelThresholds.length) {
+            return 100;
+        }
+
+        const currentLevelStart = this.levelThresholds[currentLevel - 1];
+        const nextLevelStart = this.levelThresholds[currentLevel];
+        const progressInLevel = this.xpData.totalXP - currentLevelStart;
+        const levelRange = nextLevelStart - currentLevelStart;
+
+        return Math.round((progressInLevel / levelRange) * 100);
+    }
+
+    /**
+     * Intégration avec système de cœurs existant
+     */
+    integrateWithHeartSystem() {
+        // Hook dans le système de cœurs pour bonus/malus XP
+        const originalLoseHeart = window.EnglishHeartsSystem?.prototype?.loseHeart || window.FrenchHeartsSystem?.prototype?.loseHeart;
+        
+        if (originalLoseHeart) {
+            window.EnglishHeartsSystem.prototype.loseHeart = function() {
+                const result = originalLoseHeart.call(this);
+                
+                // Malus XP pour erreur (optionnel, peut être désactivé)
+                if (window.xpManager && !result) { // Plus de cœurs
+                    window.xpManager.addXP(-5, { type: 'heart_lost', section: 'penalty' });
+                }
+                
+                return result;
             };
-        }
-        
-        const progressXP = currentXP - currentThreshold;
-        const neededXP = nextThreshold - currentThreshold;
-        const progressPercent = Math.floor((progressXP / neededXP) * 100);
-        
-        return {
-            progress: progressPercent,
-            remaining: nextThreshold - currentXP,
-            total: neededXP,
-            isMaxLevel: false
-        };
-    }
-
-    handleLevelUp(oldLevel, newLevel) {
-        const levelUpData = {
-            oldLevel,
-            newLevel,
-            rewards: this.calculateLevelRewards(newLevel),
-            timestamp: new Date().toISOString()
-        };
-
-        // Bonus level up (récupération cœurs, streak protection)
-        if (this.heartSystem) {
-            this.heartSystem.heartsData.currentHearts = 5; // Récupération complète
-            this.heartSystem.saveHearts();
-        }
-
-        // Achievement level milestones
-        this.checkLevelAchievements(newLevel);
-        
-        // Animation level up
-        this.showLevelUpAnimation(levelUpData);
-        
-        console.log('🎉 LEVEL UP!', levelUpData);
-        return levelUpData;
-    }
-
-    calculateLevelRewards(level) {
-        const rewards = [];
-        
-        if (level % 5 === 0) {
-            rewards.push('🎁 Bonus mystère débloqué!');
-        }
-        
-        if (level === 10) {
-            rewards.push('🌟 Mode Expert débloqué!');
-        }
-        
-        if (level === 15) {
-            rewards.push('👑 Statut Maître des Curieux!');
-        }
-        
-        return rewards;
-    }
-
-    updateWeeklyXP(xpGained) {
-        const currentWeekStart = this.getWeekStart();
-        
-        if (this.xpData.weekStartDate !== currentWeekStart) {
-            // Nouvelle semaine
-            this.xpData.weeklyXP = xpGained;
-            this.xpData.weekStartDate = currentWeekStart;
-        } else {
-            this.xpData.weeklyXP += xpGained;
-        }
-    }
-
-    calculateActiveAchievementMultiplier() {
-        let multiplier = 1.0;
-        
-        // Vérifications basées sur patterns d'utilisation
-        const now = new Date();
-        const hour = now.getHours();
-        
-        if (hour >= 6 && hour <= 8) {
-            multiplier *= this.achievementMultipliers.early_bird;
-        }
-        
-        if (hour >= 20 && hour <= 22) {
-            multiplier *= this.achievementMultipliers.night_owl;
-        }
-        
-        if (this.streakManager && this.streakManager.streakData.currentStreak >= 7) {
-            multiplier *= this.achievementMultipliers.week_streak;
-        }
-        
-        return multiplier;
-    }
-
-    recordXPGain(xp, activityType, bonusDetails) {
-        this.xpData.xpHistory.push({
-            timestamp: new Date().toISOString(),
-            xpGained: xp,
-            activityType,
-            bonusDetails,
-            totalXPAfter: this.xpData.currentXP
-        });
-        
-        // Limiter historique à 100 entrées
-        if (this.xpData.xpHistory.length > 100) {
-            this.xpData.xpHistory = this.xpData.xpHistory.slice(-100);
         }
     }
 
     /**
-     * INTERFACE UTILISATEUR - Affichage XP
+     * Intégration avec système de streaks existant
      */
-    initializeXPDisplay() {
-        this.createXPElements();
-        this.updateXPDisplay();
+    integrateWithStreakSystem() {
+        // Vérification streak pour multiplicateur
+        this.hasActiveStreak = () => {
+            const streakData = JSON.parse(localStorage.getItem('englishStreaks')) || 
+                               JSON.parse(localStorage.getItem('frenchStreaks')) || {};
+            return streakData.currentStreak > 0;
+        };
+
+        this.isChainedActivity = () => {
+            const lastActivity = this.xpData.lastActivity;
+            if (!lastActivity) return false;
+            
+            const timeSinceLastActivity = Date.now() - new Date(lastActivity.timestamp).getTime();
+            return timeSinceLastActivity < 300000; // 5 minutes
+        };
     }
 
-    createXPElements() {
-        // Vérifier si éléments existent déjà
-        if (document.getElementById('xp-display-main')) return;
-
-        // Container principal XP (pour header)
-        const xpContainer = document.createElement('div');
-        xpContainer.id = 'xp-display-main';
-        xpContainer.className = 'xp-display-container';
-        xpContainer.innerHTML = `
-            <div class="xp-level-badge">
-                <span class="level-number" id="level-number">1</span>
-                <span class="level-label">Niveau</span>
+    /**
+     * Interface utilisateur XP
+     */
+    createXPInterface() {
+        // Création barre XP dynamique
+        const xpBar = document.createElement('div');
+        xpBar.id = 'xp-progress-bar';
+        xpBar.className = 'xp-interface';
+        xpBar.innerHTML = `
+            <div class="xp-info">
+                <span id="current-level">Niveau ${this.getCurrentLevel()}</span>
+                <span id="xp-display">${this.xpData.totalXP} XP</span>
             </div>
-            <div class="xp-progress-section">
-                <div class="xp-bar-container">
-                    <div class="xp-bar" id="xp-progress-bar">
-                        <div class="xp-bar-fill" id="xp-bar-fill"></div>
-                    </div>
-                    <span class="xp-text" id="xp-text">0/200 XP</span>
-                </div>
+            <div class="xp-bar-container">
+                <div class="xp-bar-fill" style="width: ${this.getProgressPercentage()}%"></div>
+                <div class="xp-bar-text">${this.getXPForNextLevel() || 'MAX'} XP restants</div>
             </div>
-            <div class="xp-weekly-display">
-                <span class="weekly-xp" id="weekly-xp">0 XP cette semaine</span>
-            </div>
+            <div id="xp-multipliers" class="xp-multipliers"></div>
         `;
 
-        // Injecter dans header existant ou créer
-        const headerTarget = document.querySelector('.game-header, .section-header, .main-header') || 
-                           document.querySelector('header') || 
-                           document.body.firstElementChild;
-        
-        if (headerTarget) {
-            headerTarget.appendChild(xpContainer);
+        // Insertion dans interface
+        const targetContainer = document.querySelector('.mindmap-section, main, body');
+        if (targetContainer) {
+            targetContainer.insertBefore(xpBar, targetContainer.firstChild);
         }
-
-        // CSS intégré pour compatibilité
-        this.injectXPStyles();
     }
 
-    updateXPDisplay() {
-        const level = this.getCurrentLevel();
-        const progress = this.getNextLevelProgress();
-        
-        // Mise à jour éléments
-        const levelElement = document.getElementById('level-number');
-        const xpTextElement = document.getElementById('xp-text');
-        const xpBarFill = document.getElementById('xp-bar-fill');
-        const weeklyXPElement = document.getElementById('weekly-xp');
-        
-        if (levelElement) levelElement.textContent = level;
-        
-        if (xpTextElement) {
-            if (progress.isMaxLevel) {
-                xpTextElement.textContent = `${this.xpData.currentXP} XP - Niveau Max!`;
-            } else {
-                xpTextElement.textContent = `${this.xpData.currentXP}/${this.levelThresholds[level + 1]} XP`;
-            }
+    updateDisplays() {
+        // Mise à jour niveau
+        const levelDisplay = document.getElementById('current-level');
+        if (levelDisplay) {
+            levelDisplay.textContent = `Niveau ${this.getCurrentLevel()}`;
         }
-        
+
+        // Mise à jour XP total
+        const xpDisplay = document.getElementById('xp-display');
+        if (xpDisplay) {
+            xpDisplay.textContent = `${this.xpData.totalXP} XP`;
+        }
+
+        // Mise à jour barre progression
+        const xpBarFill = document.querySelector('.xp-bar-fill');
         if (xpBarFill) {
-            xpBarFill.style.width = `${progress.progress}%`;
-            xpBarFill.style.transition = 'width 0.8s ease-in-out';
+            xpBarFill.style.width = `${this.getProgressPercentage()}%`;
         }
-        
-        if (weeklyXPElement) {
-            weeklyXPElement.textContent = `${this.xpData.weeklyXP} XP cette semaine`;
+
+        // Mise à jour texte XP restants
+        const xpBarText = document.querySelector('.xp-bar-text');
+        if (xpBarText) {
+            const remaining = this.getXPForNextLevel();
+            xpBarText.textContent = remaining ? `${remaining} XP restants` : 'Niveau maximum!';
         }
     }
 
-    showLevelUpAnimation(levelUpData) {
-        // Animation célébration level up
-        const animation = document.createElement('div');
-        animation.className = 'level-up-animation';
-        animation.innerHTML = `
+    showXPGainAnimation(xpCalculation) {
+        const animationContainer = document.createElement('div');
+        animationContainer.className = 'xp-gain-animation';
+        animationContainer.innerHTML = `
+            <div class="xp-main">+${xpCalculation.finalXP} XP!</div>
+            ${xpCalculation.appliedMultipliers.map(mult => 
+                `<div class="xp-multiplier">${mult}</div>`
+            ).join('')}
+        `;
+
+        document.body.appendChild(animationContainer);
+
+        // Animation et suppression
+        setTimeout(() => {
+            animationContainer.classList.add('fade-out');
+            setTimeout(() => animationContainer.remove(), 1000);
+        }, 2000);
+    }
+
+    triggerLevelUpAnimation(oldLevel, newLevel) {
+        const levelUpOverlay = document.createElement('div');
+        levelUpOverlay.className = 'level-up-overlay';
+        levelUpOverlay.innerHTML = `
             <div class="level-up-content">
-                <h2>🎉 NIVEAU ${levelUpData.newLevel} !</h2>
-                <p>Félicitations ! Tu progresses vraiment bien !</p>
-                <div class="rewards">
-                    ${levelUpData.rewards.map(reward => `<div class="reward">${reward}</div>`).join('')}
+                <div class="level-up-star">⭐</div>
+                <h2>NIVEAU SUPÉRIEUR!</h2>
+                <div class="level-progression">
+                    <span class="old-level">Niveau ${oldLevel}</span>
+                    <span class="arrow">→</span>
+                    <span class="new-level">Niveau ${newLevel}</span>
                 </div>
-                <button class="continue-btn" onclick="this.parentElement.parentElement.remove()">
-                    Continuer
+                <p>Bravo! Tu deviens de plus en plus fort!</p>
+                <button onclick="this.parentElement.parentElement.remove()" class="continue-btn">
+                    Continuer l'aventure! 🚀
                 </button>
             </div>
         `;
-        
-        document.body.appendChild(animation);
-        
-        // Auto-suppression après 5 secondes
-        setTimeout(() => {
-            if (animation.parentElement) {
-                animation.remove();
-            }
-        }, 5000);
+
+        document.body.appendChild(levelUpOverlay);
+
+        // Son level up (si Web Audio disponible)
+        this.playLevelUpSound();
     }
 
-    injectXPStyles() {
-        if (document.getElementById('xp-system-styles')) return;
+    playLevelUpSound() {
+        if (window.AudioContext || window.webkitAudioContext) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Son synthétique level up style jeu vidéo
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // Do
+            oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // Mi
+            oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // Sol
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+    }
+
+    checkLevelUp() {
+        const currentLevel = this.getCurrentLevel();
+        const lastKnownLevel = this.xpData.lastKnownLevel || 1;
         
-        const styles = document.createElement('style');
-        styles.id = 'xp-system-styles';
-        styles.textContent = `
-            .xp-display-container {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                padding: 10px 20px;
-                border-radius: 15px;
-                color: white;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                margin: 10px 0;
-                flex-wrap: wrap;
+        if (currentLevel > lastKnownLevel) {
+            this.xpData.lastKnownLevel = currentLevel;
+            // Level up déjà géré dans addXP
+        }
+    }
+
+    checkAchievements() {
+        const achievements = [
+            {
+                id: 'first_100_xp',
+                condition: () => this.xpData.totalXP >= 100,
+                title: 'Premier Centurion',
+                description: '100 XP gagnés!'
+            },
+            {
+                id: 'level_5',
+                condition: () => this.getCurrentLevel() >= 5,
+                title: 'Explorateur Confirmé',
+                description: 'Niveau 5 atteint!'
+            },
+            {
+                id: 'perfectionist',
+                condition: () => this.xpData.multiplierHistory.filter(m => m.includes('Parfait')).length >= 5,
+                title: 'Perfectionniste',
+                description: '5 scores parfaits!'
             }
-            
-            .xp-level-badge {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                background: rgba(255,255,255,0.2);
-                padding: 8px 12px;
-                border-radius: 10px;
-                min-width: 60px;
+        ];
+
+        achievements.forEach(achievement => {
+            if (achievement.condition() && !this.xpData.achievements.includes(achievement.id)) {
+                this.xpData.achievements.push(achievement.id);
+                this.showAchievementUnlock(achievement);
             }
-            
-            .level-number {
-                font-size: 24px;
-                font-weight: bold;
-                line-height: 1;
-            }
-            
-            .level-label {
-                font-size: 12px;
-                opacity: 0.9;
-            }
-            
-            .xp-progress-section {
-                flex: 1;
-                min-width: 200px;
-            }
-            
-            .xp-bar-container {
-                position: relative;
-            }
-            
-            .xp-bar {
-                background: rgba(255,255,255,0.3);
-                height: 20px;
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
-            }
-            
-            .xp-bar-fill {
-                background: linear-gradient(90deg, #00ff88, #00cc6a);
-                height: 100%;
-                border-radius: 10px;
-                transition: width 0.8s ease-in-out;
-                box-shadow: 0 0 10px rgba(0,255,136,0.5);
-            }
-            
-            .xp-text {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 12px;
-                font-weight: bold;
-                text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-                z-index: 1;
-            }
-            
-            .weekly-xp {
-                font-size: 14px;
-                opacity: 0.9;
-                white-space: nowrap;
-            }
-            
-            .level-up-animation {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(0,0,0,0.8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                animation: fadeIn 0.5s ease-in-out;
-            }
-            
-            .level-up-content {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                padding: 40px;
-                border-radius: 20px;
-                text-align: center;
-                color: white;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-                animation: bounceIn 0.8s ease-out;
-            }
-            
-            .level-up-content h2 {
-                margin: 0 0 20px 0;
-                font-size: 2.5em;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            }
-            
-            .rewards {
-                margin: 20px 0;
-            }
-            
-            .reward {
-                background: rgba(255,255,255,0.2);
-                padding: 8px 16px;
-                margin: 5px 0;
-                border-radius: 8px;
-                font-size: 1.1em;
-            }
-            
-            .continue-btn {
-                background: #00ff88;
-                color: #333;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 8px;
-                font-size: 1.1em;
-                font-weight: bold;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-            
-            .continue-btn:hover {
-                background: #00cc6a;
-                transform: translateY(-2px);
-            }
-            
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            
-            @keyframes bounceIn {
-                0% { transform: scale(0.3) translateY(-50px); opacity: 0; }
-                50% { transform: scale(1.05) translateY(-25px); opacity: 0.8; }
-                70% { transform: scale(0.9) translateY(-10px); opacity: 0.9; }
-                100% { transform: scale(1) translateY(0); opacity: 1; }
-            }
-            
-            /* Responsive */
-            @media (max-width: 768px) {
-                .xp-display-container {
-                    flex-direction: column;
-                    text-align: center;
-                    gap: 10px;
-                }
-                
-                .xp-progress-section {
-                    width: 100%;
-                }
-                
-                .level-up-content {
-                    margin: 20px;
-                    padding: 30px 20px;
-                }
-                
-                .level-up-content h2 {
-                    font-size: 2em;
-                }
-            }
+        });
+    }
+
+    showAchievementUnlock(achievement) {
+        // Notification achievement débloqué
+        const notification = document.createElement('div');
+        notification.className = 'achievement-notification';
+        notification.innerHTML = `
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-text">
+                <h4>${achievement.title}</h4>
+                <p>${achievement.description}</p>
+            </div>
         `;
         
-        document.head.appendChild(styles);
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 4000);
     }
 
-    bindEvents() {
-        // Événements personnalisés pour intégration
-        document.addEventListener('heartLost', () => {
-            // Réduire légèrement XP lors perte cœur pour encourager précision
-            this.addXP(-2, 'heart_penalty', { penalty: true });
-        });
-
-        document.addEventListener('streakUpdated', (event) => {
-            if (event.detail && event.detail.newStreak > event.detail.oldStreak) {
-                // Bonus streak automatique
-                this.addXP(10, 'streak_bonus', { 
-                    streakLevel: event.detail.newStreak 
-                });
-            }
-        });
+    // API publique pour intégration
+    getStats() {
+        return {
+            level: this.getCurrentLevel(),
+            totalXP: this.xpData.totalXP,
+            xpForNext: this.getXPForNextLevel(),
+            progressPercent: this.getProgressPercentage(),
+            sectionsXP: this.xpData.sectionsXP,
+            achievements: this.xpData.achievements
+        };
     }
 
-    triggerXPEvents() {
-        // Déclencher événements pour autres systèmes
-        const event = new CustomEvent('xpUpdated', {
-            detail: {
-                currentXP: this.xpData.currentXP,
-                currentLevel: this.getCurrentLevel(),
-                weeklyXP: this.xpData.weeklyXP
-            }
-        });
-        document.dispatchEvent(event);
+    // Debug et maintenance
+    exportData() {
+        return {
+            xpData: this.xpData,
+            levelThresholds: this.levelThresholds,
+            timestamp: new Date().toISOString()
+        };
     }
 
-    /**
-     * UTILITAIRES
-     */
-    getWeekStart() {
-        const now = new Date();
-        const day = now.getDay();
-        const diff = now.getDate() - day + (day === 0 ? -6 : 1); // Lundi = début
-        const monday = new Date(now.setDate(diff));
-        monday.setHours(0, 0, 0, 0);
-        return monday.toISOString().split('T')[0];
-    }
-
-    checkLevelAchievements(level) {
-        // Intégration avec système de badges existant
-        if (window.badgeSystem) {
-            if (level >= 5) window.badgeSystem.awardBadge('level_5_reached');
-            if (level >= 10) window.badgeSystem.awardBadge('level_10_reached');
-            if (level >= 15) window.badgeSystem.awardBadge('level_15_reached');
+    resetProgress() {
+        if (confirm('Êtes-vous sûr de vouloir remettre à zéro la progression XP?')) {
+            localStorage.removeItem('lemondedescurieux_xp');
+            location.reload();
         }
     }
-
-    /**
-     * API DEBUG & TESTING
-     */
-    debug = {
-        addTestXP: (amount = 50) => {
-            return this.addXP(amount, 'debug_test', { debug: true });
-        },
-        
-        simulateLevelUp: () => {
-            const currentLevel = this.getCurrentLevel();
-            const nextThreshold = this.levelThresholds[currentLevel + 1];
-            if (nextThreshold) {
-                const needed = nextThreshold - this.xpData.currentXP + 10;
-                return this.addXP(needed, 'debug_levelup', { debug: true });
-            }
-        },
-        
-        resetXP: () => {
-            this.xpData.currentXP = 0;
-            this.xpData.totalXPEarned = 0;
-            this.saveXPData();
-            console.log('🔄 XP reset to 0');
-        },
-        
-        getStats: () => {
-            return {
-                currentLevel: this.getCurrentLevel(),
-                currentXP: this.xpData.currentXP,
-                nextLevelProgress: this.getNextLevelProgress(),
-                weeklyXP: this.xpData.weeklyXP,
-                totalEarned: this.xpData.totalXPEarned,
-                sessionsCompleted: this.xpData.sessionsCompleted
-            };
-        }
-    };
 }
 
-// Auto-initialisation au chargement
-document.addEventListener('DOMContentLoaded', () => {
+// CSS intégré pour interface XP
+const xpStyles = `
+<style>
+.xp-interface {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+}
+
+.xp-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.xp-bar-container {
+    position: relative;
+    background: rgba(255,255,255,0.3);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00f260, #0575e6);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+}
+
+.xp-bar-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.xp-multipliers {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    font-size: 8px;
+}
+
+.xp-gain-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    text-align: center;
+    pointer-events: none;
+    animation: xpBounce 2s ease-out;
+}
+
+.xp-main {
+    font-size: 24px;
+    color: #00f260;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+}
+
+.xp-multiplier {
+    font-size: 14px;
+    color: #ffd700;
+    margin: 2px 0;
+}
+
+.level-up-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.level-up-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    max-width: 400px;
+    animation: levelUpBounce 0.8s ease-out;
+}
+
+.level-up-star {
+    font-size: 60px;
+    animation: spin 2s linear infinite;
+}
+
+.level-progression {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.continue-btn {
+    background: #00f260;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.continue-btn:hover {
+    transform: scale(1.05);
+}
+
+.achievement-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1500;
+    animation: slideIn 0.5s ease-out;
+    max-width: 300px;
+}
+
+@keyframes xpBounce {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+@keyframes levelUpBounce {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .xp-interface {
+        padding: 10px;
+        font-size: 10px;
+    }
+    
+    .level-up-content {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .achievement-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+</style>
+`;
+
+// Injection CSS et initialisation automatique
+document.head.insertAdjacentHTML('beforeend', xpStyles);
+
+// Initialisation globale
+window.addEventListener('DOMContentLoaded', () => {
     window.xpManager = new XPManager();
     
-    // API globale pour faciliter l'intégration
-    window.XPDebug = window.xpManager.debug;
+    // API debug pour développement
+    window.XPDebug = {
+        addXP: (amount, context) => window.xpManager.addXP(amount, context),
+        getStats: () => window.xpManager.getStats(),
+        levelUp: () => window.xpManager.addXP(1000),
+        reset: () => window.xpManager.resetProgress(),
+        export: () => console.log(JSON.stringify(window.xpManager.exportData(), null, 2))
+    };
     
-    console.log('🎮 Système XP complet initialisé!');
-    console.log('💡 Test rapide: XPDebug.addTestXP(100)');
-    console.log('📊 Statistiques: XPDebug.getStats()');
+    console.log('✅ Système XP initialisé avec succès!');
+    console.log('🎮 Debug: window.XPDebug disponible');
 });

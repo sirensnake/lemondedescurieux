@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Français - Le Monde des Curieux</title>
+    
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body class="francais-section">
+    <!-- Header stylisé avec composant -->
+    <header class="section-header-styled francais">
+        <nav aria-label="Fil d'Ariane" class="breadcrumb-minecraft">
+    <ol>
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="langues.html">🌍 Langues</a></li>
+        <li aria-current="page">🇬🇧 Anglais</li>
+    </ol>
+</nav>
+    </header>
+
+    <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            🏠 <a href="index.html">Accueil</a> > 🇫🇷 Français
+        </div>
+        
+        <!-- Menu latéral simple et fonctionnel -->
+        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+        <div class="sidebar">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire-Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
+            </ul>
+        </div>
+
+        <!-- Zone XP automatique -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
+            <span id="xp-display">XP: 0</span> | 
+            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display">🔥 0 jours</span>
+        </div>
+
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        </div>
+
+        <!-- Titre section -->
+        <div class="section-title">
+            <h1>🇫🇷 Français</h1>
+            <p>Maîtrise la langue française avec Curio !</p>
+        </div>
+
+        <!-- Activités Interactives SIMPLIFIÉES -->
+        <section>
+            <h2>🎮 Activités Interactives</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                
+                <button id="grammaire-btn" class="activity-btn" data-activity="grammaire" data-xp="20">
+                    📝 Quiz Grammaire<br>
+                    <small style="font-size: 8px; opacity: 0.9;">+20 XP</small>
+                </button>
+
+                <button id="conjugaison-btn" class="activity-btn" data-activity="conjugaison" data-xp="25">
+                    🔄 Conjugaison<br>
+                    <small style="font-size: 8px; opacity: 0.9;">+25 XP</small>
+                </button>
+
+                <button id="dictee-btn" class="activity-btn" data-activity="dictee" data-xp="30">
+                    🎧 Dictée Interactive<br>
+                    <small style="font-size: 8px; opacity: 0.9;">+30 XP</small>
+                </button>
+
+                <button id="vocabulaire-btn" class="activity-btn" data-activity="vocabulaire" data-xp="15">
+                    📚 Vocabulaire<br>
+                    <small style="font-size: 8px; opacity: 0.9;">+15 XP</small>
+                </button>
+            </div>
+        </section>
+
+        <!-- Zone quiz avec ID existant -->
+        <section>
+            <h2>🧠 Zone Quiz</h2>
+            <div id="quiz-container" style="text-align: center; padding: 2rem;">
+                <div style="background: #f1faee; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <p style="color: #264653; margin-bottom: 1rem;">Choisis une activité ci-dessus pour commencer !</p>
+                    <p style="color: #2a9d8f; font-size: 12px;">Les quiz s'afficheront ici...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts dans l'ordre CORRECT -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+    
+    <!-- Scripts quiz AVANT francais_complete.js -->
+    <script src="scripts/quiz_grammaire_cm1.js"></script>
+    <script src="scripts/quiz_conjugaison_cm1.js"></script>
+    
+    <!-- Script principal EN DERNIER -->
+    <script src="scripts/francais_complete.js"></script>
+    
+    <style>
+        /* Styles des boutons d'activité */
+        .activity-btn {
+            background: linear-gradient(135deg, #2a9d8f, #e9c46a);
+            color: white;
+            border: none;
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .activity-btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .activity-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        #conjugaison-btn {
+            background: linear-gradient(135deg, #e76f51, #f4a261);
+        }
+        
+        #dictee-btn {
+            background: linear-gradient(135deg, #264653, #2a9d8f);
+        }
+        
+        #vocabulaire-btn {
+            background: linear-gradient(135deg, #457b9d, #1d3557);
+        }
+    </style>
+    
+    <script>
+        // Initialisation SIMPLIFIÉE et ROBUSTE
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("🔧 Initialisation section Français...");
+            
+            // 1. Menu latéral
+            initMenuLateral();
+            
+            // 2. Attendre que tous les scripts soient chargés
+            setTimeout(() => {
+                // 3. Systèmes XP
+                initXPSystems();
+                
+                // 4. Événements activités
+                initActivityButtons();
+                
+                console.log("✅ Section Français initialisée avec succès !");
+            }, 1500); // Délai plus long pour assurer chargement complet
+        });
+        
+        function initMenuLateral() {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleButton = document.querySelector('.sidebar-toggle');
+            
+            if (sidebar) sidebar.style.left = '-250px';
+            
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && 
+                        e.target !== toggleButton && 
+                        !sidebar.contains(e.target)) {
+                        sidebar.style.left = '-250px';
+                    }
+                });
+            }
+        }
+        
+        function initXPSystems() {
+            try {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'francais';
+                    document.getElementById('xp-status').style.display = 'block';
+                    updateDisplays();
+                    console.log("✅ Systèmes XP initialisés");
+                }
+            } catch (e) {
+                console.warn("⚠️ Erreur systèmes XP:", e);
+            }
+        }
+        
+        function initActivityButtons() {
+            const buttons = document.querySelectorAll('.activity-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const activity = this.dataset.activity;
+                    const xp = parseInt(this.dataset.xp);
+                    
+                    console.log(`🎮 Activité lancée: ${activity} (+${xp} XP)`);
+                    
+                    // Vérifier que francaisComplete existe
+                    if (typeof francaisComplete !== 'undefined') {
+                        if (typeof window.startActivity === 'function') {
+                            window.startActivity(activity, xp);
+                        } else {
+                            console.error("❌ Fonction startActivity non trouvée");
+                            showError("Système non initialisé");
+                        }
+                    } else {
+                        console.error("❌ francaisComplete non trouvé");
+                        showError("Scripts non chargés");
+                    }
+                });
+            });
+            
+            console.log("✅ Boutons d'activité initialisés");
+        }
+        
+        function updateDisplays() {
+            try {
+                if (window.xpManager) {
+                    document.getElementById('xp-display').textContent = `XP: ${window.xpManager.xpData.currentXP}`;
+                }
+                if (window.heartSystem) {
+                    const hearts = '❤️'.repeat(window.heartSystem.heartsData.currentHearts) + 
+                                 '🤍'.repeat(5 - window.heartSystem.heartsData.currentHearts);
+                    document.getElementById('hearts-display').textContent = hearts;
+                }
+                if (window.streakManager) {
+                    document.getElementById('streak-display').textContent = `🔥 ${window.streakManager.streakData.currentStreak} jours`;
+                }
+            } catch (e) {
+                console.warn('⚠️ Erreur mise à jour affichage:', e);
+            }
+        }
+        
+        function showError(message) {
+            const container = document.getElementById('quiz-container');
+            if (container) {
+                container.innerHTML = `
+                    <div style="background: #ffebee; padding: 2rem; border-radius: 12px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+                        <h3 style="color: #c62828; margin-bottom: 1rem;">Erreur Technique</h3>
+                        <p style="color: #d32f2f; margin-bottom: 2rem;">${message}</p>
+                        <button onclick="location.reload()" style="
+                            background: #1976d2;
+                            color: white;
+                            border: none;
+                            padding: 1rem 2rem;
+                            border-radius: 8px;
+                            cursor: pointer;
+                        ">
+                            🔄 Recharger la page
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        // Fonction globale pour debug
+        window.debugFrancais = function() {
+            console.log("🔍 DEBUG Section Français:");
+            console.log("- francaisComplete:", typeof francaisComplete);
+            console.log("- grammaireQuiz:", typeof grammaireQuiz);
+            console.log("- conjugaisonQuiz:", typeof conjugaisonQuiz);
+            console.log("- startActivity:", typeof window.startActivity);
+            console.log("- xpManager:", typeof window.xpManager);
+            console.log("- heartSystem:", typeof window.heartSystem);
+            console.log("- streakManager:", typeof window.streakManager);
+        };
+    </script>
+    <script src="./scripts/xp_system_complete.js"></script>
+</body>
+</html>

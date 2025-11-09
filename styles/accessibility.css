@@ -1,0 +1,347 @@
+/* styles/accessibility.css */
+/* Système d'accessibilité complet - Le Monde des Curieux */
+
+/* ========================================
+   1. SKIP LINKS (Navigation clavier)
+   ======================================== */
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2a9d8f;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ========================================
+   2. FOCUS VISIBLE (Indicateurs clavier)
+   ======================================== */
+
+:focus {
+    outline: 3px solid #2a9d8f;
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #2a9d8f;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   3. MODE HAUT CONTRASTE
+   ======================================== */
+
+body.high-contrast {
+    --primary-color: #000000;
+    --secondary-color: #FFFFFF;
+    --text-color: #000000;
+    --background-color: #FFFFFF;
+    --accent-color: #0000FF;
+}
+
+body.high-contrast * {
+    border-color: #000000 !important;
+}
+
+body.high-contrast a {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+body.high-contrast button {
+    background: #000000;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+/* ========================================
+   4. POLICE ADAPTÉE DYS (OpenDyslexic)
+   ======================================== */
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('../fonts/OpenDyslexic-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body.dyslexia-friendly {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+body.dyslexia-friendly * {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    line-height: 1.8;
+}
+
+/* ========================================
+   5. ANIMATIONS RÉDUITES
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+body.reduced-motion * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* ========================================
+   6. TAILLE TEXTE AJUSTABLE
+   ======================================== */
+
+body.text-size-small {
+    font-size: 14px;
+}
+
+body.text-size-medium {
+    font-size: 16px; /* Défaut */
+}
+
+body.text-size-large {
+    font-size: 18px;
+}
+
+body.text-size-xlarge {
+    font-size: 20px;
+}
+
+/* ========================================
+   7. LECTEUR D'ÉCRAN - ÉLÉMENTS CACHÉS
+   ======================================== */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* ========================================
+   8. LANDMARKS ARIA
+   ======================================== */
+
+[role="banner"],
+[role="navigation"],
+[role="main"],
+[role="complementary"],
+[role="contentinfo"] {
+    position: relative;
+}
+
+/* Indicateur visuel focus landmarks */
+[role="banner"]:focus-within::before,
+[role="navigation"]:focus-within::before,
+[role="main"]:focus-within::before {
+    content: attr(aria-label);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #2a9d8f;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    z-index: 1000;
+}
+
+/* ========================================
+   9. PANNEAU DE CONTRÔLE ACCESSIBILITÉ
+   ======================================== */
+
+.accessibility-panel {
+    position: fixed;
+    top: 50%;
+    right: -300px;
+    transform: translateY(-50%);
+    width: 300px;
+    background: white;
+    border: 2px solid #2a9d8f;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    z-index: 9999;
+    transition: right 0.3s ease;
+}
+
+.accessibility-panel.open {
+    right: 0;
+}
+
+.accessibility-toggle {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 1rem 0.5rem;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    z-index: 10000;
+    font-size: 1.5rem;
+}
+
+.accessibility-toggle:hover {
+    background: #264653;
+}
+
+.accessibility-panel h3 {
+    margin-top: 0;
+    color: #1d3557;
+    font-size: 1.1rem;
+}
+
+.accessibility-control {
+    margin: 1rem 0;
+}
+
+.accessibility-control label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #495057;
+}
+
+.accessibility-control button,
+.accessibility-control select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.accessibility-control button:hover,
+.accessibility-control select:hover {
+    border-color: #2a9d8f;
+}
+
+.accessibility-control button.active {
+    background: #2a9d8f;
+    color: white;
+    border-color: #2a9d8f;
+}
+
+/* ========================================
+   10. TOOLTIPS ACCESSIBLES
+   ======================================== */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip[aria-describedby] {
+    cursor: help;
+    text-decoration: underline dotted;
+}
+
+.tooltip-content {
+    position: absolute;
+    background: #1d3557;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip:focus .tooltip-content {
+    opacity: 1;
+}
+
+/* ========================================
+   11. MESSAGES D'ALERTE ACCESSIBLES
+   ======================================== */
+
+[role="alert"],
+[role="status"] {
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+[role="alert"] {
+    background: #ffe5e7;
+    border-left: 4px solid #e63946;
+    color: #721c24;
+}
+
+[role="status"] {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+/* ========================================
+   12. RESPONSIVE ACCESSIBILITÉ
+   ======================================== */
+
+@media (max-width: 768px) {
+    .accessibility-panel {
+        width: 100%;
+        right: -100%;
+        border-radius: 0;
+    }
+    
+    .accessibility-panel.open {
+        right: 0;
+    }
+    
+    .accessibility-toggle {
+        bottom: 1rem;
+        top: auto;
+        right: 1rem;
+        transform: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

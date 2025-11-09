@@ -1,31 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Artificielle - Le Monde des Curieux</title>
-    
-    <!-- CSS existants dans l'ordre standard -->
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/index_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
-    <link rel="stylesheet" href="styles/accessibilite.css">
-    <link rel="stylesheet" href="styles/dark-mode.css">
-    <link rel="stylesheet" href="styles/breadcrumb.css">
-    <link rel="stylesheet" href="styles/layout_style.css">
-    <link rel="stylesheet" href="styles/general_style.css">
-    <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/ia_section_style.css">
-    
-    <!-- Composants réutilisables -->
-    <link rel="stylesheet" href="styles/components.css">
-    
-    <!-- Police Minecraft -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    
-    <link rel="manifest" href="/manifest.json">
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-</head>
+<!-- Header avec contrôle utilisateur intégré -->
+<header class="section-header-styled [section]">
+    <div class="header-container">
+        <!-- Navigation retour -->
+        <button onclick="history.back()" class="back-btn-minecraft [section]">
+            ← Retour
+        </button>
+        
+        <!-- Contrôle utilisateur (nouveau) -->
+        <div id="user-control" class="user-control-container">
+            <!-- État non connecté -->
+            <div id="user-guest" class="user-guest">
+                <button onclick="userController.showProfileSetup()" class="btn-profile-setup">
+                    👤 Créer mon profil
+                </button>
+            </div>
+            
+            <!-- État connecté -->
+            <div id="user-connected" class="user-connected" style="display: none;">
+                <div class="user-avatar" onclick="userController.toggleMenu()">
+                    <img id="user-avatar-img" src="images/avatars/curio-default.png" alt="Avatar">
+                    <span id="user-nickname">Explorateur</span>
+                </div>
+                
+                <!-- Menu déroulant utilisateur -->
+                <div id="user-menu" class="user-dropdown-menu" style="display: none;">
+                    <div class="user-menu-header">
+                        <strong id="menu-nickname">Explorateur</strong>
+                        <span class="user-level">Niveau <span id="menu-level">1</span></span>
+                    </div>
+                    
+                    <div class="user-menu-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">🔥</span>
+                            <span class="stat-value" id="menu-streak">0</span>
+                            <span class="stat-label">jours</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span class="stat-value" id="menu-xp">0</span>
+                            <span class="stat-label">XP</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🏆</span>
+                            <span class="stat-value" id="menu-badges">0</span>
+                            <span class="stat-label">badges</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="user-menu-actions">
+                        <li><a href="mon-parcours.html">📊 Mon Tableau de Bord</a></li>
+                        <li><a href="#" onclick="userController.editProfile()">✏️ Modifier Profil</a></li>
+                        <li><a href="#" onclick="userController.exportData()">💾 Exporter Données</a></li>
+                        <li><a href="#" onclick="userController.showSettings()">⚙️ Paramètres</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" onclick="userController.resetProfile()" class="danger">🔄 Réinitialiser</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <body class="ia-section">
     <!-- Header stylisé avec composant -->
     <header class="section-header-styled ia">
@@ -45,10 +81,9 @@
         <div class="sidebar">
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="mindmap.html">Carte des matières</a></li>
                 <li><a href="maths_section.html">Mathématiques</a></li>
                 <li><a href="sciences_section.html">Sciences</a></li>
-                <li><a href="histoire_section.html">Histoire‑Géo</a></li>
+                <li><a href="histoire_section.html">Histoire-Géo</a></li>
                 <li><a href="francais_section.html">Français</a></li>
                 <li><a href="english_section.html">English</a></li>
                 <li><a href="programmation_section.html">Programmation</a></li>
@@ -58,6 +93,7 @@
                 <li><a href="infos_section.html">Infos</a></li>
                 <li><a href="ia_section.html">IA</a></li>
                 <li><a href="mon-parcours.html">Mon Parcours</a></li>
+                <script src="scripts/xp_system_complete.js"></script>
             </ul>
         </div>
 
@@ -95,7 +131,7 @@
                     
                     <div class="ia-card">
                         <h3>🔍 Comment ça marche ?</h3>
-                        <p>L'IA fonctionne grâce à l'apprentissage automatique. Cela signifie qu'elle apprend à partir d'exemples, un peu comme toi quand tu apprends à reconnaître les chats après en avoir vu plusieurs.</p>
+                        <p>L'IA fonctionne gr'ce à l'apprentissage automatique. Cela signifie qu'elle apprend à partir d'exemples, un peu comme toi quand tu apprends à reconnaître les chats après en avoir vu plusieurs.</p>
                         <p>Plus l'IA voit d'exemples, plus elle devient intelligente et précise dans ses réponses.</p>
                         <div class="ia-example">
                             <strong>Exemple:</strong> Pour apprendre à reconnaître un chat, l'IA regarde des milliers d'images de chats et apprend leurs caractéristiques comme les oreilles pointues ou la queue.
@@ -228,7 +264,7 @@
                     creator: "Humain"
                 },
                 {
-                    text: "Les arbres centenaires murmurent les secrets des âges passés tandis que leurs racines s'enfoncent profondément dans le sol nourricier de notre histoire collective.",
+                    text: "Les arbres centenaires murmurent les secrets des 'ges passés tandis que leurs racines s'enfoncent profondément dans le sol nourricier de notre histoire collective.",
                     creator: "IA"
                 },
                 {
@@ -366,5 +402,6 @@
             }, 3000);
         }
     </script>
+    <script src="./scripts/xp_system_complete.js"></script>
 </body>
 </html>

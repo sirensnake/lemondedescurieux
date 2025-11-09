@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[SECTION] - Le Monde des Curieux</title>
+    
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    
+    <!-- Composants réutilisables -->
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body class="[section]-section">
+    <!-- Header avec rôle banner -->
+    <header class="section-header-styled [section]" role="banner">
+        <button onclick="history.back()" class="back-btn-minecraft [section]">
+            ← Retour à l'accueil
+        </button>
+        
+        <!-- Ajout navigation principale -->
+        <nav aria-label="Navigation principale" role="navigation">
+            <!-- Menu persistant injecté ici par JS -->
+        </nav>
+    </header>
+
+    <!-- Main avec rôle main -->
+    <main role="main" aria-labelledby="page-title">
+        <div class="section-title">
+            <h1 id="page-title">[EMOJI] [SECTION_TITLE]</h1>
+            <p>[DESCRIPTION_SECTION]</p>
+        </div>
+
+        <!-- Zone XP avec région ARIA -->
+        <div id="xp-status" role="region" aria-label="Progression et statistiques" aria-live="polite">
+            <span id="xp-display" aria-label="Points d'expérience">XP: 0</span> | 
+            <span id="hearts-display" aria-label="Cœurs restants">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display" aria-label="Série de jours consécutifs">🔥 0 jours</span>
+        </div>
+
+        <!-- Contenu principal avec section sémantique -->
+        <section aria-labelledby="activities-heading">
+            <h2 id="activities-heading" class="sr-only">Activités de la section</h2>
+            <!-- Activités de la section -->
+        </section>
+    </main>
+
+    <!-- Footer avec rôle contentinfo -->
+    <footer role="contentinfo">
+        <p>&copy; 2025 Le Monde des Curieux - Tous droits réservés</p>
+        <nav aria-label="Navigation footer">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="politique-confidentialite.html">Confidentialité</a>
+        </nav>
+    </footer>
+
+    <!-- Scripts standards -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/persistent-menu.js"></script>
+    
+    <!-- Skip link pour navigation clavier -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+</body>
+</html>

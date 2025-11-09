@@ -1,0 +1,495 @@
+/* ========================================
+   HOME DASHBOARD STYLES
+   Styles spécifiques pour la page d'accueil
+   Le Monde des Curieux
+   ======================================== */
+
+/* Main XP Container */
+.main-xp-container {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    padding: 0 20px;
+}
+
+.home-xp-welcome {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.home-xp-welcome h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+    font-family: 'Minecraftia', monospace;
+}
+
+.home-xp-welcome p {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.95;
+}
+
+.home-xp-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.home-xp-stat {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 100px;
+}
+
+.home-xp-stat-label {
+    display: block;
+    font-size: 0.7em;
+    opacity: 0.8;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.home-xp-stat-value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Minecraftia', monospace;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid #e9ecef;
+}
+
+.dashboard-header h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-family: 'Minecraftia', monospace;
+}
+
+.home-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Dashboard Stats Grid */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.stat-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-bottom: 3px;
+}
+
+.stat-value {
+    display: block;
+    font-weight: bold;
+    color: #495057;
+    font-family: 'Minecraftia', monospace;
+}
+
+/* Progress Bars */
+.dashboard-progress {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.progress-label {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 8px;
+}
+
+.progress-bar-home {
+    background: #e9ecef;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill-home {
+    background: linear-gradient(90deg, #28a745, #20c997);
+    height: 100%;
+    transition: width 0.8s ease-in-out;
+    border-radius: 10px;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.8em;
+    color: #495057;
+    margin-top: 5px;
+    font-family: 'Minecraftia', monospace;
+}
+
+/* Dashboard Encouragement */
+.dashboard-encouragement {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Minecraftia', monospace;
+    font-size: 0.9em;
+}
+
+/* Dashboard Actions */
+.dashboard-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dashboard-btn {
+    flex: 1;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Minecraftia', monospace;
+    font-size: 0.8em;
+    transition: background 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    background: #0056b3;
+}
+
+/* Parcours XP */
+.parcours-xp {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Quick Activities Section */
+.quick-activities {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+}
+
+.quick-activities h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-family: 'Minecraftia', monospace;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.quick-activity-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-activity-card:hover {
+    transform: translateY(-2px);
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.activity-icon {
+    display: block;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.activity-name {
+    display: block;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 3px;
+}
+
+.activity-xp {
+    display: block;
+    font-size: 0.7em;
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.quick-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-family: 'Minecraftia', monospace;
+    transition: background 0.3s ease;
+}
+
+.quick-btn:hover {
+    background: #218838;
+}
+
+/* User Control Header */
+.main-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 20px;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-logo h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-family: 'Minecraftia', monospace;
+}
+
+.user-control-container {
+    position: relative;
+}
+
+.btn-profile-setup {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Minecraftia', monospace;
+    font-size: 0.8em;
+    transition: background 0.3s ease;
+}
+
+.btn-profile-setup:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease;
+}
+
+.user-avatar:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.user-avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    min-width: 250px;
+    z-index: 1000;
+    color: #333;
+}
+
+.user-menu-header {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.user-menu-header strong {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.user-level {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+.user-menu-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.user-menu-actions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-menu-actions li {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.user-menu-actions li:last-child {
+    border-bottom: none;
+}
+
+.user-menu-actions a {
+    display: block;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.user-menu-actions a:hover {
+    background: #f8f9fa;
+}
+
+.user-menu-actions a.danger {
+    color: #dc3545;
+}
+
+.user-menu-actions a.danger:hover {
+    background: #fff5f5;
+}
+
+.user-menu-actions .divider {
+    height: 1px;
+    background: #e9ecef;
+    margin: 5px 0;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .main-xp-container {
+        padding: 0 10px;
+    }
+
+    .home-xp-welcome {
+        padding: 15px;
+    }
+
+    .home-xp-welcome h2 {
+        font-size: 1em;
+    }
+
+    .home-xp-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .home-xp-stat {
+        width: 100%;
+    }
+
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+    }
+
+    .activity-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-logo h1 {
+        font-size: 1em;
+    }
+
+    .user-dropdown-menu {
+        right: -10px;
+        min-width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .user-control-container {
+        width: 100%;
+    }
+
+    .user-dropdown-menu {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+}

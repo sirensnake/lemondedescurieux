@@ -53,6 +53,38 @@
   body.high-contrast .breadcrumb a:hover {
     color: #ff0;
   }
+
+  /* styles/breadcrumb.css - DÉJÀ RÉFÉRENCÉ MAIS NON IMPLÉMENTÉ */
+.breadcrumb-minecraft {
+    background: #2a9d8f;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb-minecraft ol {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-minecraft li:not(:last-child)::after {
+    content: " → ";
+    margin-left: 0.5rem;
+    color: #f1faee;
+}
+
+.breadcrumb-minecraft a {
+    color: #f1faee;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.breadcrumb-minecraft a:hover {
+    transform: scale(1.1);
+    text-shadow: 2px 2px 0 #1d3557;
+}
   
   /* Responsive */
   @media (max-width: 768px) {
@@ -61,3 +93,4 @@
       padding: 6px 10px;
     }
   }
+

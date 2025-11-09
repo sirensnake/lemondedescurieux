@@ -1,198 +1,116 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[SECTION] - Le Monde des Curieux</title>
-    
-    <!-- CSS existants dans l'ordre standard -->
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/index_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
-    <link rel="stylesheet" href="styles/accessibilite.css">
-    <link rel="stylesheet" href="styles/dark-mode.css">
-    <link rel="stylesheet" href="styles/breadcrumb.css">
-    <link rel="stylesheet" href="styles/layout_style.css">
-    <link rel="stylesheet" href="styles/general_style.css">
-    <link rel="stylesheet" href="styles/section_style.css">
-    
-    <!-- Composants réutilisables -->
-    <link rel="stylesheet" href="styles/components.css">
-    
-    <!-- Police Minecraft -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    
-    <link rel="manifest" href="/manifest.json">
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-</head>
+<!-- Header avec contrôle utilisateur intégré -->
+<header class="section-header-styled [section]">
+    <div class="header-container">
+        <!-- Navigation retour -->
+        <button onclick="history.back()" class="back-btn-minecraft [section]">
+            ← Retour
+        </button>
+        
+        <!-- Contrôle utilisateur (nouveau) -->
+        <div id="user-control" class="user-control-container">
+            <!-- État non connecté -->
+            <div id="user-guest" class="user-guest">
+                <button onclick="userController.showProfileSetup()" class="btn-profile-setup">
+                    👤 Créer mon profil
+                </button>
+            </div>
+            
+            <!-- État connecté -->
+            <div id="user-connected" class="user-connected" style="display: none;">
+                <div class="user-avatar" onclick="userController.toggleMenu()">
+                    <img id="user-avatar-img" src="images/avatars/curio-default.png" alt="Avatar">
+                    <span id="user-nickname">Explorateur</span>
+                </div>
+                
+                <!-- Menu déroulant utilisateur -->
+                <div id="user-menu" class="user-dropdown-menu" style="display: none;">
+                    <div class="user-menu-header">
+                        <strong id="menu-nickname">Explorateur</strong>
+                        <span class="user-level">Niveau <span id="menu-level">1</span></span>
+                    </div>
+                    
+                    <div class="user-menu-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">🔥</span>
+                            <span class="stat-value" id="menu-streak">0</span>
+                            <span class="stat-label">jours</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span class="stat-value" id="menu-xp">0</span>
+                            <span class="stat-label">XP</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🏆</span>
+                            <span class="stat-value" id="menu-badges">0</span>
+                            <span class="stat-label">badges</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="user-menu-actions">
+                        <li><a href="mon-parcours.html">📊 Mon Tableau de Bord</a></li>
+                        <li><a href="#" onclick="userController.editProfile()">✏️ Modifier Profil</a></li>
+                        <li><a href="#" onclick="userController.exportData()">💾 Exporter Données</a></li>
+                        <li><a href="#" onclick="userController.showSettings()">⚙️ Paramètres</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" onclick="userController.resetProfile()" class="danger">🔄 Réinitialiser</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 <body class="[section]-section">
-    <!-- Header stylisé avec composant -->
-    <header class="section-header-styled [section]">
+    <!-- Header avec rôle banner -->
+    <header class="section-header-styled [section]" role="banner">
         <button onclick="history.back()" class="back-btn-minecraft [section]">
             ← Retour à l'accueil
         </button>
+        
+        <!-- Ajout navigation principale -->
+        <nav aria-label="Navigation principale" role="navigation">
+            <!-- Menu persistant injecté ici par JS -->
+        </nav>
     </header>
 
-    <main>
-        <!-- Fil d'Ariane -->
-        <div class="breadcrumb" aria-label="Fil d'Ariane">
-            🏠 <a href="index.html">Accueil</a> > [SECTION_EMOJI] [SECTION_TITLE]
-        </div>
-        
-        <!-- Menu latéral simple et fonctionnel -->
-        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
-        <div class="sidebar">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="mindmap.html">Carte des matières</a></li>
-                <li><a href="maths_section.html">Mathématiques</a></li>
-                <li><a href="sciences_section.html">Sciences</a></li>
-                <li><a href="histoire_section.html">Histoire‑Géo</a></li>
-                <li><a href="francais_section.html">Français</a></li>
-                <li><a href="english_section.html">English</a></li>
-                <li><a href="programmation_section.html">Programmation</a></li>
-                <li><a href="echecs_section.html">Échecs</a></li>
-                <li><a href="philosophie_section.html">Philosophie</a></li>
-                <li><a href="ressources_section.html">Ressources</a></li>
-                <li><a href="infos_section.html">Infos</a></li>
-                <li><a href="ia_section.html">IA</a></li>
-                <li><a href="mon-parcours.html">Mon Parcours</a></li>
-            </ul>
-        </div>
-
-        <!-- Zone XP automatique -->
-        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
-            <span id="xp-display">XP: 0</span> | 
-            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
-            <span id="streak-display">🔥 0 jours</span>
-        </div>
-
-        <!-- Outils d'accessibilité -->
-        <div class="accessibility-tools">
-            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
-            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
-            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
-        </div>
-
+    <!-- Main avec rôle main -->
+    <main role="main" aria-labelledby="page-title">
         <div class="section-title">
-            <h1>[SECTION_EMOJI] [SECTION_TITLE]</h1>
+            <h1 id="page-title">[EMOJI] [SECTION_TITLE]</h1>
             <p>[DESCRIPTION_SECTION]</p>
         </div>
 
-        <!-- Contenu spécifique à la section -->
-        <section>
-            <div id="main-content" class="content">
-                <!-- Activités de la section à personnaliser ici -->
-                <h2>[ACTIVITE_1_TITRE]</h2>
-                <p class="description">[ACTIVITE_1_DESCRIPTION]</p>
-                <a href="[ACTIVITE_1_LIEN]" class="learn-more">[ACTIVITE_1_CTA]</a>
-            </div>
+        <!-- Zone XP avec région ARIA -->
+        <div id="xp-status" role="region" aria-label="Progression et statistiques" aria-live="polite">
+            <span id="xp-display" aria-label="Points d'expérience">XP: 0</span> | 
+            <span id="hearts-display" aria-label="Cœurs restants">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display" aria-label="Série de jours consécutifs">🔥 0 jours</span>
+        </div>
 
-            <div class="content">
-                <h2>[ACTIVITE_2_TITRE]</h2>
-                <p class="description">[ACTIVITE_2_DESCRIPTION]</p>
-                <a href="[ACTIVITE_2_LIEN]" class="learn-more">[ACTIVITE_2_CTA]</a>
-            </div>
-
-            <!-- Ajouter plus d'activités selon les besoins de la section -->
+        <!-- Contenu principal avec section sémantique -->
+        <section aria-labelledby="activities-heading">
+            <h2 id="activities-heading" class="sr-only">Activités de la section</h2>
+            <!-- Activités de la section -->
         </section>
     </main>
+
+    <!-- Footer avec rôle contentinfo -->
+    <footer role="contentinfo">
+        <p>&copy; 2025 Le Monde des Curieux - Tous droits réservés</p>
+        <nav aria-label="Navigation footer">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="politique-confidentialite.html">Confidentialité</a>
+        </nav>
+    </footer>
 
     <!-- Scripts standards -->
     <script src="scripts/general_script.js"></script>
     <script src="scripts/xp_system_complete.js"></script>
-    <script src="scripts/accessibilite.js"></script>
-    <script src="scripts/menu_enhanced.js"></script>
-    <!-- Script spécifique à la section si nécessaire -->
+    <script src="scripts/persistent-menu.js"></script>
     
-    <script>
-        // Initialisation standard
-        document.addEventListener("DOMContentLoaded", function() {
-            // Gestion du menu latéral
-            var sidebar = document.querySelector('.sidebar');
-            var toggleButton = document.querySelector('.sidebar-toggle');
-            
-            // Cacher initialement le menu
-            if (sidebar) {
-                sidebar.style.left = '-250px';
-            }
-            
-            // Gestion du clic sur le bouton du menu
-            if (toggleButton && sidebar) {
-                toggleButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (sidebar.style.left === '0px') {
-                        sidebar.style.left = '-250px';
-                    } else {
-                        sidebar.style.left = '0px';
-                    }
-                });
-                
-                // Fermer le menu en cliquant ailleurs
-                document.addEventListener('click', function(e) {
-                    if (sidebar.style.left === '0px' && 
-                        e.target !== toggleButton && 
-                        !sidebar.contains(e.target)) {
-                        sidebar.style.left = '-250px';
-                    }
-                });
-            }
-
-            // XP system integration
-            setTimeout(() => {
-                if (window.xpManager) {
-                    window.xpManager.currentSection = '[section]';
-                    document.getElementById('xp-status').style.display = 'block';
-                }
-            }, 1000);
-
-            console.log("✔️ Menu latéral et systèmes chargés avec succès !");
-        });
-    </script>
+    <!-- Skip link pour navigation clavier -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 </body>
 </html>
-
-<!-- 
-INSTRUCTIONS D'UTILISATION COMPLÈTES :
-
-PLACEHOLDERS OBLIGATOIRES :
-1. [SECTION] → nom section en minuscules : maths, sciences, histoire, etc.
-2. [section] → même chose pour JavaScript (identique au précédent)
-3. [SECTION_EMOJI] → emoji de la section : 🔬, 🧮, 🏛️, etc.
-4. [SECTION_TITLE] → titre complet : "Sciences", "Mathématiques", etc.
-5. [DESCRIPTION_SECTION] → description courte de la section
-
-PLACEHOLDERS ACTIVITÉS (répéter selon nombre d'activités) :
-6. [ACTIVITE_1_TITRE] → titre première activité avec emoji
-7. [ACTIVITE_1_DESCRIPTION] → description activité
-8. [ACTIVITE_1_LIEN] → lien vers activité
-9. [ACTIVITE_1_CTA] → texte du bouton avec emoji
-
-FONCTIONNALITÉS INTÉGRÉES :
-✅ Menu latéral avec 14 sections
-✅ Fil d'Ariane dynamique
-✅ Zone XP prête pour gamification
-✅ Outils d'accessibilité complets
-✅ Navigation clavier optimisée
-✅ Scripts menu enhancé automatiques
-✅ Alpine.js et PWA ready
-✅ Architecture harmonisée 9 sections
-
-SCRIPTS REQUIS (à vérifier présence) :
-- scripts/general_script.js
-- scripts/xp_system_complete.js  
-- scripts/accessibilite.js
-- scripts/menu_enhanced.js
-
-CSS REQUIS (à vérifier présence) :
-- styles/menu_lateral_enhanced.css
-- styles/section_style.css
-- styles/components.css (avec palettes 9 sections)
-
-EXEMPLE CONCRET D'UTILISATION :
-[SECTION] → "maths"
-[SECTION_EMOJI] → "🧮"
-[SECTION_TITLE] → "Mathématiques" 
-[DESCRIPTION_SECTION] → "Explore les nombres et teste tes compétences mathématiques !"
-[ACTIVITE_1_TITRE] → "🔢 Tables de multiplication"
--->
