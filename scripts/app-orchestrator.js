@@ -1,11 +1,7 @@
 // scripts/app-orchestrator.js
 /**
  * ORCHESTRATEUR CENTRAL - Le Monde des Curieux
- * Intégration des 4 composants Jour 6 :
- * - StreakNotificationManager
- * - PersistentMenu
- * - MindmapTouchEnhanced
- * - AccessibilityController
+ * Intégration des composants Jour 6 + XP System
  */
 
 class AppOrchestrator {
@@ -16,6 +12,7 @@ class AppOrchestrator {
             'accessibility',
             'persistentMenu',
             'streakSystem',
+            'xpSystem',
             'touchEnhanced'
         ];
     }
@@ -28,18 +25,13 @@ class AppOrchestrator {
         console.log('🚀 Initialisation App Orchestrator...');
         
         try {
-            // Vérifier dépendances
             this.checkDependencies();
             
-            // Charger composants dans l'ordre
             for (const componentName of this.initializationOrder) {
                 await this.initializeComponent(componentName);
             }
             
-            // Synchroniser états
             this.synchronizeStates();
-            
-            // Configurer listeners globaux
             this.setupGlobalListeners();
             
             console.log('✅ App Orchestrator initialisé avec succès');
@@ -74,13 +66,10 @@ class AppOrchestrator {
                 break;
                 
             case 'streakSystem':
-                // Vérifier si StreakSystem existe déjà (sections Français/Anglais)
                 if (typeof StreakSystem !== 'undefined' && window.streakSystem) {
-                    // Ajouter notifications au système existant
                     if (typeof StreakNotificationManager !== 'undefined') {
                         this.components.streakNotifications = new StreakNotificationManager(window.streakSystem);
                         
-                        // Hook dans l'événement d'activité
                         const originalRecordActivity = window.streakSystem.recordActivity;
                         window.streakSystem.recordActivity = () => {
                             const result = originalRecordActivity.call(window.streakSystem);
@@ -95,8 +84,16 @@ class AppOrchestrator {
                 }
                 break;
                 
+            case 'xpSystem':
+                if (typeof XPProgressionSystem !== 'undefined') {
+                    this.components.xpSystem = new XPProgressionSystem();
+                    window.xpSystem = this.components.xpSystem;
+                    console.log('✅ XPProgressionSystem chargé');
+                    this.integrateXPWithGameSystems();
+                }
+                break;
+                
             case 'touchEnhanced':
-                // Uniquement sur pages avec mindmap
                 if (document.querySelector('.mindmap')) {
                     if (typeof MindmapTouchEnhanced !== 'undefined') {
                         this.components.mindmapTouch = new MindmapTouchEnhanced();
@@ -108,40 +105,74 @@ class AppOrchestrator {
     }
     
     // ========================================
+    // INTÉGRATION XP
+    // ========================================
+    
+    integrateXPWithGameSystems() {
+        console.log('🔗 Intégration XP avec Streaks + Hearts...');
+        
+        window.addEventListener('activity-completed', (e) => {
+            const { baseXP, score, activityType } = e.detail;
+            
+            const context = {
+                hasActiveStreak: window.streakSystem?.streakData.currentStreak > 0,
+                perfectScore: score === 100,
+                comboCount: this.getComboCount()
+            };
+            
+            this.components.xpSystem.awardXP(baseXP || 10, context);
+        });
+        
+        window.addEventListener('streak-update', (e) => {
+            const { currentStreak, isNewMilestone } = e.detail;
+            
+            if (isNewMilestone) {
+                const milestoneBonus = currentStreak * 10;
+                this.components.xpSystem.awardXP(milestoneBonus, {
+                    hasActiveStreak: true,
+                    milestoneBonus: true
+                });
+                console.log(`🎉 Milestone bonus: ${milestoneBonus} XP`);
+            }
+        });
+    }
+    
+    getComboCount() {
+        const recentActivities = JSON.parse(localStorage.getItem('recent_activities') || '[]');
+        const now = Date.now();
+        const recentCount = recentActivities.filter(a => now - a.timestamp < 5 * 60 * 1000).length;
+        return recentCount;
+    }
+    
+    // ========================================
     // SYNCHRONISATION ÉTATS
     // ========================================
     
     synchronizeStates() {
         console.log('🔄 Synchronisation états...');
         
-        // Synchroniser menu avec gamification
         if (this.components.persistentMenu) {
             this.components.persistentMenu.syncWithGamificationSystems();
         }
         
-        // Appliquer préférences accessibilité
         if (this.components.accessibility) {
             this.components.accessibility.applyPreferences();
         }
         
-        // Mettre à jour affichages
         this.updateAllDisplays();
     }
     
     updateAllDisplays() {
-        // XP
         if (window.xpManager) {
             const xpData = window.xpManager.getXP();
             this.broadcastEvent('xp-update', xpData);
         }
         
-        // Hearts
         if (window.heartSystem) {
             const heartData = window.heartSystem.loadHearts();
             this.broadcastEvent('hearts-update', heartData);
         }
         
-        // Streaks
         if (window.streakSystem) {
             const streakData = window.streakSystem.loadStreaks();
             this.broadcastEvent('streak-update', streakData);
@@ -153,24 +184,20 @@ class AppOrchestrator {
     // ========================================
     
     setupGlobalListeners() {
-        // Écouter changements gamification
         window.addEventListener('gamification-change', (e) => {
             this.handleGamificationChange(e.detail);
         });
         
-        // Écouter changements accessibilité
         window.addEventListener('accessibility-change', (e) => {
             this.handleAccessibilityChange(e.detail);
         });
         
-        // Visibilité page (pour streaks)
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden && this.components.streakNotifications) {
                 this.components.streakNotifications.showDailyReminder();
             }
         });
         
-        // Keyboard shortcuts globaux
         document.addEventListener('keydown', (e) => {
             this.handleGlobalShortcuts(e);
         });
@@ -179,27 +206,22 @@ class AppOrchestrator {
     handleGamificationChange(data) {
         console.log('🎮 Changement gamification:', data);
         
-        // Propager aux composants concernés
         if (this.components.persistentMenu) {
             this.components.persistentMenu.syncWithGamificationSystems();
         }
         
-        // Sauvegarder
         this.saveState();
     }
     
     handleAccessibilityChange(data) {
         console.log('♿ Changement accessibilité:', data);
         
-        // Appliquer aux composants
         if (this.components.mindmapTouch && data.reducedMotion) {
-            // Désactiver animations tactiles
             this.components.mindmapTouch.touchMetrics.animationsEnabled = false;
         }
     }
     
     handleGlobalShortcuts(e) {
-        // Ctrl+M : Toggle menu
         if (e.ctrlKey && e.key === 'm') {
             e.preventDefault();
             if (this.components.persistentMenu) {
@@ -207,7 +229,6 @@ class AppOrchestrator {
             }
         }
         
-        // Ctrl+A : Toggle accessibilité
         if (e.ctrlKey && e.key === 'a') {
             e.preventDefault();
             if (this.components.accessibility) {
@@ -223,8 +244,6 @@ class AppOrchestrator {
     broadcastEvent(eventName, data) {
         const event = new CustomEvent(eventName, { detail: data });
         window.dispatchEvent(event);
-        
-        // Mettre à jour affichages DOM
         this.updateDOMDisplays(eventName, data);
     }
     
@@ -264,6 +283,7 @@ class AppOrchestrator {
         };
         
         const optional = {
+            'XPProgressionSystem': typeof XPProgressionSystem !== 'undefined',
             'StreakNotificationManager': typeof StreakNotificationManager !== 'undefined',
             'PersistentMenu': typeof PersistentMenu !== 'undefined',
             'MindmapTouchEnhanced': typeof MindmapTouchEnhanced !== 'undefined',
@@ -273,7 +293,6 @@ class AppOrchestrator {
         console.log('📦 Dépendances requises:', required);
         console.log('📦 Dépendances optionnelles:', optional);
         
-        // Avertir si dépendances manquantes
         Object.entries(required).forEach(([name, loaded]) => {
             if (!loaded) {
                 console.warn(`⚠️ Dépendance requise manquante: ${name}`);
@@ -284,6 +303,7 @@ class AppOrchestrator {
     logStatus() {
         console.log('📊 STATUS COMPOSANTS:');
         console.table({
+            'XP System': !!this.components.xpSystem,
             'Accessibilité': !!this.components.accessibility,
             'Menu Persistant': !!this.components.persistentMenu,
             'Notifications Streak': !!this.components.streakNotifications,
@@ -310,18 +330,22 @@ class AppOrchestrator {
             gamification: {}
         };
         
-        // Métriques touch
         if (this.components.mindmapTouch) {
             metrics.components.touchMetrics = this.components.mindmapTouch.exportMetricsReport();
         }
         
-        // Métriques gamification
-        if (window.xpManager) {
-            metrics.gamification.xp = window.xpManager.getXP();
+        if (window.xpSystem) {
+            metrics.gamification.xp = {
+                level: window.xpSystem.data.currentLevel,
+                currentXP: window.xpSystem.data.currentXP,
+                totalXPEarned: window.xpSystem.data.totalXPEarned
+            };
         }
+        
         if (window.streakSystem) {
             metrics.gamification.streak = window.streakSystem.loadStreaks();
         }
+        
         if (window.heartSystem) {
             metrics.gamification.hearts = window.heartSystem.loadHearts();
         }
@@ -339,6 +363,7 @@ class AppOrchestrator {
             version: '1.0.0',
             environment: 'production',
             features: {
+                xpSystem: true,
                 notifications: true,
                 touchTracking: true,
                 accessibility: true,
@@ -360,7 +385,6 @@ class AppOrchestrator {
     handleInitializationError(error) {
         console.error('❌ ERREUR CRITIQUE:', error);
         
-        // Afficher message utilisateur
         const errorBanner = document.createElement('div');
         errorBanner.style.cssText = `
             position: fixed;
@@ -387,7 +411,6 @@ class AppOrchestrator {
 
 let appOrchestrator;
 
-// Attendre que DOM + scripts soient chargés
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         initializeApp();
@@ -397,12 +420,9 @@ if (document.readyState === 'loading') {
 }
 
 function initializeApp() {
-    // Délai pour s'assurer que tous les scripts sont chargés
     setTimeout(() => {
         appOrchestrator = new AppOrchestrator();
         appOrchestrator.init();
-        
-        // Exposer globalement pour debug
         window.appOrchestrator = appOrchestrator;
     }, 500);
 }

@@ -1,317 +1,52 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Monde des Curieux - Accueil</title>
+    <title>Le Monde des Curieux</title>
     
-    <!-- CSS existants (à créer si manquants) -->
-    <link rel="stylesheet" href="index_fichiers/style.css">
-    <link rel="stylesheet" href="index_fichiers/index_style.css">
-    <link rel="stylesheet" href="index_fichiers/menu_lateral_enhanced.css">
-    <link rel="stylesheet" href="index_fichiers/accessibilite.css">
-    <link rel="stylesheet" href="index_fichiers/dark-mode.css">
-    
-    <!-- Police Minecraft -->
-    <link href="index_fichiers/css2.css" rel="stylesheet">
-    
-    <!-- CSS spécifique page d'accueil -->
-    <link rel="stylesheet" href="index_fichiers/home-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/mindmap.css">
 </head>
-
-<body class="home-page">
-    <!-- Header principal avec contrôle utilisateur -->
-    <header class="main-header">
-        <div class="header-container">
-            <!-- Logo/Titre -->
-            <div class="header-logo">
-                <h1>Le Monde des Curieux</h1>
-            </div>
-            
-            <!-- Contrôle utilisateur -->
-            <div id="user-control" class="user-control-container">
-                <!-- État non connecté -->
-                <div id="user-guest" class="user-guest">
-                    <button onclick="userController.showProfileSetup()" class="btn-profile-setup">
-                        👤 Créer mon profil
-                    </button>
-                </div>
-                
-                <!-- État connecté -->
-                <div id="user-connected" class="user-connected" style="display: none;">
-                    <div class="user-avatar" onclick="userController.toggleMenu()">
-                        <img id="user-avatar-img" src="index_fichiers/curio-default.png" alt="Avatar">
-                        <span id="user-nickname">Explorateur</span>
-                    </div>
-                    
-                    <!-- Menu déroulant utilisateur -->
-                    <div id="user-menu" class="user-dropdown-menu" style="display: none;">
-                        <div class="user-menu-header">
-                            <strong id="menu-nickname">Explorateur</strong>
-                            <span class="user-level">Niveau <span id="menu-level">1</span></span>
-                        </div>
-                        
-                        <div class="user-menu-stats">
-                            <div class="stat-item">
-                                <span class="stat-icon">🔥</span>
-                                <span class="stat-value" id="menu-streak">0</span>
-                                <span class="stat-label">jours</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon">⭐</span>
-                                <span class="stat-value" id="menu-xp">0</span>
-                                <span class="stat-label">XP</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon">🏆</span>
-                                <span class="stat-value" id="menu-badges">0</span>
-                                <span class="stat-label">badges</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="user-menu-actions">
-                            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/mon-parcours.html">📊 Mon Tableau de Bord</a></li>
-                            <li><a href="#" onclick="userController.editProfile()">✏️ Modifier Profil</a></li>
-                            <li><a href="#" onclick="userController.exportData()">💾 Exporter Données</a></li>
-                            <li><a href="#" onclick="userController.showSettings()">⚙️ Paramètres</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#" onclick="userController.resetProfile()" class="danger">🔄 Réinitialiser</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<body>
+    <div class="stats">
+        <h3>📊 PROGRESSION</h3>
+        <div class="stat-line">
+            <span>🔥 Streak</span>
+            <span id="streak">0j</span>
         </div>
-    </header>
-
-    <!-- Menu latéral -->
-    <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu" onclick="toggleMenu()">☰</button>
-    <nav class="sidebar" aria-label="Navigation principale" style="left: -250px;">
-        <ul>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/index.html" class="active">🏠 Accueil</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/maths_section.html">🔢 Mathématiques</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/sciences_section.html">🔬 Sciences</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/histoire_section.html">🏛️ Histoire-Géo</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/francais_section.html">📚 Français</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/english_section.html">🇬🇧 English</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/programmation_section.html">💻 Programmation</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/echecs_section.html">♟️ Échecs</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/philosophie_section.html">🤔 Philosophie</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/ressources_section.html">📖 Ressources</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/infos_section.html">ℹ️ Infos</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/ia_section.html">🤖 IA</a></li>
-            <li><a href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/mon-parcours.html">📊 Mon Parcours</a></li>
-        </ul>
-    </nav>
-
-    <!-- Outils d'accessibilité -->
-    <div class="accessibility-tools">
-        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
-        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
-        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        <div class="stat-line">
+            <span>⭐ XP</span>
+            <span id="xp">0</span>
+        </div>
+        <div class="stat-line">
+            <span>❤️ Cœurs</span>
+            <span id="hearts">5/5</span>
+        </div>
+        <div class="stat-line">
+            <span>🏆 Badges</span>
+            <span id="badges">0</span>
+        </div>
     </div>
 
-    <!-- Loader (animation de chargement) -->
-    <div id="loader" style="display: none;">
-        <div class="spinner"></div>
+    <div class="mindmap-container">
+        <img src="images/MDC_Mindmap.png" alt="Le Monde des Curieux" class="mindmap-image">
+        
+        <!-- Rangée supérieure -->
+        <a href="maths_section.html" class="bubble-link bubble-1" title="Mathématiques"></a>
+        <a href="sciences_section.html" class="bubble-link bubble-2" title="Sciences"></a>
+        <a href="histoire_section.html" class="bubble-link bubble-3" title="Histoire-Géographie"></a>
+        <a href="francais_section.html" class="bubble-link bubble-4" title="Français"></a>
+        <a href="english_section.html" class="bubble-link bubble-5" title="English"></a>
+        
+        <!-- Rangée inférieure -->
+        <a href="programmation_section.html" class="bubble-link bubble-6" title="Programmation"></a>
+        <a href="echecs_section.html" class="bubble-link bubble-7" title="Échecs"></a>
+        <a href="philosophie_section.html" class="bubble-link bubble-8" title="Philosophie"></a>
+        <a href="ressources_section.html" class="bubble-link bubble-9" title="Ressources"></a>
+        <a href="ia_section.html" class="bubble-link bubble-10" title="IA"></a>
     </div>
 
-    <!-- 🎮 Zone d'affichage XP Principal -->
-    <div id="main-xp-display" class="main-xp-container">
-        <!-- Le XP Manager s'injectera automatiquement ici -->
-    </div>
-
-    <!-- Contenu principal - structure à deux colonnes -->
-    <main class="main-wrapper">
-        <!-- Mindmap interactive à gauche -->
-        <section class="mindmap-section">
-            <div class="mindmap-inner" style="position:relative;">
-                <img src="index_fichiers/MineCraftMindmap_1000px.png" loading="lazy" class="mindmap" usemap="#matieresmap" alt="Carte interactive des matières">
-                <!-- Indicateur de survol -->
-                <div id="hover-indicator" class="hover-indicator"></div>
-            </div>
-            
-            <!-- Zones cliquables de la carte -->
-            <map name="matieresmap">
-                <area shape="circle" coords="212,439,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/maths_section.html" alt="Mathématiques" title="Mathématiques">
-                <area shape="circle" coords="503,440,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/sciences_section.html" alt="Sciences" title="Sciences">
-                <area shape="circle" coords="793,444,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/histoire_section.html" alt="Histoire-Géo" title="Histoire-Géo">
-                <area shape="circle" coords="207,719,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/francais_section.html" alt="Français" title="Français">
-                <area shape="circle" coords="502,713,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/english_section.html" alt="English" title="English">
-                <area shape="circle" coords="788,719,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/programmation_section.html" alt="Programmation" title="Programmation">
-                <area shape="circle" coords="207,1000,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/echecs_section.html" alt="Échecs" title="Échecs">
-                <area shape="circle" coords="497,991,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/philosophie_section.html" alt="Philosophie" title="Philosophie">
-                <area shape="circle" coords="790,995,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/ressources_section.html" alt="Ressources" title="Ressources">
-                <area shape="circle" coords="214,1274,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/infos_section.html" alt="Infos" title="Infos">
-                <area shape="circle" coords="493,1272,75" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/ia_section.html" alt="IA" title="Intelligence Artificielle">
-            </map>
-        </section>
-
-        <!-- Parcours thématiques à droite -->
-        <aside class="parcours-section">
-            <h2>📈 Mon Parcours d'Apprentissage</h2>
-            
-            <!-- 🎮 Dashboard progression avec XP -->
-            <div id="dashboard-xp-integration" class="dashboard-container">
-                <div class="dashboard-header">
-                    <h3>🎯 Progression Globale</h3>
-                    <div class="quick-stats" id="quick-stats">
-                        <!-- Statistiques rapides -->
-                    </div>
-                </div>
-                
-                <div class="dashboard-content" id="dashboard-content">
-                    <!-- Contenu dashboard détaillé -->
-                </div>
-                
-                <div class="dashboard-actions">
-                    <button class="dashboard-btn" onclick="openProgressDetails()">
-                        📊 Voir Détails
-                    </button>
-                    <button class="dashboard-btn" onclick="exportProgress()">
-                        📁 Exporter PDF
-                    </button>
-                </div>
-            </div>
-
-            <h2>Parcours thématiques 🚀</h2>
-            <p>Découvre des aventures qui combinent plusieurs matières !</p>
-
-            <!-- Cartes parcours -->
-            <div class="parcours-card">
-                <div class="parcours-title">🚀 Aventure spatiale</div>
-                <p>Sciences · Maths · Histoire</p>
-                <div class="parcours-xp">+50 XP</div>
-                <a class="parcours-button" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/parcours/espace.html">Commencer</a>
-            </div>
-
-            <div class="parcours-card">
-                <div class="parcours-title">🌊 Mystères des océans</div>
-                <p>Sciences · Géographie · Maths</p>
-                <div class="parcours-xp">+40 XP</div>
-                <a class="parcours-button" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/parcours/ocean.html">Plonger</a>
-            </div>
-
-            <div class="parcours-card">
-                <div class="parcours-title">🤖 Univers des robots</div>
-                <p>Programmation · Sciences · IA</p>
-                <div class="parcours-xp">+60 XP</div>
-                <a class="parcours-button" href="file:///home/siren_snake/T%C3%A9l%C3%A9chargements/parcours/robotique.html">Construire</a>
-            </div>
-
-            <!-- 🎮 Activités Rapides -->
-            <div class="quick-activities">
-                <h3>🎯 Activités Rapides</h3>
-                <div class="activity-grid">
-                    <div class="quick-activity-card">
-                        <span class="activity-icon">🔢</span>
-                        <span class="activity-name">Calcul Mental</span>
-                        <span class="activity-xp">+10 XP</span>
-                        <button class="quick-btn" onclick="launchQuickActivity('calcul')">GO!</button>
-                    </div>
-                    
-                    <div class="quick-activity-card">
-                        <span class="activity-icon">📚</span>
-                        <span class="activity-name">Quiz Français</span>
-                        <span class="activity-xp">+15 XP</span>
-                        <button class="quick-btn" onclick="launchQuickActivity('francais')">GO!</button>
-                    </div>
-                    
-                    <div class="quick-activity-card">
-                        <span class="activity-icon">🇬🇧</span>
-                        <span class="activity-name">English Vocab</span>
-                        <span class="activity-xp">+15 XP</span>
-                        <button class="quick-btn" onclick="launchQuickActivity('english')">GO!</button>
-                    </div>
-                    
-                    <div class="quick-activity-card">
-                        <span class="activity-icon">💻</span>
-                        <span class="activity-name">Code Challenge</span>
-                        <span class="activity-xp">+20 XP</span>
-                        <button class="quick-btn" onclick="launchQuickActivity('code')">GO!</button>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </main>
-
-    <!-- Scripts -->
-    <script src="index_fichiers/menu-handler.js"></script>
-    <script src="index_fichiers/xp_system_complete.js"></script>
-    <script src="index_fichiers/accessibility.js"></script>
-    <script src="index_fichiers/user-controller.js"></script>
-    
-    <!-- Script inline minimal pour le menu (temporaire) -->
-    <script>
-        function toggleMenu() {
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
-            }
-        }
-
-        // Fermer le menu en cliquant ailleurs
-        document.addEventListener('click', function(event) {
-            const sidebar = document.querySelector('.sidebar');
-            const toggleButton = document.querySelector('.sidebar-toggle');
-            
-            if (sidebar && toggleButton) {
-                if (sidebar.style.left === '0px' && 
-                    event.target !== sidebar && 
-                    !sidebar.contains(event.target) && 
-                    event.target !== toggleButton) {
-                    sidebar.style.left = '-250px';
-                }
-            }
-        });
-
-        // Initialisation au chargement
-        document.addEventListener('DOMContentLoaded', function() {
-            // Activer le lien correspondant à la page actuelle
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const links = document.querySelectorAll('.sidebar a');
-            
-            links.forEach(function(link) {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Cacher le menu au démarrage
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.style.left = '-250px';
-            }
-
-            // Masquer le loader
-            const loader = document.getElementById('loader');
-            if (loader) {
-                setTimeout(() => loader.style.display = 'none', 500);
-            }
-        });
-
-        // Fonctions activités rapides
-        function launchQuickActivity(type) {
-            const routes = {
-                'calcul': 'maths_section.html#calcul-mental',
-                'francais': 'francais_section.html#quiz',
-                'english': 'english_section.html#vocab',
-                'code': 'programmation_section.html#challenges'
-            };
-            window.location.href = routes[type] || 'index.html';
-        }
-
-        function openProgressDetails() {
-            window.location.href = 'mon-parcours.html';
-        }
-
-        function exportProgress() {
-            if (window.xpManager && typeof window.xpManager.exportPDF === 'function') {
-                window.xpManager.exportPDF();
-            } else {
-                alert('Fonction d\'export en cours de développement');
-            }
-        }
-    </script>
-
-
-</body></html>
+    <script src="scripts/mindmap.js"></script>
+</body>
+</html>
