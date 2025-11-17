@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/francais_duolingo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles/xp-display.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
 </head>
 <body>
@@ -51,6 +52,8 @@
             </div>
         </div>
     </header>
+
+    <div id="xp-display-container"></div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -297,5 +300,7 @@
         console.log('- Script loading order: Storage → Hearts → Streaks → Lessons → App');
     </script>
     <script src="./scripts/xp_system_complete.js"></script>
+    <script src="scripts/xp-progression-system.js"></script>
+    <script src="scripts/gamification-bridge.js"></script>
 </body>
 </html>

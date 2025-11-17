@@ -1,107 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!-- Header avec contrôle utilisateur intégré -->
-<header class="section-header-styled [section]">
-    <div class="header-container">
-        <!-- Navigation retour -->
-        <button onclick="history.back()" class="back-btn-minecraft [section]">
-            ← Retour
-        </button>
-        
-        <!-- Contrôle utilisateur (nouveau) -->
-        <div id="user-control" class="user-control-container">
-            <!-- État non connecté -->
-            <div id="user-guest" class="user-guest">
-                <button onclick="userController.showProfileSetup()" class="btn-profile-setup">
-                    👤 Créer mon profil
-                </button>
-            </div>
-            
-            <!-- État connecté -->
-            <div id="user-connected" class="user-connected" style="display: none;">
-                <div class="user-avatar" onclick="userController.toggleMenu()">
-                    <img id="user-avatar-img" src="images/avatars/curio-default.png" alt="Avatar">
-                    <span id="user-nickname">Explorateur</span>
-                </div>
-                
-                <!-- Menu déroulant utilisateur -->
-                <div id="user-menu" class="user-dropdown-menu" style="display: none;">
-                    <div class="user-menu-header">
-                        <strong id="menu-nickname">Explorateur</strong>
-                        <span class="user-level">Niveau <span id="menu-level">1</span></span>
-                    </div>
-                    
-                    <div class="user-menu-stats">
-                        <div class="stat-item">
-                            <span class="stat-icon">🔥</span>
-                            <span class="stat-value" id="menu-streak">0</span>
-                            <span class="stat-label">jours</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">⭐</span>
-                            <span class="stat-value" id="menu-xp">0</span>
-                            <span class="stat-label">XP</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">🏆</span>
-                            <span class="stat-value" id="menu-badges">0</span>
-                            <span class="stat-label">badges</span>
-                        </div>
-                    </div>
-                    
-                    <ul class="user-menu-actions">
-                        <li><a href="mon-parcours.html">📊 Mon Tableau de Bord</a></li>
-                        <li><a href="#" onclick="userController.editProfile()">✏️ Modifier Profil</a></li>
-                        <li><a href="#" onclick="userController.exportData()">💾 Exporter Données</a></li>
-                        <li><a href="#" onclick="userController.showSettings()">⚙️ Paramètres</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" onclick="userController.resetProfile()" class="danger">🔄 Réinitialiser</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Intelligence Artificielle - Le Monde des Curieux</title>
+    
+    <!-- CSS standards dans l'ordre harmonisé -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
 <body class="ia-section">
-    <!-- Header stylisé avec composant -->
+    
+    <!-- Header harmonisé -->
     <header class="section-header-styled ia">
-        <button onclick="history.back()" class="back-btn-minecraft ia">
-            ← Retour à l'accueil
-        </button>
+        <button onclick="history.back()" class="back-btn-minecraft ia">← Retour à l'accueil</button>
     </header>
+    
+    <!-- Bouton menu latéral -->
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    
+    <!-- Menu latéral avec contenu -->
+    <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
+         <ul>
+             <li><a href="index.html">🏠 Accueil</a></li>
+             <li><a href="francais_section.html">🇫🇷 Français</a></li>
+             <li><a href="english_section.html">🇬🇧 English</a></li>
+             <li><a href="maths_section.html">🧮 Mathématiques</a></li>
+             <li><a href="sciences_section.html">🔬 Sciences</a></li>
+             <li><a href="histoire_section.html">🏛️ Histoire-Géo</a></li>
+             <li><a href="programmation_section.html">💻 Programmation</a></li>
+             <li><a href="echecs_section.html">♟️ Échecs</a></li>
+             <li><a href="philosophie_section.html">🤔 Philosophie</a></li>
+             <li><a href="ia_section.html">🤖 IA</a></li>
+             <li><a href="mon-parcours.html">📊 Mon Parcours</a></li>
+         </ul>
+    </nav>
 
     <main>
-        <!-- Fil d'Ariane -->
-        <div class="breadcrumb" aria-label="Fil d'Ariane">
-            🏠 <a href="index.html">Accueil</a> > 🤖 Intelligence Artificielle
-        </div>
-        
-        <!-- Menu latéral simple et fonctionnel -->
-        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
-        <div class="sidebar">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="maths_section.html">Mathématiques</a></li>
-                <li><a href="sciences_section.html">Sciences</a></li>
-                <li><a href="histoire_section.html">Histoire-Géo</a></li>
-                <li><a href="francais_section.html">Français</a></li>
-                <li><a href="english_section.html">English</a></li>
-                <li><a href="programmation_section.html">Programmation</a></li>
-                <li><a href="echecs_section.html">Échecs</a></li>
-                <li><a href="philosophie_section.html">Philosophie</a></li>
-                <li><a href="ressources_section.html">Ressources</a></li>
-                <li><a href="infos_section.html">Infos</a></li>
-                <li><a href="ia_section.html">IA</a></li>
-                <li><a href="mon-parcours.html">Mon Parcours</a></li>
-                <script src="scripts/xp_system_complete.js"></script>
-            </ul>
-        </div>
-
-        <!-- Zone XP automatique -->
-        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
-            <span id="xp-display">XP: 0</span> | 
-            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
-            <span id="streak-display">🔥 0 jours</span>
+        <!-- Zone XP harmonisée -->
+        <div id="xp-status" style="display: none; text-align: center; margin: 1rem auto; padding: 1rem; background: #f8f9fa; border-radius: 8px; max-width: 800px;">
+            <span id="xp-display" style="margin: 0 1rem; font-weight: bold;">XP: 0</span>
+            <span id="hearts-display" style="margin: 0 1rem; font-size: 1.2rem;">❤️❤️❤️❤️❤️</span>
+            <span id="streak-display" style="margin: 0 1rem; font-weight: bold;">🔥 0 jours</span>
         </div>
 
         <!-- Outils d'accessibilité -->
@@ -116,292 +67,174 @@
             <p class="intro-text">Découvre ce qu'est l'intelligence artificielle, comment elle fonctionne et son impact sur notre vie quotidienne !</p>
         </div>
 
-        <!-- Contenu spécifique à la section PRÉSERVÉ -->
-        <section>
-            <div id="main-content" class="content-container">
-                <div class="ia-container">
-                    <div class="ia-card">
-                        <h3>🧠 Qu'est-ce que l'IA ?</h3>
-                        <p>L'intelligence artificielle (IA) est une technologie qui permet aux ordinateurs d'apprendre et de résoudre des problèmes comme le ferait un humain, mais souvent beaucoup plus rapidement !</p>
-                        <p>L'IA peut reconnaître des images, comprendre des textes, jouer à des jeux ou même aider les médecins à diagnostiquer des maladies.</p>
-                        <div class="ia-example">
-                            <strong>Exemple:</strong> Quand tu demandes à un assistant virtuel comme Siri ou Alexa de te raconter une blague, c'est l'IA qui comprend ta question et qui choisit la blague à te raconter.
-                        </div>
-                    </div>
-                    
-                    <div class="ia-card">
-                        <h3>🔍 Comment ça marche ?</h3>
-                        <p>L'IA fonctionne gr'ce à l'apprentissage automatique. Cela signifie qu'elle apprend à partir d'exemples, un peu comme toi quand tu apprends à reconnaître les chats après en avoir vu plusieurs.</p>
-                        <p>Plus l'IA voit d'exemples, plus elle devient intelligente et précise dans ses réponses.</p>
-                        <div class="ia-example">
-                            <strong>Exemple:</strong> Pour apprendre à reconnaître un chat, l'IA regarde des milliers d'images de chats et apprend leurs caractéristiques comme les oreilles pointues ou la queue.
-                        </div>
-                    </div>
-                    
-                    <div class="ia-card">
-                        <h3>📱 L'IA dans ta vie</h3>
-                        <p>L'IA est déjà présente partout autour de toi ! Elle recommande des vidéos sur YouTube, corrige l'orthographe dans tes messages, ou aide à traduire des langues étrangères.</p>
-                        <p>Elle peut même créer de la musique, des dessins ou rédiger des histoires !</p>
-                        <div class="ia-example">
-                            <strong>Exemple:</strong> Quand ton téléphone reconnaît ton visage pour le déverrouiller ou quand il suggère automatiquement le prochain mot quand tu écris un message, c'est l'IA qui travaille.
-                        </div>
-                    </div>
-                    
-                    <div class="ia-card">
-                        <h3>⚖️ Le bien et le moins bien</h3>
-                        <p>L'IA peut nous aider de nombreuses façons : en facilitant l'apprentissage, en aidant les personnes handicapées, ou en résolvant des problèmes complexes comme le changement climatique.</p>
-                        <p>Mais il faut aussi faire attention : l'IA peut parfois se tromper, répéter des idées fausses, ou être utilisée pour créer de fausses informations.</p>
-                        <div class="ia-example">
-                            <strong>Point positif:</strong> L'IA peut aider à trouver de nouveaux médicaments plus rapidement.<br>
-                            <strong>Point à surveiller:</strong> Il faut vérifier les informations données par l'IA et ne pas tout croire sans réfléchir.
-                        </div>
-                    </div>
-                </div>
+        <div class="content-wrapper" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+            
+            <!-- Introduction IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🤔 Qu'est-ce que l'Intelligence Artificielle ?</h2>
                 
-                <!-- Jeu interactif : IA ou Humain PRÉSERVÉ -->
-                <div class="game-container">
-                    <h2>Jeu : IA ou Humain ? 🎮</h2>
-                    <p>Essaie de deviner si c'est une IA ou un humain qui a créé ces contenus !</p>
-                    
-                    <div id="game-display">
-                        <p id="content-display">Clique sur "Commencer" pour jouer !</p>
-                        <div id="result-display"></div>
-                    </div>
-                    
-                    <div class="game-options">
-                        <button id="start-game" class="game-option">Commencer</button>
-                        <button id="human-guess" class="game-option" style="display: none;">Créé par un Humain</button>
-                        <button id="ai-guess" class="game-option" style="display: none;">Créé par une IA</button>
-                    </div>
+                <p>L'intelligence artificielle (IA) est une branche de l'informatique qui permet aux machines de simuler l'intelligence humaine. Les ordinateurs peuvent ainsi apprendre, raisonner et résoudre des problèmes de manière autonome !</p>
+
+                <h3>Comment fonctionne l'IA ?</h3>
+                <p>L'IA utilise des algorithmes (séries d'instructions) et des données pour apprendre. Plus elle a de données, plus elle devient performante. C'est comme si elle s'entraînait en permanence !</p>
+
+                <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>💡 Le savais-tu ?</strong> Les premières recherches sur l'IA ont commencé dans les années 1950. Aujourd'hui, l'IA est partout autour de nous !</p>
                 </div>
+            </section>
+
+            <!-- Applications concrètes -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🌍 L'IA dans notre quotidien</h2>
                 
-                <!-- Section réflexion PRÉSERVÉE -->
-                <div class="content">
-                    <h2>🤔 À toi de réfléchir !</h2>
-                    <p>Voici quelques questions pour réfléchir à l'IA :</p>
-                    <ul>
-                        <li>Comment l'IA pourrait-elle t'aider à l'école ?</li>
-                        <li>Quelles sont les choses qu'un humain fait mieux qu'une IA ?</li>
-                        <li>Comment l'IA pourrait-elle évoluer dans le futur ?</li>
-                        <li>Quelles règles devraient respecter les créateurs d'IA ?</li>
-                    </ul>
-                    <p>Discute de ces questions avec tes amis ou ta famille !</p>
+                <h3>Où trouve-t-on l'IA ?</h3>
+                <ul>
+                    <li><strong>🎮 Jeux vidéo</strong> : Les personnages non-joueurs (PNJ) utilisent l'IA pour réagir à tes actions</li>
+                    <li><strong>🎤 Assistants vocaux</strong> : Siri, Alexa et Google Assistant comprennent et répondent à tes questions</li>
+                    <li><strong>🚗 Voitures autonomes</strong> : Des véhicules qui se conduisent tout seuls grâce à l'IA</li>
+                    <li><strong>🎬 Recommandations</strong> : Netflix, YouTube et Spotify suggèrent des contenus adaptés à tes goûts</li>
+                    <li><strong>🏥 Médecine</strong> : L'IA aide les médecins à diagnostiquer des maladies</li>
+                    <li><strong>🌱 Environnement</strong> : L'IA surveille le climat et aide à protéger la nature</li>
+                </ul>
+
+                <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>⚠️ Important</strong> : L'IA n'est pas parfaite ! Elle peut faire des erreurs car elle apprend à partir de données créées par des humains. Si ces données contiennent des biais, l'IA peut les reproduire.</p>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <!-- Types d'IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🔍 Les différents types d'IA</h2>
+                
+                <h3>IA faible (IA étroite)</h3>
+                <p>C'est l'IA que nous utilisons tous les jours. Elle est spécialisée dans une tâche précise : reconnaître des visages, jouer aux échecs, recommander des vidéos...</p>
+                <p><strong>Exemples</strong> : Filtres de photos, assistants vocaux, GPS</p>
+
+                <h3>IA forte (IA générale)</h3>
+                <p>C'est une IA théorique qui pourrait comprendre et apprendre n'importe quelle tâche intellectuelle comme un humain. Elle n'existe pas encore !</p>
+                <p><strong>Dans la science-fiction</strong> : HAL 9000, JARVIS, les robots de films</p>
+
+                <div style="background: #f3e5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>🎯 Distinction importante</strong> : Toutes les IA actuelles sont des IA faibles. L'IA forte capable de penser comme un humain n'existe que dans les films !</p>
+                </div>
+            </section>
+
+            <!-- Machine Learning -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🧠 Le Machine Learning (Apprentissage automatique)</h2>
+                
+                <p>Le Machine Learning est la branche la plus utilisée de l'IA. L'idée est simple : au lieu de programmer toutes les règles, on laisse la machine apprendre toute seule à partir d'exemples !</p>
+
+                <h3>Comment ça marche ?</h3>
+                <ol>
+                    <li><strong>Collecter des données</strong> : On rassemble beaucoup d'exemples (photos, textes, sons...)</li>
+                    <li><strong>Entraîner le modèle</strong> : L'IA analyse les exemples et cherche des patterns (motifs récurrents)</li>
+                    <li><strong>Tester</strong> : On vérifie si l'IA a bien appris en lui donnant de nouveaux exemples</li>
+                    <li><strong>Améliorer</strong> : On corrige les erreurs et on recommence !</li>
+                </ol>
+
+                <h3>Exemple concret : Reconnaissance d'images</h3>
+                <p>Pour apprendre à reconnaître des chats, on montre à l'IA des milliers de photos de chats. Peu à peu, elle comprend les caractéristiques communes (oreilles pointues, moustaches, quatre pattes...) et peut identifier un chat même sur une photo qu'elle n'a jamais vue !</p>
+            </section>
+
+            <!-- Éthique et IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>⚖️ L'éthique de l'IA : Questions importantes</h2>
+                
+                <h3>Pourquoi parler d'éthique ?</h3>
+                <p>L'IA devient de plus en plus puissante et présente dans nos vies. Il est donc essentiel de réfléchir aux bonnes façons de l'utiliser !</p>
+
+                <h3>Questions éthiques principales</h3>
+                <ul>
+                    <li><strong>🔐 Vie privée</strong> : L'IA collecte beaucoup de données personnelles. Comment les protéger ?</li>
+                    <li><strong>⚖️ Biais et discrimination</strong> : Si les données d'entraînement sont biaisées, l'IA peut être injuste</li>
+                    <li><strong>💼 Emplois</strong> : L'IA remplace certains métiers. Comment accompagner les personnes concernées ?</li>
+                    <li><strong>🎯 Responsabilité</strong> : Si une IA fait une erreur, qui est responsable ?</li>
+                    <li><strong>🌍 Impact environnemental</strong> : Entraîner des IA consomme beaucoup d'énergie</li>
+                </ul>
+
+                <div style="background: #e8f5e9; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>✨ Bonne nouvelle</strong> : De plus en plus de chercheurs et d'entreprises travaillent pour créer une IA éthique, juste et respectueuse de l'environnement !</p>
+                </div>
+            </section>
+
+            <!-- Métiers de l'IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>💼 Les métiers de l'IA</h2>
+                
+                <p>L'IA ouvre de nombreuses opportunités professionnelles passionnantes !</p>
+
+                <h3>Quelques métiers</h3>
+                <ul>
+                    <li><strong>Data Scientist</strong> : Analyse les données pour créer des modèles d'IA</li>
+                    <li><strong>Ingénieur en Machine Learning</strong> : Développe des algorithmes d'apprentissage</li>
+                    <li><strong>Chercheur en IA</strong> : Invente de nouvelles techniques d'IA</li>
+                    <li><strong>Éthicien en IA</strong> : S'assure que l'IA est utilisée de manière responsable</li>
+                    <li><strong>Ingénieur en Robotique</strong> : Crée des robots intelligents</li>
+                </ul>
+
+                <p><strong>Pour y arriver</strong> : Il faut aimer les mathématiques, la logique et la programmation. Mais aussi être curieux et créatif !</p>
+            </section>
+
+        </div>
     </main>
 
-    <!-- Scripts standards -->
+    <!-- Scripts -->
     <script src="scripts/general_script.js"></script>
     <script src="scripts/xp_system_complete.js"></script>
     <script src="scripts/accessibilite.js"></script>
-    <script src="scripts/menu_enhanced.js"></script>
     
+    <!-- Script menu latéral inline -->
     <script>
-        // Initialisation standard
-        document.addEventListener("DOMContentLoaded", function() {
-            // Gestion du menu latéral
-            var sidebar = document.querySelector('.sidebar');
-            var toggleButton = document.querySelector('.sidebar-toggle');
-            
-            // Cacher initialement le menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebar-toggle');
+ 
             if (sidebar) {
                 sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
             }
-            
-            // Gestion du clic sur le bouton du menu
+ 
             if (toggleButton && sidebar) {
                 toggleButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if (sidebar.style.left === '0px') {
+                    e.stopPropagation();
+                    const opened = sidebar.style.left === '0px';
+                    if (opened) {
                         sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
                     } else {
                         sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                        toggleButton.setAttribute('aria-expanded', 'true');
                     }
                 });
-                
-                // Fermer le menu en cliquant ailleurs
+ 
                 document.addEventListener('click', function(e) {
-                    if (sidebar.style.left === '0px' && 
-                        e.target !== toggleButton && 
-                        !sidebar.contains(e.target)) {
+                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
                         sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+ 
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        toggleButton.setAttribute('aria-expanded', 'false');
                     }
                 });
             }
-
-            // XP system integration
+ 
             setTimeout(() => {
                 if (window.xpManager) {
                     window.xpManager.currentSection = 'ia';
-                    document.getElementById('xp-status').style.display = 'block';
+                    const xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
                 }
             }, 1000);
-
-            // FONCTIONNALITÉS SPÉCIFIQUES PRÉSERVÉES
-            // Script pour le jeu IA ou Humain
-            setupGame();
-            
-            // Marquer cette page comme visitée dans le système de progression
-            markProgress("IA", "ia_introduction");
-
-            console.log("✔️ Section IA chargée avec succès !");
         });
-        
-        // CONTENU DU JEU IA OU HUMAIN - TOTALEMENT PRÉSERVÉ
-        function setupGame() {
-            const contents = [
-                {
-                    text: "Les étoiles scintillent comme des diamants sur le manteau noir de la nuit, témoins silencieux de nos rêves éphémères.",
-                    creator: "IA"
-                },
-                {
-                    text: "J'ai fait un super dessin de licorne hier, elle était rose avec des ailes bleues et une corne arc-en-ciel qui brillait dans le noir !",
-                    creator: "Humain"
-                },
-                {
-                    text: "Le chat a sauté par-dessus la barrière puis s'est assis au soleil pour se lécher les pattes.",
-                    creator: "Humain"
-                },
-                {
-                    text: "Les arbres centenaires murmurent les secrets des 'ges passés tandis que leurs racines s'enfoncent profondément dans le sol nourricier de notre histoire collective.",
-                    creator: "IA"
-                },
-                {
-                    text: "Mon jeu préféré c'est Minecraft parce qu'on peut construire tout ce qu'on veut et après les montrer à mes copains.",
-                    creator: "Humain"
-                }
-            ];
-            
-            let currentContent = null;
-            const contentDisplay = document.getElementById('content-display');
-            const resultDisplay = document.getElementById('result-display');
-            const startButton = document.getElementById('start-game');
-            const humanButton = document.getElementById('human-guess');
-            const aiButton = document.getElementById('ai-guess');
-            
-            // Vérifier que les éléments existent
-            if (!contentDisplay || !resultDisplay || !startButton || !humanButton || !aiButton) {
-                console.error("Éléments du jeu introuvables");
-                return;
-            }
-            
-            startButton.addEventListener('click', function() {
-                // Sélectionner un contenu aléatoire
-                currentContent = contents[Math.floor(Math.random() * contents.length)];
-                contentDisplay.textContent = currentContent.text;
-                
-                // Afficher les boutons de jeu
-                startButton.style.display = 'none';
-                humanButton.style.display = 'inline-block';
-                aiButton.style.display = 'inline-block';
-                resultDisplay.textContent = '';
-            });
-            
-            humanButton.addEventListener('click', function() {
-                checkGuess('Humain');
-            });
-            
-            aiButton.addEventListener('click', function() {
-                checkGuess('IA');
-            });
-            
-            function checkGuess(guess) {
-                if (guess === currentContent.creator) {
-                    resultDisplay.textContent = "✅ Correct ! C'était bien créé par un " + currentContent.creator + ".";
-                    // Enregistrer la progression si la réponse est correcte
-                    markProgress("IA", "jeu_ia_humain");
-                } else {
-                    resultDisplay.textContent = "❌ Pas tout à fait. C'était créé par un " + currentContent.creator + ".";
-                }
-                
-                // Réinitialiser pour la prochaine partie
-                startButton.style.display = 'inline-block';
-                startButton.textContent = 'Jouer encore';
-                humanButton.style.display = 'none';
-                aiButton.style.display = 'none';
-            }
-        }
-        
-        // SYSTÈME DE SUIVI DE PROGRESSION - TOTALEMENT PRÉSERVÉ
-        function markProgress(section, activity) {
-            // Récupérer les données existantes ou créer un nouvel objet
-            let progress = JSON.parse(localStorage.getItem('learningProgress')) || {};
-            
-            // Initialiser la section si elle n'existe pas
-            if (!progress[section]) {
-                progress[section] = {
-                    completed: 0,
-                    total: getActivityCount(section),
-                    activities: {}
-                };
-            }
-            
-            // Marquer l'activité comme complétée si elle ne l'est pas déjà
-            if (!progress[section].activities[activity]) {
-                progress[section].activities[activity] = {
-                    completed: true,
-                    timestamp: new Date().toISOString()
-                };
-                progress[section].completed += 1;
-                
-                // Afficher un message de félicitation
-                showCompletionMessage(section, activity);
-            }
-            
-            // Sauvegarder les progrès mis à jour
-            localStorage.setItem('learningProgress', JSON.stringify(progress));
-            
-            // Sauvegarder également dans le nouveau système de progression
-            try {
-                // Utiliser aussi le système de progression global si disponible
-                if (typeof saveLocalProgress === 'function') {
-                    saveLocalProgress(section, activity);
-                }
-            } catch (e) {
-                console.warn("Fonction de progression globale non disponible");
-            }
-        }
-        
-        function getActivityCount(section) {
-            // Nombre total d'activités par section
-            const activityCounts = {
-                'IA': 5,
-                'Mathématiques': 15,
-                'Français': 12,
-                'Sciences': 10,
-                'Histoire-Géo': 10
-            };
-            
-            return activityCounts[section] || 5;
-        }
-        
-        function showCompletionMessage(section, activity) {
-            // Créer un message de félicitation éphémère
-            const messageElement = document.createElement('div');
-            messageElement.style.position = 'fixed';
-            messageElement.style.bottom = '20px';
-            messageElement.style.left = '50%';
-            messageElement.style.transform = 'translateX(-50%)';
-            messageElement.style.backgroundColor = '#4CAF50';
-            messageElement.style.color = 'white';
-            messageElement.style.padding = '10px 20px';
-            messageElement.style.borderRadius = '5px';
-            messageElement.style.zIndex = '1000';
-            messageElement.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-            messageElement.textContent = '✨ Bravo ! Tu as progressé dans la section ' + section;
-            
-            // Ajouter le message au document
-            document.body.appendChild(messageElement);
-            
-            // Supprimer le message après 3 secondes
-            setTimeout(() => {
-                if (document.body.contains(messageElement)) {
-                    document.body.removeChild(messageElement);
-                }
-            }, 3000);
-        }
     </script>
-    <script src="./scripts/xp_system_complete.js"></script>
 </body>
 </html>
