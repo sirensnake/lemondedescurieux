@@ -26,3 +26,4 @@ package-lock.json
 # Build (Phase 3)
 dist/
 build/
+.mcp/
