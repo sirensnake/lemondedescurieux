@@ -1,0 +1,265 @@
+/* ========================================
+   🎮 GAMIFICATION UI - Dashboard Principal
+   ======================================== */
+
+.main-header {
+    background: linear-gradient(135deg, #2a9d8f 0%, #264653 100%);
+    padding: 1.5rem 2rem;
+    border-bottom: 4px solid #e76f51;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.main-header h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: #f1faee;
+    font-size: 1.8rem;
+    margin: 0 0 1rem 0;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+}
+
+/* 🎯 Dashboard Stats */
+.game-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    background: rgba(241, 250, 238, 0.95);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+    border: 3px solid #264653;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: #264653;
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 🔥 Streak Display */
+#streak-display {
+    color: #e63946;
+    font-weight: bold;
+}
+
+/* ❤️ Hearts Display */
+#hearts-display {
+    color: #d62828;
+}
+
+/* ⭐ XP Display */
+#xp-display {
+    color: #f77f00;
+}
+
+/* 👤 Bouton Profil Minecraft-style */
+.profile-btn-minecraft {
+    background: #457b9d;
+    color: #f1faee;
+    border: 3px solid #1d3557;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 0 #1d3557;
+    transition: all 0.1s ease;
+}
+
+.profile-btn-minecraft:hover {
+    background: #5a9cc4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #1d3557;
+}
+
+.profile-btn-minecraft:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #1d3557;
+}
+
+/* 🗺️ Navigation Minecraft-style */
+.main-navigation {
+    background: #f1faee;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 3px solid #264653;
+}
+
+.nav-list-minecraft {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.nav-item {
+    display: block;
+    background: #2a9d8f;
+    color: #f1faee;
+    padding: 1rem;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    border: 3px solid #264653;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 0 #264653;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #3ab09e;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 #264653;
+}
+
+.nav-item:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #264653;
+}
+
+.nav-item.active {
+    background: #e76f51;
+    border-color: #d62828;
+}
+
+/* 🚀 Parcours Thématiques */
+.thematic-paths {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f1faee 0%, #e9ecef 100%);
+    border-radius: 16px;
+    border: 3px solid #264653;
+}
+
+.thematic-paths h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #264653;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.paths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.path-card {
+    background: white;
+    border: 3px solid #264653;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 0 #264653;
+    transition: all 0.3s ease;
+}
+
+.path-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 11px 0 #264653;
+}
+
+.path-header {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.1rem;
+    color: #2a9d8f;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.path-subjects {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.subject-tag {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid currentColor;
+}
+
+.subject-tag.sciences {
+    background: #90e0ef;
+    color: #03045e;
+}
+
+.subject-tag.maths {
+    background: #fcbf49;
+    color: #6a4c93;
+}
+
+.subject-tag.histoire {
+    background: #ff6b6b;
+    color: #4a0e0e;
+}
+
+.start-path-btn {
+    width: 100%;
+    background: #2a9d8f;
+    color: #f1faee;
+    border: 3px solid #264653;
+    padding: 1rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 1rem;
+    box-shadow: 0 4px 0 #264653;
+    transition: all 0.2s ease;
+}
+
+.start-path-btn:hover {
+    background: #3ab09e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #264653;
+}
+
+.start-path-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #264653;
+}
+
+/* 📱 Responsive Mobile */
+@media (max-width: 768px) {
+    .game-stats {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .main-header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-list-minecraft {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-item {
+        font-size: 0.75rem;
+    }
+}
