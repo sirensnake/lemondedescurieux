@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calibration Mindmap</title>
+    <style>
+        body {
+            margin: 0;
+            background: #52a8e8;
+        }
+        .container {
+            position: relative;
+            width: 1536px;
+            height: 1024px;
+            margin: 20px auto;
+            border: 3px solid red;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .coords {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: black;
+            color: lime;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 16px;
+            border: 3px solid lime;
+            z-index: 9999;
+        }
+        .marker {
+            position: absolute;
+            width: 142px;
+            height: 142px;
+            border: 3px solid red;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            background: rgba(255, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="coords" id="coords">
+        Cliquez sur le CENTRE de chaque bulle<br>
+        <hr>
+        <div id="output"></div>
+    </div>
+
+    <div class="container">
+        <img src="images/MDC_Mindmap.png" id="img">
+    </div>
+
+    <script>
+        const img = document.getElementById('img');
+        const output = document.getElementById('output');
+        const container = document.querySelector('.container');
+        let clicks = [];
+
+        const titles = [
+            'Mathématiques', 'Sciences', 'Histoire-Géo', 
+            'Français', 'English',
+            'Programmation', 'Échecs', 'Philosophie', 
+            'Ressources', 'IA'
+        ];
+
+        img.addEventListener('click', (e) => {
+            const rect = img.getBoundingClientRect();
+            const x = Math.round(e.clientX - rect.left);
+            const y = Math.round(e.clientY - rect.top);
+            
+            clicks.push({x, y, title: titles[clicks.length]});
+            
+            // Marqueur visuel
+            const marker = document.createElement('div');
+            marker.className = 'marker';
+            marker.style.left = x + 'px';
+            marker.style.top = y + 'px';
+            container.appendChild(marker);
+            
+            // Affichage
+            output.innerHTML = clicks.map((c, i) => 
+                `${i+1}. ${c.title}: ${c.x}, ${c.y}`
+            ).join('<br>');
+            
+            if (clicks.length === 10) {
+                console.log('COORDONNÉES FINALES:');
+                clicks.forEach((c, i) => {
+                    console.log(`.bubble-${i+1} { left: ${c.x}px; top: ${c.y}px; }`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+## 📋 **PROCÉDURE DE CALIBRATION**
+
+1. **Ouvrez `calibrate.html`** dans votre navigateur
+2. **Cliquez au CENTRE de chaque bulle** dans l'ordre :
+   - Rangée supérieure : Maths → Sciences → Histoire → Français → English
+   - Rangée inférieure : Programmation → Échecs → Philosophie → Ressources → IA
+3. **Des cercles rouges** apparaissent pour montrer vos clics
+4. **La console affichera** le CSS à copier après 10 clics
+
+---
+
+## 🎯 **APRÈS CALIBRATION**
+
+**Copiez les coordonnées de la console** et donnez-les moi, je mettrai à jour `styles/mindmap.css` immédiatement.
+
+**Format attendu :**
+```
+1. Mathématiques: XXX, YYY
+2. Sciences: XXX, YYY
+...
+10. IA: XXX, YYY
