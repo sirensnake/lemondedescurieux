@@ -28,3 +28,4 @@ dist/
 build/
 .mcp/
 .mcp/
+node_modules/
