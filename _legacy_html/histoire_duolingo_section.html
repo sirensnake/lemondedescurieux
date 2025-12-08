@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Le Monde des Curieux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/duolingo-sections.css">
+    <link rel="stylesheet" href="styles/histoire-theme.css">
+</head>
+<body class="histoire-section">
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            <h1>🏛️ Histoire</h1>
+            <div class="stats">
+                <span id="streak-display">🔥 0 jours</span>
+                <span id="hearts-display">❤️❤️❤️❤️❤️</span>
+                <span id="xp-display">0 XP</span>
+            </div>
+        </div>
+        
+        <!-- LESSONS LIST (visible par défaut) -->
+        <div id="lessons-list">
+            <div id="lessons-grid"></div>
+        </div>
+        
+        <!-- LESSON SCREEN (caché par défaut, contient exercices + résultats) -->
+        <div id="lesson-screen" style="display: none;">
+            
+            <!-- EXERCISE SCREEN -->
+            <div id="exercise-screen">
+                <div class="exercise-header">
+                    <button class="btn btn-secondary" onclick="histoireApp.backToLessons()">← Retour</button>
+                    <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <!-- ZONE CONTEXTE HISTORIQUE -->
+                <div class="historical-context" id="historical-context">
+                    <div class="context-icon" id="context-icon">📜</div>
+                    <div class="context-text" id="context-text"></div>
+                </div>
+                
+                <div class="question-area">
+                    <div class="question-text" id="question-text"></div>
+                    <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
+                    <div class="hint-area" id="hint-area"></div>
+                </div>
+                
+                <div class="button-area">
+                    <button class="btn btn-secondary" onclick="histoireApp.showHint()">💡 Indice</button>
+                    <button class="btn btn-primary" onclick="histoireApp.checkAnswer()">✓ Vérifier</button>
+                </div>
+            </div>
+            <!-- Fin exercise-screen -->
+            
+            <!-- RESULTS SCREEN -->
+            <div id="results-screen">
+                <div class="results-icon">🏆</div>
+                <h2 style="color: #d97706; margin-bottom: 2rem;">Leçon Terminée !</h2>
+                
+                <div class="results-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-correct">0</div>
+                        <div class="stat-label">Bonnes réponses</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-xp">0</div>
+                        <div class="stat-label">XP gagnés</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-hearts">5</div>
+                        <div class="stat-label">Cœurs restants</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-score">0%</div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                </div>
+                
+                <!-- TIMELINE INTERACTIVE -->
+                <div class="timeline-summary" id="timeline-summary"></div>
+                
+                <button class="btn btn-primary" onclick="histoireApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
+                    🏠 Retour aux leçons
+                </button>
+            </div>
+            <!-- Fin results-screen -->
+            
+        </div>
+        <!-- Fin lesson-screen -->
+        
+        <!-- FEEDBACK POPUP -->
+        <div class="feedback" id="feedback"></div>
+        
+    </div>
+    <!-- Fin container -->
+
+    <script src="scripts/histoire-lessons.js"></script>
+</body>
+</html>
