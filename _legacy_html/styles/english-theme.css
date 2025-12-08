@@ -1,0 +1,78 @@
+/* ========================================
+   THÈME ANGLAIS
+   Gradient bleu UK/US
+   ======================================== */
+
+.english-section {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    min-height: 100vh;
+}
+
+.english-section .header h1 {
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.english-section .lesson-card:hover {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+.english-section .lesson-title {
+    color: #3b82f6;
+}
+
+.english-section .lesson-button {
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+}
+
+.english-section .lesson-button:hover {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+}
+
+.english-section .btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+}
+
+.english-section .btn-primary:hover {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+}
+
+.english-section .progress-fill {
+    background: linear-gradient(90deg, #3b82f6, #1e40af);
+}
+
+.english-section .question-text {
+    color: #3b82f6;
+}
+
+.english-section .answer-input {
+    border-color: #3b82f6;
+}
+
+.english-section .answer-input:focus {
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Bouton audio spécifique */
+.audio-btn {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #3b82f6, #1e40af);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    margin: 1rem auto;
+    display: block;
+    transition: all 0.3s;
+}
+
+.audio-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.audio-btn:active {
+    transform: scale(0.95);
+}
