@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices sur la soustraction ➖</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🔢 <a href="maths_section.html">Mathématiques</a> > Exercices sur la soustraction ➖</div><!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+     <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+     <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+     <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+   </div>
+
+    <h1>Exercices sur la soustraction ➖</h1>
+    <p>Apprends à soustraire des nombres et entraîne-toi avec des exercices interactifs. 🧠</p>
+    
+    <h2>📚 Soustraction simple</h2>
+    <p>Calcule les résultats :</p>
+    <p>45 - 18 = <input type="text" id="sub1" placeholder="Réponse"> <button onclick="verifyResult('sub1', 27)">Vérifier</button></p>
+    <p id="feedback1"></p>
+    
+    <p>92 - 34 = <input type="text" id="sub2" placeholder="Réponse"> <button onclick="verifyResult('sub2', 58)">Vérifier</button></p>
+    <p id="feedback2"></p>
+    
+    <h2>➖ Soustraction avec retenues</h2>
+    <p>Résous ces opérations :</p>
+    <p>234 - 157 = <input type="text" id="sub3" placeholder="Réponse"> <button onclick="verifyResult('sub3', 77)">Vérifier</button></p>
+    <p id="feedback3"></p>
+    
+    <p>807 - 489 = <input type="text" id="sub4" placeholder="Réponse"> <button onclick="verifyResult('sub4', 318)">Vérifier</button></p>
+    <p id="feedback4"></p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Explore d'autres exercices :</p>
+    <ul>
+        <li><a href="maths_chapitre1.html">Retour au Chapitre 1</a></li>
+        <li><a href="maths_addition.html">Exercices sur l'addition ➕</a></li>
+        <li><a href="maths_multiplication.html">Exercices sur la multiplication ✖️</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function verifyResult(inputId, correctAnswer) {
+            let userAnswer = parseInt(document.getElementById(inputId).value);
+            let feedbackId = "feedback" + inputId.slice(-1);
+            if (userAnswer === correctAnswer) {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

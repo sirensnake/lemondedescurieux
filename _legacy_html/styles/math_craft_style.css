@@ -1,0 +1,262 @@
+/* Style Minecraft pour le jeu de calcul mental */
+.math-game {
+    background-color: #826D55; /* Couleur bois de Minecraft */
+    border: 4px solid #3a3a3a;
+    border-radius: 0; /* Minecraft utilise des angles droits */
+    box-shadow: inset 0 0 0 4px #693d29, 0 0 0 8px #2d2d2d;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #373737; /* Couleur pierre Minecraft */
+    border: 2px solid #2d2d2d;
+  }
+  
+  .game-score, .game-timer {
+    font-size: 18px;
+    font-weight: normal;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #000000;
+  }
+  
+  #score-value, #time-left {
+    color: #FFFF55; /* Jaune Minecraft */
+  }
+  
+  .game-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .game-problem {
+    background-color: #c6c6c6; /* Couleur laine grise */
+    border: 4px solid #2d2d2d;
+    padding: 30px;
+    width: 100%;
+  }
+  
+  .problem-text {
+    font-size: 32px;
+    font-weight: normal;
+    color: #000000;
+    text-align: center;
+    text-shadow: 1px 1px 0 #ffffff;
+  }
+  
+  .game-input {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  #answer-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    background-color: #8B8B8B; /* Couleur des blocs de pierre */
+    border: 2px solid #2d2d2d;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  #answer-input:focus {
+    border-color: #558b2f;
+    outline: none;
+  }
+  
+  .game-button {
+    padding: 10px 15px;
+    border: 2px solid #2d2d2d;
+    background-color: #427a27; /* Vert Minecraft */
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 #000000;
+    transition: all 0.2s;
+  }
+  
+  .game-button:hover {
+    background-color: #559637;
+  }
+  
+  .game-button.primary {
+    background-color: #5396da; /* Bleu diamant */
+  }
+  
+  .game-button.primary:hover {
+    background-color: #70a9e0;
+  }
+  
+  .game-feedback {
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    border: 2px solid #2d2d2d;
+  }
+  
+  .game-feedback.correct {
+    background-color: #427a27; /* Vert Minecraft */
+    color: white;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .game-feedback.incorrect {
+    background-color: #982333; /* Rouge Minecraft */
+    color: white;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .game-feedback.warning {
+    background-color: #f39c12; /* Orange Minecraft */
+    color: white;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .game-feedback.game-over {
+    background-color: #5396da; /* Bleu diamant */
+    color: white;
+    text-shadow: 1px 1px 0 #000000;
+    font-weight: normal;
+    padding: 15px;
+    font-size: 20px;
+  }
+  
+  .game-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .high-scores {
+    margin-top: 20px;
+    background-color: #694d32; /* Planche de bois foncé */
+    border: 4px solid #2d2d2d;
+    padding: 15px;
+  }
+  
+  .high-scores h3 {
+    color: #FFFF55; /* Jaune Minecraft */
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .high-scores-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .high-scores-list li {
+    margin-bottom: 5px;
+    padding: 5px 0;
+    border-bottom: 1px solid #7f684e;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .help-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .help-content {
+    background-color: #826D55; /* Bois Minecraft */
+    border: 4px solid #2d2d2d;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+  }
+  
+  .help-content h3 {
+    color: #FFFF55; /* Jaune Minecraft */
+    margin-top: 0;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .help-content p, .help-content li {
+    color: white;
+    text-shadow: 1px 1px 0 #000000;
+  }
+  
+  .help-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    list-style-type: square;
+  }
+  
+  .help-content li {
+    margin-bottom: 5px;
+  }
+  
+  /* Animation de level up */
+  @keyframes floatUp {
+    0% { transform: translate(-50%, -50%); opacity: 1; }
+    100% { transform: translate(-50%, -150%); opacity: 0; }
+  }
+  
+  /* Animation pour les blocs qui se brisent */
+  @keyframes blockBreak {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(0); opacity: 0; }
+  }
+  
+  /* Animation de dégâts */
+  @keyframes damage {
+    0% { background-color: white; }
+    50% { background-color: #FF0000; }
+    100% { background-color: transparent; }
+  }
+  
+  .damage-effect {
+    animation: damage 0.5s;
+  }
+  
+  /* Barre d'XP */
+  .xp-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #3a3a3a;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .xp-bar {
+    height: 100%;
+    background-color: #7fce46; /* Vert XP Minecraft */
+    width: 0%;
+    transition: width 1s;
+  }
+  
+  .xp-level {
+    position: absolute;
+    left: 50%;
+    top: -15px;
+    transform: translateX(-50%);
+    background-color: #3a3a3a;
+    color: #7fce46;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 14px;
+  }

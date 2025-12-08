@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Mesures</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+    </script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🔢 <a href="maths_section.html">Mathématiques</a> > Les Mesures 📏</div>
+    
+    <script>
+        fetch('menu_lateral.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('menu-container').innerHTML = data);
+    </script>
+    <!-- Outils d'accessibilité -->
+   <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+    <h1>Les Mesures 📏</h1>
+    <div class="content">
+        <h2>Qu'est-ce qu'une mesure ?</h2>
+        <p>Une mesure permet d'exprimer une quantité en utilisant une unité adaptée. Par exemple, on mesure la longueur en mètres (m), la masse en kilogrammes (kg) et la capacité en litres (L).</p>
+    </div>
+    
+    <div class="content">
+        <h2>Tableaux de conversion</h2>
+        <p>Voici les principales conversions :</p>
+        <ul>
+            <li>1 km = 1000 m</li>
+            <li>1 m = 100 cm</li>
+            <li>1 cm = 10 mm</li>
+            <li>1 kg = 1000 g</li>
+            <li>1 L = 1000 mL</li>
+        </ul>
+    </div>
+    
+    <div class="content interactive-section">
+        <h2>🎯 Exercice : Trouve l'équivalence</h2>
+        <p>Combien de grammes y a-t-il dans 3 kg ?</p>
+        <button onclick="checkAnswer('300')">300 g</button>
+        <button onclick="checkAnswer('3000')">3000 g</button>
+        <button onclick="checkAnswer('30')">30 g</button>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <script>
+        function checkAnswer(answer) {
+            const correctAnswer = '3000';
+            const feedback = document.getElementById('feedback');
+            if (answer === correctAnswer) {
+                feedback.innerHTML = "✔️ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse, essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+    
+    <a href="maths_section.html" class="back-button">Retour à la section Maths 📚</a>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

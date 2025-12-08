@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#2a9d8f">
+  <title>Mon Parcours | Le Monde des Curieux</title>
+  
+  <!-- Préchargement des ressources critiques -->
+  <link rel="preload" href="styles/menu_lateral.css" as="style">
+  <link rel="preload" href="scripts/menu-loader.js" as="script">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/menu_lateral.css">
+  <link rel="stylesheet" href="styles/section_style.css">
+  <link rel="stylesheet" href="styles/progression_tableau.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <!-- Lien d'évitement pour l'accessibilité -->
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  
+  <!-- Conteneur pour le menu latéral -->
+  <div id="menu-container"></div>
+  
+  <!-- Fil d'Ariane -->
+  <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > Mon Parcours d'Apprentissage 🚀</div>
+  
+  <!-- Outils d'accessibilité -->
+  <div class="accessibility-tools">
+      <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+      <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+      <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+  <!-- Outils d'accessibilité -->
+  <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+  <h1>Mon Parcours d'Apprentissage 🚀</h1>
+  
+  <div id="main-content" class="content">
+    <div class="progression-container">
+      <div class="progression-summary">
+        <h2>Résumé de ma progression</h2>
+        <div id="progression-stats"></div>
+      </div>
+      
+      <div class="progression-details">
+        <h2>Détails par matière</h2>
+        <div id="progression-by-subject"></div>
+      </div>
+    </div>
+  </div>
+  
+  <a href="index.html" class="back-button">Retour à la page d'accueil 🏠</a>
+  
+  <!-- Scripts -->
+  <script src="scripts/menu-loader.js" defer></script>
+  <script src="scripts/accessibilite.js" defer></script>
+  <script src="scripts/progression.js" defer></script>
+  <script src="scripts/tableau_progression.js" defer></script>
+  <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  </body>
+</html>

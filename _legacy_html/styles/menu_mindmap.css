@@ -1,0 +1,66 @@
+/* Style global de la page d'accueil */
+body {
+    font-family: 'Arial, sans-serif';
+    background-color: #cce7ff; /* Ciel bleu clair, ambiance pixelisée */
+    margin: 0;
+    padding: 0;
+}
+
+h1.title-minecraft {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 48px;
+    color: #3ba635; /* Vert prairie pour les lettres */
+    text-shadow: 4px 4px 0px #4d4d4d, 8px 8px 0px #1a1a1a;
+    background: none; /* Pas de gradient */
+    padding: 10px 20px;
+    border: 3px solid #4d4d4d;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    margin: 20px auto;
+}
+
+p.subtitle {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Style des cercles représentant les matières */
+.circle {
+    width: 150px;
+    height: 150px;
+    background-color: #f4a261;
+    border-radius: 50%;
+    border: 3px solid #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.circle:hover {
+    transform: scale(1.1);
+    background-color: #e76f51;
+}
+
+.circle img {
+    width: 80px;
+    height: 80px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #666;
+}

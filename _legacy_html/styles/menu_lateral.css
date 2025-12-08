@@ -1,0 +1,150 @@
+/**
+ * Styles pour le menu latéral
+ * Le Monde des Curieux
+ */
+
+/* Bouton hamburger */
+.sidebar-toggle {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1100;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-toggle:hover {
+    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+    transform: scale(1.05);
+  }
+  
+  /* Bouton spécifique à la page d'accueil */
+  body.home-page .sidebar-toggle {
+    background: linear-gradient(135deg, #ffb347 0%, #ff7746 100%);
+  }
+  
+  body.home-page .sidebar-toggle:hover {
+    background: linear-gradient(135deg, #ff7746 0%, #ff5722 100%);
+  }
+  
+  /* Menu latéral - caché par défaut */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #f5f5f5;
+    z-index: 1000;
+    padding-top: 50px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: all 0.3s ease;
+  }
+  
+  /* État visible du menu */
+  .sidebar.open {
+    left: 0;
+  }
+  
+  /* Éléments de liste */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Liens du menu */
+  .sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+  }
+  
+  .sidebar a:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Lien actif */
+  .sidebar a.active {
+    background-color: #1b5e20;
+    color: white;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .sidebar a.active::before {
+    content: "• ";
+    color: white;
+  }
+  
+  /* Mode sombre */
+  body.dark-mode .sidebar {
+    background-color: #252525;
+  }
+  
+  body.dark-mode .sidebar a {
+    color: #e0e0e0;
+    border-bottom-color: #444;
+  }
+  
+  body.dark-mode .sidebar a:hover {
+    background-color: #333;
+  }
+  
+  body.dark-mode .sidebar a.active {
+    background-color: #2e7d32;
+  }
+  
+  /* Mode contraste élevé */
+  body.high-contrast .sidebar {
+    background-color: black;
+  }
+  
+  body.high-contrast .sidebar a {
+    color: white;
+    border-bottom-color: white;
+  }
+  
+  body.high-contrast .sidebar a:hover,
+  body.high-contrast .sidebar a.active {
+    background-color: white;
+    color: black;
+  }
+  
+  body.high-contrast .sidebar a.active::before {
+    color: #000;
+  }
+  
+  /* Texte agrandi */
+  body.large-text .sidebar a {
+    font-size: 1.2em;
+    padding: 15px;
+  }
+  
+  /* Adaptation mobile */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 200px;
+      left: -200px;
+      padding-top: 60px;
+    }
+    
+    .sidebar a {
+      padding: 10px;
+    }
+  }

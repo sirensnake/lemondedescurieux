@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercice 5 : L'accord des adjectifs</title>
+  <link rel="stylesheet" href="styles/section_style.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📝 <a href="francais_section.html">Français</a> > Exercice 5 : L'accord des adjectifs</div>
+  <!-- Outils d'accessibilité -->
+  <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+</div>
+  <h1>Exercice 5 : L'accord des adjectifs</h1>
+  <section>
+    <h2>📚 Accorde les adjectifs correctement</h2>
+    <p>Complète les phrases en accordant correctement les adjectifs avec les noms.</p>
+    <ul>
+      <li>Un chat <input type="text" id="q1" placeholder="noir/noire/noirs/noires"> se promène dans la maison.</li>
+      <li>Des fleurs <input type="text" id="q2" placeholder="beau/belle/beaux/belles"> ornent le jardin.</li>
+      <li>Un homme <input type="text" id="q3" placeholder="gentil/gentille/gentils/gentilles"> aide sa voisine.</li>
+    </ul>
+    <button id="check-answers" class="back-button">Vérifier les réponses</button>
+    <p id="feedback" style="margin-top:10px;"></p>
+  </section>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let checkButton = document.getElementById("check-answers");
+    if (!checkButton) return;
+    checkButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      const correctAnswers = {
+        "francais_exercice1.html": { q1: "le", q2: "les", q3: "la" },
+        "francais_exercice2.html": { q1: "noir", q2: "jolie", q3: "blanches" },
+        "francais_exercice3.html": { q1: "avons mangé", q2: "ira", q3: "prends" },
+        "francais_exercice4.html": { q1: "animaux", q2: "journaux", q3: "chevaux" },
+        "francais_exercice5.html": { q1: "noir", q2: "belles", q3: "gentil" },
+        "francais_exercice6.html": { q1: "chante", q2: "jouons", q3: "marche" },
+        "francais_exercice7.html": { q1: "a", q2: "à", q3: "est", q4: "et" },
+        "francais_exercice8.html": { q1: "je", q2: "nous", q3: "il", q4: "vous" },
+        "francais_exercice9.html": { q1: "ne... pas", q2: "ne... plus", q3: "ne... plus" }
+      };
+      let currentFile = window.location.pathname.split("/").pop();
+      if (!currentFile || !correctAnswers[currentFile]) {
+        currentFile = "francais_exercice5.html";
+      }
+      const answers = correctAnswers[currentFile];
+      let correctCount = 0;
+      let feedbackMessage = "<strong>Résultats :</strong><br>";
+      document.querySelectorAll("input[type='text']").forEach(input => {
+        let userAnswer = input.value.trim().toLowerCase();
+        let questionId = input.id;
+        if (answers[questionId]) {
+          if (userAnswer === answers[questionId]) {
+            input.style.setProperty("border", "3px solid green", "important");
+            input.style.setProperty("background-color", "#d4edda", "important");
+            input.insertAdjacentHTML('afterend', " <span style='color:green;'>✔️ Correct</span>");
+            feedbackMessage += `✔️ Bonne réponse : <strong>${userAnswer}</strong><br>`;
+            correctCount++;
+          } else {
+            input.style.setProperty("border", "3px solid red", "important");
+            input.style.setProperty("background-color", "#f8d7da", "important");
+            input.insertAdjacentHTML('afterend', " <span style='color:red;'>❌ Faux - Réponse correcte : <strong>" + answers[questionId] + "</strong></span>");
+            feedbackMessage += `❌ Mauvaise réponse. La bonne réponse était : <strong>${answers[questionId]}</strong><br>`;
+          }
+          input.disabled = true;
+        }
+      });
+      if (correctCount === Object.keys(answers).length) {
+        feedbackMessage += "<br>🎉 Bravo ! Toutes les réponses sont correctes !";
+      } else {
+        feedbackMessage += "<br>😊 Tu peux réessayer en rafraîchissant la page.";
+      }
+      let feedback = document.getElementById("feedback");
+      if (feedback) {
+        feedback.innerHTML = feedbackMessage;
+      }
+      checkButton.disabled = true;
+    });
+  });
+  </script>
+  <nav style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+    <!-- Adaptez les liens en fonction de l'exercice courant -->
+    <button onclick="location.href='francais_exercice4.html'">Exercice précédent</button>
+    <button onclick="location.href='francais_exercice6.html'">Exercice suivant</button>
+    <a href="francais_section.html" class="back-button">Retour au sommaire du français 📚</a>
+  </nav>
+  <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

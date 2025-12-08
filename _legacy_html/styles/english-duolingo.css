@@ -1,0 +1,858 @@
+/* english-duolingo.css - Styles gamifiés pour section anglais */
+
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+  /* Couleurs charte Minecraft existante */
+  --primary-color: #2a9d8f;
+  --secondary-color: #e9c46a;
+  --accent-color: #e76f51;
+  --background-color: #f1faee;
+  --text-color: #1d3557;
+  
+  /* Nouvelles couleurs gamification */
+  --success-color: #52c41a;
+  --error-color: #ff4d4f;
+  --warning-color: #faad14;
+  --info-color: #1890ff;
+  
+  /* Couleurs système cœurs */
+  --heart-filled: #ff4757;
+  --heart-empty: #ddd;
+  --heart-losing: #ff6b7a;
+  
+  /* Couleurs streak */
+  --streak-active: #f39c12;
+  --streak-inactive: #bdc3c7;
+  
+  /* Ombres et bordures */
+  --minecraft-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+  --minecraft-border: 3px solid #1d3557;
+  
+  /* Animations */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+  --transition-slow: 0.6s ease;
+}
+
+/* ===== BASE LAYOUT ===== */
+.duolingo-style {
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(135deg, var(--background-color) 0%, #e8f4f8 100%);
+  min-height: 100vh;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ===== HEADER GAMIFIÉ ===== */
+.game-header {
+  background: var(--primary-color);
+  box-shadow: var(--minecraft-shadow);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: var(--minecraft-border);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.back-btn {
+  padding: 0.5rem 1rem;
+  font-size: 10px;
+  background: var(--accent-color);
+  border: 2px solid var(--text-color);
+  color: white;
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* ===== MÉTRIQUES BAR ===== */
+.metrics-bar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Streak Counter */
+.streak-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  padding: 0.8rem;
+  border-radius: 12px;
+  min-width: 80px;
+  transition: var(--transition-medium);
+}
+
+.streak-counter.streak-active {
+  background: var(--streak-active);
+  transform: scale(1.05);
+  animation: streakPulse 2s infinite;
+}
+
+.streak-flame {
+  font-size: 20px;
+  margin-bottom: 0.2rem;
+  filter: drop-shadow(0 0 8px orange);
+}
+
+.streak-number {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.streak-label {
+  font-size: 8px;
+  color: rgba(255,255,255,0.9);
+  margin-top: 0.2rem;
+}
+
+@keyframes streakPulse {
+  0%, 100% { transform: scale(1.05); }
+  50% { transform: scale(1.1); }
+}
+
+/* Système Cœurs */
+.hearts-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hearts-display .heart {
+  font-size: 18px;
+  transition: var(--transition-fast);
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.3));
+}
+
+.hearts-display .heart.filled {
+  color: var(--heart-filled);
+  transform: scale(1);
+}
+
+.hearts-display .heart.empty {
+  color: var(--heart-empty);
+  transform: scale(0.8);
+  opacity: 0.5;
+}
+
+.hearts-display .heart.losing {
+  animation: heartLoss 0.6s ease-out;
+}
+
+@keyframes heartLoss {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.3) rotate(-10deg); color: #ff6b7a; }
+  50% { transform: scale(0.8) rotate(5deg); }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+.hearts-timer {
+  font-size: 8px;
+  color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* Barre XP */
+.xp-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.xp-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.xp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary-color) 0%, #f1c40f 100%);
+  transition: width var(--transition-medium);
+  position: relative;
+}
+
+.xp-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: xpShine 2s infinite;
+}
+
+@keyframes xpShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.xp-text {
+  font-size: 8px;
+  color: rgba(255,255,255,0.9);
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+/* Avatar Curio */
+.curio-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: var(--minecraft-shadow);
+}
+
+.curio-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-medium);
+}
+
+.curio-avatar img.celebrating {
+  animation: curioCheer 1s infinite alternate;
+}
+
+@keyframes curioCheer {
+  0% { transform: scale(1) rotate(-2deg); }
+  100% { transform: scale(1.1) rotate(2deg); }
+}
+
+/* ===== ÉCRANS PRINCIPAUX ===== */
+.lesson-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: calc(100vh - 120px);
+}
+
+/* Écran d'accueil */
+.home-screen {
+  text-align: center;
+}
+
+.pixel-title {
+  font-size: 24px;
+  color: var(--primary-color);
+  text-shadow: var(--minecraft-shadow);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+/* Grille de statistiques */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: white;
+  border: var(--minecraft-border);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: var(--minecraft-shadow);
+  transition: var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.stat-icon {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 8px;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Sélection d'activités */
+.activity-selection h2 {
+  font-size: 16px;
+  color: var(--text-color);
+  margin: 3rem 0 2rem 0;
+  text-align: center;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.activity-card {
+  background: white;
+  border: var(--minecraft-border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition-medium);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: var(--transition-slow);
+}
+
+.activity-card:hover::before {
+  left: 100%;
+}
+
+.activity-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.activity-icon {
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+
+.activity-card h3 {
+  font-size: 14px;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+
+.activity-card p {
+  font-size: 10px;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.difficulty-indicator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.difficulty {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.difficulty.easy { background: var(--success-color); }
+.difficulty.medium { background: var(--warning-color); }
+.difficulty.hard { background: var(--error-color); }
+
+/* ===== ÉCRAN DE LEÇON ===== */
+.lesson-screen {
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Progression de leçon */
+.lesson-progress {
+  background: white;
+  border: var(--minecraft-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--minecraft-shadow);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 16px;
+  background: #e1e8ed;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--text-color);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  transition: width var(--transition-medium);
+  position: relative;
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: 10px;
+  color: var(--text-color);
+}
+
+/* Zone de question */
+.question-area {
+  background: white;
+  border: var(--minecraft-border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--minecraft-shadow);
+  min-height: 300px;
+  animation: questionAppear 0.6s ease-out;
+}
+
+@keyframes questionAppear {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.instruction {
+  font-size: 14px;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(42, 157, 143, 0.1);
+  border-radius: 8px;
+  border: 2px dashed var(--primary-color);
+}
+
+.question-word {
+  font-size: 28px;
+  color: var(--accent-color);
+  text-align: center;
+  margin: 2rem 0;
+  text-shadow: var(--minecraft-shadow);
+  padding: 1rem;
+  background: rgba(233, 196, 106, 0.2);
+  border-radius: 12px;
+  border: 3px solid var(--secondary-color);
+}
+
+/* Options de réponse */
+.answer-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.option-btn {
+  background: white;
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  font-size: 12px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-align: center;
+  font-family: inherit;
+}
+
+.option-btn:hover:not(:disabled) {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.option-btn.correct {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+  animation: correctPulse 0.6s ease-out;
+}
+
+.option-btn.incorrect {
+  background: var(--error-color);
+  color: white;
+  border-color: var(--error-color);
+  animation: shake 0.6s ease-out;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Questions spécialisées */
+.text-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 14px;
+  border: var(--minecraft-border);
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-family: inherit;
+  text-align: center;
+}
+
+.audio-player {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.play-btn, .slow-btn, .check-btn {
+  padding: 1rem 2rem;
+  border: var(--minecraft-border);
+  border-radius: 8px;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: inherit;
+  font-size: 10px;
+}
+
+.play-btn:hover, .slow-btn:hover, .check-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--minecraft-shadow);
+}
+
+/* ===== FEEDBACK AREA ===== */
+.feedback-area {
+  background: white;
+  border: var(--minecraft-border);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  animation: feedbackSlideUp 0.5s ease-out;
+  box-shadow: var(--minecraft-shadow);
+}
+
+@keyframes feedbackSlideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.feedback-area.correct {
+  border-color: var(--success-color);
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.feedback-area.incorrect {
+  border-color: var(--error-color);
+  background: rgba(255, 77, 79, 0.1);
+}
+
+.feedback-icon {
+  font-size: 48px;
+  margin-bottom: 1rem;
+}
+
+.feedback-message {
+  font-size: 16px;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.feedback-explanation {
+  font-size: 10px;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.continue-btn {
+  padding: 1rem 3rem;
+  font-size: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.continue-btn.correct {
+  background: var(--success-color);
+  color: white;
+}
+
+.continue-btn.incorrect {
+  background: var(--accent-color);
+  color: white;
+}
+
+.continue-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== MODAL PERTE DE CŒUR ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.heart-loss-modal {
+  background: white;
+  border: var(--minecraft-border);
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from { transform: scale(0.7) translateY(-50px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-content {
+  padding: 2rem;
+  text-align: center;
+}
+
+.heart-loss-icon {
+  font-size: 64px;
+  margin-bottom: 1rem;
+  animation: heartBreak 1s ease-out;
+}
+
+@keyframes heartBreak {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2) rotate(-5deg); }
+  50% { transform: scale(0.8) rotate(5deg); }
+  100% { transform: scale(1); }
+}
+
+.modal-content h3 {
+  font-size: 16px;
+  color: var(--error-color);
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  font-size: 10px;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.hearts-display-modal {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.heart-modal {
+  font-size: 24px;
+}
+
+.heart-modal.filled {
+  color: var(--heart-filled);
+}
+
+.heart-modal:not(.filled) {
+  color: var(--heart-empty);
+  opacity: 0.5;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .duolingo-style {
+    font-size: 10px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .metrics-bar {
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .pixel-title {
+    font-size: 18px;
+  }
+  
+  .activity-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .question-area {
+    padding: 1rem;
+    min-height: 250px;
+  }
+  
+  .answer-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .curio-avatar {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lesson-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .question-word {
+    font-size: 20px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .heart-loss-icon {
+    font-size: 48px;
+  }
+}
+
+/* ===== ANIMATIONS D'ACCESSIBILITÉ ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .progress-fill,
+  .xp-fill {
+    transition: none;
+  }
+}
+
+/* ===== THÈME SOMBRE ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1a1a2e;
+    --text-color: #ffffff;
+  }
+  
+  .duolingo-style {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+  
+  .question-area,
+  .stat-card,
+  .activity-card,
+  .lesson-progress,
+  .feedback-area,
+  .heart-loss-modal {
+    background: #2d2d44;
+    color: white;
+  }
+  
+  .text-input {
+    background: #2d2d44;
+    color: white;
+  }
+}
+
+/* ===== FOCUS ACCESSIBILITÉ ===== */
+button:focus,
+input:focus,
+select:focus {
+  outline: 3px solid var(--info-color);
+  outline-offset: 2px;
+}
+
+.option-btn:focus {
+  box-shadow: 0 0 0 3px var(--info-color);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .game-header,
+  .modal-overlay {
+    display: none;
+  }
+  
+  .lesson-container {
+    max-width: none;
+    padding: 0;
+  }
+}

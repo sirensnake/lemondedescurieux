@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Division - CM1 ➗</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/maths_operations_division.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🔢 <a href="maths_section.html">Mathématiques</a> > ➗ Division - CM1</div>
+    <!-- Outils d'accessibilité -->
+   <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+    <h1>➗ Division - CM1</h1>
+    <p>Apprends à poser et effectuer des divisions avec des nombres à un chiffre et découvre la notion de quotient et reste.</p>
+    
+    <div class="content">
+        <h2>📖 Rappel des Règles</h2>
+        <p>La division consiste à partager un nombre en plusieurs parties égales. Exemple : 12 ÷ 4 = 3 signifie que 12 est partagé en 4 groupes de 3.</p>
+    </div>
+    
+    <div class="content">
+        <h2>📝 Exercices de Division</h2>
+        <p>Résous ces divisions :</p>
+        <ul>
+            <li>24 ÷ 6 = <input type="text" id="q1" placeholder="?"> <button onclick="checkAnswer('q1', '4')">Vérifier</button></li>
+            <li>56 ÷ 7 = <input type="text" id="q2" placeholder="?"> <button onclick="checkAnswer('q2', '8')">Vérifier</button></li>
+            <li>81 ÷ 9 = <input type="text" id="q3" placeholder="?"> <button onclick="checkAnswer('q3', '9')">Vérifier</button></li>
+        </ul>
+    </div>
+    
+    <a href="maths_operations.html" class="back-button">Retour aux Opérations ➕➖✖️➗</a>
+    
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            let userAnswer = document.getElementById(inputId).value.trim();
+            let feedback = document.createElement("p");
+            feedback.classList.add("feedback");
+            document.getElementById(inputId).parentElement.appendChild(feedback);
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = "✅ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

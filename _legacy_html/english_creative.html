@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateliers Créatifs en Anglais 🎨</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <!-- Ajouter dans le head de toutes les pages -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🇬🇧 <a href="english_section.html">English</a> > Crée et apprends l’anglais ✍️</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+    <h1>Crée et apprends l’anglais ✍️</h1>
+    <div class="content">
+        <p>Exprime-toi en anglais à travers ces activités amusantes !</p>
+        
+        <h2>🖼️ Crée une affiche en anglais</h2>
+        <p>Choisis un sujet et écris des phrases simples en anglais. Dessine ou ajoute des images pour illustrer ton affiche.</p>
+        <textarea rows="5" cols="50" placeholder="Écris ton texte ici..."></textarea>
+        <button onclick="saveText()">Sauvegarder</button>
+        
+        <h2>🎭 Jeu de rôle : Présente-toi</h2>
+        <p>Utilise ce modèle pour te présenter :</p>
+        <p>"Hello! My name is ______. I am ____ years old. I like _______."</p>
+        <input type="text" id="name" placeholder="Ton prénom">
+        <input type="text" id="age" placeholder="Ton 'ge">
+        <input type="text" id="like" placeholder="Ce que tu aimes">
+        <button onclick="showIntroduction()">Afficher ma présentation</button>
+        <p id="output"></p>
+    </div>
+    <a href="english_section.html">Retour à la section principale</a>
+
+    <script>
+        function saveText() {
+            alert("Ton texte a été sauvegardé !")
+        }
+        function showIntroduction() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let like = document.getElementById("like").value;
+            document.getElementById("output").innerText = `Hello! My name is ${name}. I am ${age} years old. I like ${like}.`;
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

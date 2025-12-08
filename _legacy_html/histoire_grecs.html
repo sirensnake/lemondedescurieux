@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Grecs 🏛️</title>
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📜 <a href="histoire_section.html">Histoire</a> > Les Grecs 🏛️</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+
+
+    <h1>Les Grecs 🏛️</h1>
+    <div class="content">
+        <h2>Qui étaient les Grecs ?</h2>
+        <p>Les Grecs ont laissé un héritage culturel et intellectuel immense, marquant de leur empreinte la philosophie, l’art, la politique et les sciences. Leur civilisation a contribué à la naissance de la démocratie et à l’épanouissement des arts classiques.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cVsQB4wpRBc" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="content">
+        <h2>🏛️ L'organisation politique de la Grèce antique</h2>
+        <p>La Grèce antique était composée de cités-États indépendantes, appelées <strong>polis</strong>. Les plus célèbres étaient :</p>
+        <ul>
+            <li><strong>Athènes</strong> : Berceau de la démocratie, où les citoyens votaient directement les lois.</li>
+            <li><strong>Sparte</strong> : Une société militaire où l’éducation était centrée sur la discipline et la guerre.</li>
+            <li><strong>Corinthe</strong> : Connue pour son commerce florissant et son architecture avancée.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>⚡ La mythologie grecque</h2>
+        <p>Les Grecs croyaient en une multitude de dieux et déesses, chacun ayant son propre domaine :</p>
+        <ul>
+            <li><strong>Zeus</strong> : Roi des dieux, maître du ciel et des éclairs.</li>
+            <li><strong>Poséidon</strong> : Dieu des mers et des tempêtes.</li>
+            <li><strong>Athéna</strong> : Déesse de la sagesse et de la guerre stratégique.</li>
+            <li><strong>Hadès</strong> : Souverain du monde souterrain.</li>
+        </ul>
+        <p>Ces dieux étaient vénérés à travers des temples majestueux, comme le Parthénon dédié à Athéna à Athènes.</p>
+    </div>
+    
+    <div class="content">
+        <h2>🎭 Les arts et la culture</h2>
+        <p>Les Grecs ont posé les bases de la culture occidentale dans de nombreux domaines :</p>
+        <ul>
+            <li><strong>Le thé'tre</strong> : Inventé par les Grecs, il se divisait en tragédies et comédies jouées dans des amphithé'tres.</li>
+            <li><strong>La sculpture</strong> : Les statues grecques représentaient la perfection du corps humain.</li>
+            <li><strong>Les Jeux Olympiques</strong> : Créés en l’honneur de Zeus, ils avaient lieu tous les quatre ans à Olympie.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>🧠 Les grandes inventions et sciences</h2>
+        <p>Les Grecs ont fait de nombreuses avancées scientifiques et philosophiques :</p>
+        <ul>
+            <li><strong>Pythagore</strong> : Fondateur des mathématiques modernes avec son célèbre théorème.</li>
+            <li><strong>Hippocrate</strong> : Père de la médecine et créateur du serment des médecins.</li>
+            <li><strong>Archimède</strong> : Génie des sciences, il a découvert le principe de la poussée dans l’eau.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Quiz sur les Grecs</h2>
+        <p>Testez vos connaissances !</p>
+        <button onclick="startQuiz()">Commencer le quiz</button>
+        <div id="quiz" style="display:none;">
+            <p>1. Quel célèbre philosophe grec est reconnu pour sa méthode de questionnement ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Socrate 🗣️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Platon 📜</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Aristote 📚</button>
+            
+            <p>2. Quel thé'tre antique grec est célèbre pour son acoustique exceptionnelle ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Parthénon 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Le Thé'tre d'Épidaure 🎭</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Colisée 🏟️</button>
+            
+            <p>3. Quel événement sportif, d’origine grecque, se tient tous les quatre ans ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Les Jeux Olympiques 🏅</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Les Jeux Pythiens 🏺</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Les Jeux Athéniens 🏛️</button>
+            
+            <p id="feedback"></p>
+            <button id="finish-quiz" onclick="endQuiz()" style="display:none;">Terminer le quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let answeredQuestions = 0;
+        const totalQuestions = 3;
+
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function checkAnswer(button, correct) {
+            if (button.disabled) return;
+            button.disabled = true;
+            answeredQuestions++;
+            
+            const feedback = document.getElementById('feedback');
+            if (correct) {
+                feedback.innerHTML = "Bravo ! 🎉 Bonne réponse !";
+                button.style.backgroundColor = "#4CAF50";
+            } else {
+                feedback.innerHTML = "Oups ! Réessaie !";
+                button.style.backgroundColor = "#FF5733";
+            }
+            
+            if (answeredQuestions === totalQuestions) {
+                document.getElementById('finish-quiz').style.display = 'block';
+            }
+        }
+    </script>
+
+    <p><a href="histoire_antique.html">← Retour à l'Histoire Antique</a></p>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

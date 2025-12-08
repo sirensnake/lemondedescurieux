@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprendre le Débogage</title>
+  <link rel="stylesheet" href="styles/programmation_style.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 💻 <a href="programmation_section.html">Programmation</a> > 🔍 Comprendre le Débogage</div>
+  <!-- Outils d'accessibilité -->
+  <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+  <h1>🔍 Comprendre le Débogage</h1>
+  <p>Découvre comment identifier et corriger les erreurs dans ton code pour améliorer la fiabilité de tes programmes.</p>
+  
+  <section class="content">
+    <h2>🛠️ Pourquoi Déboguer ?</h2>
+    <p>Le débogage est essentiel pour repérer et corriger les erreurs dans ton code. Cela te permet de comprendre le fonctionnement de ton programme et d'améliorer sa qualité.</p>
+  </section>
+  
+  <section class="content">
+    <h2>💡 Astuces de Débogage</h2>
+    <ul>
+      <li>Utilise la console de ton navigateur pour afficher les messages d'erreur.</li>
+      <li>Ajoute des instructions <code>console.log()</code> pour suivre l'exécution du code.</li>
+      <li>Lis attentivement les messages d'erreur et vérifie ta syntaxe.</li>
+    </ul>
+  </section>
+  
+  <section class="content">
+    <h2>🔧 Exercice Interactif</h2>
+    <p>Corrige le code ci-dessous pour qu'il fonctionne correctement :</p>
+    <textarea id="code-editor" rows="6" cols="50">
+function addition(a, b) {
+    return a + b;
+}
+
+console.log(addition(5)); // Erreur : il manque un argument
+    </textarea>
+    <br>
+    <button onclick="runDebugCode()">Exécuter le code 🚀</button>
+    <button onclick="showCorrection()">Voir la correction ✅</button>
+    <p id="output"></p>
+    <pre id="correction" style="display:none; background-color: #f4f4f4; padding: 10px; border-radius: 5px;">
+function addition(a, b) {
+    return a + b;
+}
+
+console.log(addition(5, 3)); // Correction : ajout du deuxième argument
+    </pre>
+  </section>
+  
+  <script>
+    function runDebugCode() {
+      let userCode = document.getElementById('code-editor').value;
+      let outputElement = document.getElementById('output');
+      
+      try {
+        let consoleOutput = "";
+        
+        // Capture console.log
+        const originalConsoleLog = console.log;
+        console.log = function(message) {
+          consoleOutput += message + "<br>";
+          originalConsoleLog.apply(console, arguments);
+        };
+        
+        eval(userCode);
+        outputElement.innerHTML = "✅ Résultat :<br>" + consoleOutput;
+        outputElement.style.color = "green";
+        
+        // Rétablir console.log
+        console.log = originalConsoleLog;
+      } catch (error) {
+        outputElement.innerHTML = "❌ Erreur : " + error.message;
+        outputElement.style.color = "red";
+      }
+    }
+    
+    function showCorrection() {
+      document.getElementById('correction').style.display = 'block';
+    }
+  </script>
+
+  <a href="programmation_section.html" class="back-button">⬅️ Retour à la section Programmation</a>
+  <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

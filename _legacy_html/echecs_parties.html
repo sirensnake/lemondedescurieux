@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parties Célèbres ♟️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/echecs_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <!-- Ajouter dans le head de toutes les pages -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > ♟️ Échecs</div>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    
+                    let sidebar = document.getElementById("sidebar");
+                    let toggleButton = document.getElementById("sidebar-toggle");
+                    
+                    if (!sidebar || !toggleButton) {
+                        console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+                        return;
+                    }
+                    
+                    toggleButton.addEventListener("click", function() {
+                        sidebar.classList.toggle("open");
+                    });
+                    
+                    console.log("✔️ Menu latéral et bouton chargés avec succès !");
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+
+    <h1 class="animated-title">🏆 Parties Célèbres aux Échecs</h1>
+    <p class="intro-text">Découvre et analyse des parties historiques jouées par les plus grands maîtres !</p>
+    
+    <div class="image-container">
+    <div class="image-item">
+        <h2>1. Le Mat du Berger</h2>
+        <p>Une partie courte et efficace pour surprendre un adversaire débutant.</p>
+        <img src="images/mat_du_berger.png" alt="Mat du Berger" class="illustration">
+        <p><strong>Coups clés :</strong> 1.e4 e5 2.Dh5 Cc6 3.Fc4 Cf6 4.Dxf7#</p>
+    </div>
+    <div class="image-item">
+        <h2>2. Partie Immortelle</h2>
+        <p>Une magnifique démonstration de sacrifice et d’attaque fulgurante.</p>
+        <img src="images/partie_immortelle.gif" alt="Partie Immortelle" class="illustration">
+        <p><strong>Joueur :</strong> Anderssen vs Kieseritzky (1851).</p>
+    </div>
+    <div class="image-item">
+        <h2>3. Trouve le Meilleur Coup</h2>
+        <p>Regarde cette position et devine le coup gagnant !</p>
+        <img src="images/exercice_partie.png" alt="Exercice de partie" class="illustration">
+    </div>
+</div>
+        <div id="partie-quiz">
+            <p>Quel est le meilleur coup blanc dans cette position ?</p>
+            <button class="quiz-button" onclick="checkMove('Dg5')">Dame en g5</button>
+            <button class="quiz-button" onclick="checkMove('Cf6')">Cavalier en f6</button>
+            <button class="quiz-button" onclick="checkMove('Tf1')">Tour en f1</button>
+            <p id="partie-feedback"></p>
+        </div>
+    </div>
+
+    <a href="echecs_section.html" class="back-button">🔙 Retour à la section Échecs</a>
+
+    <script>
+        function checkMove(move) {
+            const partieFeedback = document.getElementById("partie-feedback");
+            if (move === "Dg5") {
+                partieFeedback.innerHTML = "✔️ Bravo ! Dg5 est le coup gagnant.";
+                partieFeedback.className = "feedback correct";
+            } else {
+                partieFeedback.innerHTML = "❌ Ce n'est pas le bon coup. Réessaie !";
+                partieFeedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

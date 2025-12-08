@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde Animal</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <!-- Ajouter dans le head de toutes les pages -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🐾 Le Monde Animal</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+    <h1>🐾 Le Monde Animal</h1>
+    <p class="intro-text">Explore les différentes espèces animales et leur mode de vie.</p>
+
+    <div class="content">
+        <h2>Les grandes catégories d'animaux</h2>
+        <img src="images/categories_animaux.jpg" alt="Illustration des grandes catégories d'animaux" class="illustration">
+        <ul>
+            <li><strong>Mammifères :</strong> Poils et lait maternel (ex : lion, dauphin, éléphant).</li>
+            <li><strong>Oiseaux :</strong> Plumes et œufs (ex : aigle, manchot, perroquet).</li>
+            <li><strong>Reptiles :</strong> Écailles et sang froid (ex : serpent, crocodile, tortue).</li>
+            <li><strong>Amphibiens :</strong> Vie aquatique et terrestre (ex : grenouille, triton, salamandre).</li>
+            <li><strong>Poissons :</strong> Eau et branchies (ex : requin, poisson-clown, saumon).</li>
+            <li><strong>Invertébrés :</strong> Pas de colonne vertébrale (ex : papillon, pieuvre, araignée).</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>Les modes de communication des animaux</h2>
+        <img src="images/communication_animaux.png" alt="Illustration des modes de communication des animaux" class="illustration">
+        <ul>
+            <li>🐳 <strong>Chants des baleines :</strong> Permet de communiquer à de grandes distances sous l’eau.</li>
+            <li>🐜 <strong>Phéromones des fourmis :</strong> Laisse des traces pour guider leurs congénères.</li>
+            <li>🦁 <strong>Rugissement du lion :</strong> Sert à marquer son territoire et à communiquer avec sa troupe.</li>
+            <li>🦉 <strong>Signaux visuels :</strong> Certains animaux comme les hiboux gonflent leurs plumes pour intimider.</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>Les records du monde animal</h2>
+        <img src="images/records_animaux.jpg" alt="Illustration des records du monde animal" class="illustration">
+        <ul>
+            <li>🦅 <strong>Oiseau le plus rapide :</strong> Le faucon pèlerin, qui peut atteindre 390 km/h en piqué.</li>
+            <li>🐘 <strong>Animal terrestre le plus lourd :</strong> L’éléphant d’Afrique, pesant jusqu’à 6 tonnes.</li>
+            <li>🐇 <strong>Animal le plus sautillant :</strong> La puce, qui peut sauter jusqu'à 200 fois sa propre hauteur.</li>
+            <li>🐢 <strong>Animal le plus vieux :</strong> La tortue des Seychelles, qui peut vivre plus de 180 ans.</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>L'impact des humains sur les animaux</h2>
+        <img src="images/impact_humains.jpg" alt="Illustration de l'impact des humains sur les animaux" class="illustration">
+        <p>De nombreuses espèces sont menacées par les activités humaines :</p>
+        <ul>
+            <li>🌲 <strong>Déforestation :</strong> Réduction des habitats des orangs-outans et jaguars.</li>
+            <li>🏭 <strong>Pollution :</strong> Affecte la vie marine avec les plastiques dans les océans.</li>
+            <li>🎯 <strong>Chasse et braconnage :</strong> Menace des espèces comme les rhinocéros et les éléphants.</li>
+            <li>🌍 <strong>Changements climatiques :</strong> Affecte les ours polaires et les récifs coralliens.</li>
+        </ul>
+    </div>
+
+    <a href="sciences_section.html" class="back-button">Retour à la section Sciences 🔬</a>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

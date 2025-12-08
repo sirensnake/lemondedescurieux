@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Parcours - Le Monde des Curieux</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div x-data="dashboardApp()" x-init="init()">
+        <!-- Header avec stats globales -->
+        <div class="stats-header">
+            <div class="stat-card">
+                <div class="stat-value" x-text="totalXP">0</div>
+                <div class="stat-label">XP Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" x-text="currentStreak">0</div>
+                <div class="stat-label">Jours de suite 🔥</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" x-text="badgesCount">0</div>
+                <div class="stat-label">Badges gagnés</div>
+            </div>
+        </div>
+        
+        <!-- Graphique de progression -->
+        <div class="chart-container">
+            <canvas id="progressChart"></canvas>
+        </div>
+        
+        <!-- Badges -->
+        <div class="badges-section">
+            <h2>Mes Badges</h2>
+            <div class="badges-grid">
+                <template x-for="badge in badges">
+                    <div class="badge" :class="badge.earned ? 'earned' : 'locked'">
+                        <div class="badge-icon" x-text="badge.icon"></div>
+                        <div class="badge-name" x-text="badge.name"></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+        
+        <!-- Activités récentes -->
+        <div class="recent-activities">
+            <h2>Activités récentes</h2>
+            <div class="activity-list">
+                <template x-for="activity in recentActivities">
+                    <div class="activity-item">
+                        <div class="activity-icon" x-text="activity.icon"></div>
+                        <div class="activity-details">
+                            <div class="activity-title" x-text="activity.title"></div>
+                            <div class="activity-date" x-text="activity.date"></div>
+                        </div>
+                        <div class="activity-xp" x-text="'+' + activity.xp + ' XP'"></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    function dashboardApp() {
+        return {
+            totalXP: 0,
+            currentStreak: 0,
+            badgesCount: 0,
+            badges: [],
+            recentActivities: [],
+            
+            init() {
+                this.loadData();
+                this.createChart();
+            },
+            
+            loadData() {
+                // Charger les données depuis localStorage
+                const progress = JSON.parse(localStorage.getItem('userProgress')) || {};
+                const streaks = JSON.parse(localStorage.getItem('englishStreaks')) || {};
+                const badges = JSON.parse(localStorage.getItem('userBadges')) || {};
+                
+                // Calculer XP total
+                this.totalXP = Object.values(progress).reduce((sum, subject) => {
+                    return sum + (subject.totalXP || 0);
+                }, 0);
+                
+                // Streak actuel
+                this.currentStreak = streaks.currentStreak || 0;
+                
+                // Badges
+                this.badges = [
+                    { id: 'first_lesson', name: 'Première leçon', icon: '🎯', earned: progress.english?.lessonsCompleted > 0 },
+                    { id: 'streak_7', name: 'Semaine parfaite', icon: '🔥', earned: streaks.longestStreak >= 7 },
+                    { id: 'polyglot', name: 'Polyglotte', icon: '🌍', earned: progress.english?.totalXP >= 100 },
+                    { id: 'math_master', name: 'As des maths', icon: '🧮', earned: progress.maths?.totalXP >= 100 },
+                    { id: 'explorer', name: 'Explorateur', icon: '🗺️', earned: Object.keys(progress).length >= 5 }
+                ];
+                
+                this.badgesCount = this.badges.filter(b => b.earned).length;
+                
+                // Activités récentes (simulées pour l'exemple)
+                this.recentActivities = [
+                    { icon: '🇬🇧', title: 'Leçon d\'anglais - Les animaux', date: 'Aujourd\'hui', xp: 15 },
+                    { icon: '🧮', title: 'Calcul mental - Niveau 3', date: 'Hier', xp: 10 },
+                    { icon: '🔬', title: 'Quiz Sciences - Le système solaire', date: 'Il y a 2 jours', xp: 20 }
+                ];
+            },
+            
+            createChart() {
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                const progress = JSON.parse(localStorage.getItem('userProgress')) || {};
+                
+                const subjects = ['Maths', 'Sciences', 'Histoire', 'Français', 'English', 'Programmation'];
+                const data = subjects.map(subject => {
+                    const key = subject.toLowerCase();
+                    return progress[key]?.totalXP || 0;
+                });
+                
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: subjects,
+                        datasets: [{
+                            label: 'Progression par matière',
+                            data: data,
+                            backgroundColor: 'rgba(46, 204, 113, 0.3)',
+                            borderColor: 'rgba(46, 204, 113, 1)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(46, 204, 113, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(46, 204, 113, 1)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 200
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    </script>
+    <script src="./scripts/xp_system_complete.js"></script>
+</body>
+</html>

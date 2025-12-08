@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets de Programmation</title>
+  <link rel="stylesheet" href="styles/programmation_style.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 💻 Programmation</div>
+    <select id="theme-selector" onchange="changerTheme(this.value)">
+        <option value="herbe">🌿 Herbe</option>
+        <option value="pierre">🪨 Pierre</option>
+        <option value="sable">🏜️ Sable</option>
+      </select>
+      <!-- Outils d'accessibilité -->
+   <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+      
+  <h1>🚀 Projets de Programmation</h1>
+  
+  <p>Prêt à mettre en pratique tes connaissances en programmation ? Choisis un projet et commence à coder !</p>
+
+  <!-- PROJET 1 : Jeu de réaction + éditeur -->
+  <section class="content">
+    <h2>🎮 Projet 1 : Jeu de Réaction Rapide + Éditeur</h2>
+    <button onclick="startGame()">Démarrer 🏁</button>
+    <button id="game-button" style="display:none; margin-top: 20px;" onclick="endGame()">Clique vite !</button>
+    <div id="reaction-feedback" style="font-size: 20px; margin-top: 10px;"></div>
+    <div id="reaction-score" style="font-size: 18px; margin-top: 5px; color: #555;"></div>
+
+    <div class="curio-bulle">🐾 Curio : "Essaie de changer le texte du message en remplaçant 'Bravo' par 'Gagné !' puis clique sur 'Tester mon code'."</div>
+    <textarea class="code-zone" id="code-reaction">document.getElementById('reaction-feedback').innerText = '⏱️ Bravo, tu as cliqué à temps !';</textarea>
+    <button class="eval-btn" onclick="eval(document.getElementById('code-reaction').value)">Tester mon code</button>
+  </section>
+
+  <!-- PROJET 2 : Quiz -->
+  <section class="content">
+    <h2>📝 Projet 2 : Créer un Quiz Interactif</h2>
+    <p>Réponds aux questions avec plusieurs choix !</p>
+    <button onclick="showQuiz()">Lancer le quiz 📜</button>
+    <div class="curio-bulle">
+        🦊 Curio : Essaie de modifier les questions du quiz ci-dessous ! Par exemple, change les fruits ou les réponses, puis clique sur <strong>“Tester mes questions”</strong>.
+      </div>
+      
+      <textarea id="quiz-code-zone" class="code-zone">
+      // Exemple de questions personnalisées
+      quizData[0] = {
+        question: "Quel est le fruit préféré de Curio ?",
+        options: ["Banane", "Mangue", "Fraise"],
+        answer: "Mangue"
+      };
+      quizData[1] = {
+        question: "Combien font 5 + 7 ?",
+        options: ["10", "12", "13"],
+        answer: "12"
+      };
+      </textarea>
+      
+      <button class="eval-btn" onclick="appliquerModificationsQuiz()">Tester mes questions</button>
+      
+    <div class="quiz-container" id="quiz">
+      <div class="quiz-question" id="quiz-question"></div>
+      <div id="quiz-options"></div>
+    </div>
+  </section>
+
+  <!-- PROJET 3 : Animation Curio + éditeur -->
+  <section class="content">
+    <h2>🌟 Projet 3 : Curio saute ! + Éditeur</h2>
+    <button onclick="runAnimationCode()">Exécuter l'animation 🎬</button>
+    <button onclick="sauter()">Sauter ⬆️</button>
+    <button onclick="resetAnimation()">🔄 Réinitialiser</button>
+
+    <div class="curio-bulle">🦊 Curio : "Essaie de me faire sauter plus haut en changeant <code>50px</code> par <code>20px</code> !"</div>
+    <textarea class="code-zone" id="code-saut">
+document.getElementById('sprite').style.transition = 'top 0.3s ease-out';
+document.getElementById('sprite').style.top = '50px';
+setTimeout(() => {
+  document.getElementById('sprite').style.top = '100px';
+}, 500);
+    </textarea>
+    <button class="eval-btn" onclick="eval(document.getElementById('code-saut').value)">Tester mon saut</button>
+
+    <div id="animation-container" style="position: relative; width: 100%; height: 150px; background: #f0f0f0; margin-top: 20px;">
+      <img id="sprite" src="images/curio_pixel.png" alt="Curio pixelisé" style="position: absolute; left: 0; top: 100px; width: 50px; height: 50px; image-rendering: pixelated;">
+      <div class="obstacle" style="position: absolute; left: 300px; top: 100px; width: 30px; height: 30px; background: red;"></div>
+      <div class="obstacle" style="position: absolute; left: 600px; top: 100px; width: 30px; height: 30px; background: red;"></div>
+      <div class="obstacle" style="position: absolute; left: 900px; top: 100px; width: 30px; height: 30px; background: red;"></div>
+    </div>
+  </section>
+
+  <script src="scripts/programmation_projets.js"></script>
+
+  <a href="programmation_section.html" class="back-button">⬅️ Retour à la section Programmation</a>
+
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="scripts/accessibilite.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

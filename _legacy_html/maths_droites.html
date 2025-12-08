@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les droites et segments ➖</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🔢 <a href="maths_section.html">Mathématiques</a> > Les droites et segments ➖</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+     <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+     <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+     <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+   </div>
+
+    <h1>Les droites et segments ➖</h1>
+    <p>Apprenons à distinguer et à tracer les droites parallèles, perpendiculaires et les segments. ✏️</p>
+    
+    <h2>📏 Définitions</h2>
+    <ul>
+        <li>Une <strong>droite</strong> est une ligne infinie qui ne possède ni début ni fin.</li>
+        <li>Un <strong>segment</strong> est une partie de droite limitée par deux points.</li>
+        <li>Deux <strong>droites parallèles</strong> ne se croisent jamais.</li>
+        <li>Deux <strong>droites perpendiculaires</strong> se croisent en formant un angle droit (90°).</li>
+    </ul>
+    
+    <h2>📝 Exercices interactifs</h2>
+    <p>Parmi ces images, laquelle représente des droites parallèles ?</p>
+    <button onclick="checkAnswer('parallel', 'correct')">Les rails d’un train</button>
+    <button onclick="checkAnswer('parallel', 'incorrect')">Les côtés d’un triangle</button>
+    <p id="feedback1"></p>
+    
+    <p>Quelle figure contient des droites perpendiculaires ?</p>
+    <button onclick="checkAnswer('perpendicular', 'correct')">Un angle d’un carré</button>
+    <button onclick="checkAnswer('perpendicular', 'incorrect')">Un cercle</button>
+    <p id="feedback2"></p>
+    
+    <h2>📌 Application</h2>
+    <p>Trace deux droites perpendiculaires sur une feuille et vérifie avec une équerre si l’angle est bien de 90°.</p>
+    
+    <h2>🔗 Aller plus loin</h2>
+    <p>Découvre d'autres notions de géométrie :</p>
+    <ul>
+        <li><a href="maths_chapitre2.html">Retour au Chapitre 2</a></li>
+        <li><a href="maths_angles.html">Les types d'angles 🔺</a></li>
+        <li><a href="maths_symetrie.html">La symétrie axiale 🔄</a></li>
+    </ul>
+    
+    <a href="maths_section.html" class="back-button">Retour au sommaire des maths 📚</a>
+    
+    <script>
+        function checkAnswer(question, type) {
+            let feedbackId = "feedback" + (question === 'parallel' ? '1' : '2');
+            if (type === 'correct') {
+                document.getElementById(feedbackId).innerHTML = "<span class='correct'>Bonne réponse ! 🎉</span>";
+            } else {
+                document.getElementById(feedbackId).innerHTML = "<span class='incorrect'>Mauvaise réponse ❌. Réessaie !</span>";
+            }
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

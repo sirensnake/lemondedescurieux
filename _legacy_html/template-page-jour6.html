@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Monde des Curieux - Plateforme éducative gamifiée pour enfants">
+    
+    <title>Le Monde des Curieux - [SECTION]</title>
+    
+    <!-- ========================================
+         CSS EXISTANTS (ordre préservé)
+         ======================================== -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- ========================================
+         CSS JOUR 6 (nouveaux composants)
+         ======================================== -->
+    <link rel="stylesheet" href="styles/components/notifications.css">
+    <link rel="stylesheet" href="styles/components/persistent-menu.css">
+    <link rel="stylesheet" href="styles/components/accessibility-panel.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/curio-head.png">
+</head>
+
+<body class="menu-persistent-active">
+    <!-- ========================================
+         SKIP LINKS (ACCESSIBILITÉ)
+         ======================================== -->
+    <a href="#main-content" class="sr-only sr-only-focusable">
+        Aller au contenu principal
+    </a>
+    
+    <!-- ========================================
+         HEADER SECTION
+         ======================================== -->
+    <header class="section-header-styled [section]" role="banner">
+        <button 
+            onclick="history.back()" 
+            class="back-btn-minecraft [section]"
+            aria-label="Retour à l'accueil"
+        >
+            ← Retour
+        </button>
+        
+        <h1 class="visually-hidden">Le Monde des Curieux - [SECTION_TITLE]</h1>
+    </header>
+
+    <!-- ========================================
+         CONTENU PRINCIPAL
+         ======================================== -->
+    <main id="main-content" role="main">
+        <div class="section-title">
+            <h2>[EMOJI] [SECTION_TITLE]</h2>
+            <p>[DESCRIPTION_SECTION]</p>
+        </div>
+
+        <!-- Zone XP/Hearts/Streak (affichée automatiquement) -->
+        <div 
+            id="xp-status" 
+            role="status" 
+            aria-live="polite"
+            style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;"
+        >
+            <span id="xp-display" data-display="xp">XP: 0</span> | 
+            <span id="hearts-display" data-display="hearts">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display" data-display="streak">🔥 0</span>
+        </div>
+
+        <!-- ========================================
+             CONTENU SPÉCIFIQUE SECTION
+             ======================================== -->
+        <section id="section-content">
+            <!-- Le contenu de chaque section va ici -->
+        </section>
+    </main>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer role="contentinfo">
+        <p>&copy; 2025 Le Monde des Curieux - Éducation ludique</p>
+        <nav aria-label="Liens pied de page">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="confidentialite.html">Confidentialité</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <!-- ========================================
+         SCRIPTS EXISTANTS (ordre préservé)
+         ======================================== -->
+    <!-- Scripts gamification existants -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    
+    <!-- Scripts spécifiques sections (charger selon besoin) -->
+    <!-- <script src="scripts/francais_duolingo_app.js"></script> -->
+    <!-- <script src="scripts/english_duolingo_app.js"></script> -->
+    
+    <!-- ========================================
+         SCRIPTS JOUR 6 (nouveaux composants)
+         ======================================== -->
+    <!-- Ordre de chargement important : -->
+    
+    <!-- 1. Accessibilité (priorité max) -->
+    <script src="scripts/accessibility/accessibility-controller.js"></script>
+    
+    <!-- 2. Navigation -->
+    <script src="scripts/navigation/persistent-menu.js"></script>
+    
+    <!-- 3. Gamification enrichie -->
+    <script src="scripts/gamification/streak-notifications.js"></script>
+    
+    <!-- 4. Interactions (si page index avec mindmap) -->
+    <!-- <script src="scripts/interaction/mindmap-touch-enhanced.js"></script> -->
+    
+    <!-- 5. ORCHESTRATEUR (toujours en dernier) -->
+    <script src="scripts/app-orchestrator.js"></script>
+    
+    <!-- ========================================
+         INITIALISATION SECTION SPÉCIFIQUE
+         ======================================== -->
+    <script>
+        // Configuration section
+        const SECTION_CONFIG = {
+            name: '[section]',  // maths, francais, english, etc.
+            emoji: '[emoji]',
+            title: '[title]'
+        };
+        
+        // Initialisation après chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log(`🚀 Initialisation section: ${SECTION_CONFIG.name}`);
+            
+            // Attendre que l'orchestrateur soit prêt
+            const checkOrchestrator = setInterval(() => {
+                if (window.appOrchestrator) {
+                    clearInterval(checkOrchestrator);
+                    
+                    // Configurer section dans xpManager
+                    if (window.xpManager) {
+                        window.xpManager.currentSection = SECTION_CONFIG.name;
+                    }
+                    
+                    // Afficher zone XP
+                    document.getElementById('xp-status').style.display = 'block';
+                    
+                    // Logger statut
+                    console.log('✅ Section initialisée avec orchestrateur');
+                }
+            }, 100);
+            
+            // Timeout sécurité
+            setTimeout(() => {
+                clearInterval(checkOrchestrator);
+                if (!window.appOrchestrator) {
+                    console.warn('⚠️ Orchestrateur non chargé, mode dégradé');
+                }
+            }, 3000);
+        });
+        
+        // ========================================
+        // API DEBUG SECTION
+        // ========================================
+        window.DEBUG_SECTION = {
+            config: SECTION_CONFIG,
+            test: () => {
+                console.log('🧪 Test section:', SECTION_CONFIG);
+                console.log('Components:', window.appOrchestrator?.getAllComponents());
+            }
+        };
+    </script>
+</body>
+</html>
+
+<!-- 
+========================================
+INSTRUCTIONS D'UTILISATION
+========================================
+
+1. REMPLACEMENTS OBLIGATOIRES :
+   - [SECTION] → maths, francais, english, sciences, etc.
+   - [SECTION_TITLE] → Titre complet de la section
+   - [DESCRIPTION_SECTION] → Description courte
+   - [EMOJI] → Emoji représentatif (🔢, 🇫🇷, etc.)
+   - [section] (dans SECTION_CONFIG) → même que [SECTION]
+   - [emoji] (dans SECTION_CONFIG) → même que [EMOJI]
+   - [title] (dans SECTION_CONFIG) → même que [SECTION_TITLE]
+
+2. SCRIPTS CONDITIONNELS :
+   - Décommenter mindmap-touch-enhanced.js UNIQUEMENT sur index.html
+   - Charger scripts spécifiques sections selon besoin
+
+3. CLASSES CSS AUTOMATIQUES :
+   - body.menu-persistent-active → appliquée automatiquement
+   - Les classes d'accessibilité s'appliquent via AccessibilityController
+
+4. TESTS NAVIGATION CLAVIER :
+   - Tab : Navigation logique
+   - Alt+A : Ouvrir accessibilité
+   - Ctrl+M : Toggle menu
+   - Entrée/Espace : Activation boutons
+
+5. VÉRIFICATIONS WCAG :
+   - Tous les boutons ont aria-label
+   - Zone XP a aria-live="polite"
+   - Skip links présents
+   - Contrastes respectés (vérifier avec outil)
+
+========================================
+COMPATIBILITÉ
+========================================
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- iOS 14+ / Android 10+
+
+========================================
+DEBUG CONSOLE
+========================================
+// Status général
+window.DEBUG_APP.getStatus()
+
+// Métriques complètes
+window.DEBUG_APP.exportMetrics()
+
+// Test section
+window.DEBUG_SECTION.test()
+
+// Composant spécifique
+window.DEBUG_APP.getComponent('accessibility')
+-->

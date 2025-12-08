@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#2a9d8f">
+    <title>Mathématiques - Le Monde des Curieux</title>
+    
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/quiz_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    
+    <!-- Composants réutilisables -->
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body class="maths-section">
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <!-- Header stylisé avec composant -->
+    <header class="section-header-styled maths">
+        <button onclick="history.back()" class="back-btn-minecraft maths">
+            ← Retour à l'accueil
+        </button>
+    </header>
+
+    <main>
+        <!-- Menu latéral simple et fonctionnel -->
+        <button id="sidebar-toggle" class="sidebar-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Ouvrir / fermer le menu">☰</button>
+        <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
+             <ul>
+                 <li><a href="index.html">Accueil</a></li>
+                 <li><a href="maths_section.html">Mathématiques</a></li>
+                 <li><a href="sciences_section.html">Sciences</a></li>
+                 <li><a href="histoire_section.html">Histoire-Géo</a></li>
+                 <li><a href="francais_section.html">Français</a></li>
+                 <li><a href="english_section.html">English</a></li>
+                 <li><a href="programmation_section.html">Programmation</a></li>
+                 <li><a href="echecs_section.html">Échecs</a></li>
+                 <li><a href="philosophie_section.html">Philosophie</a></li>
+                 <li><a href="ressources_section.html">Ressources</a></li>
+                 <li><a href="infos_section.html">Infos</a></li>
+                 <li><a href="ia_section.html">IA</a></li>
+                 <li><a href="mon-parcours.html">Mon Parcours</a></li>
+             </ul>
+        </nav>
+        
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            🏠 <a href="index.html">Accueil</a> > 🔢 Mathématiques
+        </div>
+        
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        </div>
+
+        <div class="section-title">
+            <h1>📐 Bienvenue dans la section Mathématiques</h1>
+            <p>Explore les différentes notions de mathématiques à travers des activités interactives et ludiques !</p>
+        </div>
+
+        <!-- Zone XP automatique -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
+            <span id="xp-display">XP: 0</span> | 
+            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display">🔥 0 jours</span>
+        </div>
+
+        <!-- Contenu spécifique à la section PRÉSERVÉ -->
+        <section>
+            <div id="main-content" class="content">
+                <h2>📊 Nombres et Calculs</h2>
+                <ul>
+                    <li><a href="maths_numeration.html">🔢 Numération</a></li>
+                    <li><a href="maths_operations.html">➕➖✖️➗ Opérations et Calculs</a></li>
+                    <li><a href="maths_fractions.html">🍕 Fractions et Décimaux</a></li>
+                    <li><a href="maths_calcul_mental.html">🧠 Calcul Mental</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h2>📏 Grandeurs et Mesures</h2>
+                <ul>
+                    <li><a href="maths_mesures.html">📐 Longueurs, Masses et Volumes</a></li>
+                    <li><a href="maths_temps.html">⏳ Temps et Durées</a></li>
+                    <li><a href="maths_monnaie.html">💰 Monnaie</a></li>
+                    <li><a href="maths_perimetre_aire.html">📏 Périmètre et Aire</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h2>📐 Espace et Géométrie</h2>
+                <ul>
+                    <li><a href="maths_geometrie.html">🔷 Figures et Solides</a></li>
+                    <li><a href="maths_symetrie.html">🎭 Symétrie</a></li>
+                    <li><a href="maths_patron_solides.html">🏗 Patrons et Construction</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h2>🕵️‍♂️ Résolution de Problèmes</h2>
+                <ul>
+                    <li><a href="maths_problemes.html">📊 Stratégies et Logique</a></li>
+                    <li><a href="maths_problemes_etapes.html">🚀 Problèmes en Plusieurs Étapes</a></li>
+                    <li><a href="maths_problemes_reels.html">🌍 Problèmes du Quotidien</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <h2>🧠 Calcul mental</h2>
+                <ul>
+                    <li><a href="maths_calcul_mental.html">🧠 Calcul Mental</a></li>
+                    <li><a href="maths_calcul_mental_jeu.html" class="new-feature">🎮 Jeu de Calcul Mental</a></li>
+                </ul>
+            </div>
+
+            <div class="content minecraft-promo">
+                <h2>🎮 Nouvelle Aventure: Mathcraft</h2>
+                <p>Explore le monde de Mathcraft, où tu devras résoudre des calculs mentaux pour collecter des ressources et gagner des niveaux!</p>
+                
+                <div class="minecraft-banner">
+                    <div class="minecraft-logo">Mathcraft</div>
+                    <a href="maths_calcul_mental_jeu.html" class="minecraft-button">
+                        Commencer l'aventure ⛏️
+                    </a>
+                </div>
+                <div class="content">
+                    <h3>🎮 Nouveau: Mathcraft</h3>
+                    <p>Teste tes compétences en calcul mental dans un univers inspiré de Minecraft!</p>
+                    <a href="mathcraft.html" class="back-button">Jouer à Mathcraft ⛏️</a>
+                </div>
+            </div>
+            
+            <!-- Quiz section -->
+            <div class="content">
+                <h2>🎮 Teste tes connaissances</h2>
+                <p>Es-tu prêt à relever un défi ? Teste tes connaissances en mathématiques avec ce quiz !</p>
+                <div id="maths-quiz-container" class="quiz-section"></div>
+            </div>
+            
+            <!-- Activités à télécharger -->
+            <div class="content download-resources">
+                <h3>📝 Activités pratiques à télécharger</h3>
+                <div class="download-grid">
+                    <a href="pdf/maths_calcul.pdf" class="download-card" download>
+                        <div class="download-icon">📄</div>
+                        <div class="download-title">Activité 1: Jeux de calcul</div>
+                        <div class="download-info">PDF, 2 pages</div>
+                    </a>
+                    
+                    <a href="pdf/maths_geometrie.pdf" class="download-card" download>
+                        <div class="download-icon">📄</div>
+                        <div class="download-title">Activité 2: Formes géométriques</div>
+                        <div class="download-info">PDF, 3 pages</div>
+                    </a>
+                    
+                    <a href="pdf/maths_problemes.pdf" class="download-card" download>
+                        <div class="download-icon">🎮</div>
+                        <div class="download-title">Jeux et défis mathématiques</div>
+                        <div class="download-info">PDF, 4 pages</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Scripts standards -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/quiz_module.js"></script>
+    <script src="scripts/maths_quiz.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+    
+    <script>
+        // Initialisation standard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu latéral (accessibilité améliorée)
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebar-toggle');
+ 
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+ 
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const opened = sidebar.style.left === '0px';
+                    if (opened) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                        toggleButton.focus();
+                    } else {
+                        sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                        const firstLink = sidebar.querySelector('a');
+                        if (firstLink) firstLink.focus();
+                    }
+                });
+ 
+                // Fermer le menu en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+ 
+                // Fermer le menu avec Échap
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                        toggleButton.focus();
+                    }
+                });
+            }
+ 
+             // XP system integration
+             setTimeout(() => {
+                 if (window.xpManager) {
+                    try { window.xpManager.currentSection = 'maths'; } catch(e) {}
+                    const xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
+                 }
+ 
+                 // Marquer cette page comme visitée dans le système de progression
+                 if (typeof markProgress === 'function') {
+                     markProgress("Mathématiques", "maths_introduction");
+                 }
+ 
+                 // Initialiser le quiz si nécessaire
+                 if (typeof QuizManager === 'function' && typeof mathsQuizData !== 'undefined') {
+                     const mathsQuiz = new QuizManager('maths-quiz-container', mathsQuizData);
+                 }
+
+
+
+
+
+</html></body>     </script>         });             }, 1000);             }, 1000);
+         });
+     </script>
+</body>
+</html>

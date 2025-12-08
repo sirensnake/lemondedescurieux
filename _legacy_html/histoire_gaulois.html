@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Gaulois 🏹</title>
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📜 <a href="histoire_section.html">Histoire</a> > Les Gaulois 🏹</div>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+
+    <h1>Les Gaulois 🏹</h1>
+    <div class="content">
+        <h2>Qui étaient les Gaulois ?</h2>
+        <p>Les Gaulois étaient un peuple celte vivant sur le territoire de la France actuelle. Ils étaient connus pour leur bravoure et leur organisation en tribus.</p>
+    </div>
+    
+    <div class="content">
+        <h2>🎥 Vidéos explicatives</h2>
+        <p>Découvre la vie quotidienne des Gaulois gr'ce à ces vidéos :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2wpqoI41heI" frameborder="0" allowfullscreen></iframe>
+        <p>Voici une autre vidéo pour approfondir tes connaissances sur les Gaulois :</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/iJwnr4pSZ3g" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="content">
+        <h2>🏡 La vie quotidienne des Gaulois</h2>
+        <p>Les Gaulois vivaient dans des villages fortifiés appelés <strong>oppida</strong>. Ils étaient d’excellents agriculteurs, élevant du bétail et cultivant des céréales comme le blé et l’orge. Ils fabriquaient aussi des objets en métal, notamment des armes et des bijoux en or.</p>
+        <p>Les Gaulois étaient également de redoutables guerriers, utilisant de longues épées et des boucliers ronds. Ils combattaient souvent nus et peignaient leur corps en bleu avec du pastel pour impressionner leurs ennemis.</p>
+    </div>
+    
+    <div class="content">
+        <h2>⚔️ La guerre des Gaules</h2>
+        <p>En 58 avant J.-C., Jules César lance la guerre des Gaules pour conquérir la région. Après plusieurs années de combats, les Gaulois, menés par <strong>Vercingétorix</strong>, se révoltent contre les Romains.</p>
+        <p>La grande bataille d’Alésia en 52 avant J.-C. marque la fin de la résistance gauloise. Assiégés par les légions romaines, les Gaulois doivent se rendre et Vercingétorix est capturé. La Gaule devient alors une province romaine.</p>
+    </div>
+    
+    <div class="content">
+        <h2>🔍 Héritage des Gaulois</h2>
+        <p>Bien que les Gaulois aient été intégrés à l’Empire romain, leur culture a laissé des traces profondes en France :</p>
+        <ul>
+            <li>De nombreux noms de villes viennent du gaulois, comme Lyon (<i>Lugdunum</i>).</li>
+            <li>Certains mots de la langue française viennent du gaulois, comme “chêne” ou “alouette”.</li>
+            <li>Les Gaulois ont développé des techniques agricoles et artisanales toujours utilisées à l’époque romaine.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Quiz sur les Gaulois</h2>
+        <p>Testez vos connaissances !</p>
+        <button onclick="startQuiz()">Commencer le quiz</button>
+        <div id="quiz" style="display:none;">
+            <p>Que buvaient principalement les Gaulois ?</p>
+            <button onclick="checkAnswer('q1', true)">De la cervoise 🍺</button>
+            <button onclick="checkAnswer('q1', false)">Du vin 🍷</button>
+            <button onclick="checkAnswer('q1', false)">De l'eau 💧</button>
+            <p id="feedback_q1"></p>
+            
+            <p>Quel célèbre chef gaulois a résisté à Jules César ?</p>
+            <button onclick="checkAnswer('q2', true)">Vercingétorix</button>
+            <button onclick="checkAnswer('q2', false)">Astérix</button>
+            <button onclick="checkAnswer('q2', false)">Brennus</button>
+            <p id="feedback_q2"></p>
+            
+            <p>Comment s'appelaient les villages fortifiés gaulois ?</p>
+            <button onclick="checkAnswer('q3', true)">Oppida</button>
+            <button onclick="checkAnswer('q3', false)">Castra</button>
+            <button onclick="checkAnswer('q3', false)">Forum</button>
+            <p id="feedback_q3"></p>
+        </div>
+    </div>
+    
+    <script>
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function checkAnswer(questionId, correct) {
+            const feedback = document.getElementById('feedback_' + questionId);
+            if (correct) {
+                feedback.innerHTML = "Bravo ! 🎉 Bonne réponse !";
+            } else {
+                feedback.innerHTML = "Oups ! Réessaie !";
+            }
+        }
+    </script>
+
+    <p><a href="histoire_antique.html">← Retour à l'Histoire Antique</a></p>
+
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

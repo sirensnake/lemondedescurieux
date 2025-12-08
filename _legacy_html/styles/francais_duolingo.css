@@ -1,0 +1,572 @@
+/* ====================================
+   VARIABLES ET RESET
+   ==================================== */
+:root {
+    --primary-color: #2a9d8f;
+    --secondary-color: #e9c46a;
+    --accent-color: #e76f51;
+    --bg-light: #f1faee;
+    --text-dark: #1d3557;
+    --success-color: #4ade80;
+    --warning-color: #fbbf24;
+    --danger-color: #f87171;
+    
+    /* Polices */
+    --font-pixel: 'Press Start 2P', cursive;
+    --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f1faee 0%, #e8f4f2 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+/* ====================================
+   HEADER
+   ==================================== */
+.french-header {
+    background: var(--primary-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-button {
+    background: white;
+    border: 2px solid var(--text-dark);
+    padding: 0.6rem 1.2rem;
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.back-button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.stats-display {
+    display: flex;
+    gap: 1.5rem;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ====================================
+   MAIN CONTENT
+   ==================================== */
+.french-main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--text-dark);
+    font-family: var(--font-pixel);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ====================================
+   SÉLECTEUR DE DIFFICULTÉ
+   ==================================== */
+.difficulty-selector {
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 24px rgba(42, 157, 143, 0.2);
+}
+
+.difficulty-title {
+    text-align: center;
+    color: var(--text-dark);
+    font-family: var(--font-pixel);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.difficulty-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.difficulty-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border: 3px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.difficulty-card.active {
+    border-color: var(--primary-color);
+    background: #e8f4f2;
+    box-shadow: 0 6px 20px rgba(42, 157, 143, 0.4);
+}
+
+.difficulty-card.easy:hover { border-color: var(--success-color); }
+.difficulty-card.medium:hover { border-color: var(--warning-color); }
+.difficulty-card.hard:hover { border-color: var(--danger-color); }
+
+.difficulty-icon {
+    font-size: 3rem;
+}
+
+.difficulty-name {
+    font-family: var(--font-pixel);
+    font-size: 0.85rem;
+    color: var(--text-dark);
+}
+
+.difficulty-desc {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.difficulty-stats {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.difficulty-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* ====================================
+   CARTES DE LEÇONS
+   ==================================== */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lesson-card {
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.lesson-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 28px rgba(42, 157, 143, 0.3);
+}
+
+.lesson-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.lesson-title {
+    color: var(--text-dark);
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.lesson-desc {
+    font-size: 0.95rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.lesson-progress {
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: #666;
+    display: block;
+    text-align: center;
+}
+
+.lesson-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lesson-button:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* ====================================
+   CONTAINER EXERCICES
+   ==================================== */
+.exercise-container {
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+    min-height: 400px;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.exercise-progress-text,
+.exercise-score {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.exercise-question {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.exercise-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 3px solid var(--primary-color);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-main);
+}
+
+.exercise-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(231, 111, 81, 0.2);
+}
+
+.exercise-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-pixel);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.exercise-submit:hover {
+    background: var(--accent-color);
+    transform: scale(1.02);
+}
+
+.exercise-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.exercise-feedback {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.exercise-feedback p {
+    margin-bottom: 0.5rem;
+}
+
+.exercise-feedback.correct {
+    background: #d1fae5;
+    border: 3px solid var(--success-color);
+    color: #065f46;
+}
+
+.exercise-feedback.incorrect {
+    background: #fee2e2;
+    border: 3px solid var(--danger-color);
+    color: #991b1b;
+}
+
+/* ====================================
+   NOTIFICATION DIFFICULTÉ
+   ==================================== */
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+}
+
+.difficulty-notification {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: var(--font-pixel);
+    font-size: 0.75rem;
+    z-index: 9999;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================================
+   RESPONSIVE
+   ==================================== */
+@media (max-width: 768px) {
+    .french-main {
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .difficulty-title {
+        font-size: 0.85rem;
+    }
+
+    .difficulty-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .difficulty-name {
+        font-size: 0.75rem;
+    }
+
+    .difficulty-desc {
+        font-size: 0.85rem;
+    }
+
+    .lessons-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .stats-display {
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .back-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.6rem;
+    }
+
+    .lesson-title {
+        font-size: 0.8rem;
+    }
+
+    .lesson-desc {
+        font-size: 0.85rem;
+    }
+
+    .exercise-question {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .difficulty-selector {
+        padding: 1.5rem;
+    }
+
+    .difficulty-icon {
+        font-size: 2.5rem;
+    }
+
+    .lesson-card {
+        padding: 1rem;
+    }
+
+    .exercise-container {
+        padding: 1.5rem;
+    }
+
+    .exercise-question {
+        font-size: 1rem;
+    }
+
+    .exercise-input {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .exercise-submit {
+        font-size: 0.75rem;
+    }
+}
+
+/* ====================================
+   HEADER GAME DUOLINGO-STYLE
+   ==================================== */
+.game-header {
+    background: linear-gradient(135deg, #2a9d8f 0%, #1d7a6f 100%);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left h1 {
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+}
+
+.header-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+}
+
+.streak-flame {
+    font-size: 1.5rem;
+}
+
+#streak-count {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    color: white;
+    font-size: 0.85rem;
+}
+
+.heart {
+    font-size: 1.5rem;
+}
+
+.xp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.xp-bar {
+    width: 120px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    transition: width 0.5s;
+}
+
+#xp-text {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+}

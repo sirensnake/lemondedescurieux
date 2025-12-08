@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition des Fractions</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
+    </script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 🔢 <a href="maths_section.html">Mathématiques</a> > Additionner des Fractions ➕</div>
+    
+    <script>
+        fetch('menu_lateral.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('menu-container').innerHTML = data);
+    </script>
+    <!-- Outils d'accessibilité -->
+   <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+    
+    <h1>Additionner des Fractions ➕</h1>
+    <div class="content">
+        <h2>Comment additionner des fractions ?</h2>
+        <p>Si les dénominateurs sont les mêmes, il suffit d’additionner les numérateurs.</p>
+        <p><strong>Exemple :</strong> \( \frac{1}{4} + \frac{2}{4} = \frac{3}{4} \)</p>
+        <img src="images/addition_fractions.png" alt="Addition de fractions" class="illustration">
+    </div>
+    
+    <div class="content">
+        <h2>Et si les dénominateurs sont différents ?</h2>
+        <p>Il faut d'abord trouver un dénominateur commun.</p>
+        <p><strong>Exemple :</strong> \( \frac{1}{3} + \frac{1}{6} \)</p>
+        <ul>
+            <li>On met au même dénominateur : \( \frac{1}{3} = \frac{2}{6} \)</li>
+            <li>On additionne : \( \frac{2}{6} + \frac{1}{6} = \frac{3}{6} \)</li>
+            <li>On simplifie : \( \frac{3}{6} = \frac{1}{2} \)</li>
+        </ul>
+    </div>
+    
+    <div class="content interactive-section">
+        <h2>📝 Activité : Trouve le bon résultat</h2>
+        <p>Résous cette addition :</p>
+        <p><strong>\( \frac{1}{4} + \frac{1}{4} = ? \)</strong></p>
+        <button onclick="checkAnswer('1/2')">1/2</button>
+        <button onclick="checkAnswer('2/4')">2/4</button>
+        <button onclick="checkAnswer('1/4')">1/4</button>
+        <p id="feedback" class="feedback"></p>
+    </div>
+    
+    <script>
+        function checkAnswer(answer) {
+            const correctAnswer = '2/4';
+            const feedback = document.getElementById('feedback');
+            if (answer === correctAnswer) {
+                feedback.innerHTML = "✔️ Bonne réponse !";
+                feedback.classList.add("correct");
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse, essaie encore !";
+                feedback.classList.add("incorrect");
+            }
+        }
+    </script>
+    
+    <a href="maths_section.html" class="back-button">Retour à la section Maths 📚</a>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

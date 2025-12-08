@@ -1,0 +1,129 @@
+<!-- Mindmap Interactive "Le Monde des Curieux" - Version Simplifiée Fonctionnelle -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="auto">
+  <defs>
+    <!-- Dégradés pour les bulles -->
+    <radialGradient id="gradFrancais" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#e76f51;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#e76f51;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="gradAnglais" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#2a9d8f;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#2a9d8f;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="gradMaths" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#e9c46a;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#e9c46a;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="gradSciences" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#264653;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#264653;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="gradHistoire" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f4a261;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#f4a261;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Effet ombre portée -->
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Fond avec texture subtile -->
+  <rect width="1200" height="800" fill="#f1faee"/>
+  
+  <!-- Connexions entre les bulles -->
+  <g id="connections" opacity="0.3" stroke="#1d3557" stroke-width="2" fill="none">
+    <!-- Français vers centre -->
+    <path d="M 200,200 Q 400,300 600,400"/>
+    <!-- Anglais vers centre -->
+    <path d="M 1000,200 Q 800,300 600,400"/>
+    <!-- Maths vers centre -->
+    <path d="M 200,600 Q 400,500 600,400"/>
+    <!-- Sciences vers centre -->
+    <path d="M 1000,600 Q 800,500 600,400"/>
+    <!-- Histoire vers centre -->
+    <path d="M 600,100 Q 600,250 600,400"/>
+  </g>
+
+  <!-- Bulle centrale "Le Monde des Curieux" -->
+  <g id="centre" class="bubble" filter="url(#shadow)">
+    <circle cx="600" cy="400" r="80" fill="#1d3557" stroke="#264653" stroke-width="3"/>
+    <text x="600" y="395" font-family="Press Start 2P, monospace" font-size="12" fill="white" text-anchor="middle">Le Monde</text>
+    <text x="600" y="415" font-family="Press Start 2P, monospace" font-size="12" fill="white" text-anchor="middle">des Curieux</text>
+    <!-- Étoile décorative -->
+    <path d="M 600,340 L 605,355 L 620,355 L 608,365 L 613,380 L 600,370 L 587,380 L 592,365 L 580,355 L 595,355 Z" fill="#e9c46a"/>
+  </g>
+
+  <!-- Bulle Français (en haut à gauche) -->
+  <g id="francais" class="bubble clickable" filter="url(#shadow)" data-href="francais_duolingo_section.html">
+    <circle cx="200" cy="200" r="70" fill="url(#gradFrancais)" stroke="#264653" stroke-width="2"/>
+    <text x="200" y="195" font-family="Press Start 2P, monospace" font-size="14" fill="white" text-anchor="middle">🇫🇷</text>
+    <text x="200" y="215" font-family="Press Start 2P, monospace" font-size="11" fill="white" text-anchor="middle">Français</text>
+    <!-- Badge niveau -->
+    <circle cx="240" cy="170" r="15" fill="#e76f51" stroke="white" stroke-width="2"/>
+    <text x="240" y="175" font-family="Press Start 2P, monospace" font-size="10" fill="white" text-anchor="middle">2</text>
+  </g>
+
+  <!-- Bulle Anglais (en haut à droite) -->
+  <g id="anglais" class="bubble clickable" filter="url(#shadow)" data-href="english_section.html">
+    <circle cx="1000" cy="200" r="70" fill="url(#gradAnglais)" stroke="#264653" stroke-width="2"/>
+    <text x="1000" y="195" font-family="Press Start 2P, monospace" font-size="14" fill="white" text-anchor="middle">🇬🇧</text>
+    <text x="1000" y="215" font-family="Press Start 2P, monospace" font-size="11" fill="white" text-anchor="middle">English</text>
+    <!-- Indicateur streak -->
+    <g transform="translate(1040, 170)">
+      <rect x="-20" y="-10" width="40" height="20" fill="#e76f51" rx="10"/>
+      <text x="0" y="4" font-family="Press Start 2P, monospace" font-size="9" fill="white" text-anchor="middle">🔥 3</text>
+    </g>
+  </g>
+
+  <!-- Bulle Mathématiques (en bas à gauche) -->
+  <g id="maths" class="bubble clickable" filter="url(#shadow)" data-href="maths_section.html">
+    <circle cx="200" cy="600" r="70" fill="url(#gradMaths)" stroke="#264653" stroke-width="2"/>
+    <text x="200" y="595" font-family="Press Start 2P, monospace" font-size="14" fill="white" text-anchor="middle">🔢</text>
+    <text x="200" y="615" font-family="Press Start 2P, monospace" font-size="11" fill="white" text-anchor="middle">Maths</text>
+    <!-- Cœurs disponibles -->
+    <g transform="translate(160, 650)">
+      <text font-size="12">❤️❤️❤️</text>
+    </g>
+  </g>
+
+  <!-- Bulle Sciences (en bas à droite) -->
+  <g id="sciences" class="bubble clickable" filter="url(#shadow)" data-href="sciences_section.html">
+    <circle cx="1000" cy="600" r="70" fill="url(#gradSciences)" stroke="#264653" stroke-width="2"/>
+    <text x="1000" y="595" font-family="Press Start 2P, monospace" font-size="14" fill="white" text-anchor="middle">🔬</text>
+    <text x="1000" y="615" font-family="Press Start 2P, monospace" font-size="11" fill="white" text-anchor="middle">Sciences</text>
+  </g>
+
+  <!-- Bulle Histoire (en haut, centre-haut) -->
+  <g id="histoire" class="bubble clickable" filter="url(#shadow)" data-href="histoire_section.html">
+    <circle cx="600" cy="100" r="60" fill="url(#gradHistoire)" stroke="#264653" stroke-width="2"/>
+    <text x="600" y="95" font-family="Press Start 2P, monospace" font-size="14" fill="white" text-anchor="middle">🏛️</text>
+    <text x="600" y="115" font-family="Press Start 2P, monospace" font-size="10" fill="white" text-anchor="middle">Histoire</text>
+  </g>
+
+  <!-- Styles CSS embarqués -->
+  <style>
+    .bubble {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .bubble:hover circle {
+      r: 75;
+      filter: brightness(1.1);
+    }
+    
+    .bubble:hover text {
+      font-size: 115%;
+    }
+    
+    .clickable {
+      pointer-events: all;
+    }
+  </style>
+</svg>

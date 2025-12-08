@@ -1,0 +1,320 @@
+/* ==================================================
+   PANNEAU ACCESSIBILITÉ - WCAG 2.1 AA
+   ================================================== */
+
+/* --- Bouton Toggle --- */
+.accessibility-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10001;
+    
+    width: 60px;
+    height: 60px;
+    background: #2a9d8f;
+    border: 3px solid #184e77;
+    border-radius: 50%;
+    
+    font-size: 2rem;
+    color: #fff;
+    
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    
+    transition: all 0.3s;
+}
+
+.accessibility-toggle:hover,
+.accessibility-toggle:focus {
+    background: #1d7a6e;
+    transform: scale(1.1) rotate(15deg);
+    outline: 3px solid #ffd60a;
+    outline-offset: 4px;
+}
+
+.accessibility-toggle:active {
+    transform: scale(0.95);
+}
+
+/* --- Panneau Principal --- */
+.accessibility-panel {
+    position: fixed;
+    bottom: 90px;
+    right: -350px;
+    z-index: 10000;
+    
+    width: 320px;
+    max-height: 80vh;
+    overflow-y: auto;
+    
+    background: #f1faee;
+    border: 4px solid #2a9d8f;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    
+    padding: 1.5rem;
+    
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.accessibility-panel.open {
+    right: 20px;
+}
+
+.accessibility-panel h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: #1d3557;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #2a9d8f;
+}
+
+/* --- Contrôles --- */
+.accessibility-control {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(42, 157, 143, 0.1);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.accessibility-control:hover {
+    border-color: #2a9d8f;
+    background: rgba(42, 157, 143, 0.2);
+}
+
+.accessibility-control label {
+    display: block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: #1d3557;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+/* --- Boutons Toggle --- */
+.accessibility-control button {
+    width: 100%;
+    padding: 0.8rem;
+    
+    background: #e9ecef;
+    border: 3px solid #6c757d;
+    border-radius: 8px;
+    
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: #495057;
+    
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.accessibility-control button:hover {
+    background: #dee2e6;
+    border-color: #495057;
+}
+
+.accessibility-control button:focus {
+    outline: 3px solid #ffd60a;
+    outline-offset: 2px;
+}
+
+.accessibility-control button.active,
+.accessibility-control button[aria-pressed="true"] {
+    background: #2a9d8f;
+    border-color: #184e77;
+    color: #fff;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2);
+}
+
+/* --- Select Taille Texte --- */
+.accessibility-control select {
+    width: 100%;
+    padding: 0.8rem;
+    
+    background: #fff;
+    border: 3px solid #2a9d8f;
+    border-radius: 8px;
+    
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: #1d3557;
+    
+    cursor: pointer;
+    
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231d3557' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    padding-right: 2.5rem;
+}
+
+.accessibility-control select:focus {
+    outline: 3px solid #ffd60a;
+    outline-offset: 2px;
+    border-color: #1d7a6e;
+}
+
+/* --- États d'Accessibilité Appliqués --- */
+
+/* Contraste Élevé */
+body.high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.high-contrast * {
+    border-color: #fff !important;
+}
+
+body.high-contrast a {
+    color: #00bfff !important;
+    text-decoration: underline !important;
+}
+
+body.high-contrast button {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+/* Police Dyslexie */
+body.dyslexia-friendly {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+}
+
+body.dyslexia-friendly * {
+    font-family: inherit !important;
+}
+
+body.dyslexia-friendly h1,
+body.dyslexia-friendly h2,
+body.dyslexia-friendly h3 {
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+}
+
+/* Animations Réduites */
+body.reduced-motion * {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+}
+
+/* Tailles de Texte */
+body.text-size-small {
+    font-size: 12px;
+}
+
+body.text-size-medium {
+    font-size: 16px;
+}
+
+body.text-size-large {
+    font-size: 20px;
+}
+
+body.text-size-xlarge {
+    font-size: 24px;
+}
+
+/* Ajustements responsifs des tailles */
+@media (max-width: 768px) {
+    body.text-size-large {
+        font-size: 18px;
+    }
+    
+    body.text-size-xlarge {
+        font-size: 22px;
+    }
+}
+
+/* --- Scrollbar Custom Panel --- */
+.accessibility-panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.accessibility-panel::-webkit-scrollbar-track {
+    background: rgba(42, 157, 143, 0.1);
+    border-radius: 5px;
+}
+
+.accessibility-panel::-webkit-scrollbar-thumb {
+    background: #2a9d8f;
+    border-radius: 5px;
+}
+
+.accessibility-panel::-webkit-scrollbar-thumb:hover {
+    background: #1d7a6e;
+}
+
+/* --- Responsive Mobile --- */
+@media (max-width: 480px) {
+    .accessibility-panel {
+        width: calc(100vw - 40px);
+        max-height: 70vh;
+    }
+    
+    .accessibility-toggle {
+        bottom: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+
+/* --- Focus Visible Amélioré --- */
+*:focus-visible {
+    outline: 3px solid #ffd60a;
+    outline-offset: 3px;
+}
+
+/* --- Mode Impression --- */
+@media print {
+    .accessibility-panel,
+    .accessibility-toggle {
+        display: none;
+    }
+}
+
+/* --- Préférences Système --- */
+@media (prefers-contrast: high) {
+    .accessibility-panel {
+        border-width: 6px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accessibility-panel,
+    .accessibility-toggle {
+        transition: none;
+    }
+}
+
+/* --- Messages d'État Screen Reader --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Afficher uniquement au focus */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}

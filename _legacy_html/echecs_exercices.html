@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices et Défis ♟️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/echecs_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <!-- Ajouter dans le head de toutes les pages -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > ♟️ Échecs</div>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    
+                    let sidebar = document.getElementById("sidebar");
+                    let toggleButton = document.getElementById("sidebar-toggle");
+                    
+                    if (!sidebar || !toggleButton) {
+                        console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+                        return;
+                    }
+                    
+                    toggleButton.addEventListener("click", function() {
+                        sidebar.classList.toggle("open");
+                    });
+                    
+                    console.log("✔️ Menu latéral et bouton chargés avec succès !");
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+
+    <h1 class="animated-title">🎯 Exercices et Défis aux Échecs</h1>
+    <p class="intro-text">Mets tes connaissances à l’épreuve avec ces exercices interactifs !</p>
+    
+    <div class="content">
+        <h2>1. Quiz sur les Tactiques</h2>
+        <p>Teste tes connaissances sur les tactiques d’échecs.</p>
+        <div id="quiz">
+            <p id="question">Quelle tactique permet d’attaquer deux pièces en même temps ?</p>
+            <button class="quiz-button" onclick="checkAnswer('clouage')">Un Clouage</button>
+            <button class="quiz-button" onclick="checkAnswer('fourchette')">Une Fourchette</button>
+            <button class="quiz-button" onclick="checkAnswer('enfilade')">Une Enfilade</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>2. Trouve le Mat en 1 Coup</h2>
+        <p>Observe la position et trouve le coup gagnant !</p>
+        <img src="images/mat_en_1.png" alt="Exercice Mat en 1" class="illustration">
+        <div id="mat-quiz">
+            <p>Quel coup blanc donne échec et mat ?</p>
+            <button class="quiz-button" onclick="checkMat('Tf1')">Tour en f1</button>
+            <button class="quiz-button" onclick="checkMat('Dg5')">Dame en g5</button>
+            <button class="quiz-button" onclick="checkMat('Cf6')">Cavalier en f6</button>
+            <button class="quiz-button" onclick="checkMat('Tf1')">Tour en f1</button>
+            <p id="mat-feedback"></p>
+        </div>
+    </div>
+
+    <a href="echecs_section.html" class="back-button">🔙 Retour à la section Échecs</a>
+
+    <script>
+        function checkAnswer(answer) {
+            const feedback = document.getElementById("feedback");
+            if (answer === "fourchette") {
+                feedback.innerHTML = "✔️ Bonne réponse ! Une fourchette attaque deux pièces à la fois.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        function checkMat(answer) {
+            const matFeedback = document.getElementById("mat-feedback");
+            if (answer === "Dg5") {
+                matFeedback.innerHTML = "✔️ Bravo ! Dg5 est le coup gagnant.";
+                matFeedback.className = "feedback correct";
+            } else {
+                matFeedback.innerHTML = "❌ Ce n'est pas le bon coup. Réessaie !";
+                matFeedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

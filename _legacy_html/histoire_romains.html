@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Romains 🏛️</title>
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📜 <a href="histoire_section.html">Histoire</a> > Les Romains 🏛️</div>
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+
+    <h1>Les Romains 🏛️</h1>
+    <div class="content">
+        <h2>Qui étaient les Romains ?</h2>
+        <p>Les Romains ont construit un immense empire qui s'étendait sur plusieurs continents. Ils sont connus pour leur architecture, leur armée et leur organisation politique.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/i143lqjMr6Y" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="content">
+        <h2>🏛️ L'organisation politique de Rome</h2>
+        <p>Rome a connu plusieurs formes de gouvernement :</p>
+        <ul>
+            <li><strong>La Royauté</strong> (753 - 509 av. J.-C.) : Rome était dirigée par des rois, dont le plus célèbre fut Romulus, son fondateur légendaire.</li>
+            <li><strong>La République</strong> (509 - 27 av. J.-C.) : Le pouvoir appartenait au Sénat et aux consuls, choisis chaque année.</li>
+            <li><strong>L'Empire</strong> (27 av. J.-C. - 476 ap. J.-C.) : Auguste devient le premier empereur de Rome, marquant le début d'une période d'expansion et de stabilité.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>⚔️ L'armée romaine</h2>
+        <p>L'armée romaine était l'une des plus puissantes de l'Antiquité. Elle était organisée en légions, chacune composée de milliers de soldats entraînés. L'armée romaine utilisait des tactiques avancées et des armes redoutables comme le glaive et le pilum.</p>
+        <p>Gr'ce à son armée, Rome a conquis de vastes territoires, de la Gaule à l'Égypte, et a imposé sa culture et son mode de vie.</p>
+    </div>
+    
+    <div class="content">
+        <h2>🏗️ Les grandes réalisations romaines</h2>
+        <p>Les Romains étaient d'excellents b'tisseurs. Parmi leurs plus grandes réalisations :</p>
+        <ul>
+            <li><strong>Le Colisée</strong> : Un immense amphithé'tre où se déroulaient des combats de gladiateurs.</li>
+            <li><strong>Les aqueducs</strong> : Des structures ingénieuses permettant d'amener l'eau potable en ville.</li>
+            <li><strong>Les routes romaines</strong> : Construites pour faciliter le déplacement des légions et des marchands.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>⚖️ L'héritage des Romains</h2>
+        <p>Rome a laissé un héritage durable dans de nombreux domaines :</p>
+        <ul>
+            <li><strong>Le droit romain</strong> : Base du système juridique de nombreux pays aujourd'hui.</li>
+            <li><strong>Le latin</strong> : Langue mère du français, de l'italien, de l'espagnol et d'autres langues romanes.</li>
+            <li><strong>L'architecture</strong> : De nombreux monuments modernes s'inspirent de la grandeur des constructions romaines.</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Quiz sur les Romains</h2>
+        <p>Testez vos connaissances !</p>
+        <button onclick="startQuiz()">Commencer le quiz</button>
+        <div id="quiz" style="display:none;">
+            <p>1. Quel célèbre monument a été construit pour les combats de gladiateurs ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Le Colisée 🏟️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Parthénon 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le Panthéon 🏛️</button>
+            
+            <p>2. Qui était le premier empereur de Rome ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Auguste 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Jules César ⚔️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Trajan ⚔️</button>
+            
+            <p>3. Quelle était la langue officielle de l'Empire romain ?</p>
+            <button class="quiz-btn" onclick="checkAnswer(this, true)">Le latin 📜</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le grec ancien 🏛️</button>
+            <button class="quiz-btn" onclick="checkAnswer(this, false)">Le perse 🏺</button>
+            
+            <p id="feedback"></p>
+            <button id="finish-quiz" onclick="endQuiz()" style="display:none;">Terminer le quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let answeredQuestions = 0;
+        const totalQuestions = 3;
+
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function checkAnswer(button, correct) {
+            if (button.disabled) return;
+            button.disabled = true;
+            answeredQuestions++;
+            
+            const feedback = document.getElementById('feedback');
+            if (correct) {
+                feedback.innerHTML = "Bravo ! 🎉 Bonne réponse !";
+                button.style.backgroundColor = "#4CAF50";
+            } else {
+                feedback.innerHTML = "Oups ! Réessaie !";
+                button.style.backgroundColor = "#FF5733";
+            }
+            
+            if (answeredQuestions === totalQuestions) {
+                document.getElementById('finish-quiz').style.display = 'block';
+            }
+        }
+
+        function endQuiz() {
+            document.getElementById('finish-quiz').disabled = true;
+            document.getElementById('finish-quiz').style.backgroundColor = '#ccc';
+            document.querySelectorAll('.quiz-btn').forEach(btn => btn.disabled = true);
+            document.getElementById('feedback').innerHTML += "<br> Quiz terminé ! 🎉";
+        }
+    </script>
+
+    <p><a href="histoire_antique.html">← Retour à l'Histoire Antique</a></p>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

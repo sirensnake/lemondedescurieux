@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire - Chapitre 3 : La Révolution française</title>
+    <link rel="stylesheet" href="styles/histoire_geographie_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > 📜 Histoire</div><!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+       <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+       <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+       <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+   </div>
+
+
+    <h1>Histoire - Chapitre 3 : La Révolution française 🇫🇷</h1>
+    <section>
+        <h2>Les causes de la Révolution française</h2>
+        <p>La Révolution française éclate en 1789 en raison des inégalités sociales, de la crise financière et de la montée des idées de liberté. Le peuple veut mettre fin aux privilèges de la noblesse et du clergé.</p>
+
+        <h3>Les événements clés</h3>
+        <ul>
+            <li><strong>5 mai 1789 :</strong> Ouverture des États généraux.</li>
+            <li><strong>14 juillet 1789 :</strong> Prise de la Bastille, symbole de la fin de l’absolutisme.</li>
+            <li><strong>26 août 1789 :</strong> Déclaration des droits de l’homme et du citoyen.</li>
+        </ul>
+    </section>
+
+    <section class="game-section">
+        <h3>Jeu interactif : Chronologie de la Révolution française 📅</h3>
+        <p>Classe les événements ci-dessous dans le bon ordre chronologique :</p>
+        
+        <ul id="events-list">
+            <li draggable="true">Déclaration des droits de l’homme (26 août 1789)</li>
+            <li draggable="true">Prise de la Bastille (14 juillet 1789)</li>
+            <li draggable="true">Exécution de Louis XVI (21 janvier 1793)</li>
+            <li draggable="true">Coup d’État de Napoléon (18 brumaire, 9 novembre 1799)</li>
+        </ul>
+        
+        <button onclick="checkChronology()">Vérifier l'ordre</button>
+        <p id="game-feedback"></p>
+    </section>
+
+    <section class="quiz-section">
+        <h3>Quiz : Teste tes connaissances</h3>
+        <p>Quel événement est considéré comme le début de la Révolution française ?</p>
+        <button onclick="checkAnswer('bastille', true)">La prise de la Bastille</button>
+        <button onclick="checkAnswer('droits', false)">La Déclaration des droits</button>
+        <button onclick="checkAnswer('etats', false)">L’ouverture des États généraux</button>
+        <p id="feedback"></p>
+    </section>
+
+    <a href="histoire_chapitre4.html">Suivant : Chapitre 4 - La naissance de l'écriture</a>
+
+    <script>
+        function checkAnswer(event, isCorrect) {
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.innerHTML = `<span class='correct'>Bonne réponse ! 🎉</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Mauvaise réponse, essaie encore !</span>`;
+            }
+        }
+
+        function checkChronology() {
+            const events = Array.from(document.querySelectorAll('#events-list li'));
+            const correctOrder = [
+                "Prise de la Bastille (14 juillet 1789)",
+                "Déclaration des droits de l’homme (26 août 1789)",
+                "Exécution de Louis XVI (21 janvier 1793)",
+                "Coup d’État de Napoléon (18 brumaire, 9 novembre 1799)"
+            ];
+
+            const userOrder = events.map(event => event.innerText);
+            const feedback = document.getElementById('game-feedback');
+
+            if (JSON.stringify(userOrder) === JSON.stringify(correctOrder)) {
+                feedback.innerHTML = `<span class='correct'>Bravo ! 🎉 Tu as trouvé le bon ordre chronologique.</span>`;
+            } else {
+                feedback.innerHTML = `<span class='incorrect'>Oops ! Ce n’est pas le bon ordre. Essaie encore. 😊</span>`;
+            }
+        }
+
+        // Permettre le glisser-déposer
+        const items = document.querySelectorAll('#events-list li');
+        let draggedItem = null;
+
+        items.forEach(item => {
+            item.addEventListener('dragstart', () => {
+                draggedItem = item;
+                setTimeout(() => item.style.display = 'none', 0);
+            });
+
+            item.addEventListener('dragend', () => {
+                setTimeout(() => {
+                    draggedItem.style.display = 'block';
+                    draggedItem = null;
+                }, 0);
+            });
+
+            item.addEventListener('dragover', e => e.preventDefault());
+            item.addEventListener('dragenter', function(e) {
+                e.preventDefault();
+                this.style.border = 'dashed 2px #2a9d8f';
+            });
+
+            item.addEventListener('dragleave', function() {
+                this.style.border = 'none';
+            });
+
+            item.addEventListener('drop', function() {
+                this.style.border = 'none';
+                if (this !== draggedItem) {
+                    const parent = this.parentNode;
+                    parent.insertBefore(draggedItem, this.nextSibling);
+                }
+            });
+        });
+    </script>
+
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu-lateral.js"></script>
+    <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>

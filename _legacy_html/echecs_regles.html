@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règles du Jeu d'Échecs ♟️</title>
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/echecs_styles.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <!-- Ajouter dans le head de toutes les pages -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  </head>
+<body>
+  <div id="menu-container"></div>
+    <div class="breadcrumb" aria-label="Fil d'Ariane">🏠 <a href="index.html">Accueil</a> > ♟️ Échecs</div>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("menu_lateral.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("menu-container").innerHTML = data;
+                    
+                    let sidebar = document.getElementById("sidebar");
+                    let toggleButton = document.getElementById("sidebar-toggle");
+                    
+                    if (!sidebar || !toggleButton) {
+                        console.error("❌ Erreur : Menu latéral ou bouton introuvable après l’injection !");
+                        return;
+                    }
+                    
+                    toggleButton.addEventListener("click", function() {
+                        sidebar.classList.toggle("open");
+                    });
+                    
+                    console.log("✔️ Menu latéral et bouton chargés avec succès !");
+                })
+                .catch(error => console.error("❌ Erreur lors du chargement du menu latéral :", error));
+        });
+    </script>
+    <!-- Outils d'accessibilité -->
+    <div class="accessibility-tools">
+        <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+        <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+        <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+    </div>
+
+    <h1 class="animated-title">📜 Règles du Jeu d'Échecs</h1>
+    <p class="intro-text">Apprends les bases du jeu d’échecs et comment chaque pièce se déplace.</p>
+    
+    <div class="content">
+        <h2>1. L’échiquier et les pièces</h2>
+        <p>L’échiquier est un plateau de 8x8 cases alternant noir et blanc. Chaque joueur commence avec 16 pièces.</p>
+        <img src="images/echecs_echiquier.png" alt="Échiquier" class="illustration">
+    </div>
+
+    <div class="content">
+        <h2>2. Déplacement des pièces</h2>
+        <ul>
+            <li><strong>Le Roi :</strong> Une case dans n’importe quelle direction.</li>
+            <li><strong>La Dame :</strong> En ligne droite ou en diagonale.</li>
+            <li><strong>Les Tours :</strong> En ligne droite (colonnes et rangées).</li>
+            <li><strong>Les Fous :</strong> En diagonale.</li>
+            <li><strong>Les Cavaliers :</strong> En "L".</li>
+            <li><strong>Les Pions :</strong> Avancent tout droit, capturent en diagonale.</li>
+        </ul>
+        <img src="images/echecs_mouvement_pieces.png" alt="Mouvements des pièces" class="illustration">
+    </div>
+
+    <div class="content">
+        <h2>3. Règles spéciales</h2>
+        <ul>
+            <li><strong>Le Roque :</strong> Coup combiné entre le roi et la tour.</li>
+            <li><strong>La Promotion :</strong> Un pion atteignant la dernière rangée peut être promu.</li>
+            <li><strong>La Prise en Passant :</strong> Capture spéciale d’un pion avançant de deux cases.</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>4. Quiz Interactif 🎯</h2>
+        <p>Teste tes connaissances sur les règles du jeu :</p>
+        <div id="quiz">
+            <p id="question">Quel coup permet au roi et à la tour de bouger en même temps ?</p>
+            <button class="quiz-button" onclick="checkAnswer('roque')">Le Roque</button>
+            <button class="quiz-button" onclick="checkAnswer('promotion')">La Promotion</button>
+            <button class="quiz-button" onclick="checkAnswer('prise_passant')">La Prise en Passant</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+    <a href="echecs_section.html" class="back-button">🔙 Retour à la section Échecs</a>
+
+    <script>
+        function checkAnswer(answer) {
+            const feedback = document.getElementById("feedback");
+            if (answer === "roque") {
+                feedback.innerHTML = "✔️ Bonne réponse ! Le roque est un coup spécial !";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "❌ Mauvaise réponse. Essaie encore !";
+                feedback.className = "feedback incorrect";
+            }
+        }
+    </script>
+    <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu-lateral.js"></script>
+  <script src="./scripts/xp_system_complete.js"></script>
+  </body>
+</html>
