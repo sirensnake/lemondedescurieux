@@ -122,8 +122,12 @@ class MathsApp {
         
         this.updateHeartsDisplay();
         
-        document.getElementById('answer-input').onkeypress = (e) => {
-            if (e.key === 'Enter') this.checkAnswer();
+        // Détection touche Enter pour valider
+        document.getElementById('answer-input').onkeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.checkAnswer();
+            }
         };
     }
 

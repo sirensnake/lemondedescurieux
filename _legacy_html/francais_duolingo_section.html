@@ -10,6 +10,7 @@
 </head>
 <body class="francais-section">
     <div class="container">
+        <!-- HEADER -->
         <div class="header">
             <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
             <h1>📚 Français</h1>
@@ -20,66 +21,76 @@
             </div>
         </div>
         
-        <!-- LESSONS LIST -->
+        <!-- LESSONS LIST (visible par défaut) -->
         <div id="lessons-list">
             <div id="lessons-grid"></div>
         </div>
         
-        <!-- EXERCISE SCREEN -->
-        <div id="exercise-screen">
-            <div class="exercise-header">
-                <button class="btn btn-secondary" onclick="francaisApp.backToLessons()">← Retour</button>
-                <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
-            </div>
+        <!-- LESSON SCREEN (caché par défaut, contient exercices + résultats) -->
+        <div id="lesson-screen" style="display: none;">
             
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            <!-- EXERCISE SCREEN -->
+            <div id="exercise-screen">
+                <div class="exercise-header">
+                    <button class="btn btn-secondary" onclick="francaisApp.backToLessons()">← Retour</button>
+                    <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <div class="question-area">
+                    <div class="question-text" id="question-text"></div>
+                    <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
+                    <div class="hint-area" id="hint-area"></div>
+                </div>
+                
+                <div class="button-area">
+                    <button class="btn btn-secondary" onclick="francaisApp.showHint()">💡 Indice</button>
+                    <button class="btn btn-primary" onclick="francaisApp.checkAnswer()">✓ Vérifier</button>
+                </div>
             </div>
+            <!-- Fin exercise-screen -->
             
-            <div class="question-area">
-                <div class="question-text" id="question-text"></div>
-                <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
-                <div class="hint-area" id="hint-area"></div>
+            <!-- RESULTS SCREEN -->
+            <div id="results-screen">
+                <div class="results-icon">🏆</div>
+                <h2 style="color: #2a9d8f; margin-bottom: 2rem;">Leçon Terminée !</h2>
+                
+                <div class="results-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-correct">0</div>
+                        <div class="stat-label">Bonnes réponses</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-xp">0</div>
+                        <div class="stat-label">XP gagnés</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-hearts">5</div>
+                        <div class="stat-label">Cœurs restants</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-score">0%</div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" onclick="francaisApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
+                    🏠 Retour aux leçons
+                </button>
             </div>
+            <!-- Fin results-screen -->
             
-            <div class="button-area">
-                <button class="btn btn-secondary" onclick="francaisApp.showHint()">💡 Indice</button>
-                <button class="btn btn-primary" onclick="francaisApp.checkAnswer()">✓ Vérifier</button>
-            </div>
         </div>
-        
-        <!-- RESULTS SCREEN -->
-        <div id="results-screen">
-            <div class="results-icon">🏆</div>
-            <h2 style="color: #2a9d8f; margin-bottom: 2rem;">Leçon Terminée !</h2>
-            
-            <div class="results-stats">
-                <div class="stat-box">
-                    <div class="stat-value" id="result-correct">0</div>
-                    <div class="stat-label">Bonnes réponses</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="result-xp">0</div>
-                    <div class="stat-label">XP gagnés</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="result-hearts">5</div>
-                    <div class="stat-label">Cœurs restants</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="result-score">0%</div>
-                    <div class="stat-label">Score</div>
-                </div>
-            </div>
-            
-            <button class="btn btn-primary" onclick="francaisApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
-                🏠 Retour aux leçons
-            </button>
-        </div>
+        <!-- Fin lesson-screen -->
         
         <!-- FEEDBACK POPUP -->
         <div class="feedback" id="feedback"></div>
+        
     </div>
+    <!-- Fin container -->
 
     <script src="scripts/francais-lessons.js"></script>
 </body>
