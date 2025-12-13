@@ -1,0 +1,82 @@
+/* ========================================
+   MINDMAP SVG INTERACTIVE - STYLES
+   ======================================== */
+
+.mindmap-section {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+}
+
+.mindmap-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mindmap-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mindmap-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.zone-clickable {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: all;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.zone-clickable:hover {
+  fill: rgba(255, 255, 0, 0.25);
+  stroke: rgba(255, 215, 0, 1);
+  stroke-width: 6;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+}
+
+.zone-clickable:active {
+  fill: rgba(255, 255, 0, 0.4);
+  stroke: rgba(255, 165, 0, 1);
+  stroke-width: 8;
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mindmap-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .mindmap-section {
+    padding: 10px;
+  }
+  
+  .mindmap-image {
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mindmap-section {
+    padding: 5px;
+  }
+  
+  .zone-clickable:hover {
+    stroke-width: 4;
+  }
+}
