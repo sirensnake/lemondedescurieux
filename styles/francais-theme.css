@@ -1,0 +1,7 @@
+/* ========================================
+   BACKGROUND FRANÇAIS
+   ======================================== */
+
+body.francais-section {
+    background: linear-gradient(135deg, #2a9d8f 0%, #264653 100%);
+}

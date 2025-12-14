@@ -1,0 +1,327 @@
+/* ========================================
+   STYLES COMMUNS SECTIONS DUOLINGO
+   Français & Mathématiques
+   ======================================== */
+
+/* RESET & BASE */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    min-height: 100vh;
+    color: #fff;
+    padding: 1rem;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+/* HEADER */
+.header {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header h1 { 
+    font-size: 1.5rem; 
+    color: #ffd700; 
+}
+
+.stats { 
+    display: flex; 
+    gap: 2rem; 
+    font-size: 1rem; 
+}
+
+/* BOUTON RETOUR ACCUEIL */
+.back-home-btn {
+    background: #e76f51;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+.back-home-btn:hover { 
+    background: #d35f47; 
+    transform: scale(1.05); 
+}
+
+/* LESSONS GRID */
+#lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.lesson-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    color: #333;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.lesson-card:hover { 
+    transform: translateY(-8px); 
+}
+
+.lesson-icon { 
+    font-size: 4rem; 
+    margin-bottom: 1rem; 
+}
+
+.lesson-title { 
+    font-size: 1.2rem; 
+    color: #667eea; 
+    margin: 1rem 0; 
+}
+
+.lesson-desc { 
+    font-size: 0.7rem; 
+    color: #666; 
+    margin-bottom: 1rem; 
+}
+
+.lesson-button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.lesson-button:hover { 
+    background: #764ba2; 
+}
+
+/* EXERCISE SCREEN */
+#exercise-screen {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #667eea;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.question-area {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.question-text {
+    font-size: 2rem;
+    color: #667eea;
+    margin-bottom: 2rem;
+}
+
+.answer-input {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    border: 4px solid #667eea;
+    border-radius: 12px;
+    background: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #764ba2;
+    background: white;
+}
+
+.hint-area {
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 1rem;
+    min-height: 40px;
+}
+
+.button-area {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    font-family: 'Press Start 2P', cursive;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.btn-primary { 
+    background: #667eea; 
+    color: white; 
+}
+
+.btn-primary:hover { 
+    background: #764ba2; 
+}
+
+.btn-secondary { 
+    background: #e0e0e0; 
+    color: #333; 
+}
+
+.btn-secondary:hover { 
+    background: #ccc; 
+}
+
+/* FEEDBACK POPUP */
+.feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.feedback.show { 
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+.feedback-icon { 
+    font-size: 5rem; 
+    margin-bottom: 1rem; 
+}
+
+.feedback-correct { 
+    color: #4caf50; 
+}
+
+.feedback-wrong { 
+    color: #f44336; 
+}
+
+/* RESULTS SCREEN */
+#results-screen {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #333;
+    text-align: center;
+}
+
+.results-icon { 
+    font-size: 5rem; 
+    margin-bottom: 1rem; 
+}
+
+.results-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stat-box {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.stat-value { 
+    font-size: 2rem; 
+    color: #667eea; 
+    margin-bottom: 0.5rem; 
+}
+
+.stat-label { 
+    font-size: 0.7rem; 
+    color: #666; 
+}
+
+/* ============================================
+   GESTION AFFICHAGE ÉCRANS LEÇON
+   ============================================ */
+
+/* Par défaut : exercices visibles, résultats cachés */
+#lesson-screen #exercise-screen {
+    display: block;
+}
+
+#lesson-screen #results-screen {
+    display: none;
+}
+
+/* Quand on affiche les résultats */
+#lesson-screen.show-results #exercise-screen {
+    display: none;
+}
+
+#lesson-screen.show-results #results-screen {
+    display: block;
+}
+
+/* UTILITY CLASSES */
+.hidden { 
+    display: none; 
+}

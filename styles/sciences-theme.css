@@ -1,0 +1,189 @@
+/* ========================================
+   THÈME SCIENCES
+   Gradient vert nature/expérimentation
+   ======================================== */
+
+.sciences-section {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    min-height: 100vh;
+}
+
+.sciences-section .header h1 {
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sciences-section .lesson-card {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 3px solid #10b981;
+}
+
+.sciences-section .lesson-card:hover {
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+    border-color: #047857;
+}
+
+.sciences-section .lesson-title {
+    color: #047857;
+}
+
+.sciences-section .lesson-button {
+    background: linear-gradient(135deg, #10b981, #047857);
+}
+
+.sciences-section .lesson-button:hover {
+    background: linear-gradient(135deg, #059669, #065f46);
+}
+
+.sciences-section .btn-primary {
+    background: linear-gradient(135deg, #10b981, #047857);
+}
+
+.sciences-section .btn-primary:hover {
+    background: linear-gradient(135deg, #059669, #065f46);
+}
+
+.sciences-section .progress-fill {
+    background: linear-gradient(90deg, #10b981, #047857);
+}
+
+.sciences-section .question-text {
+    color: #047857;
+}
+
+.sciences-section .answer-input {
+    border-color: #10b981;
+    background: #d1fae5;
+}
+
+.sciences-section .answer-input:focus {
+    border-color: #047857;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    background: white;
+}
+
+/* ZONE EXPÉRIENCE SCIENTIFIQUE */
+.science-experiment {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 3px solid #10b981;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.experiment-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.experiment-description {
+    font-size: 0.8rem;
+    color: #047857;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.experiment-visual {
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ANIMATIONS SCIENTIFIQUES */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Classes d'animation pour les visuels */
+.visual-sun {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.visual-earth {
+    animation: rotate 10s linear infinite;
+}
+
+.visual-water {
+    animation: float 2s ease-in-out infinite;
+}
+
+.visual-atom {
+    animation: rotate 3s linear infinite;
+}
+
+/* RÉSUMÉ SCIENTIFIQUE */
+.science-summary {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 3px solid #10b981;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.science-fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+.fact-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.fact-text {
+    font-size: 0.8rem;
+    color: #047857;
+    line-height: 1.5;
+}
+
+/* Effet microscope pour les images */
+.microscope-view {
+    border: 4px solid #10b981;
+    border-radius: 50%;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Style laboratoire */
+.sciences-section .feedback {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 3px solid #10b981;
+    color: #047857;
+}

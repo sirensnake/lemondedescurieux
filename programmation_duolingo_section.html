@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Français - Le Monde des Curieux</title>
+    <title>Programmation - Le Monde des Curieux</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/duolingo-sections.css">
-    <link rel="stylesheet" href="styles/francais-theme.css">
+    <link rel="stylesheet" href="styles/programmation-theme.css">
 </head>
-<body class="francais-section">
+<body class="programmation-section">
     <div class="container">
         <!-- HEADER -->
         <div class="header">
             <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
-            <h1>📚 Français</h1>
+            <h1>💻 Programmation</h1>
             <div class="stats">
                 <span id="streak-display">🔥 0 jours</span>
                 <span id="hearts-display">❤️❤️❤️❤️❤️</span>
@@ -32,7 +32,7 @@
             <!-- EXERCISE SCREEN -->
             <div id="exercise-screen">
                 <div class="exercise-header">
-                    <button class="btn btn-secondary" onclick="francaisApp.backToLessons()">← Retour</button>
+                    <button class="btn btn-secondary" onclick="progApp.backToLessons()">← Retour</button>
                     <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
                 </div>
                 
@@ -40,15 +40,42 @@
                     <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                 </div>
                 
+                <!-- ZONE DÉFI PROGRAMMATION -->
+                <div class="code-challenge" id="code-challenge">
+                    <div class="challenge-icon" id="challenge-icon">🎯</div>
+                    <div class="challenge-description" id="challenge-description"></div>
+                    <div class="challenge-example" id="challenge-example"></div>
+                </div>
+                
+                <!-- MINI-ÉDITEUR DE CODE -->
+                <div class="code-editor-container">
+                    <div class="editor-header">
+                        <span class="editor-title">📝 Ton code JavaScript</span>
+                        <button class="btn-run" onclick="progApp.runCode()">▶️ Exécuter</button>
+                    </div>
+                    <textarea class="code-editor" id="code-editor" spellcheck="false"></textarea>
+                </div>
+                
+                <!-- CONSOLE DE SORTIE -->
+                <div class="console-container">
+                    <div class="console-header">
+                        <span class="console-title">📟 Console</span>
+                        <button class="btn-clear" onclick="progApp.clearConsole()">🗑️ Effacer</button>
+                    </div>
+                    <div class="console-output" id="console-output">
+                        <div class="console-welcome">💡 Écris ton code et clique sur "Exécuter" !</div>
+                    </div>
+                </div>
+                
                 <div class="question-area">
                     <div class="question-text" id="question-text"></div>
-                    <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
+                    <input type="text" class="answer-input" id="answer-input" placeholder="Ta réponse..." autofocus>
                     <div class="hint-area" id="hint-area"></div>
                 </div>
                 
                 <div class="button-area">
-                    <button class="btn btn-secondary" onclick="francaisApp.showHint()">💡 Indice</button>
-                    <button class="btn btn-primary" onclick="francaisApp.checkAnswer()">✓ Vérifier</button>
+                    <button class="btn btn-secondary" onclick="progApp.showHint()">💡 Indice</button>
+                    <button class="btn btn-primary" onclick="progApp.checkAnswer()">✓ Vérifier</button>
                 </div>
             </div>
             <!-- Fin exercise-screen -->
@@ -56,12 +83,12 @@
             <!-- RESULTS SCREEN -->
             <div id="results-screen">
                 <div class="results-icon">🏆</div>
-                <h2 style="color: #2a9d8f; margin-bottom: 2rem;">Leçon Terminée !</h2>
+                <h2 style="color: #8b5cf6; margin-bottom: 2rem;">Mission Accomplie !</h2>
                 
                 <div class="results-stats">
                     <div class="stat-box">
                         <div class="stat-value" id="result-correct">0</div>
-                        <div class="stat-label">Bonnes réponses</div>
+                        <div class="stat-label">Défis réussis</div>
                     </div>
                     <div class="stat-box">
                         <div class="stat-value" id="result-xp">0</div>
@@ -77,7 +104,10 @@
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" onclick="francaisApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
+                <!-- RÉSUMÉ CONCEPTS -->
+                <div class="code-summary" id="code-summary"></div>
+                
+                <button class="btn btn-primary" onclick="progApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
                     🏠 Retour aux leçons
                 </button>
             </div>
@@ -92,6 +122,6 @@
     </div>
     <!-- Fin container -->
 
-    <script src="scripts/francais-lessons.js"></script>
+    <script src="scripts/programmation-lessons.js"></script>
 </body>
 </html>

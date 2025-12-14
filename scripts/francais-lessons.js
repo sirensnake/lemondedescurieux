@@ -1,138 +1,322 @@
-/* ============================================================================
-   BASE DE DONNÉES DES LEÇONS - FRANÇAIS
-   Fichier: scripts/francais-lessons.js
-   ============================================================================ */
+// ====================================
+// FRANCAIS LESSONS - VERSION COMPLÈTE
+// 4 leçons, 19 exercices au total
+// ====================================
 
-// Base de données des leçons simplifiée
+console.log('📚 FrenchLessons loading...');
+
 const FRANCAIS_LESSONS_DATA = {
-  "verbes-present": {
-    id: "verbes-present",
-    title: "Les Verbes au Présent",
-    description: "Apprends à conjuguer les verbes du 1er groupe au présent",
-    difficulty: 1,
-    estimatedTime: 8,
-    xpReward: 20,
-    
+  1: {
+    id: 1,
+    title: "Verbes au Présent",
+    description: "Conjugaison des verbes du 1er groupe",
+    icon: "📖",
     exercises: [
       {
-        type: "multiple_choice",
-        question: "Quelle est la conjugaison correcte du verbe 'chanter' avec 'je' ?",
-        instruction: "Choisis la bonne terminaison",
-        options: ["je chantes", "je chante", "je chanter", "je chantons"],
-        correct: 1,
-        explanation: "Avec 'je', les verbes du 1er groupe prennent la terminaison 'e'",
-        hint: "Pense à la terminaison des verbes en -er avec 'je'"
+        question: "Je (chanter) _____ une chanson.",
+        answer: "chante",
+        hint: "Verbe du 1er groupe au présent avec 'je'"
       },
       {
-        type: "multiple_choice",
-        question: "Comment conjugue-t-on 'jouer' avec 'tu' ?",
-        instruction: "Choisis la bonne réponse",
-        options: ["tu joue", "tu joues", "tu jouer", "tu jouons"],
-        correct: 1,
-        explanation: "Avec 'tu', les verbes du 1er groupe prennent 'es'",
-        hint: "Quelle terminaison avec 'tu' ?"
+        question: "Tu (jouer) _____ au football.",
+        answer: "joues",
+        hint: "Verbe du 1er groupe au présent avec 'tu'"
       },
       {
-        type: "multiple_choice",
-        question: "Quelle est la conjugaison de 'aimer' avec 'nous' ?",
-        instruction: "Sélectionne la bonne forme",
-        options: ["nous aimons", "nous aimez", "nous aiment", "nous aimes"],
-        correct: 0,
-        explanation: "Avec 'nous', les verbes du 1er groupe prennent 'ons'",
-        hint: "Pense à la terminaison avec 'nous'"
+        question: "Il (marcher) _____ dans la rue.",
+        answer: "marche",
+        hint: "Verbe du 1er groupe au présent avec 'il'"
+      },
+      {
+        question: "Nous (danser) _____ ensemble.",
+        answer: "dansons",
+        hint: "Verbe du 1er groupe au présent avec 'nous'"
+      },
+      {
+        question: "Vous (parler) _____ français.",
+        answer: "parlez",
+        hint: "Verbe du 1er groupe au présent avec 'vous'"
       }
     ]
   },
-
-  "orthographe-sons": {
-    id: "orthographe-sons",
-    title: "Les Sons [é] et [è]",
-    description: "Distingue et écris correctement les sons é et è",
-    difficulty: 2,
-    estimatedTime: 10,
-    xpReward: 25,
-    
+  2: {
+    id: 2,
+    title: "Accords dans le GN",
+    description: "Accords adjectifs et noms",
+    icon: "✨",
     exercises: [
       {
-        type: "multiple_choice",
-        question: "Quel son entends-tu dans le mot 'forêt' ?",
-        instruction: "Écoute attentivement et choisis",
-        options: ["[é] comme dans café", "[è] comme dans père", "[e] comme dans le"],
-        correct: 1,
-        explanation: "Le son 'ê' dans forêt se prononce [è] comme dans 'père'",
-        hint: "Concentre-toi sur la prononciation du 'ê'"
+        question: "Le chat (noir) _____.",
+        answer: "noir",
+        hint: "Masculin singulier - pas d'accord nécessaire"
       },
       {
-        type: "multiple_choice",
-        question: "Comment s'écrit le son [é] dans 'café' ?",
-        instruction: "Choisis la bonne écriture",
-        options: ["é", "è", "ê", "e"],
-        correct: 0,
-        explanation: "Le son [é] fermé s'écrit avec un accent aigu 'é'",
-        hint: "C'est un accent qui monte vers la droite"
+        question: "La (grand) _____ maison.",
+        answer: "grande",
+        hint: "Féminin singulier - ajoute un 'e'"
+      },
+      {
+        question: "Les chiens (méchant) _____.",
+        answer: "méchants",
+        hint: "Masculin pluriel - ajoute un 's'"
+      },
+      {
+        question: "Les (beau) _____ fleurs.",
+        answer: "belles",
+        hint: "Féminin pluriel - 'beau' devient 'belles'"
       }
     ]
   },
-
-  "vocabulaire-famille": {
-    id: "vocabulaire-famille",
-    title: "Les Mots de la Famille",
-    description: "Découvre les familles de mots et enrichis ton vocabulaire",
-    difficulty: 1,
-    estimatedTime: 12,
-    xpReward: 30,
-    
+  3: {
+    id: 3,
+    title: "Le Passé Composé",
+    description: "Raconte ce qui s'est passé",
+    icon: "⏰",
     exercises: [
       {
-        type: "multiple_choice",
-        question: "Quel mot appartient à la famille de 'terre' ?",
-        instruction: "Sélectionne le mot de la même famille",
-        options: ["terrible", "terrain", "tigre", "table"],
-        correct: 1,
-        explanation: "Terrain contient le radical 'terr-' qui vient de 'terre'",
-        hint: "Cherche le mot qui contient 'terr'"
+        question: "Hier, j'(manger) _____ une pizza.",
+        answer: "ai mangé",
+        hint: "Auxiliaire 'avoir' + participe passé en -é"
       },
       {
-        type: "multiple_choice",
-        question: "Lequel est de la famille de 'chant' ?",
-        instruction: "Trouve le mot apparenté",
-        options: ["chance", "chanteur", "champ", "chat"],
-        correct: 1,
-        explanation: "Chanteur vient de 'chant' + le suffixe '-eur'",
-        hint: "Quel mot parle de musique ?"
+        question: "Tu (finir) _____ tes devoirs ?",
+        answer: "as fini",
+        hint: "Auxiliaire 'avoir' avec 'tu' + participe passé en -i"
+      },
+      {
+        question: "Elle (chanter) _____ une chanson.",
+        answer: "a chanté",
+        hint: "Auxiliaire 'avoir' à la 3ème personne + participe passé"
+      },
+      {
+        question: "Nous (jouer) _____ au football.",
+        answer: "avons joué",
+        hint: "Auxiliaire 'avoir' avec 'nous' + participe passé"
+      },
+      {
+        question: "Vous (regarder) _____ le film ?",
+        answer: "avez regardé",
+        hint: "Auxiliaire 'avoir' avec 'vous' + participe passé"
+      }
+    ]
+  },
+  4: {
+    id: 4,
+    title: "L'Imparfait",
+    description: "Décris les habitudes du passé",
+    icon: "📚",
+    exercises: [
+      {
+        question: "Quand j'étais petit, je (jouer) _____ souvent.",
+        answer: "jouais",
+        hint: "Radical 'jou-' + terminaison -ais"
+      },
+      {
+        question: "Tu (aimer) _____ les bonbons ?",
+        answer: "aimais",
+        hint: "Imparfait à la 2ème personne du singulier"
+      },
+      {
+        question: "Il (avoir) _____ un chat noir.",
+        answer: "avait",
+        hint: "Verbe 'avoir' à l'imparfait, 3ème personne"
+      },
+      {
+        question: "Nous (être) _____ contents.",
+        answer: "étions",
+        hint: "Verbe 'être' à l'imparfait avec 'nous'"
+      },
+      {
+        question: "Vous (habiter) _____ à Paris ?",
+        answer: "habitiez",
+        hint: "Imparfait à la 2ème personne du pluriel"
       }
     ]
   }
 };
 
-// Système de progression simple
-const FRANCAIS_PROGRESSION = {
-  calculateNextLessons: function(userProgress) {
-    const completed = Object.keys(userProgress.lessons || {});
-    const available = Object.keys(FRANCAIS_LESSONS_DATA);
+class FrenchLessons {
+  constructor() {
+    console.log('📚 Constructor FrenchLessons');
+    this.lessons = Object.values(FRANCAIS_LESSONS_DATA);
+    this.currentLesson = null;
+    this.currentExerciseIndex = 0;
+    this.score = 0;
     
-    return available.filter(lessonId => {
-      const lesson = FRANCAIS_LESSONS_DATA[lessonId];
-      return !completed.includes(lessonId) && lesson.difficulty <= (completed.length + 1);
+    setTimeout(() => this.renderLessons(), 100);
+  }
+
+  renderLessons() {
+    console.log('🎨 Rendering', this.lessons.length, 'lessons');
+    const grid = document.getElementById('lessons-grid');
+    if (!grid) {
+      console.error('❌ lessons-grid not found');
+      return;
+    }
+    
+    grid.innerHTML = '';
+    
+    this.lessons.forEach(lesson => {
+      const card = document.createElement('div');
+      card.className = 'lesson-card';
+      card.innerHTML = `
+        <div class="lesson-icon">${lesson.icon}</div>
+        <div class="lesson-title">${lesson.title}</div>
+        <div class="lesson-desc">${lesson.description}</div>
+        <button class="lesson-button">⭐ Commencer</button>
+      `;
+      
+      card.querySelector('.lesson-button').onclick = () => {
+        console.log('🎓 Starting:', lesson.title);
+        this.startLesson(lesson.id);
+      };
+      
+      grid.appendChild(card);
     });
-  },
-  
-  calculateXPBonus: function(baseXP, performance) {
-    let bonus = 1;
-    if (performance.streak >= 3) bonus += 0.3;
-    if (performance.accuracy >= 90) bonus += 0.2;
-    return Math.round(baseXP * bonus);
+    
+    console.log('✅ Lessons rendered');
   }
-};
 
-// Export global pour le navigateur
-if (typeof window !== 'undefined') {
-  window.FRANCAIS_LESSONS_DATA = FRANCAIS_LESSONS_DATA;
-  window.FRANCAIS_PROGRESSION = FRANCAIS_PROGRESSION;
-  console.log('✅ Leçons françaises chargées:', Object.keys(FRANCAIS_LESSONS_DATA).length, 'leçons');
+  startLesson(lessonId) {
+    this.currentLesson = this.lessons.find(l => l.id === lessonId);
+    this.currentExerciseIndex = 0;
+    this.score = 0;
+    
+    this.showExerciseScreen();
+    this.renderExercise();
+  }
+
+  showExerciseScreen() {
+    const lessonsList = document.getElementById('lessons-list');
+    const lessonScreen = document.getElementById('lesson-screen');
+    const exerciseScreen = document.getElementById('exercise-screen');
+    const resultsScreen = document.getElementById('results-screen');
+    
+    if (lessonsList) lessonsList.style.display = 'none';
+    if (lessonScreen) lessonScreen.style.display = 'block';
+    if (exerciseScreen) exerciseScreen.style.display = 'block';
+    if (resultsScreen) resultsScreen.style.display = 'none';
+  }
+
+  renderExercise() {
+    if (this.currentExerciseIndex >= this.currentLesson.exercises.length) {
+      this.showResults();
+      return;
+    }
+
+    const exercise = this.currentLesson.exercises[this.currentExerciseIndex];
+    const progress = ((this.currentExerciseIndex + 1) / this.currentLesson.exercises.length * 100);
+
+    const questionText = document.getElementById('question-text');
+    const answerInput = document.getElementById('answer-input');
+    const progressFill = document.getElementById('progress-fill');
+    const hintArea = document.getElementById('hint-area');
+
+    if (questionText) questionText.textContent = exercise.question;
+    if (answerInput) {
+      answerInput.value = '';
+      answerInput.focus();
+      
+      // Détection touche Enter pour valider
+      answerInput.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.checkAnswer();
+        }
+      };
+    }
+    if (progressFill) progressFill.style.width = progress + '%';
+    if (hintArea) {
+      hintArea.textContent = '';
+      hintArea.style.display = 'none';
+    }
+  }
+
+  showHint() {
+    const exercise = this.currentLesson.exercises[this.currentExerciseIndex];
+    const hintArea = document.getElementById('hint-area');
+    
+    if (hintArea && exercise.hint) {
+      hintArea.textContent = '💡 ' + exercise.hint;
+      hintArea.style.display = 'block';
+    }
+  }
+
+  checkAnswer() {
+    const exercise = this.currentLesson.exercises[this.currentExerciseIndex];
+    const answerInput = document.getElementById('answer-input');
+    
+    if (!answerInput) return;
+    
+    const userAnswer = answerInput.value.trim().toLowerCase();
+    const correctAnswer = exercise.answer.toLowerCase();
+
+    if (!userAnswer) {
+      this.showFeedback('⚠️ Entre ta réponse d\'abord !', 'warning');
+      return;
+    }
+
+    if (userAnswer === correctAnswer) {
+      this.score++;
+      this.showFeedback('✅ Bravo ! C\'est correct !', 'correct');
+      setTimeout(() => this.nextExercise(), 1500);
+    } else {
+      this.showFeedback(`❌ Pas tout à fait... La réponse était : ${exercise.answer}`, 'incorrect');
+      setTimeout(() => this.nextExercise(), 2500);
+    }
+  }
+
+  showFeedback(message, type) {
+    const feedback = document.getElementById('feedback');
+    if (feedback) {
+      feedback.textContent = message;
+      feedback.className = 'feedback show feedback-' + type;
+      
+      setTimeout(() => {
+        feedback.className = 'feedback';
+      }, type === 'correct' ? 1500 : 2500);
+    }
+  }
+
+  nextExercise() {
+    this.currentExerciseIndex++;
+    this.renderExercise();
+  }
+
+  showResults() {
+    const exerciseScreen = document.getElementById('exercise-screen');
+    const resultsScreen = document.getElementById('results-screen');
+    
+    if (exerciseScreen) exerciseScreen.style.display = 'none';
+    if (resultsScreen) resultsScreen.style.display = 'block';
+
+    const totalExercises = this.currentLesson.exercises.length;
+    const percentage = Math.round((this.score / totalExercises) * 100);
+    const xpEarned = this.score * 10;
+
+    const resultCorrect = document.getElementById('result-correct');
+    const resultXp = document.getElementById('result-xp');
+    const resultScore = document.getElementById('result-score');
+
+    if (resultCorrect) resultCorrect.textContent = this.score + '/' + totalExercises;
+    if (resultXp) resultXp.textContent = xpEarned;
+    if (resultScore) resultScore.textContent = percentage + '%';
+
+    console.log('🏆 Résultats:', this.score + '/' + totalExercises, '(' + percentage + '%)');
+  }
+
+  backToLessons() {
+    const lessonScreen = document.getElementById('lesson-screen');
+    const lessonsList = document.getElementById('lessons-list');
+    
+    if (lessonScreen) lessonScreen.style.display = 'none';
+    if (lessonsList) lessonsList.style.display = 'block';
+    
+    this.currentLesson = null;
+    this.currentExerciseIndex = 0;
+    this.score = 0;
+  }
 }
 
-// Export pour Node.js (si nécessaire)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { FRANCAIS_LESSONS_DATA, FRANCAIS_PROGRESSION };
-}
+console.log('✅ FrenchLessons loaded');
+const francaisApp = new FrenchLessons();

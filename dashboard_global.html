@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Parcours - Le Monde des Curieux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/dashboard-global.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- HEADER -->
+        <header class="dashboard-header">
+            <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            <h1>📊 Mon Parcours d'Apprentissage</h1>
+        </header>
+
+        <!-- PROFIL UTILISATEUR -->
+        <section class="user-profile">
+            <div class="profile-avatar">
+                <div class="avatar-circle">🦊</div>
+            </div>
+            <div class="profile-info">
+                <h2 id="user-name">Explorateur Curieux</h2>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">🔥</span>
+                        <span class="stat-value" id="global-streak">0</span>
+                        <span class="stat-label">jours de suite</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-value" id="global-xp">0</span>
+                        <span class="stat-label">XP Total</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🏆</span>
+                        <span class="stat-value" id="global-badges">0</span>
+                        <span class="stat-label">Badges</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">❤️</span>
+                        <span class="stat-value" id="global-hearts">5</span>
+                        <span class="stat-label">Cœurs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRAPHIQUE RADAR PROGRESSION -->
+        <section class="progress-chart">
+            <h2>🎯 Progression par Matière</h2>
+            <canvas id="radar-chart" width="400" height="400"></canvas>
+        </section>
+
+        <!-- CARTES SECTIONS -->
+        <section class="sections-grid">
+            <h2>📚 Tes Sections d'Apprentissage</h2>
+            <div id="sections-cards"></div>
+        </section>
+
+        <!-- ACTIVITÉ RÉCENTE -->
+        <section class="recent-activity">
+            <h2>📅 Activité Récente</h2>
+            <div id="activity-timeline"></div>
+        </section>
+
+        <!-- BADGES OBTENUS -->
+        <section class="badges-section">
+            <h2>🏆 Badges Obtenus</h2>
+            <div id="badges-grid"></div>
+        </section>
+
+        <!-- OBJECTIFS QUOTIDIENS -->
+        <section class="daily-goals">
+            <h2>🎯 Objectifs du Jour</h2>
+            <div id="goals-list"></div>
+        </section>
+
+        <!-- STATISTIQUES DÉTAILLÉES -->
+        <section class="detailed-stats">
+            <h2>📈 Statistiques Détaillées</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-icon">📝</div>
+                    <div class="stat-card-value" id="total-exercises">0</div>
+                    <div class="stat-card-label">Exercices complétés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">✅</div>
+                    <div class="stat-card-value" id="success-rate">0%</div>
+                    <div class="stat-card-label">Taux de réussite</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">⏱️</div>
+                    <div class="stat-card-value" id="study-time">0h</div>
+                    <div class="stat-card-label">Temps d'étude</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon">🎓</div>
+                    <div class="stat-card-value" id="completion-rate">0%</div>
+                    <div class="stat-card-label">Complétion totale</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOUTONS ACTIONS -->
+        <section class="actions">
+            <button class="btn btn-export" onclick="dashboard.exportProgress()">
+                📄 Exporter mon parcours (PDF)
+            </button>
+            <button class="btn btn-reset" onclick="dashboard.resetProgress()">
+                🔄 Réinitialiser progression
+            </button>
+        </section>
+
+    </div>
+
+    <script src="scripts/dashboard-global.js"></script>
+</body>
+</html>
