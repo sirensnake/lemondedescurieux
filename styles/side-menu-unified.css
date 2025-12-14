@@ -1,0 +1,101 @@
+/* ========================================
+   MENU LATÉRAL SOBRE - LE MONDE DES CURIEUX
+   Style identique à index.html
+   ======================================== */
+
+/* BOUTON HAMBURGER */
+.menu-toggle-btn,
+.menu-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+    font-family: Arial, sans-serif;
+}
+
+.menu-toggle-btn:hover,
+.menu-btn:hover {
+    background: #238276;
+}
+
+/* MENU LATÉRAL */
+.side-menu {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background: linear-gradient(180deg, #2a9d8f, #1d3557);
+    color: white;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 3rem 0 2rem 0;
+    font-family: Arial, sans-serif;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+/* LIENS DU MENU */
+.side-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: background 0.3s;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.side-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.side-menu a.active {
+    background: rgba(255,255,255,0.15);
+    font-weight: 600;
+}
+
+/* SÉPARATEUR */
+.menu-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 1rem 0;
+}
+
+/* SCROLLBAR PERSONNALISÉE */
+.side-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.side-menu::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+
+.side-menu::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+}
+
+.side-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .side-menu {
+        width: 220px;
+        left: -220px;
+    }
+}

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#2a9d8f">
+  <meta name="description" content="Le Monde des Curieux - Plateforme éducative gamifiée pour enfants 8-12 ans. Français, Mathématiques, Anglais, Sciences, Histoire-Géographie et plus !">
+  <title>Accueil | Le Monde des Curieux</title>
+  
+  <!-- Polices -->
+  <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+  
+  <!-- Feuilles de style -->
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/index_style.css">
+  <link rel="stylesheet" href="styles/layout_style.css">
+  <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+  <link rel="stylesheet" href="styles/accessibilite.css">
+  <link rel="stylesheet" href="styles/dark-mode.css">
+  <link rel="stylesheet" href="styles/breadcrumb.css">
+  <link rel="stylesheet" href="styles/xp_integration.css">
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Alpine.js -->
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body class="home-page">
+  
+  <!-- ========================================
+       MENU LATÉRAL
+       ======================================== -->
+  <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu" onclick="toggleMenu()">☰</button>
+  <div class="sidebar">
+    <ul>
+      <li><a href="index.html">🏠 Accueil</a></li>
+      <li><a href="dashboard_global.html">📊 Mon Parcours</a></li>
+      <li class="menu-separator"></li>
+      <li><a href="francais_duolingo_section.html">📚 Français</a></li>
+      <li><a href="maths_duolingo_section.html">🔢 Mathématiques</a></li>
+      <li><a href="english_duolingo_section.html">🇬🇧 English</a></li>
+      <li><a href="sciences_duolingo_section.html">🔬 Sciences</a></li>
+      <li><a href="histoire_duolingo_section.html">🗺️ Histoire-Géo</a></li>
+      <li class="menu-separator"></li>
+      <li><a href="ressources_section.html">📦 Ressources</a></li>
+      <li><a href="infos_section.html">📰 Infos & News</a></li>
+    </ul>
+  </div>
+
+  <!-- Script Menu Latéral -->
+  <script>
+    function toggleMenu() {
+      var sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        if (sidebar.style.left === '0px') {
+          sidebar.style.left = '-250px';
+        } else {
+          sidebar.style.left = '0px';
+        }
+      }
+    }
+    
+    // Fermer le menu en cliquant ailleurs
+    document.addEventListener('click', function(event) {
+      var sidebar = document.querySelector('.sidebar');
+      var toggleButton = document.querySelector('.sidebar-toggle');
+      
+      if (sidebar && toggleButton) {
+        if (sidebar.style.left === '0px' && 
+            event.target !== sidebar && 
+            !sidebar.contains(event.target) && 
+            event.target !== toggleButton) {
+          sidebar.style.left = '-250px';
+        }
+      }
+    });
+    
+    // Activer le lien correspondant à la page actuelle
+    document.addEventListener('DOMContentLoaded', function() {
+      var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      var links = document.querySelectorAll('.sidebar a');
+      
+      links.forEach(function(link) {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Cacher le menu au démarrage
+      var sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        sidebar.style.left = '-250px';
+      }
+    });
+  </script>
+  
+  <!-- ========================================
+       OUTILS D'ACCESSIBILITÉ
+       ======================================== -->
+  <div class="accessibility-tools">
+    <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+    <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+    <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+  </div>
+  
+  <!-- ========================================
+       LOADER (ANIMATION DE CHARGEMENT)
+       ======================================== -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+  
+  <!-- ========================================
+       EN-TÊTE PRINCIPAL
+       ======================================== -->
+  <header>
+    <h1>Le Monde des Curieux</h1>
+  </header>
+
+  <!-- ========================================
+       ZONE D'AFFICHAGE XP PRINCIPAL
+       ======================================== -->
+  <div id="main-xp-display" class="main-xp-container">
+    <!-- Le XP Manager s'injectera automatiquement ici -->
+  </div>
+
+  <!-- ========================================
+       CONTENU PRINCIPAL - DEUX COLONNES
+       ======================================== -->
+  <div class="main-wrapper">
+    
+    <!-- ========================================
+         COLONNE GAUCHE : MINDMAP INTERACTIVE
+         ======================================== -->
+    <section class="mindmap-section">
+      <div class="mindmap-inner" style="position:relative;">
+        
+        <!-- NOUVELLE IMAGE MINDMAP v2 -->
+        <img src="images/mindmap_lemondedescurieux_v2.png" 
+             loading="lazy" 
+             class="mindmap" 
+             usemap="#matieresmap" 
+             alt="Carte interactive Le Monde des Curieux - 8 sections éducatives"
+             width="2752"
+             height="1536">
+        
+        <!-- Indicateur de survol -->
+        <div id="hover-indicator" class="hover-indicator"></div>
+      </div>
+      
+      <!-- ZONES CLIQUABLES - 8 SECTIONS -->
+      <!-- ZONES CLIQUABLES - 8 SECTIONS (COORDONNÉES CORRIGÉES) -->
+      <!-- ZONES CLIQUABLES - 8 SECTIONS (COORDONNÉES MESURÉES) -->
+      <map name="matieresmap">
+        
+        <!-- 📚 Français -->
+        <area shape="circle"
+              coords="315,280,172"
+              href="francais_duolingo_section.html"
+              alt="Section Français - Grammaire, conjugaison et vocabulaire"
+              title="📚 Français"
+              data-section="francais">
+        
+        <!-- 🔢 Mathématiques -->
+        <area shape="circle"
+              coords="2418,277,172"
+              href="maths_duolingo_section.html"
+              alt="Section Mathématiques - Calcul, géométrie et problèmes"
+              title="🔢 Mathématiques"
+              data-section="maths">
+        
+        <!-- 🗺️ Histoire-Géographie -->
+        <area shape="circle"
+              coords="613,770,172"
+              href="histoire_duolingo_section.html"
+              alt="Section Histoire-Géographie - Époques historiques et géographie mondiale"
+              title="🗺️ Histoire-Géo"
+              data-section="histoire">
+        
+        <!-- HUB CENTRAL - NON CLIQUABLE (Curio le renard) -->
+        <!-- Zone décorative uniquement -->
+        
+        <!-- 🇬🇧 Anglais -->
+        <area shape="circle"
+              coords="2127,767,172"
+              href="english_duolingo_section.html"
+              alt="Section Anglais - Vocabulaire, grammaire et conversation"
+              title="🇬🇧 English"
+              data-section="english">
+        
+        <!-- 🔬 Sciences -->
+        <area shape="circle"
+              coords="324,1250,172"
+              href="sciences_duolingo_section.html"
+              alt="Section Sciences - Expériences, découvertes et sciences naturelles"
+              title="🔬 Sciences"
+              data-section="sciences">
+        
+        <!-- 📦 Ressources -->
+        <area shape="circle"
+              coords="2416,1255,172"
+              href="ressources_section.html"
+              alt="Section Ressources - Documents, liens et matériels éducatifs"
+              title="📦 Ressources"
+              data-section="ressources">
+        
+        <!-- 📊 Mon Parcours -->
+        <area shape="circle"
+              coords="920,1291,143"
+              href="dashboard_global.html"
+              alt="Mon Parcours - Dashboard de progression et statistiques"
+              title="📊 Mon Parcours"
+              data-section="dashboard">
+        
+        <!-- 📰 Infos & News -->
+        <area shape="circle"
+              coords="1826,1304,143"
+              href="infos_section.html"
+              alt="Infos & News - Actualités et informations du site"
+              title="📰 Infos & News"
+              data-section="infos">
+      </map>
+    </section>
+
+    <!-- ========================================
+         COLONNE DROITE : PARCOURS & DASHBOARD
+         ======================================== -->
+    <aside class="parcours-section">
+      
+      <!-- SECTION 1 : MON PARCOURS D'APPRENTISSAGE -->
+      <h2>📈 Mon Parcours d'Apprentissage</h2>
+      
+      <!-- Dashboard Progression avec XP -->
+      <div id="dashboard-xp-integration" class="dashboard-container">
+        <div class="dashboard-header">
+          <h3>🎯 Progression Globale</h3>
+        </div>
+        
+        <div class="dashboard-content" id="dashboard-content">
+          <!-- Contenu dashboard s'affichera ici via JavaScript -->
+        </div>
+        
+        <div class="dashboard-actions">
+          <button class="dashboard-btn" onclick="openProgressDetails()">
+            📊 Voir Détails
+          </button>
+          <button class="dashboard-btn" onclick="exportProgress()">
+            📁 Exporter PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- SECTION 2 : PARCOURS THÉMATIQUES -->
+      <h2>🚀 Parcours thématiques</h2>
+      <p>Découvre des aventures qui combinent plusieurs matières !</p>
+
+      <!-- Carte parcours 1 -->
+      <div class="parcours-card">
+        <div class="parcours-title">🚀 Aventure spatiale</div>
+        <p>Sciences · Maths · Histoire</p>
+        <div class="parcours-xp">+50 XP</div>
+        <a class="parcours-button" href="parcours/espace.html">Commencer</a>
+      </div>
+
+      <!-- Carte parcours 2 -->
+      <div class="parcours-card">
+        <div class="parcours-title">🌊 Mystères des océans</div>
+        <p>Sciences · Géographie · Maths</p>
+        <div class="parcours-xp">+40 XP</div>
+        <a class="parcours-button" href="parcours/ocean.html">Plonger</a>
+      </div>
+
+      <!-- Carte parcours 3 -->
+      <div class="parcours-card">
+        <div class="parcours-title">🤖 Univers des robots</div>
+        <p>Programmation · Sciences · IA</p>
+        <div class="parcours-xp">+60 XP</div>
+        <a class="parcours-button" href="parcours/robotique.html">Construire</a>
+      </div>
+
+      <!-- SECTION 3 : ACTIVITÉS RAPIDES GAMIFIÉES -->
+      <div class="quick-activities">
+        <h3>🎯 Activités Rapides</h3>
+        <div class="activity-grid">
+          
+          <div class="quick-activity-card" data-activity="french_quick">
+            <span class="activity-icon">🇫🇷</span>
+            <span class="activity-name">Quiz Français</span>
+            <span class="activity-xp">+15 XP</span>
+            <button class="quick-btn" onclick="launchQuickActivity('french')">
+              Jouer
+            </button>
+          </div>
+          
+          <div class="quick-activity-card" data-activity="english_quick">
+            <span class="activity-icon">🇬🇧</span>
+            <span class="activity-name">English Words</span>
+            <span class="activity-xp">+15 XP</span>
+            <button class="quick-btn" onclick="launchQuickActivity('english')">
+              Play
+            </button>
+          </div>
+          
+          <div class="quick-activity-card" data-activity="math_quick">
+            <span class="activity-icon">🔢</span>
+            <span class="activity-name">Calcul Mental</span>
+            <span class="activity-xp">+20 XP</span>
+            <button class="quick-btn" onclick="launchQuickActivity('math')">
+              Calculer
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ========================================
+       PIED DE PAGE
+       ======================================== -->
+  <footer>
+    <p>© 2025 Le Monde des Curieux - Plateforme éducative gamifiée</p>
+    <p>
+      <a href="mentions-legales.html">Mentions légales</a> | 
+      <a href="confidentialite.html">Confidentialité</a> | 
+      <a href="contact.html">Contact</a>
+    </p>
+  </footer>
+
+  <!-- ========================================
+       SCRIPTS
+       ======================================== -->
+  
+  <!-- Scripts existants -->
+  <script src="scripts/hover_indicator.js"></script>
+  <script src="scripts/accessibilite.js"></script>
+  <script src="scripts/menu_simple.js"></script>
+  <script src="scripts/menu_enhanced.js"></script>
+  
+  <!-- Script XP System -->
+  <script src="scripts/xp_system_complete.js"></script>
+  
+  <!-- Service Worker pour PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('✅ Service Worker enregistré avec succès');
+          })
+          .catch(error => {
+            console.error('❌ Erreur Service Worker:', error);
+          });
+      });
+    }
+  </script>
+
+  <!-- ========================================
+       SCRIPT INDICATEUR SURVOL MINDMAP
+       ======================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const areas = document.querySelectorAll('map[name="matieresmap"] area');
+      const indicator = document.getElementById('hover-indicator');
+      const mindmapImg = document.querySelector('.mindmap');
+      
+      if (!indicator || !mindmapImg) return;
+      
+      areas.forEach(area => {
+        area.addEventListener('mouseenter', function(e) {
+          const coords = this.coords.split(',').map(Number);
+          const [x, y, radius] = coords;
+          
+          // Calculer position proportionnelle selon taille actuelle image
+          const imgRect = mindmapImg.getBoundingClientRect();
+          const scaleX = imgRect.width / 2752;
+          const scaleY = imgRect.height / 1536;
+          
+          const scaledX = x * scaleX;
+          const scaledY = y * scaleY;
+          const scaledRadius = radius * scaleX;
+          
+          // Positionner indicateur
+          indicator.style.left = (scaledX - scaledRadius - 4) + 'px';
+          indicator.style.top = (scaledY - scaledRadius - 4) + 'px';
+          indicator.style.width = (scaledRadius * 2 + 8) + 'px';
+          indicator.style.height = (scaledRadius * 2 + 8) + 'px';
+          indicator.classList.add('active');
+          
+          // Log pour debug
+          console.log(`🎯 Survol: ${this.getAttribute('data-section')}`);
+        });
+        
+        area.addEventListener('mouseleave', function() {
+          indicator.classList.remove('active');
+        });
+        
+        // Effet clic
+        area.addEventListener('click', function(e) {
+          console.log(`🚀 Navigation vers: ${this.href}`);
+          // Animation clic
+          indicator.style.transform = 'scale(0.9)';
+          setTimeout(() => {
+            indicator.style.transform = 'scale(1)';
+          }, 150);
+        });
+      });
+      
+      console.log('✅ Indicateur de survol mindmap initialisé');
+      console.log('📍 Zones actives:', areas.length);
+    });
+  </script>
+
+  <!-- ========================================
+       SCRIPT INTÉGRATION XP PAGE D'ACCUEIL
+       ======================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🏠 Page d\'accueil - Initialisation XP...');
+      
+      // Attendre que XP Manager soit disponible
+      setTimeout(() => {
+        if (window.xpManager) {
+          window.xpManager.currentSection = 'home';
+          injectHomeXPInterface();
+          injectDashboardInterface();
+          console.log('✅ Interface XP injectée');
+        } else {
+          console.warn('⚠️ XP Manager non disponible - Retry...');
+          setTimeout(() => {
+            if (window.xpManager) {
+              injectHomeXPInterface();
+              injectDashboardInterface();
+            }
+          }, 1000);
+        }
+      }, 500);
+    });
+
+    function injectHomeXPInterface() {
+      const mainXPContainer = document.getElementById('main-xp-display');
+      if (!mainXPContainer || mainXPContainer.children.length > 0) return;
+
+      mainXPContainer.innerHTML = `
+        <div class="home-xp-welcome">
+          <div class="welcome-message">
+            <h2>🎮 Bienvenue dans ton aventure d'apprentissage !</h2>
+            <p>Explore, apprends et gagne des XP en découvrant de nouvelles connaissances.</p>
+          </div>
+        </div>
+      `;
+
+      const xpPoint = document.createElement('div');
+      xpPoint.id = 'xp-integration-point';
+      mainXPContainer.appendChild(xpPoint);
+    }
+
+    function injectDashboardInterface() {
+      const dashboardContainer = document.getElementById('dashboard-content');
+      if (!dashboardContainer) return;
+
+      dashboardContainer.innerHTML = `
+        <div class="home-dashboard">
+          <div class="dashboard-stats">
+            <div class="stat-item">
+              <span class="stat-icon">🎯</span>
+              <span class="stat-label">Niveau</span>
+              <span class="stat-value" id="home-level">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">⭐</span>
+              <span class="stat-label">XP Total</span>
+              <span class="stat-value" id="home-xp">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-label">Streak</span>
+              <span class="stat-value" id="home-streak">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">💖</span>
+              <span class="stat-label">Cœurs</span>
+              <span class="stat-value" id="home-hearts">-</span>
+            </div>
+          </div>
+          
+          <div class="dashboard-progress">
+            <div class="progress-label">Progression vers niveau suivant</div>
+            <div class="progress-bar-home">
+              <div class="progress-fill-home" id="home-progress-bar"></div>
+            </div>
+            <div class="progress-text" id="home-progress-text">-</div>
+          </div>
+          
+          <div class="dashboard-encouragement" id="home-encouragement">
+            Commence une activité pour gagner tes premiers XP !
+          </div>
+        </div>
+      `;
+
+      updateHomeDashboard();
+      setInterval(updateHomeDashboard, 5000);
+    }
+
+    function updateHomeDashboard() {
+      if (!window.xpManager) return;
+
+      try {
+        const stats = window.xpManager.debug?.getStats() || {};
+        const streakData = window.streakManager?.streakData || {};
+        const heartData = window.heartSystem?.heartsData || {};
+
+        updateElementSafely('home-level', stats.currentLevel || 1);
+        updateElementSafely('home-xp', stats.currentXP || 0);
+        updateElementSafely('home-streak', streakData.currentStreak || 0);
+        updateElementSafely('home-hearts', `${heartData.currentHearts || 5}/5`);
+
+        if (stats.nextLevelProgress) {
+          updateElementSafely('home-progress-bar', '', (el) => {
+            el.style.width = `${stats.nextLevelProgress.progress || 0}%`;
+          });
+          updateElementSafely('home-progress-text', 
+            `${stats.currentXP || 0} / ${stats.currentXP + (stats.nextLevelProgress.remaining || 200)} XP`
+          );
+        }
+
+        updateHomeEncouragement(stats, streakData);
+
+      } catch (error) {
+        console.warn('⚠️ Erreur mise à jour dashboard:', error);
+      }
+    }
+
+    function updateElementSafely(id, value, callback) {
+      const element = document.getElementById(id);
+      if (element) {
+        if (callback) {
+          callback(element);
+        } else {
+          element.textContent = value;
+        }
+      }
+    }
+
+    function updateHomeEncouragement(stats, streakData) {
+      const encouragementEl = document.getElementById('home-encouragement');
+      if (!encouragementEl) return;
+
+      let message = '';
+      
+      if (stats.currentLevel >= 5) {
+        message = "🌟 Excellent ! Tu deviens un vrai expert !";
+      } else if (streakData.currentStreak >= 3) {
+        message = "🔥 Super ! Continue ton streak !";
+      } else if (stats.currentXP > 0) {
+        message = "💪 Bien joué ! Continue d'explorer !";
+      } else {
+        message = "🎯 Commence une activité pour gagner tes premiers XP !";
+      }
+
+      encouragementEl.textContent = message;
+    }
+
+    function launchQuickActivity(type) {
+      if (!window.heartSystem || window.heartSystem.heartsData.currentHearts < 1) {
+        alert('😔 Plus de cœurs ! Attends qu\'ils se régénèrent ou va dans une section pour jouer sans limite.');
+        return;
+      }
+
+      const urls = {
+        'french': 'francais_duolingo_section.html',
+        'english': 'english_duolingo_section.html', 
+        'math': 'maths_duolingo_section.html'
+      };
+
+      if (urls[type]) {
+        sessionStorage.setItem('quickActivity', type);
+        window.location.href = urls[type];
+      }
+    }
+
+    function openProgressDetails() {
+      window.location.href = 'dashboard_global.html';
+    }
+
+    function exportProgress() {
+      if (window.xpManager && typeof window.xpManager.exportProgressPDF === 'function') {
+        window.xpManager.exportProgressPDF();
+      } else {
+        alert('📁 Fonctionnalité d\'export en cours de développement !');
+      }
+    }
+
+    // Événements personnalisés
+    document.addEventListener('xpUpdated', () => updateHomeDashboard());
+    document.addEventListener('heartLost', () => updateHomeDashboard());
+    document.addEventListener('streakUpdated', () => updateHomeDashboard());
+  </script>
+
+  <!-- ========================================
+       CSS SPÉCIFIQUE PAGE D'ACCUEIL
+       ======================================== -->
+  <style>
+    /* Responsive Mindmap */
+    .mindmap {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-width: 2752px;
+    }
+
+    .mindmap-inner {
+      position: relative;
+      width: 100%;
+      max-width: 2752px;
+      margin: 0 auto;
+    }
+
+    /* Hover effect zones */
+    area {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Indicateur de survol */
+    .hover-indicator {
+      position: absolute;
+      border: 4px solid rgba(255, 255, 0, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.15s ease;
+      z-index: 100;
+      box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+    }
+
+    .hover-indicator.active {
+      opacity: 1;
+    }
+
+    /* Container XP principal */
+    .main-xp-container {
+      margin: 20px auto;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+
+    .home-xp-welcome {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 15px;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .home-xp-welcome h2 {
+      margin: 0 0 10px 0;
+      font-family: 'Minecraftia', monospace;
+      font-size: 1.2em;
+    }
+
+    .home-xp-welcome p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 1em;
+    }
+
+    /* Dashboard Container */
+    .dashboard-container {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 2px solid #e9ecef;
+    }
+
+    .dashboard-header h3 {
+      margin: 0 0 15px 0;
+      color: #495057;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    .home-dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* Stats Grid */
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #dee2e6;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .stat-icon {
+      display: block;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.8em;
+      color: #6c757d;
+      margin-bottom: 3px;
+    }
+
+    .stat-value {
+      display: block;
+      font-weight: bold;
+      color: #495057;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    /* Progress Bar */
+    .dashboard-progress {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+    }
+
+    .progress-label {
+      font-size: 0.9em;
+      color: #6c757d;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar-home {
+      background: #e9ecef;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill-home {
+      background: linear-gradient(90deg, #28a745, #20c997);
+      height: 100%;
+      transition: width 0.8s ease-in-out;
+      border-radius: 10px;
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 0.8em;
+      color: #495057;
+      margin-top: 5px;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    /* Encouragement */
+    .dashboard-encouragement {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-family: 'Minecraftia', monospace;
+      font-size: 0.9em;
+    }
+
+    /* Actions */
+    .dashboard-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .dashboard-btn {
+      flex: 1;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Minecraftia', monospace;
+      font-size: 0.8em;
+      transition: background 0.3s ease;
+    }
+
+    .dashboard-btn:hover {
+      background: #0056b3;
+    }
+
+    /* Parcours XP */
+    .parcours-xp {
+      color: #28a745;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+
+    /* Quick Activities */
+    .quick-activities {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .quick-activities h3 {
+      margin: 0 0 15px 0;
+      color: #495057;
+      font-family: 'Minecraftia', monospace;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .quick-activity-card {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .quick-activity-card:hover {
+      transform: translateY(-2px);
+      border-color: #007bff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .activity-icon {
+      display: block;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+
+    .activity-name {
+      display: block;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #495057;
+      margin-bottom: 3px;
+    }
+
+    .activity-xp {
+      display: block;
+      font-size: 0.7em;
+      color: #28a745;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .quick-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8em;
+      font-family: 'Minecraftia', monospace;
+      transition: background 0.3s ease;
+    }
+
+    .quick-btn:hover {
+      background: #218838;
+    }
+
+    /* Menu Separator */
+    .menu-separator {
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin: 10px 0;
+      list-style: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .mindmap {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-xp-container {
+        padding: 0 10px;
+      }
+
+      .home-xp-welcome {
+        padding: 15px;
+      }
+
+      .home-xp-welcome h2 {
+        font-size: 1em;
+      }
+
+      .dashboard-container {
+        padding: 15px;
+      }
+
+      .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-actions {
+        flex-direction: column;
+      }
+
+      .activity-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mindmap-section {
+        padding: 10px;
+      }
+      
+      .mindmap {
+        border-radius: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .activity-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</body>
+</html>

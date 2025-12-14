@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil | Le Monde des Curieux</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #1a1a1a;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+    
+    .mindmap-container {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .mindmap-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    
+    .mindmap-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .zone-clickable {
+      fill: transparent;
+      stroke: transparent;
+      pointer-events: all;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .zone-clickable:hover {
+      fill: rgba(255, 255, 0, 0.3);
+      stroke: rgba(255, 215, 0, 1);
+      stroke-width: 6;
+      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+    
+    footer {
+      text-align: center;
+      color: #888;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <h1>🎮 Le Monde des Curieux</h1>
+    <p>Explore, apprends et gagne des XP !</p>
+  </header>
+
+  <div class="mindmap-container">
+    <img src="images/mindmap_lemondedescurieux_v2.png" 
+         alt="Carte interactive Le Monde des Curieux" 
+         class="mindmap-image">
+    
+    <svg class="mindmap-svg" viewBox="0 0 2752 1536" preserveAspectRatio="xMidYMid meet">
+      
+      <!-- Français (347, 326, 172) -->
+      <a href="francais_duolingo_section.html">
+        <circle class="zone-clickable" cx="347" cy="326" r="172">
+          <title>📚 Français</title>
+        </circle>
+      </a>
+      
+      <!-- Mathématiques (2401, 326, 172) -->
+      <a href="maths_duolingo_section.html">
+        <circle class="zone-clickable" cx="2401" cy="326" r="172">
+          <title>🔢 Mathématiques</title>
+        </circle>
+      </a>
+      
+      <!-- Histoire-Géographie (682, 760, 172) -->
+      <a href="histoire_duolingo_section.html">
+        <circle class="zone-clickable" cx="682" cy="760" r="172">
+          <title>🗺️ Histoire-Géographie</title>
+        </circle>
+      </a>
+      
+      <!-- Anglais (2069, 753, 172) -->
+      <a href="english_duolingo_section.html">
+        <circle class="zone-clickable" cx="2069" cy="753" r="172">
+          <title>🇬🇧 English</title>
+        </circle>
+      </a>
+      
+      <!-- Sciences (354, 1205, 172) -->
+      <a href="sciences_duolingo_section.html">
+        <circle class="zone-clickable" cx="354" cy="1205" r="172">
+          <title>🔬 Sciences</title>
+        </circle>
+      </a>
+      
+      <!-- Ressources (2422, 1224, 172) -->
+      <a href="ressources_section.html">
+        <circle class="zone-clickable" cx="2422" cy="1224" r="172">
+          <title>📦 Ressources</title>
+        </circle>
+      </a>
+      
+      <!-- Mon Parcours (1005, 1279, 143) -->
+      <a href="dashboard_global.html">
+        <circle class="zone-clickable" cx="1005" cy="1279" r="143">
+          <title>📊 Mon Parcours</title>
+        </circle>
+      </a>
+      
+      <!-- Infos (1740, 1279, 143) -->
+      <a href="infos_section.html">
+        <circle class="zone-clickable" cx="1740" cy="1279" r="143">
+          <title>📰 Infos & News</title>
+        </circle>
+      </a>
+      
+    </svg>
+  </div>
+
+  <footer>
+    <p>© 2025 Le Monde des Curieux - Plateforme éducative gamifiée</p>
+  </footer>
+
+  <script>
+    // Feedback console
+    document.querySelectorAll('.zone-clickable').forEach((zone, index) => {
+      const sections = ['Français', 'Maths', 'Histoire-Géo', 'Anglais', 'Sciences', 'Ressources', 'Mon Parcours', 'Infos'];
+      
+      zone.parentElement.addEventListener('mouseenter', () => {
+        console.log(`🎯 Survol: ${sections[index]}`);
+      });
+      
+      zone.parentElement.addEventListener('click', (e) => {
+        console.log(`🚀 Navigation: ${sections[index]}`);
+      });
+    });
+    
+    console.log('✅ Mindmap interactive initialisée avec 8 zones cliquables');
+  </script>
+</body>
+</html>

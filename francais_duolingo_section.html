@@ -7,8 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/duolingo-sections.css">
     <link rel="stylesheet" href="styles/francais-theme.css">
+    <link rel="stylesheet" href="styles/side-menu-unified.css">
 </head>
 <body class="francais-section">
+    <!-- Bouton Menu Hamburger -->
+    <button class="menu-toggle-btn" onclick="toggleSideMenu()" aria-label="Ouvrir le menu">
+        ☰
+    </button>
     <div class="container">
         <!-- HEADER -->
         <div class="header">
@@ -93,5 +98,13 @@
     <!-- Fin container -->
 
     <script src="scripts/francais-lessons.js"></script>
+    <!-- Menu Latéral Unifié -->
+    <script src="scripts/side-menu-unified.js"></script>
+    <script>
+        // Charger le menu automatiquement
+        document.addEventListener("DOMContentLoaded", () => {
+            loadSideMenu();
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,280 @@
+<!-- ========================================
+     NOUVEAU CODE MINDMAP - À REMPLACER DANS INDEX.HTML
+     Résolution: 2752x1536px
+     8 zones cliquables + 1 hub central décoratif
+     ======================================== -->
+
+<!-- Mindmap interactive -->
+<section class="mindmap-section">
+  <div class="mindmap-inner" style="position:relative;">
+    <!-- NOUVELLE IMAGE MINDMAP -->
+    <img src="images/mindmap_lemondedescurieux_v2.png" 
+         loading="lazy" 
+         class="mindmap" 
+         usemap="#matieresmap" 
+         alt="Carte interactive Le Monde des Curieux - 8 sections éducatives"
+         width="2752"
+         height="1536">
+    
+    <!-- Indicateur de survol -->
+    <div id="hover-indicator" class="hover-indicator"></div>
+  </div>
+  
+  <!-- NOUVELLES ZONES CLIQUABLES (8 sections) -->
+  <map name="matieresmap">
+    <!-- ROW 1 - TOP (Matières principales) -->
+    
+    <!-- Français (top-left, vert) -->
+    <area shape="circle" 
+          coords="688,284,172" 
+          href="francais_duolingo_section.html" 
+          alt="Section Français - Grammaire, conjugaison et vocabulaire" 
+          title="📚 Français"
+          data-section="francais">
+    
+    <!-- Mathématiques (top-right, violet) -->
+    <area shape="circle" 
+          coords="2064,284,172" 
+          href="maths_duolingo_section.html" 
+          alt="Section Mathématiques - Calcul, géométrie et problèmes" 
+          title="🔢 Mathématiques"
+          data-section="maths">
+    
+    <!-- ROW 2 - MIDDLE (Matières principales) -->
+    
+    <!-- Histoire-Géographie (middle-left, orange) -->
+    <area shape="circle" 
+          coords="401,768,172" 
+          href="histoire_duolingo_section.html" 
+          alt="Section Histoire-Géographie - Époques historiques et géographie mondiale" 
+          title="🗺️ Histoire-Géo"
+          data-section="histoire">
+    
+    <!-- HUB CENTRAL - NON CLIQUABLE (Curio le renard) -->
+    <!-- coords="1376,768,215" - Zone décorative uniquement -->
+    
+    <!-- Anglais (middle-right, bleu) -->
+    <area shape="circle" 
+          coords="2350,768,172" 
+          href="english_duolingo_section.html" 
+          alt="Section Anglais - Vocabulaire, grammaire et conversation" 
+          title="🇬🇧 English"
+          data-section="english">
+    
+    <!-- ROW 3 - BOTTOM (Matières principales) -->
+    
+    <!-- Sciences (bottom-left, vert) -->
+    <area shape="circle" 
+          coords="688,1251,172" 
+          href="sciences_duolingo_section.html" 
+          alt="Section Sciences - Expériences, découvertes et sciences naturelles" 
+          title="🔬 Sciences"
+          data-section="sciences">
+    
+    <!-- Ressources (bottom-right, marron) -->
+    <area shape="circle" 
+          coords="2064,1251,172" 
+          href="ressources_section.html" 
+          alt="Section Ressources - Documents, liens et matériels éducatifs" 
+          title="📦 Ressources"
+          data-section="ressources">
+    
+    <!-- ROW 4 - UTILITY (Sections utilitaires) -->
+    
+    <!-- Mon Parcours (bottom-left-center, rose) -->
+    <area shape="circle" 
+          coords="1032,1422,143" 
+          href="dashboard_global.html" 
+          alt="Mon Parcours - Dashboard de progression et statistiques" 
+          title="📊 Mon Parcours"
+          data-section="dashboard">
+    
+    <!-- Infos & News (bottom-right-center, rouge) -->
+    <area shape="circle" 
+          coords="1720,1422,143" 
+          href="infos_section.html" 
+          alt="Infos & News - Actualités et informations du site" 
+          title="📰 Infos & News"
+          data-section="infos">
+  </map>
+</section>
+
+<!-- ========================================
+     SCRIPT DEBUG ZONES (OPTIONNEL)
+     Décommenter pour visualiser les zones cliquables
+     ======================================== -->
+<!--
+<script>
+  // Active le mode debug pour visualiser les zones
+  const DEBUG_ZONES = true;
+
+  if (DEBUG_ZONES) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const areas = document.querySelectorAll('map[name="matieresmap"] area');
+      const mindmapInner = document.querySelector('.mindmap-inner');
+      
+      if (!mindmapInner) return;
+      
+      areas.forEach((area, index) => {
+        const coords = area.coords.split(',').map(Number);
+        const [x, y, radius] = coords;
+        
+        // Créer cercle de debug
+        const debugCircle = document.createElement('div');
+        debugCircle.style.cssText = `
+          position: absolute;
+          left: ${x - radius}px;
+          top: ${y - radius}px;
+          width: ${radius * 2}px;
+          height: ${radius * 2}px;
+          border: 3px solid red;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 1000;
+          opacity: 0.5;
+        `;
+        
+        // Créer label de debug
+        const debugLabel = document.createElement('div');
+        debugLabel.style.cssText = `
+          position: absolute;
+          left: ${x - 30}px;
+          top: ${y - 10}px;
+          background: rgba(255, 0, 0, 0.8);
+          color: white;
+          padding: 2px 6px;
+          border-radius: 3px;
+          font-size: 10px;
+          font-weight: bold;
+          pointer-events: none;
+          z-index: 1001;
+        `;
+        debugLabel.textContent = `${index + 1}: ${area.getAttribute('data-section') || 'zone'}`;
+        
+        mindmapInner.appendChild(debugCircle);
+        mindmapInner.appendChild(debugLabel);
+      });
+      
+      console.log('🎯 DEBUG MODE ACTIF - Zones cliquables visualisées');
+      console.log('Total zones:', areas.length);
+    });
+  }
+</script>
+-->
+
+<!-- ========================================
+     CSS RESPONSIVE MINDMAP
+     ======================================== -->
+<style>
+  /* Assurer que l'image s'adapte au conteneur */
+  .mindmap {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 2752px; /* Largeur originale */
+  }
+
+  .mindmap-inner {
+    position: relative;
+    width: 100%;
+    max-width: 2752px;
+    margin: 0 auto;
+  }
+
+  /* Responsive pour tablettes */
+  @media (max-width: 1024px) {
+    .mindmap {
+      max-width: 100%;
+    }
+  }
+
+  /* Responsive pour mobiles */
+  @media (max-width: 768px) {
+    .mindmap-section {
+      padding: 10px;
+    }
+    
+    .mindmap {
+      border-radius: 8px;
+    }
+  }
+
+  /* Hover effect sur zones */
+  area {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Indicateur de survol amélioré */
+  .hover-indicator {
+    position: absolute;
+    border: 4px solid rgba(255, 255, 0, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+  }
+
+  .hover-indicator.active {
+    opacity: 1;
+  }
+</style>
+
+<!-- ========================================
+     SCRIPT INDICATEUR SURVOL
+     ======================================== -->
+<script>
+  // Amélioration de l'indicateur de survol
+  document.addEventListener('DOMContentLoaded', () => {
+    const areas = document.querySelectorAll('map[name="matieresmap"] area');
+    const indicator = document.getElementById('hover-indicator');
+    const mindmapImg = document.querySelector('.mindmap');
+    
+    if (!indicator || !mindmapImg) return;
+    
+    areas.forEach(area => {
+      area.addEventListener('mouseenter', function(e) {
+        const coords = this.coords.split(',').map(Number);
+        const [x, y, radius] = coords;
+        
+        // Calculer position proportionnelle selon taille actuelle image
+        const imgRect = mindmapImg.getBoundingClientRect();
+        const scaleX = imgRect.width / 2752;
+        const scaleY = imgRect.height / 1536;
+        
+        const scaledX = x * scaleX;
+        const scaledY = y * scaleY;
+        const scaledRadius = radius * scaleX;
+        
+        // Positionner indicateur
+        indicator.style.left = (scaledX - scaledRadius - 4) + 'px';
+        indicator.style.top = (scaledY - scaledRadius - 4) + 'px';
+        indicator.style.width = (scaledRadius * 2 + 8) + 'px';
+        indicator.style.height = (scaledRadius * 2 + 8) + 'px';
+        indicator.classList.add('active');
+        
+        // Log pour debug
+        console.log(`🎯 Survol: ${this.getAttribute('data-section')}`);
+      });
+      
+      area.addEventListener('mouseleave', function() {
+        indicator.classList.remove('active');
+      });
+      
+      // Effet clic
+      area.addEventListener('click', function(e) {
+        console.log(`🚀 Navigation vers: ${this.href}`);
+        // Animation clic
+        indicator.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          indicator.style.transform = 'scale(1)';
+        }, 150);
+      });
+    });
+    
+    console.log('✅ Indicateur de survol mindmap initialisé');
+    console.log('📍 Zones actives:', areas.length);
+  });
+</script>

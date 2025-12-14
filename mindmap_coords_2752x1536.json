@@ -1,0 +1,125 @@
+# COORDONNÉES MINDMAP - Version 2752x1536px
+
+## RÉSOLUTION DÉTECTÉE
+- **Largeur**: 2752 pixels
+- **Hauteur**: 1536 pixels  
+- **Ratio**: ~1.79 (proche 16:9)
+- **Facteur d'échelle vs 1920x1080**: 
+  - X: 2752/1920 = 1.433
+  - Y: 1536/1080 = 1.422
+
+## COORDONNÉES CALCULÉES (proportionnelles)
+
+### Formule de conversion
+```
+new_x = original_x * (2752 / 1920) = original_x * 1.433
+new_y = original_y * (1536 / 1080) = original_y * 1.422
+new_radius = original_radius * 1.433 (moyenne)
+```
+
+### SECTIONS PRINCIPALES (radius 120px * 1.433 ≈ 172px)
+
+**Français** (top-left)
+- Coords originales: (480, 200, 120)
+- **Coords finales: (688, 284, 172)**
+- URL: francais_duolingo_section.html
+
+**Mathématiques** (top-right)
+- Coords originales: (1440, 200, 120)
+- **Coords finales: (2064, 284, 172)**
+- URL: maths_duolingo_section.html
+
+**Histoire-Géographie** (middle-left)
+- Coords originales: (280, 540, 120)
+- **Coords finales: (401, 768, 172)**
+- URL: histoire_duolingo_section.html
+
+**Anglais** (middle-right)
+- Coords originales: (1640, 540, 120)
+- **Coords finales: (2350, 768, 172)**
+- URL: english_duolingo_section.html
+
+**Sciences** (bottom-left)
+- Coords originales: (480, 880, 120)
+- **Coords finales: (688, 1251, 172)**
+- URL: sciences_duolingo_section.html
+
+**Ressources** (bottom-right)
+- Coords originales: (1440, 880, 120)
+- **Coords finales: (2064, 1251, 172)**
+- URL: ressources_section.html
+
+### HUB CENTRAL (radius 150px * 1.433 ≈ 215px)
+
+**Le Monde des Curieux + Curio**
+- Coords originales: (960, 540, 150)
+- **Coords finales: (1376, 768, 215)**
+- **NON CLIQUABLE** (décoratif uniquement)
+
+### SECTIONS UTILITAIRES (radius 100px * 1.433 ≈ 143px)
+
+**Mon Parcours** (bottom-left-center)
+- Coords originales: (720, 1000, 100)
+- **Coords finales: (1032, 1422, 143)**
+- URL: dashboard_global.html
+
+**Infos & News** (bottom-right-center)
+- Coords originales: (1200, 1000, 100)
+- **Coords finales: (1720, 1422, 143)**
+- URL: infos_section.html
+
+## TABLEAU RÉCAPITULATIF
+
+| Section | X | Y | Radius | Couleur | URL |
+|---------|---|---|--------|---------|-----|
+| Français | 688 | 284 | 172 | #10b981 | francais_duolingo_section.html |
+| Mathématiques | 2064 | 284 | 172 | #8b5cf6 | maths_duolingo_section.html |
+| Histoire-Géo | 401 | 768 | 172 | #f59e0b | histoire_duolingo_section.html |
+| **Hub Curio** | 1376 | 768 | 215 | Gradient | **(non cliquable)** |
+| Anglais | 2350 | 768 | 172 | #3b82f6 | english_duolingo_section.html |
+| Sciences | 688 | 1251 | 172 | #10b981 | sciences_duolingo_section.html |
+| Ressources | 2064 | 1251 | 172 | #92400e | ressources_section.html |
+| Mon Parcours | 1032 | 1422 | 143 | #ec4899 | dashboard_global.html |
+| Infos & News | 1720 | 1422 | 143 | #ef4444 | infos_section.html |
+
+## VÉRIFICATION ESPACEMENT
+
+### Horizontaux principaux
+```
+Français → Maths: 2064 - 688 = 1376px (OK, > 344px minimum requis)
+Histoire → Anglais: 2350 - 401 = 1949px (OK)
+Sciences → Ressources: 2064 - 688 = 1376px (OK)
+Mon Parcours → Infos: 1720 - 1032 = 688px (OK, > 286px minimum requis)
+```
+
+### Verticaux
+```
+Top row → Middle: 768 - 284 = 484px (OK)
+Middle → Bottom: 1251 - 768 = 483px (OK)
+Bottom → Utility: 1422 - 1251 = 171px (Proche, acceptable)
+```
+
+## NOTES IMPORTANTES
+
+1. **Image plus grande** que spécifications originales
+   - Résolution réelle: 2752x1536
+   - Spécifications demandées: 1920x1080
+   - Facteur: ~1.43x plus grande
+
+2. **Avantages**:
+   - ✅ Meilleure qualité visuelle
+   - ✅ Plus de détails pour pixels
+   - ✅ Meilleur rendu haute résolution
+
+3. **Considérations**:
+   - ⚠️ Poids fichier potentiellement plus lourd
+   - ⚠️ Temps de chargement légèrement supérieur
+   - ✅ Mais acceptable pour web moderne
+
+4. **Responsive**:
+   - Image sera redimensionnée automatiquement par navigateur
+   - Coordonnées restent proportionnelles
+   - Zones cliquables s'adaptent automatiquement
+
+## CODE HTML PRÊT
+Voir fichier: NEW_MINDMAP_INTEGRATION_CODE.html

@@ -1,0 +1,189 @@
+/* ====================================
+   HEADER GAME DUOLINGO-STYLE
+   ==================================== */
+.game-header {
+    background: linear-gradient(135deg, #2a9d8f 0%, #1d7a6f 100%);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left h1 {
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.back-button {
+    background: white;
+    border: 2px solid #1d3557;
+    padding: 0.6rem 1.2rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    color: #1d3557;
+}
+
+.back-button:hover {
+    background: #e9c46a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Stats Header */
+.header-stats {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* Streak Display */
+.streak-flame {
+    font-size: 1.5rem;
+    animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+#streak-count {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+}
+
+/* Hearts Display */
+#hearts-display {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.heart {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.heart:hover {
+    transform: scale(1.2);
+}
+
+/* XP Display */
+.xp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 120px;
+}
+
+.xp-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #22c55e);
+    transition: width 0.5s ease;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+#xp-text {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Screens Management */
+.screen {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+    .game-header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header-stats {
+        gap: 1rem;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .stat-item {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .header-left h1 {
+        font-size: 0.9rem;
+    }
+
+    .back-button {
+        font-size: 0.6rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .streak-flame,
+    .heart {
+        font-size: 1.2rem;
+    }
+
+    #streak-count {
+        font-size: 1rem;
+    }
+
+    .xp-container {
+        min-width: 100px;
+    }
+
+    #xp-text {
+        font-size: 0.75rem;
+    }
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEBUG - Ajustement Coordonnées Mindmap</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+            font-family: monospace;
+        }
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .mindmap-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1024px;
+        }
+        .mindmap-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .mindmap-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .zone-debug {
+            fill: rgba(255, 0, 0, 0.3);
+            stroke: red;
+            stroke-width: 3;
+            pointer-events: all;
+            cursor: pointer;
+        }
+        .zone-debug:hover {
+            fill: rgba(255, 255, 0, 0.5);
+        }
+        .coord-display {
+            position: absolute;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: none;
+        }
+        .info-panel {
+            background: #2a2a2a;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .coords-output {
+            background: #000;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 11px;
+            overflow-x: auto;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-panel">
+        <h1>🔧 DEBUG - Ajustement Mindmap</h1>
+        <p>✅ Image: 1024x1024 pixels</p>
+        <p>🖱️ <strong>DÉPLACE les cercles ROUGES avec la souris</strong> pour les aligner sur les bulles</p>
+        <p>🔴 Les cercles deviennent VERTS quand tu les déplaces</p>
+        <p>📋 Le code SVG se met à jour automatiquement en bas</p>
+        <button onclick="copyCoords()">📋 Copier Coordonnées SVG</button>
+        <button onclick="toggleCircles()">👁️ Masquer/Afficher Cercles</button>
+        <button onclick="location.reload()">🔄 Réinitialiser</button>
+    </div>
+
+    <div class="container">
+        <div class="mindmap-wrapper">
+            <img src="images/mindmap_lemondedescurieux_v2.png" 
+                 alt="Mindmap" 
+                 class="mindmap-image"
+                 onclick="getCoordinates(event)">
+            
+            <svg class="mindmap-svg" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet" id="debugSvg">
+                <!-- FRANÇAIS -->
+                <circle class="zone-debug" cx="210" cy="280" r="85" data-name="FRANÇAIS"></circle>
+                <text x="210" y="285" text-anchor="middle" fill="red" font-size="14">FR</text>
+                
+                <!-- MATHS -->
+                <circle class="zone-debug" cx="814" cy="280" r="85" data-name="MATHS"></circle>
+                <text x="814" y="285" text-anchor="middle" fill="red" font-size="14">MA</text>
+                
+                <!-- HISTOIRE-GÉO -->
+                <circle class="zone-debug" cx="125" cy="495" r="85" data-name="HISTOIRE-GÉO"></circle>
+                <text x="125" y="500" text-anchor="middle" fill="red" font-size="14">HG</text>
+                
+                <!-- ENGLISH -->
+                <circle class="zone-debug" cx="900" cy="495" r="85" data-name="ENGLISH"></circle>
+                <text x="900" y="500" text-anchor="middle" fill="red" font-size="14">EN</text>
+                
+                <!-- SCIENCES -->
+                <circle class="zone-debug" cx="180" cy="735" r="80" data-name="SCIENCES"></circle>
+                <text x="180" y="740" text-anchor="middle" fill="red" font-size="14">SC</text>
+                
+                <!-- RESSOURCES -->
+                <circle class="zone-debug" cx="845" cy="735" r="80" data-name="RESSOURCES"></circle>
+                <text x="845" y="740" text-anchor="middle" fill="red" font-size="14">RE</text>
+                
+                <!-- MON PARCOURS -->
+                <circle class="zone-debug" cx="380" cy="875" r="75" data-name="MON PARCOURS"></circle>
+                <text x="380" y="880" text-anchor="middle" fill="red" font-size="14">MP</text>
+                
+                <!-- INFOS -->
+                <circle class="zone-debug" cx="645" cy="875" r="75" data-name="INFOS"></circle>
+                <text x="645" y="880" text-anchor="middle" fill="red" font-size="14">IF</text>
+            </svg>
+        </div>
+        
+        <div class="coord-display" id="coordDisplay"></div>
+    </div>
+
+    <div class="info-panel">
+        <h3>📊 Coordonnées SVG Actuelles</h3>
+        <div class="coords-output" id="coordsOutput">
+            <pre id="coordsCode"><!-- Clique sur l'image pour obtenir les coordonnées --></pre>
+        </div>
+    </div>
+
+    <script>
+        const zones = [
+            { name: "FRANÇAIS", cx: 210, cy: 280, r: 85, href: "francais_duolingo_section.html", emoji: "📚" },
+            { name: "MATHS", cx: 814, cy: 280, r: 85, href: "maths_duolingo_section.html", emoji: "🔢" },
+            { name: "HISTOIRE-GÉO", cx: 125, cy: 495, r: 85, href: "histoire_duolingo_section.html", emoji: "🗺️" },
+            { name: "ENGLISH", cx: 900, cy: 495, r: 85, href: "english_duolingo_section.html", emoji: "🇬🇧" },
+            { name: "SCIENCES", cx: 180, cy: 735, r: 80, href: "sciences_duolingo_section.html", emoji: "🔬" },
+            { name: "RESSOURCES", cx: 845, cy: 735, r: 80, href: "ressources_section.html", emoji: "📦" },
+            { name: "MON PARCOURS", cx: 380, cy: 875, r: 75, href: "dashboard_global.html", emoji: "📊" },
+            { name: "INFOS", cx: 645, cy: 875, r: 75, href: "infos_section.html", emoji: "📰" }
+        ];
+
+        let selectedCircle = null;
+        let isDragging = false;
+        const svg = document.getElementById('debugSvg');
+        const svgRect = svg.getBoundingClientRect();
+
+        // Initialiser le drag & drop
+        document.querySelectorAll('.zone-debug').forEach((circle, index) => {
+            circle.style.cursor = 'move';
+            
+            circle.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                selectedCircle = { element: circle, index: index };
+                isDragging = true;
+                circle.style.fill = 'rgba(0, 255, 0, 0.5)';
+            });
+        });
+
+        svg.addEventListener('mousemove', (e) => {
+            if (!isDragging || !selectedCircle) return;
+            
+            const rect = svg.getBoundingClientRect();
+            const x = Math.round((e.clientX - rect.left) / rect.width * 1024);
+            const y = Math.round((e.clientY - rect.top) / rect.height * 1024);
+            
+            selectedCircle.element.setAttribute('cx', x);
+            selectedCircle.element.setAttribute('cy', y);
+            
+            // Mettre à jour le texte
+            const text = selectedCircle.element.nextElementSibling;
+            if (text && text.tagName === 'text') {
+                text.setAttribute('x', x);
+                text.setAttribute('y', y + 5);
+            }
+            
+            // Mettre à jour le tableau zones
+            zones[selectedCircle.index].cx = x;
+            zones[selectedCircle.index].cy = y;
+            
+            // Afficher en temps réel
+            document.getElementById('coordDisplay').style.display = 'block';
+            document.getElementById('coordDisplay').style.left = e.clientX + 'px';
+            document.getElementById('coordDisplay').style.top = e.clientY + 'px';
+            document.getElementById('coordDisplay').innerHTML = `${zones[selectedCircle.index].name}<br>X: ${x}, Y: ${y}`;
+            
+            copyCoords(); // Mettre à jour le code
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (selectedCircle) {
+                selectedCircle.element.style.fill = 'rgba(255, 0, 0, 0.3)';
+                selectedCircle = null;
+            }
+            isDragging = false;
+            setTimeout(() => {
+                document.getElementById('coordDisplay').style.display = 'none';
+            }, 1000);
+        });
+
+        function getCoordinates(event) {
+            if (isDragging) return;
+            
+            const img = event.target;
+            const rect = img.getBoundingClientRect();
+            const x = Math.round((event.clientX - rect.left) / rect.width * 1024);
+            const y = Math.round((event.clientY - rect.top) / rect.height * 1024);
+            
+            const display = document.getElementById('coordDisplay');
+            display.style.display = 'block';
+            display.style.left = event.clientX + 'px';
+            display.style.top = event.clientY + 'px';
+            display.innerHTML = `X: ${x}, Y: ${y}`;
+            
+            console.log(`Coordonnées cliquées: cx="${x}" cy="${y}"`);
+            
+            setTimeout(() => {
+                display.style.display = 'none';
+            }, 2000);
+        }
+
+        function copyCoords() {
+            let svgCode = '<svg class="mindmap-svg" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">\n';
+            
+            zones.forEach(zone => {
+                svgCode += `    <a href="${zone.href}">\n`;
+                svgCode += `        <circle class="zone-clickable" cx="${zone.cx}" cy="${zone.cy}" r="${zone.r}">\n`;
+                svgCode += `            <title>${zone.emoji} ${zone.name}</title>\n`;
+                svgCode += `        </circle>\n`;
+                svgCode += `    </a>\n`;
+            });
+            
+            svgCode += '</svg>';
+            
+            document.getElementById('coordsCode').textContent = svgCode;
+        }
+
+        function toggleCircles() {
+            const svg = document.getElementById('debugSvg');
+            svg.style.display = svg.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Afficher les coordonnées au démarrage
+        copyCoords();
+        
+        console.log('🎯 DRAG & DROP activé ! Déplace les cercles rouges avec la souris.');
+    </script>
+</body>
+</html>

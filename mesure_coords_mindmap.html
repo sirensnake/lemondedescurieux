@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesure Coordonnées Mindmap Interactive</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ff88;
+      margin-bottom: 10px;
+      font-size: 1.8em;
+    }
+
+    .instructions {
+      background: #16213e;
+      border: 2px solid #00ff88;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .instructions h2 {
+      color: #00ff88;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .instructions ol {
+      margin-left: 20px;
+    }
+
+    .instructions li {
+      margin: 5px 0;
+      line-height: 1.6;
+    }
+
+    .controls {
+      background: #16213e;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    button {
+      background: #00ff88;
+      color: #1a1a2e;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: #00cc6a;
+      transform: translateY(-2px);
+    }
+
+    button.danger {
+      background: #ff3860;
+      color: white;
+    }
+
+    button.danger:hover {
+      background: #cc2d4d;
+    }
+
+    .image-container {
+      position: relative;
+      background: #0f0f1e;
+      border: 3px solid #00ff88;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .mindmap-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      cursor: crosshair;
+    }
+
+    .click-marker {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #00ff88;
+      border-radius: 50%;
+      background: rgba(0, 255, 136, 0.3);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .click-number {
+      position: absolute;
+      background: #00ff88;
+      color: #1a1a2e;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      transform: translate(-50%, -150%);
+    }
+
+    .zone-circle {
+      position: absolute;
+      border: 3px solid rgba(255, 0, 0, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 5;
+      background: rgba(255, 0, 0, 0.1);
+    }
+
+    .results {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .results h2 {
+      color: #00ff88;
+      margin-bottom: 15px;
+    }
+
+    .click-list {
+      background: #0f0f1e;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .click-item {
+      padding: 8px;
+      margin: 5px 0;
+      background: #1a1a2e;
+      border-left: 3px solid #00ff88;
+      border-radius: 3px;
+    }
+
+    .code-output {
+      background: #0f0f1e;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .code-output pre {
+      color: #00ff88;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .info-box {
+      background: #16213e;
+      border: 2px solid #ffa500;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .info-box h3 {
+      color: #ffa500;
+      margin-bottom: 10px;
+    }
+
+    .dimension-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .dimension-item {
+      background: #0f0f1e;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .dimension-label {
+      color: #aaa;
+      font-size: 0.9em;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .dimension-value {
+      color: #00ff88;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .controls {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Mesure Interactive Coordonnées Mindmap</h1>
+
+    <div class="instructions">
+      <h2>📋 Instructions d'utilisation</h2>
+      <ol>
+        <li><strong>Clique sur chaque bulle</strong> dans cet ordre précis :
+          <ol style="margin-left: 20px;">
+            <li>📚 Français (haut-gauche, vert)</li>
+            <li>🔢 Mathématiques (haut-droite, violet)</li>
+            <li>🗺️ Histoire-Géo (milieu-gauche, orange)</li>
+            <li>🇬🇧 Anglais (milieu-droite, bleu)</li>
+            <li>🔬 Sciences (bas-gauche, vert)</li>
+            <li>📦 Ressources (bas-droite, marron)</li>
+            <li>📊 Mon Parcours (bas-centre-gauche, rose)</li>
+            <li>📰 Infos & News (bas-centre-droite, rouge)</li>
+          </ol>
+        </li>
+        <li><strong>Clique au CENTRE exact</strong> de chaque bulle</li>
+        <li>Les coordonnées seront <strong>automatiquement calculées</strong> pour la taille originale (2752×1536px)</li>
+        <li>Une fois les 8 clics faits, <strong>copie le code HTML généré</strong></li>
+        <li>Si tu te trompes, clique sur "Effacer Marqueurs"</li>
+      </ol>
+    </div>
+
+    <div class="info-box">
+      <h3>📐 Informations Dimensions</h3>
+      <div class="dimension-info">
+        <div class="dimension-item">
+          <span class="dimension-label">Image Originale</span>
+          <span class="dimension-value" id="original-size">2752 × 1536 px</span>
+        </div>
+        <div class="dimension-item">
+          <span class="dimension-label">Image Affichée</span>
+          <span class="dimension-value" id="displayed-size">- × - px</span>
+        </div>
+        <div class="dimension-item">
+          <span class="dimension-label">Facteur d'échelle</span>
+          <span class="dimension-value" id="scale-factor">-</span>
+        </div>
+        <div class="dimension-item">
+          <span class="dimension-label">Clics Enregistrés</span>
+          <span class="dimension-value" id="click-count">0 / 8</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button onclick="toggleZones()">👁️ Afficher/Masquer Zones Actuelles</button>
+      <button onclick="clearMarkers()" class="danger">🗑️ Effacer Marqueurs</button>
+      <button onclick="copyCode()">📋 Copier Code HTML</button>
+      <button onclick="downloadCode()">💾 Télécharger Code</button>
+    </div>
+
+    <div class="image-container" id="image-container">
+      <img src="images/mindmap_lemondedescurieux_v2.png" 
+           alt="Mindmap Le Monde des Curieux" 
+           class="mindmap-image"
+           id="mindmap-image">
+    </div>
+
+    <div class="results">
+      <h2>📊 Coordonnées Enregistrées</h2>
+      <div class="click-list" id="click-list">
+        <p style="color: #aaa; text-align: center;">Aucun clic enregistré. Commence par cliquer sur Français.</p>
+      </div>
+
+      <h2>💻 Code HTML Généré</h2>
+      <div class="code-output">
+        <pre id="code-output"><!-- Clique sur les 8 sections pour générer le code --></pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Configuration
+    const ORIGINAL_WIDTH = 2752;
+    const ORIGINAL_HEIGHT = 1536;
+    const RADIUS_LARGE = 172;
+    const RADIUS_SMALL = 143;
+
+    // État
+    let clicks = [];
+    let showZones = false;
+
+    // Noms des sections
+    const sectionNames = [
+      { name: 'Français', emoji: '📚', url: 'francais_duolingo_section.html', dataSection: 'francais', radius: RADIUS_LARGE },
+      { name: 'Mathématiques', emoji: '🔢', url: 'maths_duolingo_section.html', dataSection: 'maths', radius: RADIUS_LARGE },
+      { name: 'Histoire-Géographie', emoji: '🗺️', url: 'histoire_duolingo_section.html', dataSection: 'histoire', radius: RADIUS_LARGE },
+      { name: 'Anglais', emoji: '🇬🇧', url: 'english_duolingo_section.html', dataSection: 'english', radius: RADIUS_LARGE },
+      { name: 'Sciences', emoji: '🔬', url: 'sciences_duolingo_section.html', dataSection: 'sciences', radius: RADIUS_LARGE },
+      { name: 'Ressources', emoji: '📦', url: 'ressources_section.html', dataSection: 'ressources', radius: RADIUS_LARGE },
+      { name: 'Mon Parcours', emoji: '📊', url: 'dashboard_global.html', dataSection: 'dashboard', radius: RADIUS_SMALL },
+      { name: 'Infos & News', emoji: '📰', url: 'infos_section.html', dataSection: 'infos', radius: RADIUS_SMALL }
+    ];
+
+    // Initialisation
+    const img = document.getElementById('mindmap-image');
+    const container = document.getElementById('image-container');
+
+    img.addEventListener('load', updateDimensions);
+    window.addEventListener('resize', updateDimensions);
+
+    img.addEventListener('click', handleImageClick);
+
+    // Mise à jour des dimensions
+    function updateDimensions() {
+      const rect = img.getBoundingClientRect();
+      const scaleX = rect.width / ORIGINAL_WIDTH;
+      const scaleY = rect.height / ORIGINAL_HEIGHT;
+
+      document.getElementById('displayed-size').textContent = 
+        `${Math.round(rect.width)} × ${Math.round(rect.height)} px`;
+      
+      document.getElementById('scale-factor').textContent = 
+        `${scaleX.toFixed(3)}`;
+    }
+
+    // Gestion des clics
+    function handleImageClick(e) {
+      if (clicks.length >= 8) {
+        alert('⚠️ 8 clics maximum atteints ! Clique sur "Effacer Marqueurs" pour recommencer.');
+        return;
+      }
+
+      const rect = img.getBoundingClientRect();
+      
+      // Position relative à l'image affichée
+      const displayX = e.clientX - rect.left;
+      const displayY = e.clientY - rect.top;
+
+      // Conversion vers coordonnées originales
+      const scaleX = ORIGINAL_WIDTH / rect.width;
+      const scaleY = ORIGINAL_HEIGHT / rect.height;
+
+      const originalX = Math.round(displayX * scaleX);
+      const originalY = Math.round(displayY * scaleY);
+
+      // Enregistrer le clic
+      clicks.push({
+        displayX,
+        displayY,
+        originalX,
+        originalY,
+        section: sectionNames[clicks.length]
+      });
+
+      // Créer le marqueur visuel
+      createMarker(displayX, displayY, clicks.length);
+
+      // Mettre à jour l'affichage
+      updateClickList();
+      updateCodeOutput();
+      document.getElementById('click-count').textContent = `${clicks.length} / 8`;
+
+      console.log(`✅ Clic ${clicks.length}: Display(${Math.round(displayX)}, ${Math.round(displayY)}) → Original(${originalX}, ${originalY})`);
+    }
+
+    // Créer un marqueur visuel
+    function createMarker(x, y, number) {
+      const marker = document.createElement('div');
+      marker.className = 'click-marker';
+      marker.style.left = x + 'px';
+      marker.style.top = y + 'px';
+      
+      const numberLabel = document.createElement('div');
+      numberLabel.className = 'click-number';
+      numberLabel.textContent = number;
+      numberLabel.style.left = x + 'px';
+      numberLabel.style.top = y + 'px';
+
+      container.appendChild(marker);
+      container.appendChild(numberLabel);
+    }
+
+    // Mettre à jour la liste des clics
+    function updateClickList() {
+      const clickList = document.getElementById('click-list');
+      
+      if (clicks.length === 0) {
+        clickList.innerHTML = '<p style="color: #aaa; text-align: center;">Aucun clic enregistré.</p>';
+        return;
+      }
+
+      let html = '';
+      clicks.forEach((click, index) => {
+        html += `
+          <div class="click-item">
+            <strong>${click.section.emoji} ${index + 1}. ${click.section.name}</strong><br>
+            Coordonnées originales: <strong style="color: #00ff88;">(${click.originalX}, ${click.originalY})</strong>
+          </div>
+        `;
+      });
+
+      clickList.innerHTML = html;
+    }
+
+    // Générer le code HTML
+    function updateCodeOutput() {
+      if (clicks.length === 0) {
+        document.getElementById('code-output').textContent = '<!-- Clique sur les 8 sections pour générer le code -->';
+        return;
+      }
+
+      let code = `<!-- ZONES CLIQUABLES - ${clicks.length} SECTIONS (COORDONNÉES MESURÉES) -->\n`;
+      code += `<map name="matieresmap">\n`;
+
+      clicks.forEach((click, index) => {
+        const section = click.section;
+        code += `  \n`;
+        code += `  <!-- ${section.emoji} ${section.name} -->\n`;
+        code += `  <area shape="circle"\n`;
+        code += `        coords="${click.originalX},${click.originalY},${section.radius}"\n`;
+        code += `        href="${section.url}"\n`;
+        code += `        alt="${section.name}"\n`;
+        code += `        title="${section.emoji} ${section.name}"\n`;
+        code += `        data-section="${section.dataSection}">\n`;
+      });
+
+      code += `</map>`;
+
+      document.getElementById('code-output').textContent = code;
+    }
+
+    // Effacer les marqueurs
+    function clearMarkers() {
+      if (clicks.length === 0) return;
+
+      if (confirm('🗑️ Effacer tous les marqueurs et recommencer ?')) {
+        clicks = [];
+        
+        // Supprimer tous les marqueurs visuels
+        const markers = container.querySelectorAll('.click-marker, .click-number');
+        markers.forEach(m => m.remove());
+
+        updateClickList();
+        updateCodeOutput();
+        document.getElementById('click-count').textContent = '0 / 8';
+      }
+    }
+
+    // Afficher/masquer zones actuelles
+    function toggleZones() {
+      showZones = !showZones;
+      
+      const existingZones = container.querySelectorAll('.zone-circle');
+      existingZones.forEach(z => z.remove());
+
+      if (showZones) {
+        // Zones actuelles de index.html
+        const currentZones = [
+          { x: 335, y: 295, r: 172 },
+          { x: 2420, y: 303, r: 172 },
+          { x: 618, y: 775, r: 172 },
+          { x: 2132, y: 765, r: 172 },
+          { x: 320, y: 1249, r: 172 },
+          { x: 2420, y: 1256, r: 172 },
+          { x: 926, y: 1318, r: 143 },
+          { x: 1822, y: 1311, r: 143 }
+        ];
+
+        const rect = img.getBoundingClientRect();
+        const scaleX = rect.width / ORIGINAL_WIDTH;
+        const scaleY = rect.height / ORIGINAL_HEIGHT;
+
+        currentZones.forEach(zone => {
+          const circle = document.createElement('div');
+          circle.className = 'zone-circle';
+          
+          const displayX = zone.x * scaleX;
+          const displayY = zone.y * scaleY;
+          const displayR = zone.r * scaleX;
+
+          circle.style.left = (displayX - displayR) + 'px';
+          circle.style.top = (displayY - displayR) + 'px';
+          circle.style.width = (displayR * 2) + 'px';
+          circle.style.height = (displayR * 2) + 'px';
+
+          container.appendChild(circle);
+        });
+      }
+    }
+
+    // Copier le code
+    function copyCode() {
+      const code = document.getElementById('code-output').textContent;
+      
+      if (code.includes('Clique sur')) {
+        alert('⚠️ Aucun code à copier. Clique d\'abord sur les 8 sections.');
+        return;
+      }
+
+      navigator.clipboard.writeText(code).then(() => {
+        alert('✅ Code copié dans le presse-papiers !');
+      }).catch(err => {
+        alert('❌ Erreur de copie. Sélectionne et copie manuellement.');
+        console.error(err);
+      });
+    }
+
+    // Télécharger le code
+    function downloadCode() {
+      const code = document.getElementById('code-output').textContent;
+      
+      if (code.includes('Clique sur')) {
+        alert('⚠️ Aucun code à télécharger. Clique d\'abord sur les 8 sections.');
+        return;
+      }
+
+      const blob = new Blob([code], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'mindmap_zones_corrected.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialisation au chargement
+    setTimeout(updateDimensions, 100);
+  </script>
+</body>
+</html>

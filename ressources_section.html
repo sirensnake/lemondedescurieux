@@ -3,113 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressources pédagogiques - Le Monde des Curieux</title>
-
-    <!-- CSS existants dans l'ordre standard -->
+    <title>Ressources Pédagogiques - Le Monde des Curieux</title>
+    
+    <!-- CSS standards -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/index_style.css">
-    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
     <link rel="stylesheet" href="styles/dark-mode.css">
     <link rel="stylesheet" href="styles/breadcrumb.css">
-    <link rel="stylesheet" href="styles/layout_style.css">
     <link rel="stylesheet" href="styles/general_style.css">
-    <link rel="stylesheet" href="styles/section_style.css">
-
-    <!-- Composants réutilisables -->
     <link rel="stylesheet" href="styles/components.css">
-
+    <link rel="stylesheet" href="styles/side-menu-unified.css">
+    
     <!-- Police -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
-
-    <link rel="manifest" href="/manifest.json">
-    <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body class="ressources-section">
+    <!-- Bouton Menu Hamburger -->
+    <button class="menu-toggle-btn" onclick="toggleSideMenu()" aria-label="Ouvrir le menu">
+        ☰
+    </button>
+    
     <!-- Header -->
     <header class="section-header-styled ressources">
         <button onclick="history.back()" class="back-btn-minecraft ressources">
-            &larr; Retour à l&#39;accueil
+            ← Retour à l'accueil
         </button>
     </header>
 
     <main>
         <!-- Fil d'Ariane -->
         <div class="breadcrumb" aria-label="Fil d'Ariane">
-            Accueil &gt; Ressources
-        </div>
-
-        <!-- Menu latéral -->
-        <button id="sidebar-toggle" class="sidebar-toggle"
-                aria-controls="sidebar"
-                aria-expanded="false"
-                aria-label="Ouvrir / fermer le menu">
-            &#9776;
-        </button>
-
-        <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="maths_section.html">Mathématiques</a></li>
-                <li><a href="sciences_section.html">Sciences</a></li>
-                <li><a href="histoire_section.html">Histoire - Géo</a></li>
-                <li><a href="francais_section.html">Français</a></li>
-                <li><a href="english_section.html">English</a></li>
-                <li><a href="programmation_section.html">Programmation</a></li>
-                <li><a href="echecs_section.html">Échecs</a></li>
-                <li><a href="philosophie_section.html">Philosophie</a></li>
-                <li><a href="ressources_section.html">Ressources</a></li>
-                <li><a href="infos_section.html">Infos</a></li>
-                <li><a href="ia_section.html">IA</a></li>
-                <li><a href="mon-parcours.html">Mon Parcours</a></li>
-            </ul>
-        </nav>
-
-        <!-- Zone XP -->
-        <div id="xp-status" style="text-align:center;margin:1rem 0;padding:1rem;background:#f1faee;border-radius:8px;display:none;">
-            <span id="xp-display">XP: 0</span> |
-            <span id="hearts-display">&#10084;&#10084;&#10084;&#10084;&#10084;</span> |
-            <span id="streak-display">Streak: 0 jours</span>
-        </div>
-
-        <!-- Accessibilité -->
-        <div class="accessibility-tools">
-            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
-            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
-            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">Sombre</button>
+            🏠 <a href="index.html">Accueil</a> > 📦 Ressources
         </div>
 
         <div class="section-title">
-            <h1>Ressources pédagogiques</h1>
-            <p>Trouve ici des ressources utiles pour approfondir ce que tu as appris.</p>
+            <h1>📦 Ressources Pédagogiques</h1>
+            <p>Découvre des outils, des liens et des contenus pour approfondir tes connaissances !</p>
         </div>
 
+        <!-- Contenu -->
         <section>
-            <div id="main-content" class="content-container">
-                <div class="content">
-                    <section class="resource-section">
-                        <h2>Mathématiques</h2>
-                        <ul>
-                            <li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener">Khan Academy - Exercices en ligne</a></li>
-                            <li><a href="https://www.youtube.com/watch?v=ssmnnIQvUtM" target="_blank" rel="noopener">Convertir des longueurs</a></li>
-                        </ul>
-                    </section>
+            <div class="content">
+                <div class="resource-category">
+                    <h2>📚 Mathématiques</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h3>Khan Academy</h3>
+                            <p>Des exercices interactifs et des vidéos pour apprendre les mathématiques à ton rythme.</p>
+                            <a href="https://fr.khanacademy.org/math" target="_blank" class="btn">Visiter</a>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Calculatrice Scientifique</h3>
+                            <p>Un outil en ligne pour effectuer des calculs complexes facilement.</p>
+                            <a href="https://www.desmos.com/scientific" target="_blank" class="btn">Utiliser</a>
+                        </div>
+                    </div>
+                </div>
 
-                    <section class="resource-section">
-                        <h2>Français</h2>
-                        <ul>
-                            <li><a href="https://www.ortholud.com/" target="_blank" rel="noopener">Jeux et exercices en français</a></li>
-                            <li><a href="https://www.youtube.com/watch?v=1Er8c6xikcA" target="_blank" rel="noopener">Grammaire de base</a></li>
-                        </ul>
-                    </section>
+                <div class="resource-category">
+                    <h2>🔬 Sciences</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h3>C'est pas Sorcier</h3>
+                            <p>Des centaines d'épisodes pour tout comprendre sur la science, la nature et la technologie.</p>
+                            <a href="https://www.youtube.com/user/cestpassorcierftv" target="_blank" class="btn">Regarder</a>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Vikidia Sciences</h3>
+                            <p>Une encyclopédie gratuite et collaborative adaptée aux enfants.</p>
+                            <a href="https://fr.vikidia.org/wiki/Portail:Sciences" target="_blank" class="btn">Explorer</a>
+                        </div>
+                    </div>
+                </div>
 
-                    <section class="resource-section">
-                        <h2>Sciences</h2>
-                        <ul>
-                            <li><a href="https://www.cnes.fr/fr" target="_blank" rel="noopener">CNES - Découverte de l'espace</a></li>
-                            <li><a href="https://www.youtube.com/watch?v=jdInvnIkwIk" target="_blank" rel="noopener">Le système solaire</a></li>
-                        </ul>
-                    </section>
+                <div class="resource-category">
+                    <h2>🗺️ Histoire & Géographie</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h3>Quelle Histoire</h3>
+                            <p>Des histoires illustrées sur les grands personnages et événements historiques.</p>
+                            <a href="https://www.quelle-histoire.com/" target="_blank" class="btn">Découvrir</a>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Google Earth</h3>
+                            <p>Explore le monde entier en 3D depuis ton ordinateur !</p>
+                            <a href="https://earth.google.com/web/" target="_blank" class="btn">Voyager</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-category">
+                    <h2>🇬🇧 Anglais</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h3>Duolingo</h3>
+                            <p>Apprends l'anglais en jouant avec des leçons courtes et amusantes.</p>
+                            <a href="https://www.duolingo.com/" target="_blank" class="btn">Commencer</a>
+                        </div>
+                        <div class="resource-item">
+                            <h3>BBC Learning English for Kids</h3>
+                            <p>Des jeux et des vidéos pour apprendre l'anglais en s'amusant.</p>
+                            <a href="https://www.bbc.co.uk/learningenglish" target="_blank" class="btn">Apprendre</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-category">
+                    <h2>💻 Programmation</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h3>Scratch</h3>
+                            <p>Crée tes propres jeux et animations en programmant avec des blocs colorés.</p>
+                            <a href="https://scratch.mit.edu/" target="_blank" class="btn">Créer</a>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Code.org</h3>
+                            <p>Des cours gratuits pour apprendre à coder de manière ludique.</p>
+                            <a href="https://code.org/" target="_blank" class="btn">Coder</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-category">
+                    <h2>🎨 Autres Ressources</h2>
+                    <div class="resource-list">
+                        <div class="resource-item">
+                            <h3>1 jour, 1 question</h3>
+                            <p>Des vidéos courtes pour répondre aux questions que tu te poses sur l'actualité.</p>
+                            <a href="https://www.lumni.fr/programme/1-jour-1-question" target="_blank" class="btn">Voir</a>
+                        </div>
+                        <div class="resource-item">
+                            <h3>BrainPOP Français</h3>
+                            <p>Des films d'animation éducatifs sur tous les sujets !</p>
+                            <a href="https://fr.brainpop.com/" target="_blank" class="btn">Regarder</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -117,66 +146,13 @@
 
     <!-- Scripts -->
     <script src="scripts/general_script.js"></script>
-    <script src="scripts/xp_system_complete.js"></script>
     <script src="scripts/accessibilite.js"></script>
-    <script src="scripts/menu_enhanced.js"></script>
-
+    
+    <!-- Menu Latéral Unifié -->
+    <script src="scripts/side-menu-unified.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sidebar = document.getElementById('sidebar');
-            const toggleButton = document.getElementById('sidebar-toggle');
-
-            if (sidebar) {
-                sidebar.style.left = '-250px';
-                sidebar.setAttribute('aria-hidden', 'true');
-            }
-
-            if (toggleButton && sidebar) {
-                toggleButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const opened = sidebar.style.left === '0px';
-                    if (opened) {
-                        sidebar.style.left = '-250px';
-                        sidebar.setAttribute('aria-hidden', 'true');
-                        toggleButton.setAttribute('aria-expanded', 'false');
-                        toggleButton.focus();
-                    } else {
-                        sidebar.style.left = '0px';
-                        sidebar.setAttribute('aria-hidden', 'false');
-                        toggleButton.setAttribute('aria-expanded', 'true');
-                        const firstLink = sidebar.querySelector('a');
-                        if (firstLink) firstLink.focus();
-                    }
-                });
-
-                document.addEventListener('click', function(e) {
-                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
-                        sidebar.style.left = '-250px';
-                        sidebar.setAttribute('aria-hidden', 'true');
-                        toggleButton.setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
-                        sidebar.style.left = '-250px';
-                        sidebar.setAttribute('aria-hidden', 'true');
-                        toggleButton.setAttribute('aria-expanded', 'false');
-                        toggleButton.focus();
-                    }
-                });
-            }
-
-            setTimeout(() => {
-                if (window.xpManager) {
-                    try { window.xpManager.currentSection = 'ressources'; } catch (err) {}
-                    const xpEl = document.getElementById('xp-status');
-                    if (xpEl) xpEl.style.display = 'block';
-                }
-            }, 1000);
-
-            console.log("Section Ressources chargée avec succès !");
+        document.addEventListener("DOMContentLoaded", () => {
+            loadSideMenu();
         });
     </script>
 </body>

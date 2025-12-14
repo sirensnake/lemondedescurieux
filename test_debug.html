@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test Debug Français</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+        .test { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .ok { background: #d4edda; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; }
+        h1 { color: #2a9d8f; }
+        pre { background: #fff; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test Debug Section Français</h1>
+    <div id="results"></div>
+    
+    <h2>Console Logs:</h2>
+    <pre id="console-logs"></pre>
+    
+    <script>
+        // Capturer les console.log
+        const consoleLogs = document.getElementById('console-logs');
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            consoleLogs.textContent += args.join(' ') + '\n';
+        };
+    </script>
+    
+    <script src="scripts/francais-lessons.js"></script>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function addTest(name, condition, details = '') {
+            const div = document.createElement('div');
+            div.className = 'test ' + (condition ? 'ok' : 'error');
+            div.innerHTML = `
+                <strong>${condition ? '✅' : '❌'} ${name}</strong>
+                ${details ? '<br>' + details : ''}
+            `;
+            results.appendChild(div);
+        }
+        
+        setTimeout(() => {
+            // Test 1: Script chargé
+            addTest('Script chargé', typeof francaisApp !== 'undefined');
+            
+            // Test 2: Classe disponible
+            addTest('Classe FrenchLessons', typeof FrenchLessons !== 'undefined');
+            
+            // Test 3: Instance créée
+            if (typeof francaisApp !== 'undefined') {
+                addTest('Instance francaisApp', francaisApp instanceof FrenchLessons);
+                
+                // Test 4: Données leçons
+                addTest('Données leçons', francaisApp.lessons && francaisApp.lessons.length === 4, 
+                    `Nombre de leçons: ${francaisApp.lessons ? francaisApp.lessons.length : 0}`);
+                
+                // Test 5: Méthodes
+                const methods = ['renderLessons', 'startLesson', 'renderExercise', 'checkAnswer', 'showResults'];
+                methods.forEach(method => {
+                    addTest(`Méthode ${method}()`, typeof francaisApp[method] === 'function');
+                });
+                
+                // Test 6: Affichage des données
+                if (francaisApp.lessons) {
+                    francaisApp.lessons.forEach((lesson, i) => {
+                        addTest(`Leçon ${i+1}: ${lesson.title}`, 
+                            lesson.exercises && lesson.exercises.length > 0,
+                            `${lesson.exercises ? lesson.exercises.length : 0} exercices`);
+                    });
+                }
+            } else {
+                addTest('ERREUR CRITIQUE', false, 'francaisApp n\'existe pas du tout !');
+            }
+        }, 500);
+    </script>
+</body>
+</html>

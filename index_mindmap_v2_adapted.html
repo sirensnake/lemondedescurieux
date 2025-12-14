@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde des Curieux - Accueil</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to bottom, #87CEEB 0%, #FFE4B5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mindmap-container {
+            position: relative;
+            max-width: 95%;
+            margin: 2rem auto;
+        }
+
+        .mindmap {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 6px solid #000;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Indicateur de zone survolée */
+        area:hover {
+            cursor: pointer;
+        }
+
+        /* Titre du site */
+        .site-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+        }
+
+        .site-title h1 {
+            font-size: 2.5rem;
+            color: #2a9d8f;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .site-title p {
+            font-size: 0.9rem;
+            color: #264653;
+            margin: 1rem 0 0 0;
+        }
+
+        /* Instructions */
+        .instructions {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #264653;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.8);
+            border-radius: 10px;
+            border: 3px solid #000;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .site-title h1 {
+                font-size: 1.5rem;
+            }
+            .site-title p {
+                font-size: 0.7rem;
+            }
+            .instructions {
+                font-size: 0.6rem;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="site-title">
+        <h1>🦊 Le Monde des Curieux</h1>
+        <p>Explore, apprends et deviens un expert !</p>
+    </div>
+
+    <div class="mindmap-container">
+        <img src="images/mindmap_lemondedescurieux_v2.png" 
+             alt="Carte interactive des matières" 
+             class="mindmap"
+             usemap="#matieresmap">
+        
+        <map name="matieresmap">
+            <!-- FRANÇAIS - Haut gauche -->
+            <area shape="circle" 
+                  coords="190,130,90" 
+                  href="francais_duolingo_section.html" 
+                  alt="Section Français"
+                  title="Français - Grammaire, conjugaison, orthographe">
+            
+            <!-- MATHÉMATIQUES - Haut droite -->
+            <area shape="circle" 
+                  coords="1265,130,90" 
+                  href="maths_duolingo_section.html" 
+                  alt="Section Mathématiques"
+                  title="Maths - Calcul, géométrie, problèmes">
+            
+            <!-- HISTOIRE-GÉOGRAPHIE - Milieu gauche -->
+            <area shape="circle" 
+                  coords="190,370,90" 
+                  href="histoire_duolingo_section.html" 
+                  alt="Section Histoire-Géographie"
+                  title="Histoire-Géo - Civilisations, cartes, événements">
+            
+            <!-- HUB CURIO - Centre (plus grand, non cliquable ou page d'accueil) -->
+            <area shape="circle" 
+                  coords="728,408,140" 
+                  href="#" 
+                  alt="Hub Central - Curio le Renard"
+                  title="🦊 Curio - Ton guide dans Le Monde des Curieux"
+                  onclick="alert('Bienvenue ! Clique sur une matière pour commencer ton aventure !'); return false;">
+            
+            <!-- ENGLISH - Milieu droite -->
+            <area shape="circle" 
+                  coords="1265,370,90" 
+                  href="english_duolingo_section.html" 
+                  alt="Section Anglais"
+                  title="English - Vocabulary, grammar, conversation">
+            
+            <!-- SCIENCES - Bas gauche -->
+            <area shape="circle" 
+                  coords="190,610,90" 
+                  href="sciences_duolingo_section.html" 
+                  alt="Section Sciences"
+                  title="Sciences - Expériences, biologie, physique">
+            
+            <!-- MON PARCOURS - Bas centre-gauche -->
+            <area shape="circle" 
+                  coords="485,690,70" 
+                  href="dashboard_global.html" 
+                  alt="Mon Parcours"
+                  title="Mon Parcours - Suivi de progression, badges, stats">
+            
+            <!-- INFOS & NEWS - Bas centre -->
+            <area shape="circle" 
+                  coords="728,690,70" 
+                  href="infos_section.html" 
+                  alt="Infos & News"
+                  title="Infos - Actualités éducatives et nouveautés">
+            
+            <!-- RESSOURCES - Bas droite -->
+            <area shape="circle" 
+                  coords="1265,610,90" 
+                  href="ressources_section.html" 
+                  alt="Ressources"
+                  title="Ressources - Outils, liens, téléchargements">
+        </map>
+    </div>
+
+    <div class="instructions">
+        <strong>📍 Comment ça marche ?</strong><br>
+        Clique sur une bulle pour accéder à la matière.<br>
+        Curio le renard 🦊 est là pour te guider !
+    </div>
+
+    <script>
+        // Debug : afficher les coordonnées au clic
+        document.querySelectorAll('area').forEach(area => {
+            area.addEventListener('click', function(e) {
+                console.log('Zone cliquée:', this.getAttribute('alt'));
+                console.log('Coordonnées:', this.getAttribute('coords'));
+            });
+        });
+
+        // Animation au survol (optionnel)
+        document.querySelectorAll('area').forEach(area => {
+            area.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+    </script>
+</body>
+</html>
