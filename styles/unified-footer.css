@@ -1,0 +1,37 @@
+/* ========================================
+   FOOTER UNIFIÉ - LE MONDE DES CURIEUX
+   ======================================== */
+
+.unified-footer {
+    background: linear-gradient(135deg, #1d3557, #2a9d8f);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+    box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+}
+
+.unified-footer p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.unified-footer a {
+    color: #e9c46a;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+}
+
+.unified-footer a:hover {
+    color: #f4a261;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .unified-footer {
+        padding: 1.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
