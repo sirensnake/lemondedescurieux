@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde des Curieux</title>
+    
+    <!-- SEULEMENT 2 CSS : mindmap + home -->
+    <link rel="stylesheet" href="styles/mindmap_svg.css">
+    <link rel="stylesheet" href="styles/home-page.css">
+</head>
+<body class="home-page">
+    
+    <!-- MENU HAMBURGER -->
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    
+    <!-- MENU LATÉRAL -->
+    <nav class="side-menu" id="sideMenu">
+        <a href="index.html">🏠 Accueil</a>
+        <a href="dashboard_global.html">📊 Mon Parcours</a>
+        <div class="menu-divider"></div>
+        <a href="francais_duolingo_section.html">📚 Français</a>
+        <a href="maths_duolingo_section.html">🔢 Mathématiques</a>
+        <a href="english_duolingo_section.html">🇬🇧 English</a>
+        <a href="sciences_duolingo_section.html">🔬 Sciences</a>
+        <a href="histoire_duolingo_section.html">🗺️ Histoire-Géo</a>
+        <div class="menu-divider"></div>
+        <a href="ressources_section.html">📦 Ressources</a>
+        <a href="infos_section.html">📰 Infos & News</a>
+    </nav>
+    
+    <!-- HEADER -->
+    <header>
+        <h1>🎮 Le Monde des Curieux</h1>
+        <p>Explore, apprends et gagne des XP !</p>
+    </header>
+    
+    <!-- CONTENU PRINCIPAL -->
+    <div class="page-content">
+        
+        <!-- COLONNE GAUCHE : MINDMAP -->
+        <div class="mindmap-section">
+            <div class="mindmap-container">
+                <img src="images/mindmap_lemondedescurieux_v2.png" 
+                     alt="Mindmap Le Monde des Curieux" 
+                     class="mindmap-image">
+                
+                <svg class="mindmap-svg" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
+                    <a href="francais_duolingo_section.html">
+                        <circle class="zone-clickable" cx="209" cy="270" r="85">
+                            <title>📚 Français</title>
+                        </circle>
+                    </a>
+                    <a href="maths_duolingo_section.html">
+                        <circle class="zone-clickable" cx="2401" cy="326" r="172">
+                            <title>🔢 Mathématiques</title>
+                        </circle>
+                    </a>
+                    <a href="histoire_duolingo_section.html">
+                        <circle class="zone-clickable" cx="682" cy="760" r="172">
+                            <title>🗺️ Histoire-Géographie</title>
+                        </circle>
+                    </a>
+                    <a href="english_duolingo_section.html">
+                        <circle class="zone-clickable" cx="2069" cy="753" r="172">
+                            <title>🇬🇧 English</title>
+                        </circle>
+                    </a>
+                    <a href="sciences_duolingo_section.html">
+                        <circle class="zone-clickable" cx="354" cy="1205" r="172">
+                            <title>🔬 Sciences</title>
+                        </circle>
+                    </a>
+                    <a href="ressources_section.html">
+                        <circle class="zone-clickable" cx="2422" cy="1224" r="172">
+                            <title>📦 Ressources</title>
+                        </circle>
+                    </a>
+                    <a href="dashboard_global.html">
+                        <circle class="zone-clickable" cx="1005" cy="1279" r="143">
+                            <title>📊 Mon Parcours</title>
+                        </circle>
+                    </a>
+                    <a href="infos_section.html">
+                        <circle class="zone-clickable" cx="1740" cy="1279" r="143">
+                            <title>📰 Infos & News</title>
+                        </circle>
+                    </a>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- COLONNE DROITE : DASHBOARD & PARCOURS -->
+        <div class="sidebar-content">
+            
+            <!-- DASHBOARD -->
+            <div class="card">
+                <h2>📊 Mon Parcours</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-icon">🎯</span>
+                        <span class="stat-label">Niveau</span>
+                        <span class="stat-value">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">⭐</span>
+                        <span class="stat-label">XP</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🔥</span>
+                        <span class="stat-label">Streak</span>
+                        <span class="stat-value">0</span>
+                    </div>
+                </div>
+                <a href="dashboard_global.html" class="btn">Voir Détails</a>
+            </div>
+            
+            <!-- PARCOURS THÉMATIQUES -->
+            <div class="card">
+                <h2>🚀 Parcours thématiques</h2>
+                
+                <div class="parcours-item">
+                    <h3>🚀 Aventure spatiale</h3>
+                    <p class="parcours-meta">Sciences · Maths · Histoire</p>
+                    <span class="xp-badge">+50 XP</span>
+                    <a href="parcours/espace.html" class="btn">Commencer</a>
+                </div>
+                
+                <div class="parcours-item">
+                    <h3>🌊 Mystères des océans</h3>
+                    <p class="parcours-meta">Sciences · Géographie · Maths</p>
+                    <span class="xp-badge">+40 XP</span>
+                    <a href="parcours/ocean.html" class="btn">Plonger</a>
+                </div>
+                
+                <div class="parcours-item">
+                    <h3>🤖 Univers des robots</h3>
+                    <p class="parcours-meta">Programmation · Sciences · IA</p>
+                    <span class="xp-badge">+60 XP</span>
+                    <a href="parcours/robotique.html" class="btn">Construire</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Le Monde des Curieux</p>
+        <p>
+            <a href="mentions-legales.html">Mentions légales</a> |
+            <a href="confidentialite.html">Confidentialité</a> |
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('open');
+        }
+        
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('sideMenu');
+            const btn = document.querySelector('.menu-btn');
+            
+            if (menu.classList.contains('open') && 
+                e.target !== menu && 
+                !menu.contains(e.target) && 
+                e.target !== btn) {
+                menu.classList.remove('open');
+            }
+        });
+        
+        console.log('✅ Mindmap:', document.querySelectorAll('.zone-clickable').length, 'zones');
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔬 Sciences - Le Monde des Curieux</title>
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="sciences-section">
+    
+    <header class="section-header-styled sciences">
+        <button onclick="history.back()" class="back-btn-minecraft sciences">← Retour à l'accueil</button>
+    </header>
+    
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
+     <ul>
+         <li><a href="index.html">🏠 Accueil</a></li>
+         <li><a href="francais_section.html">🇫🇷 Français</a></li>
+         <li><a href="english_section.html">🇬🇧 English</a></li>
+         <li><a href="maths_section.html">🧮 Mathématiques</a></li>
+         <li><a href="sciences_section.html">🔬 Sciences</a></li>
+         <li><a href="histoire_section.html">🏛️ Histoire-Géo</a></li>
+         <li><a href="programmation_section.html">💻 Programmation</a></li>
+         <li><a href="echecs_section.html">♟️ Échecs</a></li>
+         <li><a href="philosophie_section.html">🤔 Philosophie</a></li>
+         <li><a href="ia_section.html">🤖 IA</a></li>
+         <li><a href="mon-parcours.html">📊 Mon Parcours</a></li>
+     </ul>
+</nav>
+
+    <main>
+        <div class="section-title">
+            <h1>🔬 Sciences</h1>
+            <p>Explore les mystères de l'univers à travers des expériences fascinantes !</p>
+        </div>
+
+        <div id="xp-status" style="display: none; text-align: center; margin: 1rem auto; padding: 1rem; background: #f8f9fa; border-radius: 8px; max-width: 800px;">
+            <span id="xp-display" style="margin: 0 1rem; font-weight: bold;">XP: 0</span>
+            <span id="hearts-display" style="margin: 0 1rem; font-size: 1.2rem;">❤️❤️❤️❤️❤️</span>
+            <span id="streak-display" style="margin: 0 1rem; font-weight: bold;">🔥 0 jours</span>
+        </div>
+
+        <div class="content-wrapper" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+            
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>💧 Le Cycle de l'Eau</h2>
+                <p>Découvre comment l'eau voyage de la terre au ciel et retour !</p>
+                
+                <h3>Les étapes du cycle</h3>
+                <ul>
+                    <li><strong>Évaporation</strong> : L'eau des océans, rivières et lacs se transforme en vapeur grâce à la chaleur du soleil</li>
+                    <li><strong>Condensation</strong> : La vapeur d'eau se refroidit dans l'atmosphère et forme des nuages</li>
+                    <li><strong>Précipitations</strong> : L'eau retombe sur terre sous forme de pluie, neige ou grêle</li>
+                    <li><strong>Ruissellement</strong> : L'eau coule à la surface et rejoint les rivières, puis les océans</li>
+                    <li><strong>Infiltration</strong> : Une partie de l'eau pénètre dans le sol et rejoint les nappes phréatiques</li>
+                </ul>
+
+                <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>💡 Le savais-tu ?</strong> L'eau que tu bois aujourd'hui est la même que celle que buvaient les dinosaures il y a des millions d'années !</p>
+                </div>
+
+                <button onclick="alert('Expérience interactive en développement ! 🌊')" style="background: #2196f3; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
+                    🚀 Lancer l'animation interactive
+                </button>
+            </section>
+
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🌍 Le Système Solaire</h2>
+                <p>Voyage à travers les planètes et découvre leurs secrets !</p>
+                
+                <h3>Les 8 planètes</h3>
+                <ul>
+                    <li><strong>Mercure</strong> : La plus petite et la plus proche du Soleil</li>
+                    <li><strong>Vénus</strong> : La plus chaude, recouverte de nuages toxiques</li>
+                    <li><strong>Terre</strong> : Notre planète bleue, la seule avec de la vie</li>
+                    <li><strong>Mars</strong> : La planète rouge, avec des traces d'eau ancienne</li>
+                    <li><strong>Jupiter</strong> : La plus grande, une géante gazeuse avec la Grande Tache Rouge</li>
+                    <li><strong>Saturne</strong> : Célèbre pour ses magnifiques anneaux</li>
+                    <li><strong>Uranus</strong> : Une géante de glace qui tourne sur le côté</li>
+                    <li><strong>Neptune</strong> : La plus éloignée, bleue et venteuse</li>
+                </ul>
+
+                <h3>Le Soleil</h3>
+                <p>Notre étoile est une boule de gaz brûlant à 15 millions de degrés en son centre ! Elle est si grande que 1 million de Terres pourraient y tenir.</p>
+
+                <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>💡 Le savais-tu ?</strong> La lumière du Soleil met 8 minutes pour arriver jusqu'à la Terre !</p>
+                </div>
+
+                <button onclick="alert('Modèle 3D interactif en développement ! 🪐')" style="background: #ff9800; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
+                    🚀 Explorer le système solaire en 3D
+                </button>
+            </section>
+
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🫀 Le Corps Humain</h2>
+                <p>Explore la machine incroyable qu'est ton corps !</p>
+                
+                <h3>Les principaux systèmes</h3>
+                <ul>
+                    <li><strong>Le système digestif</strong> : Transforme les aliments en énergie (estomac, intestins...)</li>
+                    <li><strong>Le système respiratoire</strong> : Apporte l'oxygène à ton corps (poumons, nez, trachée...)</li>
+                    <li><strong>Le système circulatoire</strong> : Transporte le sang dans tout le corps (cœur, veines, artères...)</li>
+                    <li><strong>Le système nerveux</strong> : Contrôle tout le corps (cerveau, moelle épinière, nerfs...)</li>
+                    <li><strong>Le squelette</strong> : 206 os qui soutiennent et protègent ton corps</li>
+                    <li><strong>Les muscles</strong> : Plus de 600 muscles qui permettent de bouger</li>
+                </ul>
+
+                <h3>Le cerveau</h3>
+                <p>Ton cerveau pèse environ 1,4 kg et contient 86 milliards de neurones ! Il consomme 20% de l'énergie de ton corps.</p>
+
+                <div style="background: #f3e5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>💡 Le savais-tu ?</strong> Ton cœur bat environ 100 000 fois par jour et pompe 7 500 litres de sang !</p>
+                </div>
+
+                <button onclick="alert('Schéma interactif en développement ! 🫁')" style="background: #9c27b0; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
+                    🚀 Explorer le corps humain
+                </button>
+            </section>
+
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🧊 Les États de la Matière</h2>
+                <p>Comprends comment les choses changent de forme !</p>
+                
+                <h3>Les trois états principaux</h3>
+                <ul>
+                    <li><strong>Solide</strong> : Forme fixe, volume fixe (glace, pierre, bois...)</li>
+                    <li><strong>Liquide</strong> : Forme variable, volume fixe (eau, huile, jus...)</li>
+                    <li><strong>Gazeux</strong> : Forme variable, volume variable (vapeur, air, gaz...)</li>
+                </ul>
+
+                <h3>Les changements d'état</h3>
+                <ul>
+                    <li><strong>Fusion</strong> : Solide → Liquide (glace → eau)</li>
+                    <li><strong>Solidification</strong> : Liquide → Solide (eau → glace)</li>
+                    <li><strong>Vaporisation</strong> : Liquide → Gaz (eau → vapeur)</li>
+                    <li><strong>Condensation</strong> : Gaz → Liquide (vapeur → eau)</li>
+                    <li><strong>Sublimation</strong> : Solide → Gaz (glace carbonique → CO2)</li>
+                </ul>
+
+                <div style="background: #e8f5e9; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>💡 Le savais-tu ?</strong> L'eau est la seule substance qu'on trouve naturellement sous les trois états sur Terre !</p>
+                </div>
+
+                <button onclick="alert('Simulation interactive en développement ! 🌡️')" style="background: #4caf50; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
+                    🚀 Expérimenter les changements d'état
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="scripts/menu_lateral.js"></script>
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebar-toggle');
+ 
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+ 
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const opened = sidebar.style.left === '0px';
+                    if (opened) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+ 
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+ 
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+ 
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'sciences';
+                    const xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

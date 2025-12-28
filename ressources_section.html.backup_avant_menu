@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressources pédagogiques - Le Monde des Curieux</title>
+
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+
+    <!-- Composants réutilisables -->
+    <link rel="stylesheet" href="styles/components.css">
+
+    <!-- Police -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body class="ressources-section">
+    <!-- Header -->
+    <header class="section-header-styled ressources">
+        <button onclick="history.back()" class="back-btn-minecraft ressources">
+            &larr; Retour à l&#39;accueil
+        </button>
+    </header>
+
+    <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            Accueil &gt; Ressources
+        </div>
+
+        <!-- Menu latéral -->
+        <button id="sidebar-toggle" class="sidebar-toggle"
+                aria-controls="sidebar"
+                aria-expanded="false"
+                aria-label="Ouvrir / fermer le menu">
+            &#9776;
+        </button>
+
+        <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire - Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
+            </ul>
+        </nav>
+
+        <!-- Zone XP -->
+        <div id="xp-status" style="text-align:center;margin:1rem 0;padding:1rem;background:#f1faee;border-radius:8px;display:none;">
+            <span id="xp-display">XP: 0</span> |
+            <span id="hearts-display">&#10084;&#10084;&#10084;&#10084;&#10084;</span> |
+            <span id="streak-display">Streak: 0 jours</span>
+        </div>
+
+        <!-- Accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">Sombre</button>
+        </div>
+
+        <div class="section-title">
+            <h1>Ressources pédagogiques</h1>
+            <p>Trouve ici des ressources utiles pour approfondir ce que tu as appris.</p>
+        </div>
+
+        <section>
+            <div id="main-content" class="content-container">
+                <div class="content">
+                    <section class="resource-section">
+                        <h2>Mathématiques</h2>
+                        <ul>
+                            <li><a href="https://www.khanacademy.org/" target="_blank" rel="noopener">Khan Academy - Exercices en ligne</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=ssmnnIQvUtM" target="_blank" rel="noopener">Convertir des longueurs</a></li>
+                        </ul>
+                    </section>
+
+                    <section class="resource-section">
+                        <h2>Français</h2>
+                        <ul>
+                            <li><a href="https://www.ortholud.com/" target="_blank" rel="noopener">Jeux et exercices en français</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=1Er8c6xikcA" target="_blank" rel="noopener">Grammaire de base</a></li>
+                        </ul>
+                    </section>
+
+                    <section class="resource-section">
+                        <h2>Sciences</h2>
+                        <ul>
+                            <li><a href="https://www.cnes.fr/fr" target="_blank" rel="noopener">CNES - Découverte de l'espace</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=jdInvnIkwIk" target="_blank" rel="noopener">Le système solaire</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebar-toggle');
+
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const opened = sidebar.style.left === '0px';
+                    if (opened) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                        toggleButton.focus();
+                    } else {
+                        sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                        const firstLink = sidebar.querySelector('a');
+                        if (firstLink) firstLink.focus();
+                    }
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                        toggleButton.focus();
+                    }
+                });
+            }
+
+            setTimeout(() => {
+                if (window.xpManager) {
+                    try { window.xpManager.currentSection = 'ressources'; } catch (err) {}
+                    const xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
+                }
+            }, 1000);
+
+            console.log("Section Ressources chargée avec succès !");
+        });
+    </script>
+</body>
+</html>

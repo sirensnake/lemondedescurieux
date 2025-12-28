@@ -1,0 +1,120 @@
+# ================================================
+
+# Configuration Le Monde des Curieux
+
+# ================================================
+
+# Encodage UTF-8 par défaut
+
+AddDefaultCharset UTF-8
+
+# Désactiver MultiViews (cause problèmes routing)
+
+Options -MultiViews +FollowSymLinks
+
+# Index par défaut
+
+DirectoryIndex index.html
+
+# ================================================
+
+# CORRECTION ERREUR 404
+
+# ================================================
+
+# Ne PAS utiliser page 404 personnalisée Hostinger
+
+# Utiliser comportement Apache par défaut
+
+ErrorDocument 404 default
+
+# ================================================
+
+# Forcer traitement HTML
+
+# ================================================
+
+<FilesMatch "\.html$">
+ForceType text/html
+SetHandler default-handler
+</FilesMatch>
+
+# ================================================
+
+# Performance : Compression GZIP
+
+# ================================================
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# ================================================
+
+# Performance : Cache navigateur
+
+# ================================================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>
+
+# ================================================
+
+# Sécurité
+
+# ================================================
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Bloquer accès fichiers sensibles
+
+<FilesMatch "(^\.htaccess|\.log|\.md)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+```
+
+**Sauvegarder**
+
+---
+
+## 🚀 ACTIONS APRÈS CRÉATION .htaccess
+
+### Action 1 : Vider Cache Hostinger (1 min)
+
+**D'après vos captures, il y a :**
+```
+
+"Vider le cache"
+→ Cliquer "Vider le cache"
+
+```
+
+### Action 2 : Attendre Propagation (2-5 min)
+```
+
+Configuration .htaccess prend effet sous 1-5 minutes
+→ Attendre patiemment
+
+```
+
+### Action 3 : Test Navigation Privée (30 sec)
+```
+
+Firefox → Ctrl + Shift + P
+https://lemondedescurieux.fr/francais.html
+→ Fonctionne maintenant ?

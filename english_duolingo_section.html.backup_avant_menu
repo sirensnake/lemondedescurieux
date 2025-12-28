@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English - Le Monde des Curieux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/duolingo-sections.css">
+    <link rel="stylesheet" href="styles/english-theme.css">
+</head>
+<body class="english-section">
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            <h1>🇬🇧 English</h1>
+            <div class="stats">
+                <span id="streak-display">🔥 0 days</span>
+                <span id="hearts-display">❤️❤️❤️❤️❤️</span>
+                <span id="xp-display">0 XP</span>
+            </div>
+        </div>
+        
+        <!-- LESSONS LIST (visible par défaut) -->
+        <div id="lessons-list">
+            <div id="lessons-grid"></div>
+        </div>
+        
+        <!-- LESSON SCREEN (caché par défaut, contient exercices + résultats) -->
+        <div id="lesson-screen" style="display: none;">
+            
+            <!-- EXERCISE SCREEN -->
+            <div id="exercise-screen">
+                <div class="exercise-header">
+                    <button class="btn btn-secondary" onclick="englishApp.backToLessons()">← Back</button>
+                    <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                
+                <div class="question-area">
+                    <div class="question-text" id="question-text"></div>
+                    <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
+                    <button class="audio-btn" id="audio-btn" onclick="englishApp.playAudio()" title="Listen">🔊</button>
+                    <div class="hint-area" id="hint-area"></div>
+                </div>
+                
+                <div class="button-area">
+                    <button class="btn btn-secondary" onclick="englishApp.showHint()">💡 Hint</button>
+                    <button class="btn btn-primary" onclick="englishApp.checkAnswer()">✓ Check</button>
+                </div>
+            </div>
+            <!-- Fin exercise-screen -->
+            
+            <!-- RESULTS SCREEN -->
+            <div id="results-screen">
+                <div class="results-icon">🏆</div>
+                <h2 style="color: #3b82f6; margin-bottom: 2rem;">Lesson Complete!</h2>
+                
+                <div class="results-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-correct">0</div>
+                        <div class="stat-label">Correct Answers</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-xp">0</div>
+                        <div class="stat-label">XP Earned</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-hearts">5</div>
+                        <div class="stat-label">Hearts Left</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="result-score">0%</div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" onclick="englishApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
+                    🏠 Back to Lessons
+                </button>
+            </div>
+            <!-- Fin results-screen -->
+            
+        </div>
+        <!-- Fin lesson-screen -->
+        
+        <!-- FEEDBACK POPUP -->
+        <div class="feedback" id="feedback"></div>
+        
+    </div>
+    <!-- Fin container -->
+
+    <script src="scripts/english-lessons.js"></script>
+</body>
+</html>

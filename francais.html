@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇫🇷 Français - Le Monde des Curieux</title>
+    
+    <!-- CSS standards dans l'ordre harmonisé -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="francais-section">
+    
+    <!-- Header stylisé harmonisé -->
+    <header class="section-header-styled francais">
+        <button onclick="history.back()" class="back-btn-minecraft francais">
+            ← Retour à l'accueil
+        </button>
+    </header>
+    
+    <!-- Bouton toggle menu latéral -->
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
+     <ul>
+         <li><a href="index.html">🏠 Accueil</a></li>
+         <li><a href="francais_section.html">🇫🇷 Français</a></li>
+         <li><a href="english_section.html">🇬🇧 English</a></li>
+         <li><a href="maths_section.html">🧮 Mathématiques</a></li>
+         <li><a href="sciences_section.html">🔬 Sciences</a></li>
+         <li><a href="histoire_section.html">🏛️ Histoire-Géo</a></li>
+         <li><a href="programmation_section.html">💻 Programmation</a></li>
+         <li><a href="echecs_section.html">♟️ Échecs</a></li>
+         <li><a href="philosophie_section.html">🤔 Philosophie</a></li>
+         <li><a href="ia_section.html">🤖 IA</a></li>
+         <li><a href="mon-parcours.html">📊 Mon Parcours</a></li>
+     </ul>
+</nav>
+
+    <main>
+        <!-- Section title harmonisée -->
+        <div class="section-title">
+            <h1>🇫🇷 Français</h1>
+            <p>Maîtrise la grammaire, la conjugaison et l'orthographe comme un pro !</p>
+        </div>
+
+        <!-- Zone XP harmonisée (même style que anglais/maths) -->
+        <div id="xp-status" class="gamification-header">
+            <div class="xp-container">
+                <span class="xp-label">Niveau</span>
+                <span id="xp-display" class="xp-value">1 - 0/100 XP</span>
+            </div>
+            <div class="hearts-container">
+                <span id="hearts-display" class="hearts-value">❤️❤️❤️❤️❤️</span>
+            </div>
+            <div class="streak-container">
+                <span class="streak-icon">🔥</span>
+                <span id="streak-display" class="streak-value">0 jours</span>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="content-wrapper">
+            
+            <!-- Section Grammaire -->
+            <section class="learning-unit">
+                <div class="unit-header">
+                    <h2>📝 Grammaire</h2>
+                    <p class="unit-description">Apprends les règles essentielles de la langue française</p>
+                </div>
+                
+                <div class="lessons-grid">
+                    <!-- Leçon 1 : Classes de mots -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">📚</div>
+                        <h3>Les classes de mots</h3>
+                        <p>Noms, verbes, adjectifs, déterminants...</p>
+                        <button class="btn-lesson" onclick="alert('Leçon interactive en développement ! 📚')">
+                            Commencer
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 2 : Analyse grammaticale -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🔍</div>
+                        <h3>Analyse grammaticale</h3>
+                        <p>Identifier la nature des mots dans une phrase</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 50 XP
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 3 : Les fonctions -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">⚙️</div>
+                        <h3>Les fonctions dans la phrase</h3>
+                        <p>Sujet, verbe, complément...</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 100 XP
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Conjugaison -->
+            <section class="learning-unit">
+                <div class="unit-header">
+                    <h2>🔄 Conjugaison</h2>
+                    <p class="unit-description">Maîtrise les temps et les modes des verbes français</p>
+                </div>
+                
+                <div class="lessons-grid">
+                    <!-- Leçon 1 : Présent -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">⏰</div>
+                        <h3>Le présent de l'indicatif</h3>
+                        <p>Les 3 groupes de verbes au présent</p>
+                        <button class="btn-lesson" onclick="alert('Quiz conjugaison en développement ! ⏰')">
+                            Commencer
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 2 : Futur -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🔮</div>
+                        <h3>Le futur simple</h3>
+                        <p>Conjuguer au futur de l'indicatif</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 50 XP
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 3 : Passé composé -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">⏮️</div>
+                        <h3>Le passé composé</h3>
+                        <p>Auxiliaires être et avoir</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 100 XP
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Orthographe -->
+            <section class="learning-unit">
+                <div class="unit-header">
+                    <h2>✍️ Orthographe</h2>
+                    <p class="unit-description">Écris sans fautes grâce aux règles essentielles</p>
+                </div>
+                
+                <div class="lessons-grid">
+                    <!-- Leçon 1 : Homophones -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🔤</div>
+                        <h3>Les homophones courants</h3>
+                        <p>a/à, et/est, son/sont, ou/où...</p>
+                        <button class="btn-lesson" onclick="alert('Exercices homophones en développement ! 🔤')">
+                            Commencer
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 2 : Pluriel -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🔢</div>
+                        <h3>Le pluriel des noms</h3>
+                        <p>Règles et exceptions</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 50 XP
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 3 : Accords -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🎯</div>
+                        <h3>Les accords dans le GN</h3>
+                        <p>Accord déterminant-nom-adjectif</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 100 XP
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Vocabulaire -->
+            <section class="learning-unit">
+                <div class="unit-header">
+                    <h2>📖 Vocabulaire</h2>
+                    <p class="unit-description">Enrichis ton vocabulaire et comprends les mots</p>
+                </div>
+                
+                <div class="lessons-grid">
+                    <!-- Leçon 1 : Familles de mots -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🌳</div>
+                        <h3>Les familles de mots</h3>
+                        <p>Radical, préfixes, suffixes</p>
+                        <button class="btn-lesson" onclick="alert('Leçon vocabulaire en développement ! 🌳')">
+                            Commencer
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 2 : Synonymes/Antonymes -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">↔️</div>
+                        <h3>Synonymes et antonymes</h3>
+                        <p>Enrichir son expression</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 50 XP
+                        </button>
+                    </div>
+                    
+                    <!-- Leçon 3 : Sens propre/figuré -->
+                    <div class="lesson-card">
+                        <div class="lesson-icon">🎭</div>
+                        <h3>Sens propre et figuré</h3>
+                        <p>Comprendre les expressions</p>
+                        <button class="btn-lesson locked" disabled>
+                            🔒 Débloque avec 100 XP
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Scripts dans l'ordre standardisé -->
+    <script src="scripts/menu_lateral.js"></script>
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    
+    <script>
+        // Initialisation spécifique section Français
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🇫🇷 Section Français initialisée');
+            
+            // Attendre que xpManager soit chargé
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'francais';
+                    
+                    // Fonction d'affichage harmonisée
+                    window.updateFrenchDisplays = function() {
+                        try {
+                            const xpDisplay = document.getElementById('xp-display');
+                            const heartsDisplay = document.getElementById('hearts-display');
+                            const streakDisplay = document.getElementById('streak-display');
+                            
+                            if (xpDisplay && window.xpManager.progress) {
+                                const level = window.xpManager.progress.level || 1;
+                                const xp = window.xpManager.progress.totalXP || 0;
+                                const nextLevelXP = window.xpManager.getNextLevelXP ? window.xpManager.getNextLevelXP() : 100;
+                                xpDisplay.textContent = `${level} - ${xp}/${nextLevelXP} XP`;
+                            }
+                            
+                            if (heartsDisplay && window.xpManager.hearts) {
+                                const hearts = '❤️'.repeat(window.xpManager.hearts.current) + 
+                                             '🤍'.repeat(window.xpManager.hearts.max - window.xpManager.hearts.current);
+                                heartsDisplay.textContent = hearts;
+                            }
+                            
+                            if (streakDisplay && window.xpManager.streak) {
+                                const days = window.xpManager.streak.current || 0;
+                                streakDisplay.textContent = `${days} jour${days > 1 ? 's' : ''}`;
+                            }
+                        } catch (e) {
+                            console.warn('⚠️ Erreur mise à jour affichage:', e);
+                        }
+                    };
+                    
+                    // Mise à jour initiale
+                    window.updateFrenchDisplays();
+                    
+                    // Écoute des événements globaux
+                    document.addEventListener('xpUpdated', window.updateFrenchDisplays);
+                    document.addEventListener('heartLost', window.updateFrenchDisplays);
+                    document.addEventListener('heartRecovered', window.updateFrenchDisplays);
+                    document.addEventListener('streakUpdated', window.updateFrenchDisplays);
+                    
+                    console.log('✅ Systèmes gamifiés français connectés');
+                }
+            }, 1000);
+        });
+        
+        // Fonction debug
+        window.debugFrench = function() {
+            console.log("🔍 DEBUG Section Français:");
+            console.log("- Learning units:", document.querySelectorAll('.learning-unit').length);
+            console.log("- Lesson cards:", document.querySelectorAll('.lesson-card').length);
+            console.log("- xpManager:", typeof window.xpManager);
+            console.log("- Menu latéral:", document.getElementById('sidebar') ? 'OK' : 'MANQUANT');
+        };
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebar-toggle');
+ 
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+ 
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const opened = sidebar.style.left === '0px';
+                    if (opened) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+ 
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+ 
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+ 
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'histoire';
+                    const xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
+                }
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>

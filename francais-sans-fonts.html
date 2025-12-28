@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Français SANS Fonts - Test</title>
+    <!-- PAS DE GOOGLE FONTS -->
+    <link rel="stylesheet" href="styles/duolingo-sections.css">
+    <link rel="stylesheet" href="styles/francais-theme.css">
+    <link rel="stylesheet" href="styles/side-menu-unified.css">
+    <link rel="stylesheet" href="styles/unified-footer.css">
+    <style>
+        /* Forcer polices système */
+        * {
+            font-family: Arial, sans-serif !important;
+        }
+    </style>
+</head>
+<body class="francais-section">
+    <button class="menu-toggle-btn" onclick="toggleSideMenu()">☰</button>
+    
+    <div class="container">
+        <div class="header">
+            <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            <h1>📚 Français TEST (Sans Google Fonts)</h1>
+            <div class="stats">
+                <span id="streak-display">🔥 0 jours</span>
+                <span id="hearts-display">❤️❤️❤️❤️❤️</span>
+                <span id="xp-display">0 XP</span>
+            </div>
+        </div>
+        
+        <div class="lessons-container">
+            <h2 style="text-align:center;">Si vous voyez ce message :</h2>
+            <p style="text-align:center; font-size:18px;">
+                ✅ Le problème vient de Google Fonts + DoubleClick bloqué !
+            </p>
+        </div>
+    </div>
+
+    <script src="scripts/francais-lessons.js"></script>
+    <script src="scripts/side-menu-unified.js"></script>
+    <script src="scripts/unified-footer.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("🚀 Test sans Google Fonts");
+            if (typeof loadSideMenu === 'function') loadSideMenu();
+            if (typeof francaisApp !== 'undefined' && francaisApp.renderLessons) {
+                francaisApp.renderLessons();
+            }
+        });
+    </script>
+</body>
+</html>

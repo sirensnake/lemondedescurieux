@@ -1,0 +1,12 @@
+🔧 Correction: francais-hearts.js
+⚠️ francais-hearts.js : 1 références 'Francais' restantes
+138:window.FrancaisHearts = FrancaisHearts;
+🔧 Correction: francais-streaks.js
+⚠️ francais-streaks.js : 1 références 'Francais' restantes
+91:window.FrancaisStreaks = FrancaisStreaks;
+🔧 Correction: francais-lessons.js
+⚠️ francais-lessons.js : 0
+0 références 'Francais' restantes
+🔧 Correction: francais-app.js
+⚠️ francais-app.js : 1 références 'Francais' restantes
+35:    const required = ['FRANCAIS_LESSONS_DATA', 'FrancaisStreaks', 'FrancaisHearts'];

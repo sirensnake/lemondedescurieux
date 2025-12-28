@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Intelligence Artificielle - Le Monde des Curieux</title>
+    
+    <!-- CSS standards dans l'ordre harmonisé -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/section_style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="ia-section">
+    
+    <!-- Header harmonisé -->
+    <header class="section-header-styled ia">
+        <button onclick="history.back()" class="back-btn-minecraft ia">← Retour à l'accueil</button>
+    </header>
+    
+    <!-- Bouton menu latéral -->
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    
+    <!-- Menu latéral avec contenu -->
+    <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
+         <ul>
+             <li><a href="index.html">🏠 Accueil</a></li>
+             <li><a href="francais_section.html">🇫🇷 Français</a></li>
+             <li><a href="english_section.html">🇬🇧 English</a></li>
+             <li><a href="maths_section.html">🧮 Mathématiques</a></li>
+             <li><a href="sciences_section.html">🔬 Sciences</a></li>
+             <li><a href="histoire_section.html">🏛️ Histoire-Géo</a></li>
+             <li><a href="programmation_section.html">💻 Programmation</a></li>
+             <li><a href="echecs_section.html">♟️ Échecs</a></li>
+             <li><a href="philosophie_section.html">🤔 Philosophie</a></li>
+             <li><a href="ia_section.html">🤖 IA</a></li>
+             <li><a href="mon-parcours.html">📊 Mon Parcours</a></li>
+         </ul>
+    </nav>
+
+    <main>
+        <!-- Zone XP harmonisée -->
+        <div id="xp-status" style="display: none; text-align: center; margin: 1rem auto; padding: 1rem; background: #f8f9fa; border-radius: 8px; max-width: 800px;">
+            <span id="xp-display" style="margin: 0 1rem; font-weight: bold;">XP: 0</span>
+            <span id="hearts-display" style="margin: 0 1rem; font-size: 1.2rem;">❤️❤️❤️❤️❤️</span>
+            <span id="streak-display" style="margin: 0 1rem; font-weight: bold;">🔥 0 jours</span>
+        </div>
+
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        </div>
+
+        <div class="section-title">
+            <h1>🤖 L'Intelligence Artificielle</h1>
+            <p class="intro-text">Découvre ce qu'est l'intelligence artificielle, comment elle fonctionne et son impact sur notre vie quotidienne !</p>
+        </div>
+
+        <div class="content-wrapper" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+            
+            <!-- Introduction IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🤔 Qu'est-ce que l'Intelligence Artificielle ?</h2>
+                
+                <p>L'intelligence artificielle (IA) est une branche de l'informatique qui permet aux machines de simuler l'intelligence humaine. Les ordinateurs peuvent ainsi apprendre, raisonner et résoudre des problèmes de manière autonome !</p>
+
+                <h3>Comment fonctionne l'IA ?</h3>
+                <p>L'IA utilise des algorithmes (séries d'instructions) et des données pour apprendre. Plus elle a de données, plus elle devient performante. C'est comme si elle s'entraînait en permanence !</p>
+
+                <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>💡 Le savais-tu ?</strong> Les premières recherches sur l'IA ont commencé dans les années 1950. Aujourd'hui, l'IA est partout autour de nous !</p>
+                </div>
+            </section>
+
+            <!-- Applications concrètes -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🌍 L'IA dans notre quotidien</h2>
+                
+                <h3>Où trouve-t-on l'IA ?</h3>
+                <ul>
+                    <li><strong>🎮 Jeux vidéo</strong> : Les personnages non-joueurs (PNJ) utilisent l'IA pour réagir à tes actions</li>
+                    <li><strong>🎤 Assistants vocaux</strong> : Siri, Alexa et Google Assistant comprennent et répondent à tes questions</li>
+                    <li><strong>🚗 Voitures autonomes</strong> : Des véhicules qui se conduisent tout seuls grâce à l'IA</li>
+                    <li><strong>🎬 Recommandations</strong> : Netflix, YouTube et Spotify suggèrent des contenus adaptés à tes goûts</li>
+                    <li><strong>🏥 Médecine</strong> : L'IA aide les médecins à diagnostiquer des maladies</li>
+                    <li><strong>🌱 Environnement</strong> : L'IA surveille le climat et aide à protéger la nature</li>
+                </ul>
+
+                <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>⚠️ Important</strong> : L'IA n'est pas parfaite ! Elle peut faire des erreurs car elle apprend à partir de données créées par des humains. Si ces données contiennent des biais, l'IA peut les reproduire.</p>
+                </div>
+            </section>
+
+            <!-- Types d'IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🔍 Les différents types d'IA</h2>
+                
+                <h3>IA faible (IA étroite)</h3>
+                <p>C'est l'IA que nous utilisons tous les jours. Elle est spécialisée dans une tâche précise : reconnaître des visages, jouer aux échecs, recommander des vidéos...</p>
+                <p><strong>Exemples</strong> : Filtres de photos, assistants vocaux, GPS</p>
+
+                <h3>IA forte (IA générale)</h3>
+                <p>C'est une IA théorique qui pourrait comprendre et apprendre n'importe quelle tâche intellectuelle comme un humain. Elle n'existe pas encore !</p>
+                <p><strong>Dans la science-fiction</strong> : HAL 9000, JARVIS, les robots de films</p>
+
+                <div style="background: #f3e5f5; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>🎯 Distinction importante</strong> : Toutes les IA actuelles sont des IA faibles. L'IA forte capable de penser comme un humain n'existe que dans les films !</p>
+                </div>
+            </section>
+
+            <!-- Machine Learning -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>🧠 Le Machine Learning (Apprentissage automatique)</h2>
+                
+                <p>Le Machine Learning est la branche la plus utilisée de l'IA. L'idée est simple : au lieu de programmer toutes les règles, on laisse la machine apprendre toute seule à partir d'exemples !</p>
+
+                <h3>Comment ça marche ?</h3>
+                <ol>
+                    <li><strong>Collecter des données</strong> : On rassemble beaucoup d'exemples (photos, textes, sons...)</li>
+                    <li><strong>Entraîner le modèle</strong> : L'IA analyse les exemples et cherche des patterns (motifs récurrents)</li>
+                    <li><strong>Tester</strong> : On vérifie si l'IA a bien appris en lui donnant de nouveaux exemples</li>
+                    <li><strong>Améliorer</strong> : On corrige les erreurs et on recommence !</li>
+                </ol>
+
+                <h3>Exemple concret : Reconnaissance d'images</h3>
+                <p>Pour apprendre à reconnaître des chats, on montre à l'IA des milliers de photos de chats. Peu à peu, elle comprend les caractéristiques communes (oreilles pointues, moustaches, quatre pattes...) et peut identifier un chat même sur une photo qu'elle n'a jamais vue !</p>
+            </section>
+
+            <!-- Éthique et IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>⚖️ L'éthique de l'IA : Questions importantes</h2>
+                
+                <h3>Pourquoi parler d'éthique ?</h3>
+                <p>L'IA devient de plus en plus puissante et présente dans nos vies. Il est donc essentiel de réfléchir aux bonnes façons de l'utiliser !</p>
+
+                <h3>Questions éthiques principales</h3>
+                <ul>
+                    <li><strong>🔐 Vie privée</strong> : L'IA collecte beaucoup de données personnelles. Comment les protéger ?</li>
+                    <li><strong>⚖️ Biais et discrimination</strong> : Si les données d'entraînement sont biaisées, l'IA peut être injuste</li>
+                    <li><strong>💼 Emplois</strong> : L'IA remplace certains métiers. Comment accompagner les personnes concernées ?</li>
+                    <li><strong>🎯 Responsabilité</strong> : Si une IA fait une erreur, qui est responsable ?</li>
+                    <li><strong>🌍 Impact environnemental</strong> : Entraîner des IA consomme beaucoup d'énergie</li>
+                </ul>
+
+                <div style="background: #e8f5e9; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p><strong>✨ Bonne nouvelle</strong> : De plus en plus de chercheurs et d'entreprises travaillent pour créer une IA éthique, juste et respectueuse de l'environnement !</p>
+                </div>
+            </section>
+
+            <!-- Métiers de l'IA -->
+            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <h2>💼 Les métiers de l'IA</h2>
+                
+                <p>L'IA ouvre de nombreuses opportunités professionnelles passionnantes !</p>
+
+                <h3>Quelques métiers</h3>
+                <ul>
+                    <li><strong>Data Scientist</strong> : Analyse les données pour créer des modèles d'IA</li>
+                    <li><strong>Ingénieur en Machine Learning</strong> : Développe des algorithmes d'apprentissage</li>
+                    <li><strong>Chercheur en IA</strong> : Invente de nouvelles techniques d'IA</li>
+                    <li><strong>Éthicien en IA</strong> : S'assure que l'IA est utilisée de manière responsable</li>
+                    <li><strong>Ingénieur en Robotique</strong> : Crée des robots intelligents</li>
+                </ul>
+
+                <p><strong>Pour y arriver</strong> : Il faut aimer les mathématiques, la logique et la programmation. Mais aussi être curieux et créatif !</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    
+    <!-- Script menu latéral inline -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.getElementById('sidebar-toggle');
+ 
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
+ 
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const opened = sidebar.style.left === '0px';
+                    if (opened) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+ 
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && !sidebar.contains(e.target) && e.target !== toggleButton) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+ 
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+ 
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'ia';
+                    const xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

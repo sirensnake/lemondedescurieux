@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Échecs - Le Monde des Curieux</title>
+    
+    <!-- CSS existants dans l'ordre standard -->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index_style.css">
+    <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
+    <link rel="stylesheet" href="styles/accessibilite.css">
+    <link rel="stylesheet" href="styles/dark-mode.css">
+    <link rel="stylesheet" href="styles/breadcrumb.css">
+    <link rel="stylesheet" href="styles/layout_style.css">
+    <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/echecs_styles.css">
+    
+    <!-- Composants réutilisables -->
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+</head>
+<body class="echecs-section">
+    <!-- Header stylisé avec composant -->
+    <header class="section-header-styled echecs">
+        <button onclick="history.back()" class="back-btn-minecraft echecs">
+            ← Retour à l'accueil
+        </button>
+    </header>
+
+    <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            🏠 <a href="index.html">Accueil</a> > ♟️ Échecs
+        </div>
+
+        <!-- Menu latéral simple et fonctionnel -->
+        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+        <div class="sidebar">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire-Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
+            </ul>
+        </div>
+
+        <!-- Zone XP automatique -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
+            <span id="xp-display">XP: 0</span> | 
+            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display">🔥 0 jours</span>
+        </div>
+
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        </div>
+
+        <div class="section-title">
+            <h1 class="animated-title">♟️ Bienvenue dans la section Échecs</h1>
+            <p class="intro-text">Plonge dans l'univers des échecs et découvre des stratégies fascinantes !</p>
+        </div>
+
+        <!-- Contenu spécifique à la section PRÉSERVÉ -->
+        <section>
+            <div class="content-container">
+                <div class="content">
+                    <h2>📜 Règles du jeu</h2>
+                    <p>Apprends les bases du jeu d'échecs et comment chaque pièce se déplace.</p>
+                    <a href="echecs_regles.html" class="learn-more">📖 Lire les règles</a>
+                </div>
+
+                <div class="content">
+                    <h2>⚔️ Tactiques et Stratégies</h2>
+                    <p>Découvre les meilleures tactiques pour capturer ton adversaire !</p>
+                    <a href="echecs_tactiques.html" class="learn-more">🧠 Étudier les tactiques</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts standards -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+
+    <script>
+        // Initialisation standard
+        document.addEventListener("DOMContentLoaded", function () {
+            // Gestion du menu latéral
+            var sidebar = document.querySelector('.sidebar');
+            var toggleButton = document.querySelector('.sidebar-toggle');
+            
+            // Cacher initialement le menu
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+            }
+            
+            // Gestion du clic sur le bouton du menu
+            if (toggleButton && sidebar) {
+                toggleButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                    } else {
+                        sidebar.style.left = '0px';
+                    }
+                });
+                
+                // Fermer le menu en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && 
+                        e.target !== toggleButton && 
+                        !sidebar.contains(e.target)) {
+                        sidebar.style.left = '-250px';
+                    }
+                });
+            }
+
+            // XP system integration
+            setTimeout(() => {
+                if (window.xpManager) {
+                    window.xpManager.currentSection = 'echecs';
+                    document.getElementById('xp-status').style.display = 'block';
+                }
+
+                // Initialiser les fonctions d'accessibilité si disponibles
+                if (typeof initAccessibilityFeatures === 'function') {
+                    initAccessibilityFeatures();
+                }
+            }, 1000);
+
+            console.log("✔️ Section Échecs chargée avec succès !");
+        });
+    </script>
+    <script src="./scripts/xp_system_complete.js"></script>
+</body>
+</html>
