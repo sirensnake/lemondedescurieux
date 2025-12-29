@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Centre de Récompenses - Curio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body { background: #1a1a1a; color: white; font-family: 'Press Start 2P', cursive; text-align: center; padding: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 40px; }
+        .card { border: 4px solid #3498db; padding: 20px; background: #2c3e50; cursor: pointer; }
+        .card:hover { border-color: #f1c40f; }
+        .locked { opacity: 0.5; filter: grayscale(1); }
+        .price { color: #f1c40f; font-size: 0.8em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>✨ Récompenses d'Explorateur</h1>
+    <p>XP disponibles : <span id="xp-count">0</span> ⭐</p>
+
+    <div class="grid" id="rewards-grid"></div>
+
+    <script>
+        const rewards = [
+            { name: "Renard", emoji: "🦊", price: 0 },
+            { name: "Chat", emoji: "🐱", price: 100 },
+            { name: "Robot", emoji: "🤖", price: 300 },
+            { name: "Dragon", emoji: "🐲", price: 600 },
+            { name: "Licorne", emoji: "🦄", price: 1000 }
+        ];
+
+        function render() {
+            const xp = parseInt(localStorage.getItem('curio_xp')) || 0;
+            document.getElementById('xp-count').innerText = xp;
+            const grid = document.getElementById('rewards-grid');
+            grid.innerHTML = rewards.map(r => `
+                <div class="card ${xp < r.price ? 'locked' : ''}" onclick="unlock('${r.emoji}', ${r.price})">
+                    <div style="font-size: 40px;">${r.emoji}</div>
+                    <div style="font-size: 10px; margin-top:10px;">${r.name}</div>
+                    <div class="price">${r.price} XP</div>
+                </div>
+            `).join('');
+        }
+
+        window.unlock = (emoji, price) => {
+            const xp = parseInt(localStorage.getItem('curio_xp')) || 0;
+            if (xp >= price) {
+                localStorage.setItem('curio_selected_avatar_emoji', emoji);
+                alert("Identité mise à jour !");
+                window.location.href = 'dashboard_global.html';
+            } else {
+                alert("Continue tes missions pour gagner plus d'XP !");
+            }
+        };
+
+        render();
+    </script>
+</body>
+</html>

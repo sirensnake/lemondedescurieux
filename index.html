@@ -5,18 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Monde des Curieux</title>
     
-    <!-- SEULEMENT 2 CSS : mindmap + home -->
     <link rel="stylesheet" href="styles/mindmap_svg.css">
     <link rel="stylesheet" href="styles/home-page.css">
+
+    <script src="scripts/mission-histoire.js"></script>
+    <script src="scripts/mission-robots.js"></script>
+    <script src="scripts/mission-sciences.js"></script>
+    <script src="scripts/mission-francais.js"></script>
+    <script src="scripts/mission-english.js"></script>
+    
+    <script src="scripts/mission-engine.js"></script>
+    <script src="scripts/dashboard-fix.js"></script>
 </head>
 <body class="home-page">
     
-    <!-- MENU HAMBURGER -->
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
     
-    <!-- MENU LATÉRAL -->
     <nav class="side-menu" id="sideMenu">
         <a href="index.html">🏠 Accueil</a>
+        <a href="boutique.html">💎 Boutique</a>
         <a href="dashboard_global.html">📊 Mon Parcours</a>
         <div class="menu-divider"></div>
         <a href="francais_duolingo_section.html">📚 Français</a>
@@ -29,84 +36,46 @@
         <a href="infos_section.html">📰 Infos & News</a>
     </nav>
     
-    <!-- HEADER -->
     <header>
         <h1>🎮 Le Monde des Curieux</h1>
         <p>Explore, apprends et gagne des XP !</p>
     </header>
     
-    <!-- CONTENU PRINCIPAL -->
     <div class="page-content">
         
-        <!-- COLONNE GAUCHE : MINDMAP -->
         <div class="mindmap-section">
             <div class="mindmap-container">
                 <img src="images/mindmap_lemondedescurieux_v2.png" 
                      alt="Mindmap Le Monde des Curieux" 
                      class="mindmap-image">
                 
-                <!-- SVG ADAPTÉ 1024x1024 avec coordonnées ajustées -->
                 <svg class="mindmap-svg" viewBox="0 0 1024 1024" preserveAspectRatio="xMidYMid meet">
-                    <a href="francais_duolingo_section.html">
-                        <circle class="zone-clickable" cx="209" cy="270" r="85">
-                            <title>📚 FRANÇAIS</title>
-                        </circle>
-                    </a>
-                    <a href="maths_duolingo_section.html">
-                        <circle class="zone-clickable" cx="809" cy="271" r="85">
-                            <title>🔢 MATHS</title>
-                        </circle>
-                    </a>
-                    <a href="histoire_duolingo_section.html">
-                        <circle class="zone-clickable" cx="125" cy="491" r="85">
-                            <title>🗺️ HISTOIRE-GÉO</title>
-                        </circle>
-                    </a>
-                    <a href="english_duolingo_section.html">
-                        <circle class="zone-clickable" cx="900" cy="490" r="85">
-                            <title>🇬🇧 ENGLISH</title>
-                        </circle>
-                    </a>
-                    <a href="sciences_duolingo_section.html">
-                        <circle class="zone-clickable" cx="182" cy="724" r="80">
-                            <title>🔬 SCIENCES</title>
-                        </circle>
-                    </a>
-                    <a href="ressources_section.html">
-                        <circle class="zone-clickable" cx="846" cy="722" r="80">
-                            <title>📦 RESSOURCES</title>
-                        </circle>
-                    </a>
-                    <a href="dashboard_global.html">
-                        <circle class="zone-clickable" cx="392" cy="844" r="75">
-                            <title>📊 MON PARCOURS</title>
-                        </circle>
-                    </a>
-                    <a href="infos_section.html">
-                        <circle class="zone-clickable" cx="638" cy="844" r="75">
-                            <title>📰 INFOS</title>
-                        </circle>
-                    </a>
+                    <a href="francais_duolingo_section.html"><circle class="zone-clickable" cx="209" cy="270" r="85"><title>📚 FRANÇAIS</title></circle></a>
+                    <a href="maths_duolingo_section.html"><circle class="zone-clickable" cx="809" cy="271" r="85"><title>🔢 MATHS</title></circle></a>
+                    <a href="histoire_duolingo_section.html"><circle class="zone-clickable" cx="125" cy="491" r="85"><title>🗺️ HISTOIRE-GÉO</title></circle></a>
+                    <a href="english_duolingo_section.html"><circle class="zone-clickable" cx="900" cy="490" r="85"><title>🇬🇧 ENGLISH</title></circle></a>
+                    <a href="sciences_duolingo_section.html"><circle class="zone-clickable" cx="182" cy="724" r="80"><title>🔬 SCIENCES</title></circle></a>
+                    <a href="ressources_section.html"><circle class="zone-clickable" cx="846" cy="722" r="80"><title>📦 RESSOURCES</title></circle></a>
+                    <a href="dashboard_global.html"><circle class="zone-clickable" cx="392" cy="844" r="75"><title>📊 MON PARCOURS</title></circle></a>
+                    <a href="infos_section.html"><circle class="zone-clickable" cx="638" cy="844" r="75"><title>📰 INFOS</title></circle></a>
                 </svg>
             </div>
         </div>
         
-        <!-- COLONNE DROITE : DASHBOARD & PARCOURS -->
         <div class="sidebar-content">
             
-            <!-- DASHBOARD -->
             <div class="card">
                 <h2>📊 Mon Parcours</h2>
                 <div class="stats">
                     <div class="stat">
                         <span class="stat-icon">🎯</span>
                         <span class="stat-label">Niveau</span>
-                        <span class="stat-value">1</span>
+                        <span class="stat-value" id="level-val">1</span>
                     </div>
                     <div class="stat">
                         <span class="stat-icon">⭐</span>
                         <span class="stat-label">XP</span>
-                        <span class="stat-value">0</span>
+                        <span class="stat-value" id="xp-val">0</span>
                     </div>
                     <div class="stat">
                         <span class="stat-icon">🔥</span>
@@ -117,36 +86,43 @@
                 <a href="dashboard_global.html" class="btn">Voir Détails</a>
             </div>
             
-            <!-- PARCOURS THÉMATIQUES -->
             <div class="card">
-                <h2>🚀 Parcours thématiques</h2>
+                <h2>🚀 Missions Spéciales</h2>
                 
                 <div class="parcours-item">
-                    <h3>🚀 Aventure spatiale</h3>
-                    <p class="parcours-meta">Sciences · Maths · Histoire</p>
-                    <span class="xp-badge">+50 XP</span>
-                    <a href="parcours/espace.html" class="btn">Commencer</a>
+                    <h3>👑 Le Roi Soleil</h3>
+                    <p class="parcours-meta">Histoire · Arts</p>
+                    <button onclick="launchMission(missionHistoire)" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:5px;">Commencer</button>
                 </div>
                 
                 <div class="parcours-item">
-                    <h3>🌊 Mystères des océans</h3>
-                    <p class="parcours-meta">Sciences · Géographie · Maths</p>
-                    <span class="xp-badge">+40 XP</span>
-                    <a href="parcours/ocean.html" class="btn">Plonger</a>
+                    <h3>💧 Le cycle de l'eau</h3>
+                    <p class="parcours-meta">Sciences · CM2</p>
+                    <button onclick="launchMission(missionEau)" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:5px;">Explorer</button>
                 </div>
                 
                 <div class="parcours-item">
                     <h3>🤖 Univers des robots</h3>
-                    <p class="parcours-meta">Programmation · Sciences · IA</p>
-                    <span class="xp-badge">+60 XP</span>
-                    <a href="parcours/robotique.html" class="btn">Construire</a>
+                    <p class="parcours-meta">Techno · IA</p>
+                    <button onclick="launchMission(missionRobots)" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:5px;">Construire</button>
                 </div>
+
+                <div class="parcours-item">
+                    <h3>📚 Détective des Mots</h3>
+                    <p class="parcours-meta">Français · CM2</p>
+                    <button onclick="launchMission(missionFrancais)" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:5px;">Enquêter</button>
+                </div>
+                <div class="parcours-item">
+                    <h3>🇬🇧 English Adventure</h3>
+                    <p class="parcours-meta">English · Level 1</p>
+                    <button onclick="launchMission(missionEnglish)" class="btn" style="width:100%; border:none; cursor:pointer; margin-top:5px;">Play</button>
+                </div>
+
             </div>
             
         </div>
     </div>
     
-    <!-- FOOTER -->
     <footer>
         <p>© 2025 Le Monde des Curieux</p>
         <p>
@@ -157,6 +133,7 @@
     </footer>
     
     <script>
+        // Logique Menu Hamburger (Interne à la page)
         function toggleMenu() {
             document.getElementById('sideMenu').classList.toggle('open');
         }
@@ -164,16 +141,18 @@
         document.addEventListener('click', function(e) {
             const menu = document.getElementById('sideMenu');
             const btn = document.querySelector('.menu-btn');
-            
-            if (menu.classList.contains('open') && 
-                e.target !== menu && 
-                !menu.contains(e.target) && 
-                e.target !== btn) {
+            if (menu.classList.contains('open') && e.target !== menu && !menu.contains(e.target) && e.target !== btn) {
                 menu.classList.remove('open');
             }
         });
-        
-        console.log('✅ Mindmap:', document.querySelectorAll('.zone-clickable').length, 'zones');
+
+        // Initialisation des données au chargement
+        window.addEventListener('load', () => {
+            if (typeof window.mettreAJourAffichage === "function") {
+                window.mettreAJourAffichage();
+            }
+        });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
