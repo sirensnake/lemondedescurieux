@@ -4,298 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Français - Le Monde des Curieux</title>
-    <link rel="stylesheet" href="styles/base-style.css">
-    <link rel="stylesheet" href="styles/francais_duolingo.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/duolingo-sections.css">
+    <link rel="stylesheet" href="styles/francais-theme.css">
+    <link rel="stylesheet" href="styles/francais-feedback-popup.css">
+    <link rel="stylesheet" href="styles/side-menu-unified.css">
+    <link rel="stylesheet" href="styles/unified-footer.css">
 </head>
-<body>
-    <!-- Debug Panel (visible en mode développement) -->
-    <div id="debug-panel" class="debug-panel" style="display: none;">
-        <h3>🔧 Debug Mode</h3>
-        <div id="debug-info"></div>
-        <button onclick="FrenchDebug.toggleDebug()">Toggle Debug</button>
-        <button onclick="FrenchDebug.resetProgress()">Reset Progress</button>
-        <button onclick="FrenchDebug.testNotifications()">Test Notifications</button>
-    </div>
+<body class="francais-section">
 
-    <!-- Header avec stats utilisateur -->
-    <header class="game-header">
-        <div class="header-left">
-            <button id="back-btn" class="back-button">← Retour</button>
-            <h1>🇫🇷 Français</h1>
+    <button class="menu-toggle-btn" onclick="toggleSideMenu()" aria-label="Ouvrir le menu">
+        ☰
+    </button>
+
+    <button class="menu-toggle-btn home-btn-nav" onclick="window.location.href='index.html'" aria-label="Retour Accueil">
+        🏠
+    </button>
+
+    <div class="container">
+        <div class="header">
+            <h1>📚 Français</h1>
+            <div class="stats">
+                <span id="streak-display">🔥 0 jours</span>
+                <span id="hearts-display">❤️❤️❤️❤️❤️</span>
+                <span id="xp-display">0 XP</span>
+            </div>
         </div>
         
-        <div class="header-stats">
-            <!-- Streak Counter -->
-            <div id="streak-display" class="stat-item">
-                <span class="streak-flame">🔥</span>
-                <span id="streak-count">0</span>
-                <span class="stat-label">jours</span>
-            </div>
-            
-            <!-- Hearts/Lives -->
-            <div id="hearts-display" class="stat-item">
-                <!-- Hearts générés dynamiquement -->
-            </div>
-            
-            <!-- XP Bar -->
-            <div id="xp-display" class="stat-item">
-                <div class="xp-container">
-                    <div class="xp-bar">
-                        <div id="xp-fill" class="xp-fill"></div>
-                    </div>
-                    <span id="xp-text">0 XP</span>
-                </div>
-            </div>
+        <div id="lessons-list">
+            <div id="lessons-grid"></div>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Écran d'accueil -->
-        <section id="welcome-screen" class="screen active">
-            <div class="welcome-content">
-                <div class="curio-welcome">
-                    <img src="images/curio-thinking.png" alt="Curio réfléchit" class="curio-image">
-                    <div class="speech-bubble">
-                        <p>Salut ! Prêt à améliorer ton français ? 🎯</p>
-                        <p>Tu vas gagner des XP et maintenir ton streak !</p>
-                    </div>
+        
+        <div id="lesson-screen" style="display: none;">
+            <div id="exercise-screen">
+                <div class="exercise-header">
+                    <button class="btn btn-secondary" onclick="francaisApp.backToLessons()">← Retour</button>
+                    <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
                 </div>
                 
-                <div class="quick-stats">
-                    <div class="stat-card">
-                        <span class="stat-number" id="total-lessons">0</span>
-                        <span class="stat-label">leçons complétées</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" id="longest-streak">0</span>
-                        <span class="stat-label">plus long streak</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" id="total-xp">0</span>
-                        <span class="stat-label">XP total</span>
-                    </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                 </div>
                 
-                <button id="start-learning-btn" class="primary-button pulse">
-                    Commencer ! 🚀
-                </button>
-            </div>
-        </section>
-
-        <!-- Sélection des leçons -->
-        <section id="lessons-screen" class="screen">
-            <div class="lessons-header">
-                <h2>Choisis ta leçon</h2>
-                <div class="difficulty-selector">
-                    <button class="difficulty-btn active" data-level="easy">Facile</button>
-                    <button class="difficulty-btn" data-level="medium">Moyen</button>
-                    <button class="difficulty-btn" data-level="hard">Difficile</button>
+                <div class="question-area">
+                    <div class="question-text" id="question-text"></div>
+                    <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
+                    <div id="hint-area"></div>
+                </div>
+                
+                <div class="button-area">
+                    <button class="btn btn-secondary" onclick="francaisApp.showHint()">💡 Indice</button>
+                    <button class="btn btn-primary" onclick="francaisApp.checkAnswer()">✓ Vérifier</button>
                 </div>
             </div>
             
-            <div id="lessons-grid" class="lessons-grid">
-                <!-- Leçons générées dynamiquement -->
-            </div>
-        </section>
-
-        <!-- Écran de leçon active -->
-        <section id="lesson-screen" class="screen">
-            <div class="lesson-header">
-                <div class="lesson-progress">
-                    <div class="progress-bar">
-                        <div id="lesson-progress-fill" class="progress-fill"></div>
-                    </div>
-                    <span id="question-counter">1/10</span>
-                </div>
-                <button id="quit-lesson-btn" class="quit-button">✕</button>
-            </div>
-            
-            <div class="lesson-content">
-                <div id="question-area" class="question-area">
-                    <!-- Question générée dynamiquement -->
-                </div>
-                
-                <div id="answer-area" class="answer-area">
-                    <!-- Réponses générées dynamiquement -->
-                </div>
-                
-                <div id="feedback-area" class="feedback-area">
-                    <!-- Feedback affiché après réponse -->
-                </div>
-            </div>
-            
-            <div class="lesson-controls">
-                <button id="hint-btn" class="hint-button">💡 Indice</button>
-                <button id="check-answer-btn" class="primary-button" disabled>Vérifier</button>
-            </div>
-        </section>
-
-        <!-- Écran de résultats -->
-        <section id="results-screen" class="screen">
-            <div class="results-content">
-                <div class="results-header">
-                    <img id="results-curio" src="images/curio-happy.png" alt="Curio content" class="curio-image">
-                    <h2 id="results-title">Excellent travail ! 🎉</h2>
-                </div>
-                
+            <div id="results-screen">
+                <div class="results-icon">🏆</div>
+                <h2 style="color: #2a9d8f; margin-bottom: 2rem;">Leçon Terminée !</h2>
                 <div class="results-stats">
-                    <div class="result-item">
-                        <span class="result-icon">✅</span>
-                        <span id="correct-answers">8</span>
-                        <span>bonnes réponses</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-icon">⭐</span>
-                        <span id="xp-gained">+50</span>
-                        <span>XP</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-icon">🔥</span>
-                        <span id="streak-bonus">+10</span>
-                        <span>bonus streak</span>
-                    </div>
+                    <div class="stat-box"><div class="stat-value" id="result-correct">0</div><div class="stat-label">Bonnes réponses</div></div>
+                    <div class="stat-box"><div class="stat-value" id="result-xp">0</div><div class="stat-label">XP gagnés</div></div>
+                    <div class="stat-box"><div class="stat-value" id="result-hearts">5</div><div class="stat-label">Cœurs restants</div></div>
                 </div>
-                
-                <div class="results-actions">
-                    <button id="continue-btn" class="primary-button">Continuer</button>
-                    <button id="replay-btn" class="secondary-button">Rejouer</button>
-                </div>
+                <button class="btn btn-primary" onclick="francaisApp.backToLessons()" style="margin-top: 2rem; width: 100%;">🏠 Retour aux leçons</button>
             </div>
-        </section>
-
-        <!-- Écran sans cœurs -->
-        <section id="no-hearts-screen" class="screen">
-            <div class="no-hearts-content">
-                <div class="curio-sad">
-                    <img src="images/curio-sad.png" alt="Curio triste" class="curio-image">
-                    <div class="speech-bubble">
-                        <p>Oops ! Plus de cœurs ! 💔</p>
-                        <p>Attends <span id="heart-regen-timer">29:45</span> ou regarde une pub pour continuer.</p>
-                    </div>
-                </div>
-                
-                <div class="hearts-options">
-                    <button id="wait-hearts-btn" class="secondary-button">
-                        ⏰ Attendre la récupération
-                    </button>
-                    <button id="practice-mode-btn" class="primary-button">
-                        📚 Mode entraînement (sans cœurs)
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Notification popup -->
-    <div id="notification" class="notification">
-        <div class="notification-content">
-            <span id="notification-text"></span>
-            <button id="notification-close">✕</button>
         </div>
+        <div class="feedback" id="feedback"></div>
     </div>
 
-    <!-- Scripts -->
-    <script src="scripts/francais-storage.js"></script>
-    <script src="scripts/francais-hearts.js"></script>
-    <script src="scripts/francais-streaks.js"></script>
     <script src="scripts/francais-lessons.js"></script>
-    <script src="scripts/francais-app.js"></script>
-    
-    <!-- Script d'initialisation critique -->
-    <script>
-        // Initialisation immédiate avec gestion d'erreurs
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🎯 DOM loaded, initializing French Duolingo...');
-            
-            try {
-                // Vérification des dépendances
-                if (typeof FrenchStorage === 'undefined') {
-                    throw new Error('FrenchStorage not loaded');
-                }
-                if (typeof FrenchHearts === 'undefined') {
-                    throw new Error('FrenchHearts not loaded');
-                }
-                if (typeof FrenchStreaks === 'undefined') {
-                    throw new Error('FrenchStreaks not loaded');
-                }
-                if (typeof FrenchApp === 'undefined') {
-                    throw new Error('FrenchApp not loaded');
-                }
-                
-                // Initialisation avec debug
-                window.frenchApp = new FrenchApp();
-                console.log('✅ French Duolingo initialized successfully');
-                
-                // Debug mode pour développement
-                if (window.location.search.includes('debug=true')) {
-                    document.getElementById('debug-panel').style.display = 'block';
-                    window.frenchApp.enableDebugMode();
-                }
-                
-            } catch (error) {
-                console.error('❌ French Duolingo initialization failed:', error);
-                
-                // Affichage d'erreur utilisateur
-                document.body.innerHTML = `
-                    <div style="padding: 20px; text-align: center; font-family: Arial;">
-                        <h2>🔧 Erreur de chargement</h2>
-                        <p>La section Français n'a pas pu se charger correctement.</p>
-                        <p><strong>Erreur:</strong> ${error.message}</p>
-                        <button onclick="location.reload()">Recharger la page</button>
-                        <br><br>
-                        <a href="index.html">← Retour à l'accueil</a>
-                    </div>
-                `;
-            }
-        });
-        
-        // Test de fonctionnement des boutons (debug)
-        function testButtons() {
-            console.log('🧪 Testing button functionality...');
-            
-            const buttons = document.querySelectorAll('button');
-            buttons.forEach((btn, index) => {
-                console.log(`Button ${index}: ${btn.textContent} - ${btn.onclick ? 'Has click handler' : 'No click handler'}`);
-            });
-        }
-        
-        // Exposer fonctions de debug globalement
-        window.FrenchDebug = {
-            testButtons,
-            getAppInstance: () => window.frenchApp,
-            resetProgress: () => {
-                localStorage.clear();
-                location.reload();
-            },
-            toggleDebug: () => {
-                const panel = document.getElementById('debug-panel');
-                panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-            },
-            testNotifications: () => {
-                if (window.frenchApp) {
-                    window.frenchApp.showNotification('🧪 Test notification', 'success');
-                }
-            },
-            getPerformanceMetrics: () => {
-                return {
-                    localStorage: localStorage.length + ' keys',
-                    memoryUsage: navigator.deviceMemory || 'unknown',
-                    connection: navigator.connection?.effectiveType || 'unknown'
-                };
-            }
-        };
-        
-        // Log pour diagnostic
-        console.log('📋 French Duolingo - Diagnostic Info:');
-        console.log('- User Agent:', navigator.userAgent);
-        console.log('- Local Storage available:', typeof Storage !== 'undefined');
-        console.log('- Page URL:', window.location.href);
-        console.log('- Script loading order: Storage → Hearts → Streaks → Lessons → App');
-    </script>
-    <script src="./scripts/xp_system_complete.js"></script>
+    <script src="scripts/side-menu-unified.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => { loadSideMenu(); });</script>
+    <script src="scripts/unified-footer.js"></script>
 </body>
 </html>

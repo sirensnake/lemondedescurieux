@@ -213,9 +213,65 @@ body.home-page {
     margin: 0 0.5rem;
 }
 
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #34495e; /* Couleur sombre cohérente */
+    color: #f1c40f; /* Or Curio */
+    border: 4px solid #000;
+    box-shadow: inset -4px -4px 0px 0px #2c3e50;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    image-rendering: pixelated; /* Crucial pour le rendu net */
+}
+
+.menu-btn:hover {
+    background-color: #3e5871;
+    transform: scale(1.05);
+}
+.menu-btn:active {
+    transform: scale(0.9);
+    box-shadow: inset 4px 4px 0px 0px #000;
+}
+
 /* RESPONSIVE */
 @media (max-width: 968px) {
     .home-page .page-content {
         grid-template-columns: 1fr;
     }
+}
+
+/* Le bouton Menu garde sa position initiale */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    /* ... reste du code identique ... */
+}
+
+/* Nouvelle classe pour le bouton Accueil sur les pages secondaires */
+.home-btn-offset {
+    left: 80px !important; /* On le décale pour ne pas chevaucher le menu */
+}
+
+/* Position standard pour le menu hamburger */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1002; /* Doit être au-dessus de tout */
+}
+
+/* Classe de décalage pour le bouton Accueil sur les pages de sections */
+.home-btn-offset {
+    left: 85px !important; /* 20px base + 50px bouton + 15px d'espace */
+    z-index: 1001;
 }

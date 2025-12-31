@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ressources Pédagogiques - Le Monde des Curieux</title>
     
-    <!-- CSS standards -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/index_style.css">
     <link rel="stylesheet" href="styles/accessibilite.css">
@@ -15,150 +14,81 @@
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/side-menu-unified.css">
     
-    <!-- Police -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/unified-header.css">
     <link rel="stylesheet" href="styles/unified-footer.css">
 </head>
 <body class="ressources-section">
-    <!-- Bouton Menu Hamburger -->
-    <button class="menu-toggle-btn" onclick="toggleSideMenu()" aria-label="Ouvrir le menu">
-        ☰
-    </button>
+    <button class="menu-toggle-btn" onclick="toggleSideMenu()" aria-label="Ouvrir le menu">☰</button>
     
-    <!-- Header -->
     <header class="unified-header">
-        <h1>📦 Ressources Pédagogiques</h1>
-        <button class="back-home-btn" onclick="window.location.href='index.html'">
-            ← Retour à l'accueil
-        </button>
+        <div class="header-content">
+            <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            <h1>📦 Ressources Pédagogiques</h1>
+        </div>
     </header>
 
     <main>
-        <!-- Fil d'Ariane -->
-        <div class="breadcrumb" aria-label="Fil d'Ariane">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
             🏠 <a href="index.html">Accueil</a> > 📦 Ressources
-        </div>
+        </nav>
 
-        <div class="section-title">
-            <h1>📦 Ressources Pédagogiques</h1>
-            <p>Découvre des outils, des liens et des contenus pour approfondir tes connaissances !</p>
-        </div>
+        <section class="container">
+            <div class="section-introduction">
+                <p>Supports de cours IEF et outils numériques pour apprendre autrement.</p>
+            </div>
 
-        <!-- Contenu -->
-        <section>
-            <div class="content">
-                <div class="resource-category">
-                    <h2>📚 Mathématiques</h2>
-                    <div class="resource-list">
-                        <div class="resource-item">
-                            <h3>Khan Academy</h3>
-                            <p>Des exercices interactifs et des vidéos pour apprendre les mathématiques à ton rythme.</p>
-                            <a href="https://fr.khanacademy.org/math" target="_blank" class="btn">Visiter</a>
-                        </div>
-                        <div class="resource-item">
-                            <h3>Calculatrice Scientifique</h3>
-                            <p>Un outil en ligne pour effectuer des calculs complexes facilement.</p>
-                            <a href="https://www.desmos.com/scientific" target="_blank" class="btn">Utiliser</a>
-                        </div>
-                    </div>
+            <div class="resource-category">
+                <h2 class="category-title-pdf">📥 Fiches de Révision (PDF)</h2>
+                <div class="download-grid">
+                    <article class="pdf-card">
+                        <div class="pixel-icon">📝</div>
+                        <h3>Français : Le Présent</h3>
+                        <p class="pdf-meta">Niveaux : CE1 - CE2</p>
+                        <a href="assets/pdf/fr-present.pdf" class="btn-download" download>Télécharger</a>
+                    </article>
+
+                    <article class="pdf-card">
+                        <div class="pixel-icon">➗</div>
+                        <h3>Maths : Les Tables</h3>
+                        <p class="pdf-meta">Niveaux : CP - CM2</p>
+                        <a href="assets/pdf/maths-tables.pdf" class="btn-download" download>Télécharger</a>
+                    </article>
+
+                    <article class="pdf-card">
+                        <div class="pixel-icon">🌍</div>
+                        <h3>Histoire : Époques</h3>
+                        <p class="pdf-meta">Niveau : Cycle 3</p>
+                        <a href="assets/pdf/histoire-inventions.pdf" class="btn-download" download>Télécharger</a>
+                    </article>
                 </div>
+            </div>
 
-                <div class="resource-category">
-                    <h2>🔬 Sciences</h2>
-                    <div class="resource-list">
-                        <div class="resource-item">
-                            <h3>C'est pas Sorcier</h3>
-                            <p>Des centaines d'épisodes pour tout comprendre sur la science, la nature et la technologie.</p>
-                            <a href="https://www.youtube.com/user/cestpassorcierftv" target="_blank" class="btn">Regarder</a>
-                        </div>
-                        <div class="resource-item">
-                            <h3>Vikidia Sciences</h3>
-                            <p>Une encyclopédie gratuite et collaborative adaptée aux enfants.</p>
-                            <a href="https://fr.vikidia.org/wiki/Portail:Sciences" target="_blank" class="btn">Explorer</a>
-                        </div>
+            <div class="resource-category">
+                <h2 class="category-title-links">🌐 Liens Utiles</h2>
+                <div class="resource-list">
+                    <div class="resource-item">
+                        <h3>Lumni</h3>
+                        <p>Vidéos officielles de l'Éducation Nationale.</p>
+                        <a href="https://www.lumni.fr" target="_blank" class="btn">Visiter</a>
                     </div>
-                </div>
-
-                <div class="resource-category">
-                    <h2>🗺️ Histoire & Géographie</h2>
-                    <div class="resource-list">
-                        <div class="resource-item">
-                            <h3>Quelle Histoire</h3>
-                            <p>Des histoires illustrées sur les grands personnages et événements historiques.</p>
-                            <a href="https://www.quelle-histoire.com/" target="_blank" class="btn">Découvrir</a>
-                        </div>
-                        <div class="resource-item">
-                            <h3>Google Earth</h3>
-                            <p>Explore le monde entier en 3D depuis ton ordinateur !</p>
-                            <a href="https://earth.google.com/web/" target="_blank" class="btn">Voyager</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="resource-category">
-                    <h2>🇬🇧 Anglais</h2>
-                    <div class="resource-list">
-                        <div class="resource-item">
-                            <h3>Duolingo</h3>
-                            <p>Apprends l'anglais en jouant avec des leçons courtes et amusantes.</p>
-                            <a href="https://www.duolingo.com/" target="_blank" class="btn">Commencer</a>
-                        </div>
-                        <div class="resource-item">
-                            <h3>BBC Learning English for Kids</h3>
-                            <p>Des jeux et des vidéos pour apprendre l'anglais en s'amusant.</p>
-                            <a href="https://www.bbc.co.uk/learningenglish" target="_blank" class="btn">Apprendre</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="resource-category">
-                    <h2>💻 Programmation</h2>
-                    <div class="resource-list">
-                        <div class="resource-item">
-                            <h3>Scratch</h3>
-                            <p>Crée tes propres jeux et animations en programmant avec des blocs colorés.</p>
-                            <a href="https://scratch.mit.edu/" target="_blank" class="btn">Créer</a>
-                        </div>
-                        <div class="resource-item">
-                            <h3>Code.org</h3>
-                            <p>Des cours gratuits pour apprendre à coder de manière ludique.</p>
-                            <a href="https://code.org/" target="_blank" class="btn">Coder</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="resource-category">
-                    <h2>🎨 Autres Ressources</h2>
-                    <div class="resource-list">
-                        <div class="resource-item">
-                            <h3>1 jour, 1 question</h3>
-                            <p>Des vidéos courtes pour répondre aux questions que tu te poses sur l'actualité.</p>
-                            <a href="https://www.lumni.fr/programme/1-jour-1-question" target="_blank" class="btn">Voir</a>
-                        </div>
-                        <div class="resource-item">
-                            <h3>BrainPOP Français</h3>
-                            <p>Des films d'animation éducatifs sur tous les sujets !</p>
-                            <a href="https://fr.brainpop.com/" target="_blank" class="btn">Regarder</a>
-                        </div>
+                    <div class="resource-item">
+                        <h3>Khan Academy</h3>
+                        <p>Leçons interactives gratuites.</p>
+                        <a href="https://fr.khanacademy.org" target="_blank" class="btn">Explorer</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Scripts -->
     <script src="scripts/general_script.js"></script>
-    <script src="scripts/accessibilite.js"></script>
-    
-    <!-- Menu Latéral Unifié -->
     <script src="scripts/side-menu-unified.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             loadSideMenu();
         });
     </script>
-    <!-- Footer Unifié -->
     <script src="scripts/unified-footer.js"></script>
 </body>
 </html>

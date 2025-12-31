@@ -1,9 +1,9 @@
 /* ========================================
    MENU LATÉRAL SOBRE - LE MONDE DES CURIEUX
-   Style identique à index.html
+   Style d'origine préservé
    ======================================== */
 
-/* BOUTON HAMBURGER */
+/* BOUTON HAMBURGER (ORIGINAL) */
 .menu-toggle-btn,
 .menu-btn {
     position: fixed;
@@ -27,6 +27,25 @@
     background: #238276;
 }
 
+/* DECALAGE POUR L'ACCUEIL (NOUVEAU) */
+/* On ajoute cette règle pour éviter le chevauchement */
+.back-home-btn {
+    margin-left: 65px; /* Espace pour le bouton hamburger */
+    background-color: #e76f51; /* Orange d'origine */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.back-home-btn:hover {
+    background-color: #cf5d41;
+}
+
 /* MENU LATÉRAL */
 .side-menu {
     position: fixed;
@@ -47,7 +66,6 @@
     left: 0;
 }
 
-/* LIENS DU MENU */
 .side-menu a {
     display: block;
     color: white;
@@ -55,47 +73,76 @@
     padding: 1rem 1.5rem;
     transition: background 0.3s;
     font-size: 1rem;
-    font-family: Arial, sans-serif;
 }
 
-.side-menu a:hover {
-    background: rgba(255,255,255,0.1);
+/* FORCE LE DÉCALAGE DU BOUTON ACCUEIL DANS TOUTES LES SECTIONS */
+.back-home-btn {
+    margin-left: 70px !important; /* Crée l'espace pour le bouton hamburger vert */
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.side-menu a.active {
-    background: rgba(255,255,255,0.15);
-    font-weight: 600;
+/* AJUSTEMENT DU TITRE POUR ÉVITER LE CHEVAUCHEMENT SUR MOBILE */
+.header h1 {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-/* SÉPARATEUR */
-.menu-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.2);
-    margin: 1rem 0;
+/* Si le bouton hamburger est trop gros, on ajuste sa position */
+.menu-toggle-btn {
+    left: 15px !important;
+    top: 15px !important;
 }
 
-/* SCROLLBAR PERSONNALISÉE */
-.side-menu::-webkit-scrollbar {
-    width: 6px;
+/* ============================================================
+   CORRECTION ALIGNEMENT HEADER (HAMBURGER / ACCUEIL / TITRE)
+   ============================================================ */
+
+/* 1. On crée une zone de sécurité pour le hamburger dans toutes les sections */
+.francais-section .header,
+.maths-section .header,
+.english-section .header,
+.histoire-section .header,
+.sciences-section .header,
+.ressources-section .unified-header {
+    display: flex !important;
+    align-items: center !important;
+    padding-left: 150px !important; /* Espace suffisant pour ☰ + Accueil */
+    min-height: 80px;
 }
 
-.side-menu::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
+/* 2. On s'assure que le bouton "Accueil" ne bouge pas tout seul */
+.back-home-btn {
+    margin-left: 0 !important; /* Le parent s'occupe déjà du décalage */
+    margin-right: 20px !important; /* Espace entre le bouton et le titre */
+    flex-shrink: 0; /* Empêche le bouton de s'écraser */
 }
 
-.side-menu::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.3);
-    border-radius: 3px;
+/* 3. On ajuste le titre pour qu'il suive le mouvement */
+.header h1, 
+.unified-header h1 {
+    margin: 0 !important;
+    white-space: nowrap; /* Évite que le titre passe à la ligne trop tôt */
 }
 
-.side-menu::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.5);
-}
-
-/* RESPONSIVE */
+/* 4. Adaptation pour les petits écrans (Mobile) */
 @media (max-width: 768px) {
-    .side-menu {
-        width: 220px;
-        left: -220px;
+    .francais-section .header,
+    .maths-section .header,
+    .english-section .header,
+    .histoire-section .header,
+    .sciences-section .header,
+    .ressources-section .unified-header {
+        padding-left: 80px !important; /* On réduit l'espace */
+        flex-direction: column; /* On empile sur mobile si besoin */
+        align-items: flex-start !important;
+        padding-top: 10px;
+    }
+    
+    .header h1, 
+    .unified-header h1 {
+        font-size: 14px !important; /* On réduit la taille du texte Pixel Art */
+        margin-top: 10px !important;
     }
 }
