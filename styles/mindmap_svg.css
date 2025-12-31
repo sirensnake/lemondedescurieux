@@ -1,31 +1,47 @@
+/* Structure globale de la section */
 .mindmap-section {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
+    z-index: 10;
 }
 
+/* Le container doit s'adapter à l'image */
 .mindmap-container {
-    width: 100%;
     position: relative;
-    /* On laisse le SVG définir la hauteur via son ratio */
+    width: 100%;
+    line-height: 0; /* Évite un espace blanc sous l'image */
 }
 
-.mindmap-svg {
+/* L'image de fond */
+.mindmap-container img {
     width: 100%;
     height: auto;
     display: block;
 }
 
+/* Le SVG parfaitement superposé */
+.mindmap-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Laisse passer le clic vers les enfants */
+}
+
+/* Tes zones réglées manuellement */
 .zone-clickable {
+    pointer-events: auto; /* Active le clic uniquement sur les cercles */
+    cursor: pointer;
     fill: transparent;
     stroke: transparent;
-    cursor: pointer;
-    pointer-events: all;
+    transition: 0.3s;
 }
 
 .zone-clickable:hover {
-    fill: rgba(255, 255, 0, 0.3);
+    fill: rgba(255, 255, 0, 0.2);
     stroke: #f1c40f;
     stroke-width: 2px;
 }
