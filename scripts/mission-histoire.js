@@ -1,5 +1,5 @@
 const missionHistoire = {
-    id: "histoire_01",
+    id: "roi-soleil", // ID utilisé par le DOM (item-roi-soleil)
     badge: "👑",
     title: "Mission : Le Secret du Roi Soleil",
     steps: [

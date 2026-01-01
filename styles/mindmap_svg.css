@@ -1,47 +1,53 @@
-/* Structure globale de la section */
+/* --- STRUCTURE DE LA CARTE --- */
 .mindmap-section {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
-    z-index: 10;
 }
 
-/* Le container doit s'adapter à l'image */
 .mindmap-container {
+    width: 100%;
     position: relative;
-    width: 100%;
-    line-height: 0; /* Évite un espace blanc sous l'image */
+    padding-top: 100%; /* Maintient le ratio carré */
 }
 
-/* L'image de fond */
-.mindmap-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Le SVG parfaitement superposé */
 .mindmap-svg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Laisse passer le clic vers les enfants */
+    display: block;
 }
 
-/* Tes zones réglées manuellement */
 .zone-clickable {
-    pointer-events: auto; /* Active le clic uniquement sur les cercles */
-    cursor: pointer;
     fill: transparent;
     stroke: transparent;
-    transition: 0.3s;
+    cursor: pointer;
+    pointer-events: all;
 }
 
 .zone-clickable:hover {
-    fill: rgba(255, 255, 0, 0.2);
+    fill: rgba(241, 196, 15, 0.2);
     stroke: #f1c40f;
     stroke-width: 2px;
+}
+
+/* --- ANIMATION VIBRATION (SHAKE) --- */
+/* Ce bloc est indispensable pour que le JS fonctionne */
+@keyframes shake-minecraft {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-10px, 5px); }
+    40% { transform: translate(10px, -5px); }
+    60% { transform: translate(-10px, -5px); }
+    80% { transform: translate(10px, 5px); }
+    100% { transform: translate(0, 0); }
+}
+
+.shake {
+    animation: shake-minecraft 0.4s ease-in-out;
+    /* On ajoute une bordure rouge pour bien marquer l'erreur */
+    border: 4px solid #e74c3c !important;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
 }
