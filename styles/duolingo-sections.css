@@ -1,327 +1,352 @@
-/* ========================================
-   STYLES COMMUNS SECTIONS DUOLINGO
-   Français & Mathématiques
-   ======================================== */
+/* ========================================== */
+/* MENU LATÉRAL HYBRIDE - VERSION OPTIMALE */
+/* ========================================== */
 
-/* RESET & BASE */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-}
-
-body {
-    font-family: 'Press Start 2P', cursive;
-    min-height: 100vh;
-    color: #fff;
-    padding: 1rem;
-}
-
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-}
-
-/* HEADER */
-.header {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.header h1 { 
-    font-size: 1.5rem; 
-    color: #ffd700; 
-}
-
-.stats { 
-    display: flex; 
-    gap: 2rem; 
-    font-size: 1rem; 
-}
-
-/* BOUTON RETOUR ACCUEIL */
-.back-home-btn {
-    background: #e76f51;
+/* Bouton Toggle */
+.sidebar-toggle,
+#sidebar-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #2a9d8f;
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 12px 16px;
     border-radius: 8px;
     cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.8rem;
-    transition: all 0.3s;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1;
+    z-index: 2001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.2s;
 }
 
-.back-home-btn:hover { 
-    background: #d35f47; 
-    transform: scale(1.05); 
+.sidebar-toggle:hover,
+#sidebar-toggle:hover {
+    background: #238276;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* LESSONS GRID */
-#lessons-grid {
+/* Sidebar Container */
+.sidebar,
+#sidebar {
+    position: fixed;
+    left: -250px; /* Largeur identique à index.html */
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(180deg, #2a9d8f 0%, #1d3557 100%);
+    color: white;
+    transition: left 0.3s ease;
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 70px 0 20px 0; /* Espace réduit en haut */
+    box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+}
+
+.sidebar.open,
+#sidebar.open {
+    left: 0;
+}
+
+/* Liste */
+.sidebar ul,
+#sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li,
+#sidebar li {
+    margin: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* Séparateur subtil */
+}
+
+/* Liens - Style Index.html amélioré */
+.sidebar a,
+#sidebar a {
+    display: flex; /* Pour aligner emoji + texte */
+    align-items: center;
+    gap: 12px; /* Espace entre emoji et texte */
+    color: white;
+    text-decoration: none;
+    padding: 16px 20px; /* Padding index.html */
+    transition: all 0.25s ease;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.4;
+    border-left: 4px solid transparent;
+}
+
+/* Effet Survol - Nouveau ! */
+.sidebar a:hover,
+#sidebar a:hover {
+    background: rgba(255,255,255,0.08);
+    border-left-color: #e9c46a; /* Bordure jaune au survol */
+    padding-left: 25px; /* Animation slide-right */
+}
+
+/* Lien Actif - Style renforcé */
+.sidebar a.active,
+#sidebar a.active {
+    background: rgba(255,255,255,0.12);
+    border-left-color: #2ecc71; /* Bordure verte pour actif */
+    font-weight: 600; /* Légèrement en gras */
+}
+
+/* Emoji dans les liens */
+.sidebar a::before,
+#sidebar a::before {
+    flex-shrink: 0; /* Empêche l'emoji de rétrécir */
+    font-size: 18px;
+}
+
+/* ========================================== */
+/* ZONE PRINCIPALE */
+/* ========================================== */
+
+.game-wrapper {
+    padding: 20px;
+    padding-left: 80px;
+    min-height: 100vh;
+}
+
+.section-header-styled {
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.back-btn-minecraft {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    padding: 12px 20px;
+    background: #e76f51;
+    color: white;
+    border: 3px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+    transition: all 0.2s;
+}
+
+.back-btn-minecraft:hover {
+    background: #cf5d41;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.4);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.section-title p {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.main-stage {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================================== */
+/* CARTES & RESTE DU CONTENU */
+/* (Garde toutes les autres règles CSS inchangées) */
+/* ========================================== */
+
+.cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
 }
 
 .lesson-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    padding: 2rem;
+    background: #fff;
+    border: 4px solid #000;
+    border-radius: 20px;
+    padding: 30px 20px;
     text-align: center;
-    color: #333;
-    transition: transform 0.3s;
     cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.2);
 }
 
-.lesson-card:hover { 
-    transform: translateY(-8px); 
+.lesson-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 0 rgba(0,0,0,0.3);
 }
 
-.lesson-icon { 
-    font-size: 4rem; 
-    margin-bottom: 1rem; 
+.lesson-card h3 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    margin: 15px 0;
+    color: #2c3e50;
+    line-height: 1.5;
 }
 
-.lesson-title { 
-    font-size: 1.2rem; 
-    color: #667eea; 
-    margin: 1rem 0; 
-}
-
-.lesson-desc { 
-    font-size: 0.7rem; 
-    color: #666; 
-    margin-bottom: 1rem; 
-}
-
-.lesson-button {
-    background: #667eea;
+.lesson-badge {
+    background: #46a3a4;
     color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 10px;
+    margin-top: 15px;
+    display: inline-block;
+    font-family: 'Press Start 2P', monospace;
+}
+
+.card-white {
+    background: #fff;
+    border: 4px solid #000;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-white h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.pixel-input {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    padding: 15px;
+    border: 4px solid #000;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+}
+
+.pixel-input:focus {
+    outline: none;
+    border-color: #2ecc71;
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+#ui-feedback {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    text-align: center;
+    display: none;
+    line-height: 1.6;
+}
+
+.feedback-success {
+    background: #d4edda;
+    color: #155724;
+    border: 3px solid #28a745;
+}
+
+.feedback-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 3px solid #dc3545;
+}
+
+.feedback-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 3px solid #ffc107;
+}
+
+.btn-pixel {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    padding: 15px 30px;
+    border: 4px solid #000;
     border-radius: 8px;
     cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.8rem;
+    transition: all 0.1s;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+    display: inline-block;
+    margin: 10px 5px;
+}
+
+.btn-pixel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.4);
+}
+
+.btn-green {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-gold {
+    background: #f39c12;
+    color: white;
+}
+
+/* ========================================== */
+/* RESPONSIVE */
+/* ========================================== */
+
+@media (max-width: 768px) {
+    .sidebar,
+    #sidebar {
+        width: 220px;
+        left: -220px;
+    }
+    
+    .game-wrapper {
+        padding: 10px;
+        padding-top: 70px;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .section-title h1 {
+        font-size: 16px;
+    }
+}
+
+.progress-container {
     width: 100%;
-    transition: all 0.3s;
-}
-
-.lesson-button:hover { 
-    background: #764ba2; 
-}
-
-/* EXERCISE SCREEN */
-#exercise-screen {
-    display: none;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    padding: 3rem;
-    max-width: 700px;
-    margin: 0 auto;
-    color: #333;
-}
-
-.exercise-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #667eea;
-}
-
-.progress-bar {
+    height: 20px;
     background: #e0e0e0;
-    height: 12px;
-    border-radius: 6px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin-bottom: 20px;
     overflow: hidden;
-    margin-bottom: 2rem;
 }
 
 .progress-fill {
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    width: 0%; /* Changé par le JS */
     height: 100%;
-    transition: width 0.3s;
-}
-
-.question-area {
-    text-align: center;
-    margin: 3rem 0;
-}
-
-.question-text {
-    font-size: 2rem;
-    color: #667eea;
-    margin-bottom: 2rem;
-}
-
-.answer-input {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem;
-    padding: 1.5rem;
-    width: 80%;
-    max-width: 500px;
-    text-align: center;
-    border: 4px solid #667eea;
-    border-radius: 12px;
-    background: #f8f9fa;
-    transition: all 0.3s;
-}
-
-.answer-input:focus {
-    outline: none;
-    border-color: #764ba2;
-    background: white;
-}
-
-.hint-area {
-    font-size: 0.7rem;
-    color: #666;
-    margin-top: 1rem;
-    min-height: 40px;
-}
-
-.button-area {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.btn {
-    font-family: 'Press Start 2P', cursive;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-}
-
-.btn-primary { 
-    background: #667eea; 
-    color: white; 
-}
-
-.btn-primary:hover { 
-    background: #764ba2; 
-}
-
-.btn-secondary { 
-    background: #e0e0e0; 
-    color: #333; 
-}
-
-.btn-secondary:hover { 
-    background: #ccc; 
-}
-
-/* FEEDBACK POPUP */
-.feedback {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: white;
-    padding: 3rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    text-align: center;
-    z-index: 1000;
-    transition: transform 0.3s;
-}
-
-.feedback.show { 
-    transform: translate(-50%, -50%) scale(1); 
-}
-
-.feedback-icon { 
-    font-size: 5rem; 
-    margin-bottom: 1rem; 
-}
-
-.feedback-correct { 
-    color: #4caf50; 
-}
-
-.feedback-wrong { 
-    color: #f44336; 
-}
-
-/* RESULTS SCREEN */
-#results-screen {
-    display: none;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    padding: 3rem;
-    max-width: 600px;
-    margin: 0 auto;
-    color: #333;
-    text-align: center;
-}
-
-.results-icon { 
-    font-size: 5rem; 
-    margin-bottom: 1rem; 
-}
-
-.results-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.stat-box {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.stat-value { 
-    font-size: 2rem; 
-    color: #667eea; 
-    margin-bottom: 0.5rem; 
-}
-
-.stat-label { 
-    font-size: 0.7rem; 
-    color: #666; 
-}
-
-/* ============================================
-   GESTION AFFICHAGE ÉCRANS LEÇON
-   ============================================ */
-
-/* Par défaut : exercices visibles, résultats cachés */
-#lesson-screen #exercise-screen {
-    display: block;
-}
-
-#lesson-screen #results-screen {
-    display: none;
-}
-
-/* Quand on affiche les résultats */
-#lesson-screen.show-results #exercise-screen {
-    display: none;
-}
-
-#lesson-screen.show-results #results-screen {
-    display: block;
-}
-
-/* UTILITY CLASSES */
-.hidden { 
-    display: none; 
+    background: #5AA844; /* Vert Curio */
+    transition: width 0.3s ease;
 }

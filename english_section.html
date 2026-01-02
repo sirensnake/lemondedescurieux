@@ -2,9 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="theme-color" content="#1cb0f6">
-    <title>🇬🇧 English - Le Monde des Curieux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English - Le Monde des Curieux</title>
     
     <!-- CSS existants dans l'ordre standard -->
     <link rel="stylesheet" href="styles/style.css">
@@ -16,15 +15,177 @@
     <link rel="stylesheet" href="styles/layout_style.css">
     <link rel="stylesheet" href="styles/general_style.css">
     <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/quiz_style.css">
-    <link rel="stylesheet" href="styles/responsive.css">
-    
-    <!-- Composants réutilisables -->
     <link rel="stylesheet" href="styles/components.css">
     
     <!-- Police Minecraft -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body class="english-section">
+    <!-- Header stylisé -->
+    <header class="section-header-styled english">
+        <nav aria-label="Fil d'Ariane" class="breadcrumb-minecraft">
+            <ol>
+                <li><a href="index.html">🏠 Accueil</a></li>
+                <li><a href="langues.html">🌍 Langues</a></li>
+                <li aria-current="page">🇬🇧 Anglais</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Breadcrumb">
+            🏠 <a href="index.html">Home</a> > 🇬🇧 English
+        </div>
+        
+        <!-- Menu latéral -->
+        <button class="sidebar-toggle" aria-label="Open / close menu">☰</button>
+        <div class="sidebar">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire-Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
+            </ul>
+        </div>
+
+        <!-- Zone XP Duolingo-style -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: linear-gradient(135deg, #1cb0f6, #1899d6); border-radius: 12px; color: white; display: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; font-family: 'Press Start 2P', monospace; font-size: 10px;">
+                <span id="streak-display">🔥 0 days</span>
+                <span id="hearts-display">❤️❤️❤️❤️❤️</span>
+                <span id="xp-display">Level 1 - 0/100 XP</span>
+            </div>
+        </div>
+
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre">🌙</button>
+        </div>
+
+        <!-- Titre section Duolingo-inspired -->
+        <div class="section-title" style="text-align: center; background: linear-gradient(135deg, #58cc02, #89e219); padding: 2rem; border-radius: 15px; color: white; margin-bottom: 2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
+            <h1 style="margin: 0 0 0.5rem 0; font-size: 2rem;">🇬🇧 English Learning</h1>
+            <p style="margin: 0; font-size: 1rem;">Master English like a pro with Curio!</p>
+            <div style="margin-top: 1rem; font-family: 'Press Start 2P', monospace; font-size: 8px; opacity: 0.9;">
+                🎯 Duolingo-style learning experience
+            </div>
+        </div>
+
+        <!-- Learning Path Duolingo-style -->
+        <section>
+            <h2 style="color: #1cb0f6; text-align: center; margin-bottom: 2rem;">📚 Your Learning Path</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                
+                <!-- Basic Vocabulary -->
+                <div class="learning-unit" data-activity="vocabulary" data-xp="20" data-level="1">
+                    <div class="unit-header">
+                        <div class="unit-icon">📝</div>
+                        <div class="unit-info">
+                            <h3>Basic Vocabulary</h3>
+                            <p>Common words & phrases</p>
+                        </div>
+                        <div class="unit-progress">1/5</div>
+                    </div>
+                    <div class="unit-lessons">
+                        <button class="lesson-btn active" data-lesson="basic-words">Basic Words</button>
+                        <button class="lesson-btn locked" data-lesson="family">Family & Friends</button>
+                        <button class="lesson-btn locked" data-lesson="colors">Colors & Numbers</button>
+                        <button class="lesson-btn locked" data-lesson="food">Food & Drinks</button>
+                        <button class="lesson-btn locked" data-lesson="animals">Animals</button>
+                    </div>
+                </div>
+
+                <!-- Grammar Basics -->
+                <div class="learning-unit" data-activity="grammar" data-xp="25" data-level="2">
+                    <div class="unit-header">
+                        <div class="unit-icon">🔧</div>
+                        <div class="unit-info">
+                            <h3>Grammar Basics</h3>
+                            <p>Essential grammar rules</p>
+                        </div>
+                        <div class="unit-progress">0/4</div>
+                    </div>
+                    <div class="unit-lessons">
+                        <button class="lesson-btn locked" data-lesson="articles">A, An, The</button>
+                        <button class="lesson-btn locked" data-lesson="present">Present Tense</button>
+                        <button class="lesson-btn locked" data-lesson="questions">Questions</button>
+                        <button class="lesson-btn locked" data-lesson="plural">Plural Forms</button>
+                    </div>
+                </div>
+
+                <!-- Speaking Practice -->
+                <div class="learning-unit" data-activity="speaking" data-xp="30" data-level="3">
+                    <div class="unit-header">
+                        <div class="unit-icon">🎤</div>
+                        <div class="unit-info">
+                            <h3>Speaking Practice</h3>
+                            <p>Pronunciation & listening</p>
+                        </div>
+                        <div class="unit-progress">0/3</div>
+                    </div>
+                    <div class="unit-lessons">
+                        <button class="lesson-btn locked" data-lesson="pronunciation">Pronunciation</button>
+                        <button class="lesson-btn locked" data-lesson="dialogue">Simple Dialogues</button>
+                        <button class="lesson-btn locked" data-lesson="listening">Listening Practice</button>
+                    </div>
+                </div>
+
+                <!-- Fun Activities -->
+                <div class="learning-unit" data-activity="games" data-xp="15" data-level="1">
+                    <div class="unit-header">
+                        <div class="unit-icon">🎮</div>
+                        <div class="unit-info">
+                            <h3>Fun Activities</h3>
+                            <p>Games & interactive exercises</p>
+                        </div>
+                        <div class="unit-progress">1/3</div>
+                    </div>
+                    <div class="unit-lessons">
+                        <button class="lesson-btn active" data-lesson="memory">Memory Game</button>
+                        <button class="lesson-btn locked" data-lesson="matching">Word Matching</button>
+                        <button class="lesson-btn locked" data-lesson="story">Story Builder</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Zone -->
+        <section>
+            <h2 style="color: #58cc02; text-align: center; margin-bottom: 2rem;">🎯 Learning Zone</h2>
+            <div id="learning-container" style="background: #f8f9fa; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                <h3 style="color: #1cb0f6; margin-bottom: 1rem;">Ready to Learn?</h3>
+                <p style="color: #666; margin-bottom: 2rem;">Click on any available lesson above to start your English adventure!</p>
+                <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; color: #1976d2; font-size: 14px;">
+                    💡 <strong>Tip:</strong> Complete lessons in order to unlock new content
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts dans l'ordre CORRECT -->
+    <script src="scripts/general_script.js"></script>
+    <script src="scripts/xp_system_complete.js"></script>
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+    
+    <!-- English-specific scripts (to be created) -->
+    <script src="scripts/english_vocabulary.js"></script>
+    <script src="scripts/english_complete.js"></script>
     
     <style>
         /* Duolingo-inspired styles */
@@ -136,220 +297,6 @@
             background: linear-gradient(135deg, #58cc02, #89e219);
         }
     </style>
-</head>
-<body class="english-section">
-    <!-- Lien d'évitement pour l'accessibilité -->
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
-    
-    <!-- Header avec contrôle utilisateur intégré -->
-    <header class="section-header-styled english">
-        <div class="header-container">
-            <!-- Navigation retour -->
-            <button onclick="history.back()" class="back-btn-minecraft english">
-                ← Retour
-            </button>
-            
-            <!-- Contrôle utilisateur (nouveau) -->
-            <div id="user-control" class="user-control-container">
-                <!-- État non connecté -->
-                <div id="user-guest" class="user-guest">
-                    <button onclick="userController.showProfileSetup()" class="btn-profile-setup">
-                        👤 Créer mon profil
-                    </button>
-                </div>
-                
-                <!-- État connecté -->
-                <div id="user-connected" class="user-connected" style="display: none;">
-                    <div class="user-avatar" onclick="userController.toggleMenu()">
-                        <img id="user-avatar-img" src="images/avatars/curio-default.png" alt="Avatar">
-                        <span id="user-nickname">Explorateur</span>
-                    </div>
-                    
-                    <!-- Menu déroulant utilisateur -->
-                    <div id="user-menu" class="user-dropdown-menu" style="display: none;">
-                        <div class="user-menu-header">
-                            <strong id="menu-nickname">Explorateur</strong>
-                            <span class="user-level">Niveau <span id="menu-level">1</span></span>
-                        </div>
-                        
-                        <div class="user-menu-stats">
-                            <div class="stat-item">
-                                <span class="stat-icon">🔥</span>
-                                <span class="stat-value" id="menu-streak">0</span>
-                                <span class="stat-label">jours</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon">⭐</span>
-                                <span class="stat-value" id="menu-xp">0</span>
-                                <span class="stat-label">XP</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon">🏆</span>
-                                <span class="stat-value" id="menu-badges">0</span>
-                                <span class="stat-label">badges</span>
-                            </div>
-                        </div>
-                        
-                        <ul class="user-menu-actions">
-                            <li><a href="mon-parcours.html">📊 Mon Tableau de Bord</a></li>
-                            <li><a href="#" onclick="userController.editProfile()">✏️ Modifier Profil</a></li>
-                            <li><a href="#" onclick="userController.exportData()">💾 Exporter Données</a></li>
-                            <li><a href="#" onclick="userController.showSettings()">⚙️ Paramètres</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#" onclick="userController.resetProfile()" class="danger">🔄 Réinitialiser</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main id="main-content">
-        <!-- Menu latéral dynamique -->
-        <button id="sidebar-toggle" class="sidebar-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Ouvrir / fermer le menu">☰</button>
-        <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
-            <ul>
-                <li><a href="index.html">🎨 Accueil</a></li>
-                <li><a href="maths_section.html">➗ Mathématiques</a></li>
-                <li><a href="sciences_section.html">🔬 Sciences</a></li>
-                <li><a href="histoire_section.html">🏛️ Histoire-Géo</a></li>
-                <li><a href="francais_section.html">🇫🇷 Français</a></li>
-                <li><a href="english_section.html" class="active">🇬🇧 English</a></li>
-                <li><a href="programmation_section.html">💻 Programmation</a></li>
-                <li><a href="echecs_section.html">♟️ Échecs</a></li>
-                <li><a href="philosophie_section.html">🤔 Philosophie</a></li>
-                <li><a href="ressources_section.html">📚 Ressources</a></li>
-                <li><a href="infos_section.html">ℹ️ Infos</a></li>
-                <li><a href="ia_section.html">🤖 IA</a></li>
-                <li><a href="mon-parcours.html">📊 Mon Parcours</a></li>
-            </ul>
-        </nav>
-
-        <!-- Fil d'Ariane -->
-        <nav aria-label="Fil d'Ariane" class="breadcrumb-minecraft">
-            <ol>
-                <li><a href="index.html">🏠 Accueil</a></li>
-                <li><a href="langues.html">🌍 Langues</a></li>
-                <li aria-current="page">🇬🇧 Anglais</li>
-            </ol>
-        </nav>
-
-        <!-- Zone XP Duolingo-style -->
-        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: linear-gradient(135deg, #1cb0f6, #1899d6); border-radius: 12px; color: white; display: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; font-family: 'Press Start 2P', monospace; font-size: 10px;">
-                <span id="streak-display">🔥 0 days</span>
-                <span id="hearts-display">❤️❤️❤️❤️❤️</span>
-                <span id="xp-display">Level 1 - 0/100 XP</span>
-            </div>
-        </div>
-
-        <!-- Titre section Duolingo-inspired -->
-        <div class="section-title" style="text-align: center; background: linear-gradient(135deg, #58cc02, #89e219); padding: 2rem; border-radius: 15px; color: white; margin-bottom: 2rem; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
-            <h1 style="margin: 0 0 0.5rem 0; font-size: 2rem;">🇬🇧 English Learning</h1>
-            <p style="margin: 0; font-size: 1rem;">Master English like a pro with Curio!</p>
-            <div style="margin-top: 1rem; font-family: 'Press Start 2P', monospace; font-size: 8px; opacity: 0.9;">
-                🎯 Duolingo-style learning experience
-            </div>
-        </div>
-
-        <!-- Learning Path Duolingo-style -->
-        <section>
-            <h2 style="color: #1cb0f6; text-align: center; margin-bottom: 2rem;">📚 Your Learning Path</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                
-                <!-- Basic Vocabulary -->
-                <div class="learning-unit" data-activity="vocabulary" data-xp="20" data-level="1">
-                    <div class="unit-header">
-                        <div class="unit-icon">📝</div>
-                        <div class="unit-info">
-                            <h3>Basic Vocabulary</h3>
-                            <p>Common words & phrases</p>
-                        </div>
-                        <div class="unit-progress">1/5</div>
-                    </div>
-                    <div class="unit-lessons">
-                        <button class="lesson-btn active" data-lesson="basic-words">Basic Words</button>
-                        <button class="lesson-btn locked" data-lesson="family">Family & Friends</button>
-                        <button class="lesson-btn locked" data-lesson="colors">Colors & Numbers</button>
-                        <button class="lesson-btn locked" data-lesson="food">Food & Drinks</button>
-                        <button class="lesson-btn locked" data-lesson="animals">Animals</button>
-                    </div>
-                </div>
-
-                <!-- Grammar Basics -->
-                <div class="learning-unit" data-activity="grammar" data-xp="25" data-level="2">
-                    <div class="unit-header">
-                        <div class="unit-icon">🔧</div>
-                        <div class="unit-info">
-                            <h3>Grammar Basics</h3>
-                            <p>Essential grammar rules</p>
-                        </div>
-                        <div class="unit-progress">0/4</div>
-                    </div>
-                    <div class="unit-lessons">
-                        <button class="lesson-btn locked" data-lesson="articles">A, An, The</button>
-                        <button class="lesson-btn locked" data-lesson="present">Present Tense</button>
-                        <button class="lesson-btn locked" data-lesson="questions">Questions</button>
-                        <button class="lesson-btn locked" data-lesson="plural">Plural Forms</button>
-                    </div>
-                </div>
-
-                <!-- Speaking Practice -->
-                <div class="learning-unit" data-activity="speaking" data-xp="30" data-level="3">
-                    <div class="unit-header">
-                        <div class="unit-icon">🎤</div>
-                        <div class="unit-info">
-                            <h3>Speaking Practice</h3>
-                            <p>Pronunciation & listening</p>
-                        </div>
-                        <div class="unit-progress">0/3</div>
-                    </div>
-                    <div class="unit-lessons">
-                        <button class="lesson-btn locked" data-lesson="pronunciation">Pronunciation</button>
-                        <button class="lesson-btn locked" data-lesson="dialogue">Simple Dialogues</button>
-                        <button class="lesson-btn locked" data-lesson="listening">Listening Practice</button>
-                    </div>
-                </div>
-
-                <!-- Fun Activities -->
-                <div class="learning-unit" data-activity="games" data-xp="15" data-level="1">
-                    <div class="unit-header">
-                        <div class="unit-icon">🎮</div>
-                        <div class="unit-info">
-                            <h3>Fun Activities</h3>
-                            <p>Games & interactive exercises</p>
-                        </div>
-                        <div class="unit-progress">1/3</div>
-                    </div>
-                    <div class="unit-lessons">
-                        <button class="lesson-btn active" data-lesson="memory">Memory Game</button>
-                        <button class="lesson-btn locked" data-lesson="matching">Word Matching</button>
-                        <button class="lesson-btn locked" data-lesson="story">Story Builder</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Learning Zone -->
-        <section>
-            <h2 style="color: #58cc02; text-align: center; margin-bottom: 2rem;">🎯 Learning Zone</h2>
-            <div id="learning-container" style="background: #f8f9fa; padding: 2rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-                <h3 style="color: #1cb0f6; margin-bottom: 1rem;">Ready to Learn?</h3>
-                <p style="color: #666; margin-bottom: 2rem;">Click on any available lesson above to start your English adventure!</p>
-                <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; color: #1976d2; font-size: 14px;">
-                    💡 <strong>Tip:</strong> Complete lessons in order to unlock new content
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Scripts standards -->
-    <script src="scripts/general_script.js"></script>
-    <script src="scripts/xp_system_complete.js"></script>
-    <script src="scripts/accessibilite.js"></script>
-    <script src="scripts/menu_enhanced.js"></script>
     
     <script>
         // Initialisation English Section Duolingo-style
@@ -364,22 +311,19 @@
                 initXPSystems();
                 initLearningUnits();
                 console.log("✅ Section English initialisée avec succès !");
-            }, 1000);
+            }, 1500);
         });
         
         function initMenuLateral() {
-            const sidebar = document.getElementById('sidebar');
-            const toggleButton = document.getElementById('sidebar-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const toggleButton = document.querySelector('.sidebar-toggle');
             
             if (sidebar) sidebar.style.left = '-250px';
             
             if (toggleButton && sidebar) {
                 toggleButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const isOpen = sidebar.style.left === '0px';
-                    sidebar.style.left = isOpen ? '-250px' : '0px';
-                    sidebar.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
-                    toggleButton.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+                    sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
                 });
                 
                 document.addEventListener('click', function(e) {
@@ -387,17 +331,6 @@
                         e.target !== toggleButton && 
                         !sidebar.contains(e.target)) {
                         sidebar.style.left = '-250px';
-                        sidebar.setAttribute('aria-hidden', 'true');
-                        toggleButton.setAttribute('aria-expanded', 'false');
-                    }
-                });
-                
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
-                        sidebar.style.left = '-250px';
-                        sidebar.setAttribute('aria-hidden', 'true');
-                        toggleButton.setAttribute('aria-expanded', 'false');
-                        toggleButton.focus();
                     }
                 });
             }
@@ -417,6 +350,7 @@
         }
         
         function initLearningUnits() {
+            // Active lesson buttons
             const activeButtons = document.querySelectorAll('.lesson-btn.active');
             activeButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -430,10 +364,11 @@
                 });
             });
             
+            // Locked lesson feedback
             const lockedButtons = document.querySelectorAll('.lesson-btn.locked');
             lockedButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    alert('🔒 This lesson is locked!\n\nComplete previous lessons to unlock new content.');
+                    showLockedMessage();
                 });
             });
             
@@ -441,17 +376,20 @@
         }
         
         function startEnglishLesson(lesson, activity, xp) {
+            // Vérifier les cœurs
             if (window.heartSystem && window.heartSystem.heartsData.currentHearts < 1) {
                 showNoHeartsMessage();
                 return;
             }
             
+            // Enregistrer activité pour streak
             if (window.streakManager) {
                 window.streakManager.recordActivity();
             }
             
             const container = document.getElementById('learning-container');
             
+            // Launch specific lesson based on type
             switch(lesson) {
                 case 'basic-words':
                     startBasicWordsLesson(container, xp);
@@ -534,6 +472,7 @@
                     </div>
                 `;
                 
+                // Focus input
                 setTimeout(() => {
                     document.getElementById('translation-input').focus();
                 }, 100);
@@ -543,6 +482,7 @@
                 const userInput = document.getElementById('translation-input').value.trim().toLowerCase();
                 const isCorrect = userInput === correct.toLowerCase();
                 
+                // Show feedback
                 container.innerHTML = `
                     <div style="background: white; padding: 2rem; border-radius: 15px; text-align: center;">
                         <div style="font-size: 4rem; margin-bottom: 1rem;">
@@ -574,11 +514,13 @@
                     </div>
                 `;
                 
+                // Add XP
                 if (window.xpManager) {
                     window.xpManager.addXP(isCorrect ? xp : 5, 'english_vocabulary');
                     if (window.updateDisplays) window.updateDisplays();
                 }
                 
+                // Handle hearts
                 if (!isCorrect && window.heartSystem) {
                     window.heartSystem.loseHeart();
                 }
@@ -589,6 +531,7 @@
                 if (currentWord < words.length) {
                     showWord();
                 } else {
+                    // Lesson complete
                     container.innerHTML = `
                         <div style="background: white; padding: 2rem; border-radius: 15px; text-align: center;">
                             <div style="font-size: 4rem; margin-bottom: 1rem;">🏆</div>
@@ -678,6 +621,10 @@
             `;
         }
         
+        function showLockedMessage() {
+            alert('🔒 This lesson is locked!\n\nComplete previous lessons to unlock new content.');
+        }
+        
         function updateDisplays() {
             try {
                 if (window.xpManager) {
@@ -708,6 +655,18 @@
                 alert(`Word: ${word}`);
             }
         }
+        
+        // Debug function
+        window.debugEnglish = function() {
+            console.log("🔍 DEBUG Section English:");
+            console.log("- Learning units:", document.querySelectorAll('.learning-unit').length);
+            console.log("- Active lessons:", document.querySelectorAll('.lesson-btn.active').length);
+            console.log("- Locked lessons:", document.querySelectorAll('.lesson-btn.locked').length);
+            console.log("- xpManager:", typeof window.xpManager);
+            console.log("- heartSystem:", typeof window.heartSystem);
+            console.log("- streakManager:", typeof window.streakManager);
+        };
     </script>
+    <script src="./scripts/xp_system_complete.js"></script>
 </body>
 </html>

@@ -23,76 +23,19 @@
     <link rel="stylesheet" href="styles/components.css">
     
     <!-- Police Minecraft -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body class="maths-section">
     <!-- Lien d'évitement pour l'accessibilité -->
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     
     <!-- Header stylisé avec composant -->
-    <!-- Header avec contrôle utilisateur intégré -->
-<header class="section-header-styled [section]">
-    <div class="header-container">
-        <!-- Navigation retour -->
-        <button onclick="history.back()" class="back-btn-minecraft [section]">
-            ← Retour
+    <header class="section-header-styled maths">
+        <button onclick="history.back()" class="back-btn-minecraft maths">
+            ← Retour à l'accueil
         </button>
-        
-        <!-- Contrôle utilisateur (nouveau) -->
-        <div id="user-control" class="user-control-container">
-            <!-- État non connecté -->
-            <div id="user-guest" class="user-guest">
-                <button onclick="userController.showProfileSetup()" class="btn-profile-setup">
-                    👤 Créer mon profil
-                </button>
-            </div>
-            
-            <!-- État connecté -->
-            <div id="user-connected" class="user-connected" style="display: none;">
-                <div class="user-avatar" onclick="userController.toggleMenu()">
-                    <img id="user-avatar-img" src="images/avatars/curio-default.png" alt="Avatar">
-                    <span id="user-nickname">Explorateur</span>
-                </div>
-                
-                <!-- Menu déroulant utilisateur -->
-                <div id="user-menu" class="user-dropdown-menu" style="display: none;">
-                    <div class="user-menu-header">
-                        <strong id="menu-nickname">Explorateur</strong>
-                        <span class="user-level">Niveau <span id="menu-level">1</span></span>
-                    </div>
-                    
-                    <div class="user-menu-stats">
-                        <div class="stat-item">
-                            <span class="stat-icon">🔥</span>
-                            <span class="stat-value" id="menu-streak">0</span>
-                            <span class="stat-label">jours</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">⭐</span>
-                            <span class="stat-value" id="menu-xp">0</span>
-                            <span class="stat-label">XP</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">🏆</span>
-                            <span class="stat-value" id="menu-badges">0</span>
-                            <span class="stat-label">badges</span>
-                        </div>
-                    </div>
-                    
-                    <ul class="user-menu-actions">
-                        <li><a href="mon-parcours.html">📊 Mon Tableau de Bord</a></li>
-                        <li><a href="#" onclick="userController.editProfile()">✏️ Modifier Profil</a></li>
-                        <li><a href="#" onclick="userController.exportData()">💾 Exporter Données</a></li>
-                        <li><a href="#" onclick="userController.showSettings()">⚙️ Paramètres</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" onclick="userController.resetProfile()" class="danger">🔄 Réinitialiser</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+    </header>
 
     <main>
         <!-- Menu latéral simple et fonctionnel -->

@@ -7,13 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/duolingo-sections.css">
     <link rel="stylesheet" href="styles/maths-theme.css">
-    <link rel="stylesheet" href="styles/side-menu-unified.css">
-    <link rel="stylesheet" href="styles/unified-footer.css">
 </head>
 <body class="maths-section">
-    <button class="menu-toggle-btn" onclick="toggleSideMenu()" aria-label="Ouvrir le menu">
-        ☰
-    </button>
     <div class="container">
         <div class="header">
             <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
@@ -25,10 +20,12 @@
             </div>
         </div>
         
+        <!-- LESSONS LIST -->
         <div id="lessons-list">
             <div id="lessons-grid"></div>
         </div>
         
+        <!-- EXERCISE SCREEN -->
         <div id="exercise-screen">
             <div class="exercise-header">
                 <button class="btn btn-secondary" onclick="mathsApp.backToLessons()">← Retour</button>
@@ -51,6 +48,7 @@
             </div>
         </div>
         
+        <!-- RESULTS SCREEN -->
         <div id="results-screen">
             <div class="results-icon">🏆</div>
             <h2 style="color: #667eea; margin-bottom: 2rem;">Leçon Terminée !</h2>
@@ -68,6 +66,10 @@
                     <div class="stat-value" id="result-hearts">5</div>
                     <div class="stat-label">Cœurs restants</div>
                 </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="result-score">0%</div>
+                    <div class="stat-label">Score</div>
+                </div>
             </div>
             
             <button class="btn btn-primary" onclick="mathsApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
@@ -75,16 +77,10 @@
             </button>
         </div>
         
+        <!-- FEEDBACK POPUP -->
         <div class="feedback" id="feedback"></div>
     </div>
 
     <script src="scripts/maths-app.js"></script>
-    <script src="scripts/side-menu-unified.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            loadSideMenu();
-        });
-    </script>
-    <script src="scripts/unified-footer.js"></script>
 </body>
 </html>

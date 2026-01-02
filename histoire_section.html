@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏛️ Histoire-Géo - Le Monde des Curieux</title>
+    <title>Section Histoire-Géographie - Le Monde des Curieux</title>
     
+    <!-- CSS existants dans l'ordre standard -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/index_style.css">
     <link rel="stylesheet" href="styles/menu_lateral_enhanced.css">
@@ -14,269 +15,167 @@
     <link rel="stylesheet" href="styles/layout_style.css">
     <link rel="stylesheet" href="styles/general_style.css">
     <link rel="stylesheet" href="styles/section_style.css">
-    <link rel="stylesheet" href="styles/responsive.css">
+    
+    <!-- Composants réutilisables -->
     <link rel="stylesheet" href="styles/components.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Police Minecraft -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+    
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body class="histoire-section">
-    
+    <!-- Header stylisé avec composant -->
     <header class="section-header-styled histoire">
-        <button onclick="history.back()" class="back-btn-minecraft histoire">← Retour à l'accueil</button>
+        <nav aria-label="Fil d'Ariane" class="breadcrumb-minecraft">
+            <ol>
+                <li><a href="index.html">🏠 Accueil</a></li>
+                <li><a href="sections.html">📚 Sections</a></li>
+                <li aria-current="page">📜 Histoire-Géo</li>
+            </ol>
+        </nav>
     </header>
-    
-    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav id="sidebar" class="sidebar" role="navigation" aria-hidden="true">
-     <ul>
-         <li><a href="index.html">🏠 Accueil</a></li>
-         <li><a href="francais_section.html">🇫🇷 Français</a></li>
-         <li><a href="english_section.html">🇬🇧 English</a></li>
-         <li><a href="maths_section.html">🧮 Mathématiques</a></li>
-         <li><a href="sciences_section.html">🔬 Sciences</a></li>
-         <li><a href="histoire_section.html">🏛️ Histoire-Géo</a></li>
-         <li><a href="programmation_section.html">💻 Programmation</a></li>
-         <li><a href="echecs_section.html">♟️ Échecs</a></li>
-         <li><a href="philosophie_section.html">🤔 Philosophie</a></li>
-         <li><a href="ia_section.html">🤖 IA</a></li>
-         <li><a href="mon-parcours.html">📊 Mon Parcours</a></li>
-     </ul>
-</nav>
 
     <main>
+        <!-- Fil d'Ariane -->
+        <div class="breadcrumb" aria-label="Fil d'Ariane">
+            🏠 <a href="index.html">Accueil</a> &gt; 📜 Histoire
+        </div>
+        
+        <!-- Menu latéral simple et fonctionnel -->
+        <button class="sidebar-toggle" aria-label="Ouvrir / fermer le menu">☰</button>
+        <div class="sidebar" aria-hidden="true">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="maths_section.html">Mathématiques</a></li>
+                <li><a href="sciences_section.html">Sciences</a></li>
+                <li><a href="histoire_section.html">Histoire-Géo</a></li>
+                <li><a href="francais_section.html">Français</a></li>
+                <li><a href="english_section.html">English</a></li>
+                <li><a href="programmation_section.html">Programmation</a></li>
+                <li><a href="echecs_section.html">Échecs</a></li>
+                <li><a href="philosophie_section.html">Philosophie</a></li>
+                <li><a href="ressources_section.html">Ressources</a></li>
+                <li><a href="infos_section.html">Infos</a></li>
+                <li><a href="ia_section.html">IA</a></li>
+                <li><a href="mon-parcours.html">Mon Parcours</a></li>
+            </ul>
+        </div>
+
+        <!-- Zone XP automatique -->
+        <div id="xp-status" style="text-align: center; margin: 1rem 0; padding: 1rem; background: #f1faee; border-radius: 8px; display: none;">
+            <span id="xp-display">XP: 0</span> | 
+            <span id="hearts-display">❤️❤️❤️❤️❤️</span> | 
+            <span id="streak-display">🔥 0 jours</span>
+        </div>
+
+        <!-- Outils d'accessibilité -->
+        <div class="accessibility-tools">
+            <button class="accessibility-button" id="text-size-toggle" title="Changer la taille du texte" aria-label="Agrandir le texte">A</button>
+            <button class="accessibility-button" id="contrast-toggle" title="Changer le contraste" aria-label="Mode contraste élevé">C</button>
+            <button class="accessibility-button" id="dark-mode-toggle" title="Mode sombre" aria-label="Activer/désactiver le mode sombre">🌙</button>
+        </div>
+
         <div class="section-title">
-            <h1>🏛️ Histoire & Géographie</h1>
-            <p>Voyage à travers le temps et l'espace pour comprendre notre monde !</p>
+            <h1>🌍 Bienvenue dans la section Histoire-Géographie</h1>
+            <p>Explore l'histoire et la géographie à travers les grandes périodes et les paysages du monde.</p>
         </div>
 
-        <div id="xp-status" style="display: none; text-align: center; margin: 1rem auto; padding: 1rem; background: #f8f9fa; border-radius: 8px; max-width: 800px;">
-            <span id="xp-display" style="margin: 0 1rem; font-weight: bold;">XP: 0</span>
-            <span id="hearts-display" style="margin: 0 1rem; font-size: 1.2rem;">❤️❤️❤️❤️❤️</span>
-            <span id="streak-display" style="margin: 0 1rem; font-weight: bold;">🔥 0 jours</span>
-        </div>
+        <!-- Contenu spécifique à la section PRÉSERVÉ -->
+        <section>
+            <div id="main-content" class="content-container">
+                <div class="content">
+                    <section>
+                        <h2>📜 Histoire</h2>
+                        <ul>
+                            <li><a href="histoire_antique.html">🏛️ Histoire Antique</a></li>
+                            <li><a href="histoire_decouvertes.html">⚓️ Grandes Découvertes</a></li>
+                            <li><a href="histoire_moyenage.html">🏰 Moyen Âge</a></li>
+                            <li><a href="histoire_revolution.html">🇫🇷 Révolution Française</a></li>
+                            <li><a href="histoire_ecriture.html">✍️ Naissance de l'écriture</a></li>
+                        </ul>
+                    </section>
 
-        <div class="content-wrapper" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
-            
-            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #8d6e63;">
-                <h2>🦴 La Préhistoire</h2>
-                <p><strong>Période :</strong> -3 millions d'années → -3000 av. J.-C.</p>
-                <p>Les premiers humains, la découverte du feu et l'invention de l'art</p>
-                
-                <h3>Les grandes étapes</h3>
-                <ul>
-                    <li><strong>Paléolithique</strong> : L'âge de la pierre taillée, les chasseurs-cueilleurs nomades</li>
-                    <li><strong>Néolithique</strong> : L'âge de la pierre polie, début de l'agriculture et de l'élevage</li>
-                    <li><strong>Âge des métaux</strong> : Découverte du bronze puis du fer</li>
-                </ul>
-
-                <h3>Les grandes découvertes</h3>
-                <ul>
-                    <li><strong>Le feu</strong> : Maîtrisé il y a environ 400 000 ans</li>
-                    <li><strong>Les outils</strong> : Premiers outils en pierre il y a 2,5 millions d'années</li>
-                    <li><strong>L'art rupestre</strong> : Peintures dans les grottes de Lascaux, Chauvet (-36 000 ans)</li>
-                    <li><strong>L'agriculture</strong> : Début vers -10 000 ans au Proche-Orient</li>
-                </ul>
-
-                <div style="background: #efebe9; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                    <p><strong>💡 Le savais-tu ?</strong> Lucy, notre ancêtre découvert en Éthiopie, vivait il y a 3,2 millions d'années !</p>
+                    <section>
+                        <h2>🌍 Géographie</h2>
+                        <ul>
+                            <li><a href="geographie_continents.html">🌊 Continents et Océans</a></li>
+                            <li><a href="geographie_paysages.html">🌄 Paysages Français</a></li>
+                            <li><a href="geographie_villes.html">🏙️ Grandes Villes en France et en Europe</a></li>
+                            <li><a href="geographie_population.html">👥 Répartition de la Population</a></li>
+                        </ul>
+                    </section>
                 </div>
-
-                <button onclick="alert('Frise chronologique interactive en développement ! 🦴')" style="background: #8d6e63; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
-                    🚀 Explorer la Préhistoire
-                </button>
-            </section>
-
-            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #ff9800;">
-                <h2>🏛️ L'Antiquité</h2>
-                <p><strong>Période :</strong> -3000 av. J.-C. → 476 ap. J.-C.</p>
-                <p>Les grandes civilisations : Égypte, Grèce, Rome</p>
-                
-                <h3>L'Égypte ancienne</h3>
-                <ul>
-                    <li><strong>Les pharaons</strong> : Rois tout-puissants considérés comme des dieux</li>
-                    <li><strong>Les pyramides</strong> : Tombeaux gigantesques, merveilles de l'architecture</li>
-                    <li><strong>Les hiéroglyphes</strong> : Système d'écriture avec plus de 700 signes</li>
-                    <li><strong>Momification</strong> : Préservation des corps pour l'au-delà</li>
-                </ul>
-
-                <h3>La Grèce antique</h3>
-                <ul>
-                    <li><strong>Démocratie</strong> : Inventée à Athènes, où les citoyens votaient</li>
-                    <li><strong>Jeux olympiques</strong> : Créés en -776 av. J.-C. à Olympie</li>
-                    <li><strong>Mythologie</strong> : Zeus, Athéna, Poséidon et tous les dieux de l'Olympe</li>
-                    <li><strong>Philosophie</strong> : Socrate, Platon, Aristote</li>
-                </ul>
-
-                <h3>L'Empire romain</h3>
-                <ul>
-                    <li><strong>Conquêtes</strong> : Un empire immense autour de la Méditerranée</li>
-                    <li><strong>Gladiateurs</strong> : Combats dans les amphithéâtres (Colisée)</li>
-                    <li><strong>Aqueducs</strong> : Ponts géants pour amener l'eau aux villes</li>
-                    <li><strong>Latin</strong> : Langue qui donnera naissance au français, à l'italien, à l'espagnol...</li>
-                </ul>
-
-                <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                    <p><strong>💡 Le savais-tu ?</strong> La Grande Pyramide de Khéops était la plus haute construction du monde pendant 3800 ans !</p>
-                </div>
-
-                <button onclick="alert('Carte interactive des empires en développement ! 🏛️')" style="background: #ff9800; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
-                    🚀 Explorer l'Antiquité
-                </button>
-            </section>
-
-            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #795548;">
-                <h2>🏰 Le Moyen Âge</h2>
-                <p><strong>Période :</strong> 476 → 1492</p>
-                <p>Châteaux forts, chevaliers et cathédrales</p>
-                
-                <h3>La société féodale</h3>
-                <ul>
-                    <li><strong>Le roi</strong> : Au sommet de la pyramide</li>
-                    <li><strong>Les seigneurs</strong> : Nobles propriétaires de terres</li>
-                    <li><strong>Les chevaliers</strong> : Guerriers qui protègent le seigneur</li>
-                    <li><strong>Les paysans</strong> : Travaillent la terre (serfs et vilains)</li>
-                    <li><strong>Le clergé</strong> : Moines, prêtres, évêques</li>
-                </ul>
-
-                <h3>Châteaux et chevaliers</h3>
-                <ul>
-                    <li><strong>Châteaux forts</strong> : Constructions défensives avec donjon, remparts, douves</li>
-                    <li><strong>Adoubement</strong> : Cérémonie pour devenir chevalier</li>
-                    <li><strong>Tournois</strong> : Combats sportifs entre chevaliers</li>
-                    <li><strong>Blasons</strong> : Emblèmes des familles nobles</li>
-                </ul>
-
-                <h3>L'Église et la culture</h3>
-                <ul>
-                    <li><strong>Cathédrales gothiques</strong> : Avec leurs vitraux colorés et leurs flèches élancées</li>
-                    <li><strong>Monastères</strong> : Centres de savoir où les moines recopient les livres</li>
-                    <li><strong>Les Croisades</strong> : Expéditions militaires vers la Terre sainte</li>
-                </ul>
-
-                <div style="background: #efebe9; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                    <p><strong>💡 Le savais-tu ?</strong> Une armure complète de chevalier pesait environ 25 kg !</p>
-                </div>
-
-                <button onclick="alert('Visite virtuelle château fort en développement ! 🏰')" style="background: #795548; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
-                    🚀 Explorer le Moyen Âge
-                </button>
-            </section>
-
-            <section class="content-card" style="background: white; padding: 2rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #2196f3;">
-                <h2>🌍 Géographie - Notre Planète Terre</h2>
-                <p>Découvre les continents, pays et merveilles de notre monde</p>
-                
-                <h3>Les continents et océans</h3>
-                <ul>
-                    <li><strong>7 continents</strong> : Europe, Asie, Afrique, Amérique du Nord, Amérique du Sud, Océanie, Antarctique</li>
-                    <li><strong>5 océans</strong> : Pacifique, Atlantique, Indien, Arctique, Antarctique</li>
-                </ul>
-
-                <h3>Les pays et capitales</h3>
-                <ul>
-                    <li><strong>France</strong> : Paris</li>
-                    <li><strong>Allemagne</strong> : Berlin</li>
-                    <li><strong>Italie</strong> : Rome</li>
-                    <li><strong>Espagne</strong> : Madrid</li>
-                    <li><strong>Royaume-Uni</strong> : Londres</li>
-                    <li><strong>États-Unis</strong> : Washington</li>
-                    <li><strong>Chine</strong> : Pékin</li>
-                    <li><strong>Japon</strong> : Tokyo</li>
-                </ul>
-
-                <h3>Les reliefs</h3>
-                <ul>
-                    <li><strong>Montagnes</strong> : Himalaya (Everest 8 849 m), Alpes, Andes</li>
-                    <li><strong>Fleuves</strong> : Nil (6 671 km), Amazone, Mississippi, Yangtsé</li>
-                    <li><strong>Déserts</strong> : Sahara, Gobi, Atacama</li>
-                    <li><strong>Forêts</strong> : Amazonie, forêt du Congo, taïga</li>
-                </ul>
-
-                <h3>Les climats</h3>
-                <ul>
-                    <li><strong>Équatorial</strong> : Chaud et humide toute l'année</li>
-                    <li><strong>Tropical</strong> : Saisons sèches et humides</li>
-                    <li><strong>Désertique</strong> : Très sec, peu de pluie</li>
-                    <li><strong>Tempéré</strong> : Quatre saisons distinctes</li>
-                    <li><strong>Polaire</strong> : Froid extrême, glaciers</li>
-                </ul>
-
-                <div style="background: #e3f2fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                    <p><strong>💡 Le savais-tu ?</strong> Le Pacifique est le plus grand océan : il couvre 30% de la surface de la Terre !</p>
-                </div>
-
-                <button onclick="alert('Carte interactive mondiale en développement ! 🗺️')" style="background: #2196f3; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 1rem;">
-                    🚀 Explorer le monde
-                </button>
-            </section>
-
-        </div>
+            </div>
+        </section>
     </main>
 
-    <script src="scripts/menu_lateral.js"></script>
+    <!-- Scripts standards -->
     <script src="scripts/general_script.js"></script>
     <script src="scripts/xp_system_complete.js"></script>
-    
+    <script src="scripts/accessibilite.js"></script>
+    <script src="scripts/menu_enhanced.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebar');
-            const toggleButton = document.getElementById('sidebar-toggle');
+        // Initialisation standard
+        document.addEventListener("DOMContentLoaded", function() {
+            // Gestion du menu latéral
+            var sidebar = document.querySelector('.sidebar');
+            var toggleButton = document.querySelector('.sidebar-toggle');
             
-            if (sidebar) sidebar.style.left = '-250px';
+            // Cacher initialement le menu
+            if (sidebar) {
+                sidebar.style.left = '-250px';
+                sidebar.setAttribute('aria-hidden', 'true');
+            }
             
+            // Gestion du clic sur le bouton du menu
             if (toggleButton && sidebar) {
                 toggleButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const isOpen = sidebar.style.left === '0px';
-                    sidebar.style.left = isOpen ? '-250px' : '0px';
-                    sidebar.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
-                    toggleButton.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-                });
-                
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && sidebar.style.left === '0px') {
+                    if (sidebar.style.left === '0px') {
                         sidebar.style.left = '-250px';
                         sidebar.setAttribute('aria-hidden', 'true');
-                        toggleButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        sidebar.style.left = '0px';
+                        sidebar.setAttribute('aria-hidden', 'false');
+                    }
+                });
+                
+                // Fermer le menu en cliquant ailleurs
+                document.addEventListener('click', function(e) {
+                    if (sidebar.style.left === '0px' && 
+                        e.target !== toggleButton && 
+                        !sidebar.contains(e.target)) {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                // Fermer le menu avec Échap
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && sidebar && sidebar.style.left === '0px') {
+                        sidebar.style.left = '-250px';
+                        sidebar.setAttribute('aria-hidden', 'true');
                     }
                 });
             }
-            
+
+            // XP system integration
             setTimeout(() => {
                 if (window.xpManager) {
-                    window.xpManager.currentSection = 'histoire';
-                    document.getElementById('xp-status').style.display = 'block';
-                    
-                    window.updateHistoireDisplays = function() {
-                        const xpDisplay = document.getElementById('xp-display');
-                        const heartsDisplay = document.getElementById('hearts-display');
-                        const streakDisplay = document.getElementById('streak-display');
-                        
-                        if (xpDisplay && window.xpManager.progress) {
-                            const level = window.xpManager.progress.level || 1;
-                            const xp = window.xpManager.progress.totalXP || 0;
-                            const nextLevelXP = window.xpManager.getNextLevelXP ? window.xpManager.getNextLevelXP() : 200;
-                            xpDisplay.textContent = `Niveau ${level} - ${xp}/${nextLevelXP} XP`;
-                        }
-                        
-                        if (heartsDisplay && window.xpManager.hearts) {
-                            const hearts = '❤️'.repeat(window.xpManager.hearts.current) + '🖤'.repeat(window.xpManager.hearts.max - window.xpManager.hearts.current);
-                            heartsDisplay.textContent = hearts;
-                        }
-                        
-                        if (streakDisplay && window.xpManager.streak) {
-                            const days = window.xpManager.streak.current || 0;
-                            streakDisplay.textContent = `🔥 ${days} jour${days > 1 ? 's' : ''}`;
-                        }
-                    };
-                    
-                    window.updateHistoireDisplays();
-                    
-                    document.addEventListener('xpUpdated', window.updateHistoireDisplays);
-                    document.addEventListener('heartLost', window.updateHistoireDisplays);
-                    document.addEventListener('heartRecovered', window.updateHistoireDisplays);
-                    document.addEventListener('streakUpdated', window.updateHistoireDisplays);
+                    try {
+                        window.xpManager.currentSection = 'histoire';
+                    } catch (err) {
+                        console.warn('Impossible de définir xpManager.currentSection', err);
+                    }
+                    var xpEl = document.getElementById('xp-status');
+                    if (xpEl) xpEl.style.display = 'block';
                 }
             }, 1000);
+
+            console.log("✔️ Section Histoire-Géographie chargée avec succès !");
         });
     </script>
 </body>
