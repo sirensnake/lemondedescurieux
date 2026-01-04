@@ -1,0 +1,941 @@
+/**
+ * ==========================================
+ * CURIO-MAIN.CSS - STYLES UNIVERSELS
+ * Le Monde des Curieux
+ * ==========================================
+ * Design Minecraft/Pixel Art
+ * Compatible : Maths, English, Histoire, Français, Sciences
+ */
+
+/* ========================================== */
+/* RESET ET BASE */
+/* ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* ========================================== */
+/* CONTAINER PRINCIPAL */
+/* ========================================== */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========================================== */
+/* HEADER SECTION */
+/* ========================================== */
+
+.header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 5px solid #2c3e50;
+    border-radius: 20px;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    color: #2c3e50;
+    text-shadow: 3px 3px 0 rgba(42, 157, 143, 0.3);
+    letter-spacing: 2px;
+}
+
+/* ========================================== */
+/* BOUTONS */
+/* ========================================== */
+
+.btn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    padding: 15px 30px;
+    border: 4px solid #2c3e50;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2a9d8f 0%, #1d7a6e 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d7a6e 0%, #156357 100%);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #e9ecef 0%, #ced4da 100%);
+    color: #2c3e50;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #ced4da 0%, #adb5bd 100%);
+}
+
+.back-home-btn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 11px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    border: 4px solid #2c3e50;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: #2c3e50;
+}
+
+.back-home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #dee2e6 0%, #ced4da 100%);
+}
+
+.back-home-btn:active {
+    transform: translateY(0);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ========================================== */
+/* STATS HEADER (STREAK, HEARTS, XP) */
+/* ========================================== */
+
+.stats {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 13px;
+}
+
+.stats span {
+    background: rgba(42, 157, 143, 0.1);
+    padding: 10px 18px;
+    border: 3px solid #2a9d8f;
+    border-radius: 10px;
+    color: #1d3557;
+    box-shadow: 3px 3px 0 rgba(42, 157, 143, 0.3);
+    white-space: nowrap;
+}
+
+/* ========================================== */
+/* GRILLE DES LEÇONS */
+/* ========================================== */
+
+#lessons-list {
+    margin-top: 30px;
+}
+
+#lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* ========================================== */
+/* CARTES LEÇONS - DESIGN MINECRAFT */
+/* ========================================== */
+
+.lesson-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 5px solid #2c3e50;
+    border-radius: 18px;
+    padding: 35px 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 8px 8px 0 rgba(44, 62, 80, 0.35);
+    position: relative;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Animation au survol */
+.lesson-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(42, 157, 143, 0.08) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.lesson-card:hover::before {
+    opacity: 1;
+}
+
+.lesson-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 12px 12px 0 rgba(42, 157, 143, 0.5);
+    border-color: #2a9d8f;
+}
+
+.lesson-card:active {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 6px 6px 0 rgba(42, 157, 143, 0.4);
+}
+
+/* Contenu de la carte (au-dessus du ::before) */
+.lesson-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ========================================== */
+/* EMOJI DE LA CARTE */
+/* ========================================== */
+
+.lesson-card .emoji {
+    font-size: 5rem;
+    margin-bottom: 25px;
+    display: block;
+    line-height: 1;
+    animation: floatEmoji 4s ease-in-out infinite;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes floatEmoji {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-12px) rotate(5deg); 
+    }
+}
+
+.lesson-card:hover .emoji {
+    animation: bounceEmoji 0.7s ease;
+}
+
+@keyframes bounceEmoji {
+    0%, 100% { 
+        transform: translateY(0) scale(1) rotate(0deg); 
+    }
+    30% { 
+        transform: translateY(-20px) scale(1.15) rotate(-10deg); 
+    }
+    60% { 
+        transform: translateY(-10px) scale(1.1) rotate(5deg); 
+    }
+}
+
+/* ========================================== */
+/* TITRE DE LA CARTE */
+/* ========================================== */
+
+.lesson-card .title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: #1d3557;
+    margin: 20px 0;
+    line-height: 2;
+    word-wrap: break-word;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+    max-width: 100%;
+}
+
+/* ========================================== */
+/* BADGE XP */
+/* ========================================== */
+
+.lesson-card .xp {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #f39c12;
+    margin-top: 20px;
+    padding: 12px 20px;
+    border-top: 4px dashed #e9ecef;
+    background: linear-gradient(135deg, rgba(243, 156, 18, 0.15) 0%, rgba(243, 156, 18, 0.05) 100%);
+    border-radius: 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* ========================================== */
+/* LEÇON COMPLÉTÉE */
+/* ========================================== */
+
+.lesson-card.completed {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-color: #28a745;
+    box-shadow: 8px 8px 0 rgba(40, 167, 69, 0.4);
+}
+
+.lesson-card.completed::after {
+    content: '✅';
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 3rem;
+    z-index: 3;
+    animation: checkmarkPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes checkmarkPop {
+    0% { 
+        transform: scale(0) rotate(-180deg); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1.3) rotate(15deg); 
+    }
+    100% { 
+        transform: scale(1) rotate(0deg); 
+        opacity: 1; 
+    }
+}
+
+.lesson-card.completed:hover {
+    box-shadow: 12px 12px 0 rgba(40, 167, 69, 0.6);
+    border-color: #218838;
+}
+
+.lesson-card.completed .xp {
+    color: #28a745;
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.2) 0%, rgba(40, 167, 69, 0.05) 100%);
+}
+
+/* ========================================== */
+/* LEÇON VERROUILLÉE */
+/* ========================================== */
+
+.lesson-card.locked {
+    opacity: 0.65;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    border-color: #6c757d;
+    box-shadow: 8px 8px 0 rgba(108, 117, 125, 0.3);
+}
+
+.lesson-card.locked .lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    z-index: 10;
+    opacity: 0.8;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    animation: lockShake 2s ease-in-out infinite;
+}
+
+@keyframes lockShake {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(-5deg); }
+    75% { transform: translate(-50%, -50%) rotate(5deg); }
+}
+
+.lesson-card.locked:hover {
+    transform: none;
+    box-shadow: 8px 8px 0 rgba(108, 117, 125, 0.3);
+    border-color: #6c757d;
+}
+
+.lesson-card.locked .emoji {
+    animation: none;
+    opacity: 0.3;
+}
+
+.lesson-card.locked .title,
+.lesson-card.locked .xp {
+    opacity: 0.5;
+}
+
+/* ========================================== */
+/* ÉCRAN D'EXERCICE */
+/* ========================================== */
+
+#lesson-screen {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 5px solid #2c3e50;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 30px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#hearts-exercise {
+    font-size: 2rem;
+}
+
+/* ========================================== */
+/* BARRE DE PROGRESSION */
+/* ========================================== */
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border: 4px solid #2c3e50;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2a9d8f 0%, #1d7a6e 100%);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(42, 157, 143, 0.5);
+}
+
+/* ========================================== */
+/* ZONE DE QUESTION */
+/* ========================================== */
+
+.question-area {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 20px;
+    color: #1d3557;
+    margin-bottom: 35px;
+    line-height: 2;
+    padding: 25px;
+    background: rgba(42, 157, 143, 0.05);
+    border: 3px dashed #2a9d8f;
+    border-radius: 15px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.answer-input {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    padding: 20px 25px;
+    width: 100%;
+    max-width: 500px;
+    border: 5px solid #2c3e50;
+    border-radius: 12px;
+    text-align: center;
+    background: white;
+    color: #2c3e50;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #2a9d8f;
+    box-shadow: 6px 6px 0 rgba(42, 157, 143, 0.4);
+    transform: translateY(-2px);
+}
+
+.answer-input::placeholder {
+    color: #adb5bd;
+}
+
+/* ========================================== */
+/* ZONE D'INDICE */
+/* ========================================== */
+
+.hint-area {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border: 4px solid #ffc107;
+    border-radius: 15px;
+    font-size: 11px;
+    line-height: 1.8;
+    color: #856404;
+    box-shadow: 4px 4px 0 rgba(255, 193, 7, 0.3);
+}
+
+/* ========================================== */
+/* BOUTONS D'ACTION */
+/* ========================================== */
+
+.button-area {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.button-area .btn {
+    min-width: 180px;
+}
+
+/* ========================================== */
+/* ÉCRAN DE RÉSULTATS */
+/* ========================================== */
+
+#results-screen {
+    text-align: center;
+    padding: 40px;
+}
+
+.results-icon {
+    font-size: 6rem;
+    margin-bottom: 30px;
+    animation: resultsPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes resultsPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.results-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.stat-box {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 4px solid #2c3e50;
+    border-radius: 15px;
+    padding: 25px 15px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    color: #2a9d8f;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0 rgba(42, 157, 143, 0.2);
+}
+
+.stat-label {
+    font-size: 10px;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* ========================================== */
+/* FEEDBACK POPUP */
+/* ========================================== */
+
+.feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 50px;
+    font-size: 18px;
+    border: 5px solid;
+    border-radius: 15px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, -40%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.feedback.correct {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-color: #28a745;
+    color: #155724;
+}
+
+.feedback.incorrect {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+/* ========================================== */
+/* ANIMATION SHAKE POUR ERREURS */
+/* ========================================== */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-12px); }
+    20%, 40%, 60%, 80% { transform: translateX(12px); }
+}
+
+.shake {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* ========================================== */
+/* CONTEXTE HISTORIQUE (pour Histoire) */
+/* ========================================== */
+
+.historical-context {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 4px solid #d97706;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.context-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.context-text {
+    font-size: 11px;
+    line-height: 1.8;
+    color: #78350f;
+}
+
+/* ========================================== */
+/* BOUTON AUDIO (pour English) */
+/* ========================================== */
+
+.audio-button {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border: 4px solid #1e40af;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0 rgba(30, 64, 175, 0.4);
+    margin: 10px;
+}
+
+.audio-button:hover {
+    transform: scale(1.1);
+    box-shadow: 6px 6px 0 rgba(30, 64, 175, 0.6);
+}
+
+.audio-button:active {
+    transform: scale(1.05);
+    box-shadow: 3px 3px 0 rgba(30, 64, 175, 0.5);
+}
+
+/* ========================================== */
+/* THÈMES PAR SECTION */
+/* ========================================== */
+
+/* Thème Maths (violet) */
+.maths-section .header {
+    background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+}
+
+.maths-section .progress-fill {
+    background: linear-gradient(90deg, #9c27b0 0%, #7b1fa2 100%);
+}
+
+.maths-section .lesson-card:hover {
+    border-color: #9c27b0;
+    box-shadow: 12px 12px 0 rgba(156, 39, 176, 0.5);
+}
+
+/* Thème English (bleu) */
+.english-section .header {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+.english-section .progress-fill {
+    background: linear-gradient(90deg, #2196f3 0%, #1976d2 100%);
+}
+
+.english-section .lesson-card:hover {
+    border-color: #2196f3;
+    box-shadow: 12px 12px 0 rgba(33, 150, 243, 0.5);
+}
+
+/* Thème Histoire (marron/ocre) */
+.histoire-section .header {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.histoire-section .progress-fill {
+    background: linear-gradient(90deg, #d97706 0%, #92400e 100%);
+}
+
+.histoire-section .lesson-card:hover {
+    border-color: #d97706;
+    box-shadow: 12px 12px 0 rgba(217, 119, 6, 0.5);
+}
+
+/* Thème Français (vert) */
+.francais-section .header {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.francais-section .progress-fill {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.francais-section .lesson-card:hover {
+    border-color: #10b981;
+    box-shadow: 12px 12px 0 rgba(16, 185, 129, 0.5);
+}
+
+/* ========================================== */
+/* RESPONSIVE DESIGN */
+/* ========================================== */
+
+@media (max-width: 992px) {
+    #lessons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header h1 {
+        font-size: 18px;
+    }
+    
+    .stats {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 11px;
+    }
+    
+    #lessons-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .lesson-card {
+        min-height: 240px;
+        padding: 30px 20px;
+    }
+    
+    .lesson-card .emoji {
+        font-size: 4rem;
+    }
+    
+    .lesson-card .title {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+    
+    .lesson-card .xp {
+        font-size: 11px;
+    }
+    
+    #lesson-screen {
+        padding: 25px 20px;
+    }
+    
+    .question-text {
+        font-size: 16px;
+        padding: 20px;
+    }
+    
+    .answer-input {
+        font-size: 16px;
+        padding: 18px 20px;
+    }
+    
+    .button-area {
+        flex-direction: column;
+    }
+    
+    .button-area .btn {
+        width: 100%;
+    }
+    
+    .results-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 14px;
+    }
+    
+    .stats {
+        font-size: 10px;
+        gap: 10px;
+    }
+    
+    .stats span {
+        padding: 8px 12px;
+    }
+    
+    .lesson-card {
+        min-height: 220px;
+        padding: 25px 15px;
+    }
+    
+    .lesson-card .emoji {
+        font-size: 3.5rem;
+    }
+    
+    .lesson-card .title {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+    
+    .lesson-card .xp {
+        font-size: 10px;
+        padding: 10px 15px;
+    }
+    
+    .question-text {
+        font-size: 14px;
+        padding: 18px;
+    }
+    
+    .answer-input {
+        font-size: 14px;
+        padding: 15px;
+    }
+    
+    .btn {
+        font-size: 11px;
+        padding: 12px 20px;
+    }
+    
+    .feedback {
+        padding: 20px 30px;
+        font-size: 14px;
+    }
+    
+    .results-icon {
+        font-size: 4rem;
+    }
+    
+    .stat-value {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 9px;
+    }
+}
+
+/* ========================================== */
+/* ACCESSIBILITÉ */
+/* ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible pour navigation clavier */
+.btn:focus-visible,
+.answer-input:focus-visible,
+.lesson-card:focus-visible {
+    outline: 4px solid #2a9d8f;
+    outline-offset: 4px;
+}
+
+/* ========================================== */
+/* UTILITAIRES */
+/* ========================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mt-4 { margin-top: 40px; }
+
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.mb-4 { margin-bottom: 40px; }
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================================== */
+/* FIN DU FICHIER */
+/* ========================================== */

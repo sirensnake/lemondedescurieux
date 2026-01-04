@@ -1,129 +1,43 @@
-/* ========================================
-   THÈME HISTOIRE
-   Gradient doré/sépia style parchemin
-   ======================================== */
+/**
+ * ==========================================
+ * CSS BANDEAU CONTEXTE HISTORIQUE
+ * Section Histoire - Le Monde des Curieux
+ * ==========================================
+ */
 
-.histoire-section {
-    background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
-    min-height: 100vh;
-}
-
-.histoire-section .header h1 {
-    color: #ffd700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.histoire-section .lesson-card {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 3px solid #d97706;
-}
-
-.histoire-section .lesson-card:hover {
-    box-shadow: 0 8px 24px rgba(217, 119, 6, 0.4);
-    border-color: #92400e;
-}
-
-.histoire-section .lesson-title {
-    color: #92400e;
-}
-
-.histoire-section .lesson-button {
-    background: linear-gradient(135deg, #d97706, #92400e);
-}
-
-.histoire-section .lesson-button:hover {
-    background: linear-gradient(135deg, #b45309, #78350f);
-}
-
-.histoire-section .btn-primary {
-    background: linear-gradient(135deg, #d97706, #92400e);
-}
-
-.histoire-section .btn-primary:hover {
-    background: linear-gradient(135deg, #b45309, #78350f);
-}
-
-.histoire-section .progress-fill {
-    background: linear-gradient(90deg, #d97706, #92400e);
-}
-
-.histoire-section .question-text {
-    color: #92400e;
-}
-
-.histoire-section .answer-input {
-    border-color: #d97706;
-    background: #fef3c7;
-}
-
-.histoire-section .answer-input:focus {
-    border-color: #92400e;
-    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
-    background: white;
-}
-
-/* CONTEXTE HISTORIQUE */
+/* BANDEAU CONTEXTE HISTORIQUE */
 .historical-context {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 3px solid #d97706;
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 25px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 5px solid #d97706;
+    border-radius: 15px;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    box-shadow: 6px 6px 0 rgba(217, 119, 6, 0.3);
+    font-family: 'Press Start 2P', cursive;
+    animation: contextSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .context-icon {
-    font-size: 3rem;
+    font-size: 4rem;
     flex-shrink: 0;
+    animation: iconPulse 2s ease-in-out infinite;
 }
 
 .context-text {
-    font-size: 0.8rem;
-    color: #92400e;
-    line-height: 1.6;
+    font-size: 11px;
+    line-height: 2;
+    color: #78350f;
+    text-align: left;
 }
 
-/* TIMELINE INTERACTIVE */
-.timeline-summary {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 3px solid #d97706;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-top: 2rem;
-}
-
-.timeline-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 4px solid #d97706;
-}
-
-.timeline-date {
-    font-size: 1rem;
-    color: #d97706;
-    font-weight: bold;
-    min-width: 100px;
-}
-
-.timeline-event {
-    font-size: 0.8rem;
-    color: #92400e;
-}
-
-.timeline-icon {
-    font-size: 1.5rem;
-}
-
-/* ANIMATIONS HISTORIQUES */
-@keyframes fadeInScroll {
+/* ANIMATIONS */
+@keyframes contextSlideIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -131,17 +45,64 @@
     }
 }
 
-.historical-context {
-    animation: fadeInScroll 0.5s ease-out;
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
 }
 
-.timeline-item {
-    animation: fadeInScroll 0.6s ease-out;
-}
-
-/* Style parchemin pour le feedback */
-.histoire-section .feedback {
+/* THÈME HISTOIRE (MARRON/OCRE) */
+.histoire-section .header {
     background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 3px solid #d97706;
-    color: #92400e;
+    border-color: #d97706;
+}
+
+.histoire-section .progress-fill {
+    background: linear-gradient(90deg, #d97706 0%, #b45309 100%);
+}
+
+.histoire-section .lesson-card:hover {
+    border-color: #d97706;
+    box-shadow: 12px 12px 0 rgba(217, 119, 6, 0.5);
+}
+
+.histoire-section .btn-primary {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+}
+
+.histoire-section .btn-primary:hover {
+    background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .historical-context {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .context-icon {
+        font-size: 3rem;
+    }
+    
+    .context-text {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+}
+
+@media (max-width: 480px) {
+    .context-icon {
+        font-size: 2.5rem;
+    }
+    
+    .context-text {
+        font-size: 9px;
+    }
 }

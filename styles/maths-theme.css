@@ -1,7 +1,25 @@
 /* ========================================
-   BACKGROUND MATHÉMATIQUES
+   MATHS-THEME.CSS - Harmonisé
    ======================================== */
 
+:root {
+    --primary-color: #4834d4;    /* Bleu profond pour les boutons */
+    --secondary-color: #be2edd;  /* Violet pour les accents */
+    --card-bg: #f0f2f5;          /* Gris très clair pour les cartes */
+}
+
 body.maths-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* On personnalise la bordure de survol pour les maths */
+.lesson-card:hover {
+    box-shadow: 10px 10px 0px var(--secondary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* La barre de progression des maths sera bleue */
+.progress-fill {
+    background: linear-gradient(90deg, #4834d4 0%, #686de0 100%) !important;
 }

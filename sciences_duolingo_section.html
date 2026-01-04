@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📚 Français - Le Monde des Curieux</title>
+    <title>🔬 Sciences - Le Monde des Curieux</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/curio-main.css">
 </head>
-<body class="francais-section">
+<body class="sciences-section">
     <div class="container">
         <!-- HEADER -->
         <div class="header">
             <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
-            <h1>📚 Français</h1>
+            <h1>🔬 Sciences</h1>
             <div class="stats">
                 <span id="streak-display">🔥 0 jours</span>
                 <span id="hearts-display">❤️❤️❤️❤️❤️</span>
@@ -32,7 +32,7 @@
             <!-- EXERCISE SCREEN -->
             <div id="exercise-screen">
                 <div class="exercise-header">
-                    <button class="btn btn-secondary" onclick="francaisApp.backToLessons()">← Retour</button>
+                    <button class="btn btn-secondary" onclick="sciencesApp.backToLessons()">← Retour</button>
                     <span id="hearts-exercise">❤️❤️❤️❤️❤️</span>
                 </div>
                 
@@ -47,15 +47,15 @@
                 </div>
                 
                 <div class="button-area">
-                    <button class="btn btn-secondary" onclick="francaisApp.showHint()">💡 Indice</button>
-                    <button class="btn btn-primary" onclick="francaisApp.checkAnswer()">✓ Vérifier</button>
+                    <button class="btn btn-secondary" onclick="sciencesApp.showHint()">💡 Indice</button>
+                    <button class="btn btn-primary" onclick="sciencesApp.checkAnswer()">✓ Vérifier</button>
                 </div>
             </div>
             
             <!-- RESULTS SCREEN -->
             <div id="results-screen" style="display: none;">
                 <div class="results-icon">🏆</div>
-                <h2 style="color: #10b981; margin-bottom: 2rem;">Leçon Terminée !</h2>
+                <h2 style="color: #06b6d4; margin-bottom: 2rem;">Leçon Terminée !</h2>
                 
                 <div class="results-stats">
                     <div class="stat-box">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" onclick="francaisApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
+                <button class="btn btn-primary" onclick="sciencesApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
                     🏠 Retour aux leçons
                 </button>
             </div>
@@ -88,19 +88,19 @@
 
     <!-- SCRIPTS -->
     <script src="scripts/core/lesson-engine.js"></script>
-    <script src="scripts/data/francais-lessons.js"></script>
+    <script src="scripts/data/sciences-lessons.js"></script>
     <script>
-        // Initialisation application Français
-        const francaisApp = new LessonEngine('francais', francaisLessons);
+        // Initialisation application Sciences
+        const sciencesApp = new LessonEngine('sciences', sciencesLessons);
         
         // Démarrage au chargement
         document.addEventListener('DOMContentLoaded', () => {
-            francaisApp.renderLessonsGrid();
-            francaisApp.updateAllDisplays();
+            sciencesApp.renderLessonsGrid();
+            sciencesApp.updateAllDisplays();
             
             // Enter pour valider
             document.getElementById('answer-input').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') francaisApp.checkAnswer();
+                if (e.key === 'Enter') sciencesApp.checkAnswer();
             });
         });
     </script>

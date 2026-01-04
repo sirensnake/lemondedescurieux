@@ -1,403 +1,754 @@
-// ====================================
-// MATHS LESSONS - Système Duolingo
-// Architecture identique au français
-// ====================================
+/**
+ * ==========================================
+ * DONNÉES LEÇONS MATHÉMATIQUES CM1-CM2
+ * Le Monde des Curieux
+ * ==========================================
+ * 15 leçons progressives avec hints pédagogiques
+ */
 
-const MATHS_LESSONS_DATA = {
-  1: {
-    id: 1,
-    title: "Tables de Multiplication",
-    description: "Maîtrise les tables de 2 à 5",
-    icon: "✖️",
-    locked: false,
-    exercises: [
-      {
-        type: "calculation",
-        question: "3 × 4 = ?",
-        answer: "12",
-        hint: "Compte de 4 en 4 trois fois : 4, 8, 12"
-      },
-      {
-        type: "calculation",
-        question: "5 × 6 = ?",
-        answer: "30",
-        hint: "5 fois 6 = une demi-douzaine de 5"
-      },
-      {
-        type: "calculation",
-        question: "7 × 3 = ?",
-        answer: "21",
-        hint: "7 + 7 + 7 = ?"
-      },
-      {
-        type: "calculation",
-        question: "4 × 8 = ?",
-        answer: "32",
-        hint: "Pense à 4 × 4 = 16, puis double !"
-      },
-      {
-        type: "calculation",
-        question: "9 × 5 = ?",
-        answer: "45",
-        hint: "Presque 10 × 5, enlève juste 5"
-      }
-    ]
-  },
-  2: {
-    id: 2,
-    title: "Additions avec Retenue",
-    description: "Additionne les grands nombres",
-    icon: "➕",
-    locked: false,
-    exercises: [
-      {
-        type: "calculation",
-        question: "125 + 48 = ?",
-        answer: "173",
-        hint: "5 + 8 = 13 (retenue 1), puis 2 + 4 + 1 = 7"
-      },
-      {
-        type: "calculation",
-        question: "267 + 156 = ?",
-        answer: "423",
-        hint: "Commence par les unités : 7 + 6"
-      },
-      {
-        type: "calculation",
-        question: "89 + 76 = ?",
-        answer: "165",
-        hint: "9 + 6 = 15, écris 5 retenue 1"
-      },
-      {
-        type: "calculation",
-        question: "345 + 289 = ?",
-        answer: "634",
-        hint: "Attention aux retenues : 5+9, 4+8+1, 3+2+1"
-      }
-    ]
-  },
-  3: {
-    id: 3,
-    title: "Soustractions",
-    description: "Soustrais sans te tromper",
-    icon: "➖",
-    locked: false,
-    exercises: [
-      {
-        type: "calculation",
-        question: "85 - 23 = ?",
-        answer: "62",
-        hint: "5 - 3 = 2, puis 8 - 2 = 6"
-      },
-      {
-        type: "calculation",
-        question: "142 - 67 = ?",
-        answer: "75",
-        hint: "Emprunte 1 dizaine pour les unités"
-      },
-      {
-        type: "calculation",
-        question: "200 - 145 = ?",
-        answer: "55",
-        hint: "Transforme 200 en 199 + 1"
-      },
-      {
-        type: "calculation",
-        question: "324 - 158 = ?",
-        answer: "166",
-        hint: "Emprunte si nécessaire colonne par colonne"
-      }
-    ]
-  },
-  4: {
-    id: 4,
-    title: "Les Fractions",
-    description: "Découvre les parts et les fractions",
-    icon: "🍕",
-    locked: false,
-    exercises: [
-      {
-        type: "calculation",
-        question: "1/2 de 10 = ?",
-        answer: "5",
-        hint: "La moitié de 10, c'est diviser par 2"
-      },
-      {
-        type: "calculation",
-        question: "1/4 de 20 = ?",
-        answer: "5",
-        hint: "Un quart, c'est diviser par 4"
-      },
-      {
-        type: "calculation",
-        question: "3/4 de 12 = ?",
-        answer: "9",
-        hint: "D'abord trouve 1/4 de 12, puis multiplie par 3"
-      },
-      {
-        type: "calculation",
-        question: "2/3 de 15 = ?",
-        answer: "10",
-        hint: "15 ÷ 3 = 5, puis 5 × 2"
-      }
-    ]
-  }
-};
+const mathsLessons = [
+    // ========================================
+    // LEÇON 1 : TABLES DE MULTIPLICATION
+    // ========================================
+    {
+        id: 'maths-01-multiplications',
+        title: 'Tables de Multiplication',
+        emoji: '✖️',
+        xp: 50,
+        difficulty: 'facile',
+        exercises: [
+            { 
+                question: '7 × 8 = ?', 
+                answer: '56', 
+                hint: 'Astuce : 7 × 8 = (7 × 10) - (7 × 2) = 70 - 14 = 56'
+            },
+            { 
+                question: '9 × 6 = ?', 
+                answer: '54', 
+                hint: 'Pense à 9 × 6 = (10 × 6) - 6 = 60 - 6 = 54'
+            },
+            { 
+                question: '8 × 7 = ?', 
+                answer: '56', 
+                hint: 'C\'est la même que 7 × 8 ! La multiplication est commutative.'
+            },
+            { 
+                question: '6 × 9 = ?', 
+                answer: '54', 
+                hint: 'Compte par 6 : 6, 12, 18, 24, 30, 36, 42, 48, 54'
+            },
+            { 
+                question: '12 × 5 = ?', 
+                answer: '60', 
+                hint: '12 × 5 = (10 × 5) + (2 × 5) = 50 + 10 = 60'
+            },
+            { 
+                question: '8 × 9 = ?', 
+                answer: '72', 
+                hint: '8 × 9 = (8 × 10) - 8 = 80 - 8 = 72'
+            },
+            { 
+                question: '7 × 6 = ?', 
+                answer: '42', 
+                hint: 'Astuce : 7 × 6 = 7 × (5 + 1) = 35 + 7 = 42'
+            },
+            { 
+                question: '11 × 9 = ?', 
+                answer: '99', 
+                hint: '11 × 9 = (10 × 9) + 9 = 90 + 9 = 99'
+            }
+        ]
+    },
 
-class MathsLessons {
-  constructor(storage, heartsSystem, streakSystem) {
-    console.log('🔢 MathsLessons initializing...');
-    
-    this.storage = storage;
-    this.heartsSystem = heartsSystem;
-    this.streakSystem = streakSystem;
-    
-    this.currentLesson = null;
-    this.currentExerciseIndex = 0;
-    this.currentExercises = [];
-    this.score = 0;
-    
-    this.lessons = Object.values(MATHS_LESSONS_DATA);
-    this.loadProgress();
-    
-    setTimeout(() => {
-      this.renderLessons();
-    }, 300);
-    
-    console.log('✅ MathsLessons initialized');
-  }
+    // ========================================
+    // LEÇON 2 : ADDITIONS À 3 CHIFFRES
+    // ========================================
+    {
+        id: 'maths-02-additions',
+        title: 'Additions à 3 Chiffres',
+        emoji: '➕',
+        xp: 45,
+        difficulty: 'facile',
+        exercises: [
+            { 
+                question: '346 + 227 = ?', 
+                answer: '573', 
+                hint: 'Commence par les unités : 6 + 7 = 13 (pose 3, retenue 1)'
+            },
+            { 
+                question: '489 + 365 = ?', 
+                answer: '854', 
+                hint: 'Attention aux retenues : 9 + 5 = 14, 8 + 6 + 1 = 15'
+            },
+            { 
+                question: '572 + 149 = ?', 
+                answer: '721', 
+                hint: 'Astuce : 572 + 150 - 1 = 722 - 1 = 721'
+            },
+            { 
+                question: '638 + 284 = ?', 
+                answer: '922', 
+                hint: 'Décompose : 638 + 200 = 838, puis + 84 = 922'
+            },
+            { 
+                question: '795 + 468 = ?', 
+                answer: '1263', 
+                hint: 'N\'oublie pas : le résultat peut dépasser 1000 !'
+            },
+            { 
+                question: '523 + 399 = ?', 
+                answer: '922', 
+                hint: 'Arrondis : 523 + 400 = 923, puis - 1 = 922'
+            },
+            { 
+                question: '814 + 697 = ?', 
+                answer: '1511', 
+                hint: 'Pense : 814 + 700 = 1514, puis - 3 = 1511'
+            }
+        ]
+    },
 
-  loadProgress() {
-    const completed = this.storage?.get('maths_completed_lessons') || [];
-    
-    this.lessons.forEach((lesson, index) => {
-      if (index === 0) {
-        lesson.locked = false;
-      } else if (completed.includes(this.lessons[index - 1].id)) {
-        lesson.locked = false;
-      }
-    });
-  }
+    // ========================================
+    // LEÇON 3 : SOUSTRACTIONS AVEC RETENUES
+    // ========================================
+    {
+        id: 'maths-03-soustractions',
+        title: 'Soustractions Complexes',
+        emoji: '➖',
+        xp: 50,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: '534 - 278 = ?', 
+                answer: '256', 
+                hint: 'Emprunte à la dizaine : 534 devient 4 14 - 8, puis 2 13 - 7'
+            },
+            { 
+                question: '802 - 456 = ?', 
+                answer: '346', 
+                hint: 'Astuce : 802 - 400 = 402, puis 402 - 56 = 346'
+            },
+            { 
+                question: '623 - 387 = ?', 
+                answer: '236', 
+                hint: 'Méthode : soustrais 400, puis ajoute 13 → 223 + 13 = 236'
+            },
+            { 
+                question: '710 - 543 = ?', 
+                answer: '167', 
+                hint: 'Décompose : 710 - 500 = 210, puis 210 - 43 = 167'
+            },
+            { 
+                question: '905 - 678 = ?', 
+                answer: '227', 
+                hint: 'Pense : 905 - 700 = 205, puis 205 + 22 = 227'
+            },
+            { 
+                question: '1000 - 763 = ?', 
+                answer: '237', 
+                hint: 'Compte à rebours : 763 + 237 = 1000'
+            },
+            { 
+                question: '841 - 596 = ?', 
+                answer: '245', 
+                hint: 'Arrondis : 841 - 600 = 241, puis + 4 = 245'
+            }
+        ]
+    },
 
-  renderLessons() {
-    console.log('🎨 Rendering maths lessons...');
-    
-    const lessonsGrid = document.getElementById('lessons-grid');
-    if (!lessonsGrid) {
-        console.error('❌ Element #lessons-grid not found');
-        return;
+    // ========================================
+    // LEÇON 4 : FRACTIONS SIMPLES
+    // ========================================
+    {
+        id: 'maths-04-fractions',
+        title: 'Introduction aux Fractions',
+        emoji: '🍕',
+        xp: 60,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: 'Combien de quarts dans 1 entier ?', 
+                answer: '4', 
+                hint: '1 entier = 4/4. Donc 4 quarts = 1 entier.'
+            },
+            { 
+                question: '1/2 de 8 = ?', 
+                answer: '4', 
+                hint: 'Divise 8 en 2 parties égales : 8 ÷ 2 = 4'
+            },
+            { 
+                question: '3/4 de 12 = ?', 
+                answer: '9', 
+                hint: '1/4 de 12 = 3, donc 3/4 = 3 × 3 = 9'
+            },
+            { 
+                question: 'Combien de moitiés dans 3 entiers ?', 
+                answer: '6', 
+                hint: '1 entier = 2 moitiés, donc 3 entiers = 3 × 2 = 6'
+            },
+            { 
+                question: '1/4 + 1/4 = ?/4', 
+                answer: '2', 
+                hint: 'Additionne les numérateurs : 1 + 1 = 2. Résultat : 2/4'
+            },
+            { 
+                question: '2/3 de 9 = ?', 
+                answer: '6', 
+                hint: '1/3 de 9 = 3, donc 2/3 = 2 × 3 = 6'
+            },
+            { 
+                question: '1/2 + 1/4 = ?/4', 
+                answer: '3', 
+                hint: 'Transforme 1/2 en 2/4, puis 2/4 + 1/4 = 3/4'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 5 : DIVISIONS SIMPLES
+    // ========================================
+    {
+        id: 'maths-05-divisions',
+        title: 'Divisions à 1 Chiffre',
+        emoji: '➗',
+        xp: 55,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: '48 ÷ 6 = ?', 
+                answer: '8', 
+                hint: 'Pense : 6 × ? = 48. C\'est la table de 6 !'
+            },
+            { 
+                question: '63 ÷ 7 = ?', 
+                answer: '9', 
+                hint: 'Table de 7 : 7 × 9 = 63'
+            },
+            { 
+                question: '56 ÷ 8 = ?', 
+                answer: '7', 
+                hint: 'Rappelle-toi : 8 × 7 = 56'
+            },
+            { 
+                question: '72 ÷ 9 = ?', 
+                answer: '8', 
+                hint: 'Vérifie : 9 × 8 = 72'
+            },
+            { 
+                question: '81 ÷ 9 = ?', 
+                answer: '9', 
+                hint: 'C\'est un carré parfait : 9 × 9 = 81'
+            },
+            { 
+                question: '54 ÷ 6 = ?', 
+                answer: '9', 
+                hint: 'Compte par 6 jusqu\'à 54 : 6, 12, 18... 54'
+            },
+            { 
+                question: '45 ÷ 5 = ?', 
+                answer: '9', 
+                hint: 'Table de 5 : 5 × 9 = 45'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 6 : NOMBRES DÉCIMAUX
+    // ========================================
+    {
+        id: 'maths-06-decimaux',
+        title: 'Découverte des Décimaux',
+        emoji: '📏',
+        xp: 65,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: '0,5 + 0,3 = ?', 
+                answer: '0,8', 
+                hint: 'Additionne après la virgule : 5 + 3 = 8'
+            },
+            { 
+                question: '1,2 + 0,4 = ?', 
+                answer: '1,6', 
+                hint: '2 dixièmes + 4 dixièmes = 6 dixièmes'
+            },
+            { 
+                question: '2,5 - 0,8 = ?', 
+                answer: '1,7', 
+                hint: 'Emprunte 1 entier : 2,5 = 1,15 puis 15 - 8 = 7'
+            },
+            { 
+                question: 'Combien de dixièmes dans 1,3 ?', 
+                answer: '13', 
+                hint: '1,3 = 1 + 0,3 = 10 dixièmes + 3 dixièmes = 13'
+            },
+            { 
+                question: '0,7 + 0,6 = ?', 
+                answer: '1,3', 
+                hint: '7 + 6 = 13 dixièmes = 1,3'
+            },
+            { 
+                question: '3,4 - 1,2 = ?', 
+                answer: '2,2', 
+                hint: 'Soustrais entiers et dixièmes séparément : 3 - 1 = 2, 4 - 2 = 2'
+            },
+            { 
+                question: '0,25 × 4 = ?', 
+                answer: '1', 
+                hint: '0,25 = 1/4, donc 4 × (1/4) = 1'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 7 : NOMBRES JUSQU'À 1000
+    // ========================================
+    {
+        id: 'maths-07-mille',
+        title: 'Compter jusqu\'à 1000',
+        emoji: '🔢',
+        xp: 40,
+        difficulty: 'facile',
+        exercises: [
+            { 
+                question: 'Combien de centaines dans 743 ?', 
+                answer: '7', 
+                hint: 'Regarde le chiffre des centaines : 7'
+            },
+            { 
+                question: '500 + 300 = ?', 
+                answer: '800', 
+                hint: '5 centaines + 3 centaines = 8 centaines'
+            },
+            { 
+                question: 'Quel nombre suit 999 ?', 
+                answer: '1000', 
+                hint: 'Après 999 on passe au millier !'
+            },
+            { 
+                question: 'Combien de dizaines dans 840 ?', 
+                answer: '84', 
+                hint: '840 = 84 dizaines (ou 840 ÷ 10)'
+            },
+            { 
+                question: '1000 - 1 = ?', 
+                answer: '999', 
+                hint: 'Juste avant 1000 c\'est 999'
+            },
+            { 
+                question: 'Écris en chiffres : sept cent vingt-trois', 
+                answer: '723', 
+                hint: '7 centaines, 2 dizaines, 3 unités'
+            },
+            { 
+                question: 'Range du plus petit au plus grand : 567 ou 576 ?', 
+                answer: '567', 
+                hint: 'Compare les dizaines : 6 < 7, donc 567 < 576'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 8 : PÉRIMÈTRES
+    // ========================================
+    {
+        id: 'maths-08-perimetres',
+        title: 'Calcul de Périmètres',
+        emoji: '📐',
+        xp: 70,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: 'Périmètre d\'un carré de côté 5 cm ?', 
+                answer: '20', 
+                hint: 'Carré = 4 côtés égaux, donc 5 × 4 = 20 cm'
+            },
+            { 
+                question: 'Rectangle : longueur 8 cm, largeur 3 cm. Périmètre ?', 
+                answer: '22', 
+                hint: 'Formule : (L + l) × 2 = (8 + 3) × 2 = 22 cm'
+            },
+            { 
+                question: 'Carré de côté 7 cm. Périmètre ?', 
+                answer: '28', 
+                hint: '7 + 7 + 7 + 7 = 28 cm'
+            },
+            { 
+                question: 'Triangle équilatéral de côté 6 cm. Périmètre ?', 
+                answer: '18', 
+                hint: 'Équilatéral = 3 côtés égaux, donc 6 × 3 = 18 cm'
+            },
+            { 
+                question: 'Rectangle : longueur 10 cm, largeur 4 cm. Périmètre ?', 
+                answer: '28', 
+                hint: '(10 + 4) × 2 = 14 × 2 = 28 cm'
+            },
+            { 
+                question: 'Carré dont le périmètre est 32 cm. Côté ?', 
+                answer: '8', 
+                hint: '32 ÷ 4 = 8 cm par côté'
+            },
+            { 
+                question: 'Hexagone régulier de côté 5 cm. Périmètre ?', 
+                answer: '30', 
+                hint: '6 côtés égaux : 5 × 6 = 30 cm'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 9 : MESURES DE LONGUEUR
+    // ========================================
+    {
+        id: 'maths-09-mesures',
+        title: 'Conversions de Longueurs',
+        emoji: '📏',
+        xp: 55,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: 'Combien de cm dans 1 mètre ?', 
+                answer: '100', 
+                hint: '1 m = 100 cm (centi = centième)'
+            },
+            { 
+                question: '3 m = ? cm', 
+                answer: '300', 
+                hint: '3 × 100 = 300 cm'
+            },
+            { 
+                question: '250 cm = ? m', 
+                answer: '2,5', 
+                hint: '250 ÷ 100 = 2,5 m (ou 2 m 50 cm)'
+            },
+            { 
+                question: 'Combien de mm dans 1 cm ?', 
+                answer: '10', 
+                hint: '1 cm = 10 mm (milli = millième)'
+            },
+            { 
+                question: '5 cm = ? mm', 
+                answer: '50', 
+                hint: '5 × 10 = 50 mm'
+            },
+            { 
+                question: '1 km = ? m', 
+                answer: '1000', 
+                hint: 'Kilo = mille, donc 1 km = 1000 m'
+            },
+            { 
+                question: '2,5 m = ? cm', 
+                answer: '250', 
+                hint: '2,5 × 100 = 250 cm'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 10 : CALCUL MENTAL RAPIDE
+    // ========================================
+    {
+        id: 'maths-10-calcul-mental',
+        title: 'Calcul Mental Rapide',
+        emoji: '🧠',
+        xp: 60,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: '25 + 37 = ?', 
+                answer: '62', 
+                hint: 'Décompose : 25 + 30 = 55, puis + 7 = 62'
+            },
+            { 
+                question: '50 × 6 = ?', 
+                answer: '300', 
+                hint: '50 = 5 × 10, donc 5 × 6 × 10 = 300'
+            },
+            { 
+                question: '88 - 19 = ?', 
+                answer: '69', 
+                hint: 'Soustrais 20, puis ajoute 1 : 88 - 20 + 1 = 69'
+            },
+            { 
+                question: '15 × 4 = ?', 
+                answer: '60', 
+                hint: '15 × 2 = 30, donc 30 × 2 = 60'
+            },
+            { 
+                question: '99 + 78 = ?', 
+                answer: '177', 
+                hint: 'Arrondis : 100 + 78 = 178, puis - 1 = 177'
+            },
+            { 
+                question: '12 × 11 = ?', 
+                answer: '132', 
+                hint: '12 × 10 = 120, puis + 12 = 132'
+            },
+            { 
+                question: '64 ÷ 4 = ?', 
+                answer: '16', 
+                hint: 'Divise par 2 deux fois : 64 ÷ 2 = 32, 32 ÷ 2 = 16'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 11 : GÉOMÉTRIE DE BASE
+    // ========================================
+    {
+        id: 'maths-11-geometrie',
+        title: 'Formes Géométriques',
+        emoji: '🔷',
+        xp: 50,
+        difficulty: 'facile',
+        exercises: [
+            { 
+                question: 'Combien de côtés a un triangle ?', 
+                answer: '3', 
+                hint: 'Tri = trois en latin'
+            },
+            { 
+                question: 'Combien d\'angles droits dans un carré ?', 
+                answer: '4', 
+                hint: 'Un carré a 4 angles de 90°'
+            },
+            { 
+                question: 'Combien de sommets a un rectangle ?', 
+                answer: '4', 
+                hint: 'Rectangle = 4 sommets (coins)'
+            },
+            { 
+                question: 'Combien de côtés a un hexagone ?', 
+                answer: '6', 
+                hint: 'Hexa = six en grec'
+            },
+            { 
+                question: 'Une figure à 5 côtés s\'appelle ?', 
+                answer: 'pentagone', 
+                hint: 'Penta = cinq'
+            },
+            { 
+                question: 'Combien de côtés égaux dans un triangle équilatéral ?', 
+                answer: '3', 
+                hint: 'Équilatéral = tous les côtés égaux'
+            },
+            { 
+                question: 'Combien de diagonales dans un carré ?', 
+                answer: '2', 
+                hint: 'Relie les coins opposés : 2 diagonales'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 12 : DURÉES ET HEURES
+    // ========================================
+    {
+        id: 'maths-12-durees',
+        title: 'Calculs de Durées',
+        emoji: '⏰',
+        xp: 65,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: 'Combien de minutes dans 1 heure ?', 
+                answer: '60', 
+                hint: '1 h = 60 min'
+            },
+            { 
+                question: '2 h 30 min = ? min', 
+                answer: '150', 
+                hint: '2 × 60 + 30 = 120 + 30 = 150 min'
+            },
+            { 
+                question: 'De 9h à 11h, combien d\'heures ?', 
+                answer: '2', 
+                hint: '11 - 9 = 2 heures'
+            },
+            { 
+                question: '180 min = ? h', 
+                answer: '3', 
+                hint: '180 ÷ 60 = 3 heures'
+            },
+            { 
+                question: 'De 14h15 à 15h45, combien de minutes ?', 
+                answer: '90', 
+                hint: 'De 14h15 à 15h15 = 60 min, puis + 30 = 90 min'
+            },
+            { 
+                question: 'Combien de secondes dans 1 minute ?', 
+                answer: '60', 
+                hint: '1 min = 60 secondes'
+            },
+            { 
+                question: '1 h 15 min + 45 min = ? h', 
+                answer: '2', 
+                hint: '15 + 45 = 60 min = 1 h, donc 1 h + 1 h = 2 h'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 13 : GRANDS NOMBRES
+    // ========================================
+    {
+        id: 'maths-13-grands-nombres',
+        title: 'Nombres à 4 et 5 Chiffres',
+        emoji: '💯',
+        xp: 55,
+        difficulty: 'moyen',
+        exercises: [
+            { 
+                question: 'Combien de milliers dans 5 347 ?', 
+                answer: '5', 
+                hint: 'Chiffre des milliers = 5'
+            },
+            { 
+                question: '10 000 - 1 = ?', 
+                answer: '9999', 
+                hint: 'Juste avant 10 000 c\'est 9 999'
+            },
+            { 
+                question: 'Écris en chiffres : douze mille trois cent cinquante', 
+                answer: '12350', 
+                hint: '12 milliers, 3 centaines, 5 dizaines, 0 unités'
+            },
+            { 
+                question: '7 000 + 500 + 40 + 3 = ?', 
+                answer: '7543', 
+                hint: 'Additionne par position : 7 543'
+            },
+            { 
+                question: 'Quel est le nombre suivant 19 999 ?', 
+                answer: '20000', 
+                hint: 'Après 19 999 on passe à 20 000'
+            },
+            { 
+                question: 'Décompose 8 426 : combien de centaines ?', 
+                answer: '84', 
+                hint: '8 426 = 84 centaines + 26 unités'
+            },
+            { 
+                question: 'Range du plus petit au plus grand : 9 876 ou 9 867 ?', 
+                answer: '9867', 
+                hint: 'Compare les dizaines : 6 < 7, donc 9 867 < 9 876'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 14 : PROPORTIONNALITÉ
+    // ========================================
+    {
+        id: 'maths-14-proportionnel',
+        title: 'Situations Proportionnelles',
+        emoji: '⚖️',
+        xp: 70,
+        difficulty: 'difficile',
+        exercises: [
+            { 
+                question: '3 pommes coûtent 6 €. Combien coûtent 5 pommes ?', 
+                answer: '10', 
+                hint: '1 pomme = 6 ÷ 3 = 2 €, donc 5 × 2 = 10 €'
+            },
+            { 
+                question: 'En 2 heures je parcours 10 km. Combien en 5 heures ?', 
+                answer: '25', 
+                hint: 'Vitesse = 10 ÷ 2 = 5 km/h, donc 5 × 5 = 25 km'
+            },
+            { 
+                question: '4 stylos = 8 €. Prix de 1 stylo ?', 
+                answer: '2', 
+                hint: '8 ÷ 4 = 2 € par stylo'
+            },
+            { 
+                question: 'Pour 6 personnes il faut 12 œufs. Combien pour 9 ?', 
+                answer: '18', 
+                hint: '6 personnes = 12 œufs, donc 9 = (12 ÷ 6) × 9 = 18'
+            },
+            { 
+                question: '5 kg de tomates = 15 €. Prix de 3 kg ?', 
+                answer: '9', 
+                hint: '1 kg = 15 ÷ 5 = 3 €, donc 3 × 3 = 9 €'
+            },
+            { 
+                question: 'Un train parcourt 120 km en 2 h. Combien en 3 h ?', 
+                answer: '180', 
+                hint: 'Vitesse = 120 ÷ 2 = 60 km/h, donc 3 × 60 = 180 km'
+            },
+            { 
+                question: '8 bonbons coûtent 4 €. Combien avec 10 € ?', 
+                answer: '20', 
+                hint: '1 € = 8 ÷ 4 = 2 bonbons, donc 10 × 2 = 20 bonbons'
+            }
+        ]
+    },
+
+    // ========================================
+    // LEÇON 15 : EXAMEN FINAL MATHÉMATIQUES
+    // ========================================
+    {
+        id: 'maths-15-examen',
+        title: 'Examen Final Maths',
+        emoji: '🏆',
+        xp: 100,
+        difficulty: 'difficile',
+        exercises: [
+            { 
+                question: '(12 × 5) + (8 × 3) = ?', 
+                answer: '84', 
+                hint: 'Calcule d\'abord les multiplications : 60 + 24'
+            },
+            { 
+                question: 'Aire d\'un carré de côté 9 cm = ?', 
+                answer: '81', 
+                hint: 'Aire = côté × côté = 9 × 9 = 81 cm²'
+            },
+            { 
+                question: '3/4 de 20 = ?', 
+                answer: '15', 
+                hint: '1/4 de 20 = 5, donc 3/4 = 3 × 5 = 15'
+            },
+            { 
+                question: '456 + 789 = ?', 
+                answer: '1245', 
+                hint: 'Attention aux retenues multiples !'
+            },
+            { 
+                question: '2,5 km = ? m', 
+                answer: '2500', 
+                hint: '2,5 × 1000 = 2 500 m'
+            },
+            { 
+                question: 'De 8h45 à 10h15, combien de minutes ?', 
+                answer: '90', 
+                hint: 'De 8h45 à 9h45 = 60 min, puis + 30 = 90 min'
+            },
+            { 
+                question: '144 ÷ 12 = ?', 
+                answer: '12', 
+                hint: 'Table de 12 : 12 × 12 = 144'
+            },
+            { 
+                question: 'Périmètre rectangle : L = 15 cm, l = 8 cm ?', 
+                answer: '46', 
+                hint: '(15 + 8) × 2 = 23 × 2 = 46 cm'
+            },
+            { 
+                question: '5 cahiers = 12,50 €. Prix de 1 cahier ?', 
+                answer: '2,5', 
+                hint: '12,50 ÷ 5 = 2,50 € (ou 2,5 €)'
+            },
+            { 
+                question: 'Combien de centaines dans 12 784 ?', 
+                answer: '127', 
+                hint: '12 784 = 127 centaines + 84 unités'
+            }
+        ]
     }
-    
-    lessonsGrid.innerHTML = '';
-    
-    this.lessons.forEach(lesson => {
-        const card = document.createElement('div');
-        card.className = 'lesson-card' + (lesson.locked ? ' locked' : '');
-        card.dataset.lessonId = lesson.id;
-        
-        card.innerHTML = `
-            <div class="lesson-icon">${lesson.icon}</div>
-            <div class="lesson-title">${lesson.title}</div>
-            <div class="lesson-desc">${lesson.description}</div>
-            <button class="lesson-button" ${lesson.locked ? 'disabled' : ''}>
-                ${lesson.locked ? '🔒 Verrouillé' : '⭐ Commencer'}
-            </button>
-        `;
-        
-        if (!lesson.locked) {
-            const button = card.querySelector('.lesson-button');
-            button.addEventListener('click', () => {
-                this.startLesson(lesson.id);
-            });
-        }
-        
-        lessonsGrid.appendChild(card);
-    });
-    
-    console.log(`✅ Rendered ${this.lessons.length} maths lessons`);
-  }
+];
 
-  startLesson(lessonId) {
-    const lesson = this.lessons.find(l => l.id === lessonId);
-    
-    if (!lesson) {
-      console.error('❌ Lesson not found:', lessonId);
-      return;
-    }
-
-    if (lesson.locked) {
-      alert('Cette leçon est encore verrouillée !\nComplète les leçons précédentes d\'abord.');
-      return;
-    }
-
-    console.log('🎓 Starting maths lesson:', lesson.title);
-
-    this.currentLesson = lesson;
-    this.currentExercises = [...lesson.exercises];
-    this.currentExerciseIndex = 0;
-    this.score = 0;
-
-    this.showExerciseScreen();
-    this.renderExercise();
-  }
-
-  showExerciseScreen() {
-    const lessonsScreen = document.getElementById('lessons-screen');
-    const lessonScreen = document.getElementById('lesson-screen');
-
-    if (lessonsScreen) lessonsScreen.classList.remove('active');
-    if (lessonScreen) lessonScreen.classList.add('active');
-  }
-
-  renderExercise() {
-    const container = document.getElementById('exercise-container');
-    if (!container) return;
-
-    if (this.currentExerciseIndex >= this.currentExercises.length) {
-      this.showLessonComplete();
-      return;
-    }
-
-    const exercise = this.currentExercises[this.currentExerciseIndex];
-    const progress = ((this.currentExerciseIndex + 1) / this.currentExercises.length * 100).toFixed(0);
-
-    container.innerHTML = `
-      <div class="exercise-header">
-        <div class="exercise-progress">
-          <div class="progress-bar" style="width: ${progress}%"></div>
-        </div>
-        <div class="exercise-number">Question ${this.currentExerciseIndex + 1}/${this.currentExercises.length}</div>
-      </div>
-
-      <div class="exercise-content">
-        <div class="exercise-icon">${this.currentLesson.icon}</div>
-        <h2 class="exercise-question">${exercise.question}</h2>
-        
-        <input 
-          type="number" 
-          id="exercise-input" 
-          class="exercise-input"
-          placeholder="Ta réponse..."
-          autocomplete="off"
-        />
-
-        <button id="hint-button" class="exercise-hint">💡 Indice</button>
-        <div id="hint-text" class="hint-text" style="display: none;">
-          ${exercise.hint}
-        </div>
-
-        <div id="feedback" class="exercise-feedback"></div>
-
-        <button id="submit-button" class="exercise-submit">Vérifier</button>
-      </div>
-    `;
-
-    this.attachExerciseHandlers(exercise);
-  }
-
-  attachExerciseHandlers(exercise) {
-    const input = document.getElementById('exercise-input');
-    const submitBtn = document.getElementById('submit-button');
-    const hintBtn = document.getElementById('hint-button');
-    const hintText = document.getElementById('hint-text');
-
-    input?.focus();
-
-    hintBtn?.addEventListener('click', () => {
-      if (hintText) {
-        hintText.style.display = hintText.style.display === 'none' ? 'block' : 'none';
-      }
-    });
-
-    const checkAnswer = () => {
-      const userAnswer = input?.value.trim();
-      const correctAnswer = exercise.answer;
-      const feedback = document.getElementById('feedback');
-
-      if (!userAnswer) {
-        feedback.innerHTML = '⚠️ Entre ta réponse d\'abord !';
-        feedback.className = 'exercise-feedback warning';
-        return;
-      }
-
-      // Validation numérique stricte
-      if (userAnswer === correctAnswer) {
-        this.score++;
-        
-        feedback.innerHTML = '✅ Bravo ! C\'est correct !';
-        feedback.className = 'exercise-feedback correct';
-        
-        if (this.streakSystem) {
-          this.streakSystem.recordActivity();
-        }
-      } else {
-        feedback.innerHTML = `❌ Pas tout à fait... La réponse était : <strong>${exercise.answer}</strong>`;
-        feedback.className = 'exercise-feedback incorrect';
-        
-        if (this.heartsSystem) {
-          this.heartsSystem.loseHeart();
-        }
-      }
-
-      // CRITIQUE : Retirer les listeners AVANT de changer le bouton
-      submitBtn.removeEventListener('click', checkAnswer);
-      input.removeEventListener('keypress', handleKeyPress);
-
-      submitBtn.textContent = 'Suivant →';
-      submitBtn.onclick = () => {
-        this.currentExerciseIndex++;
-        this.renderExercise();
-      };
-    };
-
-    const handleKeyPress = (e) => {
-      if (e.key === 'Enter') checkAnswer();
-    };
-
-    submitBtn?.addEventListener('click', checkAnswer);
-    input?.addEventListener('keypress', handleKeyPress);
-  }
-
-  showLessonComplete() {
-    const container = document.getElementById('exercise-container');
-    if (!container) return;
-
-    const totalExercises = this.currentExercises.length;
-    const percentage = Math.round((this.score / totalExercises) * 100);
-    const xpEarned = this.score * 10;
-
-    if (this.storage) {
-      const currentXP = this.storage.get('totalXP') || 0;
-      this.storage.set('totalXP', currentXP + xpEarned);
-    }
-
-    container.innerHTML = `
-      <div style="text-align: center; padding: 2rem;">
-        <h2 style="font-size: 2rem; margin-bottom: 2rem;">🎉 Leçon Terminée !</h2>
-        
-        <div style="font-size: 4rem; margin: 2rem 0;">
-          ${percentage >= 80 ? '⭐⭐⭐' : percentage >= 60 ? '⭐⭐' : '⭐'}
-        </div>
-
-        <div style="font-size: 1.5rem; margin-bottom: 2rem;">
-          Score: ${this.score}/${totalExercises} (${percentage}%)
-        </div>
-
-        <div style="font-size: 1.2rem; color: #2a9d8f; margin-bottom: 3rem;">
-          +${xpEarned} XP gagnés !
-        </div>
-
-        <button 
-          onclick="location.reload()" 
-          class="exercise-submit"
-          style="max-width: 300px; margin: 0 auto;"
-        >
-          Retour aux Leçons
-        </button>
-      </div>
-    `;
-  }
+// Export pour utilisation dans d'autres fichiers
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = mathsLessons;
 }
-
-window.MathsLessons = MathsLessons;
-console.log('✅ MathsLessons loaded');

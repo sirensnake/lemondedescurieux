@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histoire - Le Monde des Curieux</title>
+    <title>🏛️ Histoire - Le Monde des Curieux</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/duolingo-sections.css">
+    <link rel="stylesheet" href="styles/curio-main.css">
     <link rel="stylesheet" href="styles/histoire-theme.css">
 </head>
 <body class="histoire-section">
@@ -21,13 +22,19 @@
             </div>
         </div>
         
-        <!-- LESSONS LIST (visible par défaut) -->
+        <!-- LESSONS LIST -->
         <div id="lessons-list">
             <div id="lessons-grid"></div>
         </div>
         
-        <!-- LESSON SCREEN (caché par défaut, contient exercices + résultats) -->
+        <!-- LESSON SCREEN -->
         <div id="lesson-screen" style="display: none;">
+            
+            <!-- HISTORICAL CONTEXT BANNER -->
+            <div id="historical-context" class="historical-context" style="display: none;">
+                <div class="context-icon" id="context-icon">🏛️</div>
+                <div class="context-text" id="context-text"></div>
+            </div>
             
             <!-- EXERCISE SCREEN -->
             <div id="exercise-screen">
@@ -40,16 +47,10 @@
                     <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
                 </div>
                 
-                <!-- ZONE CONTEXTE HISTORIQUE -->
-                <div class="historical-context" id="historical-context">
-                    <div class="context-icon" id="context-icon">📜</div>
-                    <div class="context-text" id="context-text"></div>
-                </div>
-                
                 <div class="question-area">
                     <div class="question-text" id="question-text"></div>
-                    <input type="text" class="answer-input" id="answer-input" placeholder="?" autofocus>
-                    <div class="hint-area" id="hint-area"></div>
+                    <input type="text" class="answer-input" id="answer-input" placeholder="Tape ta réponse..." autofocus>
+                    <div class="hint-area" id="hint-area" style="display: none;"></div>
                 </div>
                 
                 <div class="button-area">
@@ -57,10 +58,9 @@
                     <button class="btn btn-primary" onclick="histoireApp.checkAnswer()">✓ Vérifier</button>
                 </div>
             </div>
-            <!-- Fin exercise-screen -->
             
             <!-- RESULTS SCREEN -->
-            <div id="results-screen">
+            <div id="results-screen" style="display: none;">
                 <div class="results-icon">🏆</div>
                 <h2 style="color: #d97706; margin-bottom: 2rem;">Leçon Terminée !</h2>
                 
@@ -83,24 +83,33 @@
                     </div>
                 </div>
                 
-                <!-- TIMELINE INTERACTIVE -->
-                <div class="timeline-summary" id="timeline-summary"></div>
-                
                 <button class="btn btn-primary" onclick="histoireApp.backToLessons()" style="margin-top: 2rem; width: 100%;">
                     🏠 Retour aux leçons
                 </button>
             </div>
-            <!-- Fin results-screen -->
-            
         </div>
-        <!-- Fin lesson-screen -->
         
-        <!-- FEEDBACK POPUP -->
-        <div class="feedback" id="feedback"></div>
-        
+        <!-- FEEDBACK -->
+        <div class="feedback" id="feedback" style="display: none;"></div>
     </div>
-    <!-- Fin container -->
 
-    <script src="scripts/histoire-lessons.js"></script>
+    <!-- SCRIPTS -->
+    <script src="scripts/core/lesson-engine.js"></script>
+    <script src="scripts/data/histoire-lessons.js"></script>
+    <script>
+        // Initialisation application Histoire
+        const histoireApp = new LessonEngine('histoire', histoireLessons);
+        
+        // Démarrage au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            histoireApp.renderLessonsGrid();
+            histoireApp.updateAllDisplays();
+            
+            // Enter pour valider
+            document.getElementById('answer-input').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') histoireApp.checkAnswer();
+            });
+        });
+    </script>
 </body>
 </html>

@@ -118,3 +118,15 @@ nav#sideMenu.side-menu a {
 
 .btn-confirm { background: #e74c3c; color: white; border: none; padding: 10px; flex: 1; cursor: pointer; font-family: 'Press Start 2P'; font-size: 8px; border-bottom: 4px solid #c0392b; }
 .btn-cancel { background: #95a5a6; color: white; border: none; padding: 10px; flex: 1; cursor: pointer; font-family: 'Press Start 2P'; font-size: 8px; border-bottom: 4px solid #7f8c8d; }
+
+.stats-btn:hover,
+.analytics-link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0 rgba(44, 62, 80, 0.4) !important;
+}
+
+.stats-btn:active,
+.analytics-link-btn:active {
+    transform: translateY(1px);
+    box-shadow: 3px 3px 0 rgba(44, 62, 80, 0.3) !important;
+}

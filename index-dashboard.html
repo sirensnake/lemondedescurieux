@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde des Curieux - Accueil</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/curio-main.css">
+    <link rel="stylesheet" href="styles/dashboard-home.css">
+    
+    <style>
+        /* Style pour le bouton Analytics dans le header */
+        .analytics-link-btn {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 11px;
+            padding: 12px 20px;
+            border: 4px solid #2c3e50;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #e76f51 0%, #d6563f 100%);
+            color: white;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 rgba(44, 62, 80, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .analytics-link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0 rgba(44, 62, 80, 0.4);
+        }
+        
+        .analytics-link-btn:active {
+            transform: translateY(1px);
+            box-shadow: 3px 3px 0 rgba(44, 62, 80, 0.3);
+        }
+        
+        /* Ajustement header pour 3 éléments */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .analytics-link-btn {
+                font-size: 9px;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body class="dashboard-home">
+    <div class="container">
+        <!-- HEADER GLOBAL -->
+        <header class="main-header">
+            <div class="logo-section">
+                <h1 class="main-title">🎮 Le Monde des Curieux</h1>
+                <p class="subtitle">Apprends en t'amusant !</p>
+            </div>
+            
+            <!-- BOUTON ANALYTICS -->
+            <button class="analytics-link-btn" onclick="window.location.href='dashboard-analytics.html'">
+                📊 Analytics
+            </button>
+            
+            <div class="global-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">🔥</span>
+                    <span class="stat-value" id="global-streak">0</span>
+                    <span class="stat-label">jours</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">❤️</span>
+                    <span class="stat-value" id="global-hearts">5</span>
+                    <span class="stat-label">cœurs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-value" id="global-xp">0</span>
+                    <span class="stat-label">XP</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📊</span>
+                    <span class="stat-value" id="global-level">1</span>
+                    <span class="stat-label">Niveau</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- RECOMMANDATION -->
+        <div class="recommendation-banner" id="recommendation-banner" style="display: none;">
+            <div class="recommendation-icon">💡</div>
+            <div class="recommendation-text">
+                <strong>Continue ton apprentissage !</strong>
+                <span id="recommendation-message"></span>
+            </div>
+        </div>
+
+        <!-- SECTIONS GRID -->
+        <div class="sections-grid">
+            
+            <!-- SECTION MATHÉMATIQUES -->
+            <div class="section-card maths-card" onclick="window.location.href='maths_duolingo_section.html'">
+                <div class="section-header">
+                    <span class="section-emoji">🧮</span>
+                    <h2 class="section-title">Mathématiques</h2>
+                </div>
+                
+                <div class="section-description">
+                    Calcul mental, géométrie, problèmes et fractions
+                </div>
+                
+                <div class="section-stats">
+                    <div class="progress-info">
+                        <span class="progress-label">Progression</span>
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini maths-progress" id="maths-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percentage" id="maths-percentage">0%</span>
+                    </div>
+                    
+                    <div class="section-metrics">
+                        <span class="metric"><strong id="maths-completed">0</strong>/15 leçons</span>
+                        <span class="metric"><strong id="maths-xp">0</strong> XP</span>
+                    </div>
+                </div>
+                
+                <button class="section-button maths-button">
+                    Continuer →
+                </button>
+            </div>
+
+            <!-- SECTION ENGLISH -->
+            <div class="section-card english-card" onclick="window.location.href='english_duolingo_section.html'">
+                <div class="section-header">
+                    <span class="section-emoji">🌍</span>
+                    <h2 class="section-title">English</h2>
+                </div>
+                
+                <div class="section-description">
+                    Vocabulaire, phrases courantes et prononciation
+                </div>
+                
+                <div class="section-stats">
+                    <div class="progress-info">
+                        <span class="progress-label">Progression</span>
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini english-progress" id="english-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percentage" id="english-percentage">0%</span>
+                    </div>
+                    
+                    <div class="section-metrics">
+                        <span class="metric"><strong id="english-completed">0</strong>/15 leçons</span>
+                        <span class="metric"><strong id="english-xp">0</strong> XP</span>
+                    </div>
+                </div>
+                
+                <button class="section-button english-button">
+                    Continuer →
+                </button>
+            </div>
+
+            <!-- SECTION FRANÇAIS -->
+            <div class="section-card francais-card" onclick="window.location.href='francais_duolingo_section.html'">
+                <div class="section-header">
+                    <span class="section-emoji">📚</span>
+                    <h2 class="section-title">Français</h2>
+                </div>
+                
+                <div class="section-description">
+                    Grammaire, conjugaison, orthographe et vocabulaire
+                </div>
+                
+                <div class="section-stats">
+                    <div class="progress-info">
+                        <span class="progress-label">Progression</span>
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini francais-progress" id="francais-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percentage" id="francais-percentage">0%</span>
+                    </div>
+                    
+                    <div class="section-metrics">
+                        <span class="metric"><strong id="francais-completed">0</strong>/15 leçons</span>
+                        <span class="metric"><strong id="francais-xp">0</strong> XP</span>
+                    </div>
+                </div>
+                
+                <button class="section-button francais-button">
+                    Continuer →
+                </button>
+            </div>
+
+            <!-- SECTION HISTOIRE -->
+            <div class="section-card histoire-card" onclick="window.location.href='histoire_duolingo_section.html'">
+                <div class="section-header">
+                    <span class="section-emoji">🏛️</span>
+                    <h2 class="section-title">Histoire</h2>
+                </div>
+                
+                <div class="section-description">
+                    De la Préhistoire au XXe siècle, frises et monuments
+                </div>
+                
+                <div class="section-stats">
+                    <div class="progress-info">
+                        <span class="progress-label">Progression</span>
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini histoire-progress" id="histoire-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percentage" id="histoire-percentage">0%</span>
+                    </div>
+                    
+                    <div class="section-metrics">
+                        <span class="metric"><strong id="histoire-completed">0</strong>/15 leçons</span>
+                        <span class="metric"><strong id="histoire-xp">0</strong> XP</span>
+                    </div>
+                </div>
+                
+                <button class="section-button histoire-button">
+                    Continuer →
+                </button>
+            </div>
+
+            <!-- SECTION SCIENCES -->
+            <div class="section-card sciences-card" onclick="window.location.href='sciences_duolingo_section.html'">
+                <div class="section-header">
+                    <span class="section-emoji">🔬</span>
+                    <h2 class="section-title">Sciences</h2>
+                </div>
+                
+                <div class="section-description">
+                    Système solaire, corps humain, énergie et environnement
+                </div>
+                
+                <div class="section-stats">
+                    <div class="progress-info">
+                        <span class="progress-label">Progression</span>
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill-mini sciences-progress" id="sciences-progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-percentage" id="sciences-percentage">0%</span>
+                    </div>
+                    
+                    <div class="section-metrics">
+                        <span class="metric"><strong id="sciences-completed">0</strong>/15 leçons</span>
+                        <span class="metric"><strong id="sciences-xp">0</strong> XP</span>
+                    </div>
+                </div>
+                
+                <button class="section-button sciences-button">
+                    Continuer →
+                </button>
+            </div>
+
+        </div>
+
+        <!-- FOOTER INFO -->
+        <footer class="dashboard-footer">
+            <p>🎯 <strong>75 leçons</strong> disponibles • 📝 <strong>525+ exercices</strong> éducatifs</p>
+            <p>🧮 Mathématiques • 🌍 English • 📚 Français • 🏛️ Histoire • 🔬 Sciences</p>
+            <p>Version 1.1 - Le Monde des Curieux © 2025</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPT CHARGEMENT DONNÉES -->
+    <script>
+        // ========================================
+        // CHARGEMENT DONNÉES GLOBALES
+        // ========================================
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGlobalStats();
+            loadSectionsProgress();
+            showRecommendation();
+        });
+
+        // ========================================
+        // STATS GLOBALES (HEADER)
+        // ========================================
+        
+        function loadGlobalStats() {
+            // Récupérer toutes les données sections (5 sections maintenant)
+            const sections = ['maths', 'english', 'francais', 'histoire', 'sciences'];
+            let totalXP = 0;
+            let maxStreak = 0;
+            let minHearts = 5;
+
+            sections.forEach(section => {
+                // XP
+                const xpData = JSON.parse(localStorage.getItem(`${section}_xp`)) || { total: 0 };
+                totalXP += xpData.total || 0;
+
+                // Streak
+                const streakData = JSON.parse(localStorage.getItem(`${section}_streak`)) || { currentStreak: 0 };
+                maxStreak = Math.max(maxStreak, streakData.currentStreak || 0);
+
+                // Hearts
+                const heartsData = JSON.parse(localStorage.getItem(`${section}_hearts`)) || { currentHearts: 5 };
+                minHearts = Math.min(minHearts, heartsData.currentHearts || 5);
+            });
+
+            // Affichage
+            document.getElementById('global-streak').innerText = maxStreak;
+            document.getElementById('global-hearts').innerText = minHearts;
+            document.getElementById('global-xp').innerText = totalXP;
+            
+            // Calcul niveau global (1 niveau = 200 XP)
+            const globalLevel = Math.floor(totalXP / 200) + 1;
+            document.getElementById('global-level').innerText = globalLevel;
+        }
+
+        // ========================================
+        // PROGRESSION PAR SECTION
+        // ========================================
+        
+        function loadSectionsProgress() {
+            const sections = [
+                { key: 'maths', totalLessons: 15 },
+                { key: 'english', totalLessons: 15 },
+                { key: 'francais', totalLessons: 15 },
+                { key: 'histoire', totalLessons: 15 },
+                { key: 'sciences', totalLessons: 15 }
+            ];
+
+            sections.forEach(section => {
+                const completed = JSON.parse(localStorage.getItem(`${section.key}_completed`)) || [];
+                const xpData = JSON.parse(localStorage.getItem(`${section.key}_xp`)) || { total: 0 };
+                
+                const completedCount = completed.length;
+                const percentage = Math.round((completedCount / section.totalLessons) * 100);
+                
+                // Mise à jour affichage
+                document.getElementById(`${section.key}-completed`).innerText = completedCount;
+                document.getElementById(`${section.key}-xp`).innerText = xpData.total || 0;
+                document.getElementById(`${section.key}-progress`).style.width = percentage + '%';
+                document.getElementById(`${section.key}-percentage`).innerText = percentage + '%';
+            });
+        }
+
+        // ========================================
+        // RECOMMANDATION PERSONNALISÉE
+        // ========================================
+        
+        function showRecommendation() {
+            const sections = [
+                { key: 'maths', name: 'Mathématiques', emoji: '🧮', url: 'maths_duolingo_section.html' },
+                { key: 'english', name: 'English', emoji: '🌍', url: 'english_duolingo_section.html' },
+                { key: 'francais', name: 'Français', emoji: '📚', url: 'francais_duolingo_section.html' },
+                { key: 'histoire', name: 'Histoire', emoji: '🏛️', url: 'histoire_duolingo_section.html' },
+                { key: 'sciences', name: 'Sciences', emoji: '🔬', url: 'sciences_duolingo_section.html' }
+            ];
+
+            // Trouver section avec moins de progression
+            let minProgress = 100;
+            let recommendedSection = sections[0];
+
+            sections.forEach(section => {
+                const completed = JSON.parse(localStorage.getItem(`${section.key}_completed`)) || [];
+                const progress = (completed.length / 15) * 100;
+                
+                if (progress < minProgress) {
+                    minProgress = progress;
+                    recommendedSection = section;
+                }
+            });
+
+            // Affichage recommandation si progression < 100%
+            if (minProgress < 100) {
+                const banner = document.getElementById('recommendation-banner');
+                const message = document.getElementById('recommendation-message');
+                
+                message.innerHTML = `Essaie <strong>${recommendedSection.emoji} ${recommendedSection.name}</strong> pour progresser !`;
+                banner.style.display = 'flex';
+                
+                // Clic sur bannière → redirection
+                banner.style.cursor = 'pointer';
+                banner.onclick = () => window.location.href = recommendedSection.url;
+            }
+        }
+    </script>
+</body>
+</html>

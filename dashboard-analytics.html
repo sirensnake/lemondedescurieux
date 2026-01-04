@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Mes Statistiques - Le Monde des Curieux</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/curio-main.css">
+    <link rel="stylesheet" href="styles/dashboard-analytics.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- jsPDF pour export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="analytics-page">
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header class="analytics-header">
+            <button class="back-home-btn" onclick="window.location.href='index.html'">← Accueil</button>
+            <h1>📊 Mes Statistiques</h1>
+            <button class="export-btn" onclick="exportPDF()">📄 Export PDF</button>
+        </header>
+
+        <!-- RÉSUMÉ GLOBAL -->
+        <section class="summary-section">
+            <div class="summary-card">
+                <div class="summary-icon">⭐</div>
+                <div class="summary-content">
+                    <div class="summary-value" id="total-xp">0</div>
+                    <div class="summary-label">XP Total</div>
+                </div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon">🔥</div>
+                <div class="summary-content">
+                    <div class="summary-value" id="max-streak">0</div>
+                    <div class="summary-label">Plus Long Streak</div>
+                </div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon">🏆</div>
+                <div class="summary-content">
+                    <div class="summary-value" id="total-lessons">0</div>
+                    <div class="summary-label">Leçons Complétées</div>
+                </div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon">📊</div>
+                <div class="summary-content">
+                    <div class="summary-value" id="global-level">1</div>
+                    <div class="summary-label">Niveau Global</div>
+                </div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="summary-icon">🎯</div>
+                <div class="summary-content">
+                    <div class="summary-value" id="avg-score">0%</div>
+                    <div class="summary-label">Précision Moyenne</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRAPHIQUES PRINCIPAUX -->
+        <div class="charts-grid">
+            
+            <!-- GRAPHIQUE RADAR -->
+            <div class="chart-container">
+                <h2 class="chart-title">🎯 Progression par Matière</h2>
+                <div class="chart-wrapper">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="chart-legend" id="radar-legend"></div>
+            </div>
+
+            <!-- GRAPHIQUE BARRES XP -->
+            <div class="chart-container">
+                <h2 class="chart-title">⭐ XP par Matière</h2>
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CALENDRIER ACTIVITÉ -->
+        <section class="activity-section">
+            <h2 class="section-title">📅 Calendrier d'Activité (30 derniers jours)</h2>
+            <div class="activity-calendar" id="activity-calendar">
+                <!-- Généré dynamiquement -->
+            </div>
+            <div class="activity-legend">
+                <span class="legend-item"><span class="activity-box level-0"></span> Aucune</span>
+                <span class="legend-item"><span class="activity-box level-1"></span> 1-2 leçons</span>
+                <span class="legend-item"><span class="activity-box level-2"></span> 3-4 leçons</span>
+                <span class="legend-item"><span class="activity-box level-3"></span> 5+ leçons</span>
+            </div>
+        </section>
+
+        <!-- STATISTIQUES DÉTAILLÉES -->
+        <section class="detailed-stats">
+            <h2 class="section-title">📈 Statistiques Détaillées</h2>
+            
+            <div class="stats-grid">
+                
+                <!-- MATHS -->
+                <div class="subject-stats maths-stats">
+                    <div class="subject-header">
+                        <span class="subject-emoji">🧮</span>
+                        <h3>Mathématiques</h3>
+                    </div>
+                    <div class="stats-details">
+                        <div class="stat-row">
+                            <span>Leçons :</span>
+                            <strong id="maths-lessons">0/15</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>XP :</span>
+                            <strong id="maths-xp">0</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Précision :</span>
+                            <strong id="maths-accuracy">0%</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Streak :</span>
+                            <strong id="maths-streak">0 jours</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ENGLISH -->
+                <div class="subject-stats english-stats">
+                    <div class="subject-header">
+                        <span class="subject-emoji">🌍</span>
+                        <h3>English</h3>
+                    </div>
+                    <div class="stats-details">
+                        <div class="stat-row">
+                            <span>Leçons :</span>
+                            <strong id="english-lessons">0/15</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>XP :</span>
+                            <strong id="english-xp">0</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Précision :</span>
+                            <strong id="english-accuracy">0%</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Streak :</span>
+                            <strong id="english-streak">0 jours</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FRANÇAIS -->
+                <div class="subject-stats francais-stats">
+                    <div class="subject-header">
+                        <span class="subject-emoji">📚</span>
+                        <h3>Français</h3>
+                    </div>
+                    <div class="stats-details">
+                        <div class="stat-row">
+                            <span>Leçons :</span>
+                            <strong id="francais-lessons">0/15</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>XP :</span>
+                            <strong id="francais-xp">0</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Précision :</span>
+                            <strong id="francais-accuracy">0%</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Streak :</span>
+                            <strong id="francais-streak">0 jours</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HISTOIRE -->
+                <div class="subject-stats histoire-stats">
+                    <div class="subject-header">
+                        <span class="subject-emoji">🏛️</span>
+                        <h3>Histoire</h3>
+                    </div>
+                    <div class="stats-details">
+                        <div class="stat-row">
+                            <span>Leçons :</span>
+                            <strong id="histoire-lessons">0/15</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>XP :</span>
+                            <strong id="histoire-xp">0</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Précision :</span>
+                            <strong id="histoire-accuracy">0%</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Streak :</span>
+                            <strong id="histoire-streak">0 jours</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCIENCES -->
+                <div class="subject-stats sciences-stats">
+                    <div class="subject-header">
+                        <span class="subject-emoji">🔬</span>
+                        <h3>Sciences</h3>
+                    </div>
+                    <div class="stats-details">
+                        <div class="stat-row">
+                            <span>Leçons :</span>
+                            <strong id="sciences-lessons">0/15</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>XP :</span>
+                            <strong id="sciences-xp">0</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Précision :</span>
+                            <strong id="sciences-accuracy">0%</strong>
+                        </div>
+                        <div class="stat-row">
+                            <span>Streak :</span>
+                            <strong id="sciences-streak">0 jours</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RÉCOMPENSES & OBJECTIFS -->
+        <section class="achievements-section">
+            <h2 class="section-title">🏆 Prochains Objectifs</h2>
+            
+            <div class="objectives-grid">
+                <div class="objective-card" id="obj-explorer">
+                    <div class="objective-icon">🌟</div>
+                    <div class="objective-info">
+                        <h4>Explorateur</h4>
+                        <p>Visiter les 5 sections</p>
+                        <div class="progress-bar-objective">
+                            <div class="progress-fill-objective" id="progress-explorer" style="width: 0%"></div>
+                        </div>
+                        <span class="objective-status" id="status-explorer">0/5</span>
+                    </div>
+                </div>
+
+                <div class="objective-card" id="obj-marathonien">
+                    <div class="objective-icon">🔥</div>
+                    <div class="objective-info">
+                        <h4>Marathonien</h4>
+                        <p>7 jours de streak consécutifs</p>
+                        <div class="progress-bar-objective">
+                            <div class="progress-fill-objective" id="progress-marathonien" style="width: 0%"></div>
+                        </div>
+                        <span class="objective-status" id="status-marathonien">0/7</span>
+                    </div>
+                </div>
+
+                <div class="objective-card" id="obj-champion">
+                    <div class="objective-icon">🏅</div>
+                    <div class="objective-info">
+                        <h4>Champion</h4>
+                        <p>Compléter une section entière</p>
+                        <div class="progress-bar-objective">
+                            <div class="progress-fill-objective" id="progress-champion" style="width: 0%"></div>
+                        </div>
+                        <span class="objective-status" id="status-champion">0/15</span>
+                    </div>
+                </div>
+
+                <div class="objective-card" id="obj-niveau10">
+                    <div class="objective-icon">💎</div>
+                    <div class="objective-info">
+                        <h4>Diamant</h4>
+                        <p>Atteindre le niveau 10</p>
+                        <div class="progress-bar-objective">
+                            <div class="progress-fill-objective" id="progress-niveau10" style="width: 0%"></div>
+                        </div>
+                        <span class="objective-status" id="status-niveau10">Niveau 1/10</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="scripts/dashboard-charts.js"></script>
+</body>
+</html>
