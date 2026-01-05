@@ -1,0 +1,23 @@
+name: Final Deployment
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout
+        uses: actions/checkout@v4
+      - name: 2. Config Pages
+        uses: actions/setup-pages@v4
+      - name: 3. Pack files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: 4. Deploy
+        uses: actions/deploy-pages@v4
