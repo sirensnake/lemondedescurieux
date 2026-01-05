@@ -1,1 +1,1 @@
-exclude: [README.md, .github]
+theme: jekyll-theme-minimal
