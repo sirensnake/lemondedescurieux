@@ -1,4 +1,4 @@
-name: Final Deployment
+name: Final-Deploy
 on:
   push:
     branches: ["master"]
@@ -8,16 +8,12 @@ permissions:
   pages: write
   id-token: write
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: 1. Checkout
-        uses: actions/checkout@v4
-      - name: 2. Config Pages
-        uses: actions/setup-pages@v4
-      - name: 3. Pack files
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-pages@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
-      - name: 4. Deploy
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
